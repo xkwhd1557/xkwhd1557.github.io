@@ -1,0 +1,30 @@
+[
+  {
+    "listing": "/stats.html",
+    "items": []
+  },
+  {
+    "listing": "/math.html",
+    "items": []
+  },
+  {
+    "listing": "/ds.html",
+    "items": []
+  },
+  {
+    "listing": "/articles.html",
+    "items": [
+      "/posts/test/index.html"
+    ]
+  },
+  {
+    "listing": "/cs.html",
+    "items": []
+  },
+  {
+    "listing": "/index.html",
+    "items": [
+      "/posts/test/index.html"
+    ]
+  }
+]

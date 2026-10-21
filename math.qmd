@@ -1,0 +1,10 @@
+---
+title: "수학 (Mathematics)"
+listing:
+  contents: posts
+  include:
+    categories: "수학"
+  sort: "date desc"
+  type: default
+page-layout: full
+---

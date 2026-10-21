@@ -1,0 +1,47 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "Archive"
+  navbar:
+    background: primary
+    search: true
+    left:
+      - text: "전체 게시글"
+        href: index.qmd
+      - text: "일반 아티클"
+        href: articles.qmd
+      
+      # 1. 수학 드롭다운
+      - text: "수학"
+        menu:
+          - text: "--- 기초 수학 ---"   # 구분선 헤더 (선택 사항)
+          - text: "해석학"
+            href: math/analysis-1.qmd
+          - text: "선형대수학"
+            href: math/linear-algebra.qmd
+          - text: "--- 심화 순수 수학 ---"
+      # 2. 통계학 드롭다운
+      - text: "확률과 통계"
+        menu:
+          - text: "확률론"
+            href: stats/math-stats.qmd
+          - text: "확률과정론"
+            href: stats/stochastic-process.qmd
+
+      # 3. 데이터 사이언스 드롭다운
+      - text: "데이터 사이언스"
+        menu:
+          - text: "머신러닝 이론"
+            href: ds/ml-theory.qmd
+
+      # 4. 컴퓨터 공학 드롭다운
+      - text: "컴퓨터 공학"
+        menu:
+          - text: "알고리즘"
+            href: cs/algorithms.qmd
+
+    right:
+      - icon: github
+        href: https://github.com/

@@ -1,0 +1,10 @@
+---
+title: "컴퓨터 공학 (Computer Science)"
+listing:
+  contents: posts
+  include:
+    categories: "컴퓨터 공학"
+  sort: "date desc"
+  type: default
+page-layout: full
+---
