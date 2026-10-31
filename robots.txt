@@ -1,0 +1,33 @@
+# Study Archive (https://xkwhd1557.github.io)
+# 일반 검색엔진의 수집은 허용하고, 상업용 AI 모델의 학습용 크롤러는 차단합니다.
+# 이용 조건: CC BY-NC-ND 4.0 (비영리 연구 목적의 AI 학습은 별도 허용)
+
+# --- 상업용 AI 학습 크롤러 차단 ---
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: meta-externalagent
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+# Common Crawl은 비영리 단체가 운영하지만, 수집된 데이터가 상업용 AI 학습에도 쓰입니다.
+# 차단하려면 아래 두 줄의 주석(#)을 지우세요.
+# User-agent: CCBot
+# Disallow: /
+
+# --- 그 외 모든 크롤러(검색엔진 등) 허용 ---
+User-agent: *
+Allow: /
+
+Sitemap: https://xkwhd1557.github.io/sitemap.xml

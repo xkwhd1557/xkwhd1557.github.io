@@ -1,9 +1,12 @@
 project:
   type: website
   output-dir: _site
+  resources:
+    - robots.txt
 
 website:
   title: "Study Archive"
+  site-url: "https://xkwhd1557.github.io"
   page-footer:
     center: "© 2026 xkwhd1557 · 글은 [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.ko)에 따라 이용할 수 있습니다."
   navbar:
