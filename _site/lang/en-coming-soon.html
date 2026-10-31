@@ -108,7 +108,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">📋 수학 전체 과목 보기</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
-        <li class="dropdown-header">기초 수학 (Foundations)</li>
+        <li class="dropdown-header">기초 (Foundations)</li>
         <li>
     <a class="dropdown-item" href="../math/analysis/text.html">
  <span class="dropdown-text">해석학</span></a>
@@ -130,7 +130,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">LaTeX</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
-        <li class="dropdown-header">전공 핵심 수학 (Core · 3~5학기)</li>
+        <li class="dropdown-header">핵심 수학 (Core)</li>
         <li>
     <a class="dropdown-item" href="../math/complex-analysis/text.html">
  <span class="dropdown-text">복소해석학</span></a>
@@ -184,7 +184,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">수학적 최적화</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
-        <li class="dropdown-header">심화 수학 (Advanced)</li>
+        <li class="dropdown-header">심화 (Advanced)</li>
         <li>
     <a class="dropdown-item" href="../math/functional-analysis/text.html">
  <span class="dropdown-text">함수해석학</span></a>
@@ -231,7 +231,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">통계적 프로그래밍</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
-        <li class="dropdown-header">전공 핵심 (Core)</li>
+        <li class="dropdown-header">핵심 (Core)</li>
         <li>
     <a class="dropdown-item" href="../stats/measure-prob/text.html">
  <span class="dropdown-text">측도론적 확률론</span></a>
@@ -300,7 +300,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">C언어</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
-        <li class="dropdown-header">전공 핵심 (Core)</li>
+        <li class="dropdown-header">핵심 (Core)</li>
         <li>
     <a class="dropdown-item" href="../cs/algorithms-data-structures/text.html">
  <span class="dropdown-text">알고리즘과 자료구조</span></a>
@@ -349,7 +349,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">고등학교 인공지능 수학</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
-        <li class="dropdown-header">전공 핵심 (Core)</li>
+        <li class="dropdown-header">핵심 (Core)</li>
         <li>
     <a class="dropdown-item" href="../ds-ai/numerical-optimization/text.html">
  <span class="dropdown-text">수치적 방법론과 최적화</span></a>
@@ -402,7 +402,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">경제학 원론</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
-        <li class="dropdown-header">전공 핵심 (Core)</li>
+        <li class="dropdown-header">핵심 (Core)</li>
         <li>
     <a class="dropdown-item" href="../biz-econ/accounting/text.html">
  <span class="dropdown-text">회계학</span></a>
@@ -491,7 +491,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">역학 연구방법론</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
-        <li class="dropdown-header">전공 핵심 (Core)</li>
+        <li class="dropdown-header">핵심 (Core)</li>
         <li>
     <a class="dropdown-item" href="../biostat/clinical-trials/text.html">
  <span class="dropdown-text">임상시험 통계방법론</span></a>
@@ -769,7 +769,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/xkwhd1557\.github\.io\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
