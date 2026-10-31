@@ -6,8 +6,17 @@
     "section": "",
     "text": "← 확률과 통계 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 확률적 시뮬레이션의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
+    ]
+  },
+  {
+    "objectID": "stats/stochastic-processes/text.html",
+    "href": "stats/stochastic-processes/text.html",
+    "title": "text",
+    "section": "",
+    "text": "← 확률과 통계 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 확률과정론의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "crumbs": [
+      "text"
     ]
   },
   {
@@ -17,8 +26,17 @@
     "section": "",
     "text": "← 확률과 통계 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 확률해석학의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
+    ]
+  },
+  {
+    "objectID": "stats/stats-for-stoch-proc/text.html",
+    "href": "stats/stats-for-stoch-proc/text.html",
+    "title": "text",
+    "section": "",
+    "text": "← 확률과 통계 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 확률과정의 통계추론의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "crumbs": [
+      "text"
     ]
   },
   {
@@ -28,8 +46,17 @@
     "section": "",
     "text": "← 확률과 통계 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 통계적 프로그래밍의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
+    ]
+  },
+  {
+    "objectID": "stats/prob-theory/text.html",
+    "href": "stats/prob-theory/text.html",
+    "title": "text",
+    "section": "",
+    "text": "← 확률과 통계 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 기초 확률론의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "crumbs": [
+      "text"
     ]
   },
   {
@@ -39,8 +66,17 @@
     "section": "",
     "text": "← 확률과 통계 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 비유클리드 통계학의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
+    ]
+  },
+  {
+    "objectID": "stats/measure-prob/text.html",
+    "href": "stats/measure-prob/text.html",
+    "title": "text",
+    "section": "",
+    "text": "← 확률과 통계 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 측도론적 확률론의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "crumbs": [
+      "text"
     ]
   },
   {
@@ -50,8 +86,17 @@
     "section": "",
     "text": "← 확률과 통계 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 수리통계학의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
+    ]
+  },
+  {
+    "objectID": "stats/markov-processes/text.html",
+    "href": "stats/markov-processes/text.html",
+    "title": "text",
+    "section": "",
+    "text": "← 확률과 통계 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 마르코프 프로세스의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "crumbs": [
+      "text"
     ]
   },
   {
@@ -83,102 +128,183 @@
     "text": "심화 (Advanced)\n핵심 과목 이후, 깊이 있는 이론과 고급 주제를 본격적으로 다루는 과목입니다.\n\n\n확률해석학\n\n\n\n확률해석학\n\n\n\n\n마르코프 프로세스\n\n\n\n마르코프 프로세스\n\n\n\n\n디퓨전 모델\n\n\n\n디퓨전 모델\n\n\n\n\n가우시안 프로세스\n\n\n\n가우시안 프로세스\n\n\n\n\n비유클리드 통계학\n\n\n\n비유클리드 통계학\n\n\n\n\n확률과정의 통계추론\n\n\n\n확률과정의 통계추론"
   },
   {
-    "objectID": "stats/diffusion-models/text.html",
-    "href": "stats/diffusion-models/text.html",
-    "title": "text",
+    "objectID": "stats/gaussian-processes/00intro.html",
+    "href": "stats/gaussian-processes/00intro.html",
+    "title": "0. 들어가며",
     "section": "",
-    "text": "← 확률과 통계 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 디퓨전 모델의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "text": "← 확률과 통계 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "0. 들어가며"
     ]
   },
   {
-    "objectID": "stats/actuarial-math/text.html",
-    "href": "stats/actuarial-math/text.html",
-    "title": "text",
+    "objectID": "stats/diffusion-models/00intro.html",
+    "href": "stats/diffusion-models/00intro.html",
+    "title": "0. 들어가며",
     "section": "",
-    "text": "← 확률과 통계 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 보험수학의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "text": "← 확률과 통계 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "0. 들어가며"
     ]
   },
   {
-    "objectID": "math/rkhs/text.html",
-    "href": "math/rkhs/text.html",
-    "title": "text",
+    "objectID": "stats/basic-stats/00intro.html",
+    "href": "stats/basic-stats/00intro.html",
+    "title": "0. 들어가며",
     "section": "",
-    "text": "← 수학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 RKHS 이론의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "text": "← 확률과 통계 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "0. 들어가며"
     ]
   },
   {
-    "objectID": "math/pde-advanced/text.html",
-    "href": "math/pde-advanced/text.html",
-    "title": "text",
+    "objectID": "stats/actuarial-math/00intro.html",
+    "href": "stats/actuarial-math/00intro.html",
+    "title": "0. 들어가며",
     "section": "",
-    "text": "← 수학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 편미분방정식의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "text": "← 확률과 통계 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "0. 들어가며"
     ]
   },
   {
-    "objectID": "math/ode/text.html",
-    "href": "math/ode/text.html",
-    "title": "text",
+    "objectID": "math/set-theory/00intro.html",
+    "href": "math/set-theory/00intro.html",
+    "title": "0. 들어가며",
     "section": "",
-    "text": "← 수학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 상미분방정식의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "text": "← 수학 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "0. 들어가며"
     ]
   },
   {
-    "objectID": "math/number-theory/text.html",
-    "href": "math/number-theory/text.html",
-    "title": "text",
+    "objectID": "math/rkhs/00intro.html",
+    "href": "math/rkhs/00intro.html",
+    "title": "0. 들어가며",
     "section": "",
-    "text": "← 수학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 정수론의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "text": "← 수학 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "0. 들어가며"
     ]
   },
   {
-    "objectID": "math/mathematical-logic/text.html",
-    "href": "math/mathematical-logic/text.html",
-    "title": "text",
+    "objectID": "math/pde-intro/00intro.html",
+    "href": "math/pde-intro/00intro.html",
+    "title": "0. 들어가며",
     "section": "",
-    "text": "← 수학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 수리논리학의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "text": "← 수학 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "0. 들어가며"
     ]
   },
   {
-    "objectID": "math/manifold-analysis/text.html",
-    "href": "math/manifold-analysis/text.html",
-    "title": "text",
+    "objectID": "math/pde-advanced/00intro.html",
+    "href": "math/pde-advanced/00intro.html",
+    "title": "0. 들어가며",
     "section": "",
-    "text": "← 수학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 다양체 해석학의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "text": "← 수학 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "0. 들어가며"
     ]
   },
   {
-    "objectID": "math/latex/text.html",
-    "href": "math/latex/text.html",
-    "title": "text",
+    "objectID": "math/optimization/00intro.html",
+    "href": "math/optimization/00intro.html",
+    "title": "0. 들어가며",
     "section": "",
-    "text": "← 수학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 LaTeX의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "text": "← 수학 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "math/ode/00intro.html",
+    "href": "math/ode/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 수학 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "math/numerical-methods/00intro.html",
+    "href": "math/numerical-methods/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 수학 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "math/number-theory/00intro.html",
+    "href": "math/number-theory/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 수학 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "math/measure-theory/00intro.html",
+    "href": "math/measure-theory/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 수학 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "math/mathematical-logic/00intro.html",
+    "href": "math/mathematical-logic/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 수학 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "math/math-programming/00intro.html",
+    "href": "math/math-programming/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 수학 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "math/manifold-analysis/00intro.html",
+    "href": "math/manifold-analysis/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 수학 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "math/linear-algebra/00intro.html",
+    "href": "math/linear-algebra/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 수학 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "math/latex/00intro.html",
+    "href": "math/latex/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 수학 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
     ]
   },
   {
@@ -188,8 +314,17 @@
     "section": "",
     "text": "← 수학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 기하학의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
+    ]
+  },
+  {
+    "objectID": "math/general-topology/text.html",
+    "href": "math/general-topology/text.html",
+    "title": "text",
+    "section": "",
+    "text": "← 수학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 일반위상수학의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "crumbs": [
+      "text"
     ]
   },
   {
@@ -199,8 +334,17 @@
     "section": "",
     "text": "← 수학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 함수해석학의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
+    ]
+  },
+  {
+    "objectID": "math/dynamical-systems/text.html",
+    "href": "math/dynamical-systems/text.html",
+    "title": "text",
+    "section": "",
+    "text": "← 수학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 동적 시스템의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "crumbs": [
+      "text"
     ]
   },
   {
@@ -210,8 +354,17 @@
     "section": "",
     "text": "← 수학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 이산수학의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
+    ]
+  },
+  {
+    "objectID": "math/differential-geometry/text.html",
+    "href": "math/differential-geometry/text.html",
+    "title": "text",
+    "section": "",
+    "text": "← 수학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 미분기하학의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "crumbs": [
+      "text"
     ]
   },
   {
@@ -221,8 +374,17 @@
     "section": "",
     "text": "← 수학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 복소해석학의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
+    ]
+  },
+  {
+    "objectID": "math/analysis/text.html",
+    "href": "math/analysis/text.html",
+    "title": "text",
+    "section": "",
+    "text": "← 수학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 해석학의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "crumbs": [
+      "text"
     ]
   },
   {
@@ -232,66 +394,86 @@
     "section": "",
     "text": "← 수학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 대수학의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
     ]
   },
   {
-    "objectID": "lang/de-coming-soon.html",
-    "href": "lang/de-coming-soon.html",
-    "title": "In Vorbereitung",
+    "objectID": "lang/en-coming-soon.html",
+    "href": "lang/en-coming-soon.html",
+    "title": "Under Construction",
     "section": "",
-    "text": "NoteHinweis\n\n\n\nDie deutsche Version dieses Archivs befindet sich derzeit im Aufbau. Bitte besuchen Sie die Seite zu einem späteren Zeitpunkt erneut.\nZurück zur koreanischen Hauptseite"
+    "text": "NoteNotice\n\n\n\nThe English version of this archive is currently under preparation. Please check back later.\nReturn to Korean Main Page"
   },
   {
-    "objectID": "ds-ai/statistical-foundations/text.html",
-    "href": "ds-ai/statistical-foundations/text.html",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Study Archive",
+    "section": "",
+    "text": "Study Archive는 어떤 곳이고, 어떻게 읽으면 좋을까요\n\n\n\n\n\n\n\n\n\n\n모델링의 관점에서 살펴본 수학의 역할\n\n\n\n\n\nNo matching items\n\n\n일반 아티클 전체 보기 →"
+  },
+  {
+    "objectID": "index.html#추천-아티클",
+    "href": "index.html#추천-아티클",
+    "title": "Study Archive",
+    "section": "",
+    "text": "Study Archive는 어떤 곳이고, 어떻게 읽으면 좋을까요\n\n\n\n\n\n\n\n\n\n\n모델링의 관점에서 살펴본 수학의 역할\n\n\n\n\n\nNo matching items\n\n\n일반 아티클 전체 보기 →"
+  },
+  {
+    "objectID": "index.html#기초부터-시작하기",
+    "href": "index.html#기초부터-시작하기",
+    "title": "Study Archive",
+    "section": "기초부터 시작하기",
+    "text": "기초부터 시작하기\n각 분야의 기초 과목입니다. 과목을 선택하면 첫 번째 개념 노트로 이동합니다.\n\n수학 (Mathematics)\n\n\n해석학\n\n\n\n해석학\n\n\n\n\n선형대수학\n\n\n\n선형대수학\n\n\n\n\n이산수학\n\n\n\n이산수학\n\n\n\n\n수학적 프로그래밍 (Python)\n\n\n\n수학적 프로그래밍 (Python)\n\n\n\n\nLaTeX\n\n\n\nLaTeX\n\n\n\n\n\n수학 전체 과목 보기 →\n\n\n\n확률과 통계 (Probability & Statistics)\n\n\n기초 확률론\n\n\n\n기초 확률론\n\n\n\n\n기초 통계학\n\n\n\n기초 통계학\n\n\n\n\n통계적 프로그래밍\n\n\n\n통계적 프로그래밍\n\n\n\n\n\n확률과 통계 전체 과목 보기 →\n\n\n\n컴퓨터 공학 (Computer Science)\n\n\n컴퓨터 과학 원론\n\n\n\n컴퓨터 과학 원론\n\n\n\n\nC언어\n\n\n\nC언어\n\n\n\n\n\n컴퓨터 공학 전체 과목 보기 →\n\n\n\n데이터 사이언스·AI (Data Science & AI)\n\n\n데이터 사이언스 개론\n\n\n\n데이터 사이언스 개론\n\n\n\n\n데이터 사이언스와 사회\n\n\n\n데이터 사이언스와 사회\n\n\n\n\n고등학교 인공지능 수학\n\n\n\n고등학교 인공지능 수학\n\n\n\n\n\n데이터 사이언스·AI 전체 과목 보기 →\n\n\n\n경영/경제 (Business & Economics)\n\n\n경영학 원론\n\n\n\n경영학 원론\n\n\n\n\n경제학 원론\n\n\n\n경제학 원론\n\n\n\n\n\n경영/경제 전체 과목 보기 →\n\n\n\n의학통계·바이오메트리 (Biostatistics & Biometry)\n\n\n의학통계학 개론\n\n\n\n의학통계학 개론\n\n\n\n\n역학 연구방법론\n\n\n\n역학 연구방법론\n\n\n\n\n\n의학통계·바이오메트리 전체 과목 보기 →"
+  },
+  {
+    "objectID": "ds-ai/statistical-foundations/00intro.html",
+    "href": "ds-ai/statistical-foundations/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 데이터 사이언스·AI 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "ds-ai/numerical-optimization/00intro.html",
+    "href": "ds-ai/numerical-optimization/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 데이터 사이언스·AI 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "ds-ai/mathematical-foundations/00intro.html",
+    "href": "ds-ai/mathematical-foundations/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 데이터 사이언스·AI 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "ds-ai/machine-learning/00intro.html",
+    "href": "ds-ai/machine-learning/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 데이터 사이언스·AI 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "ds-ai/ds-society/text.html",
+    "href": "ds-ai/ds-society/text.html",
     "title": "text",
     "section": "",
-    "text": "← 데이터 사이언스·AI 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 데이터 사이언스의 통계적 기초의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "text": "← 데이터 사이언스·AI 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 데이터 사이언스와 사회의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
     ]
-  },
-  {
-    "objectID": "ds-ai/mathematical-foundations/text.html",
-    "href": "ds-ai/mathematical-foundations/text.html",
-    "title": "text",
-    "section": "",
-    "text": "← 데이터 사이언스·AI 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 머신러닝의 수리적 기초의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
-    "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
-    ]
-  },
-  {
-    "objectID": "ds-ai/index.html",
-    "href": "ds-ai/index.html",
-    "title": "데이터 사이언스·AI (Data Science & AI)",
-    "section": "",
-    "text": "사전 지식 없이 시작할 수 있는 전공 기초 과목입니다.\n\n\n\n\n\n\n데이터 사이언스 개론\n\n\n\n\n\n\n\n\n데이터 사이언스와 사회\n\n\n\n\n\n\n\n\n고등학교 인공지능 수학"
-  },
-  {
-    "objectID": "ds-ai/index.html#기초-foundations",
-    "href": "ds-ai/index.html#기초-foundations",
-    "title": "데이터 사이언스·AI (Data Science & AI)",
-    "section": "",
-    "text": "사전 지식 없이 시작할 수 있는 전공 기초 과목입니다.\n\n\n\n\n\n\n데이터 사이언스 개론\n\n\n\n\n\n\n\n\n데이터 사이언스와 사회\n\n\n\n\n\n\n\n\n고등학교 인공지능 수학"
-  },
-  {
-    "objectID": "ds-ai/index.html#핵심-core",
-    "href": "ds-ai/index.html#핵심-core",
-    "title": "데이터 사이언스·AI (Data Science & AI)",
-    "section": "핵심 (Core)",
-    "text": "핵심 (Core)\n기초를 바탕으로 각 분야의 본격적인 주제에 첫발을 내딛는 과목입니다.\n\n\n수치적 방법론과 최적화\n\n\n\n수치적 방법론과 최적화\n\n\n\n\n머신러닝\n\n\n\n머신러닝\n\n\n\n\n딥러닝과 컴퓨터 비전\n\n\n\n딥러닝과 컴퓨터 비전\n\n\n\n\n인공지능 원론\n\n\n\n인공지능 원론"
-  },
-  {
-    "objectID": "ds-ai/index.html#심화-advanced",
-    "href": "ds-ai/index.html#심화-advanced",
-    "title": "데이터 사이언스·AI (Data Science & AI)",
-    "section": "심화 (Advanced)",
-    "text": "심화 (Advanced)\n핵심 과목 이후, 깊이 있는 이론과 고급 주제를 본격적으로 다루는 과목입니다.\n\n\n데이터 사이언스의 통계적 기초\n\n\n\n데이터 사이언스의 통계적 기초\n\n\n\n\n머신러닝의 수리적 기초\n\n\n\n머신러닝의 수리적 기초\n\n\n\n\n데이터 사이언스를 위한 선형대수학\n\n\n\n데이터 사이언스를 위한 선형대수학"
   },
   {
     "objectID": "ds-ai/ds-intro/text.html",
@@ -300,8 +482,17 @@
     "section": "",
     "text": "← 데이터 사이언스·AI 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 데이터 사이언스 개론의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
+    ]
+  },
+  {
+    "objectID": "ds-ai/deep-learning-cv/text.html",
+    "href": "ds-ai/deep-learning-cv/text.html",
+    "title": "text",
+    "section": "",
+    "text": "← 데이터 사이언스·AI 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 딥러닝과 컴퓨터 비전의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "crumbs": [
+      "text"
     ]
   },
   {
@@ -311,8 +502,17 @@
     "section": "",
     "text": "← 데이터 사이언스·AI 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 고등학교 인공지능 수학의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
+    ]
+  },
+  {
+    "objectID": "ds-ai/ai-intro/text.html",
+    "href": "ds-ai/ai-intro/text.html",
+    "title": "text",
+    "section": "",
+    "text": "← 데이터 사이언스·AI 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 인공지능 원론의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "crumbs": [
+      "text"
     ]
   },
   {
@@ -322,8 +522,17 @@
     "section": "",
     "text": "← 데이터 사이언스·AI 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 데이터 사이언스를 위한 선형대수학의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
+    ]
+  },
+  {
+    "objectID": "cs/theoretical-cs/text.html",
+    "href": "cs/theoretical-cs/text.html",
+    "title": "text",
+    "section": "",
+    "text": "← 컴퓨터 공학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 이론 컴퓨터과학의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "crumbs": [
+      "text"
     ]
   },
   {
@@ -355,91 +564,163 @@
     "text": "심화 (Advanced)\n핵심 과목 이후, 깊이 있는 이론과 고급 주제를 본격적으로 다루는 과목입니다.\n\n\n심화 과정 (준비 중)\n\n\n\n심화 과정 (준비 중)"
   },
   {
-    "objectID": "cs/database-systems/text.html",
-    "href": "cs/database-systems/text.html",
-    "title": "text",
+    "objectID": "cs/formal-systems/00intro.html",
+    "href": "cs/formal-systems/00intro.html",
+    "title": "0. 들어가며",
     "section": "",
-    "text": "← 컴퓨터 공학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 데이터베이스 시스템의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "text": "← 컴퓨터 공학 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "0. 들어가며"
     ]
   },
   {
-    "objectID": "cs/c-programming/text.html",
-    "href": "cs/c-programming/text.html",
-    "title": "text",
+    "objectID": "cs/database-systems/00intro.html",
+    "href": "cs/database-systems/00intro.html",
+    "title": "0. 들어가며",
     "section": "",
-    "text": "← 컴퓨터 공학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 C언어의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "text": "← 컴퓨터 공학 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "0. 들어가며"
     ]
   },
   {
-    "objectID": "cs/advanced/text.html",
-    "href": "cs/advanced/text.html",
-    "title": "text",
+    "objectID": "cs/cs-intro/00intro.html",
+    "href": "cs/cs-intro/00intro.html",
+    "title": "0. 들어가며",
     "section": "",
-    "text": "← 컴퓨터 공학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 심화 과정 (준비 중)의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "text": "← 컴퓨터 공학 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "0. 들어가며"
     ]
   },
   {
-    "objectID": "biz-econ/supply-chain/text.html",
-    "href": "biz-econ/supply-chain/text.html",
-    "title": "text",
+    "objectID": "cs/c-programming/00intro.html",
+    "href": "cs/c-programming/00intro.html",
+    "title": "0. 들어가며",
     "section": "",
-    "text": "← 경영/경제 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 공급망 관리 (SCM)의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "text": "← 컴퓨터 공학 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "0. 들어가며"
     ]
   },
   {
-    "objectID": "biz-econ/production-logistics/text.html",
-    "href": "biz-econ/production-logistics/text.html",
-    "title": "text",
+    "objectID": "cs/algorithms-data-structures/00intro.html",
+    "href": "cs/algorithms-data-structures/00intro.html",
+    "title": "0. 들어가며",
     "section": "",
-    "text": "← 경영/경제 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 생산물류관리의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "text": "← 컴퓨터 공학 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "0. 들어가며"
     ]
   },
   {
-    "objectID": "biz-econ/microeconomics/text.html",
-    "href": "biz-econ/microeconomics/text.html",
-    "title": "text",
+    "objectID": "cs/advanced/00intro.html",
+    "href": "cs/advanced/00intro.html",
+    "title": "0. 들어가며",
     "section": "",
-    "text": "← 경영/경제 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 미시경제학의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "text": "← 컴퓨터 공학 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "0. 들어가며"
     ]
   },
   {
-    "objectID": "biz-econ/macroeconomics/text.html",
-    "href": "biz-econ/macroeconomics/text.html",
-    "title": "text",
+    "objectID": "biz-econ/time-series/00intro.html",
+    "href": "biz-econ/time-series/00intro.html",
+    "title": "0. 들어가며",
     "section": "",
-    "text": "← 경영/경제 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 거시경제학의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "text": "← 경영/경제 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "0. 들어가며"
     ]
   },
   {
-    "objectID": "biz-econ/insurance-economics/text.html",
-    "href": "biz-econ/insurance-economics/text.html",
-    "title": "text",
+    "objectID": "biz-econ/supply-chain/00intro.html",
+    "href": "biz-econ/supply-chain/00intro.html",
+    "title": "0. 들어가며",
     "section": "",
-    "text": "← 경영/경제 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 보험경제학의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "text": "← 경영/경제 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "biz-econ/quantitative-risk/00intro.html",
+    "href": "biz-econ/quantitative-risk/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 경영/경제 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "biz-econ/production-logistics/00intro.html",
+    "href": "biz-econ/production-logistics/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 경영/경제 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "biz-econ/monetary-economics/00intro.html",
+    "href": "biz-econ/monetary-economics/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 경영/경제 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "biz-econ/microeconomics/00intro.html",
+    "href": "biz-econ/microeconomics/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 경영/경제 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "biz-econ/market-research/00intro.html",
+    "href": "biz-econ/market-research/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 경영/경제 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "biz-econ/macroeconomics/00intro.html",
+    "href": "biz-econ/macroeconomics/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 경영/경제 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "biz-econ/labor-economics/00intro.html",
+    "href": "biz-econ/labor-economics/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 경영/경제 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "biz-econ/insurance-economics/00intro.html",
+    "href": "biz-econ/insurance-economics/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 경영/경제 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
     ]
   },
   {
@@ -449,8 +730,17 @@
     "section": "",
     "text": "← 경영/경제 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 게임이론 개론의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
+    ]
+  },
+  {
+    "objectID": "biz-econ/finance-investment/text.html",
+    "href": "biz-econ/finance-investment/text.html",
+    "title": "text",
+    "section": "",
+    "text": "← 경영/경제 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 재무와 투자론의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "crumbs": [
+      "text"
     ]
   },
   {
@@ -460,8 +750,17 @@
     "section": "",
     "text": "← 경영/경제 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 계량경제학의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
+    ]
+  },
+  {
+    "objectID": "biz-econ/econ-intro/text.html",
+    "href": "biz-econ/econ-intro/text.html",
+    "title": "text",
+    "section": "",
+    "text": "← 경영/경제 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 경제학 원론의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "crumbs": [
+      "text"
     ]
   },
   {
@@ -471,8 +770,17 @@
     "section": "",
     "text": "← 경영/경제 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 의사결정론의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
+    ]
+  },
+  {
+    "objectID": "biz-econ/corporate-finance/text.html",
+    "href": "biz-econ/corporate-finance/text.html",
+    "title": "text",
+    "section": "",
+    "text": "← 경영/경제 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 기업재무론의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "crumbs": [
+      "text"
     ]
   },
   {
@@ -482,8 +790,17 @@
     "section": "",
     "text": "← 경영/경제 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 경영학 원론의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
+    ]
+  },
+  {
+    "objectID": "biz-econ/accounting/text.html",
+    "href": "biz-econ/accounting/text.html",
+    "title": "text",
+    "section": "",
+    "text": "← 경영/경제 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 회계학의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "crumbs": [
+      "text"
     ]
   },
   {
@@ -493,8 +810,17 @@
     "section": "",
     "text": "← 의학통계·바이오메트리 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 생존분석의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
+    ]
+  },
+  {
+    "objectID": "biostat/longitudinal-data/text.html",
+    "href": "biostat/longitudinal-data/text.html",
+    "title": "text",
+    "section": "",
+    "text": "← 의학통계·바이오메트리 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 종단적 데이터 분석의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "crumbs": [
+      "text"
     ]
   },
   {
@@ -526,26 +852,138 @@
     "text": "심화 (Advanced)\n핵심 과목 이후, 깊이 있는 이론과 고급 주제를 본격적으로 다루는 과목입니다.\n\n\n인과추론\n\n\n\n인과추론\n\n\n\n\n종단적 데이터 분석\n\n\n\n종단적 데이터 분석"
   },
   {
-    "objectID": "biostat/clinical-trials/text.html",
-    "href": "biostat/clinical-trials/text.html",
-    "title": "text",
+    "objectID": "biostat/epidemiology/00intro.html",
+    "href": "biostat/epidemiology/00intro.html",
+    "title": "0. 들어가며",
     "section": "",
-    "text": "← 의학통계·바이오메트리 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 임상시험 통계방법론의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "text": "← 의학통계·바이오메트리 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "0. 들어가며"
     ]
   },
   {
-    "objectID": "biostat/biostat-intro/text.html",
-    "href": "biostat/biostat-intro/text.html",
-    "title": "text",
+    "objectID": "biostat/clinical-trials/00intro.html",
+    "href": "biostat/clinical-trials/00intro.html",
+    "title": "0. 들어가며",
     "section": "",
-    "text": "← 의학통계·바이오메트리 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 의학통계학 개론의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "text": "← 의학통계·바이오메트리 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "0. 들어가며"
     ]
+  },
+  {
+    "objectID": "biostat/causal-inference/00intro.html",
+    "href": "biostat/causal-inference/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 의학통계·바이오메트리 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "biostat/biostat-intro/00intro.html",
+    "href": "biostat/biostat-intro/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 의학통계·바이오메트리 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "biostat/bioinformatics/00intro.html",
+    "href": "biostat/bioinformatics/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 의학통계·바이오메트리 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "articles/index.html",
+    "href": "articles/index.html",
+    "title": "일반 아티클 (Articles)",
+    "section": "",
+    "text": "Study Archive는 어떤 곳이고, 어떻게 읽으면 좋을까요\n\n\n\n\n\n\n\n\n\n\n모델링의 관점에서 살펴본 수학의 역할\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "articles/index.html#추천-아티클",
+    "href": "articles/index.html#추천-아티클",
+    "title": "일반 아티클 (Articles)",
+    "section": "",
+    "text": "Study Archive는 어떤 곳이고, 어떻게 읽으면 좋을까요\n\n\n\n\n\n\n\n\n\n\n모델링의 관점에서 살펴본 수학의 역할\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "articles/index.html#최신-아티클",
+    "href": "articles/index.html#최신-아티클",
+    "title": "일반 아티클 (Articles)",
+    "section": "최신 아티클",
+    "text": "최신 아티클\n\n\n\n\n\n이 사이트를 소개합니다\n\n\nStudy Archive는 어떤 곳이고, 어떻게 읽으면 좋을까요\n\n\n\n\n\n\n\n\n\n\n수학을 왜 공부해야하나요?\n\n\n모델링의 관점에서 살펴본 수학의 역할\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "articles/about-this-site.html",
+    "href": "articles/about-this-site.html",
+    "title": "이 사이트를 소개합니다",
+    "section": "",
+    "text": "안녕하세요. Study Archive에 오신 것을 환영합니다.\n이 사이트는 제가 대학에서 공부한 내용을 정리하고 공유하는 공간입니다. 거창한 목적이 있는 곳은 아닙니다. 수익을 내기 위한 블로그도 아니구요. 공부한 것을 그때그때 정리해 두면 나중의 저에게 좋은 기록이 되고, 복습도 될 수 있으며, 혹시 같은 내용을 공부하는 누군가에게도 조금은 도움이 되지 않을까 하는 마음으로 시작했습니다.\n이 글에서는 세 가지를 이야기하려고 합니다. 이 사이트가 어떤 곳인지, 여기서 무엇을 다루는지, 그리고 제 글을 어떻게 읽으면 좋은지입니다. 처음 방문하셨다면 다른 글보다 이 글을 먼저 읽어 보시기를 권합니다."
+  },
+  {
+    "objectID": "articles/about-this-site.html#들어가며",
+    "href": "articles/about-this-site.html#들어가며",
+    "title": "이 사이트를 소개합니다",
+    "section": "",
+    "text": "안녕하세요. Study Archive에 오신 것을 환영합니다.\n이 사이트는 제가 대학에서 공부한 내용을 정리하고 공유하는 공간입니다. 거창한 목적이 있는 곳은 아닙니다. 수익을 내기 위한 블로그도 아니구요. 공부한 것을 그때그때 정리해 두면 나중의 저에게 좋은 기록이 되고, 복습도 될 수 있으며, 혹시 같은 내용을 공부하는 누군가에게도 조금은 도움이 되지 않을까 하는 마음으로 시작했습니다.\n이 글에서는 세 가지를 이야기하려고 합니다. 이 사이트가 어떤 곳인지, 여기서 무엇을 다루는지, 그리고 제 글을 어떻게 읽으면 좋은지입니다. 처음 방문하셨다면 다른 글보다 이 글을 먼저 읽어 보시기를 권합니다."
+  },
+  {
+    "objectID": "articles/about-this-site.html#이-사이트는-어떤-곳인가요",
+    "href": "articles/about-this-site.html#이-사이트는-어떤-곳인가요",
+    "title": "이 사이트를 소개합니다",
+    "section": "이 사이트는 어떤 곳인가요",
+    "text": "이 사이트는 어떤 곳인가요\n\n공부 기록이자 다시 쓴 강의 노트입니다\n\n저는 독일의 대학에서 수학과 통계학, 데이터 사이언스 그리고 이것들이 응용되는 도메인 분야를 공부하고 있습니다. 이곳에 올라오는 글은 대부분 제가 실제로 수강한 강의와 스스로 공부한 교재를 바탕으로 합니다.\n다만 강의 노트를 그대로 옮겨 적지는 않습니다. 강의 노트는 그 강의를 듣는 사람을 위해, 정해진 시간 안에 많은 내용을 전달하도록 쓰여 있습니다. 그래서 정의와 정리, 증명이 빽빽하게 이어질 뿐 “이 개념이 왜 필요한지”, “이 정리가 사실 무슨 말인지”는 강의실에서 말로만 지나가는 경우가 많습니다. 이 사이트에서는 바로 그 빠진 부분, 즉 동기와 직관을 위주로 적으려고 합니다. 그 과정에서 원래 강의에서 개념들이 다뤄지는 순서나, 설명 방식을 바꾸어 제 이해 방식에 맞춰 논리 구조가 재구성되고, 설명이 재해석된 부분들이 대부분입니다.\n\n\n한국어로, 최대한 쉽게 씁니다\n이 사이트의 글은 기본적으로 한국어로 씁니다. 이유는 두 가지입니다.\n첫째, 대학 수준 이상의 수학을 한국어로, 그것도 직관을 곁들여 설명하는 자료는 생각보다 많지 않습니다. 교재 대부분이 원어로 되어 있고, 번역서가 있더라도 원서의 압축된 문체를 그대로 따르는 경우가 많습니다.\n둘째, 제 자신을 위해서입니다. 어떤 개념을 모국어로, 그것도 처음 배우는 사람이 이해할 수 있게 풀어 쓰려고 하면, 제가 정말 이해한 부분과 대충 넘어간 부분이 금방 드러납니다. 쉽게 쓰는 일은 곧 제대로 이해했는지 점검하는 일이기도 합니다.\n“쉽게”라는 말이 “대충”이라는 뜻은 아닙니다. 엄밀함을 포기하지 않는 선에서, 이해에 필요한 설명과 예시를 아끼지 않겠다는 뜻입니다. 정의와 정리는 정확하게 쓰고, 그 앞뒤에 그것을 이해하기 위한 이야기를 덧붙이는 방식입니다.\n영어(EN)와 독일어(DE) 버전도 계획하고 있습니다. 상단 메뉴의 🌐 Language에서 확인하실 수 있으며, 지금은 준비 중입니다."
+  },
+  {
+    "objectID": "articles/about-this-site.html#무엇을-다루나요",
+    "href": "articles/about-this-site.html#무엇을-다루나요",
+    "title": "이 사이트를 소개합니다",
+    "section": "무엇을 다루나요",
+    "text": "무엇을 다루나요\n\n두 종류의 글: 아티클과 개념 노트\n이 사이트에는 성격이 다른 두 종류의 글이 있습니다.\n\n일반 아티클: 특정 과목에 묶이지 않는 에세이입니다. 수학을 왜 공부하는지, 어떤 분야가 서로 어떻게 연결되는지같은 큰 그림이나, 그냥 제가 일상적으로 느꼈던 수학과 통계에 관한 생각(똥글) 등을 다룹니다. 수식이 거의 없거나 적어서 전공자가 아니어도 편하게 읽을 수 있습니다. 첫 번째 아티클인 수학을 왜 공부해야하나요?가 대표적인 예입니다.\n개념 노트: 과목별로 정리한 본격적인 공부 내용입니다. 정의, 정리, 증명, 예제로 구성되며, 한 노트가 한 개념을 다루고 노트끼리 서로 연결되어 있습니다.\n\n\n\n여섯 개의 분야\n개념 노트는 상단 메뉴에 있는 여섯 분야로 나뉘어 있습니다.\n\n\n\n분야\n다루는 내용 (예시)\n\n\n\n\n수학\n해석학, 선형대수학, 측도론, 위상수학, 함수해석학 등\n\n\n확률과 통계\n확률론, 수리통계학, 확률과정, 확률미분방정식 등\n\n\n컴퓨터 공학\n알고리즘과 자료구조, 이론 전산학, 데이터베이스 등\n\n\n데이터 사이언스·AI\n기계학습, 수치 최적화, 딥러닝 등\n\n\n경영/경제\n미시·거시경제학, 계량경제학, 재무, 게임이론 등\n\n\n의학통계·바이오메트리\n생존분석, 임상시험, 인과추론 등\n\n\n\n\n분야가 많아 보이지만, 무게중심은 수학과 확률과 통계에 있습니다. 나머지 분야는 이 두 분야의 도구가 실제로 어디에 쓰이는지를 보여 주는 응용으로 읽어 주시면 좋겠습니다. 두 분야를 제외한 분야는 원론(Introduction) 수준의 테마들은 일반적인 대학 강의를 큰 뼈대로 다뤄지나, 그 외의 테마들은 수학과 통계가 해당 도메인 분야에서 응용되는 부분이 중심적으로 다뤄집니다.\n\n\n기초 · 핵심 · 심화\n각 분야의 과목은 세 단계로 나누어 두었습니다.\n\n기초 (Foundations): 사전 지식 없이 시작할 수 있는 과목입니다. 대학 1–2학년 수준에 해당합니다.\n핵심 (Core): 기초를 바탕으로 각 분야의 본격적인 주제를 다루는 과목입니다.\n심화 (Advanced): 대학원 수준이거나, 여러 핵심 과목을 함께 알아야 이해할 수 있는 과목입니다.\n\n어느 단계부터 읽어야 할지 모르겠다면, 각 분야의 전체 과목 보기 페이지에서 기초 과목부터 시작하시면 됩니다."
+  },
+  {
+    "objectID": "articles/about-this-site.html#어떻게-읽으면-좋을까요",
+    "href": "articles/about-this-site.html#어떻게-읽으면-좋을까요",
+    "title": "이 사이트를 소개합니다",
+    "section": "어떻게 읽으면 좋을까요",
+    "text": "어떻게 읽으면 좋을까요\n\n개념 노트의 구성\n모든 개념 노트는 같은 양식을 따릅니다. 노트 맨 위에는 다음과 같은 안내 줄이 있습니다.\n\n← 과목 목록으로 | 선수 개념: 이 노트를 읽기 전에 알아야 할 개념 | 다음 개념: 이어서 읽으면 좋은 개념\n\n읽다가 막히는 부분이 있다면, 대개 선수 개념에서 놓친 것이 있다는 신호입니다. 그럴 때는 망설이지 말고 선수 개념 링크를 따라 한 단계 뒤로 돌아가 보세요.\n본문의 핵심 내용은 색깔이 다른 상자로 구분되어 있습니다. 간단한 예로 살펴보겠습니다.\n\n\n\n\n\n\nNote정의 (Definition)\n\n\n\n정수 \\(n\\)이 어떤 정수 \\(k\\)에 대하여 \\(n = 2k\\)로 쓰일 때, \\(n\\)을 짝수라고 한다.\n\n\n정의 상자는 앞으로 사용할 용어의 뜻을 정확하게 정합니다. 수학에서는 “대충 이런 것”이 통하지 않기 때문에, 정의는 한 글자도 허투루 읽지 않는 것이 좋습니다.\n\n\n\n\n\n\nImportant명제와 정리 (Theorem, Lemma, Proposition, Corollary, Conjecture etc.)\n\n\n\n두 짝수의 합은 짝수이다.\n\n\n명제와 정리 상자는 정의로부터 이끌어 낼 수 있는 참인 명제들을 표현하는 상자입니다. 수학에서는 명제들의 중요도와 역할에 따라, 이를 다음으로 나눕니다.\n\n정리(Theorem) : 참인 명제이자, 이 테마에서 가장 중요하고 무게감이 있는 수학적 결론\n정리/명제(Proposition) : 정리보다는 덜 중요하지만, 그 자체로 참이고 의미가 있는 수학적 명제. 다뤄지는 수학적 맥락에 따라서 같은 수학적 명제이더라도 Proposition이 될 수도, Theorem이 될 수도 있어 이 둘을 엄격히 구분하지 않고 정리(Theorem)이라 부르는 경우도 많습니다.\n보조정리(Lemma) : 위의 정리 혹은 명제를 증명하기 위한 중간 명제입니다. 물론 보조정리의 보조정리도 등장할 수 있습니다.\n따름정리(Corollary) : 정리, 명제, 보조정리에 의해 큰 증명 단계 없이 바로 직접적으로 유도되는 결론입니다. 순수수학 맥락에서 따름정리는 보통 매우 직관적이지만, 응용수학 맥락에서의 따름정리는 순수수학적 명제를 그 응용수학의 도메인 지식으로 해석한 형태가 되는 경우가 많아 생각보다 이해가 뎌딘 경우도 많습니다.\n추측(Conjecture) : 참일 가능성이 높고, 대부분의 수학자가 이미 참으로 생각하고 있으나, 완벽한 수학적 증명이 이뤄지지 않은 명제입니다. Study Archive에서는 주로 특정 테마가 마무리 될 때, 현 시점 그 테마와 관련되어 어떤 문제들이 남아있는지를 설명하는 용도로 등장합니다.\n\n명제와 정리 상자에서는 수학적 명제가 위의 5가지 중 하나로 다뤄집니다.\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n두 짝수를 \\(m = 2a\\), \\(n = 2b\\) (\\(a, b\\)는 정수)라 하자. 그러면 \\[m + n = 2a + 2b = 2(a + b)\\] 이고 \\(a + b\\)도 정수이므로, 정의에 의해 \\(m + n\\)은 짝수이다. \\(\\blacksquare\\)\n\n\n\n증명 상자는 정리가 왜 참인지 논리적으로 보여 줍니다. 위의 증명 상자처럼 접혀 있는 경우도 있는데, 제목을 누르면 펼쳐집니다. 수학에서 증명은 매우 중요합니다. 수학적 명제가 참임을 증명할 수 있어야지 그 다음의 이야기를 전개할 때에도 모순이 없으니까요. 수학자들의 본업도 결국 대부분 이런 증명에 시간을 쏟는겁니다. 하지만 배우는 입장에서 때로는 증명의 복잡함에 가려져서, 지금 우리가 하고 있는 이야기가 어떤 이야기인지 맥락을 놓치는 경우도 많습니다. 따라서 우선적으로 수학적 명제간의 연결을 보되, 명제간의 연결 관계가 명확해지면 그 연결 관계를 정당화하는 논리적 연결고리이자 근거로서 증명을 다시 공부하시는걸 추천합니다. 이 때문에 기본적으로 증명은 접힌 형태로 제공됩니다.\n\n\n처음 읽을 때와 다시 읽을 때\n개념 노트를 한 번에 완벽하게 이해하려고 하실 필요는 없습니다. 저는 이렇게 읽기를 권합니다.\n\n처음 읽을 때: 정의와 정리가 무슨 말인지, 그리고 왜 그런 개념이 필요한지에 집중합니다. 증명은 건너뛰어도 괜찮습니다.\n두 번째 읽을 때: 증명을 펼쳐서 한 줄씩 따라가 봅니다. 각 줄이 앞의 어떤 정의나 정리를 사용했는지 확인하면서 읽어 보세요.\n마지막으로: 노트를 덮고, 정의와 정리를 자신의 말로 다시 써 봅니다. 그리고 가능하다면 증명도 직접 재구성해 봅니다.\n\n\n\n손으로 써 보고, 예를 만들어 보세요\n수학 글은 소설처럼 읽히지 않습니다. 한 문장을 이해하는 데 몇 분이 걸리는 것도 이상한 일이 아니구요. 그러니 종이와 펜을 옆에 두고, 수식이 나오면 직접 따라 써 보시기를 권합니다.\n특히 새로운 정의나 정리를 만났을 때는 가장 간단한 예를 직접 만들어 보는 것이 큰 도움이 됩니다. 위의 정리라면 \\(2 + 4 = 6\\), \\((-2) + 8 = 6\\)처럼 숫자를 넣어 확인해 보는 식입니다. 반대로, 조건 하나를 빼면 결론이 깨지는 예(반례)를 찾아보는 것도 좋습니다. 짝수 두 개 대신 홀수 두 개를 더하면 어떻게 될까요? 홀수 하나와 짝수 하나는요? 이렇게 문제를 특수한 경우로 좁혀 보고 조건을 바꿔 보는 것은 수학자들이 오래전부터 권해 온 방법이기도 합니다.1\n\n\n검색과 이동\n\n상단 메뉴의 검색(🔍) 기능으로 사이트 전체에서 용어를 찾을 수 있습니다.\n각 분야 메뉴를 펼치면 기초·핵심·심화 순서로 과목이 정리되어 있습니다.\n과목 안에서는 왼쪽 사이드바로 장과 절 사이를 이동할 수 있습니다."
+  },
+  {
+    "objectID": "articles/about-this-site.html#오류를-발견하셨다면",
+    "href": "articles/about-this-site.html#오류를-발견하셨다면",
+    "title": "이 사이트를 소개합니다",
+    "section": "오류를 발견하셨다면",
+    "text": "오류를 발견하셨다면\n이 사이트의 글은 공부하는 사람이 쓴 기록입니다. 아무리 조심해도 오타나 잘못된 설명, 틀린 증명이 있을 수 있습니다.\n\n잘못된 부분을 발견하시면 상단 오른쪽의 GitHub 아이콘을 눌러 저장소의 Issues에 남겨 주세요. 어느 페이지의 어떤 부분인지 알려 주시면 확인하고 바로 고치겠습니다. 틀린 곳을 지적받는 것은 이 사이트를 만든 이유, 즉 제대로 이해하기 위한 과정의 일부입니다."
+  },
+  {
+    "objectID": "articles/about-this-site.html#저작권과-이용-안내",
+    "href": "articles/about-this-site.html#저작권과-이용-안내",
+    "title": "이 사이트를 소개합니다",
+    "section": "저작권과 이용 안내",
+    "text": "저작권과 이용 안내\n이 사이트의 모든 글(텍스트, 수식, 그림)의 저작권은 xkwhd1557에게 있으며, 크리에이티브 커먼즈 저작자표시-비영리-변경금지 4.0 국제 라이선스(CC BY-NC-ND 4.0)에 따라 이용하실 수 있습니다. 공부하시는 분들이 부담 없이 활용하실 수 있도록, 무엇이 되고 무엇이 안 되는지 정리해 두었습니다.\n자유롭게 하셔도 됩니다\n\n개인 공부를 위해 글을 읽고, 저장하고, 출력하는 것\n출처(사이트 이름과 해당 페이지 링크)를 밝히고 일부를 인용하는 것\n스터디나 수업 등 비영리 목적으로 링크를 공유하는 것\n비영리 연구 목적으로 인공지능(AI) 모델의 학습 데이터로 수집·이용하는 것\n\n하실 수 없습니다\n\n영리적 이용: 유료 강의·교재 자료로 쓰거나, 판매하거나, 광고 수익이 나는 곳에 게시하는 것\n상업용 인공지능(AI) 모델 또는 서비스의 학습 데이터로 수집·이용하는 것\n내용을 수정·편집·번역하거나 다른 글과 짜깁기하여 배포하는 것\n출처를 밝히지 않고 게시하거나, 본인이 쓴 글처럼 게시하는 것\n\n또한 글 전체를 다른 곳에 그대로 옮겨 게시하기보다는 링크로 공유해 주시기를 부탁드립니다. 이 사이트의 글은 계속 수정·보완되기 때문에, 링크로 공유해 주셔야 읽는 분이 항상 최신의, 오류가 고쳐진 버전을 보실 수 있습니다.\n위 범위를 벗어난 이용을 원하시면 xkwhd1557@proton.me로 문의해 주세요."
+  },
+  {
+    "objectID": "articles/about-this-site.html#맺으며",
+    "href": "articles/about-this-site.html#맺으며",
+    "title": "이 사이트를 소개합니다",
+    "section": "맺으며",
+    "text": "맺으며\n이 사이트는 완성된 교과서가 아니라 계속 자라는 공부 기록입니다. 지금은 비어 있는 과목이 많지만, 공부하는 만큼 조금씩 채워 나가겠습니다.\n수학을 공부하다 보면 “이게 대체 무슨 말이지?” 하는 순간이 반드시 찾아옵니다. 그 순간에 이곳의 글이 작은 실마리가 된다면, 그리고 몇 년 뒤의 제가 이 기록을 보며 무엇을 어떻게 공부했는지 떠올릴 수 있다면, 이 사이트는 제 역할을 다한 것이라고 생각합니다.\n천천히, 그러나 꾸준히 읽어 주세요. 감사합니다."
+  },
+  {
+    "objectID": "articles/about-this-site.html#footnotes",
+    "href": "articles/about-this-site.html#footnotes",
+    "title": "이 사이트를 소개합니다",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nPólya, G. (1945). How to Solve It: A New Aspect of Mathematical Method. Princeton: Princeton University Press. 문제를 특수한 경우로 좁혀 보거나(specialization) 조건 일부를 바꿔 보는 발견법이 소개되어 있음.↩︎"
   },
   {
     "objectID": "articles/math-and-modeling.html",
@@ -618,98 +1056,23 @@
     "text": "Footnotes\n\n\nRobins, G., & Shute, C. (1987). The Rhind Mathematical Papyrus: An Ancient Egyptian Text. London: British Museum Publications. 원본은 대영박물관 소장(EA 10057, EA 10058).↩︎\n이 일화의 가장 이른 기록은 Sartorius von Waltershausen, W. (1856). Gauss zum Gedächtniss. Leipzig: S. Hirzel. ’1부터 100까지’라는 세부 내용이 후대에 덧붙여진 과정은 Hayes, B. (2006). Gauss’s day of reckoning. American Scientist, 94(3), 200–205 참고.↩︎\nHardy, G. H. (1940). A Mathematician’s Apology. Cambridge: Cambridge University Press.↩︎\nPoincaré, H. (1908). Science et méthode. Paris: Flammarion. (「수학의 미래」 장)↩︎\nPacioli, L. (1494). Summa de arithmetica, geometria, proportioni et proportionalità. Venezia: Paganino de Paganini. 복식부기는 그중 「Particularis de computis et scripturis」 부분에 실려 있음.↩︎\nGrendler, P. F. (1989). Schooling in Renaissance Italy: Literacy and Learning, 1300–1600. Baltimore: Johns Hopkins University Press.↩︎\nGrier, D. A. (2005). When Computers Were Human. Princeton: Princeton University Press.↩︎\nInternational Mathematical Union, Fields Medals 2018. 퍼펙토이드 공간은 Scholze, P. (2012). Perfectoid spaces. Publications Mathématiques de l’IHÉS, 116, 245–313.↩︎\nGalilei, G. (1623). Il Saggiatore. Roma. 영어 번역은 Drake, S. (Trans.) (1957). Discoveries and Opinions of Galileo. New York: Doubleday.↩︎\nBorges, J. L. (1946). Del rigor en la ciencia. Los Anales de Buenos Aires, 1(3). 이후 El hacedor (1960)에 수록.↩︎\nEuler, L. (1741). Solutio problematis ad geometriam situs pertinentis. Commentarii academiae scientiarum Petropolitanae, 8, 128–140. (1735년 페테르부르크 학술원 발표)↩︎\nKermack, W. O., & McKendrick, A. G. (1927). A contribution to the mathematical theory of epidemics. Proceedings of the Royal Society of London. Series A, 115(772), 700–721.↩︎\nBox, G. E. P. (1976). Science and statistics. Journal of the American Statistical Association, 71(356), 791–799; Box, G. E. P. (1979). Robustness in the strategy of scientific model building. In R. L. Launer & G. N. Wilkinson (Eds.), Robustness in Statistics (pp. 201–236). New York: Academic Press.↩︎\nRiemann, B. (1868). Über die Hypothesen, welche der Geometrie zu Grunde liegen. Abhandlungen der Königlichen Gesellschaft der Wissenschaften zu Göttingen, 13, 133–150. (1854년 괴팅겐 교수자격 강연)↩︎\nEinstein, A. (1915). Die Feldgleichungen der Gravitation. Sitzungsberichte der Königlich Preußischen Akademie der Wissenschaften, 844–847.↩︎\nHardy, G. H. (1940). A Mathematician’s Apology. Cambridge: Cambridge University Press.↩︎\nRivest, R. L., Shamir, A., & Adleman, L. (1978). A method for obtaining digital signatures and public-key cryptosystems. Communications of the ACM, 21(2), 120–126. (1977년 처음 공개)↩︎\nWigner, E. P. (1960). The unreasonable effectiveness of mathematics in the natural sciences. Communications on Pure and Applied Mathematics, 13(1), 1–14.↩︎\nFourier, J. (1822). Théorie analytique de la chaleur. Paris: Firmin Didot.↩︎\nOECD (2023). PISA 2022 Assessment and Analytical Framework. Paris: OECD Publishing.↩︎"
   },
   {
-    "objectID": "articles/about-this-site.html",
-    "href": "articles/about-this-site.html",
-    "title": "이 사이트를 소개합니다",
-    "section": "",
-    "text": "안녕하세요. Study Archive에 오신 것을 환영합니다.\n이 사이트는 제가 대학에서 공부한 내용을 정리하고 공유하는 공간입니다. 거창한 목적이 있는 곳은 아닙니다. 수익을 내기 위한 블로그도 아니구요. 공부한 것을 그때그때 정리해 두면 나중의 저에게 좋은 기록이 되고, 복습도 될 수 있으며, 혹시 같은 내용을 공부하는 누군가에게도 조금은 도움이 되지 않을까 하는 마음으로 시작했습니다.\n이 글에서는 세 가지를 이야기하려고 합니다. 이 사이트가 어떤 곳인지, 여기서 무엇을 다루는지, 그리고 제 글을 어떻게 읽으면 좋은지입니다. 처음 방문하셨다면 다른 글보다 이 글을 먼저 읽어 보시기를 권합니다."
-  },
-  {
-    "objectID": "articles/about-this-site.html#들어가며",
-    "href": "articles/about-this-site.html#들어가며",
-    "title": "이 사이트를 소개합니다",
-    "section": "",
-    "text": "안녕하세요. Study Archive에 오신 것을 환영합니다.\n이 사이트는 제가 대학에서 공부한 내용을 정리하고 공유하는 공간입니다. 거창한 목적이 있는 곳은 아닙니다. 수익을 내기 위한 블로그도 아니구요. 공부한 것을 그때그때 정리해 두면 나중의 저에게 좋은 기록이 되고, 복습도 될 수 있으며, 혹시 같은 내용을 공부하는 누군가에게도 조금은 도움이 되지 않을까 하는 마음으로 시작했습니다.\n이 글에서는 세 가지를 이야기하려고 합니다. 이 사이트가 어떤 곳인지, 여기서 무엇을 다루는지, 그리고 제 글을 어떻게 읽으면 좋은지입니다. 처음 방문하셨다면 다른 글보다 이 글을 먼저 읽어 보시기를 권합니다."
-  },
-  {
-    "objectID": "articles/about-this-site.html#이-사이트는-어떤-곳인가요",
-    "href": "articles/about-this-site.html#이-사이트는-어떤-곳인가요",
-    "title": "이 사이트를 소개합니다",
-    "section": "이 사이트는 어떤 곳인가요",
-    "text": "이 사이트는 어떤 곳인가요\n\n공부 기록이자 다시 쓴 강의 노트입니다\n\n저는 독일의 대학에서 수학과 통계학, 데이터 사이언스 그리고 이것들이 응용되는 도메인 분야를 공부하고 있습니다. 이곳에 올라오는 글은 대부분 제가 실제로 수강한 강의와 스스로 공부한 교재를 바탕으로 합니다.\n다만 강의 노트를 그대로 옮겨 적지는 않습니다. 강의 노트는 그 강의를 듣는 사람을 위해, 정해진 시간 안에 많은 내용을 전달하도록 쓰여 있습니다. 그래서 정의와 정리, 증명이 빽빽하게 이어질 뿐 “이 개념이 왜 필요한지”, “이 정리가 사실 무슨 말인지”는 강의실에서 말로만 지나가는 경우가 많습니다. 이 사이트에서는 바로 그 빠진 부분, 즉 동기와 직관을 위주로 적으려고 합니다. 그 과정에서 원래 강의에서 개념들이 다뤄지는 순서나, 설명 방식을 바꾸어 제 이해 방식에 맞춰 논리 구조가 재구성되고, 설명이 재해석된 부분들이 대부분입니다.\n\n\n한국어로, 최대한 쉽게 씁니다\n이 사이트의 글은 기본적으로 한국어로 씁니다. 이유는 두 가지입니다.\n첫째, 대학 수준 이상의 수학을 한국어로, 그것도 직관을 곁들여 설명하는 자료는 생각보다 많지 않습니다. 교재 대부분이 원어로 되어 있고, 번역서가 있더라도 원서의 압축된 문체를 그대로 따르는 경우가 많습니다.\n둘째, 제 자신을 위해서입니다. 어떤 개념을 모국어로, 그것도 처음 배우는 사람이 이해할 수 있게 풀어 쓰려고 하면, 제가 정말 이해한 부분과 대충 넘어간 부분이 금방 드러납니다. 쉽게 쓰는 일은 곧 제대로 이해했는지 점검하는 일이기도 합니다.\n“쉽게”라는 말이 “대충”이라는 뜻은 아닙니다. 엄밀함을 포기하지 않는 선에서, 이해에 필요한 설명과 예시를 아끼지 않겠다는 뜻입니다. 정의와 정리는 정확하게 쓰고, 그 앞뒤에 그것을 이해하기 위한 이야기를 덧붙이는 방식입니다.\n영어(EN)와 독일어(DE) 버전도 계획하고 있습니다. 상단 메뉴의 🌐 Language에서 확인하실 수 있으며, 지금은 준비 중입니다."
-  },
-  {
-    "objectID": "articles/about-this-site.html#무엇을-다루나요",
-    "href": "articles/about-this-site.html#무엇을-다루나요",
-    "title": "이 사이트를 소개합니다",
-    "section": "무엇을 다루나요",
-    "text": "무엇을 다루나요\n\n두 종류의 글: 아티클과 개념 노트\n이 사이트에는 성격이 다른 두 종류의 글이 있습니다.\n\n일반 아티클: 특정 과목에 묶이지 않는 에세이입니다. 수학을 왜 공부하는지, 어떤 분야가 서로 어떻게 연결되는지같은 큰 그림이나, 그냥 제가 일상적으로 느꼈던 수학과 통계에 관한 생각(똥글) 등을 다룹니다. 수식이 거의 없거나 적어서 전공자가 아니어도 편하게 읽을 수 있습니다. 첫 번째 아티클인 수학을 왜 공부해야하나요?가 대표적인 예입니다.\n개념 노트: 과목별로 정리한 본격적인 공부 내용입니다. 정의, 정리, 증명, 예제로 구성되며, 한 노트가 한 개념을 다루고 노트끼리 서로 연결되어 있습니다.\n\n\n\n여섯 개의 분야\n개념 노트는 상단 메뉴에 있는 여섯 분야로 나뉘어 있습니다.\n\n\n\n분야\n다루는 내용 (예시)\n\n\n\n\n수학\n해석학, 선형대수학, 측도론, 위상수학, 함수해석학 등\n\n\n확률과 통계\n확률론, 수리통계학, 확률과정, 확률미분방정식 등\n\n\n컴퓨터 공학\n알고리즘과 자료구조, 이론 전산학, 데이터베이스 등\n\n\n데이터 사이언스·AI\n기계학습, 수치 최적화, 딥러닝 등\n\n\n경영/경제\n미시·거시경제학, 계량경제학, 재무, 게임이론 등\n\n\n의학통계·바이오메트리\n생존분석, 임상시험, 인과추론 등\n\n\n\n\n분야가 많아 보이지만, 무게중심은 수학과 확률과 통계에 있습니다. 나머지 분야는 이 두 분야의 도구가 실제로 어디에 쓰이는지를 보여 주는 응용으로 읽어 주시면 좋겠습니다. 두 분야를 제외한 분야는 원론(Introduction) 수준의 테마들은 일반적인 대학 강의를 큰 뼈대로 다뤄지나, 그 외의 테마들은 수학과 통계가 해당 도메인 분야에서 응용되는 부분이 중심적으로 다뤄집니다.\n\n\n기초 · 핵심 · 심화\n각 분야의 과목은 세 단계로 나누어 두었습니다.\n\n기초 (Foundations): 사전 지식 없이 시작할 수 있는 과목입니다. 대학 1–2학년 수준에 해당합니다.\n핵심 (Core): 기초를 바탕으로 각 분야의 본격적인 주제를 다루는 과목입니다.\n심화 (Advanced): 대학원 수준이거나, 여러 핵심 과목을 함께 알아야 이해할 수 있는 과목입니다.\n\n어느 단계부터 읽어야 할지 모르겠다면, 각 분야의 전체 과목 보기 페이지에서 기초 과목부터 시작하시면 됩니다."
-  },
-  {
-    "objectID": "articles/about-this-site.html#어떻게-읽으면-좋을까요",
-    "href": "articles/about-this-site.html#어떻게-읽으면-좋을까요",
-    "title": "이 사이트를 소개합니다",
-    "section": "어떻게 읽으면 좋을까요",
-    "text": "어떻게 읽으면 좋을까요\n\n개념 노트의 구성\n모든 개념 노트는 같은 양식을 따릅니다. 노트 맨 위에는 다음과 같은 안내 줄이 있습니다.\n\n← 과목 목록으로 | 선수 개념: 이 노트를 읽기 전에 알아야 할 개념 | 다음 개념: 이어서 읽으면 좋은 개념\n\n읽다가 막히는 부분이 있다면, 대개 선수 개념에서 놓친 것이 있다는 신호입니다. 그럴 때는 망설이지 말고 선수 개념 링크를 따라 한 단계 뒤로 돌아가 보세요.\n본문의 핵심 내용은 색깔이 다른 상자로 구분되어 있습니다. 간단한 예로 살펴보겠습니다.\n\n\n\n\n\n\nNote정의 (Definition)\n\n\n\n정수 \\(n\\)이 어떤 정수 \\(k\\)에 대하여 \\(n = 2k\\)로 쓰일 때, \\(n\\)을 짝수라고 한다.\n\n\n정의 상자는 앞으로 사용할 용어의 뜻을 정확하게 정합니다. 수학에서는 “대충 이런 것”이 통하지 않기 때문에, 정의는 한 글자도 허투루 읽지 않는 것이 좋습니다.\n\n\n\n\n\n\nImportant명제와 정리 (Theorem, Lemma, Proposition, Corollary, Conjecture etc.)\n\n\n\n두 짝수의 합은 짝수이다.\n\n\n명제와 정리 상자는 정의로부터 이끌어 낼 수 있는 참인 명제들을 표현하는 상자입니다. 수학에서는 명제들의 중요도와 역할에 따라, 이를 다음으로 나눕니다.\n\n정리(Theorem) : 참인 명제이자, 이 테마에서 가장 중요하고 무게감이 있는 수학적 결론\n정리/명제(Proposition) : 정리보다는 덜 중요하지만, 그 자체로 참이고 의미가 있는 수학적 명제. 다뤄지는 수학적 맥락에 따라서 같은 수학적 명제이더라도 Proposition이 될 수도, Theorem이 될 수도 있어 이 둘을 엄격히 구분하지 않고 정리(Theorem)이라 부르는 경우도 많습니다.\n보조정리(Lemma) : 위의 정리 혹은 명제를 증명하기 위한 중간 명제입니다. 물론 보조정리의 보조정리도 등장할 수 있습니다.\n따름정리(Corollary) : 정리, 명제, 보조정리에 의해 큰 증명 단계 없이 바로 직접적으로 유도되는 결론입니다. 순수수학 맥락에서 따름정리는 보통 매우 직관적이지만, 응용수학 맥락에서의 따름정리는 순수수학적 명제를 그 응용수학의 도메인 지식으로 해석한 형태가 되는 경우가 많아 생각보다 이해가 뎌딘 경우도 많습니다.\n추측(Conjecture) : 참일 가능성이 높고, 대부분의 수학자가 이미 참으로 생각하고 있으나, 완벽한 수학적 증명이 이뤄지지 않은 명제입니다. Study Archive에서는 주로 특정 테마가 마무리 될 때, 현 시점 그 테마와 관련되어 어떤 문제들이 남아있는지를 설명하는 용도로 등장합니다.\n\n명제와 정리 상자에서는 수학적 명제가 위의 5가지 중 하나로 다뤄집니다.\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n두 짝수를 \\(m = 2a\\), \\(n = 2b\\) (\\(a, b\\)는 정수)라 하자. 그러면 \\[m + n = 2a + 2b = 2(a + b)\\] 이고 \\(a + b\\)도 정수이므로, 정의에 의해 \\(m + n\\)은 짝수이다. \\(\\blacksquare\\)\n\n\n\n증명 상자는 정리가 왜 참인지 논리적으로 보여 줍니다. 위의 증명 상자처럼 접혀 있는 경우도 있는데, 제목을 누르면 펼쳐집니다. 수학에서 증명은 매우 중요합니다. 수학적 명제가 참임을 증명할 수 있어야지 그 다음의 이야기를 전개할 때에도 모순이 없으니까요. 수학자들의 본업도 결국 대부분 이런 증명에 시간을 쏟는겁니다. 하지만 배우는 입장에서 때로는 증명의 복잡함에 가려져서, 지금 우리가 하고 있는 이야기가 어떤 이야기인지 맥락을 놓치는 경우도 많습니다. 따라서 우선적으로 수학적 명제간의 연결을 보되, 명제간의 연결 관계가 명확해지면 그 연결 관계를 정당화하는 논리적 연결고리이자 근거로서 증명을 다시 공부하시는걸 추천합니다. 이 때문에 기본적으로 증명은 접힌 형태로 제공됩니다.\n\n\n처음 읽을 때와 다시 읽을 때\n개념 노트를 한 번에 완벽하게 이해하려고 하실 필요는 없습니다. 저는 이렇게 읽기를 권합니다.\n\n처음 읽을 때: 정의와 정리가 무슨 말인지, 그리고 왜 그런 개념이 필요한지에 집중합니다. 증명은 건너뛰어도 괜찮습니다.\n두 번째 읽을 때: 증명을 펼쳐서 한 줄씩 따라가 봅니다. 각 줄이 앞의 어떤 정의나 정리를 사용했는지 확인하면서 읽어 보세요.\n마지막으로: 노트를 덮고, 정의와 정리를 자신의 말로 다시 써 봅니다. 그리고 가능하다면 증명도 직접 재구성해 봅니다.\n\n\n\n손으로 써 보고, 예를 만들어 보세요\n수학 글은 소설처럼 읽히지 않습니다. 한 문장을 이해하는 데 몇 분이 걸리는 것도 이상한 일이 아니구요. 그러니 종이와 펜을 옆에 두고, 수식이 나오면 직접 따라 써 보시기를 권합니다.\n특히 새로운 정의나 정리를 만났을 때는 가장 간단한 예를 직접 만들어 보는 것이 큰 도움이 됩니다. 위의 정리라면 \\(2 + 4 = 6\\), \\((-2) + 8 = 6\\)처럼 숫자를 넣어 확인해 보는 식입니다. 반대로, 조건 하나를 빼면 결론이 깨지는 예(반례)를 찾아보는 것도 좋습니다. 짝수 두 개 대신 홀수 두 개를 더하면 어떻게 될까요? 홀수 하나와 짝수 하나는요? 이렇게 문제를 특수한 경우로 좁혀 보고 조건을 바꿔 보는 것은 수학자들이 오래전부터 권해 온 방법이기도 합니다.1\n\n\n검색과 이동\n\n상단 메뉴의 검색(🔍) 기능으로 사이트 전체에서 용어를 찾을 수 있습니다.\n각 분야 메뉴를 펼치면 기초·핵심·심화 순서로 과목이 정리되어 있습니다.\n과목 안에서는 왼쪽 사이드바로 장과 절 사이를 이동할 수 있습니다."
-  },
-  {
-    "objectID": "articles/about-this-site.html#오류를-발견하셨다면",
-    "href": "articles/about-this-site.html#오류를-발견하셨다면",
-    "title": "이 사이트를 소개합니다",
-    "section": "오류를 발견하셨다면",
-    "text": "오류를 발견하셨다면\n이 사이트의 글은 공부하는 사람이 쓴 기록입니다. 아무리 조심해도 오타나 잘못된 설명, 틀린 증명이 있을 수 있습니다.\n\n잘못된 부분을 발견하시면 상단 오른쪽의 GitHub 아이콘을 눌러 저장소의 Issues에 남겨 주세요. 어느 페이지의 어떤 부분인지 알려 주시면 확인하고 바로 고치겠습니다. 틀린 곳을 지적받는 것은 이 사이트를 만든 이유, 즉 제대로 이해하기 위한 과정의 일부입니다."
-  },
-  {
-    "objectID": "articles/about-this-site.html#저작권과-이용-안내",
-    "href": "articles/about-this-site.html#저작권과-이용-안내",
-    "title": "이 사이트를 소개합니다",
-    "section": "저작권과 이용 안내",
-    "text": "저작권과 이용 안내\n이 사이트의 모든 글(텍스트, 수식, 그림)의 저작권은 xkwhd1557에게 있으며, 크리에이티브 커먼즈 저작자표시-비영리-변경금지 4.0 국제 라이선스(CC BY-NC-ND 4.0)에 따라 이용하실 수 있습니다. 공부하시는 분들이 부담 없이 활용하실 수 있도록, 무엇이 되고 무엇이 안 되는지 정리해 두었습니다.\n자유롭게 하셔도 됩니다\n\n개인 공부를 위해 글을 읽고, 저장하고, 출력하는 것\n출처(사이트 이름과 해당 페이지 링크)를 밝히고 일부를 인용하는 것\n스터디나 수업 등 비영리 목적으로 링크를 공유하는 것\n비영리 연구 목적으로 인공지능(AI) 모델의 학습 데이터로 수집·이용하는 것\n\n하실 수 없습니다\n\n영리적 이용: 유료 강의·교재 자료로 쓰거나, 판매하거나, 광고 수익이 나는 곳에 게시하는 것\n상업용 인공지능(AI) 모델 또는 서비스의 학습 데이터로 수집·이용하는 것\n내용을 수정·편집·번역하거나 다른 글과 짜깁기하여 배포하는 것\n출처를 밝히지 않고 게시하거나, 본인이 쓴 글처럼 게시하는 것\n\n또한 글 전체를 다른 곳에 그대로 옮겨 게시하기보다는 링크로 공유해 주시기를 부탁드립니다. 이 사이트의 글은 계속 수정·보완되기 때문에, 링크로 공유해 주셔야 읽는 분이 항상 최신의, 오류가 고쳐진 버전을 보실 수 있습니다.\n위 범위를 벗어난 이용을 원하시면 xkwhd1557@proton.me로 문의해 주세요."
-  },
-  {
-    "objectID": "articles/about-this-site.html#맺으며",
-    "href": "articles/about-this-site.html#맺으며",
-    "title": "이 사이트를 소개합니다",
-    "section": "맺으며",
-    "text": "맺으며\n이 사이트는 완성된 교과서가 아니라 계속 자라는 공부 기록입니다. 지금은 비어 있는 과목이 많지만, 공부하는 만큼 조금씩 채워 나가겠습니다.\n수학을 공부하다 보면 “이게 대체 무슨 말이지?” 하는 순간이 반드시 찾아옵니다. 그 순간에 이곳의 글이 작은 실마리가 된다면, 그리고 몇 년 뒤의 제가 이 기록을 보며 무엇을 어떻게 공부했는지 떠올릴 수 있다면, 이 사이트는 제 역할을 다한 것이라고 생각합니다.\n천천히, 그러나 꾸준히 읽어 주세요. 감사합니다."
-  },
-  {
-    "objectID": "articles/about-this-site.html#footnotes",
-    "href": "articles/about-this-site.html#footnotes",
-    "title": "이 사이트를 소개합니다",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nPólya, G. (1945). How to Solve It: A New Aspect of Mathematical Method. Princeton: Princeton University Press. 문제를 특수한 경우로 좁혀 보거나(specialization) 조건 일부를 바꿔 보는 발견법이 소개되어 있음.↩︎"
-  },
-  {
-    "objectID": "articles/index.html",
-    "href": "articles/index.html",
-    "title": "일반 아티클 (Articles)",
-    "section": "",
-    "text": "Study Archive는 어떤 곳이고, 어떻게 읽으면 좋을까요\n\n\n\n\n\n\n\n\n\n\n모델링의 관점에서 살펴본 수학의 역할\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "articles/index.html#추천-아티클",
-    "href": "articles/index.html#추천-아티클",
-    "title": "일반 아티클 (Articles)",
-    "section": "",
-    "text": "Study Archive는 어떤 곳이고, 어떻게 읽으면 좋을까요\n\n\n\n\n\n\n\n\n\n\n모델링의 관점에서 살펴본 수학의 역할\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "articles/index.html#최신-아티클",
-    "href": "articles/index.html#최신-아티클",
-    "title": "일반 아티클 (Articles)",
-    "section": "최신 아티클",
-    "text": "최신 아티클\n\n\n\n\n\n이 사이트를 소개합니다\n\n\nStudy Archive는 어떤 곳이고, 어떻게 읽으면 좋을까요\n\n\n\n\n\n\n\n\n\n\n수학을 왜 공부해야하나요?\n\n\n모델링의 관점에서 살펴본 수학의 역할\n\n\n\n\n\n\n\n\nNo matching items"
-  },
-  {
     "objectID": "biostat/bioinformatics/text.html",
     "href": "biostat/bioinformatics/text.html",
     "title": "text",
     "section": "",
     "text": "← 의학통계·바이오메트리 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 생물정보통계학의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
+    ]
+  },
+  {
+    "objectID": "biostat/biostat-intro/text.html",
+    "href": "biostat/biostat-intro/text.html",
+    "title": "text",
+    "section": "",
+    "text": "← 의학통계·바이오메트리 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 의학통계학 개론의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "crumbs": [
+      "text"
     ]
   },
   {
@@ -719,8 +1082,17 @@
     "section": "",
     "text": "← 의학통계·바이오메트리 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 인과추론의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
+    ]
+  },
+  {
+    "objectID": "biostat/clinical-trials/text.html",
+    "href": "biostat/clinical-trials/text.html",
+    "title": "text",
+    "section": "",
+    "text": "← 의학통계·바이오메트리 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 임상시험 통계방법론의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "crumbs": [
+      "text"
     ]
   },
   {
@@ -730,63 +1102,107 @@
     "section": "",
     "text": "← 의학통계·바이오메트리 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 역학 연구방법론의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
     ]
   },
   {
-    "objectID": "biostat/longitudinal-data/text.html",
-    "href": "biostat/longitudinal-data/text.html",
-    "title": "text",
+    "objectID": "biostat/longitudinal-data/00intro.html",
+    "href": "biostat/longitudinal-data/00intro.html",
+    "title": "0. 들어가며",
     "section": "",
-    "text": "← 의학통계·바이오메트리 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 종단적 데이터 분석의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "text": "← 의학통계·바이오메트리 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "0. 들어가며"
     ]
   },
   {
-    "objectID": "biz-econ/accounting/text.html",
-    "href": "biz-econ/accounting/text.html",
-    "title": "text",
+    "objectID": "biostat/survival-analysis/00intro.html",
+    "href": "biostat/survival-analysis/00intro.html",
+    "title": "0. 들어가며",
     "section": "",
-    "text": "← 경영/경제 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 회계학의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "text": "← 의학통계·바이오메트리 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "0. 들어가며"
     ]
   },
   {
-    "objectID": "biz-econ/corporate-finance/text.html",
-    "href": "biz-econ/corporate-finance/text.html",
-    "title": "text",
+    "objectID": "biz-econ/accounting/00intro.html",
+    "href": "biz-econ/accounting/00intro.html",
+    "title": "0. 들어가며",
     "section": "",
-    "text": "← 경영/경제 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 기업재무론의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "text": "← 경영/경제 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "0. 들어가며"
     ]
   },
   {
-    "objectID": "biz-econ/econ-intro/text.html",
-    "href": "biz-econ/econ-intro/text.html",
-    "title": "text",
+    "objectID": "biz-econ/biz-intro/00intro.html",
+    "href": "biz-econ/biz-intro/00intro.html",
+    "title": "0. 들어가며",
     "section": "",
-    "text": "← 경영/경제 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 경제학 원론의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "text": "← 경영/경제 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "0. 들어가며"
     ]
   },
   {
-    "objectID": "biz-econ/finance-investment/text.html",
-    "href": "biz-econ/finance-investment/text.html",
-    "title": "text",
+    "objectID": "biz-econ/corporate-finance/00intro.html",
+    "href": "biz-econ/corporate-finance/00intro.html",
+    "title": "0. 들어가며",
     "section": "",
-    "text": "← 경영/경제 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 재무와 투자론의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "text": "← 경영/경제 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "biz-econ/decision-theory/00intro.html",
+    "href": "biz-econ/decision-theory/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 경영/경제 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "biz-econ/econ-intro/00intro.html",
+    "href": "biz-econ/econ-intro/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 경영/경제 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "biz-econ/econometrics/00intro.html",
+    "href": "biz-econ/econometrics/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 경영/경제 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "biz-econ/finance-investment/00intro.html",
+    "href": "biz-econ/finance-investment/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 경영/경제 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "biz-econ/game-theory/00intro.html",
+    "href": "biz-econ/game-theory/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 경영/경제 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
     ]
   },
   {
@@ -818,14 +1234,33 @@
     "text": "심화 (Advanced)\n핵심 과목 이후, 깊이 있는 이론과 고급 주제를 본격적으로 다루는 과목입니다.\n\n\n시계열 분석\n\n\n\n시계열 분석\n\n\n\n\n계량경제학\n\n\n\n계량경제학\n\n\n\n\n보험경제학\n\n\n\n보험경제학\n\n\n\n\n계량 리스크 관리\n\n\n\n계량 리스크 관리\n\n\n\n\n기업재무론\n\n\n\n기업재무론"
   },
   {
+    "objectID": "biz-econ/insurance-economics/text.html",
+    "href": "biz-econ/insurance-economics/text.html",
+    "title": "text",
+    "section": "",
+    "text": "← 경영/경제 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 보험경제학의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "crumbs": [
+      "text"
+    ]
+  },
+  {
     "objectID": "biz-econ/labor-economics/text.html",
     "href": "biz-econ/labor-economics/text.html",
     "title": "text",
     "section": "",
     "text": "← 경영/경제 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 노동경제학의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
+    ]
+  },
+  {
+    "objectID": "biz-econ/macroeconomics/text.html",
+    "href": "biz-econ/macroeconomics/text.html",
+    "title": "text",
+    "section": "",
+    "text": "← 경영/경제 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 거시경제학의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "crumbs": [
+      "text"
     ]
   },
   {
@@ -835,8 +1270,17 @@
     "section": "",
     "text": "← 경영/경제 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 시장조사론의 기초의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
+    ]
+  },
+  {
+    "objectID": "biz-econ/microeconomics/text.html",
+    "href": "biz-econ/microeconomics/text.html",
+    "title": "text",
+    "section": "",
+    "text": "← 경영/경제 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 미시경제학의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "crumbs": [
+      "text"
     ]
   },
   {
@@ -846,8 +1290,17 @@
     "section": "",
     "text": "← 경영/경제 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 화폐금융론의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
+    ]
+  },
+  {
+    "objectID": "biz-econ/production-logistics/text.html",
+    "href": "biz-econ/production-logistics/text.html",
+    "title": "text",
+    "section": "",
+    "text": "← 경영/경제 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 생산물류관리의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "crumbs": [
+      "text"
     ]
   },
   {
@@ -857,8 +1310,17 @@
     "section": "",
     "text": "← 경영/경제 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 계량 리스크 관리의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
+    ]
+  },
+  {
+    "objectID": "biz-econ/supply-chain/text.html",
+    "href": "biz-econ/supply-chain/text.html",
+    "title": "text",
+    "section": "",
+    "text": "← 경영/경제 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 공급망 관리 (SCM)의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "crumbs": [
+      "text"
     ]
   },
   {
@@ -868,8 +1330,17 @@
     "section": "",
     "text": "← 경영/경제 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 시계열 분석의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
+    ]
+  },
+  {
+    "objectID": "cs/advanced/text.html",
+    "href": "cs/advanced/text.html",
+    "title": "text",
+    "section": "",
+    "text": "← 컴퓨터 공학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 심화 과정 (준비 중)의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "crumbs": [
+      "text"
     ]
   },
   {
@@ -879,8 +1350,17 @@
     "section": "",
     "text": "← 컴퓨터 공학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 알고리즘과 자료구조의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
+    ]
+  },
+  {
+    "objectID": "cs/c-programming/text.html",
+    "href": "cs/c-programming/text.html",
+    "title": "text",
+    "section": "",
+    "text": "← 컴퓨터 공학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 C언어의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "crumbs": [
+      "text"
     ]
   },
   {
@@ -890,8 +1370,17 @@
     "section": "",
     "text": "← 컴퓨터 공학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 컴퓨터 과학 원론의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
+    ]
+  },
+  {
+    "objectID": "cs/database-systems/text.html",
+    "href": "cs/database-systems/text.html",
+    "title": "text",
+    "section": "",
+    "text": "← 컴퓨터 공학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 데이터베이스 시스템의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "crumbs": [
+      "text"
     ]
   },
   {
@@ -901,53 +1390,106 @@
     "section": "",
     "text": "← 컴퓨터 공학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 형식 시스템의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
     ]
   },
   {
-    "objectID": "cs/theoretical-cs/text.html",
-    "href": "cs/theoretical-cs/text.html",
-    "title": "text",
+    "objectID": "cs/theoretical-cs/00intro.html",
+    "href": "cs/theoretical-cs/00intro.html",
+    "title": "0. 들어가며",
     "section": "",
-    "text": "← 컴퓨터 공학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 이론 컴퓨터과학의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "text": "← 컴퓨터 공학 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "0. 들어가며"
     ]
   },
   {
-    "objectID": "ds-ai/ai-intro/text.html",
-    "href": "ds-ai/ai-intro/text.html",
-    "title": "text",
+    "objectID": "ds-ai/advanced-linear-algebra/00intro.html",
+    "href": "ds-ai/advanced-linear-algebra/00intro.html",
+    "title": "0. 들어가며",
     "section": "",
-    "text": "← 데이터 사이언스·AI 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 인공지능 원론의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "text": "← 데이터 사이언스·AI 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "0. 들어가며"
     ]
   },
   {
-    "objectID": "ds-ai/deep-learning-cv/text.html",
-    "href": "ds-ai/deep-learning-cv/text.html",
-    "title": "text",
+    "objectID": "ds-ai/ai-intro/00intro.html",
+    "href": "ds-ai/ai-intro/00intro.html",
+    "title": "0. 들어가며",
     "section": "",
-    "text": "← 데이터 사이언스·AI 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 딥러닝과 컴퓨터 비전의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "text": "← 데이터 사이언스·AI 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "0. 들어가며"
     ]
   },
   {
-    "objectID": "ds-ai/ds-society/text.html",
-    "href": "ds-ai/ds-society/text.html",
-    "title": "text",
+    "objectID": "ds-ai/ai-math-intro/00intro.html",
+    "href": "ds-ai/ai-math-intro/00intro.html",
+    "title": "0. 들어가며",
     "section": "",
-    "text": "← 데이터 사이언스·AI 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 데이터 사이언스와 사회의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "text": "← 데이터 사이언스·AI 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "0. 들어가며"
     ]
+  },
+  {
+    "objectID": "ds-ai/deep-learning-cv/00intro.html",
+    "href": "ds-ai/deep-learning-cv/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 데이터 사이언스·AI 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "ds-ai/ds-intro/00intro.html",
+    "href": "ds-ai/ds-intro/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 데이터 사이언스·AI 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "ds-ai/ds-society/00intro.html",
+    "href": "ds-ai/ds-society/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 데이터 사이언스·AI 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "ds-ai/index.html",
+    "href": "ds-ai/index.html",
+    "title": "데이터 사이언스·AI (Data Science & AI)",
+    "section": "",
+    "text": "사전 지식 없이 시작할 수 있는 전공 기초 과목입니다.\n\n\n\n\n\n\n데이터 사이언스 개론\n\n\n\n\n\n\n\n\n데이터 사이언스와 사회\n\n\n\n\n\n\n\n\n고등학교 인공지능 수학"
+  },
+  {
+    "objectID": "ds-ai/index.html#기초-foundations",
+    "href": "ds-ai/index.html#기초-foundations",
+    "title": "데이터 사이언스·AI (Data Science & AI)",
+    "section": "",
+    "text": "사전 지식 없이 시작할 수 있는 전공 기초 과목입니다.\n\n\n\n\n\n\n데이터 사이언스 개론\n\n\n\n\n\n\n\n\n데이터 사이언스와 사회\n\n\n\n\n\n\n\n\n고등학교 인공지능 수학"
+  },
+  {
+    "objectID": "ds-ai/index.html#핵심-core",
+    "href": "ds-ai/index.html#핵심-core",
+    "title": "데이터 사이언스·AI (Data Science & AI)",
+    "section": "핵심 (Core)",
+    "text": "핵심 (Core)\n기초를 바탕으로 각 분야의 본격적인 주제에 첫발을 내딛는 과목입니다.\n\n\n수치적 방법론과 최적화\n\n\n\n수치적 방법론과 최적화\n\n\n\n\n머신러닝\n\n\n\n머신러닝\n\n\n\n\n딥러닝과 컴퓨터 비전\n\n\n\n딥러닝과 컴퓨터 비전\n\n\n\n\n인공지능 원론\n\n\n\n인공지능 원론"
+  },
+  {
+    "objectID": "ds-ai/index.html#심화-advanced",
+    "href": "ds-ai/index.html#심화-advanced",
+    "title": "데이터 사이언스·AI (Data Science & AI)",
+    "section": "심화 (Advanced)",
+    "text": "심화 (Advanced)\n핵심 과목 이후, 깊이 있는 이론과 고급 주제를 본격적으로 다루는 과목입니다.\n\n\n데이터 사이언스의 통계적 기초\n\n\n\n데이터 사이언스의 통계적 기초\n\n\n\n\n머신러닝의 수리적 기초\n\n\n\n머신러닝의 수리적 기초\n\n\n\n\n데이터 사이언스를 위한 선형대수학\n\n\n\n데이터 사이언스를 위한 선형대수학"
   },
   {
     "objectID": "ds-ai/machine-learning/text.html",
@@ -956,8 +1498,17 @@
     "section": "",
     "text": "← 데이터 사이언스·AI 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 머신러닝의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
+    ]
+  },
+  {
+    "objectID": "ds-ai/mathematical-foundations/text.html",
+    "href": "ds-ai/mathematical-foundations/text.html",
+    "title": "text",
+    "section": "",
+    "text": "← 데이터 사이언스·AI 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 머신러닝의 수리적 기초의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "crumbs": [
+      "text"
     ]
   },
   {
@@ -967,80 +1518,114 @@
     "section": "",
     "text": "← 데이터 사이언스·AI 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 수치적 방법론과 최적화의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
     ]
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Study Archive",
-    "section": "",
-    "text": "Study Archive는 어떤 곳이고, 어떻게 읽으면 좋을까요\n\n\n\n\n\n\n\n\n\n\n모델링의 관점에서 살펴본 수학의 역할\n\n\n\n\n\nNo matching items\n\n\n일반 아티클 전체 보기 →"
-  },
-  {
-    "objectID": "index.html#추천-아티클",
-    "href": "index.html#추천-아티클",
-    "title": "Study Archive",
-    "section": "",
-    "text": "Study Archive는 어떤 곳이고, 어떻게 읽으면 좋을까요\n\n\n\n\n\n\n\n\n\n\n모델링의 관점에서 살펴본 수학의 역할\n\n\n\n\n\nNo matching items\n\n\n일반 아티클 전체 보기 →"
-  },
-  {
-    "objectID": "index.html#기초부터-시작하기",
-    "href": "index.html#기초부터-시작하기",
-    "title": "Study Archive",
-    "section": "기초부터 시작하기",
-    "text": "기초부터 시작하기\n각 분야의 기초 과목입니다. 과목을 선택하면 첫 번째 개념 노트로 이동합니다.\n\n수학 (Mathematics)\n\n\n해석학\n\n\n\n해석학\n\n\n\n\n선형대수학\n\n\n\n선형대수학\n\n\n\n\n이산수학\n\n\n\n이산수학\n\n\n\n\n수학적 프로그래밍 (Python)\n\n\n\n수학적 프로그래밍 (Python)\n\n\n\n\nLaTeX\n\n\n\nLaTeX\n\n\n\n\n\n수학 전체 과목 보기 →\n\n\n\n확률과 통계 (Probability & Statistics)\n\n\n기초 확률론\n\n\n\n기초 확률론\n\n\n\n\n기초 통계학\n\n\n\n기초 통계학\n\n\n\n\n통계적 프로그래밍\n\n\n\n통계적 프로그래밍\n\n\n\n\n\n확률과 통계 전체 과목 보기 →\n\n\n\n컴퓨터 공학 (Computer Science)\n\n\n컴퓨터 과학 원론\n\n\n\n컴퓨터 과학 원론\n\n\n\n\nC언어\n\n\n\nC언어\n\n\n\n\n\n컴퓨터 공학 전체 과목 보기 →\n\n\n\n데이터 사이언스·AI (Data Science & AI)\n\n\n데이터 사이언스 개론\n\n\n\n데이터 사이언스 개론\n\n\n\n\n데이터 사이언스와 사회\n\n\n\n데이터 사이언스와 사회\n\n\n\n\n고등학교 인공지능 수학\n\n\n\n고등학교 인공지능 수학\n\n\n\n\n\n데이터 사이언스·AI 전체 과목 보기 →\n\n\n\n경영/경제 (Business & Economics)\n\n\n경영학 원론\n\n\n\n경영학 원론\n\n\n\n\n경제학 원론\n\n\n\n경제학 원론\n\n\n\n\n\n경영/경제 전체 과목 보기 →\n\n\n\n의학통계·바이오메트리 (Biostatistics & Biometry)\n\n\n의학통계학 개론\n\n\n\n의학통계학 개론\n\n\n\n\n역학 연구방법론\n\n\n\n역학 연구방법론\n\n\n\n\n\n의학통계·바이오메트리 전체 과목 보기 →"
-  },
-  {
-    "objectID": "lang/en-coming-soon.html",
-    "href": "lang/en-coming-soon.html",
-    "title": "Under Construction",
-    "section": "",
-    "text": "NoteNotice\n\n\n\nThe English version of this archive is currently under preparation. Please check back later.\nReturn to Korean Main Page"
-  },
-  {
-    "objectID": "math/analysis/text.html",
-    "href": "math/analysis/text.html",
+    "objectID": "ds-ai/statistical-foundations/text.html",
+    "href": "ds-ai/statistical-foundations/text.html",
     "title": "text",
     "section": "",
-    "text": "← 수학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 해석학의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "text": "← 데이터 사이언스·AI 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 데이터 사이언스의 통계적 기초의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
     ]
   },
   {
-    "objectID": "math/differential-geometry/text.html",
-    "href": "math/differential-geometry/text.html",
-    "title": "text",
+    "objectID": "lang/de-coming-soon.html",
+    "href": "lang/de-coming-soon.html",
+    "title": "In Vorbereitung",
     "section": "",
-    "text": "← 수학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 미분기하학의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "text": "NoteHinweis\n\n\n\nDie deutsche Version dieses Archivs befindet sich derzeit im Aufbau. Bitte besuchen Sie die Seite zu einem späteren Zeitpunkt erneut.\nZurück zur koreanischen Hauptseite"
+  },
+  {
+    "objectID": "math/algebra/00intro.html",
+    "href": "math/algebra/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 수학 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "0. 들어가며"
     ]
   },
   {
-    "objectID": "math/dynamical-systems/text.html",
-    "href": "math/dynamical-systems/text.html",
-    "title": "text",
+    "objectID": "math/analysis/00intro.html",
+    "href": "math/analysis/00intro.html",
+    "title": "0. 들어가며",
     "section": "",
-    "text": "← 수학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 동적 시스템의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "text": "← 수학 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "0. 들어가며"
     ]
   },
   {
-    "objectID": "math/general-topology/text.html",
-    "href": "math/general-topology/text.html",
-    "title": "text",
+    "objectID": "math/complex-analysis/00intro.html",
+    "href": "math/complex-analysis/00intro.html",
+    "title": "0. 들어가며",
     "section": "",
-    "text": "← 수학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 일반위상수학의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "text": "← 수학 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "math/differential-geometry/00intro.html",
+    "href": "math/differential-geometry/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 수학 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "math/discrete-math/00intro.html",
+    "href": "math/discrete-math/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 수학 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "math/dynamical-systems/00intro.html",
+    "href": "math/dynamical-systems/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 수학 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "math/functional-analysis/00intro.html",
+    "href": "math/functional-analysis/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 수학 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "math/general-topology/00intro.html",
+    "href": "math/general-topology/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 수학 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "math/geometry/00intro.html",
+    "href": "math/geometry/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 수학 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
     ]
   },
   {
@@ -1072,14 +1657,33 @@
     "text": "심화 (Advanced)\n핵심 과목 이후, 깊이 있는 이론과 고급 주제를 본격적으로 다루는 과목입니다.\n\n\n함수해석학\n\n\n\n함수해석학\n\n\n\n\n편미분방정식\n\n\n\n편미분방정식\n\n\n\n\n다양체 해석학\n\n\n\n다양체 해석학\n\n\n\n\nRKHS 이론\n\n\n\nRKHS 이론\n\n\n\n\n미분기하학\n\n\n\n미분기하학"
   },
   {
+    "objectID": "math/latex/text.html",
+    "href": "math/latex/text.html",
+    "title": "text",
+    "section": "",
+    "text": "← 수학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 LaTeX의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "crumbs": [
+      "text"
+    ]
+  },
+  {
     "objectID": "math/linear-algebra/text.html",
     "href": "math/linear-algebra/text.html",
     "title": "text",
     "section": "",
     "text": "← 수학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 선형대수학의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
+    ]
+  },
+  {
+    "objectID": "math/manifold-analysis/text.html",
+    "href": "math/manifold-analysis/text.html",
+    "title": "text",
+    "section": "",
+    "text": "← 수학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 다양체 해석학의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "crumbs": [
+      "text"
     ]
   },
   {
@@ -1089,8 +1693,17 @@
     "section": "",
     "text": "← 수학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 수학적 프로그래밍 (Python)의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
+    ]
+  },
+  {
+    "objectID": "math/mathematical-logic/text.html",
+    "href": "math/mathematical-logic/text.html",
+    "title": "text",
+    "section": "",
+    "text": "← 수학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 수리논리학의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "crumbs": [
+      "text"
     ]
   },
   {
@@ -1100,8 +1713,17 @@
     "section": "",
     "text": "← 수학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 측도론의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
+    ]
+  },
+  {
+    "objectID": "math/number-theory/text.html",
+    "href": "math/number-theory/text.html",
+    "title": "text",
+    "section": "",
+    "text": "← 수학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 정수론의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "crumbs": [
+      "text"
     ]
   },
   {
@@ -1111,8 +1733,17 @@
     "section": "",
     "text": "← 수학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 수치적 방법론의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
+    ]
+  },
+  {
+    "objectID": "math/ode/text.html",
+    "href": "math/ode/text.html",
+    "title": "text",
+    "section": "",
+    "text": "← 수학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 상미분방정식의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "crumbs": [
+      "text"
     ]
   },
   {
@@ -1122,8 +1753,17 @@
     "section": "",
     "text": "← 수학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 수학적 최적화의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
+    ]
+  },
+  {
+    "objectID": "math/pde-advanced/text.html",
+    "href": "math/pde-advanced/text.html",
+    "title": "text",
+    "section": "",
+    "text": "← 수학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 편미분방정식의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "crumbs": [
+      "text"
     ]
   },
   {
@@ -1133,8 +1773,17 @@
     "section": "",
     "text": "← 수학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 기초 편미분방정식의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
+    ]
+  },
+  {
+    "objectID": "math/rkhs/text.html",
+    "href": "math/rkhs/text.html",
+    "title": "text",
+    "section": "",
+    "text": "← 수학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 RKHS 이론의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "crumbs": [
+      "text"
     ]
   },
   {
@@ -1144,8 +1793,17 @@
     "section": "",
     "text": "← 수학 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 공리적 집합론의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
+    ]
+  },
+  {
+    "objectID": "stats/actuarial-math/text.html",
+    "href": "stats/actuarial-math/text.html",
+    "title": "text",
+    "section": "",
+    "text": "← 확률과 통계 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 보험수학의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "crumbs": [
+      "text"
     ]
   },
   {
@@ -1155,8 +1813,17 @@
     "section": "",
     "text": "← 확률과 통계 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 기초 통계학의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
+    ]
+  },
+  {
+    "objectID": "stats/diffusion-models/text.html",
+    "href": "stats/diffusion-models/text.html",
+    "title": "text",
+    "section": "",
+    "text": "← 확률과 통계 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 디퓨전 모델의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "crumbs": [
+      "text"
     ]
   },
   {
@@ -1166,63 +1833,177 @@
     "section": "",
     "text": "← 확률과 통계 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 가우시안 프로세스의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "text"
     ]
   },
   {
-    "objectID": "stats/markov-processes/text.html",
-    "href": "stats/markov-processes/text.html",
-    "title": "text",
+    "objectID": "stats/markov-processes/00intro.html",
+    "href": "stats/markov-processes/00intro.html",
+    "title": "0. 들어가며",
     "section": "",
-    "text": "← 확률과 통계 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 마르코프 프로세스의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "text": "← 확률과 통계 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "0. 들어가며"
     ]
   },
   {
-    "objectID": "stats/measure-prob/text.html",
-    "href": "stats/measure-prob/text.html",
-    "title": "text",
+    "objectID": "stats/math-stats/00intro.html",
+    "href": "stats/math-stats/00intro.html",
+    "title": "0. 들어가며",
     "section": "",
-    "text": "← 확률과 통계 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 측도론적 확률론의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "text": "← 확률과 통계 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "0. 들어가며"
     ]
   },
   {
-    "objectID": "stats/prob-theory/text.html",
-    "href": "stats/prob-theory/text.html",
-    "title": "text",
+    "objectID": "stats/measure-prob/00intro.html",
+    "href": "stats/measure-prob/00intro.html",
+    "title": "0. 들어가며",
     "section": "",
-    "text": "← 확률과 통계 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 기초 확률론의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "text": "← 확률과 통계 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "0. 들어가며"
     ]
   },
   {
-    "objectID": "stats/stats-for-stoch-proc/text.html",
-    "href": "stats/stats-for-stoch-proc/text.html",
-    "title": "text",
+    "objectID": "stats/non-euclidean-stats/00intro.html",
+    "href": "stats/non-euclidean-stats/00intro.html",
+    "title": "0. 들어가며",
     "section": "",
-    "text": "← 확률과 통계 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 확률과정의 통계추론의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "text": "← 확률과 통계 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "0. 들어가며"
     ]
   },
   {
-    "objectID": "stats/stochastic-processes/text.html",
-    "href": "stats/stochastic-processes/text.html",
-    "title": "text",
+    "objectID": "stats/prob-theory/00intro.html",
+    "href": "stats/prob-theory/00intro.html",
+    "title": "0. 들어가며",
     "section": "",
-    "text": "← 확률과 통계 과목 목록으로 | 선수 개념: 기초 개념 | 다음 개념: 심화 개념\n\n\n\n\n\n\n\nNote정의 1.1 (Definition)\n\n\n\n여기에 확률과정론의 핵심 정의를 작성합니다. 임의의 대상 \\(x, y \\in X\\)에 대하여 다음 조건이 성립한다. \\[f(x) = y\\]\n\n\n\n\n\n\n\n\nImportant정리 1.2 (Satz)\n\n\n\n위 정의로부터 유도되는 주요 정리를 서술합니다. \\[\\int_a^b f(x)\\,dx = F(b) - F(a)\\]\n\n\n\n\n\n\n\n\nTip증명 (Beweis)\n\n\n\n\n\n정리에 대한 논리적 증명 과정을 단계별로 서술합니다. \\(\\blacksquare\\)\n\n\n\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 추후 작성 예정",
+    "text": "← 확률과 통계 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
     "crumbs": [
-      "1장. 기본 개념",
-      "1.1 text"
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "stats/stat-programming/00intro.html",
+    "href": "stats/stat-programming/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 확률과 통계 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "stats/stats-for-stoch-proc/00intro.html",
+    "href": "stats/stats-for-stoch-proc/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 확률과 통계 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "stats/stochastic-calculus/00intro.html",
+    "href": "stats/stochastic-calculus/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 확률과 통계 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "stats/stochastic-processes/00intro.html",
+    "href": "stats/stochastic-processes/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 확률과 통계 과목 목록으로\n\n이 과목의 소개 글은 준비 중입니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "stats/stochastic-simulation/00intro.html",
+    "href": "stats/stochastic-simulation/00intro.html",
+    "title": "0. 들어가며",
+    "section": "",
+    "text": "← 확률과 통계 과목 목록으로 | 다음 장: 1장. 기본 개념",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "stats/stochastic-simulation/00intro.html#확률론의-우아함-그리고-그-한계",
+    "href": "stats/stochastic-simulation/00intro.html#확률론의-우아함-그리고-그-한계",
+    "title": "0. 들어가며",
+    "section": "확률론의 우아함, 그리고 그 한계",
+    "text": "확률론의 우아함, 그리고 그 한계\n확률론은 ’우연’이라는, 결과가 미리 정해지지 않은 비결정론적인 현상을 수학적으로 정확하게 다루기 위한 학문입니다. 우리는 확률변수와 분포를 정의하고, 적분을 통해 기대값과 분산을 계산하며, 이런 수치들이 어떤 성질을 가지는지 엄밀하게 증명합니다. 교과서에 나오는 많은 예제들은 이 과정을 거쳐 깔끔한 공식 하나로 끝이 납니다.\n하지만 조금만 현실에 가까운 문제로 넘어가면 사정이 달라집니다. 간단한 예를 하나 들어 보겠습니다.\n\n동전을 100번 던질 때, 앞면이 연속으로 가장 길게 나온 구간의 길이는 평균적으로 얼마일까요?\n\n질문 자체는 초등학생도 이해할 수 있을 만큼 단순합니다. 그런데 이 기대값은 우리가 익숙한 형태의 깔끔한 공식으로 정리되지 않습니다. 점화식을 세워 정확히 계산하는 방법이 있긴 하지만 꽤 번거롭고, 동전이 공정하지 않다거나 뒷면의 연속 구간도 함께 따진다거나 하는 식으로 문제를 조금만 바꿔도 다시 처음부터 계산해야 합니다.\n현실의 문제는 대부분 이보다 훨씬 복잡합니다. 보험사가 1년 동안 지급할 보험금 총액의 분포, 주가가 지나온 경로 전체에 따라 가치가 달라지는 금융상품의 가격, 수십 개의 변수가 얽혀 있는 고차원 적분 같은 문제에서는 우아한 수학적 방법만으로 기대값이나 분산 같은 통계적 수치를 손에 쥐는 것이 사실상 불가능한 경우가 많습니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "stats/stochastic-simulation/00intro.html#그렇다면-직접-던져-보면-됩니다",
+    "href": "stats/stochastic-simulation/00intro.html#그렇다면-직접-던져-보면-됩니다",
+    "title": "0. 들어가며",
+    "section": "그렇다면 직접 던져 보면 됩니다",
+    "text": "그렇다면 직접 던져 보면 됩니다\n이럴 때 쓸 수 있는 아주 소박한 아이디어가 있습니다. 공식으로 구할 수 없다면, 실제로 여러 번 해 보고 평균을 내면 됩니다.\n동전 100번 던지기를 한 번 해 보고 가장 긴 연속 구간의 길이를 기록합니다. 이것을 또 하고, 또 하고, 수만 번 반복한 뒤 기록들의 평균을 냅니다. 확률론의 큰 수의 법칙(Law of Large Numbers)은 서로 독립인 시행을 많이 반복할수록 이렇게 얻은 표본평균이 우리가 원하던 참값, 즉 기대값에 가까워진다는 것을 보장합니다.\n\\[\\bar{X}_n = \\frac{1}{n}\\sum_{i=1}^{n} X_i \\;\\longrightarrow\\; \\mathbb{E}[X] \\qquad (n \\to \\infty)\\]\n물론 동전을 손으로 수백만 번 던질 수는 없습니다. 그래서 우리는 이 일을 컴퓨터에게 맡깁니다. 아래는 위의 실험을 10만 번 반복하는 파이썬 코드입니다.\nimport numpy as np\n\ndef longest_run(flips):\n    best = cur = 0\n    for is_head in flips:\n        cur = cur + 1 if is_head else 0\n        best = max(best, cur)\n    return best\n\nnp.random.seed(2026)\nruns = [longest_run(np.random.rand(100) &lt; 0.5) for _ in range(100_000)]\nprint(np.mean(runs))\n5.995\n번거로운 점화식을 끝까지 풀어 얻은 정확한 값은 약 \\(5.99\\)입니다. 몇 줄짜리 코드로 거의 같은 답에 도달한 셈입니다. 이처럼 컴퓨터로 확률적인 실험을 흉내 내어 원하는 수치를 근사하는 방법을 확률적 시뮬레이션(stochastic simulation)이라고 부르고, 그중에서도 무작위 표본의 평균으로 기대값이나 적분값을 근사하는 방법을 몬테카를로 방법(Monte Carlo method)이라고 부릅니다. 이 이름은 1940년대 미국 로스앨러모스 연구소의 과학자들이 붙인 것으로, 카지노로 유명한 모나코의 도시 몬테카를로에서 따왔습니다.1",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "stats/stochastic-simulation/00intro.html#컴퓨터는-주사위를-던질-수-없습니다",
+    "href": "stats/stochastic-simulation/00intro.html#컴퓨터는-주사위를-던질-수-없습니다",
+    "title": "0. 들어가며",
+    "section": "컴퓨터는 주사위를 던질 수 없습니다",
+    "text": "컴퓨터는 주사위를 던질 수 없습니다\n그런데 위 코드에는 한 가지 수상한 부분이 있습니다. 바로 np.random.rand()입니다.\n이 글을 읽는 분들 대부분은 프로그래밍 언어로 랜덤한 숫자를 만들 수 있다는 것을 이미 알고 계실 겁니다. 하지만 데이터 사이언스 개론 등에서도 언급했듯이, 컴퓨터가 만드는 이 숫자들은 사실 진짜 랜덤한 숫자가 아닙니다. 컴퓨터는 정해진 명령을 정해진 대로 수행하는 결정론적인 기계이기 때문에, 스스로 주사위를 던질 수가 없습니다.\n그래서 컴퓨터는 결정론적인 수학 공식으로 숫자를 하나씩 계산해 냅니다. 이렇게 만들어진 수열은 사람의 눈에는, 그리고 웬만한 통계적 검사에도 마치 무작위인 것처럼 보이도록 정교하게 설계되어 있습니다. 이런 가짜 랜덤 숫자를 유사 난수(pseudo-random number, PRN), 이를 만들어 내는 알고리즘을 유사 난수 생성기(pseudo-random number generator, PRNG)라고 부릅니다.\n유사 난수가 만들어지는 방식은 난수표에 비유하면 이해하기 쉽습니다. 컴퓨터가 널리 쓰이기 전에는 무작위 숫자가 필요하면 미리 만들어 인쇄해 둔 난수표 책을 펼쳐 읽었습니다. 1955년 미국의 랜드(RAND) 연구소가 펴낸 『백만 개의 무작위 숫자』가 대표적인 예입니다.2 이 책을 쓸 때는 먼저 몇 쪽 몇 번째 줄부터 읽을지를 정하고, 거기서부터 순서대로 숫자를 읽어 나가면 됩니다.\n유사 난수 생성기는 이런 책을 통째로 들고 다니는 대신, 책의 다음 숫자를 그때그때 계산해 내는 규칙이라고 생각할 수 있습니다. 생성기는 내부에 현재 위치를 기억하는 일종의 책갈피(이를 상태(state)라고 합니다)를 가지고 있고, 숫자를 하나 내놓을 때마다 정해진 계산 규칙에 따라 이 책갈피를 다음 위치로 옮깁니다. 이 ’책’은 우리가 평생 읽어도 끝에 닿지 못할 만큼 길지만, 그 내용은 처음부터 끝까지 이미 정해져 있습니다.\n그렇다면 맨 처음 책갈피는 어디에 꽂을까요? 이 출발점을 정해 주는 값이 바로 시드(seed)입니다. 난수표 책에서 “37쪽 다섯 번째 줄부터 읽자”라고 정하는 것과 같은 역할입니다. 생성기가 구체적으로 어떤 계산 규칙으로 책갈피를 옮기는지는 다음 글에서 본격적으로 다룹니다.\n파이썬 넘파이(NumPy)의 np.random.seed()나 R의 set.seed()는 바로 이 시드를 사용자가 직접 지정하는 함수입니다.3 시드를 따로 지정하지 않으면 보통 현재 시각이나 운영체제가 제공하는 값처럼 실행할 때마다 달라지는 값이 자동으로 쓰입니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "stats/stochastic-simulation/00intro.html#같은-시드-같은-결과-재현가능성",
+    "href": "stats/stochastic-simulation/00intro.html#같은-시드-같은-결과-재현가능성",
+    "title": "0. 들어가며",
+    "section": "같은 시드, 같은 결과: 재현가능성",
+    "text": "같은 시드, 같은 결과: 재현가능성\n유사 난수는 진짜 난수가 아니므로, 시드가 정해지는 순간 그 뒤에 나올 숫자들도 모두 정해집니다. 즉, 같은 시드를 넣으면 그 뒤에 생성되는 숫자들의 순서는 언제나 완전히 같습니다.\nnp.random.seed(2026); print(np.random.rand(3))\nnp.random.seed(2026); print(np.random.rand(3))   # 같은 시드\nnp.random.seed(2027); print(np.random.rand(3))   # 다른 시드\n[0.21934563 0.41301174 0.97663548]\n[0.21934563 0.41301174 0.97663548]\n[0.80156726 0.90395041 0.78066658]\n언뜻 단점처럼 들리지만, 실무에서는 이것이 오히려 큰 장점입니다. 데이터 사이언스 프로젝트에서는 데이터를 무작위로 나누거나, 모델의 초기값을 무작위로 정하는 등 난수가 곳곳에 쓰입니다. 시드를 고정해 두지 않으면 같은 코드를 돌려도 매번 결과가 조금씩 달라지고, 다른 사람이 내 결과를 그대로 확인할 방법이 없습니다. 그래서 데이터 사이언스에서는 재현가능성(reproducibility), 즉 다른 사람도 내 분석과 모델을 똑같이 재현할 수 있도록 시드를 항상 고정하고 이를 프로젝트에 명시하는 것을 기본 원칙으로 삼습니다.\n이 점은 시뮬레이션에서도 마찬가지로 중요합니다. 물리적인 잡음 같은 현상을 이용하면 ‘진짜’ 난수를 얻을 수도 있지만, 진짜 난수로 돌린 시뮬레이션은 결과가 이상하게 나왔을 때 같은 상황을 다시 만들어 원인을 찾는 것조차 불가능합니다. 결정론적이라는 성질이 시뮬레이션에서는 오히려 쓸모가 있는 셈입니다.",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "stats/stochastic-simulation/00intro.html#그냥-그렇구나로-넘어가지-않기",
+    "href": "stats/stochastic-simulation/00intro.html#그냥-그렇구나로-넘어가지-않기",
+    "title": "0. 들어가며",
+    "section": "“그냥 그렇구나”로 넘어가지 않기",
+    "text": "“그냥 그렇구나”로 넘어가지 않기\n보통 컴퓨터 공학이나 데이터 사이언스 수업에서는 여기까지 이야기하고 넘어갑니다. 컴퓨터가 만드는 난수는 사실 결정론적으로 정해진다는 것, 그리고 시드를 고정하면 재현성을 확보할 수 있다는 것. 대부분 “아, 그렇구나” 정도로 받아들이고 다음 주제로 넘어가게 됩니다.\n그런데 조금만 생각해 보면 이상한 점이 한두 가지가 아닙니다. 앞에서 우리는 큰 수의 법칙을 근거로 시뮬레이션 결과를 믿었습니다. 하지만 큰 수의 법칙은 서로 독립인 확률변수에 대한 정리입니다. 반면 유사 난수는 시드가 정해지는 순간 모든 값이 이미 정해져 있고, 각 값은 바로 앞의 계산 결과로부터 나옵니다. 이런 수열을 독립인 확률변수처럼 다뤄도 정말 괜찮은 걸까요? 게다가 컴퓨터의 메모리는 유한하므로 생성기가 가질 수 있는 상태, 즉 책갈피를 꽂을 수 있는 위치의 수도 유한합니다. 그러니 아무리 긴 ’책’이라도 언젠가는 이미 지나온 위치로 되돌아와 같은 수열을 처음부터 되풀이할 수밖에 없습니다. 이런 숫자로 계산한 평균을 어떻게 믿을 수 있을까요?\n현대 컴퓨터 구조의 기틀을 놓은 수학자 폰 노이만(J. von Neumann)조차 1951년에, 산술적인 방법으로 난수를 만들려는 사람은 누구든 이미 죄를 짓고 있는 것이라는 농담 섞인 경고를 남겼습니다.4 그는 이것이 진짜 난수가 아니라는 사실을 누구보다 잘 알고 있었고, 그럼에도 이 방법을 실용적인 도구로 적극 사용했습니다.\n수학자들은 바로 이런 “그냥 그렇구나”를 그냥 넘기지 못하는 사람들입니다. 남들이 당연하게 쓰는 도구일수록 그것이 왜, 그리고 어디까지 믿을 만한지를 정확히 짚고 넘어가는 데 의미를 둡니다. 예를 들면 다음과 같은 질문들입니다.\n\n시드가 들어가면 어떤 계산을 거쳐 숫자가 나오는가? 좋은 생성기와 나쁜 생성기는 무엇이 다른가?\n결정론적인 수열이 ’랜덤처럼 보인다’는 것은 수학적으로 정확히 무슨 뜻인가? 그리고 그것을 어떻게 검증하는가?\n0과 1 사이의 균등한 난수만으로 정규분포나 지수분포처럼 다른 분포를 따르는 난수는 어떻게 만드는가?\n이렇게 만든 숫자로 계산한 평균이 참값에 가까워진다는 보장은 어디서 오며, 그 오차는 얼마나 되는가? 오차를 더 줄일 방법은 없는가?",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "stats/stochastic-simulation/00intro.html#이-과목에서-다루는-것",
+    "href": "stats/stochastic-simulation/00intro.html#이-과목에서-다루는-것",
+    "title": "0. 들어가며",
+    "section": "이 과목에서 다루는 것",
+    "text": "이 과목에서 다루는 것\n확률적 시뮬레이션 과목에서는 이런 질문들에 하나씩 답해 가는 것을 목표로 합니다. 랜덤한 숫자가 생성되는 구조, 즉 유사 난수 생성기에서 출발하여, 그 숫자들로 원하는 분포를 따르는 표본을 만드는 방법을 거쳐, 최종적으로는 확률적 시뮬레이션과 몬테카를로 방법의 이론을 공부합니다.\n컴퓨터로 확률을 ’계산’하는 법뿐만 아니라, 그 계산을 믿어도 되는 이유까지 함께 살펴보는 것이 이 과목의 핵심입니다.\n\n\n연결되는 개념\n\n\\(\\leftarrow\\) 이전 개념: 과목 전체 목차\n\\(\\rightarrow\\) 다음 개념: 1장. 기본 개념",
+    "crumbs": [
+      "0. 들어가며"
+    ]
+  },
+  {
+    "objectID": "stats/stochastic-simulation/00intro.html#footnotes",
+    "href": "stats/stochastic-simulation/00intro.html#footnotes",
+    "title": "0. 들어가며",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nN. Metropolis & S. Ulam, “The Monte Carlo Method”, Journal of the American Statistical Association 44(247), 1949, pp. 335–341. 이 방법은 로스앨러모스에서 울람(S. Ulam), 폰 노이만(J. von Neumann), 메트로폴리스(N. Metropolis) 등이 핵무기 개발 과정의 중성자 확산 계산을 위해 발전시켰습니다.↩︎\nRAND Corporation, A Million Random Digits with 100,000 Normal Deviates, Free Press, 1955. 전자 장치로 만든 무작위 신호를 바탕으로 숫자를 생성한 뒤 책으로 인쇄한 것입니다.↩︎\n최신 넘파이에서는 np.random.seed() 대신 rng = np.random.default_rng(seed)처럼 생성기 객체를 따로 만들어 쓰는 방식을 권장합니다. np.random.seed()는 하위 호환을 위해 남아 있는 예전 방식입니다. 참고로 R과 파이썬의 기본 생성기로 쓰여 온 메르센 트위스터(Mersenne Twister)는 주기가 \\(2^{19937}-1\\)에 달합니다. (M. Matsumoto & T. Nishimura, “Mersenne Twister”, ACM Transactions on Modeling and Computer Simulation 8(1), 1998, pp. 3–30.)↩︎\nJ. von Neumann, “Various Techniques Used in Connection with Random Digits”, National Bureau of Standards Applied Mathematics Series 12, 1951, pp. 36–38.↩︎",
+    "crumbs": [
+      "0. 들어가며"
     ]
   }
 ]
