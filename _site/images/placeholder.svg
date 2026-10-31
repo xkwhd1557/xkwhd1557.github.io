@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="340" viewBox="0 0 600 340">
-  <rect width="600" height="340" fill="#f0f4f8" rx="12"/>
-  <path d="M 60 260 Q 180 100 300 220 T 540 120" fill="none" stroke="#2b7a78" stroke-width="4" stroke-dasharray="8,8"/>
-  <circle cx="180" cy="160" r="6" fill="#17252a"/>
-  <circle cx="300" cy="220" r="6" fill="#17252a"/>
-  <circle cx="420" cy="170" r="6" fill="#17252a"/>
-  <text x="300" y="295" font-family="sans-serif" font-size="18" fill="#556677" text-anchor="middle">Course Archive</text>
-</svg>
