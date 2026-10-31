@@ -1,0 +1,33 @@
+---
+title: "text"
+subtitle: "기업재무론 · 1.1절 기본 양식"
+date: "2026-10-31"
+categories: ["경영/경제", "기업재무론"]
+---
+
+::: {.concept-meta}
+[← 경영/경제 과목 목록으로](../index.qmd) | **선수 개념:** [기초 개념](#) | **다음 개념:** [심화 개념](#)
+:::
+
+::: {.callout-note icon=false .callout-definition}
+### 정의 1.1 (Definition)
+여기에 **기업재무론**의 핵심 정의를 작성합니다. 임의의 대상 $x, y \in X$에 대하여 다음 조건이 성립한다.
+$$f(x) = y$$
+:::
+
+::: {.callout-important icon=false .callout-satz}
+### 정리 1.2 (Satz)
+위 정의로부터 유도되는 주요 정리를 서술합니다.
+$$\int_a^b f(x)\,dx = F(b) - F(a)$$
+:::
+
+::: {.callout-tip collapse="false" icon=false .callout-beweis}
+### 증명 (Beweis)
+정리에 대한 논리적 증명 과정을 단계별로 서술합니다. $\blacksquare$
+:::
+
+---
+
+### 연결되는 개념
+* $\leftarrow$ **이전 개념:** [과목 전체 목차](../index.qmd)
+* $\rightarrow$ **다음 개념:** 추후 작성 예정

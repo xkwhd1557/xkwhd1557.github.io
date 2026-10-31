@@ -1,0 +1,83 @@
+---
+title: "확률과 통계 (Probability & Statistics)"
+subtitle: "기초에서 출발해 핵심을 거쳐 심화로 나아갑니다. 과목을 선택하면 첫 번째 노트로 이동합니다."
+page-layout: full
+sidebar: false
+---
+
+## 기초 (Foundations)
+
+사전 지식 없이 시작할 수 있는 전공 기초 과목입니다.
+
+::: {.subject-grid}
+::: {.subject-card}
+### [기초 확률론](prob-theory/text.qmd)
+[![기초 확률론](../images/placeholder.svg)](prob-theory/text.qmd)
+:::
+::: {.subject-card}
+### [기초 통계학](basic-stats/text.qmd)
+[![기초 통계학](../images/placeholder.svg)](basic-stats/text.qmd)
+:::
+::: {.subject-card}
+### [통계적 프로그래밍](stat-programming/text.qmd)
+[![통계적 프로그래밍](../images/placeholder.svg)](stat-programming/text.qmd)
+:::
+:::
+
+## 핵심 (Core)
+
+기초를 바탕으로 각 분야의 본격적인 주제에 첫발을 내딛는 과목입니다.
+
+::: {.subject-grid}
+::: {.subject-card}
+### [측도론적 확률론](measure-prob/text.qmd)
+[![측도론적 확률론](../images/placeholder.svg)](measure-prob/text.qmd)
+:::
+::: {.subject-card}
+### [확률과정론](stochastic-processes/text.qmd)
+[![확률과정론](../images/placeholder.svg)](stochastic-processes/text.qmd)
+:::
+::: {.subject-card}
+### [수리통계학](math-stats/text.qmd)
+[![수리통계학](../images/placeholder.svg)](math-stats/text.qmd)
+:::
+::: {.subject-card}
+### [확률적 시뮬레이션](stochastic-simulation/text.qmd)
+[![확률적 시뮬레이션](../images/placeholder.svg)](stochastic-simulation/text.qmd)
+:::
+::: {.subject-card}
+### [보험수학](actuarial-math/text.qmd)
+[![보험수학](../images/placeholder.svg)](actuarial-math/text.qmd)
+:::
+:::
+
+## 심화 (Advanced)
+
+핵심 과목 이후, 깊이 있는 이론과 고급 주제를 본격적으로 다루는 과목입니다.
+
+::: {.subject-grid}
+::: {.subject-card}
+### [확률해석학](stochastic-calculus/text.qmd)
+[![확률해석학](../images/placeholder.svg)](stochastic-calculus/text.qmd)
+:::
+::: {.subject-card}
+### [마르코프 프로세스](markov-processes/text.qmd)
+[![마르코프 프로세스](../images/placeholder.svg)](markov-processes/text.qmd)
+:::
+::: {.subject-card}
+### [디퓨전 모델](diffusion-models/text.qmd)
+[![디퓨전 모델](../images/placeholder.svg)](diffusion-models/text.qmd)
+:::
+::: {.subject-card}
+### [가우시안 프로세스](gaussian-processes/text.qmd)
+[![가우시안 프로세스](../images/placeholder.svg)](gaussian-processes/text.qmd)
+:::
+::: {.subject-card}
+### [비유클리드 통계학](non-euclidean-stats/text.qmd)
+[![비유클리드 통계학](../images/placeholder.svg)](non-euclidean-stats/text.qmd)
+:::
+::: {.subject-card}
+### [확률과정의 통계추론](stats-for-stoch-proc/text.qmd)
+[![확률과정의 통계추론](../images/placeholder.svg)](stats-for-stoch-proc/text.qmd)
+:::
+:::

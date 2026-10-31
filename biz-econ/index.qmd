@@ -1,0 +1,99 @@
+---
+title: "경영/경제 (Business & Economics)"
+subtitle: "기초에서 출발해 핵심을 거쳐 심화로 나아갑니다. 과목을 선택하면 첫 번째 노트로 이동합니다."
+page-layout: full
+sidebar: false
+---
+
+## 기초 (Foundations)
+
+사전 지식 없이 시작할 수 있는 전공 기초 과목입니다.
+
+::: {.subject-grid}
+::: {.subject-card}
+### [경영학 원론](biz-intro/text.qmd)
+[![경영학 원론](../images/placeholder.svg)](biz-intro/text.qmd)
+:::
+::: {.subject-card}
+### [경제학 원론](econ-intro/text.qmd)
+[![경제학 원론](../images/placeholder.svg)](econ-intro/text.qmd)
+:::
+:::
+
+## 핵심 (Core)
+
+기초를 바탕으로 각 분야의 본격적인 주제에 첫발을 내딛는 과목입니다.
+
+::: {.subject-grid}
+::: {.subject-card}
+### [회계학](accounting/text.qmd)
+[![회계학](../images/placeholder.svg)](accounting/text.qmd)
+:::
+::: {.subject-card}
+### [생산물류관리](production-logistics/text.qmd)
+[![생산물류관리](../images/placeholder.svg)](production-logistics/text.qmd)
+:::
+::: {.subject-card}
+### [의사결정론](decision-theory/text.qmd)
+[![의사결정론](../images/placeholder.svg)](decision-theory/text.qmd)
+:::
+::: {.subject-card}
+### [미시경제학](microeconomics/text.qmd)
+[![미시경제학](../images/placeholder.svg)](microeconomics/text.qmd)
+:::
+::: {.subject-card}
+### [거시경제학](macroeconomics/text.qmd)
+[![거시경제학](../images/placeholder.svg)](macroeconomics/text.qmd)
+:::
+::: {.subject-card}
+### [재무와 투자론](finance-investment/text.qmd)
+[![재무와 투자론](../images/placeholder.svg)](finance-investment/text.qmd)
+:::
+::: {.subject-card}
+### [화폐금융론](monetary-economics/text.qmd)
+[![화폐금융론](../images/placeholder.svg)](monetary-economics/text.qmd)
+:::
+::: {.subject-card}
+### [노동경제학](labor-economics/text.qmd)
+[![노동경제학](../images/placeholder.svg)](labor-economics/text.qmd)
+:::
+::: {.subject-card}
+### [게임이론 개론](game-theory/text.qmd)
+[![게임이론 개론](../images/placeholder.svg)](game-theory/text.qmd)
+:::
+::: {.subject-card}
+### [공급망 관리 (SCM)](supply-chain/text.qmd)
+[![공급망 관리 (SCM)](../images/placeholder.svg)](supply-chain/text.qmd)
+:::
+::: {.subject-card}
+### [시장조사론의 기초](market-research/text.qmd)
+[![시장조사론의 기초](../images/placeholder.svg)](market-research/text.qmd)
+:::
+:::
+
+## 심화 (Advanced)
+
+핵심 과목 이후, 깊이 있는 이론과 고급 주제를 본격적으로 다루는 과목입니다.
+
+::: {.subject-grid}
+::: {.subject-card}
+### [시계열 분석](time-series/text.qmd)
+[![시계열 분석](../images/placeholder.svg)](time-series/text.qmd)
+:::
+::: {.subject-card}
+### [계량경제학](econometrics/text.qmd)
+[![계량경제학](../images/placeholder.svg)](econometrics/text.qmd)
+:::
+::: {.subject-card}
+### [보험경제학](insurance-economics/text.qmd)
+[![보험경제학](../images/placeholder.svg)](insurance-economics/text.qmd)
+:::
+::: {.subject-card}
+### [계량 리스크 관리](quantitative-risk/text.qmd)
+[![계량 리스크 관리](../images/placeholder.svg)](quantitative-risk/text.qmd)
+:::
+::: {.subject-card}
+### [기업재무론](corporate-finance/text.qmd)
+[![기업재무론](../images/placeholder.svg)](corporate-finance/text.qmd)
+:::
+:::

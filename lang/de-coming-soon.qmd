@@ -1,0 +1,12 @@
+---
+title: "In Vorbereitung"
+page-layout: full
+sidebar: false
+---
+
+::: {.callout-note icon=false}
+## Hinweis
+Die deutsche Version dieses Archivs befindet sich derzeit im Aufbau. Bitte besuchen Sie die Seite zu einem späteren Zeitpunkt erneut.
+
+[Zurück zur koreanischen Hauptseite](../index.qmd)
+:::

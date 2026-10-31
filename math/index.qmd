@@ -1,0 +1,119 @@
+---
+title: "수학 (Mathematics)"
+subtitle: "기초에서 출발해 핵심을 거쳐 심화로 나아갑니다. 과목을 선택하면 첫 번째 노트로 이동합니다."
+page-layout: full
+sidebar: false
+---
+
+## 기초 (Foundations)
+
+사전 지식 없이 시작할 수 있는 전공 기초 과목입니다.
+
+::: {.subject-grid}
+::: {.subject-card}
+### [해석학](analysis/text.qmd)
+[![해석학](../images/placeholder.svg)](analysis/text.qmd)
+:::
+::: {.subject-card}
+### [선형대수학](linear-algebra/text.qmd)
+[![선형대수학](../images/placeholder.svg)](linear-algebra/text.qmd)
+:::
+::: {.subject-card}
+### [이산수학](discrete-math/text.qmd)
+[![이산수학](../images/placeholder.svg)](discrete-math/text.qmd)
+:::
+::: {.subject-card}
+### [수학적 프로그래밍 (Python)](math-programming/text.qmd)
+[![수학적 프로그래밍 (Python)](../images/placeholder.svg)](math-programming/text.qmd)
+:::
+::: {.subject-card}
+### [LaTeX](latex/text.qmd)
+[![LaTeX](../images/placeholder.svg)](latex/text.qmd)
+:::
+:::
+
+## 핵심 수학 (Core)
+
+기초를 바탕으로 각 분야의 본격적인 주제에 첫발을 내딛는 과목입니다.
+
+::: {.subject-grid}
+::: {.subject-card}
+### [복소해석학](complex-analysis/text.qmd)
+[![복소해석학](../images/placeholder.svg)](complex-analysis/text.qmd)
+:::
+::: {.subject-card}
+### [상미분방정식](ode/text.qmd)
+[![상미분방정식](../images/placeholder.svg)](ode/text.qmd)
+:::
+::: {.subject-card}
+### [동적 시스템](dynamical-systems/text.qmd)
+[![동적 시스템](../images/placeholder.svg)](dynamical-systems/text.qmd)
+:::
+::: {.subject-card}
+### [측도론](measure-theory/text.qmd)
+[![측도론](../images/placeholder.svg)](measure-theory/text.qmd)
+:::
+::: {.subject-card}
+### [기초 편미분방정식](pde-intro/text.qmd)
+[![기초 편미분방정식](../images/placeholder.svg)](pde-intro/text.qmd)
+:::
+::: {.subject-card}
+### [일반위상수학](general-topology/text.qmd)
+[![일반위상수학](../images/placeholder.svg)](general-topology/text.qmd)
+:::
+::: {.subject-card}
+### [대수학](algebra/text.qmd)
+[![대수학](../images/placeholder.svg)](algebra/text.qmd)
+:::
+::: {.subject-card}
+### [정수론](number-theory/text.qmd)
+[![정수론](../images/placeholder.svg)](number-theory/text.qmd)
+:::
+::: {.subject-card}
+### [기하학](geometry/text.qmd)
+[![기하학](../images/placeholder.svg)](geometry/text.qmd)
+:::
+::: {.subject-card}
+### [수리논리학](mathematical-logic/text.qmd)
+[![수리논리학](../images/placeholder.svg)](mathematical-logic/text.qmd)
+:::
+::: {.subject-card}
+### [공리적 집합론](set-theory/text.qmd)
+[![공리적 집합론](../images/placeholder.svg)](set-theory/text.qmd)
+:::
+::: {.subject-card}
+### [수치적 방법론](numerical-methods/text.qmd)
+[![수치적 방법론](../images/placeholder.svg)](numerical-methods/text.qmd)
+:::
+::: {.subject-card}
+### [수학적 최적화](optimization/text.qmd)
+[![수학적 최적화](../images/placeholder.svg)](optimization/text.qmd)
+:::
+:::
+
+## 심화 (Advanced)
+
+핵심 과목 이후, 깊이 있는 이론과 고급 주제를 본격적으로 다루는 과목입니다.
+
+::: {.subject-grid}
+::: {.subject-card}
+### [함수해석학](functional-analysis/text.qmd)
+[![함수해석학](../images/placeholder.svg)](functional-analysis/text.qmd)
+:::
+::: {.subject-card}
+### [편미분방정식](pde-advanced/text.qmd)
+[![편미분방정식](../images/placeholder.svg)](pde-advanced/text.qmd)
+:::
+::: {.subject-card}
+### [다양체 해석학](manifold-analysis/text.qmd)
+[![다양체 해석학](../images/placeholder.svg)](manifold-analysis/text.qmd)
+:::
+::: {.subject-card}
+### [RKHS 이론](rkhs/text.qmd)
+[![RKHS 이론](../images/placeholder.svg)](rkhs/text.qmd)
+:::
+::: {.subject-card}
+### [미분기하학](differential-geometry/text.qmd)
+[![미분기하학](../images/placeholder.svg)](differential-geometry/text.qmd)
+:::
+:::

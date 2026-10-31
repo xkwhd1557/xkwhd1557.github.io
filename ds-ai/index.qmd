@@ -1,0 +1,67 @@
+---
+title: "데이터 사이언스·AI (Data Science & AI)"
+subtitle: "기초에서 출발해 핵심을 거쳐 심화로 나아갑니다. 과목을 선택하면 첫 번째 노트로 이동합니다."
+page-layout: full
+sidebar: false
+---
+
+## 기초 (Foundations)
+
+사전 지식 없이 시작할 수 있는 전공 기초 과목입니다.
+
+::: {.subject-grid}
+::: {.subject-card}
+### [데이터 사이언스 개론](ds-intro/text.qmd)
+[![데이터 사이언스 개론](../images/placeholder.svg)](ds-intro/text.qmd)
+:::
+::: {.subject-card}
+### [데이터 사이언스와 사회](ds-society/text.qmd)
+[![데이터 사이언스와 사회](../images/placeholder.svg)](ds-society/text.qmd)
+:::
+::: {.subject-card}
+### [고등학교 인공지능 수학](ai-math-intro/text.qmd)
+[![고등학교 인공지능 수학](../images/placeholder.svg)](ai-math-intro/text.qmd)
+:::
+:::
+
+## 핵심 (Core)
+
+기초를 바탕으로 각 분야의 본격적인 주제에 첫발을 내딛는 과목입니다.
+
+::: {.subject-grid}
+::: {.subject-card}
+### [수치적 방법론과 최적화](numerical-optimization/text.qmd)
+[![수치적 방법론과 최적화](../images/placeholder.svg)](numerical-optimization/text.qmd)
+:::
+::: {.subject-card}
+### [머신러닝](machine-learning/text.qmd)
+[![머신러닝](../images/placeholder.svg)](machine-learning/text.qmd)
+:::
+::: {.subject-card}
+### [딥러닝과 컴퓨터 비전](deep-learning-cv/text.qmd)
+[![딥러닝과 컴퓨터 비전](../images/placeholder.svg)](deep-learning-cv/text.qmd)
+:::
+::: {.subject-card}
+### [인공지능 원론](ai-intro/text.qmd)
+[![인공지능 원론](../images/placeholder.svg)](ai-intro/text.qmd)
+:::
+:::
+
+## 심화 (Advanced)
+
+핵심 과목 이후, 깊이 있는 이론과 고급 주제를 본격적으로 다루는 과목입니다.
+
+::: {.subject-grid}
+::: {.subject-card}
+### [데이터 사이언스의 통계적 기초](statistical-foundations/text.qmd)
+[![데이터 사이언스의 통계적 기초](../images/placeholder.svg)](statistical-foundations/text.qmd)
+:::
+::: {.subject-card}
+### [머신러닝의 수리적 기초](mathematical-foundations/text.qmd)
+[![머신러닝의 수리적 기초](../images/placeholder.svg)](mathematical-foundations/text.qmd)
+:::
+::: {.subject-card}
+### [데이터 사이언스를 위한 선형대수학](advanced-linear-algebra/text.qmd)
+[![데이터 사이언스를 위한 선형대수학](../images/placeholder.svg)](advanced-linear-algebra/text.qmd)
+:::
+:::

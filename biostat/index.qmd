@@ -1,0 +1,55 @@
+---
+title: "의학통계·바이오메트리 (Biostatistics & Biometry)"
+subtitle: "기초에서 출발해 핵심을 거쳐 심화로 나아갑니다. 과목을 선택하면 첫 번째 노트로 이동합니다."
+page-layout: full
+sidebar: false
+---
+
+## 기초 (Foundations)
+
+사전 지식 없이 시작할 수 있는 전공 기초 과목입니다.
+
+::: {.subject-grid}
+::: {.subject-card}
+### [의학통계학 개론](biostat-intro/text.qmd)
+[![의학통계학 개론](../images/placeholder.svg)](biostat-intro/text.qmd)
+:::
+::: {.subject-card}
+### [역학 연구방법론](epidemiology/text.qmd)
+[![역학 연구방법론](../images/placeholder.svg)](epidemiology/text.qmd)
+:::
+:::
+
+## 핵심 (Core)
+
+기초를 바탕으로 각 분야의 본격적인 주제에 첫발을 내딛는 과목입니다.
+
+::: {.subject-grid}
+::: {.subject-card}
+### [임상시험 통계방법론](clinical-trials/text.qmd)
+[![임상시험 통계방법론](../images/placeholder.svg)](clinical-trials/text.qmd)
+:::
+::: {.subject-card}
+### [생존분석](survival-analysis/text.qmd)
+[![생존분석](../images/placeholder.svg)](survival-analysis/text.qmd)
+:::
+::: {.subject-card}
+### [생물정보통계학](bioinformatics/text.qmd)
+[![생물정보통계학](../images/placeholder.svg)](bioinformatics/text.qmd)
+:::
+:::
+
+## 심화 (Advanced)
+
+핵심 과목 이후, 깊이 있는 이론과 고급 주제를 본격적으로 다루는 과목입니다.
+
+::: {.subject-grid}
+::: {.subject-card}
+### [인과추론](causal-inference/text.qmd)
+[![인과추론](../images/placeholder.svg)](causal-inference/text.qmd)
+:::
+::: {.subject-card}
+### [종단적 데이터 분석](longitudinal-data/text.qmd)
+[![종단적 데이터 분석](../images/placeholder.svg)](longitudinal-data/text.qmd)
+:::
+:::

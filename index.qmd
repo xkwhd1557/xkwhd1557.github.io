@@ -1,11 +1,152 @@
 ---
-title: "전체 게시글"
-listing:
-  contents: posts
-  sort: "date desc"
-  type: default
-  categories: true
-  sort-ui: true
-  filter-ui: true
+title: "Study Archive"
+subtitle: "수학 · 통계 · 데이터 사이언스 공부 기록"
 page-layout: full
+sidebar: false
+toc: false
+listing:
+  - id: featured-articles
+    contents: "articles/*.qmd"
+    include:
+      featured: true
+    sort: "date desc"
+    max-items: 3
+    type: grid
+    grid-columns: 3
+    fields: [title, subtitle]
 ---
+
+## 추천 아티클
+
+::: {#featured-articles}
+:::
+
+::: {.home-more}
+[일반 아티클 전체 보기 →](articles/index.qmd)
+:::
+
+## 기초부터 시작하기
+
+각 분야의 기초 과목입니다. 과목을 선택하면 첫 번째 개념 노트로 이동합니다.
+
+### 수학 (Mathematics) {.home-category}
+
+::: {.subject-grid}
+::: {.subject-card}
+#### [해석학](math/analysis/text.qmd)
+[![해석학](images/placeholder.svg)](math/analysis/text.qmd)
+:::
+::: {.subject-card}
+#### [선형대수학](math/linear-algebra/text.qmd)
+[![선형대수학](images/placeholder.svg)](math/linear-algebra/text.qmd)
+:::
+::: {.subject-card}
+#### [이산수학](math/discrete-math/text.qmd)
+[![이산수학](images/placeholder.svg)](math/discrete-math/text.qmd)
+:::
+::: {.subject-card}
+#### [수학적 프로그래밍 (Python)](math/math-programming/text.qmd)
+[![수학적 프로그래밍 (Python)](images/placeholder.svg)](math/math-programming/text.qmd)
+:::
+::: {.subject-card}
+#### [LaTeX](math/latex/text.qmd)
+[![LaTeX](images/placeholder.svg)](math/latex/text.qmd)
+:::
+:::
+
+::: {.home-more}
+[수학 전체 과목 보기 →](math/index.qmd)
+:::
+
+### 확률과 통계 (Probability & Statistics) {.home-category}
+
+::: {.subject-grid}
+::: {.subject-card}
+#### [기초 확률론](stats/prob-theory/text.qmd)
+[![기초 확률론](images/placeholder.svg)](stats/prob-theory/text.qmd)
+:::
+::: {.subject-card}
+#### [기초 통계학](stats/basic-stats/text.qmd)
+[![기초 통계학](images/placeholder.svg)](stats/basic-stats/text.qmd)
+:::
+::: {.subject-card}
+#### [통계적 프로그래밍](stats/stat-programming/text.qmd)
+[![통계적 프로그래밍](images/placeholder.svg)](stats/stat-programming/text.qmd)
+:::
+:::
+
+::: {.home-more}
+[확률과 통계 전체 과목 보기 →](stats/index.qmd)
+:::
+
+### 컴퓨터 공학 (Computer Science) {.home-category}
+
+::: {.subject-grid}
+::: {.subject-card}
+#### [컴퓨터 과학 원론](cs/cs-intro/text.qmd)
+[![컴퓨터 과학 원론](images/placeholder.svg)](cs/cs-intro/text.qmd)
+:::
+::: {.subject-card}
+#### [C언어](cs/c-programming/text.qmd)
+[![C언어](images/placeholder.svg)](cs/c-programming/text.qmd)
+:::
+:::
+
+::: {.home-more}
+[컴퓨터 공학 전체 과목 보기 →](cs/index.qmd)
+:::
+
+### 데이터 사이언스·AI (Data Science & AI) {.home-category}
+
+::: {.subject-grid}
+::: {.subject-card}
+#### [데이터 사이언스 개론](ds-ai/ds-intro/text.qmd)
+[![데이터 사이언스 개론](images/placeholder.svg)](ds-ai/ds-intro/text.qmd)
+:::
+::: {.subject-card}
+#### [데이터 사이언스와 사회](ds-ai/ds-society/text.qmd)
+[![데이터 사이언스와 사회](images/placeholder.svg)](ds-ai/ds-society/text.qmd)
+:::
+::: {.subject-card}
+#### [고등학교 인공지능 수학](ds-ai/ai-math-intro/text.qmd)
+[![고등학교 인공지능 수학](images/placeholder.svg)](ds-ai/ai-math-intro/text.qmd)
+:::
+:::
+
+::: {.home-more}
+[데이터 사이언스·AI 전체 과목 보기 →](ds-ai/index.qmd)
+:::
+
+### 경영/경제 (Business & Economics) {.home-category}
+
+::: {.subject-grid}
+::: {.subject-card}
+#### [경영학 원론](biz-econ/biz-intro/text.qmd)
+[![경영학 원론](images/placeholder.svg)](biz-econ/biz-intro/text.qmd)
+:::
+::: {.subject-card}
+#### [경제학 원론](biz-econ/econ-intro/text.qmd)
+[![경제학 원론](images/placeholder.svg)](biz-econ/econ-intro/text.qmd)
+:::
+:::
+
+::: {.home-more}
+[경영/경제 전체 과목 보기 →](biz-econ/index.qmd)
+:::
+
+### 의학통계·바이오메트리 (Biostatistics & Biometry) {.home-category}
+
+::: {.subject-grid}
+::: {.subject-card}
+#### [의학통계학 개론](biostat/biostat-intro/text.qmd)
+[![의학통계학 개론](images/placeholder.svg)](biostat/biostat-intro/text.qmd)
+:::
+::: {.subject-card}
+#### [역학 연구방법론](biostat/epidemiology/text.qmd)
+[![역학 연구방법론](images/placeholder.svg)](biostat/epidemiology/text.qmd)
+:::
+:::
+
+::: {.home-more}
+[의학통계·바이오메트리 전체 과목 보기 →](biostat/index.qmd)
+:::

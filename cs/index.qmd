@@ -1,0 +1,55 @@
+---
+title: "컴퓨터 공학 (Computer Science)"
+subtitle: "기초에서 출발해 핵심을 거쳐 심화로 나아갑니다. 과목을 선택하면 첫 번째 노트로 이동합니다."
+page-layout: full
+sidebar: false
+---
+
+## 기초 (Foundations)
+
+사전 지식 없이 시작할 수 있는 전공 기초 과목입니다.
+
+::: {.subject-grid}
+::: {.subject-card}
+### [컴퓨터 과학 원론](cs-intro/text.qmd)
+[![컴퓨터 과학 원론](../images/placeholder.svg)](cs-intro/text.qmd)
+:::
+::: {.subject-card}
+### [C언어](c-programming/text.qmd)
+[![C언어](../images/placeholder.svg)](c-programming/text.qmd)
+:::
+:::
+
+## 핵심 (Core)
+
+기초를 바탕으로 각 분야의 본격적인 주제에 첫발을 내딛는 과목입니다.
+
+::: {.subject-grid}
+::: {.subject-card}
+### [알고리즘과 자료구조](algorithms-data-structures/text.qmd)
+[![알고리즘과 자료구조](../images/placeholder.svg)](algorithms-data-structures/text.qmd)
+:::
+::: {.subject-card}
+### [이론 컴퓨터과학](theoretical-cs/text.qmd)
+[![이론 컴퓨터과학](../images/placeholder.svg)](theoretical-cs/text.qmd)
+:::
+::: {.subject-card}
+### [데이터베이스 시스템](database-systems/text.qmd)
+[![데이터베이스 시스템](../images/placeholder.svg)](database-systems/text.qmd)
+:::
+::: {.subject-card}
+### [형식 시스템](formal-systems/text.qmd)
+[![형식 시스템](../images/placeholder.svg)](formal-systems/text.qmd)
+:::
+:::
+
+## 심화 (Advanced)
+
+핵심 과목 이후, 깊이 있는 이론과 고급 주제를 본격적으로 다루는 과목입니다.
+
+::: {.subject-grid}
+::: {.subject-card}
+### [심화 과정 (준비 중)](advanced/text.qmd)
+[![심화 과정 (준비 중)](../images/placeholder.svg)](advanced/text.qmd)
+:::
+:::

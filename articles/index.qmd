@@ -1,0 +1,162 @@
+---
+title: "일반 아티클 (Articles)"
+subtitle: "수학, 통계, 데이터 사이언스에 관한 에세이와 단상"
+page-layout: full
+sidebar: false
+toc: false
+listing:
+  - id: featured-carousel
+    contents: "*.qmd"
+    include:
+      featured: true
+    sort: "date desc"
+    type: grid
+    fields: [title, subtitle]
+    page-size: 200
+  - id: recent-articles
+    contents: "*.qmd"
+    sort: "date desc"
+    type: default
+    fields: [title, subtitle]
+    page-size: 20
+---
+
+## 추천 아티클
+
+::: {#featured-carousel}
+:::
+
+## 최신 아티클
+
+::: {#recent-articles}
+:::
+
+```{=html}
+<style>
+/* 추천 아티클: 가로 슬라이드 (한 화면에 3개) */
+#listing-featured-carousel { position: relative; margin-bottom: 1.5rem; }
+#listing-featured-carousel > .list.grid {
+  display: flex; flex-wrap: nowrap; gap: 1rem;
+  overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+  padding: 6px 2px 8px; scrollbar-width: none;
+}
+#listing-featured-carousel > .list.grid::-webkit-scrollbar { display: none; }
+#listing-featured-carousel > .list.grid > div {
+  flex: 0 0 calc((100% - 2rem) / 3); min-width: 0; scroll-snap-align: start;
+}
+@media (max-width: 767.98px) {
+  #listing-featured-carousel > .list.grid > div { flex-basis: 85%; }
+}
+#listing-featured-carousel .quarto-grid-item {
+  border: 1px solid #e2e8f0; border-radius: 10px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+#listing-featured-carousel .quarto-grid-item:hover {
+  transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+#listing-featured-carousel .card-body { padding: 1.1rem 1.25rem; }
+#listing-featured-carousel .card-title {
+  font-size: 1.15rem; font-weight: 600; color: #17252a; margin-bottom: 0.4rem;
+}
+#listing-featured-carousel .card-subtitle { font-size: 0.95rem; color: #555; }
+#listing-featured-carousel .card-text { display: none; }
+
+#listing-featured-carousel .carousel-btn {
+  position: absolute; top: calc(50% - 0.75rem); transform: translateY(-50%); z-index: 2;
+  width: 2.25rem; height: 2.25rem; border-radius: 50%;
+  border: 1px solid #e2e8f0; background: #fff; color: #17252a;
+  font-size: 1.1rem; line-height: 1; cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+#listing-featured-carousel .carousel-btn:hover { color: #2b7a78; }
+#listing-featured-carousel .carousel-btn.prev { left: -0.9rem; }
+#listing-featured-carousel .carousel-btn.next { right: -0.9rem; }
+#listing-featured-carousel .carousel-btn[hidden] { display: none; }
+#listing-featured-carousel .carousel-dots {
+  display: flex; justify-content: center; gap: 0.4rem; margin-top: 0.4rem;
+}
+#listing-featured-carousel .carousel-dots button {
+  width: 0.5rem; height: 0.5rem; padding: 0; border: 0;
+  border-radius: 50%; background: #cbd5e1; cursor: pointer;
+}
+#listing-featured-carousel .carousel-dots button.active {
+  background: #2b7a78; width: 1.25rem; border-radius: 999px;
+}
+
+/* 최신 아티클: 제목 + 부제만 (날짜/썸네일/설명 칸 제거) */
+#listing-recent-articles .quarto-post {
+  display: block; padding: 0.9rem 0.25rem; margin-bottom: 0;
+  border-bottom: 1px solid #e9ecef;
+}
+#listing-recent-articles .quarto-post .body { padding: 0; }
+#listing-recent-articles .quarto-post .body .listing-title {
+  font-size: 1.2rem; font-weight: 600; margin: 0 0 0.25rem;
+}
+#listing-recent-articles .listing-title a {
+  font-weight: 600; color: #17252a; text-decoration: none;
+}
+#listing-recent-articles .listing-title a:hover { color: #2b7a78; }
+#listing-recent-articles .listing-subtitle,
+#listing-recent-articles .listing-subtitle a {
+  font-size: 0.95rem; color: #555; text-decoration: none;
+}
+#listing-recent-articles .listing-description { display: none; }
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const box = document.getElementById("listing-featured-carousel");
+  if (!box || box.dataset.carousel) return;
+  box.dataset.carousel = "1";
+  const track = box.querySelector(":scope > .list");
+  if (!track) return;
+
+  const prev = document.createElement("button");
+  prev.type = "button"; prev.className = "carousel-btn prev";
+  prev.setAttribute("aria-label", "이전"); prev.textContent = "‹";
+  const next = document.createElement("button");
+  next.type = "button"; next.className = "carousel-btn next";
+  next.setAttribute("aria-label", "다음"); next.textContent = "›";
+  const dots = document.createElement("div");
+  dots.className = "carousel-dots";
+  box.appendChild(prev); box.appendChild(next); box.appendChild(dots);
+
+  function pageCount() {
+    return Math.max(1, Math.ceil((track.scrollWidth - 4) / track.clientWidth));
+  }
+  function currentPage() {
+    const maxScroll = track.scrollWidth - track.clientWidth;
+    if (maxScroll <= 0) return 0;
+    if (track.scrollLeft >= maxScroll - 4) return pageCount() - 1;
+    return Math.round(track.scrollLeft / track.clientWidth);
+  }
+  function update() {
+    const pages = pageCount();
+    const maxScroll = track.scrollWidth - track.clientWidth;
+    prev.hidden = track.scrollLeft <= 4;
+    next.hidden = track.scrollLeft >= maxScroll - 4;
+    if (dots.children.length !== (pages > 1 ? pages : 0)) {
+      dots.innerHTML = "";
+      if (pages > 1) {
+        for (let i = 0; i < pages; i++) {
+          const d = document.createElement("button");
+          d.type = "button";
+          d.setAttribute("aria-label", (i + 1) + "번째 페이지");
+          d.addEventListener("click", function() { track.scrollTo({ left: i * track.clientWidth }); });
+          dots.appendChild(d);
+        }
+      }
+    }
+    const cur = currentPage();
+    Array.from(dots.children).forEach(function(d, i) { d.classList.toggle("active", i === cur); });
+  }
+
+  prev.addEventListener("click", function() { track.scrollBy({ left: -track.clientWidth }); });
+  next.addEventListener("click", function() { track.scrollBy({ left: track.clientWidth }); });
+  track.addEventListener("scroll", function() { requestAnimationFrame(update); }, { passive: true });
+  window.addEventListener("resize", update);
+  if (window.MutationObserver) new MutationObserver(update).observe(track, { childList: true, subtree: true, attributes: true });
+  update();
+});
+</script>
+```

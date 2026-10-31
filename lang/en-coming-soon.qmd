@@ -1,0 +1,12 @@
+---
+title: "Under Construction"
+page-layout: full
+sidebar: false
+---
+
+::: {.callout-note icon=false}
+## Notice
+The English version of this archive is currently under preparation. Please check back later.
+
+[Return to Korean Main Page](../index.qmd)
+:::

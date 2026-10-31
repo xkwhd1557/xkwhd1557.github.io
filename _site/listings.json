@@ -1,30 +1,14 @@
 [
   {
-    "listing": "/stats.html",
-    "items": []
-  },
-  {
-    "listing": "/math.html",
-    "items": []
-  },
-  {
-    "listing": "/ds.html",
-    "items": []
-  },
-  {
-    "listing": "/articles.html",
+    "listing": "/articles/index.html",
     "items": [
-      "/posts/test/index.html"
+      "/articles/math-and-modeling.html"
     ]
-  },
-  {
-    "listing": "/cs.html",
-    "items": []
   },
   {
     "listing": "/index.html",
     "items": [
-      "/posts/test/index.html"
+      "/articles/math-and-modeling.html"
     ]
   }
 ]
