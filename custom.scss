@@ -237,3 +237,91 @@ h3.home-category {
   padding-bottom: 0.35rem;
   border-bottom: 1px solid #e5e5e5;
 }
+
+/* ---------------------------------------------------------------
+   과목 사이드바 계층 표시
+   1단계: 과목명 (누르면 과목 소개)  → 가장 굵게
+   2단계: 장 [1], [2], ...  (누르면 장 소개)  → 굵게
+   3단계: 절 1.1, 1.2, ...  → 보통 굵기 + 왼쪽 세로줄로 장에 소속 표시
+   --------------------------------------------------------------- */
+/* 한글이 음절 중간에서 끊기지 않고 단어 단위로 줄바꿈되도록 (좌측 사이드바, 우측 목차) */
+#quarto-sidebar .menu-text,
+#TOC a {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+#quarto-sidebar .sidebar-menu-container > ul > li > .sidebar-item-container .menu-text,
+#quarto-sidebar .sidebar-menu-container > ul > li > .sidebar-item-text .menu-text {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #17252a;
+}
+
+#quarto-sidebar .sidebar-menu-container > ul > li > .sidebar-item-container {
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+/* 과목명의 영문 표기: 한 줄 아래에 작고 옅게 */
+#quarto-sidebar .menu-subtitle {
+  display: block;
+  margin-top: 0.1rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #6c7a7d;
+}
+
+/* 상단 메뉴 항목이 좁은 화면에서 한 글자씩 세로로 쪼개지지 않도록 */
+.navbar .nav-link .menu-text {
+  white-space: nowrap;
+}
+
+/* 메뉴가 빽빽한 중간 폭 화면(태블릿 가로·작은 노트북)에서는 글자와 간격을 조금 줄임 */
+@media (min-width: 992px) and (max-width: 1399.98px) {
+  .navbar .nav-link {
+    padding-left: 0.35rem !important;
+    padding-right: 0.35rem !important;
+    font-size: 0.88rem;
+  }
+  .navbar .navbar-brand .navbar-title {
+    font-size: 1.05rem;
+  }
+}
+
+#quarto-sidebar .sidebar-section.depth1 {
+  margin-top: 0.6rem;
+  padding-left: 0;
+}
+
+#quarto-sidebar .sidebar-section.depth1 > li {
+  margin-top: 0.35rem;
+}
+
+#quarto-sidebar .sidebar-section.depth1 > li > .sidebar-item-container .menu-text {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #17252a;
+}
+
+#quarto-sidebar .sidebar-section.depth2 {
+  margin: 0.2rem 0 0.4rem 0.2rem;
+  padding-left: 0.8rem;
+  border-left: 2px solid #cfe6e5;
+}
+
+#quarto-sidebar .sidebar-section.depth2 .menu-text {
+  font-size: 0.87rem;
+  font-weight: 400;
+  color: #4a5a5e;
+}
+
+/* 지금 보고 있는 글 */
+#quarto-sidebar .sidebar-link.active .menu-text {
+  color: #2b7a78 !important;
+}
+
+#quarto-sidebar .sidebar-section.depth2 .sidebar-link.active .menu-text {
+  font-weight: 600;
+}

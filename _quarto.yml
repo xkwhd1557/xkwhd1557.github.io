@@ -11,6 +11,7 @@ website:
   description: "대학에서 공부한 수학·통계·데이터 사이언스를 한국어로 쉽게 풀어 정리한 공부 기록입니다."
   open-graph: true
   twitter-card: true
+  page-navigation: true
   page-footer:
     center: "© 2026 xkwhd1557 · 글은 [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.ko)에 따라 이용할 수 있습니다."
   navbar:
@@ -26,55 +27,55 @@ website:
           - text: "---"
           - text: "기초 (Foundations)"
           - text: "해석학"
-            href: math/analysis/00intro.qmd
+            href: math/analysis/index.qmd
           - text: "선형대수학"
-            href: math/linear-algebra/00intro.qmd
+            href: math/linear-algebra/index.qmd
           - text: "이산수학"
-            href: math/discrete-math/00intro.qmd
+            href: math/discrete-math/index.qmd
           - text: "수학적 프로그래밍 (Python)"
-            href: math/math-programming/00intro.qmd
+            href: math/math-programming/index.qmd
           - text: "LaTeX"
-            href: math/latex/00intro.qmd
+            href: math/latex/index.qmd
           - text: "---"
           - text: "핵심 수학 (Core)"
           - text: "복소해석학"
-            href: math/complex-analysis/00intro.qmd
+            href: math/complex-analysis/index.qmd
           - text: "상미분방정식"
-            href: math/ode/00intro.qmd
+            href: math/ode/index.qmd
           - text: "동적 시스템"
-            href: math/dynamical-systems/00intro.qmd
+            href: math/dynamical-systems/index.qmd
           - text: "측도론"
-            href: math/measure-theory/00intro.qmd
+            href: math/measure-theory/index.qmd
           - text: "기초 편미분방정식"
-            href: math/pde-intro/00intro.qmd
+            href: math/pde-intro/index.qmd
           - text: "일반위상수학"
-            href: math/general-topology/00intro.qmd
+            href: math/general-topology/index.qmd
           - text: "대수학"
-            href: math/algebra/00intro.qmd
+            href: math/algebra/index.qmd
           - text: "정수론"
-            href: math/number-theory/00intro.qmd
+            href: math/number-theory/index.qmd
           - text: "기하학"
-            href: math/geometry/00intro.qmd
+            href: math/geometry/index.qmd
           - text: "수리논리학"
-            href: math/mathematical-logic/00intro.qmd
+            href: math/mathematical-logic/index.qmd
           - text: "공리적 집합론"
-            href: math/set-theory/00intro.qmd
+            href: math/set-theory/index.qmd
           - text: "수치적 방법론"
-            href: math/numerical-methods/00intro.qmd
+            href: math/numerical-methods/index.qmd
           - text: "수학적 최적화"
-            href: math/optimization/00intro.qmd
+            href: math/optimization/index.qmd
           - text: "---"
           - text: "심화 (Advanced)"
           - text: "함수해석학"
-            href: math/functional-analysis/00intro.qmd
+            href: math/functional-analysis/index.qmd
           - text: "편미분방정식"
-            href: math/pde-advanced/00intro.qmd
+            href: math/pde-advanced/index.qmd
           - text: "다양체 해석학"
-            href: math/manifold-analysis/00intro.qmd
+            href: math/manifold-analysis/index.qmd
           - text: "RKHS 이론"
-            href: math/rkhs/00intro.qmd
+            href: math/rkhs/index.qmd
           - text: "미분기하학"
-            href: math/differential-geometry/00intro.qmd
+            href: math/differential-geometry/index.qmd
       - text: "확률과 통계"
         menu:
           - text: "📋 확률과 통계 전체 과목 보기"
@@ -82,37 +83,39 @@ website:
           - text: "---"
           - text: "기초 (Foundations)"
           - text: "기초 확률론"
-            href: stats/prob-theory/00intro.qmd
+            href: stats/prob-theory/index.qmd
           - text: "기초 통계학"
-            href: stats/basic-stats/00intro.qmd
+            href: stats/basic-stats/index.qmd
+          - text: "기초 선형 모델"
+            href: stats/linear-models/index.qmd
           - text: "통계적 프로그래밍"
-            href: stats/stat-programming/00intro.qmd
+            href: stats/stat-programming/index.qmd
           - text: "---"
           - text: "핵심 (Core)"
           - text: "측도론적 확률론"
-            href: stats/measure-prob/00intro.qmd
+            href: stats/measure-prob/index.qmd
           - text: "확률과정론"
-            href: stats/stochastic-processes/00intro.qmd
+            href: stats/stochastic-processes/index.qmd
           - text: "수리통계학"
-            href: stats/math-stats/00intro.qmd
+            href: stats/math-stats/index.qmd
           - text: "확률적 시뮬레이션"
-            href: stats/stochastic-simulation/00intro.qmd
+            href: stats/stochastic-simulation/index.qmd
           - text: "보험수학"
-            href: stats/actuarial-math/00intro.qmd
+            href: stats/actuarial-math/index.qmd
           - text: "---"
           - text: "심화 (Advanced)"
           - text: "확률해석학"
-            href: stats/stochastic-calculus/00intro.qmd
+            href: stats/stochastic-calculus/index.qmd
           - text: "마르코프 프로세스"
-            href: stats/markov-processes/00intro.qmd
+            href: stats/markov-processes/index.qmd
           - text: "디퓨전 모델"
-            href: stats/diffusion-models/00intro.qmd
+            href: stats/diffusion-models/index.qmd
           - text: "가우시안 프로세스"
-            href: stats/gaussian-processes/00intro.qmd
+            href: stats/gaussian-processes/index.qmd
           - text: "비유클리드 통계학"
-            href: stats/non-euclidean-stats/00intro.qmd
+            href: stats/non-euclidean-stats/index.qmd
           - text: "확률과정의 통계추론"
-            href: stats/stats-for-stoch-proc/00intro.qmd
+            href: stats/stats-for-stoch-proc/index.qmd
       - text: "컴퓨터 공학"
         menu:
           - text: "📋 컴퓨터 공학 전체 과목 보기"
@@ -120,23 +123,23 @@ website:
           - text: "---"
           - text: "기초 (Foundations)"
           - text: "컴퓨터 과학 원론"
-            href: cs/cs-intro/00intro.qmd
+            href: cs/cs-intro/index.qmd
           - text: "C언어"
-            href: cs/c-programming/00intro.qmd
+            href: cs/c-programming/index.qmd
           - text: "---"
           - text: "핵심 (Core)"
           - text: "알고리즘과 자료구조"
-            href: cs/algorithms-data-structures/00intro.qmd
+            href: cs/algorithms-data-structures/index.qmd
           - text: "이론 컴퓨터과학"
-            href: cs/theoretical-cs/00intro.qmd
+            href: cs/theoretical-cs/index.qmd
           - text: "데이터베이스 시스템"
-            href: cs/database-systems/00intro.qmd
+            href: cs/database-systems/index.qmd
           - text: "형식 시스템"
-            href: cs/formal-systems/00intro.qmd
+            href: cs/formal-systems/index.qmd
           - text: "---"
           - text: "심화 (Advanced)"
           - text: "심화 과정 (준비 중)"
-            href: cs/advanced/00intro.qmd
+            href: cs/advanced/index.qmd
       - text: "데이터 사이언스·AI"
         menu:
           - text: "📋 데이터 사이언스·AI 전체 과목 보기"
@@ -144,29 +147,29 @@ website:
           - text: "---"
           - text: "기초 (Foundations)"
           - text: "데이터 사이언스 개론"
-            href: ds-ai/ds-intro/00intro.qmd
+            href: ds-ai/ds-intro/index.qmd
           - text: "데이터 사이언스와 사회"
-            href: ds-ai/ds-society/00intro.qmd
+            href: ds-ai/ds-society/index.qmd
           - text: "고등학교 인공지능 수학"
-            href: ds-ai/ai-math-intro/00intro.qmd
+            href: ds-ai/ai-math-intro/index.qmd
           - text: "---"
           - text: "핵심 (Core)"
           - text: "수치적 방법론과 최적화"
-            href: ds-ai/numerical-optimization/00intro.qmd
+            href: ds-ai/numerical-optimization/index.qmd
           - text: "머신러닝"
-            href: ds-ai/machine-learning/00intro.qmd
+            href: ds-ai/machine-learning/index.qmd
           - text: "딥러닝과 컴퓨터 비전"
-            href: ds-ai/deep-learning-cv/00intro.qmd
+            href: ds-ai/deep-learning-cv/index.qmd
           - text: "인공지능 원론"
-            href: ds-ai/ai-intro/00intro.qmd
+            href: ds-ai/ai-intro/index.qmd
           - text: "---"
           - text: "심화 (Advanced)"
           - text: "데이터 사이언스의 통계적 기초"
-            href: ds-ai/statistical-foundations/00intro.qmd
+            href: ds-ai/statistical-foundations/index.qmd
           - text: "머신러닝의 수리적 기초"
-            href: ds-ai/mathematical-foundations/00intro.qmd
+            href: ds-ai/mathematical-foundations/index.qmd
           - text: "데이터 사이언스를 위한 선형대수학"
-            href: ds-ai/advanced-linear-algebra/00intro.qmd
+            href: ds-ai/advanced-linear-algebra/index.qmd
       - text: "경영/경제"
         menu:
           - text: "📋 경영/경제 전체 과목 보기"
@@ -174,45 +177,45 @@ website:
           - text: "---"
           - text: "기초 (Foundations)"
           - text: "경영학 원론"
-            href: biz-econ/biz-intro/00intro.qmd
+            href: biz-econ/biz-intro/index.qmd
           - text: "경제학 원론"
-            href: biz-econ/econ-intro/00intro.qmd
+            href: biz-econ/econ-intro/index.qmd
           - text: "---"
           - text: "핵심 (Core)"
           - text: "회계학"
-            href: biz-econ/accounting/00intro.qmd
+            href: biz-econ/accounting/index.qmd
           - text: "생산물류관리"
-            href: biz-econ/production-logistics/00intro.qmd
+            href: biz-econ/production-logistics/index.qmd
           - text: "의사결정론"
-            href: biz-econ/decision-theory/00intro.qmd
+            href: biz-econ/decision-theory/index.qmd
           - text: "미시경제학"
-            href: biz-econ/microeconomics/00intro.qmd
+            href: biz-econ/microeconomics/index.qmd
           - text: "거시경제학"
-            href: biz-econ/macroeconomics/00intro.qmd
+            href: biz-econ/macroeconomics/index.qmd
           - text: "재무와 투자론"
-            href: biz-econ/finance-investment/00intro.qmd
+            href: biz-econ/finance-investment/index.qmd
           - text: "화폐금융론"
-            href: biz-econ/monetary-economics/00intro.qmd
+            href: biz-econ/monetary-economics/index.qmd
           - text: "노동경제학"
-            href: biz-econ/labor-economics/00intro.qmd
+            href: biz-econ/labor-economics/index.qmd
           - text: "게임이론 개론"
-            href: biz-econ/game-theory/00intro.qmd
+            href: biz-econ/game-theory/index.qmd
           - text: "공급망 관리 (SCM)"
-            href: biz-econ/supply-chain/00intro.qmd
+            href: biz-econ/supply-chain/index.qmd
           - text: "시장조사론의 기초"
-            href: biz-econ/market-research/00intro.qmd
+            href: biz-econ/market-research/index.qmd
           - text: "---"
           - text: "심화 (Advanced)"
           - text: "시계열 분석"
-            href: biz-econ/time-series/00intro.qmd
+            href: biz-econ/time-series/index.qmd
           - text: "계량경제학"
-            href: biz-econ/econometrics/00intro.qmd
+            href: biz-econ/econometrics/index.qmd
           - text: "보험경제학"
-            href: biz-econ/insurance-economics/00intro.qmd
+            href: biz-econ/insurance-economics/index.qmd
           - text: "계량 리스크 관리"
-            href: biz-econ/quantitative-risk/00intro.qmd
+            href: biz-econ/quantitative-risk/index.qmd
           - text: "기업재무론"
-            href: biz-econ/corporate-finance/00intro.qmd
+            href: biz-econ/corporate-finance/index.qmd
       - text: "의학통계·바이오메트리"
         menu:
           - text: "📋 의학통계·바이오메트리 전체 과목 보기"
@@ -220,23 +223,23 @@ website:
           - text: "---"
           - text: "기초 (Foundations)"
           - text: "의학통계학 개론"
-            href: biostat/biostat-intro/00intro.qmd
+            href: biostat/biostat-intro/index.qmd
           - text: "역학 연구방법론"
-            href: biostat/epidemiology/00intro.qmd
+            href: biostat/epidemiology/index.qmd
           - text: "---"
           - text: "핵심 (Core)"
           - text: "임상시험 통계방법론"
-            href: biostat/clinical-trials/00intro.qmd
+            href: biostat/clinical-trials/index.qmd
           - text: "생존분석"
-            href: biostat/survival-analysis/00intro.qmd
+            href: biostat/survival-analysis/index.qmd
           - text: "생물정보통계학"
-            href: biostat/bioinformatics/00intro.qmd
+            href: biostat/bioinformatics/index.qmd
           - text: "---"
           - text: "심화 (Advanced)"
           - text: "인과추론"
-            href: biostat/causal-inference/00intro.qmd
+            href: biostat/causal-inference/index.qmd
           - text: "종단적 데이터 분석"
-            href: biostat/longitudinal-data/00intro.qmd
+            href: biostat/longitudinal-data/index.qmd
     right:
       - text: "🌐 Language"
         menu:
@@ -254,397 +257,562 @@ website:
       title: "해석학"
       style: "docked"
       search: true
-      contents: "math/analysis/*.qmd"
+      contents:
+        - href: math/analysis/index.qmd
+          contents: "math/analysis/**"
     - id: "math-linear-algebra"
       title: "선형대수학"
       style: "docked"
       search: true
-      contents: "math/linear-algebra/*.qmd"
+      contents:
+        - href: math/linear-algebra/index.qmd
+          contents: "math/linear-algebra/**"
     - id: "math-discrete-math"
       title: "이산수학"
       style: "docked"
       search: true
-      contents: "math/discrete-math/*.qmd"
+      contents:
+        - href: math/discrete-math/index.qmd
+          contents: "math/discrete-math/**"
     - id: "math-math-programming"
       title: "수학적 프로그래밍 (Python)"
       style: "docked"
       search: true
-      contents: "math/math-programming/*.qmd"
+      contents:
+        - href: math/math-programming/index.qmd
+          contents: "math/math-programming/**"
     - id: "math-latex"
       title: "LaTeX"
       style: "docked"
       search: true
-      contents: "math/latex/*.qmd"
+      contents:
+        - href: math/latex/index.qmd
+          contents: "math/latex/**"
     - id: "math-complex-analysis"
       title: "복소해석학"
       style: "docked"
       search: true
-      contents: "math/complex-analysis/*.qmd"
+      contents:
+        - href: math/complex-analysis/index.qmd
+          contents: "math/complex-analysis/**"
     - id: "math-ode"
       title: "상미분방정식"
       style: "docked"
       search: true
-      contents: "math/ode/*.qmd"
+      contents:
+        - href: math/ode/index.qmd
+          contents: "math/ode/**"
     - id: "math-dynamical-systems"
       title: "동적 시스템"
       style: "docked"
       search: true
-      contents: "math/dynamical-systems/*.qmd"
+      contents:
+        - href: math/dynamical-systems/index.qmd
+          contents: "math/dynamical-systems/**"
     - id: "math-measure-theory"
       title: "측도론"
       style: "docked"
       search: true
-      contents: "math/measure-theory/*.qmd"
+      contents:
+        - href: math/measure-theory/index.qmd
+          contents: "math/measure-theory/**"
     - id: "math-pde-intro"
       title: "기초 편미분방정식"
       style: "docked"
       search: true
-      contents: "math/pde-intro/*.qmd"
+      contents:
+        - href: math/pde-intro/index.qmd
+          contents: "math/pde-intro/**"
     - id: "math-general-topology"
       title: "일반위상수학"
       style: "docked"
       search: true
-      contents: "math/general-topology/*.qmd"
+      contents:
+        - href: math/general-topology/index.qmd
+          contents: "math/general-topology/**"
     - id: "math-algebra"
       title: "대수학"
       style: "docked"
       search: true
-      contents: "math/algebra/*.qmd"
+      contents:
+        - href: math/algebra/index.qmd
+          contents: "math/algebra/**"
     - id: "math-number-theory"
       title: "정수론"
       style: "docked"
       search: true
-      contents: "math/number-theory/*.qmd"
+      contents:
+        - href: math/number-theory/index.qmd
+          contents: "math/number-theory/**"
     - id: "math-geometry"
       title: "기하학"
       style: "docked"
       search: true
-      contents: "math/geometry/*.qmd"
+      contents:
+        - href: math/geometry/index.qmd
+          contents: "math/geometry/**"
     - id: "math-mathematical-logic"
       title: "수리논리학"
       style: "docked"
       search: true
-      contents: "math/mathematical-logic/*.qmd"
+      contents:
+        - href: math/mathematical-logic/index.qmd
+          contents: "math/mathematical-logic/**"
     - id: "math-set-theory"
       title: "공리적 집합론"
       style: "docked"
       search: true
-      contents: "math/set-theory/*.qmd"
+      contents:
+        - href: math/set-theory/index.qmd
+          contents: "math/set-theory/**"
     - id: "math-numerical-methods"
       title: "수치적 방법론"
       style: "docked"
       search: true
-      contents: "math/numerical-methods/*.qmd"
+      contents:
+        - href: math/numerical-methods/index.qmd
+          contents: "math/numerical-methods/**"
     - id: "math-optimization"
       title: "수학적 최적화"
       style: "docked"
       search: true
-      contents: "math/optimization/*.qmd"
+      contents:
+        - href: math/optimization/index.qmd
+          contents: "math/optimization/**"
     - id: "math-functional-analysis"
       title: "함수해석학"
       style: "docked"
       search: true
-      contents: "math/functional-analysis/*.qmd"
+      contents:
+        - href: math/functional-analysis/index.qmd
+          contents: "math/functional-analysis/**"
     - id: "math-pde-advanced"
       title: "편미분방정식"
       style: "docked"
       search: true
-      contents: "math/pde-advanced/*.qmd"
+      contents:
+        - href: math/pde-advanced/index.qmd
+          contents: "math/pde-advanced/**"
     - id: "math-manifold-analysis"
       title: "다양체 해석학"
       style: "docked"
       search: true
-      contents: "math/manifold-analysis/*.qmd"
+      contents:
+        - href: math/manifold-analysis/index.qmd
+          contents: "math/manifold-analysis/**"
     - id: "math-rkhs"
       title: "RKHS 이론"
       style: "docked"
       search: true
-      contents: "math/rkhs/*.qmd"
+      contents:
+        - href: math/rkhs/index.qmd
+          contents: "math/rkhs/**"
     - id: "math-differential-geometry"
       title: "미분기하학"
       style: "docked"
       search: true
-      contents: "math/differential-geometry/*.qmd"
+      contents:
+        - href: math/differential-geometry/index.qmd
+          contents: "math/differential-geometry/**"
     - id: "stats-prob-theory"
       title: "기초 확률론"
       style: "docked"
       search: true
-      contents: "stats/prob-theory/*.qmd"
+      contents:
+        - href: stats/prob-theory/index.qmd
+          contents: "stats/prob-theory/**"
     - id: "stats-basic-stats"
       title: "기초 통계학"
       style: "docked"
       search: true
-      contents: "stats/basic-stats/*.qmd"
+      contents:
+        - href: stats/basic-stats/index.qmd
+          contents: "stats/basic-stats/**"
+    - id: "stats-linear-models"
+      title: "기초 선형 모델"
+      style: "docked"
+      search: true
+      contents:
+        - href: stats/linear-models/index.qmd
+          contents: "stats/linear-models/**"
     - id: "stats-stat-programming"
       title: "통계적 프로그래밍"
       style: "docked"
       search: true
-      contents: "stats/stat-programming/*.qmd"
+      contents:
+        - href: stats/stat-programming/index.qmd
+          contents: "stats/stat-programming/**"
     - id: "stats-measure-prob"
       title: "측도론적 확률론"
       style: "docked"
       search: true
-      contents: "stats/measure-prob/*.qmd"
+      contents:
+        - href: stats/measure-prob/index.qmd
+          contents: "stats/measure-prob/**"
     - id: "stats-stochastic-processes"
       title: "확률과정론"
       style: "docked"
       search: true
-      contents: "stats/stochastic-processes/*.qmd"
+      contents:
+        - href: stats/stochastic-processes/index.qmd
+          contents: "stats/stochastic-processes/**"
     - id: "stats-math-stats"
       title: "수리통계학"
       style: "docked"
       search: true
-      contents: "stats/math-stats/*.qmd"
+      contents:
+        - href: stats/math-stats/index.qmd
+          contents: "stats/math-stats/**"
     - id: "stats-stochastic-simulation"
       title: "확률적 시뮬레이션"
       style: "docked"
       search: true
-      contents: "stats/stochastic-simulation/*.qmd"
+      contents:
+        - href: stats/stochastic-simulation/index.qmd
+          contents: "stats/stochastic-simulation/**"
     - id: "stats-actuarial-math"
       title: "보험수학"
       style: "docked"
       search: true
-      contents: "stats/actuarial-math/*.qmd"
+      contents:
+        - href: stats/actuarial-math/index.qmd
+          contents: "stats/actuarial-math/**"
     - id: "stats-stochastic-calculus"
       title: "확률해석학"
       style: "docked"
       search: true
-      contents: "stats/stochastic-calculus/*.qmd"
+      contents:
+        - href: stats/stochastic-calculus/index.qmd
+          contents: "stats/stochastic-calculus/**"
     - id: "stats-markov-processes"
       title: "마르코프 프로세스"
       style: "docked"
       search: true
-      contents: "stats/markov-processes/*.qmd"
+      contents:
+        - href: stats/markov-processes/index.qmd
+          contents: "stats/markov-processes/**"
     - id: "stats-diffusion-models"
       title: "디퓨전 모델"
       style: "docked"
       search: true
-      contents: "stats/diffusion-models/*.qmd"
+      contents:
+        - href: stats/diffusion-models/index.qmd
+          contents: "stats/diffusion-models/**"
     - id: "stats-gaussian-processes"
       title: "가우시안 프로세스"
       style: "docked"
       search: true
-      contents: "stats/gaussian-processes/*.qmd"
+      contents:
+        - href: stats/gaussian-processes/index.qmd
+          contents: "stats/gaussian-processes/**"
     - id: "stats-non-euclidean-stats"
       title: "비유클리드 통계학"
       style: "docked"
       search: true
-      contents: "stats/non-euclidean-stats/*.qmd"
+      contents:
+        - href: stats/non-euclidean-stats/index.qmd
+          contents: "stats/non-euclidean-stats/**"
     - id: "stats-stats-for-stoch-proc"
       title: "확률과정의 통계추론"
       style: "docked"
       search: true
-      contents: "stats/stats-for-stoch-proc/*.qmd"
+      contents:
+        - href: stats/stats-for-stoch-proc/index.qmd
+          contents: "stats/stats-for-stoch-proc/**"
     - id: "cs-cs-intro"
       title: "컴퓨터 과학 원론"
       style: "docked"
       search: true
-      contents: "cs/cs-intro/*.qmd"
+      contents:
+        - href: cs/cs-intro/index.qmd
+          contents: "cs/cs-intro/**"
     - id: "cs-c-programming"
       title: "C언어"
       style: "docked"
       search: true
-      contents: "cs/c-programming/*.qmd"
+      contents:
+        - href: cs/c-programming/index.qmd
+          contents: "cs/c-programming/**"
     - id: "cs-algorithms-data-structures"
       title: "알고리즘과 자료구조"
       style: "docked"
       search: true
-      contents: "cs/algorithms-data-structures/*.qmd"
+      contents:
+        - href: cs/algorithms-data-structures/index.qmd
+          contents: "cs/algorithms-data-structures/**"
     - id: "cs-theoretical-cs"
       title: "이론 컴퓨터과학"
       style: "docked"
       search: true
-      contents: "cs/theoretical-cs/*.qmd"
+      contents:
+        - href: cs/theoretical-cs/index.qmd
+          contents: "cs/theoretical-cs/**"
     - id: "cs-database-systems"
       title: "데이터베이스 시스템"
       style: "docked"
       search: true
-      contents: "cs/database-systems/*.qmd"
+      contents:
+        - href: cs/database-systems/index.qmd
+          contents: "cs/database-systems/**"
     - id: "cs-formal-systems"
       title: "형식 시스템"
       style: "docked"
       search: true
-      contents: "cs/formal-systems/*.qmd"
+      contents:
+        - href: cs/formal-systems/index.qmd
+          contents: "cs/formal-systems/**"
     - id: "cs-advanced"
       title: "심화 과정 (준비 중)"
       style: "docked"
       search: true
-      contents: "cs/advanced/*.qmd"
+      contents:
+        - href: cs/advanced/index.qmd
+          contents: "cs/advanced/**"
     - id: "ds-ai-ds-intro"
       title: "데이터 사이언스 개론"
       style: "docked"
       search: true
-      contents: "ds-ai/ds-intro/*.qmd"
+      contents:
+        - href: ds-ai/ds-intro/index.qmd
+          contents: "ds-ai/ds-intro/**"
     - id: "ds-ai-ds-society"
       title: "데이터 사이언스와 사회"
       style: "docked"
       search: true
-      contents: "ds-ai/ds-society/*.qmd"
+      contents:
+        - href: ds-ai/ds-society/index.qmd
+          contents: "ds-ai/ds-society/**"
     - id: "ds-ai-ai-math-intro"
       title: "고등학교 인공지능 수학"
       style: "docked"
       search: true
-      contents: "ds-ai/ai-math-intro/*.qmd"
+      contents:
+        - href: ds-ai/ai-math-intro/index.qmd
+          contents: "ds-ai/ai-math-intro/**"
     - id: "ds-ai-numerical-optimization"
       title: "수치적 방법론과 최적화"
       style: "docked"
       search: true
-      contents: "ds-ai/numerical-optimization/*.qmd"
+      contents:
+        - href: ds-ai/numerical-optimization/index.qmd
+          contents: "ds-ai/numerical-optimization/**"
     - id: "ds-ai-machine-learning"
       title: "머신러닝"
       style: "docked"
       search: true
-      contents: "ds-ai/machine-learning/*.qmd"
+      contents:
+        - href: ds-ai/machine-learning/index.qmd
+          contents: "ds-ai/machine-learning/**"
     - id: "ds-ai-deep-learning-cv"
       title: "딥러닝과 컴퓨터 비전"
       style: "docked"
       search: true
-      contents: "ds-ai/deep-learning-cv/*.qmd"
+      contents:
+        - href: ds-ai/deep-learning-cv/index.qmd
+          contents: "ds-ai/deep-learning-cv/**"
     - id: "ds-ai-ai-intro"
       title: "인공지능 원론"
       style: "docked"
       search: true
-      contents: "ds-ai/ai-intro/*.qmd"
+      contents:
+        - href: ds-ai/ai-intro/index.qmd
+          contents: "ds-ai/ai-intro/**"
     - id: "ds-ai-statistical-foundations"
       title: "데이터 사이언스의 통계적 기초"
       style: "docked"
       search: true
-      contents: "ds-ai/statistical-foundations/*.qmd"
+      contents:
+        - href: ds-ai/statistical-foundations/index.qmd
+          contents: "ds-ai/statistical-foundations/**"
     - id: "ds-ai-mathematical-foundations"
       title: "머신러닝의 수리적 기초"
       style: "docked"
       search: true
-      contents: "ds-ai/mathematical-foundations/*.qmd"
+      contents:
+        - href: ds-ai/mathematical-foundations/index.qmd
+          contents: "ds-ai/mathematical-foundations/**"
     - id: "ds-ai-advanced-linear-algebra"
       title: "데이터 사이언스를 위한 선형대수학"
       style: "docked"
       search: true
-      contents: "ds-ai/advanced-linear-algebra/*.qmd"
+      contents:
+        - href: ds-ai/advanced-linear-algebra/index.qmd
+          contents: "ds-ai/advanced-linear-algebra/**"
     - id: "biz-econ-biz-intro"
       title: "경영학 원론"
       style: "docked"
       search: true
-      contents: "biz-econ/biz-intro/*.qmd"
+      contents:
+        - href: biz-econ/biz-intro/index.qmd
+          contents: "biz-econ/biz-intro/**"
     - id: "biz-econ-econ-intro"
       title: "경제학 원론"
       style: "docked"
       search: true
-      contents: "biz-econ/econ-intro/*.qmd"
+      contents:
+        - href: biz-econ/econ-intro/index.qmd
+          contents: "biz-econ/econ-intro/**"
     - id: "biz-econ-accounting"
       title: "회계학"
       style: "docked"
       search: true
-      contents: "biz-econ/accounting/*.qmd"
+      contents:
+        - href: biz-econ/accounting/index.qmd
+          contents: "biz-econ/accounting/**"
     - id: "biz-econ-production-logistics"
       title: "생산물류관리"
       style: "docked"
       search: true
-      contents: "biz-econ/production-logistics/*.qmd"
+      contents:
+        - href: biz-econ/production-logistics/index.qmd
+          contents: "biz-econ/production-logistics/**"
     - id: "biz-econ-decision-theory"
       title: "의사결정론"
       style: "docked"
       search: true
-      contents: "biz-econ/decision-theory/*.qmd"
+      contents:
+        - href: biz-econ/decision-theory/index.qmd
+          contents: "biz-econ/decision-theory/**"
     - id: "biz-econ-microeconomics"
       title: "미시경제학"
       style: "docked"
       search: true
-      contents: "biz-econ/microeconomics/*.qmd"
+      contents:
+        - href: biz-econ/microeconomics/index.qmd
+          contents: "biz-econ/microeconomics/**"
     - id: "biz-econ-macroeconomics"
       title: "거시경제학"
       style: "docked"
       search: true
-      contents: "biz-econ/macroeconomics/*.qmd"
+      contents:
+        - href: biz-econ/macroeconomics/index.qmd
+          contents: "biz-econ/macroeconomics/**"
     - id: "biz-econ-finance-investment"
       title: "재무와 투자론"
       style: "docked"
       search: true
-      contents: "biz-econ/finance-investment/*.qmd"
+      contents:
+        - href: biz-econ/finance-investment/index.qmd
+          contents: "biz-econ/finance-investment/**"
     - id: "biz-econ-monetary-economics"
       title: "화폐금융론"
       style: "docked"
       search: true
-      contents: "biz-econ/monetary-economics/*.qmd"
+      contents:
+        - href: biz-econ/monetary-economics/index.qmd
+          contents: "biz-econ/monetary-economics/**"
     - id: "biz-econ-labor-economics"
       title: "노동경제학"
       style: "docked"
       search: true
-      contents: "biz-econ/labor-economics/*.qmd"
+      contents:
+        - href: biz-econ/labor-economics/index.qmd
+          contents: "biz-econ/labor-economics/**"
     - id: "biz-econ-game-theory"
       title: "게임이론 개론"
       style: "docked"
       search: true
-      contents: "biz-econ/game-theory/*.qmd"
+      contents:
+        - href: biz-econ/game-theory/index.qmd
+          contents: "biz-econ/game-theory/**"
     - id: "biz-econ-supply-chain"
       title: "공급망 관리 (SCM)"
       style: "docked"
       search: true
-      contents: "biz-econ/supply-chain/*.qmd"
+      contents:
+        - href: biz-econ/supply-chain/index.qmd
+          contents: "biz-econ/supply-chain/**"
     - id: "biz-econ-market-research"
       title: "시장조사론의 기초"
       style: "docked"
       search: true
-      contents: "biz-econ/market-research/*.qmd"
+      contents:
+        - href: biz-econ/market-research/index.qmd
+          contents: "biz-econ/market-research/**"
     - id: "biz-econ-time-series"
       title: "시계열 분석"
       style: "docked"
       search: true
-      contents: "biz-econ/time-series/*.qmd"
+      contents:
+        - href: biz-econ/time-series/index.qmd
+          contents: "biz-econ/time-series/**"
     - id: "biz-econ-econometrics"
       title: "계량경제학"
       style: "docked"
       search: true
-      contents: "biz-econ/econometrics/*.qmd"
+      contents:
+        - href: biz-econ/econometrics/index.qmd
+          contents: "biz-econ/econometrics/**"
     - id: "biz-econ-insurance-economics"
       title: "보험경제학"
       style: "docked"
       search: true
-      contents: "biz-econ/insurance-economics/*.qmd"
+      contents:
+        - href: biz-econ/insurance-economics/index.qmd
+          contents: "biz-econ/insurance-economics/**"
     - id: "biz-econ-quantitative-risk"
       title: "계량 리스크 관리"
       style: "docked"
       search: true
-      contents: "biz-econ/quantitative-risk/*.qmd"
+      contents:
+        - href: biz-econ/quantitative-risk/index.qmd
+          contents: "biz-econ/quantitative-risk/**"
     - id: "biz-econ-corporate-finance"
       title: "기업재무론"
       style: "docked"
       search: true
-      contents: "biz-econ/corporate-finance/*.qmd"
+      contents:
+        - href: biz-econ/corporate-finance/index.qmd
+          contents: "biz-econ/corporate-finance/**"
     - id: "biostat-biostat-intro"
       title: "의학통계학 개론"
       style: "docked"
       search: true
-      contents: "biostat/biostat-intro/*.qmd"
+      contents:
+        - href: biostat/biostat-intro/index.qmd
+          contents: "biostat/biostat-intro/**"
     - id: "biostat-epidemiology"
       title: "역학 연구방법론"
       style: "docked"
       search: true
-      contents: "biostat/epidemiology/*.qmd"
+      contents:
+        - href: biostat/epidemiology/index.qmd
+          contents: "biostat/epidemiology/**"
     - id: "biostat-clinical-trials"
       title: "임상시험 통계방법론"
       style: "docked"
       search: true
-      contents: "biostat/clinical-trials/*.qmd"
+      contents:
+        - href: biostat/clinical-trials/index.qmd
+          contents: "biostat/clinical-trials/**"
     - id: "biostat-survival-analysis"
       title: "생존분석"
       style: "docked"
       search: true
-      contents: "biostat/survival-analysis/*.qmd"
+      contents:
+        - href: biostat/survival-analysis/index.qmd
+          contents: "biostat/survival-analysis/**"
     - id: "biostat-bioinformatics"
       title: "생물정보통계학"
       style: "docked"
       search: true
-      contents: "biostat/bioinformatics/*.qmd"
+      contents:
+        - href: biostat/bioinformatics/index.qmd
+          contents: "biostat/bioinformatics/**"
     - id: "biostat-causal-inference"
       title: "인과추론"
       style: "docked"
       search: true
-      contents: "biostat/causal-inference/*.qmd"
+      contents:
+        - href: biostat/causal-inference/index.qmd
+          contents: "biostat/causal-inference/**"
     - id: "biostat-longitudinal-data"
       title: "종단적 데이터 분석"
       style: "docked"
       search: true
-      contents: "biostat/longitudinal-data/*.qmd"
+      contents:
+        - href: biostat/longitudinal-data/index.qmd
+          contents: "biostat/longitudinal-data/**"
 
 format:
   html:
@@ -654,4 +822,11 @@ format:
     html-math-method: mathjax
     toc: true
     toc-depth: 3
-    include-after-body: nav-click.html
+    # 좌측 사이드바를 넓히고 우측 목차(TOC) 폭을 줄여 제목이 잘리지 않게 함
+    grid:
+      sidebar-width: 340px
+      body-width: 800px
+      margin-width: 220px
+    include-after-body:
+      - nav-click.html
+      - sidebar-title.html

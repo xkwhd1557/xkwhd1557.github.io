@@ -12,24 +12,24 @@ sidebar: false
 
 ::: {.subject-grid}
 ::: {.subject-card}
-### [해석학](analysis/00intro.qmd)
-[![해석학](../images/placeholder.svg)](analysis/00intro.qmd)
+### [해석학](analysis/index.qmd)
+[![해석학](../images/placeholder.svg)](analysis/index.qmd)
 :::
 ::: {.subject-card}
-### [선형대수학](linear-algebra/00intro.qmd)
-[![선형대수학](../images/placeholder.svg)](linear-algebra/00intro.qmd)
+### [선형대수학](linear-algebra/index.qmd)
+[![선형대수학](../images/placeholder.svg)](linear-algebra/index.qmd)
 :::
 ::: {.subject-card}
-### [이산수학](discrete-math/00intro.qmd)
-[![이산수학](../images/placeholder.svg)](discrete-math/00intro.qmd)
+### [이산수학](discrete-math/index.qmd)
+[![이산수학](../images/placeholder.svg)](discrete-math/index.qmd)
 :::
 ::: {.subject-card}
-### [수학적 프로그래밍 (Python)](math-programming/00intro.qmd)
-[![수학적 프로그래밍 (Python)](../images/placeholder.svg)](math-programming/00intro.qmd)
+### [수학적 프로그래밍 (Python)](math-programming/index.qmd)
+[![수학적 프로그래밍 (Python)](../images/placeholder.svg)](math-programming/index.qmd)
 :::
 ::: {.subject-card}
-### [LaTeX](latex/00intro.qmd)
-[![LaTeX](../images/placeholder.svg)](latex/00intro.qmd)
+### [LaTeX](latex/index.qmd)
+[![LaTeX](../images/placeholder.svg)](latex/index.qmd)
 :::
 :::
 
@@ -39,56 +39,56 @@ sidebar: false
 
 ::: {.subject-grid}
 ::: {.subject-card}
-### [복소해석학](complex-analysis/00intro.qmd)
-[![복소해석학](../images/placeholder.svg)](complex-analysis/00intro.qmd)
+### [복소해석학](complex-analysis/index.qmd)
+[![복소해석학](../images/placeholder.svg)](complex-analysis/index.qmd)
 :::
 ::: {.subject-card}
-### [상미분방정식](ode/00intro.qmd)
-[![상미분방정식](../images/placeholder.svg)](ode/00intro.qmd)
+### [상미분방정식](ode/index.qmd)
+[![상미분방정식](../images/placeholder.svg)](ode/index.qmd)
 :::
 ::: {.subject-card}
-### [동적 시스템](dynamical-systems/00intro.qmd)
-[![동적 시스템](../images/placeholder.svg)](dynamical-systems/00intro.qmd)
+### [동적 시스템](dynamical-systems/index.qmd)
+[![동적 시스템](../images/placeholder.svg)](dynamical-systems/index.qmd)
 :::
 ::: {.subject-card}
-### [측도론](measure-theory/00intro.qmd)
-[![측도론](../images/placeholder.svg)](measure-theory/00intro.qmd)
+### [측도론](measure-theory/index.qmd)
+[![측도론](../images/placeholder.svg)](measure-theory/index.qmd)
 :::
 ::: {.subject-card}
-### [기초 편미분방정식](pde-intro/00intro.qmd)
-[![기초 편미분방정식](../images/placeholder.svg)](pde-intro/00intro.qmd)
+### [기초 편미분방정식](pde-intro/index.qmd)
+[![기초 편미분방정식](../images/placeholder.svg)](pde-intro/index.qmd)
 :::
 ::: {.subject-card}
-### [일반위상수학](general-topology/00intro.qmd)
-[![일반위상수학](../images/placeholder.svg)](general-topology/00intro.qmd)
+### [일반위상수학](general-topology/index.qmd)
+[![일반위상수학](../images/placeholder.svg)](general-topology/index.qmd)
 :::
 ::: {.subject-card}
-### [대수학](algebra/00intro.qmd)
-[![대수학](../images/placeholder.svg)](algebra/00intro.qmd)
+### [대수학](algebra/index.qmd)
+[![대수학](../images/placeholder.svg)](algebra/index.qmd)
 :::
 ::: {.subject-card}
-### [정수론](number-theory/00intro.qmd)
-[![정수론](../images/placeholder.svg)](number-theory/00intro.qmd)
+### [정수론](number-theory/index.qmd)
+[![정수론](../images/placeholder.svg)](number-theory/index.qmd)
 :::
 ::: {.subject-card}
-### [기하학](geometry/00intro.qmd)
-[![기하학](../images/placeholder.svg)](geometry/00intro.qmd)
+### [기하학](geometry/index.qmd)
+[![기하학](../images/placeholder.svg)](geometry/index.qmd)
 :::
 ::: {.subject-card}
-### [수리논리학](mathematical-logic/00intro.qmd)
-[![수리논리학](../images/placeholder.svg)](mathematical-logic/00intro.qmd)
+### [수리논리학](mathematical-logic/index.qmd)
+[![수리논리학](../images/placeholder.svg)](mathematical-logic/index.qmd)
 :::
 ::: {.subject-card}
-### [공리적 집합론](set-theory/00intro.qmd)
-[![공리적 집합론](../images/placeholder.svg)](set-theory/00intro.qmd)
+### [공리적 집합론](set-theory/index.qmd)
+[![공리적 집합론](../images/placeholder.svg)](set-theory/index.qmd)
 :::
 ::: {.subject-card}
-### [수치적 방법론](numerical-methods/00intro.qmd)
-[![수치적 방법론](../images/placeholder.svg)](numerical-methods/00intro.qmd)
+### [수치적 방법론](numerical-methods/index.qmd)
+[![수치적 방법론](../images/placeholder.svg)](numerical-methods/index.qmd)
 :::
 ::: {.subject-card}
-### [수학적 최적화](optimization/00intro.qmd)
-[![수학적 최적화](../images/placeholder.svg)](optimization/00intro.qmd)
+### [수학적 최적화](optimization/index.qmd)
+[![수학적 최적화](../images/placeholder.svg)](optimization/index.qmd)
 :::
 :::
 
@@ -98,23 +98,23 @@ sidebar: false
 
 ::: {.subject-grid}
 ::: {.subject-card}
-### [함수해석학](functional-analysis/00intro.qmd)
-[![함수해석학](../images/placeholder.svg)](functional-analysis/00intro.qmd)
+### [함수해석학](functional-analysis/index.qmd)
+[![함수해석학](../images/placeholder.svg)](functional-analysis/index.qmd)
 :::
 ::: {.subject-card}
-### [편미분방정식](pde-advanced/00intro.qmd)
-[![편미분방정식](../images/placeholder.svg)](pde-advanced/00intro.qmd)
+### [편미분방정식](pde-advanced/index.qmd)
+[![편미분방정식](../images/placeholder.svg)](pde-advanced/index.qmd)
 :::
 ::: {.subject-card}
-### [다양체 해석학](manifold-analysis/00intro.qmd)
-[![다양체 해석학](../images/placeholder.svg)](manifold-analysis/00intro.qmd)
+### [다양체 해석학](manifold-analysis/index.qmd)
+[![다양체 해석학](../images/placeholder.svg)](manifold-analysis/index.qmd)
 :::
 ::: {.subject-card}
-### [RKHS 이론](rkhs/00intro.qmd)
-[![RKHS 이론](../images/placeholder.svg)](rkhs/00intro.qmd)
+### [RKHS 이론](rkhs/index.qmd)
+[![RKHS 이론](../images/placeholder.svg)](rkhs/index.qmd)
 :::
 ::: {.subject-card}
-### [미분기하학](differential-geometry/00intro.qmd)
-[![미분기하학](../images/placeholder.svg)](differential-geometry/00intro.qmd)
+### [미분기하학](differential-geometry/index.qmd)
+[![미분기하학](../images/placeholder.svg)](differential-geometry/index.qmd)
 :::
 :::

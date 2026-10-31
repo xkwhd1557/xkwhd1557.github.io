@@ -1,0 +1,8 @@
+---
+title: "데이터 사이언스의 통계적 기초(Statistical Foundations of Data Science)"
+subtitle: "이 과목은 무엇을 다루는가"
+date: "2026-10-31"
+categories: ["데이터 사이언스·AI", "데이터 사이언스의 통계적 기초"]
+---
+
+이 과목의 소개 글은 준비 중입니다.

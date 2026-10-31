@@ -1,0 +1,8 @@
+---
+title: "머신러닝의 수리적 기초(Mathematical Foundations of Machine Learning)"
+subtitle: "이 과목은 무엇을 다루는가"
+date: "2026-10-31"
+categories: ["데이터 사이언스·AI", "머신러닝의 수리적 기초"]
+---
+
+이 과목의 소개 글은 준비 중입니다.

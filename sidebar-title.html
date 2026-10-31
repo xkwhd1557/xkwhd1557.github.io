@@ -1,0 +1,14 @@
+<script>
+/* 좌측 사이드바 맨 위 과목명: "한국어(English)" → 한국어 / English 두 줄로 나눠 표시 */
+document.addEventListener("DOMContentLoaded", function () {
+  var el = document.querySelector("#quarto-sidebar .sidebar-menu-container > ul > li > .sidebar-item-container .menu-text, #quarto-sidebar .sidebar-menu-container > ul > li > .sidebar-item-text .menu-text");
+  if (!el) return;
+  var m = el.textContent.trim().match(/^(.+?)\s*\((.+)\)$/);
+  if (!m) return;
+  el.textContent = m[1];
+  var en = document.createElement("span");
+  en.className = "menu-subtitle";
+  en.textContent = m[2];
+  el.appendChild(en);
+});
+</script>

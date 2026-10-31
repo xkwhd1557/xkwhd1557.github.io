@@ -53,6 +53,7 @@ CATEGORIES = [
             ("기초 (Foundations)", [
                 ("prob-theory", "기초 확률론"),
                 ("basic-stats", "기초 통계학"),
+                ("linear-models", "기초 선형 모델"),
                 ("stat-programming", "통계적 프로그래밍"),
             ]),
             ("핵심 (Core)", [
@@ -224,7 +225,7 @@ for cat in CATEGORIES:
     index_lines.append("")
     index_lines.append("::: {.subject-grid}")
     for subj_slug, subj_name in subjects:
-        first_post = f"{cat['id']}/{subj_slug}/00intro.qmd"
+        first_post = f"{cat['id']}/{subj_slug}/index.qmd"
         index_lines.extend([
             "::: {.subject-card}",
             f"#### [{subj_name}]({first_post})",
@@ -290,7 +291,7 @@ LEVEL_DESCRIPTIONS = [
     ("Advanced", "핵심 과목 이후, 깊이 있는 이론과 고급 주제를 본격적으로 다루는 과목입니다."),
 ]
 
-# 6. 각 대분류 랜딩 페이지(<cat>/index.qmd) 및 과목별 기본 글(00intro.qmd, text.qmd) 생성
+# 6. 각 대분류 랜딩 페이지(<cat>/index.qmd) 및 과목 소개 글(<cat>/<subj>/index.qmd) 생성
 for cat in CATEGORIES:
     cat_dir = Path(cat["id"])
     cat_dir.mkdir(exist_ok=True)
@@ -314,7 +315,7 @@ for cat in CATEGORIES:
                 break
         landing_lines.append("::: {.subject-grid}")
         for subj_slug, subj_name in subjects:
-            first_post = f"{subj_slug}/00intro.qmd"
+            first_post = f"{subj_slug}/index.qmd"
             landing_lines.extend([
                 "::: {.subject-card}",
                 f"### [{subj_name}]({first_post})",
@@ -325,64 +326,19 @@ for cat in CATEGORIES:
 
     (cat_dir / "index.qmd").write_text("\n".join(landing_lines), encoding="utf-8")
 
-    # 각 세부 과목 폴더 및 text.qmd 생성
+    # 각 세부 과목 폴더 및 과목 소개 글(index.qmd) 생성 — 이미 있으면 건드리지 않음
     for level_title, subjects in cat["levels"]:
         for subj_slug, subj_name in subjects:
             subj_dir = cat_dir / subj_slug
             subj_dir.mkdir(parents=True, exist_ok=True)
-            text_qmd_path = subj_dir / "text.qmd"
-
-            text_content = f"""---
-title: "text"
-subtitle: "{subj_name} · 1.1절 기본 양식"
-date: "2026-10-31"
-categories: ["{cat['title']}", "{subj_name}"]
----
-
-::: {{.concept-meta}}
-[← {cat['title']} 과목 목록으로](../index.qmd) | **선수 개념:** [기초 개념](#) | **다음 개념:** [심화 개념](#)
-:::
-
-::: {{.callout-note icon=false .callout-definition}}
-### 정의 1.1 (Definition)
-여기에 **{subj_name}**의 핵심 정의를 작성합니다. 임의의 대상 $x, y \\in X$에 대하여 다음 조건이 성립한다.
-$$f(x) = y$$
-:::
-
-::: {{.callout-important icon=false .callout-satz}}
-### 정리 1.2 (Satz)
-위 정의로부터 유도되는 주요 정리를 서술합니다.
-$$\\int_a^b f(x)\\,dx = F(b) - F(a)$$
-:::
-
-::: {{.callout-tip collapse="false" icon=false .callout-beweis}}
-### 증명 (Beweis)
-정리에 대한 논리적 증명 과정을 단계별로 서술합니다. $\\blacksquare$
-:::
-
----
-
-### 연결되는 개념
-* $\\leftarrow$ **이전 개념:** [과목 전체 목차](../index.qmd)
-* $\\rightarrow$ **다음 개념:** 추후 작성 예정
-"""
-            # 이미 작성된 글은 덮어쓰지 않음
-            if not text_qmd_path.exists():
-                text_qmd_path.write_text(text_content, encoding="utf-8")
-
-            # 과목 첫 페이지(00intro.qmd): 없을 때만 자리표시 글 생성
-            intro_qmd_path = subj_dir / "00intro.qmd"
+            intro_qmd_path = subj_dir / "index.qmd"
             if not intro_qmd_path.exists():
                 intro_qmd_path.write_text(f"""---
-title: "0. 들어가며"
-subtitle: "{subj_name} · 0장 들어가며"
+title: "{subj_name}"
+subtitle: "이 과목은 무엇을 다루는가"
 date: "2026-10-31"
 categories: ["{cat['title']}", "{subj_name}"]
 ---
-
-::: {{.concept-meta}}
-[← {cat['title']} 과목 목록으로](../index.qmd)
-:::
 
 이 과목의 소개 글은 준비 중입니다.
 """, encoding="utf-8")
@@ -695,7 +651,7 @@ for cat in CATEGORIES:
         yml_lines.append(f'          - text: "{level_title}"')
         for subj_slug, subj_name in subjects:
             yml_lines.append(f'          - text: "{subj_name}"')
-            yml_lines.append(f'            href: {cat["id"]}/{subj_slug}/00intro.qmd')
+            yml_lines.append(f'            href: {cat["id"]}/{subj_slug}/index.qmd')
 
 yml_lines.extend([
     "    right:",
@@ -722,8 +678,11 @@ for cat in CATEGORIES:
                 f'      title: "{subj_name}"',
                 '      style: "docked"',
                 "      search: true",
-                # 과목 폴더 안의 .qmd를 파일명 순으로 자동 나열 (00intro → 01... → 02...)
-                f'      contents: "{cat["id"]}/{subj_slug}/*.qmd"',
+                # 과목 index.qmd = 맨 위 과목명, 하위 폴더(01-.../index.qmd) = 장, 그 안의 01-...qmd = 절
+                # (폴더 이름만 쓰는 형태는 Windows의 quarto preview에서 오류가 나므로 "/**" 글롭을 씀)
+                "      contents:",
+                f'        - href: {cat["id"]}/{subj_slug}/index.qmd',
+                f'          contents: "{cat["id"]}/{subj_slug}/**"',
             ])
 
 yml_lines.extend([
@@ -740,4 +699,4 @@ yml_lines.extend([
 ])
 
 Path("_quarto.yml").write_text("\n".join(yml_lines) + "\n", encoding="utf-8")
-print("✅ 모든 폴더, 과목별 text.qmd, 대분류 카드 페이지, _quarto.yml 생성이 완료되었습니다!")
+print("✅ 모든 폴더, 과목 소개 글, 대분류 카드 페이지, _quarto.yml 생성이 완료되었습니다!")

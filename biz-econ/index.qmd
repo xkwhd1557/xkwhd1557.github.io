@@ -12,12 +12,12 @@ sidebar: false
 
 ::: {.subject-grid}
 ::: {.subject-card}
-### [경영학 원론](biz-intro/00intro.qmd)
-[![경영학 원론](../images/placeholder.svg)](biz-intro/00intro.qmd)
+### [경영학 원론](biz-intro/index.qmd)
+[![경영학 원론](../images/placeholder.svg)](biz-intro/index.qmd)
 :::
 ::: {.subject-card}
-### [경제학 원론](econ-intro/00intro.qmd)
-[![경제학 원론](../images/placeholder.svg)](econ-intro/00intro.qmd)
+### [경제학 원론](econ-intro/index.qmd)
+[![경제학 원론](../images/placeholder.svg)](econ-intro/index.qmd)
 :::
 :::
 
@@ -27,48 +27,48 @@ sidebar: false
 
 ::: {.subject-grid}
 ::: {.subject-card}
-### [회계학](accounting/00intro.qmd)
-[![회계학](../images/placeholder.svg)](accounting/00intro.qmd)
+### [회계학](accounting/index.qmd)
+[![회계학](../images/placeholder.svg)](accounting/index.qmd)
 :::
 ::: {.subject-card}
-### [생산물류관리](production-logistics/00intro.qmd)
-[![생산물류관리](../images/placeholder.svg)](production-logistics/00intro.qmd)
+### [생산물류관리](production-logistics/index.qmd)
+[![생산물류관리](../images/placeholder.svg)](production-logistics/index.qmd)
 :::
 ::: {.subject-card}
-### [의사결정론](decision-theory/00intro.qmd)
-[![의사결정론](../images/placeholder.svg)](decision-theory/00intro.qmd)
+### [의사결정론](decision-theory/index.qmd)
+[![의사결정론](../images/placeholder.svg)](decision-theory/index.qmd)
 :::
 ::: {.subject-card}
-### [미시경제학](microeconomics/00intro.qmd)
-[![미시경제학](../images/placeholder.svg)](microeconomics/00intro.qmd)
+### [미시경제학](microeconomics/index.qmd)
+[![미시경제학](../images/placeholder.svg)](microeconomics/index.qmd)
 :::
 ::: {.subject-card}
-### [거시경제학](macroeconomics/00intro.qmd)
-[![거시경제학](../images/placeholder.svg)](macroeconomics/00intro.qmd)
+### [거시경제학](macroeconomics/index.qmd)
+[![거시경제학](../images/placeholder.svg)](macroeconomics/index.qmd)
 :::
 ::: {.subject-card}
-### [재무와 투자론](finance-investment/00intro.qmd)
-[![재무와 투자론](../images/placeholder.svg)](finance-investment/00intro.qmd)
+### [재무와 투자론](finance-investment/index.qmd)
+[![재무와 투자론](../images/placeholder.svg)](finance-investment/index.qmd)
 :::
 ::: {.subject-card}
-### [화폐금융론](monetary-economics/00intro.qmd)
-[![화폐금융론](../images/placeholder.svg)](monetary-economics/00intro.qmd)
+### [화폐금융론](monetary-economics/index.qmd)
+[![화폐금융론](../images/placeholder.svg)](monetary-economics/index.qmd)
 :::
 ::: {.subject-card}
-### [노동경제학](labor-economics/00intro.qmd)
-[![노동경제학](../images/placeholder.svg)](labor-economics/00intro.qmd)
+### [노동경제학](labor-economics/index.qmd)
+[![노동경제학](../images/placeholder.svg)](labor-economics/index.qmd)
 :::
 ::: {.subject-card}
-### [게임이론 개론](game-theory/00intro.qmd)
-[![게임이론 개론](../images/placeholder.svg)](game-theory/00intro.qmd)
+### [게임이론 개론](game-theory/index.qmd)
+[![게임이론 개론](../images/placeholder.svg)](game-theory/index.qmd)
 :::
 ::: {.subject-card}
-### [공급망 관리 (SCM)](supply-chain/00intro.qmd)
-[![공급망 관리 (SCM)](../images/placeholder.svg)](supply-chain/00intro.qmd)
+### [공급망 관리 (SCM)](supply-chain/index.qmd)
+[![공급망 관리 (SCM)](../images/placeholder.svg)](supply-chain/index.qmd)
 :::
 ::: {.subject-card}
-### [시장조사론의 기초](market-research/00intro.qmd)
-[![시장조사론의 기초](../images/placeholder.svg)](market-research/00intro.qmd)
+### [시장조사론의 기초](market-research/index.qmd)
+[![시장조사론의 기초](../images/placeholder.svg)](market-research/index.qmd)
 :::
 :::
 
@@ -78,23 +78,23 @@ sidebar: false
 
 ::: {.subject-grid}
 ::: {.subject-card}
-### [시계열 분석](time-series/00intro.qmd)
-[![시계열 분석](../images/placeholder.svg)](time-series/00intro.qmd)
+### [시계열 분석](time-series/index.qmd)
+[![시계열 분석](../images/placeholder.svg)](time-series/index.qmd)
 :::
 ::: {.subject-card}
-### [계량경제학](econometrics/00intro.qmd)
-[![계량경제학](../images/placeholder.svg)](econometrics/00intro.qmd)
+### [계량경제학](econometrics/index.qmd)
+[![계량경제학](../images/placeholder.svg)](econometrics/index.qmd)
 :::
 ::: {.subject-card}
-### [보험경제학](insurance-economics/00intro.qmd)
-[![보험경제학](../images/placeholder.svg)](insurance-economics/00intro.qmd)
+### [보험경제학](insurance-economics/index.qmd)
+[![보험경제학](../images/placeholder.svg)](insurance-economics/index.qmd)
 :::
 ::: {.subject-card}
-### [계량 리스크 관리](quantitative-risk/00intro.qmd)
-[![계량 리스크 관리](../images/placeholder.svg)](quantitative-risk/00intro.qmd)
+### [계량 리스크 관리](quantitative-risk/index.qmd)
+[![계량 리스크 관리](../images/placeholder.svg)](quantitative-risk/index.qmd)
 :::
 ::: {.subject-card}
-### [기업재무론](corporate-finance/00intro.qmd)
-[![기업재무론](../images/placeholder.svg)](corporate-finance/00intro.qmd)
+### [기업재무론](corporate-finance/index.qmd)
+[![기업재무론](../images/placeholder.svg)](corporate-finance/index.qmd)
 :::
 :::

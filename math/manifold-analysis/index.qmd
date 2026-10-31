@@ -1,0 +1,8 @@
+---
+title: "다양체 해석학(Analysis on Manifolds)"
+subtitle: "이 과목은 무엇을 다루는가"
+date: "2026-10-31"
+categories: ["수학", "다양체 해석학"]
+---
+
+이 과목의 소개 글은 준비 중입니다.

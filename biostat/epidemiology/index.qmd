@@ -1,0 +1,8 @@
+---
+title: "역학 연구방법론(Epidemiological Methods)"
+subtitle: "이 과목은 무엇을 다루는가"
+date: "2026-10-31"
+categories: ["의학통계·바이오메트리", "역학 연구방법론"]
+---
+
+이 과목의 소개 글은 준비 중입니다.

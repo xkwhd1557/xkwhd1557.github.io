@@ -1,0 +1,8 @@
+---
+title: "계량 리스크 관리(Quantitative Risk Management)"
+subtitle: "이 과목은 무엇을 다루는가"
+date: "2026-10-31"
+categories: ["경영/경제", "계량 리스크 관리"]
+---
+
+이 과목의 소개 글은 준비 중입니다.
