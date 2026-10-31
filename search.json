@@ -701,6 +701,69 @@
     ]
   },
   {
+    "objectID": "privacy.html",
+    "href": "privacy.html",
+    "title": "개인정보 처리방침",
+    "section": "",
+    "text": "Study Archive(https://xkwhd1557.github.io, 이하 “이 사이트”)는 대학에서 공부한 내용을 정리해 공유하는 비영리 개인 사이트입니다. 이 문서는 EU 일반개인정보보호법(GDPR) 제13조에 따라, 이 사이트를 방문할 때 어떤 정보가 누구에 의해 어떤 목적으로 처리되는지 안내합니다."
+  },
+  {
+    "objectID": "privacy.html#요약",
+    "href": "privacy.html#요약",
+    "title": "개인정보 처리방침",
+    "section": "요약",
+    "text": "요약\n\n이 사이트에는 회원가입, 로그인, 댓글, 문의 양식이 없습니다. 운영자는 방문자의 이름, 이메일 주소 등 개인정보를 직접 수집하거나 보관하지 않습니다.\n쿠키를 사용하지 않으며, 방문자를 추적할 목적으로 브라우저에 정보를 저장하지 않습니다.\n다만 웹 페이지를 보여 주려면 방문자의 브라우저가 서버에 접속해야 하므로, 그 과정에서 아래 서비스 제공자에게 IP 주소 등 접속 정보가 전달됩니다. 각 제공자는 자신의 개인정보 처리방침에 따라 이 정보를 처리합니다.\n\n\n\n\n\n\n\n\n\n\n서비스\n제공자\n목적\n처리되는 정보\n\n\n\n\n호스팅\nGitHub (GitHub Pages)\n웹 페이지 제공, 보안\nIP 주소 등 접속 기록\n\n\n방문 통계\nGoatCounter\n조회수 집계\n집계 형태의 익명 통계 (IP 주소는 저장하지 않음)\n\n\n수식 표시\njsDelivr, cdnjs (Cloudflare)\n수식 렌더링 스크립트 제공\nIP 주소 등 접속 기록"
+  },
+  {
+    "objectID": "privacy.html#운영자",
+    "href": "privacy.html#운영자",
+    "title": "개인정보 처리방침",
+    "section": "1. 운영자",
+    "text": "1. 운영자\n이 사이트에서 개인정보 처리의 책임자는 다음과 같습니다.\n\n운영자: xkwhd1557\n이메일: xkwhd1557@proton.me"
+  },
+  {
+    "objectID": "privacy.html#호스팅-github-pages",
+    "href": "privacy.html#호스팅-github-pages",
+    "title": "개인정보 처리방침",
+    "section": "2. 호스팅: GitHub Pages",
+    "text": "2. 호스팅: GitHub Pages\n이 사이트는 GitHub Pages에서 호스팅됩니다. 제공자는 GitHub, Inc.(미국)와 GitHub B.V.(네덜란드 암스테르담)입니다.\nGitHub의 안내에 따르면 GitHub Pages 사이트를 방문하면 방문자의 IP 주소가 보안 목적으로 기록·저장되며, 이는 방문자가 GitHub에 로그인했는지와 관계없습니다. 운영자는 이 기록에 접근할 수 없습니다.\n\n법적 근거: GDPR 제6조 제1항 f호(사이트를 안정적이고 안전하게 제공하려는 정당한 이익)\n미국으로의 전송: GitHub는 EU-미국 데이터 프라이버시 프레임워크(EU-U.S. Data Privacy Framework)를 준수한다고 밝히고 있으며, 이 프레임워크에 대해서는 GDPR 제45조에 따른 유럽연합 집행위원회의 적정성 결정이 있습니다.\n자세한 내용: GitHub 개인정보 처리방침(GitHub General Privacy Statement), GitHub Pages 소개"
+  },
+  {
+    "objectID": "privacy.html#방문-통계-goatcounter",
+    "href": "privacy.html#방문-통계-goatcounter",
+    "title": "개인정보 처리방침",
+    "section": "3. 방문 통계: GoatCounter",
+    "text": "3. 방문 통계: GoatCounter\n어떤 글이 얼마나 읽히는지 알기 위해 방문 통계 서비스 GoatCounter를 사용합니다. GoatCounter는 아일랜드의 Martin Tournoij가 운영하며, 서버는 Hetzner Online GmbH의 핀란드·독일 데이터센터에 있습니다.\nGoatCounter는 다음과 같이 동작합니다.\n\n쿠키, 로컬 스토리지 등 방문자의 브라우저에 아무것도 저장하지 않습니다.\nIP 주소를 저장하지 않습니다. IP 주소는 접속 국가를 추정하고, 같은 방문자의 연속된 조회를 한 번의 방문으로 묶는 데에만 쓰이며, 이 연결 정보는 최대 8시간 동안 메모리에만 머문 뒤 사라집니다.\n저장되는 것은 방문한 페이지 주소, 유입 경로(referrer), 브라우저와 운영체제 종류, 화면 너비, 접속 국가, 언어 같은 정보이며, 집계된 통계 형태로 보관됩니다.\n\n운영자는 GoatCounter에서 페이지별 조회수와 같은 집계 통계만 볼 수 있고, 이를 통해 개별 방문자를 식별할 수 없습니다.\n\n법적 근거: GDPR 제6조 제1항 f호(사이트 이용 현황을 파악하려는 정당한 이익)\n거부 방법: 브라우저의 추적 방지 기능이나 콘텐츠 차단 확장 프로그램으로 GoatCounter를 차단할 수 있으며, 차단해도 사이트 이용에는 지장이 없습니다.\n자세한 내용: GoatCounter 개인정보 처리방침"
+  },
+  {
+    "objectID": "privacy.html#수식-표시용-외부-리소스",
+    "href": "privacy.html#수식-표시용-외부-리소스",
+    "title": "개인정보 처리방침",
+    "section": "4. 수식 표시용 외부 리소스",
+    "text": "4. 수식 표시용 외부 리소스\n수식이 들어 있는 페이지는 수식을 화면에 그리기 위해 MathJax 스크립트를 jsDelivr(본사: 폴란드 크라쿠프)에서, 오래된 브라우저 호환용 스크립트를 cdnjs(운영: Cloudflare, Inc., 미국)에서 불러옵니다. 이때 방문자의 브라우저가 해당 서버에 직접 접속하므로 IP 주소 등 접속 정보가 각 제공자에게 전달됩니다.\njsDelivr는 IP 주소를 파일 전송과 국가별 통계에만 사용하고, 마케팅에 쓰거나 판매하지 않으며, 짧은 기간 안에 집계한 뒤 삭제한다고 밝히고 있습니다.\n\n법적 근거: GDPR 제6조 제1항 f호(수식을 올바르게 표시하려는 정당한 이익)\n자세한 내용: jsDelivr 개인정보 처리방침, Cloudflare 개인정보 처리방침\n\n글꼴은 외부 서버에서 불러오지 않습니다. 사이트 내 검색도 방문자의 브라우저 안에서만 처리되며, 검색어가 외부로 전송되지 않습니다."
+  },
+  {
+    "objectID": "privacy.html#외부-링크",
+    "href": "privacy.html#외부-링크",
+    "title": "개인정보 처리방침",
+    "section": "5. 외부 링크",
+    "text": "5. 외부 링크\n이 사이트의 글에는 다른 웹사이트로 가는 링크가 있을 수 있습니다. 링크를 따라 이동한 사이트에서는 그 사이트의 개인정보 처리방침이 적용됩니다."
+  },
+  {
+    "objectID": "privacy.html#방문자의-권리",
+    "href": "privacy.html#방문자의-권리",
+    "title": "개인정보 처리방침",
+    "section": "6. 방문자의 권리",
+    "text": "6. 방문자의 권리\n방문자는 GDPR에 따라 자신의 개인정보에 대해 열람(제15조), 정정(제16조), 삭제(제17조), 처리 제한(제18조), 이의 제기(제21조)를 요구할 권리가 있습니다. 또한 개인정보 처리가 법에 어긋난다고 생각하면 거주지, 근무지 또는 위반이 일어난 곳의 개인정보 감독기관에 민원을 제기할 수 있습니다(제77조).\n운영자는 방문자의 개인정보를 직접 보관하지 않으므로, 위 서비스 제공자가 처리하는 정보에 관한 요청은 각 제공자에게 직접 하시는 것이 가장 빠릅니다. 그 밖의 문의는 위 운영자 이메일로 보내 주시기 바랍니다."
+  },
+  {
+    "objectID": "privacy.html#변경",
+    "href": "privacy.html#변경",
+    "title": "개인정보 처리방침",
+    "section": "7. 변경",
+    "text": "7. 변경\n이 방침은 사이트에서 사용하는 서비스가 바뀌면 함께 수정됩니다. 변경 사항은 이 페이지에 게시합니다.\n\n시행일: 2026년 11월 1일"
+  },
+  {
     "objectID": "biz-econ/finance-investment/index.html",
     "href": "biz-econ/finance-investment/index.html",
     "title": "재무와 투자론(Finance and Investments)",
