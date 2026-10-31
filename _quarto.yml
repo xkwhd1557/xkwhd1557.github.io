@@ -4,6 +4,8 @@ project:
 
 website:
   title: "Study Archive"
+  page-footer:
+    center: "© 2026 xkwhd1557 · 글은 [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.ko)에 따라 이용할 수 있습니다."
   navbar:
     background: primary
     search: true
