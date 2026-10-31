@@ -11,16 +11,16 @@ sidebar: false
 
 ::: {.subject-grid}
 ::: {.subject-card}
-### [기초 확률론](prob-theory/text.qmd)
-[![기초 확률론](../images/placeholder.svg)](prob-theory/text.qmd)
+### [기초 확률론](prob-theory/00intro.qmd)
+[![기초 확률론](../images/placeholder.svg)](prob-theory/00intro.qmd)
 :::
 ::: {.subject-card}
-### [기초 통계학](basic-stats/text.qmd)
-[![기초 통계학](../images/placeholder.svg)](basic-stats/text.qmd)
+### [기초 통계학](basic-stats/00intro.qmd)
+[![기초 통계학](../images/placeholder.svg)](basic-stats/00intro.qmd)
 :::
 ::: {.subject-card}
-### [통계적 프로그래밍](stat-programming/text.qmd)
-[![통계적 프로그래밍](../images/placeholder.svg)](stat-programming/text.qmd)
+### [통계적 프로그래밍](stat-programming/00intro.qmd)
+[![통계적 프로그래밍](../images/placeholder.svg)](stat-programming/00intro.qmd)
 :::
 :::
 
@@ -30,24 +30,24 @@ sidebar: false
 
 ::: {.subject-grid}
 ::: {.subject-card}
-### [측도론적 확률론](measure-prob/text.qmd)
-[![측도론적 확률론](../images/placeholder.svg)](measure-prob/text.qmd)
+### [측도론적 확률론](measure-prob/00intro.qmd)
+[![측도론적 확률론](../images/placeholder.svg)](measure-prob/00intro.qmd)
 :::
 ::: {.subject-card}
-### [확률과정론](stochastic-processes/text.qmd)
-[![확률과정론](../images/placeholder.svg)](stochastic-processes/text.qmd)
+### [확률과정론](stochastic-processes/00intro.qmd)
+[![확률과정론](../images/placeholder.svg)](stochastic-processes/00intro.qmd)
 :::
 ::: {.subject-card}
-### [수리통계학](math-stats/text.qmd)
-[![수리통계학](../images/placeholder.svg)](math-stats/text.qmd)
+### [수리통계학](math-stats/00intro.qmd)
+[![수리통계학](../images/placeholder.svg)](math-stats/00intro.qmd)
 :::
 ::: {.subject-card}
-### [확률적 시뮬레이션](stochastic-simulation/text.qmd)
-[![확률적 시뮬레이션](../images/placeholder.svg)](stochastic-simulation/text.qmd)
+### [확률적 시뮬레이션](stochastic-simulation/00intro.qmd)
+[![확률적 시뮬레이션](../images/placeholder.svg)](stochastic-simulation/00intro.qmd)
 :::
 ::: {.subject-card}
-### [보험수학](actuarial-math/text.qmd)
-[![보험수학](../images/placeholder.svg)](actuarial-math/text.qmd)
+### [보험수학](actuarial-math/00intro.qmd)
+[![보험수학](../images/placeholder.svg)](actuarial-math/00intro.qmd)
 :::
 :::
 
@@ -57,27 +57,27 @@ sidebar: false
 
 ::: {.subject-grid}
 ::: {.subject-card}
-### [확률해석학](stochastic-calculus/text.qmd)
-[![확률해석학](../images/placeholder.svg)](stochastic-calculus/text.qmd)
+### [확률해석학](stochastic-calculus/00intro.qmd)
+[![확률해석학](../images/placeholder.svg)](stochastic-calculus/00intro.qmd)
 :::
 ::: {.subject-card}
-### [마르코프 프로세스](markov-processes/text.qmd)
-[![마르코프 프로세스](../images/placeholder.svg)](markov-processes/text.qmd)
+### [마르코프 프로세스](markov-processes/00intro.qmd)
+[![마르코프 프로세스](../images/placeholder.svg)](markov-processes/00intro.qmd)
 :::
 ::: {.subject-card}
-### [디퓨전 모델](diffusion-models/text.qmd)
-[![디퓨전 모델](../images/placeholder.svg)](diffusion-models/text.qmd)
+### [디퓨전 모델](diffusion-models/00intro.qmd)
+[![디퓨전 모델](../images/placeholder.svg)](diffusion-models/00intro.qmd)
 :::
 ::: {.subject-card}
-### [가우시안 프로세스](gaussian-processes/text.qmd)
-[![가우시안 프로세스](../images/placeholder.svg)](gaussian-processes/text.qmd)
+### [가우시안 프로세스](gaussian-processes/00intro.qmd)
+[![가우시안 프로세스](../images/placeholder.svg)](gaussian-processes/00intro.qmd)
 :::
 ::: {.subject-card}
-### [비유클리드 통계학](non-euclidean-stats/text.qmd)
-[![비유클리드 통계학](../images/placeholder.svg)](non-euclidean-stats/text.qmd)
+### [비유클리드 통계학](non-euclidean-stats/00intro.qmd)
+[![비유클리드 통계학](../images/placeholder.svg)](non-euclidean-stats/00intro.qmd)
 :::
 ::: {.subject-card}
-### [확률과정의 통계추론](stats-for-stoch-proc/text.qmd)
-[![확률과정의 통계추론](../images/placeholder.svg)](stats-for-stoch-proc/text.qmd)
+### [확률과정의 통계추론](stats-for-stoch-proc/00intro.qmd)
+[![확률과정의 통계추론](../images/placeholder.svg)](stats-for-stoch-proc/00intro.qmd)
 :::
 :::

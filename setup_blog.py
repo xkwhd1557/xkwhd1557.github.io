@@ -224,7 +224,7 @@ for cat in CATEGORIES:
     index_lines.append("")
     index_lines.append("::: {.subject-grid}")
     for subj_slug, subj_name in subjects:
-        first_post = f"{cat['id']}/{subj_slug}/text.qmd"
+        first_post = f"{cat['id']}/{subj_slug}/00intro.qmd"
         index_lines.extend([
             "::: {.subject-card}",
             f"#### [{subj_name}]({first_post})",
@@ -290,7 +290,7 @@ LEVEL_DESCRIPTIONS = [
     ("Advanced", "핵심 과목 이후, 깊이 있는 이론과 고급 주제를 본격적으로 다루는 과목입니다."),
 ]
 
-# 6. 각 대분류 랜딩 페이지(<cat>/index.qmd) 및 과목별 기본 글(<cat>/<subj>/text.qmd) 생성
+# 6. 각 대분류 랜딩 페이지(<cat>/index.qmd) 및 과목별 기본 글(00intro.qmd, text.qmd) 생성
 for cat in CATEGORIES:
     cat_dir = Path(cat["id"])
     cat_dir.mkdir(exist_ok=True)
@@ -314,7 +314,7 @@ for cat in CATEGORIES:
                 break
         landing_lines.append("::: {.subject-grid}")
         for subj_slug, subj_name in subjects:
-            first_post = f"{subj_slug}/text.qmd"
+            first_post = f"{subj_slug}/00intro.qmd"
             landing_lines.extend([
                 "::: {.subject-card}",
                 f"### [{subj_name}]({first_post})",
@@ -366,7 +366,26 @@ $$\\int_a^b f(x)\\,dx = F(b) - F(a)$$
 * $\\leftarrow$ **이전 개념:** [과목 전체 목차](../index.qmd)
 * $\\rightarrow$ **다음 개념:** 추후 작성 예정
 """
-            text_qmd_path.write_text(text_content, encoding="utf-8")
+            # 이미 작성된 글은 덮어쓰지 않음
+            if not text_qmd_path.exists():
+                text_qmd_path.write_text(text_content, encoding="utf-8")
+
+            # 과목 첫 페이지(00intro.qmd): 없을 때만 자리표시 글 생성
+            intro_qmd_path = subj_dir / "00intro.qmd"
+            if not intro_qmd_path.exists():
+                intro_qmd_path.write_text(f"""---
+title: "0. 들어가며"
+subtitle: "{subj_name} · 0장 들어가며"
+date: "2026-10-31"
+categories: ["{cat['title']}", "{subj_name}"]
+---
+
+::: {{.concept-meta}}
+[← {cat['title']} 과목 목록으로](../index.qmd)
+:::
+
+이 과목의 소개 글은 준비 중입니다.
+""", encoding="utf-8")
 
 # 7. 스타일시트 (custom.scss) 생성 - Aleph1 박스 + 과목 카드 그리드 + 상단 드롭다운 호버
 custom_scss = """/*-- scss:defaults --*/
@@ -676,7 +695,7 @@ for cat in CATEGORIES:
         yml_lines.append(f'          - text: "{level_title}"')
         for subj_slug, subj_name in subjects:
             yml_lines.append(f'          - text: "{subj_name}"')
-            yml_lines.append(f'            href: {cat["id"]}/{subj_slug}/text.qmd')
+            yml_lines.append(f'            href: {cat["id"]}/{subj_slug}/00intro.qmd')
 
 yml_lines.extend([
     "    right:",
@@ -694,7 +713,7 @@ yml_lines.extend([
     "  sidebar:",
 ])
 
-# 69개 과목별 독립 사이드바 생성 (해당 과목에 들어갔을 때 그 과목의 장들만 표시됨)
+# 과목별 독립 사이드바 생성 (해당 과목에 들어갔을 때 그 과목의 장들만 표시됨)
 for cat in CATEGORIES:
     for level_title, subjects in cat["levels"]:
         for subj_slug, subj_name in subjects:
@@ -703,11 +722,8 @@ for cat in CATEGORIES:
                 f'      title: "{subj_name}"',
                 '      style: "docked"',
                 "      search: true",
-                "      contents:",
-                '        - section: "1장. 기본 개념"',
-                "          contents:",
-                '            - text: "1.1 text"',
-                f'              href: {cat["id"]}/{subj_slug}/text.qmd',
+                # 과목 폴더 안의 .qmd를 파일명 순으로 자동 나열 (00intro → 01... → 02...)
+                f'      contents: "{cat["id"]}/{subj_slug}/*.qmd"',
             ])
 
 yml_lines.extend([

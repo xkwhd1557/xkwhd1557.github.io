@@ -11,12 +11,12 @@ sidebar: false
 
 ::: {.subject-grid}
 ::: {.subject-card}
-### [컴퓨터 과학 원론](cs-intro/text.qmd)
-[![컴퓨터 과학 원론](../images/placeholder.svg)](cs-intro/text.qmd)
+### [컴퓨터 과학 원론](cs-intro/00intro.qmd)
+[![컴퓨터 과학 원론](../images/placeholder.svg)](cs-intro/00intro.qmd)
 :::
 ::: {.subject-card}
-### [C언어](c-programming/text.qmd)
-[![C언어](../images/placeholder.svg)](c-programming/text.qmd)
+### [C언어](c-programming/00intro.qmd)
+[![C언어](../images/placeholder.svg)](c-programming/00intro.qmd)
 :::
 :::
 
@@ -26,20 +26,20 @@ sidebar: false
 
 ::: {.subject-grid}
 ::: {.subject-card}
-### [알고리즘과 자료구조](algorithms-data-structures/text.qmd)
-[![알고리즘과 자료구조](../images/placeholder.svg)](algorithms-data-structures/text.qmd)
+### [알고리즘과 자료구조](algorithms-data-structures/00intro.qmd)
+[![알고리즘과 자료구조](../images/placeholder.svg)](algorithms-data-structures/00intro.qmd)
 :::
 ::: {.subject-card}
-### [이론 컴퓨터과학](theoretical-cs/text.qmd)
-[![이론 컴퓨터과학](../images/placeholder.svg)](theoretical-cs/text.qmd)
+### [이론 컴퓨터과학](theoretical-cs/00intro.qmd)
+[![이론 컴퓨터과학](../images/placeholder.svg)](theoretical-cs/00intro.qmd)
 :::
 ::: {.subject-card}
-### [데이터베이스 시스템](database-systems/text.qmd)
-[![데이터베이스 시스템](../images/placeholder.svg)](database-systems/text.qmd)
+### [데이터베이스 시스템](database-systems/00intro.qmd)
+[![데이터베이스 시스템](../images/placeholder.svg)](database-systems/00intro.qmd)
 :::
 ::: {.subject-card}
-### [형식 시스템](formal-systems/text.qmd)
-[![형식 시스템](../images/placeholder.svg)](formal-systems/text.qmd)
+### [형식 시스템](formal-systems/00intro.qmd)
+[![형식 시스템](../images/placeholder.svg)](formal-systems/00intro.qmd)
 :::
 :::
 
@@ -49,7 +49,7 @@ sidebar: false
 
 ::: {.subject-grid}
 ::: {.subject-card}
-### [심화 과정 (준비 중)](advanced/text.qmd)
-[![심화 과정 (준비 중)](../images/placeholder.svg)](advanced/text.qmd)
+### [심화 과정 (준비 중)](advanced/00intro.qmd)
+[![심화 과정 (준비 중)](../images/placeholder.svg)](advanced/00intro.qmd)
 :::
 :::

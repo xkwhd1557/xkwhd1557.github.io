@@ -33,24 +33,24 @@ listing:
 
 ::: {.subject-grid}
 ::: {.subject-card}
-#### [해석학](math/analysis/text.qmd)
-[![해석학](images/placeholder.svg)](math/analysis/text.qmd)
+#### [해석학](math/analysis/00intro.qmd)
+[![해석학](images/placeholder.svg)](math/analysis/00intro.qmd)
 :::
 ::: {.subject-card}
-#### [선형대수학](math/linear-algebra/text.qmd)
-[![선형대수학](images/placeholder.svg)](math/linear-algebra/text.qmd)
+#### [선형대수학](math/linear-algebra/00intro.qmd)
+[![선형대수학](images/placeholder.svg)](math/linear-algebra/00intro.qmd)
 :::
 ::: {.subject-card}
-#### [이산수학](math/discrete-math/text.qmd)
-[![이산수학](images/placeholder.svg)](math/discrete-math/text.qmd)
+#### [이산수학](math/discrete-math/00intro.qmd)
+[![이산수학](images/placeholder.svg)](math/discrete-math/00intro.qmd)
 :::
 ::: {.subject-card}
-#### [수학적 프로그래밍 (Python)](math/math-programming/text.qmd)
-[![수학적 프로그래밍 (Python)](images/placeholder.svg)](math/math-programming/text.qmd)
+#### [수학적 프로그래밍 (Python)](math/math-programming/00intro.qmd)
+[![수학적 프로그래밍 (Python)](images/placeholder.svg)](math/math-programming/00intro.qmd)
 :::
 ::: {.subject-card}
-#### [LaTeX](math/latex/text.qmd)
-[![LaTeX](images/placeholder.svg)](math/latex/text.qmd)
+#### [LaTeX](math/latex/00intro.qmd)
+[![LaTeX](images/placeholder.svg)](math/latex/00intro.qmd)
 :::
 :::
 
@@ -62,16 +62,16 @@ listing:
 
 ::: {.subject-grid}
 ::: {.subject-card}
-#### [기초 확률론](stats/prob-theory/text.qmd)
-[![기초 확률론](images/placeholder.svg)](stats/prob-theory/text.qmd)
+#### [기초 확률론](stats/prob-theory/00intro.qmd)
+[![기초 확률론](images/placeholder.svg)](stats/prob-theory/00intro.qmd)
 :::
 ::: {.subject-card}
-#### [기초 통계학](stats/basic-stats/text.qmd)
-[![기초 통계학](images/placeholder.svg)](stats/basic-stats/text.qmd)
+#### [기초 통계학](stats/basic-stats/00intro.qmd)
+[![기초 통계학](images/placeholder.svg)](stats/basic-stats/00intro.qmd)
 :::
 ::: {.subject-card}
-#### [통계적 프로그래밍](stats/stat-programming/text.qmd)
-[![통계적 프로그래밍](images/placeholder.svg)](stats/stat-programming/text.qmd)
+#### [통계적 프로그래밍](stats/stat-programming/00intro.qmd)
+[![통계적 프로그래밍](images/placeholder.svg)](stats/stat-programming/00intro.qmd)
 :::
 :::
 
@@ -83,12 +83,12 @@ listing:
 
 ::: {.subject-grid}
 ::: {.subject-card}
-#### [컴퓨터 과학 원론](cs/cs-intro/text.qmd)
-[![컴퓨터 과학 원론](images/placeholder.svg)](cs/cs-intro/text.qmd)
+#### [컴퓨터 과학 원론](cs/cs-intro/00intro.qmd)
+[![컴퓨터 과학 원론](images/placeholder.svg)](cs/cs-intro/00intro.qmd)
 :::
 ::: {.subject-card}
-#### [C언어](cs/c-programming/text.qmd)
-[![C언어](images/placeholder.svg)](cs/c-programming/text.qmd)
+#### [C언어](cs/c-programming/00intro.qmd)
+[![C언어](images/placeholder.svg)](cs/c-programming/00intro.qmd)
 :::
 :::
 
@@ -100,16 +100,16 @@ listing:
 
 ::: {.subject-grid}
 ::: {.subject-card}
-#### [데이터 사이언스 개론](ds-ai/ds-intro/text.qmd)
-[![데이터 사이언스 개론](images/placeholder.svg)](ds-ai/ds-intro/text.qmd)
+#### [데이터 사이언스 개론](ds-ai/ds-intro/00intro.qmd)
+[![데이터 사이언스 개론](images/placeholder.svg)](ds-ai/ds-intro/00intro.qmd)
 :::
 ::: {.subject-card}
-#### [데이터 사이언스와 사회](ds-ai/ds-society/text.qmd)
-[![데이터 사이언스와 사회](images/placeholder.svg)](ds-ai/ds-society/text.qmd)
+#### [데이터 사이언스와 사회](ds-ai/ds-society/00intro.qmd)
+[![데이터 사이언스와 사회](images/placeholder.svg)](ds-ai/ds-society/00intro.qmd)
 :::
 ::: {.subject-card}
-#### [고등학교 인공지능 수학](ds-ai/ai-math-intro/text.qmd)
-[![고등학교 인공지능 수학](images/placeholder.svg)](ds-ai/ai-math-intro/text.qmd)
+#### [고등학교 인공지능 수학](ds-ai/ai-math-intro/00intro.qmd)
+[![고등학교 인공지능 수학](images/placeholder.svg)](ds-ai/ai-math-intro/00intro.qmd)
 :::
 :::
 
@@ -121,12 +121,12 @@ listing:
 
 ::: {.subject-grid}
 ::: {.subject-card}
-#### [경영학 원론](biz-econ/biz-intro/text.qmd)
-[![경영학 원론](images/placeholder.svg)](biz-econ/biz-intro/text.qmd)
+#### [경영학 원론](biz-econ/biz-intro/00intro.qmd)
+[![경영학 원론](images/placeholder.svg)](biz-econ/biz-intro/00intro.qmd)
 :::
 ::: {.subject-card}
-#### [경제학 원론](biz-econ/econ-intro/text.qmd)
-[![경제학 원론](images/placeholder.svg)](biz-econ/econ-intro/text.qmd)
+#### [경제학 원론](biz-econ/econ-intro/00intro.qmd)
+[![경제학 원론](images/placeholder.svg)](biz-econ/econ-intro/00intro.qmd)
 :::
 :::
 
@@ -138,12 +138,12 @@ listing:
 
 ::: {.subject-grid}
 ::: {.subject-card}
-#### [의학통계학 개론](biostat/biostat-intro/text.qmd)
-[![의학통계학 개론](images/placeholder.svg)](biostat/biostat-intro/text.qmd)
+#### [의학통계학 개론](biostat/biostat-intro/00intro.qmd)
+[![의학통계학 개론](images/placeholder.svg)](biostat/biostat-intro/00intro.qmd)
 :::
 ::: {.subject-card}
-#### [역학 연구방법론](biostat/epidemiology/text.qmd)
-[![역학 연구방법론](images/placeholder.svg)](biostat/epidemiology/text.qmd)
+#### [역학 연구방법론](biostat/epidemiology/00intro.qmd)
+[![역학 연구방법론](images/placeholder.svg)](biostat/epidemiology/00intro.qmd)
 :::
 :::
 

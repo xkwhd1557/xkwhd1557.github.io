@@ -11,16 +11,16 @@ sidebar: false
 
 ::: {.subject-grid}
 ::: {.subject-card}
-### [데이터 사이언스 개론](ds-intro/text.qmd)
-[![데이터 사이언스 개론](../images/placeholder.svg)](ds-intro/text.qmd)
+### [데이터 사이언스 개론](ds-intro/00intro.qmd)
+[![데이터 사이언스 개론](../images/placeholder.svg)](ds-intro/00intro.qmd)
 :::
 ::: {.subject-card}
-### [데이터 사이언스와 사회](ds-society/text.qmd)
-[![데이터 사이언스와 사회](../images/placeholder.svg)](ds-society/text.qmd)
+### [데이터 사이언스와 사회](ds-society/00intro.qmd)
+[![데이터 사이언스와 사회](../images/placeholder.svg)](ds-society/00intro.qmd)
 :::
 ::: {.subject-card}
-### [고등학교 인공지능 수학](ai-math-intro/text.qmd)
-[![고등학교 인공지능 수학](../images/placeholder.svg)](ai-math-intro/text.qmd)
+### [고등학교 인공지능 수학](ai-math-intro/00intro.qmd)
+[![고등학교 인공지능 수학](../images/placeholder.svg)](ai-math-intro/00intro.qmd)
 :::
 :::
 
@@ -30,20 +30,20 @@ sidebar: false
 
 ::: {.subject-grid}
 ::: {.subject-card}
-### [수치적 방법론과 최적화](numerical-optimization/text.qmd)
-[![수치적 방법론과 최적화](../images/placeholder.svg)](numerical-optimization/text.qmd)
+### [수치적 방법론과 최적화](numerical-optimization/00intro.qmd)
+[![수치적 방법론과 최적화](../images/placeholder.svg)](numerical-optimization/00intro.qmd)
 :::
 ::: {.subject-card}
-### [머신러닝](machine-learning/text.qmd)
-[![머신러닝](../images/placeholder.svg)](machine-learning/text.qmd)
+### [머신러닝](machine-learning/00intro.qmd)
+[![머신러닝](../images/placeholder.svg)](machine-learning/00intro.qmd)
 :::
 ::: {.subject-card}
-### [딥러닝과 컴퓨터 비전](deep-learning-cv/text.qmd)
-[![딥러닝과 컴퓨터 비전](../images/placeholder.svg)](deep-learning-cv/text.qmd)
+### [딥러닝과 컴퓨터 비전](deep-learning-cv/00intro.qmd)
+[![딥러닝과 컴퓨터 비전](../images/placeholder.svg)](deep-learning-cv/00intro.qmd)
 :::
 ::: {.subject-card}
-### [인공지능 원론](ai-intro/text.qmd)
-[![인공지능 원론](../images/placeholder.svg)](ai-intro/text.qmd)
+### [인공지능 원론](ai-intro/00intro.qmd)
+[![인공지능 원론](../images/placeholder.svg)](ai-intro/00intro.qmd)
 :::
 :::
 
@@ -53,15 +53,15 @@ sidebar: false
 
 ::: {.subject-grid}
 ::: {.subject-card}
-### [데이터 사이언스의 통계적 기초](statistical-foundations/text.qmd)
-[![데이터 사이언스의 통계적 기초](../images/placeholder.svg)](statistical-foundations/text.qmd)
+### [데이터 사이언스의 통계적 기초](statistical-foundations/00intro.qmd)
+[![데이터 사이언스의 통계적 기초](../images/placeholder.svg)](statistical-foundations/00intro.qmd)
 :::
 ::: {.subject-card}
-### [머신러닝의 수리적 기초](mathematical-foundations/text.qmd)
-[![머신러닝의 수리적 기초](../images/placeholder.svg)](mathematical-foundations/text.qmd)
+### [머신러닝의 수리적 기초](mathematical-foundations/00intro.qmd)
+[![머신러닝의 수리적 기초](../images/placeholder.svg)](mathematical-foundations/00intro.qmd)
 :::
 ::: {.subject-card}
-### [데이터 사이언스를 위한 선형대수학](advanced-linear-algebra/text.qmd)
-[![데이터 사이언스를 위한 선형대수학](../images/placeholder.svg)](advanced-linear-algebra/text.qmd)
+### [데이터 사이언스를 위한 선형대수학](advanced-linear-algebra/00intro.qmd)
+[![데이터 사이언스를 위한 선형대수학](../images/placeholder.svg)](advanced-linear-algebra/00intro.qmd)
 :::
 :::
