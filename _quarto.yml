@@ -13,7 +13,7 @@ website:
   twitter-card: true
   page-navigation: true
   page-footer:
-    center: "© 2026 xkwhd1557 · 글은 [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.ko)에 따라 이용할 수 있습니다."
+    center: "© 2026 xkwhd1557 · 글은 [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.ko)에 따라 이용할 수 있습니다.<br> [개인정보 처리방침](/privacy.qmd)"
   navbar:
     background: primary
     search: true
@@ -162,6 +162,8 @@ website:
             href: ds-ai/deep-learning-cv/index.qmd
           - text: "인공지능 원론"
             href: ds-ai/ai-intro/index.qmd
+          - text: "수리적 데이터 분석과 통계적 추론"
+            href: ds-ai/data-analysis-inference/index.qmd
           - text: "---"
           - text: "심화 (Advanced)"
           - text: "데이터 사이언스의 통계적 기초"
@@ -256,6 +258,7 @@ website:
     - id: "math-analysis"
       title: "해석학"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: math/analysis/index.qmd
@@ -263,6 +266,7 @@ website:
     - id: "math-linear-algebra"
       title: "선형대수학"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: math/linear-algebra/index.qmd
@@ -270,6 +274,7 @@ website:
     - id: "math-discrete-math"
       title: "이산수학"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: math/discrete-math/index.qmd
@@ -277,6 +282,7 @@ website:
     - id: "math-math-programming"
       title: "수학적 프로그래밍 (Python)"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: math/math-programming/index.qmd
@@ -284,6 +290,7 @@ website:
     - id: "math-latex"
       title: "LaTeX"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: math/latex/index.qmd
@@ -291,6 +298,7 @@ website:
     - id: "math-complex-analysis"
       title: "복소해석학"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: math/complex-analysis/index.qmd
@@ -298,6 +306,7 @@ website:
     - id: "math-ode"
       title: "상미분방정식"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: math/ode/index.qmd
@@ -305,6 +314,7 @@ website:
     - id: "math-dynamical-systems"
       title: "동적 시스템"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: math/dynamical-systems/index.qmd
@@ -312,6 +322,7 @@ website:
     - id: "math-measure-theory"
       title: "측도론"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: math/measure-theory/index.qmd
@@ -319,6 +330,7 @@ website:
     - id: "math-pde-intro"
       title: "기초 편미분방정식"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: math/pde-intro/index.qmd
@@ -326,6 +338,7 @@ website:
     - id: "math-general-topology"
       title: "일반위상수학"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: math/general-topology/index.qmd
@@ -333,6 +346,7 @@ website:
     - id: "math-algebra"
       title: "대수학"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: math/algebra/index.qmd
@@ -340,6 +354,7 @@ website:
     - id: "math-number-theory"
       title: "정수론"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: math/number-theory/index.qmd
@@ -347,6 +362,7 @@ website:
     - id: "math-geometry"
       title: "기하학"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: math/geometry/index.qmd
@@ -354,6 +370,7 @@ website:
     - id: "math-mathematical-logic"
       title: "수리논리학"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: math/mathematical-logic/index.qmd
@@ -361,6 +378,7 @@ website:
     - id: "math-set-theory"
       title: "공리적 집합론"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: math/set-theory/index.qmd
@@ -368,6 +386,7 @@ website:
     - id: "math-numerical-methods"
       title: "수치적 방법론"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: math/numerical-methods/index.qmd
@@ -375,6 +394,7 @@ website:
     - id: "math-optimization"
       title: "수학적 최적화"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: math/optimization/index.qmd
@@ -382,6 +402,7 @@ website:
     - id: "math-functional-analysis"
       title: "함수해석학"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: math/functional-analysis/index.qmd
@@ -389,6 +410,7 @@ website:
     - id: "math-pde-advanced"
       title: "편미분방정식"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: math/pde-advanced/index.qmd
@@ -396,6 +418,7 @@ website:
     - id: "math-manifold-analysis"
       title: "다양체 해석학"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: math/manifold-analysis/index.qmd
@@ -403,6 +426,7 @@ website:
     - id: "math-rkhs"
       title: "RKHS 이론"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: math/rkhs/index.qmd
@@ -410,6 +434,7 @@ website:
     - id: "math-differential-geometry"
       title: "미분기하학"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: math/differential-geometry/index.qmd
@@ -417,6 +442,7 @@ website:
     - id: "stats-prob-theory"
       title: "기초 확률론"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: stats/prob-theory/index.qmd
@@ -424,6 +450,7 @@ website:
     - id: "stats-basic-stats"
       title: "기초 통계학"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: stats/basic-stats/index.qmd
@@ -431,6 +458,7 @@ website:
     - id: "stats-linear-models"
       title: "기초 선형 모델"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: stats/linear-models/index.qmd
@@ -438,6 +466,7 @@ website:
     - id: "stats-stat-programming"
       title: "통계적 프로그래밍"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: stats/stat-programming/index.qmd
@@ -445,6 +474,7 @@ website:
     - id: "stats-measure-prob"
       title: "측도론적 확률론"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: stats/measure-prob/index.qmd
@@ -452,6 +482,7 @@ website:
     - id: "stats-stochastic-processes"
       title: "확률과정론"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: stats/stochastic-processes/index.qmd
@@ -459,6 +490,7 @@ website:
     - id: "stats-math-stats"
       title: "수리통계학"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: stats/math-stats/index.qmd
@@ -466,6 +498,7 @@ website:
     - id: "stats-stochastic-simulation"
       title: "확률적 시뮬레이션"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: stats/stochastic-simulation/index.qmd
@@ -473,6 +506,7 @@ website:
     - id: "stats-actuarial-math"
       title: "보험수학"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: stats/actuarial-math/index.qmd
@@ -480,6 +514,7 @@ website:
     - id: "stats-stochastic-calculus"
       title: "확률해석학"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: stats/stochastic-calculus/index.qmd
@@ -487,6 +522,7 @@ website:
     - id: "stats-markov-processes"
       title: "마르코프 프로세스"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: stats/markov-processes/index.qmd
@@ -494,6 +530,7 @@ website:
     - id: "stats-diffusion-models"
       title: "디퓨전 모델"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: stats/diffusion-models/index.qmd
@@ -501,6 +538,7 @@ website:
     - id: "stats-gaussian-processes"
       title: "가우시안 프로세스"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: stats/gaussian-processes/index.qmd
@@ -508,6 +546,7 @@ website:
     - id: "stats-non-euclidean-stats"
       title: "비유클리드 통계학"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: stats/non-euclidean-stats/index.qmd
@@ -515,6 +554,7 @@ website:
     - id: "stats-stats-for-stoch-proc"
       title: "확률과정의 통계추론"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: stats/stats-for-stoch-proc/index.qmd
@@ -522,6 +562,7 @@ website:
     - id: "cs-cs-intro"
       title: "컴퓨터 과학 원론"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: cs/cs-intro/index.qmd
@@ -529,6 +570,7 @@ website:
     - id: "cs-c-programming"
       title: "C언어"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: cs/c-programming/index.qmd
@@ -536,6 +578,7 @@ website:
     - id: "cs-algorithms-data-structures"
       title: "알고리즘과 자료구조"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: cs/algorithms-data-structures/index.qmd
@@ -543,6 +586,7 @@ website:
     - id: "cs-theoretical-cs"
       title: "이론 컴퓨터과학"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: cs/theoretical-cs/index.qmd
@@ -550,6 +594,7 @@ website:
     - id: "cs-database-systems"
       title: "데이터베이스 시스템"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: cs/database-systems/index.qmd
@@ -557,6 +602,7 @@ website:
     - id: "cs-formal-systems"
       title: "형식 시스템"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: cs/formal-systems/index.qmd
@@ -564,6 +610,7 @@ website:
     - id: "cs-advanced"
       title: "심화 과정 (준비 중)"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: cs/advanced/index.qmd
@@ -571,6 +618,7 @@ website:
     - id: "ds-ai-ds-intro"
       title: "데이터 사이언스 개론"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: ds-ai/ds-intro/index.qmd
@@ -578,6 +626,7 @@ website:
     - id: "ds-ai-ds-society"
       title: "데이터 사이언스와 사회"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: ds-ai/ds-society/index.qmd
@@ -585,6 +634,7 @@ website:
     - id: "ds-ai-ai-math-intro"
       title: "고등학교 인공지능 수학"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: ds-ai/ai-math-intro/index.qmd
@@ -592,6 +642,7 @@ website:
     - id: "ds-ai-numerical-optimization"
       title: "수치적 방법론과 최적화"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: ds-ai/numerical-optimization/index.qmd
@@ -599,6 +650,7 @@ website:
     - id: "ds-ai-machine-learning"
       title: "머신러닝"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: ds-ai/machine-learning/index.qmd
@@ -606,6 +658,7 @@ website:
     - id: "ds-ai-deep-learning-cv"
       title: "딥러닝과 컴퓨터 비전"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: ds-ai/deep-learning-cv/index.qmd
@@ -613,13 +666,23 @@ website:
     - id: "ds-ai-ai-intro"
       title: "인공지능 원론"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: ds-ai/ai-intro/index.qmd
           contents: "ds-ai/ai-intro/**"
+    - id: "ds-ai-data-analysis-inference"
+      title: "수리적 데이터 분석과 통계적 추론"
+      style: "docked"
+      collapse-level: 4
+      search: true
+      contents:
+        - href: ds-ai/data-analysis-inference/index.qmd
+          contents: "ds-ai/data-analysis-inference/**"
     - id: "ds-ai-statistical-foundations"
       title: "데이터 사이언스의 통계적 기초"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: ds-ai/statistical-foundations/index.qmd
@@ -627,6 +690,7 @@ website:
     - id: "ds-ai-mathematical-foundations"
       title: "머신러닝의 수리적 기초"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: ds-ai/mathematical-foundations/index.qmd
@@ -634,6 +698,7 @@ website:
     - id: "ds-ai-advanced-linear-algebra"
       title: "데이터 사이언스를 위한 선형대수학"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: ds-ai/advanced-linear-algebra/index.qmd
@@ -641,6 +706,7 @@ website:
     - id: "biz-econ-biz-intro"
       title: "경영학 원론"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: biz-econ/biz-intro/index.qmd
@@ -648,6 +714,7 @@ website:
     - id: "biz-econ-econ-intro"
       title: "경제학 원론"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: biz-econ/econ-intro/index.qmd
@@ -655,6 +722,7 @@ website:
     - id: "biz-econ-accounting"
       title: "회계학"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: biz-econ/accounting/index.qmd
@@ -662,6 +730,7 @@ website:
     - id: "biz-econ-production-logistics"
       title: "생산물류관리"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: biz-econ/production-logistics/index.qmd
@@ -669,6 +738,7 @@ website:
     - id: "biz-econ-decision-theory"
       title: "의사결정론"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: biz-econ/decision-theory/index.qmd
@@ -676,6 +746,7 @@ website:
     - id: "biz-econ-microeconomics"
       title: "미시경제학"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: biz-econ/microeconomics/index.qmd
@@ -683,6 +754,7 @@ website:
     - id: "biz-econ-macroeconomics"
       title: "거시경제학"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: biz-econ/macroeconomics/index.qmd
@@ -690,6 +762,7 @@ website:
     - id: "biz-econ-finance-investment"
       title: "재무와 투자론"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: biz-econ/finance-investment/index.qmd
@@ -697,6 +770,7 @@ website:
     - id: "biz-econ-monetary-economics"
       title: "화폐금융론"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: biz-econ/monetary-economics/index.qmd
@@ -704,6 +778,7 @@ website:
     - id: "biz-econ-labor-economics"
       title: "노동경제학"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: biz-econ/labor-economics/index.qmd
@@ -711,6 +786,7 @@ website:
     - id: "biz-econ-game-theory"
       title: "게임이론 개론"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: biz-econ/game-theory/index.qmd
@@ -718,6 +794,7 @@ website:
     - id: "biz-econ-supply-chain"
       title: "공급망 관리 (SCM)"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: biz-econ/supply-chain/index.qmd
@@ -725,6 +802,7 @@ website:
     - id: "biz-econ-market-research"
       title: "시장조사론의 기초"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: biz-econ/market-research/index.qmd
@@ -732,6 +810,7 @@ website:
     - id: "biz-econ-time-series"
       title: "시계열 분석"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: biz-econ/time-series/index.qmd
@@ -739,6 +818,7 @@ website:
     - id: "biz-econ-econometrics"
       title: "계량경제학"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: biz-econ/econometrics/index.qmd
@@ -746,6 +826,7 @@ website:
     - id: "biz-econ-insurance-economics"
       title: "보험경제학"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: biz-econ/insurance-economics/index.qmd
@@ -753,6 +834,7 @@ website:
     - id: "biz-econ-quantitative-risk"
       title: "계량 리스크 관리"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: biz-econ/quantitative-risk/index.qmd
@@ -760,6 +842,7 @@ website:
     - id: "biz-econ-corporate-finance"
       title: "기업재무론"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: biz-econ/corporate-finance/index.qmd
@@ -767,6 +850,7 @@ website:
     - id: "biostat-biostat-intro"
       title: "의학통계학 개론"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: biostat/biostat-intro/index.qmd
@@ -774,6 +858,7 @@ website:
     - id: "biostat-epidemiology"
       title: "역학 연구방법론"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: biostat/epidemiology/index.qmd
@@ -781,6 +866,7 @@ website:
     - id: "biostat-clinical-trials"
       title: "임상시험 통계방법론"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: biostat/clinical-trials/index.qmd
@@ -788,6 +874,7 @@ website:
     - id: "biostat-survival-analysis"
       title: "생존분석"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: biostat/survival-analysis/index.qmd
@@ -795,6 +882,7 @@ website:
     - id: "biostat-bioinformatics"
       title: "생물정보통계학"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: biostat/bioinformatics/index.qmd
@@ -802,6 +890,7 @@ website:
     - id: "biostat-causal-inference"
       title: "인과추론"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: biostat/causal-inference/index.qmd
@@ -809,6 +898,7 @@ website:
     - id: "biostat-longitudinal-data"
       title: "종단적 데이터 분석"
       style: "docked"
+      collapse-level: 4
       search: true
       contents:
         - href: biostat/longitudinal-data/index.qmd

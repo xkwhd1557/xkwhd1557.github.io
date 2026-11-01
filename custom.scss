@@ -1,4 +1,6 @@
 /*-- scss:defaults --*/
+// 테마(cosmo)가 구글 서버에서 글꼴을 불러오지 않도록 끔 (개인정보 보호)
+$web-font-path: false;
 
 /*-- scss:rules --*/
 

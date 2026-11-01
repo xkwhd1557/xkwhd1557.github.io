@@ -102,21 +102,85 @@ featured: true
 5. **현실의 언어로 해석합니다**: 이 결과가 원래 문제에서 무엇을 뜻하는가?
 6. **검증합니다**: 현실과 맞는가? 맞지 않는다면 2단계로 돌아가 가정을 고칩니다.
 
-```{mermaid}
-%%| fig-cap: "모델링의 순환: 현실과 수학 사이를 오갑니다"
-flowchart LR
-  subgraph R["현실 세계"]
-    A["현실의 문제<br/>무엇을 알고 싶은가?"]
-    D["현실의 답<br/>원래 문제에서 무슨 뜻인가?"]
-  end
-  subgraph M["수학 세계"]
-    B["수학적 모델<br/>어떤 도구로 표현할까?"]
-    C["수학적 결과<br/>여기서 비로소 계산이 등장"]
-  end
-  A -- "가정하고 단순화" --> B
-  B -- "수학적으로 풀기" --> C
-  C -- "현실의 언어로 해석" --> D
-  D -- "검증: 맞지 않으면 가정을 고친다" --> A
+```{=html}
+<figure class="modeling-cycle" style="margin: 2rem auto 1.5rem; max-width: 600px;">
+<svg viewBox="0 0 540 420" width="100%" role="img" aria-labelledby="mc-title mc-desc" xmlns="http://www.w3.org/2000/svg" style="display:block; height:auto; font-family: inherit;">
+  <title id="mc-title">모델링의 순환</title>
+  <desc id="mc-desc">왼쪽 현실 세계에는 현실의 문제와 현실의 답이, 오른쪽 수학 세계에는 수학적 모델과 수학적 결과가 있습니다. 현실의 문제를 가정하고 단순화해 수학적 모델로 옮기고, 수학적으로 풀어 결과를 얻고, 그 결과를 현실의 언어로 해석해 현실의 답을 얻은 뒤, 검증해서 맞지 않으면 다시 현실의 문제로 돌아갑니다. 계산은 수학적으로 푸는 단계에서만 등장합니다.</desc>
+  <defs>
+    <marker id="mc-arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6c7a7d"/>
+    </marker>
+    <marker id="mc-arrow-accent" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2b7a78"/>
+    </marker>
+    <filter id="mc-shadow" x="-10%" y="-10%" width="120%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#17252a" flood-opacity="0.10"/>
+    </filter>
+  </defs>
+
+  <!-- 두 세계 -->
+  <rect x="4" y="4" width="256" height="412" rx="18" fill="#fbf6ee" stroke="#eadbc2"/>
+  <rect x="280" y="4" width="256" height="412" rx="18" fill="#eef7f6" stroke="#cbe4e1"/>
+  <text x="132" y="38" text-anchor="middle" font-size="15" font-weight="700" letter-spacing="1" fill="#9a6a2e">현실 세계</text>
+  <text x="408" y="38" text-anchor="middle" font-size="15" font-weight="700" letter-spacing="1" fill="#2b7a78">수학 세계</text>
+
+  <!-- 노드 -->
+  <g filter="url(#mc-shadow)">
+    <rect x="37" y="64" width="190" height="92" rx="12" fill="#ffffff" stroke="#dcc7a4" stroke-width="1.5"/>
+    <rect x="313" y="64" width="190" height="92" rx="12" fill="#ffffff" stroke="#9fd0cb" stroke-width="1.5"/>
+    <rect x="313" y="292" width="190" height="92" rx="12" fill="#ffffff" stroke="#9fd0cb" stroke-width="1.5"/>
+    <rect x="37" y="292" width="190" height="92" rx="12" fill="#ffffff" stroke="#dcc7a4" stroke-width="1.5"/>
+  </g>
+
+  <!-- 1: 현실의 문제 -->
+  <circle cx="62" cy="99" r="11" fill="#9a6a2e"/>
+  <text x="62" y="104" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">1</text>
+  <text x="80" y="105" font-size="17" font-weight="700" fill="#17252a">현실의 문제</text>
+  <text x="53" y="134" font-size="13" fill="#5b6b6e">무엇을 알고 싶은가?</text>
+
+  <!-- 3: 수학적 모델 -->
+  <circle cx="338" cy="99" r="11" fill="#2b7a78"/>
+  <text x="338" y="104" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">3</text>
+  <text x="356" y="105" font-size="17" font-weight="700" fill="#17252a">수학적 모델</text>
+  <text x="329" y="134" font-size="13" fill="#5b6b6e">어떤 도구로 표현할까?</text>
+
+  <!-- 수학적 결과 -->
+  <text x="329" y="333" font-size="17" font-weight="700" fill="#17252a">수학적 결과</text>
+  <text x="329" y="362" font-size="13" fill="#5b6b6e">수식을 풀어 얻은 답</text>
+
+  <!-- 현실의 답 -->
+  <text x="53" y="333" font-size="17" font-weight="700" fill="#17252a">현실의 답</text>
+  <text x="53" y="362" font-size="13" fill="#5b6b6e">원래 문제에선 무슨 뜻?</text>
+
+  <!-- 2: 단순화 -->
+  <line x1="229" y1="124" x2="309" y2="124" stroke="#6c7a7d" stroke-width="1.8" marker-end="url(#mc-arrow)"/>
+  <circle cx="242" cy="100" r="9" fill="#6c7a7d"/>
+  <text x="242" y="104.5" text-anchor="middle" font-size="11.5" font-weight="700" fill="#ffffff">2</text>
+  <text x="255" y="105" font-size="13.5" font-weight="700" fill="#33474b">단순화</text>
+
+  <!-- 4: 풀기 (계산) -->
+  <line x1="408" y1="158" x2="408" y2="288" stroke="#2b7a78" stroke-width="2.6" marker-end="url(#mc-arrow-accent)"/>
+  <circle cx="428" cy="212" r="9" fill="#2b7a78"/>
+  <text x="428" y="216.5" text-anchor="middle" font-size="11.5" font-weight="700" fill="#ffffff">4</text>
+  <text x="442" y="217" font-size="13.5" font-weight="700" fill="#2b7a78">풀기</text>
+  <text x="420" y="240" font-size="12" fill="#2b7a78">계산은 여기서만</text>
+
+  <!-- 5: 해석 -->
+  <line x1="311" y1="352" x2="231" y2="352" stroke="#6c7a7d" stroke-width="1.8" marker-end="url(#mc-arrow)"/>
+  <circle cx="249" cy="328" r="9" fill="#6c7a7d"/>
+  <text x="249" y="332.5" text-anchor="middle" font-size="11.5" font-weight="700" fill="#ffffff">5</text>
+  <text x="262" y="333" font-size="13.5" font-weight="700" fill="#33474b">해석</text>
+
+  <!-- 6: 검증 -->
+  <line x1="132" y1="290" x2="132" y2="160" stroke="#6c7a7d" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#mc-arrow)"/>
+  <circle cx="152" cy="212" r="9" fill="#6c7a7d"/>
+  <text x="152" y="216.5" text-anchor="middle" font-size="11.5" font-weight="700" fill="#ffffff">6</text>
+  <text x="166" y="217" font-size="13.5" font-weight="700" fill="#33474b">검증</text>
+  <text x="144" y="240" font-size="12" fill="#6c7a7d">어긋나면 2로</text>
+</svg>
+<figcaption style="text-align:center; margin-top:0.6rem; font-size:0.9em; color:#6c7a7d;">모델링의 순환: 현실과 수학 사이를 오갑니다</figcaption>
+</figure>
 ```
 
 그림에서 보듯 계산은 수학 세계 안의 한 단계일 뿐입니다. 나머지 단계는 모두 현실과 수학을 잇는 일입니다.

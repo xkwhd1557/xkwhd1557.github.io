@@ -46,6 +46,10 @@ sidebar: false
 ### [인공지능 원론](ai-intro/index.qmd)
 [![인공지능 원론](../images/placeholder.svg)](ai-intro/index.qmd)
 :::
+::: {.subject-card}
+### [수리적 데이터 분석과 통계적 추론](data-analysis-inference/index.qmd)
+[![수리적 데이터 분석과 통계적 추론](../images/placeholder.svg)](data-analysis-inference/index.qmd)
+:::
 :::
 
 ## 심화 (Advanced)

@@ -108,6 +108,7 @@ CATEGORIES = [
                 ("machine-learning", "머신러닝"),
                 ("deep-learning-cv", "딥러닝과 컴퓨터 비전"),
                 ("ai-intro", "인공지능 원론"),
+                ("data-analysis-inference", "수리적 데이터 분석과 통계적 추론"),
             ]),
             ("심화 (Advanced)", [
                 ("statistical-foundations", "데이터 사이언스의 통계적 기초"),
