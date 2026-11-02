@@ -920,3 +920,4 @@ format:
     include-after-body:
       - nav-click.html
       - sidebar-title.html
+      - goatcounter.html
