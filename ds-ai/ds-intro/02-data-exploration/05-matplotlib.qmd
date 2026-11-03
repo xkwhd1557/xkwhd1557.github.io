@@ -157,7 +157,7 @@ fig.tight_layout()
 맷플롯립에는 선 그래프 말고도 여러 그래프가 준비되어 있습니다. 함수 이름만 다를 뿐 사용법은 `plot()`과 거의 같아서, 대표적인 네 가지를 한 번에 그려 보겠습니다.
 
 ```python
-np.random.seed(2026)
+np.random.seed(1557)
 fig, ax = plt.subplots(2, 2, figsize=(8, 6))
 
 # 산점도: 두 변수의 관계

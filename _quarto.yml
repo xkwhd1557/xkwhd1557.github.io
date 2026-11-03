@@ -4,6 +4,7 @@ project:
   resources:
     - robots.txt
     - naver69e558c72a1c3fbeb9ceebfbd3ad0eae.html
+    - googleb6b4c2b7b848f590.html
 
 website:
   title: "Study Archive"

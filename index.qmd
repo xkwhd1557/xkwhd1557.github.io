@@ -1,6 +1,7 @@
 ---
 title: "Study Archive"
 subtitle: "수학 · 통계 · 데이터 사이언스 공부 기록"
+description: "대학에서 공부한 수학·통계·데이터 사이언스를 한국어로 쉽게 풀어 정리한 공부 기록입니다."
 page-layout: full
 sidebar: false
 toc: false

@@ -104,7 +104,7 @@ featured: true
 명제와 정리 상자에서는 수학적 명제가 위의 5가지 중 하나로 다뤄집니다.
 
 ::: {.callout-tip collapse="true" icon=false .callout-beweis}
-### 증명 (Beweis)
+### 증명 (Proof)
 두 짝수를 $m = 2a$, $n = 2b$ ($a, b$는 정수)라 하자. 그러면
 $$m + n = 2a + 2b = 2(a + b)$$
 이고 $a + b$도 정수이므로, 정의에 의해 $m + n$은 짝수이다. $\blacksquare$
