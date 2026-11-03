@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/articles/study-roadmap.html",
       "/articles/about-this-site.html",
       "/articles/math-and-modeling.html"
     ]
@@ -9,6 +10,7 @@
   {
     "listing": "/articles/index.html",
     "items": [
+      "/articles/study-roadmap.html",
       "/articles/about-this-site.html",
       "/articles/math-and-modeling.html"
     ]

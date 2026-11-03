@@ -1,0 +1,1758 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2026-11-03">
+<meta name="description" content="데이터 엔지니어링, 데이터 분석, 데이터 애널리틱스라는 데이터 사이언스의 세 갈래를 구분하고, 질문 설정부터 커뮤니케이션까지 데이터 분석의 다섯 단계와 그 단계를 굴러가게 하는 기대치의 순환을 예제와 함께 살펴봅니다.">
+
+<title>1.3 데이터 분석의 과정 – Study Archive</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../ds-ai/ds-intro/01-foundations/04-sampling-bias.html" rel="next">
+<link href="../../../ds-ai/ds-intro/01-foundations/02-applications.html" rel="prev">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-2ba7ce865e58c97185caa3962285c575.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="1.3 데이터 분석의 과정 – Study Archive">
+<meta property="og:description" content="데이터 엔지니어링, 데이터 분석, 데이터 애널리틱스라는 데이터 사이언스의 세 갈래를 구분하고, 질문 설정부터 커뮤니케이션까지 데이터 분석의 다섯 단계와 그 단계를 굴러가게 하는 기대치의 순환을 예제와 함께 살펴봅니다.">
+<meta property="og:site_name" content="Study Archive">
+<meta name="twitter:title" content="1.3 데이터 분석의 과정 – Study Archive">
+<meta name="twitter:description" content="데이터 엔지니어링, 데이터 분석, 데이터 애널리틱스라는 데이터 사이언스의 세 갈래를 구분하고, 질문 설정부터 커뮤니케이션까지 데이터 분석의 다섯 단계와 그 단계를 굴러가게 하는 기대치의 순환을 예제와 함께 살펴봅니다.">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Study Archive</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../articles/index.html"> 
+<span class="menu-text">일반 아티클</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">수학</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-">    
+        <li>
+    <a class="dropdown-item" href="../../../math/index.html">
+ <span class="dropdown-text">📋 수학 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../math/analysis/index.html">
+ <span class="dropdown-text">해석학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/linear-algebra/index.html">
+ <span class="dropdown-text">선형대수학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/discrete-math/index.html">
+ <span class="dropdown-text">이산수학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/math-programming/index.html">
+ <span class="dropdown-text">수학적 프로그래밍 (Python)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/latex/index.html">
+ <span class="dropdown-text">LaTeX</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 수학 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../math/complex-analysis/index.html">
+ <span class="dropdown-text">복소해석학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/ode/index.html">
+ <span class="dropdown-text">상미분방정식</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/dynamical-systems/index.html">
+ <span class="dropdown-text">동적 시스템</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/measure-theory/index.html">
+ <span class="dropdown-text">측도론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/pde-intro/index.html">
+ <span class="dropdown-text">기초 편미분방정식</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/general-topology/index.html">
+ <span class="dropdown-text">일반위상수학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/algebra/index.html">
+ <span class="dropdown-text">대수학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/number-theory/index.html">
+ <span class="dropdown-text">정수론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/geometry/index.html">
+ <span class="dropdown-text">기하학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/mathematical-logic/index.html">
+ <span class="dropdown-text">수리논리학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/set-theory/index.html">
+ <span class="dropdown-text">공리적 집합론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/numerical-methods/index.html">
+ <span class="dropdown-text">수치적 방법론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/optimization/index.html">
+ <span class="dropdown-text">수학적 최적화</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../math/functional-analysis/index.html">
+ <span class="dropdown-text">함수해석학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/pde-advanced/index.html">
+ <span class="dropdown-text">편미분방정식</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/manifold-analysis/index.html">
+ <span class="dropdown-text">다양체 해석학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/rkhs/index.html">
+ <span class="dropdown-text">RKHS 이론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/differential-geometry/index.html">
+ <span class="dropdown-text">미분기하학</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--1" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">확률과 통계</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--1">    
+        <li>
+    <a class="dropdown-item" href="../../../stats/index.html">
+ <span class="dropdown-text">📋 확률과 통계 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../stats/prob-theory/index.html">
+ <span class="dropdown-text">기초 확률론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/basic-stats/index.html">
+ <span class="dropdown-text">기초 통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/linear-models/index.html">
+ <span class="dropdown-text">기초 선형 모델</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/stat-programming/index.html">
+ <span class="dropdown-text">통계적 프로그래밍</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../stats/measure-prob/index.html">
+ <span class="dropdown-text">측도론적 확률론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/stochastic-processes/index.html">
+ <span class="dropdown-text">확률과정론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/math-stats/index.html">
+ <span class="dropdown-text">수리통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/stochastic-simulation/index.html">
+ <span class="dropdown-text">확률적 시뮬레이션</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/actuarial-math/index.html">
+ <span class="dropdown-text">보험수학</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../stats/stochastic-calculus/index.html">
+ <span class="dropdown-text">확률해석학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/markov-processes/index.html">
+ <span class="dropdown-text">마르코프 프로세스</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/diffusion-models/index.html">
+ <span class="dropdown-text">디퓨전 모델</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/gaussian-processes/index.html">
+ <span class="dropdown-text">가우시안 프로세스</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/non-euclidean-stats/index.html">
+ <span class="dropdown-text">비유클리드 통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/stats-for-stoch-proc/index.html">
+ <span class="dropdown-text">확률과정의 통계추론</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--2" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">컴퓨터 공학</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--2">    
+        <li>
+    <a class="dropdown-item" href="../../../cs/index.html">
+ <span class="dropdown-text">📋 컴퓨터 공학 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../cs/cs-intro/index.html">
+ <span class="dropdown-text">컴퓨터 과학 원론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cs/c-programming/index.html">
+ <span class="dropdown-text">C언어</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../cs/algorithms-data-structures/index.html">
+ <span class="dropdown-text">알고리즘과 자료구조</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cs/theoretical-cs/index.html">
+ <span class="dropdown-text">이론 컴퓨터과학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cs/database-systems/index.html">
+ <span class="dropdown-text">데이터베이스 시스템</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cs/formal-systems/index.html">
+ <span class="dropdown-text">형식 시스템</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../cs/advanced/index.html">
+ <span class="dropdown-text">심화 과정 (준비 중)</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ai" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">데이터 사이언스·AI</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-ai">    
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/index.html">
+ <span class="dropdown-text">📋 데이터 사이언스·AI 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/ds-intro/index.html">
+ <span class="dropdown-text">데이터 사이언스 개론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/ds-society/index.html">
+ <span class="dropdown-text">데이터 사이언스와 사회</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/ai-math-intro/index.html">
+ <span class="dropdown-text">고등학교 인공지능 수학</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/numerical-optimization/index.html">
+ <span class="dropdown-text">수치적 방법론과 최적화</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/machine-learning/index.html">
+ <span class="dropdown-text">머신러닝</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/deep-learning-cv/index.html">
+ <span class="dropdown-text">딥러닝과 컴퓨터 비전</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/ai-intro/index.html">
+ <span class="dropdown-text">인공지능 원론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/data-analysis-inference/index.html">
+ <span class="dropdown-text">수리적 데이터 분석과 통계적 추론</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/statistical-foundations/index.html">
+ <span class="dropdown-text">데이터 사이언스의 통계적 기초</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/mathematical-foundations/index.html">
+ <span class="dropdown-text">머신러닝의 수리적 기초</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/advanced-linear-algebra/index.html">
+ <span class="dropdown-text">데이터 사이언스를 위한 선형대수학</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--3" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">경영/경제</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--3">    
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/index.html">
+ <span class="dropdown-text">📋 경영/경제 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/biz-intro/index.html">
+ <span class="dropdown-text">경영학 원론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/econ-intro/index.html">
+ <span class="dropdown-text">경제학 원론</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/accounting/index.html">
+ <span class="dropdown-text">회계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/production-logistics/index.html">
+ <span class="dropdown-text">생산물류관리</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/decision-theory/index.html">
+ <span class="dropdown-text">의사결정론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/microeconomics/index.html">
+ <span class="dropdown-text">미시경제학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/macroeconomics/index.html">
+ <span class="dropdown-text">거시경제학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/finance-investment/index.html">
+ <span class="dropdown-text">재무와 투자론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/monetary-economics/index.html">
+ <span class="dropdown-text">화폐금융론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/labor-economics/index.html">
+ <span class="dropdown-text">노동경제학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/game-theory/index.html">
+ <span class="dropdown-text">게임이론 개론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/supply-chain/index.html">
+ <span class="dropdown-text">공급망 관리 (SCM)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/market-research/index.html">
+ <span class="dropdown-text">시장조사론의 기초</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/time-series/index.html">
+ <span class="dropdown-text">시계열 분석</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/econometrics/index.html">
+ <span class="dropdown-text">계량경제학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/insurance-economics/index.html">
+ <span class="dropdown-text">보험경제학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/quantitative-risk/index.html">
+ <span class="dropdown-text">계량 리스크 관리</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/corporate-finance/index.html">
+ <span class="dropdown-text">기업재무론</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--4" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">의학통계·바이오메트리</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--4">    
+        <li>
+    <a class="dropdown-item" href="../../../biostat/index.html">
+ <span class="dropdown-text">📋 의학통계·바이오메트리 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biostat/biostat-intro/index.html">
+ <span class="dropdown-text">의학통계학 개론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biostat/epidemiology/index.html">
+ <span class="dropdown-text">역학 연구방법론</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biostat/clinical-trials/index.html">
+ <span class="dropdown-text">임상시험 통계방법론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biostat/survival-analysis/index.html">
+ <span class="dropdown-text">생존분석</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biostat/bioinformatics/index.html">
+ <span class="dropdown-text">생물정보통계학</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biostat/causal-inference/index.html">
+ <span class="dropdown-text">인과추론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biostat/longitudinal-data/index.html">
+ <span class="dropdown-text">종단적 데이터 분석</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-language" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">🌐 Language</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-language">    
+        <li>
+    <a class="dropdown-item" href="../../../index.html">
+ <span class="dropdown-text">한국어 (KO)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../lang/en-coming-soon.html">
+ <span class="dropdown-text">English (EN)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../lang/de-coming-soon.html">
+ <span class="dropdown-text">Deutsch (DE)</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xkwhd1557/xkwhd1557.github.io"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+            <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" aria-label="Toolbar">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../ds-ai/ds-intro/index.html">데이터 사이언스 개론(Introduction to Data Science)</a></li><li class="breadcrumb-item"><a href="../../../ds-ai/ds-intro/01-foundations/index.html">1 데이터 사이언스의 기초</a></li><li class="breadcrumb-item"><a href="../../../ds-ai/ds-intro/01-foundations/03-analysis-process.html">1.3 데이터 분석의 과정</a></li></ol></nav>
+        <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto" aria-label="Section">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../ds-ai/ds-intro/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">데이터 사이언스 개론(Introduction to Data Science)</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true" aria-label="Toggle section: 데이터 사이언스 개론(Introduction to Data Science)">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../ds-ai/ds-intro/01-foundations/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-1-label">1 데이터 사이언스의 기초</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section: 1 데이터 사이언스의 기초">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/ds-intro/01-foundations/01-big-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.1 빅데이터의 3V와 데이터의 구조</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/ds-intro/01-foundations/02-applications.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.2 데이터 사이언스의 응용 분야</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/ds-intro/01-foundations/03-analysis-process.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">1.3 데이터 분석의 과정</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/ds-intro/01-foundations/04-sampling-bias.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.4 데이터의 출처와 편향</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../ds-ai/ds-intro/02-data-exploration/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-2-label">2 데이터 탐색: 기술 통계와 시각화</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section: 2 데이터 탐색: 기술 통계와 시각화">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-2" aria-labelledby="quarto-sidebar-section-2-label" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/ds-intro/02-data-exploration/01-scales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.1 데이터의 스케일</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/ds-intro/02-data-exploration/02-summary-statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.2 요약 통계량</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/ds-intro/02-data-exploration/03-correlation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.3 다변량 데이터와 상관관계</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/ds-intro/02-data-exploration/04-numpy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.4 NumPy로 데이터 다루기</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/ds-intro/02-data-exploration/05-matplotlib.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.5 Matplotlib으로 그리기</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/ds-intro/02-data-exploration/06-pandas-seaborn.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.6 Pandas와 Seaborn</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#들어가며" id="toc-들어가며" class="nav-link active" data-scroll-target="#들어가며">들어가며</a></li>
+  <li><a href="#데이터-사이언스의-세-갈래" id="toc-데이터-사이언스의-세-갈래" class="nav-link" data-scroll-target="#데이터-사이언스의-세-갈래">데이터 사이언스의 세 갈래</a>
+  <ul class="collapse">
+  <li><a href="#데이터-엔지니어링" id="toc-데이터-엔지니어링" class="nav-link" data-scroll-target="#데이터-엔지니어링">데이터 엔지니어링</a></li>
+  <li><a href="#데이터-분석" id="toc-데이터-분석" class="nav-link" data-scroll-target="#데이터-분석">데이터 분석</a></li>
+  <li><a href="#데이터-애널리틱스" id="toc-데이터-애널리틱스" class="nav-link" data-scroll-target="#데이터-애널리틱스">데이터 애널리틱스</a></li>
+  <li><a href="#이-과목에서-다루는-갈래" id="toc-이-과목에서-다루는-갈래" class="nav-link" data-scroll-target="#이-과목에서-다루는-갈래">이 과목에서 다루는 갈래</a></li>
+  </ul></li>
+  <li><a href="#데이터-분석의-다섯-단계" id="toc-데이터-분석의-다섯-단계" class="nav-link" data-scroll-target="#데이터-분석의-다섯-단계">데이터 분석의 다섯 단계</a>
+  <ul class="collapse">
+  <li><a href="#기대하고-확인하고-고치기" id="toc-기대하고-확인하고-고치기" class="nav-link" data-scroll-target="#기대하고-확인하고-고치기">기대하고, 확인하고, 고치기</a></li>
+  </ul></li>
+  <li><a href="#단계-질문-설정과-구체화" id="toc-단계-질문-설정과-구체화" class="nav-link" data-scroll-target="#단계-질문-설정과-구체화">1단계: 질문 설정과 구체화</a></li>
+  <li><a href="#단계-데이터-탐색" id="toc-단계-데이터-탐색" class="nav-link" data-scroll-target="#단계-데이터-탐색">2단계: 데이터 탐색</a></li>
+  <li><a href="#단계-형식-모델-구성" id="toc-단계-형식-모델-구성" class="nav-link" data-scroll-target="#단계-형식-모델-구성">3단계: 형식 모델 구성</a>
+  <ul class="collapse">
+  <li><a href="#모델은-왜-필요할까요" id="toc-모델은-왜-필요할까요" class="nav-link" data-scroll-target="#모델은-왜-필요할까요">모델은 왜 필요할까요?</a></li>
+  <li><a href="#좋은-모델은-덜-틀린-모델입니다" id="toc-좋은-모델은-덜-틀린-모델입니다" class="nav-link" data-scroll-target="#좋은-모델은-덜-틀린-모델입니다">좋은 모델은 덜 틀린 모델입니다</a></li>
+  <li><a href="#모수와-학습" id="toc-모수와-학습" class="nav-link" data-scroll-target="#모수와-학습">모수와 학습</a></li>
+  <li><a href="#모델이-제대로-작동하는지-확인하기" id="toc-모델이-제대로-작동하는지-확인하기" class="nav-link" data-scroll-target="#모델이-제대로-작동하는지-확인하기">모델이 제대로 작동하는지 확인하기</a></li>
+  </ul></li>
+  <li><a href="#단계-결과-해석" id="toc-단계-결과-해석" class="nav-link" data-scroll-target="#단계-결과-해석">4단계: 결과 해석</a></li>
+  <li><a href="#단계-커뮤니케이션" id="toc-단계-커뮤니케이션" class="nav-link" data-scroll-target="#단계-커뮤니케이션">5단계: 커뮤니케이션</a></li>
+  <li><a href="#정리" id="toc-정리" class="nav-link" data-scroll-target="#정리">정리</a>
+  <ul class="collapse">
+  <li><a href="#연결되는-개념" id="toc-연결되는-개념" class="nav-link" data-scroll-target="#연결되는-개념">연결되는 개념</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../ds-ai/ds-intro/index.html">데이터 사이언스 개론(Introduction to Data Science)</a></li><li class="breadcrumb-item"><a href="../../../ds-ai/ds-intro/01-foundations/index.html">1 데이터 사이언스의 기초</a></li><li class="breadcrumb-item"><a href="../../../ds-ai/ds-intro/01-foundations/03-analysis-process.html">1.3 데이터 분석의 과정</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">1.3 데이터 분석의 과정</h1>
+<p class="subtitle lead">1장 데이터 사이언스의 기초 · 데이터 사이언티스트는 문제에 어떻게 접근할까요?</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">데이터 사이언스·AI</div>
+    <div class="quarto-category">데이터 사이언스 개론</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    데이터 엔지니어링, 데이터 분석, 데이터 애널리틱스라는 데이터 사이언스의 세 갈래를 구분하고, 질문 설정부터 커뮤니케이션까지 데이터 분석의 다섯 단계와 그 단계를 굴러가게 하는 기대치의 순환을 예제와 함께 살펴봅니다.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 3, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="들어가며" class="level2">
+<h2 class="anchored" data-anchor-id="들어가며">들어가며</h2>
+<p><a href="../../../ds-ai/ds-intro/01-foundations/02-applications.html">지난 글</a>까지는 데이터 사이언스가 어떤 학문이고, 어디에서 어떻게 쓰이며, 데이터 사이언티스트에게 어떤 소양이 필요한지를 살펴보았습니다. 이번 글에서는 한 걸음 더 들어가서, 데이터 사이언스 프로젝트가 실제로 대략 어떤 과정을 거쳐 진행되는지 이야기해 보겠습니다.</p>
+<p>여기서 다루는 내용은 구체적인 수학이나 공학 기법이라기보다, 데이터 사이언티스트가 문제를 마주했을 때 <strong>어떤 순서로 생각하는지</strong>에 대한 이야기입니다. 단계의 이름이나 순서를 외울 필요는 전혀 없습니다. 전체적인 흐름을 따라가면서 “아, 이런 식으로 문제에 접근하는구나” 하는 감을 잡으시면 충분합니다.</p>
+</section>
+<section id="데이터-사이언스의-세-갈래" class="level2">
+<h2 class="anchored" data-anchor-id="데이터-사이언스의-세-갈래">데이터 사이언스의 세 갈래</h2>
+<p>데이터 사이언스를 한마디로 하면, 데이터를 수집하고, 정제하고, 이리저리 가공해서 어떤 결과물을 만들어 내는 학문입니다. 이 과정에서 어느 단계에 무게를 두느냐에 따라 데이터 사이언스는 흔히 세 갈래로 나뉩니다.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>갈래</th>
+<th>영어</th>
+<th>주로 하는 일</th>
+<th>무게중심</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>데이터 엔지니어링</td>
+<td>data engineering</td>
+<td>데이터를 수집·정제·저장하고 관리하는 기반을 만듦</td>
+<td>컴퓨터 공학</td>
+</tr>
+<tr class="even">
+<td>데이터 분석</td>
+<td>data analysis</td>
+<td>이미 일어난 일을 분석해 <strong>왜</strong> 일어났는지 밝힘</td>
+<td>수학·통계</td>
+</tr>
+<tr class="odd">
+<td>데이터 애널리틱스</td>
+<td>data analytics</td>
+<td>과거의 패턴으로 앞으로 <strong>무엇이</strong> 일어날지 예측하고 대응 전략을 세움</td>
+<td>그 중간</td>
+</tr>
+</tbody>
+</table>
+<p>미리 말씀드리자면, 이 구분은 상당 부분 학술적인 구분입니다. 데이터가 핵심 사업인 대형 테크 기업이 아니라면, 실무에서는 세 가지가 잘 나뉘지 않는 경우가 많습니다. 현실에서는 “데이터 사이언티스트를 한 명 뽑았으니, 데이터에 관한 일은 전부 그 사람이 맡는다”가 되기 일쑤입니다.</p>
+<section id="데이터-엔지니어링" class="level3">
+<h3 class="anchored" data-anchor-id="데이터-엔지니어링">데이터 엔지니어링</h3>
+<p><strong>데이터 엔지니어링</strong>은 무엇보다 데이터를 수집하고, 가공하고, 관리하는 일입니다. 아무리 좋은 분석 기법이 있어도 쓸 만한 데이터가 없으면 소용이 없겠지요. 데이터 엔지니어링은 날것의 데이터를 모아서 분석가가 쓰기 좋은 형태로 정제하고 저장해, 데이터 사이언스가 활약할 수 있는 기반을 닦는 것을 목표로 합니다.</p>
+<p>데이터는 보통 컴퓨터나 그와 비슷한 기계로 수집하고 관리하므로, 데이터 엔지니어링에서는 컴퓨터 공학 지식이 핵심입니다. 실제로 데이터 엔지니어링과 함께 떠오르는 키워드도 대용량 데이터 처리, <a href="../../../cs/database-systems/index.html">데이터베이스</a>와 SQL, 클라우드 컴퓨팅, 쿼리 최적화처럼 대부분 컴퓨터 공학 쪽입니다.</p>
+</section>
+<section id="데이터-분석" class="level3">
+<h3 class="anchored" data-anchor-id="데이터-분석">데이터 분석</h3>
+<p><strong>데이터 분석</strong>은 이렇게 준비된 데이터를 가지고, 수학과 통계 지식, 그리고 데이터 사이언스를 적용하려는 분야에 대한 이해를 총동원해서 데이터를 말 그대로 읽고 분석하는 일입니다. 보통은 이미 일어난 일(과거라고 해 봐야 지난달이나 작년 일인 경우가 많지만요)을 보고, 그 일이 <strong>왜</strong> 일어났는지에 대한 통찰을 끌어냅니다.</p>
+<p>이를 위해서는 문제 상황을 정확히 파악해 추상화하고, 알맞은 도구로 모델링하는 능력이 필요합니다. 그래서 데이터 분석에서는 컴퓨터 공학 지식보다 수학적인 역량이 더 핵심이 됩니다. 문제에 등장하는 대상을 제대로 모델링하려면 해석학, 확률론, 기하학이나 위상수학이 필요하고, 그 모델에서 명제를 이끌어 내려면 통계학이나 함수해석학 같은 수학적 논리가 필요합니다. 결과를 실제로 확인하려면 최적화와, 그것을 컴퓨터에서 돌려 볼 수 있는 <strong>과학적 계산</strong>(scientific computing) 지식도 조금 필요합니다. (그렇다고 컴퓨터 공학이 필요 없다는 뜻은 아닙니다. 컴퓨터 공학적 방법론의 아이디어를 이해하고 있으면 큰 도움이 됩니다.) 데이터 분석과 함께 자주 나오는 키워드로는 탐색적 자료 분석, 통계적 검정, 데이터 시각화 등이 있습니다.</p>
+</section>
+<section id="데이터-애널리틱스" class="level3">
+<h3 class="anchored" data-anchor-id="데이터-애널리틱스">데이터 애널리틱스</h3>
+<p><strong>데이터 애널리틱스</strong>는 이름부터 데이터 분석과 비슷해서 둘을 섞어 쓰는 경우도 많습니다. 실제로 목적도 비슷합니다. 다만 데이터 분석이 이미 일어난 일의 원인을 밝히는 데 집중한다면, 데이터 애널리틱스는 앞으로 어떤 일이 일어날지를 <strong>예측</strong>하고 그에 맞는 <strong>처방</strong>, 즉 대응 전략을 세우는 데 무게를 둡니다. 결국 그 바탕은 데이터 분석의 결과이므로 둘을 하나로 묶어 보는 사람도 있지만, 애널리틱스가 더 넓은 관점에서 예측과 처방에 초점을 맞춘다는 점에서 구분할 만한 의미가 있다고 생각합니다.</p>
+<p>과거의 일을 바탕으로 미래를 예측하려면, 과거의 패턴을 알고리즘으로 만들어 미래에 일어날 일을 계산하는 시스템을 만들어야 합니다. 여기서 “과거의 패턴을 알고리즘으로 만드는 것”이 바로 흔히 말하는 <strong>학습</strong>입니다. 그래서 데이터 애널리틱스는 <a href="../../../ds-ai/machine-learning/index.html">머신러닝</a>, 컴퓨터 비전, 비즈니스 애널리틱스, 데이터 마이닝, 인공지능 같은 키워드로 유명한, 요즘 가장 뜨거운 분야이기도 합니다.</p>
+<p>학습 이야기가 나온 김에 잠깐 짚고 넘어가겠습니다. 요즘은 ChatGPT, Claude, Gemini 같은 대규모 언어 모델(large language model, LLM)이 인기다보니, 일상적으로 LLM에게 분석이나 뭔가 태스크를 시키기 위해 자료를 건네는 것을 “학습시킨다”고 표현하는 경우가 많습니다. “내 자료를 Gemini에게 줘서 학습시켰다”처럼요. 하지만 엄밀히 말하면 이것은 학습이 아닙니다. 이런 LLM들은 이미 방대한 데이터로 “과거의 패턴을 알고리즘으로 만드는” 학습을 마친 상태입니다. 우리가 파일을 첨부하거나 질문을 입력하는 것은, 학습이 끝난 알고리즘에 <strong>입력값</strong>을 넣어 결과를 받아 보는 것에 가깝습니다. 함수 <span class="math inline">\(f\)</span>를 새로 만드는 것이 아니라, 이미 만들어진 <span class="math inline">\(f\)</span>에 <span class="math inline">\(x\)</span>를 넣어 <span class="math inline">\(f(x)\)</span>를 계산하는 것이지요. 그래서 대화가 끝나면 모델 자체는 그대로이고, 우리가 건넨 자료 때문에 모델이 바뀌지는 않습니다.</p>
+<p>여튼 데이터 애널리틱스를 제대로 이해하고 연구하려면 데이터 분석만큼, 경우에 따라서는 그 이상으로 많은 수학이 필요합니다. 반면 이미 만들어진 애널리틱스의 결과물을 실제 문제에 적용하는 데에는 그렇게까지 많은 수학이 필요하지 않고, 오히려 그것을 구현하는 컴퓨터 공학적 역량이 더 중요해집니다. 데이터 엔지니어링이 컴퓨터 공학 쪽 끝에, 데이터 분석이 수학 쪽 끝에 있다면, 데이터 애널리틱스는 그 중간 어딘가에 있는 셈입니다. 그래서 컴퓨터 공학이나 수학의 세부 전공이 아닌 독립된 데이터 사이언스 전공의 교과 과정은 대개 데이터 애널리틱스를 기본으로 짜여 있습니다. 수학과 컴퓨터 공학을 균형 있게 공부하기에 좋기 때문입니다. 물론 그것은 기본값일 뿐이고, 엔지니어링이나 분석에 관심이 있는 학생은 그쪽 과목을 더 골라 듣는 식으로 공부할 수 있도록 되어있는 경우가 많습니다.</p>
+</section>
+<section id="이-과목에서-다루는-갈래" class="level3">
+<h3 class="anchored" data-anchor-id="이-과목에서-다루는-갈래">이 과목에서 다루는 갈래</h3>
+<p>데이터 사이언스 개론에서는 이 가운데 <strong>데이터 분석</strong>을 중심으로, 데이터 애널리틱스를 조금 곁들여 다룹니다. 위에서 보신 것처럼 데이터 분석을 제대로 하려면 사전 지식이 꽤 많이 필요하지만, 그것은 “제대로” 할 때의 이야기입니다. 문제 상황을 충분히 단순화하면 간단한 수학만으로도 맛보기는 충분히 가능합니다. 그래서 이 과목에서는 별다른 사전 지식 없이도 다룰 수 있는 간단한 경우들만 다룹니다.</p>
+<p>데이터 엔지니어링은 꽤 깊은 컴퓨터 공학 이야기가 나오고 맛보기로 다루기도 어려워서, 본격적인 데이터 엔지니어링 대신 뒤에서 <strong>데이터 사이언스 인프라</strong>에 관한 간단한 이야기만 하겠습니다.</p>
+</section>
+</section>
+<section id="데이터-분석의-다섯-단계" class="level2">
+<h2 class="anchored" data-anchor-id="데이터-분석의-다섯-단계">데이터 분석의 다섯 단계</h2>
+<p>그럼 이 과목의 중심인 데이터 분석이 대략 어떻게 진행되는지 조금 더 살펴보겠습니다.</p>
+<p>데이터 분석은 이미 일어난 일의 데이터를 가지고 그 현상의 원인을 찾아내는 것을 목표로 합니다. 데이터 사이언스의 여러 갈래 가운데 전통적인 통계학과 가장 비슷한 철학을 가진 분야입니다. 데이터 분석가는 지금 분석하는 것이 어떤 문제 상황이고 우리가 어떤 의문을 품고 있는지를 정리하는 데서 출발해, 대략 다음 다섯 단계로 분석을 진행합니다.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<ol type="1">
+<li><strong>질문 설정과 구체화</strong>(stating and refining the question): 데이터로부터 무엇을 알아내고 싶은지, 해결할 문제가 무엇인지를 명확하게 정합니다.</li>
+<li><strong>데이터 탐색</strong>(exploring the data): 본격적인 분석에 앞서, 빠진 값이나 이상한 값은 없는지, 데이터가 전체적으로 어떻게 생겼는지를 훑어봅니다. 이 과정을 <strong>탐색적 자료 분석</strong>(exploratory data analysis, EDA)이라고도 부릅니다.</li>
+<li><strong>형식 모델 구성</strong>(building formal statistical models): 탐색 결과를 바탕으로 수학과 확률, 통계를 이용해 모델을 세우고, 통계적 검정이나 머신러닝 알고리즘 등으로 패턴을 찾고 가설을 검증합니다.</li>
+<li><strong>결과 해석</strong>(interpreting the results): 모델이 내놓은 결과가 처음에 세운 질문에 비추어 현실에서 어떤 의미를 갖는지 해석합니다.</li>
+<li><strong>커뮤니케이션</strong>(communicating the results): 해석한 결과를 다른 사람도 이해할 수 있도록 보고서, 시각화 자료, 발표 등으로 전달합니다.</li>
+</ol>
+<p>듣고 보면 아주 당연한 과정입니다. 데이터 분석가는 이 다섯 단계를 끊임없이 되풀이하는 일로 먹고산다고 해도 과언이 아니고, 데이터 분석을 연구하는 사람들은 각 단계에서 쓸 수 있는 명제와 도구를 계속해서 만들어 냅니다.</p>
+<p>다만 이 순서는 유명한 교재에서 정리한 것을 그대로 옮긴 것이고, 외우는 것 자체에는 큰 의미가 없습니다. 실제 실무나 연구에서는 이 순서를 그대로 밟기보다 닥치는 대로 해 나가는 경우가 대부분입니다. 그 “닥치는 대로”에도 어느 정도의 단계와 틀이 있고, 위의 다섯 단계는 그것을 일반화해 정리한 것일 뿐입니다.</p>
+<section id="기대하고-확인하고-고치기" class="level3">
+<h3 class="anchored" data-anchor-id="기대하고-확인하고-고치기">기대하고, 확인하고, 고치기</h3>
+<p>그런데 이 다섯 단계가 1번부터 5번까지 한 번에 쭉 이어지는 것은 아닙니다. 각 단계 안에서는 항상 다음 세 가지 작은 과정이 반복됩니다.</p>
+<ol type="1">
+<li><strong>기대치 설정</strong>: “데이터가 대략 이런 모습일 것이다”라는 사전 기대나 가설을 세웁니다.</li>
+<li><strong>데이터와 기대치 비교</strong>: 실제 데이터를 모아 기대치와 비슷한지 확인합니다.</li>
+<li><strong>기대치 수정 또는 데이터 조정</strong>: 기대가 틀렸다면 기대를 고치고, 데이터에 문제가 있다면 데이터를 바로잡습니다.</li>
+</ol>
+<p>우리는 데이터가 현상을 설명해 줄 것이라는 기대를 품고 분석을 시작하므로, 데이터에 대해 늘 어떤 기대를 갖고 있습니다. 그리고 다섯 단계 하나하나를 진행하는 동안 이 기대를 끊임없이 세우고, 확인하고, 고쳐 나갑니다. 큰 바퀴 안에서 작은 톱니바퀴가 돌며 전체를 굴러가게 하는 모습을 떠올리시면 됩니다. 이렇게 데이터 분석은 한 방향으로 곧게 뻗은 길이 아니라, 끊임없이 기대하고 확인하고 궤도를 수정해 나가는 유기적이고 반복적인 과정입니다.</p>
+<p>이제 다섯 단계 각각에서 무엇을 고려해야 하는지 하나씩 살펴보겠습니다.</p>
+</section>
+</section>
+<section id="단계-질문-설정과-구체화" class="level2">
+<h2 class="anchored" data-anchor-id="단계-질문-설정과-구체화">1단계: 질문 설정과 구체화</h2>
+<p>질문을 세우고 구체화하는 단계는 데이터 분석의 가장 근본이 되는 단계입니다. 데이터 분석의 목적은 결국 데이터를 통해 <strong>우리의 질문에 대한 답</strong>을 찾는 것이니까요. 그렇다면 어떤 질문이 좋은 질문일까요? 이에 답하려면 먼저 우리가 던지는 질문이 어떤 <strong>성격</strong>을 갖는지부터 알아야 합니다. 데이터로 던질 수 있는 질문은 대략 다음 여섯 가지로 나뉩니다.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> 작은 가게를 운영한다고 생각하고 예를 들어 보겠습니다.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>질문의 유형</th>
+<th>예시</th>
+<th>무엇을 하는가</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>기술적</strong>(descriptive) 질문</td>
+<td>“우리 가게의 하루 평균 매출은 얼마인가?”</td>
+<td>가진 데이터를 요약합니다.</td>
+</tr>
+<tr class="even">
+<td><strong>탐색적</strong>(exploratory) 질문</td>
+<td>“매출이 많았던 날들에 공통점이 있는가?”</td>
+<td>데이터에서 패턴을 찾아 새로운 가설을 만듭니다.</td>
+</tr>
+<tr class="odd">
+<td><strong>추론적</strong>(inferential) 질문</td>
+<td>“이번 달 손님들에게서 보인 특징이 우리 가게 손님 전체에도 해당하는가?”</td>
+<td>가진 데이터에서 본 패턴이 데이터 밖에서도 성립하는지 따집니다.</td>
+</tr>
+<tr class="even">
+<td><strong>예측적</strong>(predictive) 질문</td>
+<td>“다음 달 매출은 얼마일까?”</td>
+<td>어떤 값들로 다른 값을 예측합니다. <strong>왜</strong> 그렇게 되는지보다 예측이 얼마나 정확한지가 중요합니다.</td>
+</tr>
+<tr class="odd">
+<td><strong>인과적</strong>(causal) 질문</td>
+<td>“블로그 홍보를 하면 매출이 오르는가?”</td>
+<td>한 요인을 바꿨을 때 다른 값이 평균적으로 어떻게 변하는지 밝힙니다.</td>
+</tr>
+<tr class="even">
+<td><strong>기계적</strong>(mechanistic) 질문</td>
+<td>“블로그 홍보는 정확히 어떤 경로를 거쳐 손님의 방문으로 이어지는가?”</td>
+<td>원인이 결과를 만들어 내는 세밀한 작동 원리를 파헤칩니다. 일반적으로 답하기가 매우 어렵습니다.</td>
+</tr>
+</tbody>
+</table>
+<p>질문의 유형에 따라 답하는 데 쓰는 도구와 수학적 모델이 달라집니다. 그래서 지금 던지는 질문이 어떤 성격인지를 분명히 해야 합니다. 지금 하고 싶은 것이 예측인지, 추론인지를 명확히 정해야 알고자 하는 것이 무엇인지가 확실해지고, 그에 맞는 방법으로 답할 수 있습니다.</p>
+<p>실제로 데이터 분석에서 가장 흔한 실수 가운데 하나가 바로 <strong>질문의 유형을 혼동하는 것</strong>입니다.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> 대표적인 예가 추론적 질문의 답을 인과적 질문의 답처럼 받아들이는 경우입니다. “홍보를 많이 한 달에 매출이 높았다”는 것은 두 값이 함께 움직인다는 관찰일 뿐인데, 이를 “홍보가 매출을 올렸다”는 인과로 읽어 버리는 것이지요. 연말처럼 원래 손님이 많은 시기에 홍보도 많이 했다면, 매출을 올린 것은 홍보가 아니라 연말이었기 떄문이었을 수도 있습니다. 흔히 말하는 “상관관계는 인과관계가 아니다”가 바로 이 이야기입니다.</p>
+<p>질문의 성격 말고도 좋은 질문이 갖춰야 할 조건이 몇 가지 더 있습니다.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<ul>
+<li>결과를 들을 사람들이 <strong>관심을 가질 만한</strong> 질문이어야 합니다.</li>
+<li><strong>아직 답이 나오지 않은</strong> 질문이어야 합니다. 재검증처럼 특별한 경우가 아니라면, 이미 답이 있는 질문을 다시 묻는 것은 의미가 없습니다.</li>
+<li><strong>말이 되는</strong> 질문이어야 합니다. 그럴듯한 근거나 틀 위에서 나온 질문이어야 한다는 뜻입니다.</li>
+<li><strong>답할 수 있는</strong> 질문이어야 합니다.</li>
+<li>너무 모호하지 않고 <strong>구체적</strong>이어야 합니다.</li>
+</ul>
+<p>모두 당연한 이야기입니다. 정리하면, 잘 세운 질문이란 우리가 얻고자 하는 결과를 최대한 정확하게 얻어 낼 수 있는 성격으로 세워져 있고, 우리가 처한 문제의 해결책을 잘 대변하는 질문이라고 할 수 있습니다.</p>
+<p>앞으로 이 과목에서도 문제 상황을 보고 질문을 세우는 과정이 자연스럽게 등장합니다. 물론 그때마다 “이 질문은 어떤 유형이고 왜 좋은 질문인가”를 일일이 따지지는 않고, 문제 상황에 맞는 질문을 직관적으로 세워 해결하는 식으로 진행하겠습니다.</p>
+<p>질문을 세운 뒤에도 생각할 것은 남아 있습니다. 답이 어떤 형태가 될지, 그 질문에 답할 수 있는 데이터를 실제로 갖고 있는지, 가진 데이터가 한쪽으로 치우쳐 있어서 일반적인 답을 내기 어렵지는 않은지 등을 따져 봐야 합니다. 이 고민은 자연스럽게 다음 단계인 데이터 탐색으로 이어집니다.</p>
+</section>
+<section id="단계-데이터-탐색" class="level2">
+<h2 class="anchored" data-anchor-id="단계-데이터-탐색">2단계: 데이터 탐색</h2>
+<p>데이터 탐색은 가진 데이터를 말 그대로 탐색해서, 데이터가 전체적으로 어떤 구조를 갖는지 파악하는 과정입니다. 물론 데이터를 멍하니 쳐다본다고 답이 나오지는 않습니다. 데이터 탐색에는 크게 세 가지 목표가 있습니다.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<ul>
+<li><strong>데이터셋에 문제가 없는지 확인한다.</strong></li>
+<li><strong>이 데이터셋으로 우리가 세운 질문에 답할 수 있는지 확인한다.</strong></li>
+<li><strong>질문에 대한 답을 간단하게 스케치한다.</strong> 일종의 답의 시제품을 만들어 보는 것입니다.</li>
+</ul>
+<p>먼저 데이터셋의 건강 상태를 점검합니다. 예를 들어 나이가 200살인 사람처럼 말이 안 되는 값이나, 비어 있는 값은 없는지 살펴봅니다. 간단한 예로, 어느 쇼핑몰의 고객 데이터를 판다스로 읽어서 요약해 보겠습니다.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> io</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>csv_text <span class="op">=</span> <span class="st">"""고객번호,나이,성별,월구매액</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="st">1,34,F,52000</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="st">2,27,M,31000</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="st">3,200,F,45000</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="st">4,41,,38000</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="st">5,,M,61000</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="st">6,29,F,-12000</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="st">7,38,M,47000</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(io.StringIO(csv_text))</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df[[<span class="st">"나이"</span>, <span class="st">"월구매액"</span>]].describe().<span class="bu">round</span>(<span class="dv">1</span>))</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>()</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.isna().<span class="bu">sum</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre><code>          나이     월구매액
+count    6.0      7.0
+mean    61.5  37428.6
+std     68.1  23810.8
+min     27.0 -12000.0
+25%     30.2  34500.0
+50%     36.0  45000.0
+75%     40.2  49500.0
+max    200.0  61000.0
+
+고객번호    0
+나이      1
+성별      1
+월구매액    0
+dtype: int64</code></pre>
+<p>요약표 몇 줄만 봐도 이상한 점이 여럿 보입니다. 나이의 최댓값(<code>max</code>)이 200이고, 그 때문에 평균 나이(<code>mean</code>)가 61.5세로 중앙값(<code>50%</code>) 36세보다 훨씬 크게 나왔습니다. 월 구매액의 최솟값(<code>min</code>)은 음수인데, 환불이 섞여 들어왔을 수도 있고 단순한 입력 실수일 수도 있습니다. 아래쪽 표를 보면 나이와 성별이 비어 있는 고객도 한 명씩 있습니다. 이 상태로 바로 “우리 고객의 평균 나이는 61.5세”라고 결론을 냈다면 엉뚱한 분석이 되었을 것입니다. 우리는 이렇게 데이터를 직접 살펴보는 과정을 통해서 데이터가 정상적인지를 우선 검사해야합니다.</p>
+<p>데이터가 건강하다면, 그다음에는 이 데이터로 질문에 답할 수 있는지를 확인합니다. 연령대별로 어떤 상품이 잘 팔리는지 분석하고 싶은데 데이터에 나이 정보가 없다면 곤란하겠지요. 답할 수 없다면 데이터를 새로 구하거나, 질문을 새로 세워야 합니다.</p>
+<p>여기까지 문제가 없다면, “대략 이런 결과가 나오겠구나” 하는 답의 스케치를 그려 봅니다. 앞에서 말한 <strong>기대치</strong>가 여기서 처음으로 구체적인 모습을 갖추게 됩니다. 이제 이 스케치를 정확하게 다듬기 위해 다음 단계로 넘어갑니다.</p>
+</section>
+<section id="단계-형식-모델-구성" class="level2">
+<h2 class="anchored" data-anchor-id="단계-형식-모델-구성">3단계: 형식 모델 구성</h2>
+<p>이 시점에서 우리는 데이터의 구조를 아주 대략적으로 파악한 상태입니다. 이것을 더 정확하게 파악하기 위해 <strong>모델</strong>을 세웁니다. 여기서 말하는 모델, 정확히는 <strong>형식 모델</strong>(formal model)이란 데이터를 논리적으로 설명하기 위한 수학이나 통계의 도구를 말합니다. 대개 함수의 형태를 띱니다.</p>
+<section id="모델은-왜-필요할까요" class="level3">
+<h3 class="anchored" data-anchor-id="모델은-왜-필요할까요">모델은 왜 필요할까요?</h3>
+<p>애초에 모델을 왜 만들어야 할까요? 첫 번째 이유는 모델이 데이터의 구조를 <strong>단순화</strong>해 준다는 것입니다. 데이터 하나에는 적게는 수십, 많게는 수백 개의 변수가 들어 있습니다. 모델 없이 이 모든 것을 날것 그대로 고려해서 결론을 내기란 쉽지 않습니다. 그래서 질문에 답하는 데 필요한 부분만 남기고 데이터를 올바르게 단순화해 주는 모델을 고르는 것입니다.</p>
+<p>두 번째 이유는 모델이 수학적으로 정확하게 정의되어 있어서, 우리가 아는 수학과 통계 지식으로 <strong>모델의 성질을 분석</strong>하고 그것을 통해 현상을 해석할 수 있다는 것입니다. 예를 들어 “광고를 많이 할수록 매출이 오른다”는 명제를 따져 보고 싶다면, 알맞은 모델을 하나 골라 광고비에 대한 매출의 변화율을 분석하는 식으로 매출이 얼마나 오르는지 파악할 수 있습니다. (물론 복잡한 문제로 가면 이렇게 단순하게 해석되지 않는 경우도 많습니다.)</p>
+<p>앞에서 모델을 “수학이나 통계의 도구”라고 했는데, 정확히는 두 가지를 동시에 쓴다고 보시면 됩니다. 모델의 뼈대는 수학이 만들고, 그 뼈대에 들어가는 각 구성 요소에는 통계적 모델을 끼워 넣습니다. 데이터가 보여 주는 현상은 정확하게 결정되어 있지 않고 언제나 <strong>불확실성</strong>이 있기 때문에, 확률변수 같은 통계의 도구로 그 불확실성까지 담아낸 모델을 만드는 것입니다.</p>
+<p>이렇게 만든 모델로 우리는 미래를 예측하거나, 직접 관측할 수 없는 값을 추정하는 등 데이터가 말해 주는 무언가를 끌어냅니다. 모델은 결국 “이 데이터가 현실에서 어떤 과정을 거쳐 만들어졌을까”에 대한 우리의 기대를 합리적이고 논리적으로 표현한 것입니다. 그래서 모델을 세우는 단계에서도 앞에서 말한 기대치를 세우고, 확인하고, 고치는 과정을 계속 거치게 됩니다.</p>
+</section>
+<section id="좋은-모델은-덜-틀린-모델입니다" class="level3">
+<h3 class="anchored" data-anchor-id="좋은-모델은-덜-틀린-모델입니다">좋은 모델은 덜 틀린 모델입니다</h3>
+<p>모델이 왜 필요한지는 알았으니, 이제 어떤 모델을 골라야 하는지가 궁금해집니다. 당연히 좋은 모델을 골라야 할 텐데, 좋은 모델이란 무엇일까요? 한마디로 하면 <strong>최대한 덜 틀린 모델</strong>입니다.</p>
+<p>모델은 데이터 뒤에 있는 실제 이치를 있는 그대로 표현하지 못합니다. 현실 세계를 수학과 논리의 언어로 100% 옮겨 적는 것은 불가능하니까요. 통계학자 박스(G. E. P. Box)는 이를 두고, 모든 모델은 틀렸지만 그중 일부는 쓸모가 있다는 유명한 말을 남겼습니다.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> 그래서 우리는 모델이 어느 정도 틀린다는 것을 받아들이고, 그 틀림이 최소가 되는 모델을 골라야 합니다. 그러면서도 질문에 답할 수 있는 모델 가운데 <strong>가장 단순한 모델</strong>을 고르는 것이 가장 좋다고 여겨집니다.</p>
+</section>
+<section id="모수와-학습" class="level3">
+<h3 class="anchored" data-anchor-id="모수와-학습">모수와 학습</h3>
+<p>모델의 종류를 골랐다면, 그 모델이 구체적으로 어떤 모양인지 정해야 합니다. 예를 들어 통계에서 자주 쓰는 정규분포를 생각해 보겠습니다. 데이터가 정규분포를 따른다고 정했더라도, 그것이 정확히 <strong>어떤</strong> 정규분포인지, 즉 정규분포의 모양을 결정하는 평균과 분산이 얼마인지를 정해야 합니다. 이렇게 모델의 구체적인 모양을 결정하는 값을 <strong>모수</strong>(parameter) 또는 파라미터라고 합니다.</p>
+<p>모수를 정하기 위해 모델에 데이터를 넣는 과정을 데이터 사이언스에서는 <strong>학습</strong>(training) 또는 <strong>피팅</strong>(fitting)이라고 부릅니다. 이름은 거창하지만 대단한 개념은 아닙니다. 데이터를 넣고, 그 데이터를 바탕으로 모델의 모수를 계속 고쳐 나가는 과정을 말합니다. 통계학에서는 같은 일을 <strong>모수 추정</strong>(parameter estimation)이라고 부릅니다. 이처럼 통계학과 데이터 사이언스에서는 같은 개념을 다른 이름으로 부르는 경우가 많습니다. 데이터로부터 모수를 어떻게 정하는지는 기초 통계학(추가 예정)에서 간단하게 소개되며, <a href="../../../ds-ai/data-analysis-inference/index.html">수리적 데이터 분석과 통계적 추론</a>의 <a href="../../../ds-ai/data-analysis-inference/01-mle/index.html">최대우도 추정</a>에서 좀 더 정확하게 다뤄집니다.</p>
+</section>
+<section id="모델이-제대로-작동하는지-확인하기" class="level3">
+<h3 class="anchored" data-anchor-id="모델이-제대로-작동하는지-확인하기">모델이 제대로 작동하는지 확인하기</h3>
+<p>모델을 고르고 구현하는 일도 앞에서 말한 톱니바퀴처럼 반복되는 과정입니다. 먼저 모델이 어떤 결과를 낼지, 무엇을 할 수 있고 무엇을 할 수 없는지에 대한 기대치를 세우고, 프로그래밍 등으로 모델을 구현합니다. 그런 다음 모델이 제대로 작동하는지 몇 가지 방법으로 확인합니다.</p>
+<p>첫째는 <strong>토이 데이터</strong>(toy data)로 시험해 보는 것입니다. 토이 데이터란 우리가 정답을 이미 알고 있어서 결과를 확신할 수 있는 데이터를 말합니다. 정답을 아는 데이터를 넣었는데도 모델이 엉뚱한 답을 낸다면, 모델 자체에 문제가 있는 것입니다.</p>
+<p>둘째는 모델을 학습시킬 때 쓰지 않은 데이터로 성능을 확인하는 것입니다. 그래서 보통 데이터를 <strong>학습용 데이터</strong>(training data)와 <strong>테스트용 데이터</strong>(test data)로 나누고, 학습에 쓴 데이터는 평가에 쓰지 않는 것을 원칙으로 합니다. 학습에 쓴 데이터로 평가하면, 시험 문제를 미리 보고 시험을 치르는 것과 같아서 성능이 실제보다 좋아 보이기 때문입니다. (데이터가 너무 적어서 이렇게 나누기 어려울 때 쓸 수 있는 교차 검증(cross-validation) 같은 방법도 있습니다.)</p>
+<p>셋째는 일부러 <strong>데이터를 망가뜨려</strong> 넣어 보는 것입니다. 데이터를 망가뜨린다는 것은 데이터의 핵심적인 정보를 고의로 뭉개 버린다는 뜻입니다. 이렇게 망가진 데이터를 넣었는데도 모델이 신기할 만큼 정확한 답을 낸다면, 그 모델은 좋은 모델이 아니라 어디선가 정답을 몰래 베껴 내고 있는 모델일 가능성이 높습니다.</p>
+<p>세 가지를 간단한 직선 모델로 모두 해 보겠습니다. 정답이 절편 1, 기울기 2인 직선 위에 작은 잡음을 섞은 토이 데이터를 만들고, 최소제곱법으로 직선을 맞춰 봅니다.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">2026</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) 토이 데이터: 정답(절편 1, 기울기 2)을 알고 있는 데이터</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.random.rand(<span class="dv">200</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="dv">2</span> <span class="op">*</span> x <span class="op">+</span> <span class="fl">0.1</span> <span class="op">*</span> np.random.randn(<span class="dv">200</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>slope, intercept <span class="op">=</span> np.polyfit(x, y, <span class="dv">1</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"토이 데이터  : 절편 = </span><span class="sc">{</span>intercept<span class="sc">:.3f}</span><span class="ss">, 기울기 = </span><span class="sc">{</span>slope<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) 학습용과 테스트용으로 나누기</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>idx <span class="op">=</span> np.random.permutation(<span class="dv">200</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>train, test <span class="op">=</span> idx[:<span class="dv">150</span>], idx[<span class="dv">150</span>:]</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>slope, intercept <span class="op">=</span> np.polyfit(x[train], y[train], <span class="dv">1</span>)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>mse <span class="op">=</span> np.mean((y[test] <span class="op">-</span> (intercept <span class="op">+</span> slope <span class="op">*</span> x[test])) <span class="op">**</span> <span class="dv">2</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"테스트 오차  : </span><span class="sc">{</span>mse<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 3) 일부러 망가뜨린 데이터: y를 무작위로 섞어 x와의 관계를 끊기</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>y_broken <span class="op">=</span> np.random.permutation(y)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>slope, intercept <span class="op">=</span> np.polyfit(x, y_broken, <span class="dv">1</span>)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"망가진 데이터: 절편 = </span><span class="sc">{</span>intercept<span class="sc">:.3f}</span><span class="ss">, 기울기 = </span><span class="sc">{</span>slope<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre><code>토이 데이터  : 절편 = 1.013, 기울기 = 1.985
+테스트 오차  : 0.0101
+망가진 데이터: 절편 = 1.991, 기울기 = 0.075</code></pre>
+<p>첫 줄에서 모델은 정답인 절편 1, 기울기 2에 아주 가까운 값을 찾아냈습니다. 둘째 줄의 테스트 오차(예측값과 실제값 차이의 제곱 평균)는 약 <span class="math inline">\(0.01\)</span>인데, 이것은 우리가 일부러 섞은 잡음의 크기(<span class="math inline">\(0.1^2 = 0.01\)</span>)와 거의 같습니다. 학습에 쓰지 않은 데이터에서도 모델이 잡음 말고는 놓친 것이 없다는 뜻입니다. 마지막 줄에서는 <span class="math inline">\(y\)</span>를 무작위로 섞어 <span class="math inline">\(x\)</span>와의 관계를 끊어 버렸더니, 기울기가 거의 0으로 떨어졌습니다. 관계가 없는 데이터에서 관계를 찾지 못하는 것이 정상입니다. 만약 여기서도 기울기가 여전히 2 근처로 나왔다면, 어딘가에서 정답이 새어 들어가고 있다는 신호로 보고 코드를 의심해야 합니다.</p>
+<p>이런 확인을 거쳐 결과가 나오면, 이제 그 결과를 해석할 차례입니다.</p>
+</section>
+</section>
+<section id="단계-결과-해석" class="level2">
+<h2 class="anchored" data-anchor-id="단계-결과-해석">4단계: 결과 해석</h2>
+<p>결과 해석 단계는 생각보다 간단합니다. 사실 가장 까다로운 부분은 모델이 잘 작동하는지까지 판단해야 하는 앞의 모델 단계입니다.</p>
+<p>결과 해석 단계에서는 처음에 세웠던 질문을 다시 떠올려 그에 대한 답을 만들고, 결과의 방향과 크기, 그리고 그 결과가 얼마나 불확실한지를 해석합니다. 우리의 결과를 이미 알려진 다른 결과들과 나란히 놓고 비교해 보기도 하고, 반대로 “이 결과가 틀렸다면 왜 이런 결과가 나왔을까?”를 따져 보며 해석하기도 합니다. 마지막으로 이 모든 해석을 종합해, 질문의 답으로서 현실에서 어떤 조치를 취해야 할지를 결정합니다.</p>
+<p>그런데 알고리즘 자체가 핵심 사업인 테크 기업이나 AI 기업이 아니라면, 데이터 사이언티스트 본인이 최종 결정권자인 경우는 드뭅니다. 설령 결정권자라 하더라도, 회사의 주주처럼 데이터 사이언스를 잘 모르는 사람들에게 분석 결과를 그대로 건네며 “알아서 이해하세요”라고 할 수는 없습니다. 그래서 분석 결과를 결정권자와 이해관계자에게 설명하는 마지막 단계가 필요합니다.</p>
+</section>
+<section id="단계-커뮤니케이션" class="level2">
+<h2 class="anchored" data-anchor-id="단계-커뮤니케이션">5단계: 커뮤니케이션</h2>
+<p>커뮤니케이션의 방법은 우리 모두가 이미 잘 알고 있습니다. 결국 <strong>말하기</strong>가 가장 중요합니다. 청중 앞에서 자신의 결과를 잘 설명하고, 청중의 질문에 적절히 답할 수 있어야 합니다.</p>
+<p>결과를 설명할 때는 데이터 시각화가 큰 도움이 됩니다. 그래프를 그리는 것 자체는 어렵지 않지만, 지금 설명하는 맥락에서 “정확히 핵심을 짚었다”는 평가를 받을 만한 시각 자료를 고르는 안목이 필요합니다. 더 자세한 내용을 원하는 청중을 위해 보고서를 잘 써 두는 것도 중요합니다.</p>
+<p>효과적으로 전달하려면 다음과 같은 점을 생각해 봐야 합니다.</p>
+<ul>
+<li><strong>청중이 누구인가?</strong> 기술적인 배경이 없는 청중이라면 전문 용어는 최대한 빼는 것이 좋습니다.</li>
+<li><strong>어떤 질문과 반응이 나올까?</strong> 예상되는 질문을 미리 생각해 두면 훨씬 매끄럽게 답할 수 있습니다.</li>
+<li><strong>청중이 이해하기에 충분한 정보를 주고 있는가?</strong> 너무 적어도, 너무 많아도 전달이 어렵습니다.</li>
+</ul>
+<p>이런 이유로 요즘 새로 생기는 데이터 사이언스 전공은 물론이고 수학 전공에서도, 전통적인 강의와 세미나, 실습을 넘어 수학이나 데이터 사이언스를 대중에게 잘 설명하는 법, 그리고 이 학문들이 사회와 어떻게 상호작용하는지 이해하는 법 같은 이른바 <strong>소프트 스킬</strong>(soft skill)을 다루는 수업을 교과 과정에 넣는 추세입니다.</p>
+</section>
+<section id="정리" class="level2">
+<h2 class="anchored" data-anchor-id="정리">정리</h2>
+<ul>
+<li>데이터 사이언스는 흔히 <strong>데이터 엔지니어링</strong>(기반), <strong>데이터 분석</strong>(왜 일어났는가), <strong>데이터 애널리틱스</strong>(무엇이 일어날 것인가)의 세 갈래로 나뉩니다. 데이터 사이언스 개론은 이 가운데 데이터 분석을 중심으로 다룹니다.</li>
+<li>데이터 분석은 <strong>질문 설정, 데이터 탐색, 모델 구성, 결과 해석, 커뮤니케이션</strong>의 다섯 단계로 정리할 수 있고, 각 단계 안에서는 <strong>기대치를 세우고, 확인하고, 고치는</strong> 과정이 끊임없이 반복됩니다.</li>
+<li>질문은 유형(기술·탐색·추론·예측·인과·기계)에 따라 쓰는 도구가 달라지므로, 지금 던지는 질문이 어떤 유형인지 분명히 해야 합니다.</li>
+<li>모델은 언제나 어느 정도 틀리기 때문에, 질문에 답할 수 있으면서 가장 덜 틀리고 단순한 모델을 고르고, 토이 데이터·테스트 데이터·망가뜨린 데이터 등으로 제대로 작동하는지 확인합니다.</li>
+</ul>
+<p>그런데 이 모든 과정은 한 가지 전제 위에 서 있습니다. 바로 <strong>데이터 자체가 믿을 만하다</strong>는 것입니다. 아무리 정교한 모델과 꼼꼼한 확인을 거쳐도, 애초에 데이터가 잘못 모였다면 어떻게 될까요? 다음 글에서는 데이터가 어디서 어떻게 왔는지가 왜 중요한지 살펴보겠습니다.</p>
+<hr>
+<section id="연결되는-개념" class="level3">
+<h3 class="anchored" data-anchor-id="연결되는-개념">연결되는 개념</h3>
+<ul>
+<li><span class="math inline">\(\leftarrow\)</span> <strong>이전 개념:</strong> <a href="../../../ds-ai/ds-intro/01-foundations/02-applications.html">1.2 데이터 사이언스의 응용 분야</a></li>
+<li><span class="math inline">\(\rightarrow\)</span> <strong>다음 개념:</strong> <a href="../../../ds-ai/ds-intro/01-foundations/04-sampling-bias.html">1.4 데이터의 출처와 편향</a></li>
+</ul>
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>다섯 단계와 그 안에서 반복되는 세 가지 과정, 좋은 질문의 조건, 데이터 탐색의 세 가지 목표는 다음 책의 정리를 따랐습니다. R. D. Peng &amp; E. Matsui, <em>The Art of Data Science: A Guide for Anyone Who Works with Data</em>, Leanpub, 2015, 2–4장.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>J. T. Leek &amp; R. D. Peng, “What is the question?”, <em>Science</em> 347(6228), 2015, pp.&nbsp;1314–1315. 이 글은 데이터 분석에서 가장 흔한 실수로 질문의 유형을 혼동하는 것을 꼽고 있습니다.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>J. T. Leek &amp; R. D. Peng, “What is the question?”, <em>Science</em> 347(6228), 2015, pp.&nbsp;1314–1315. 이 글은 데이터 분석에서 가장 흔한 실수로 질문의 유형을 혼동하는 것을 꼽고 있습니다.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>다섯 단계와 그 안에서 반복되는 세 가지 과정, 좋은 질문의 조건, 데이터 탐색의 세 가지 목표는 다음 책의 정리를 따랐습니다. R. D. Peng &amp; E. Matsui, <em>The Art of Data Science: A Guide for Anyone Who Works with Data</em>, Leanpub, 2015, 2–4장.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>다섯 단계와 그 안에서 반복되는 세 가지 과정, 좋은 질문의 조건, 데이터 탐색의 세 가지 목표는 다음 책의 정리를 따랐습니다. R. D. Peng &amp; E. Matsui, <em>The Art of Data Science: A Guide for Anyone Who Works with Data</em>, Leanpub, 2015, 2–4장.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>G. E. P. Box, “Robustness in the Strategy of Scientific Model Building”, R. L. Launer &amp; G. N. Wilkinson (eds.), <em>Robustness in Statistics</em>, Academic Press, 1979, pp.&nbsp;201–236.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const categoryLinks = {
+    "수학": "/math/index.html",
+    "확률과 통계": "/stats/index.html",
+    "컴퓨터 공학": "/cs/index.html",
+    "데이터 사이언스·AI": "/ds-ai/index.html",
+    "경영/경제": "/biz-econ/index.html",
+    "의학통계·바이오메트리": "/biostat/index.html"
+  };
+  document.querySelectorAll('.navbar-nav .nav-item.dropdown > a.nav-link').forEach(function(el) {
+    const label = el.textContent.trim();
+    if (categoryLinks[label]) {
+      el.setAttribute('href', categoryLinks[label]);
+      el.addEventListener('click', function(e) {
+        if (window.innerWidth >= 992) {
+          window.location.href = categoryLinks[label];
+        }
+      });
+    }
+  });
+
+  /* ---------------------------------------------------------------
+     메가 메뉴: 드롭다운을 그룹(헤더 단위)별 가로 열로 재배치
+     - 첫 헤더 이전 항목(예: "전체 과목 보기")은 상단 한 줄로
+     - 한 그룹의 과목이 MAX_ROWS 개를 넘으면 그 그룹 안에서 열을 나눔
+     --------------------------------------------------------------- */
+  const MAX_ROWS = 7;      // 한 열에 들어갈 최대 과목 수
+  const EDGE = 16;         // 화면 가장자리 여백(px)
+
+  document.querySelectorAll('.navbar .nav-item.dropdown > .dropdown-menu').forEach(function(menu) {
+    const items = Array.from(menu.children);
+    if (items.filter(function(li) { return li.classList.contains('dropdown-header'); }).length < 2) return;
+
+    const top = document.createElement('li');
+    top.className = 'mega-top';
+    const groupsWrap = document.createElement('li');
+    groupsWrap.className = 'mega-groups';
+
+    let current = null;
+    items.forEach(function(li) {
+      if (li.querySelector('.dropdown-divider')) { li.remove(); return; }
+      if (li.classList.contains('dropdown-header')) {
+        const group = document.createElement('div');
+        group.className = 'mega-group';
+        const header = document.createElement('div');
+        header.className = 'dropdown-header';
+        header.textContent = li.textContent.trim();
+        const list = document.createElement('ul');
+        list.className = 'mega-items';
+        group.appendChild(header);
+        group.appendChild(list);
+        groupsWrap.appendChild(group);
+        current = list;
+        li.remove();
+        return;
+      }
+      if (current) {
+        current.appendChild(li);
+      } else {
+        top.appendChild(li.querySelector('a') || li);
+        li.remove();
+      }
+    });
+
+    groupsWrap.querySelectorAll('.mega-items').forEach(function(list) {
+      const n = list.children.length;
+      const cols = Math.max(1, Math.ceil(n / MAX_ROWS));
+      list.style.setProperty('--mega-rows', Math.ceil(n / cols));
+    });
+
+    menu.innerHTML = '';
+    if (top.children.length) menu.appendChild(top);
+    menu.appendChild(groupsWrap);
+    menu.classList.add('mega-menu');
+  });
+
+  /* 펼친 메뉴가 화면 오른쪽 밖으로 나가지 않도록 위치 보정 */
+  function fitToViewport(menu) {
+    if (window.innerWidth < 992) { menu.style.left = ''; return; }
+    menu.style.left = '0px';
+    const rect = menu.getBoundingClientRect();
+    if (rect.width === 0) return;
+    let shift = 0;
+    const overflow = rect.right - (window.innerWidth - EDGE);
+    if (overflow > 0) shift = -overflow;
+    if (rect.left + shift < EDGE) shift = EDGE - rect.left;
+    menu.style.left = shift + 'px';
+  }
+
+  document.querySelectorAll('.navbar .nav-item.dropdown').forEach(function(item) {
+    const menu = item.querySelector(':scope > .dropdown-menu.mega-menu');
+    if (!menu) return;
+    const fit = function() { requestAnimationFrame(function() { fitToViewport(menu); }); };
+    item.addEventListener('mouseenter', fit);
+    item.addEventListener('focusin', fit);
+    item.addEventListener('shown.bs.dropdown', fit);
+  });
+});
+</script>
+<script>
+/* 좌측 사이드바 맨 위 과목명: "한국어(English)" → 한국어 / English 두 줄로 나눠 표시 */
+document.addEventListener("DOMContentLoaded", function () {
+  var el = document.querySelector("#quarto-sidebar .sidebar-menu-container > ul > li > .sidebar-item-container .menu-text, #quarto-sidebar .sidebar-menu-container > ul > li > .sidebar-item-text .menu-text");
+  if (!el) return;
+  var m = el.textContent.trim().match(/^(.+?)\s*\((.+)\)$/);
+  if (!m) return;
+  el.textContent = m[1];
+  var en = document.createElement("span");
+  en.className = "menu-subtitle";
+  en.textContent = m[2];
+  el.appendChild(en);
+});
+</script>
+<script data-goatcounter="https://xkwhd1557.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/xkwhd1557\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+<nav class="page-navigation" aria-label="Page">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../ds-ai/ds-intro/01-foundations/02-applications.html" class="pagination-link" aria-label="1.2 데이터 사이언스의 응용 분야">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">1.2 데이터 사이언스의 응용 분야</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../ds-ai/ds-intro/01-foundations/04-sampling-bias.html" class="pagination-link" aria-label="1.4 데이터의 출처와 편향">
+        <span class="nav-page-text">1.4 데이터의 출처와 편향</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2026 xkwhd1557 · 글은 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.ko">CC BY-NC-ND 4.0</a>에 따라 이용할 수 있습니다.<br> <a href="../../../privacy.html">개인정보 처리방침</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

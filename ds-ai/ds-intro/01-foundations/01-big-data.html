@@ -686,6 +686,65 @@ window.Quarto = {
  <span class="menu-text">1.2 데이터 사이언스의 응용 분야</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/ds-intro/01-foundations/03-analysis-process.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.3 데이터 분석의 과정</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/ds-intro/01-foundations/04-sampling-bias.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.4 데이터의 출처와 편향</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../ds-ai/ds-intro/02-data-exploration/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-2-label">2 데이터 탐색: 기술 통계와 시각화</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section: 2 데이터 탐색: 기술 통계와 시각화">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-2" aria-labelledby="quarto-sidebar-section-2-label" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/ds-intro/02-data-exploration/01-scales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.1 데이터의 스케일</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/ds-intro/02-data-exploration/02-summary-statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.2 요약 통계량</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/ds-intro/02-data-exploration/03-correlation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.3 다변량 데이터와 상관관계</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/ds-intro/02-data-exploration/04-numpy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.4 NumPy로 데이터 다루기</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/ds-intro/02-data-exploration/05-matplotlib.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.5 Matplotlib으로 그리기</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/ds-intro/02-data-exploration/06-pandas-seaborn.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.6 Pandas와 Seaborn</span></a>
+  </div>
+</li>
       </ul>
   </li>
       </ul>
@@ -836,8 +895,8 @@ window.Quarto = {
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>csv_text <span class="op">=</span> <span class="st">"""환자번호,이름,방문일,공복혈당</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="st">1557,박종우,2026-04-06,126</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="st">1002,김철수,2026-04-07,98</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="st">1003,이영희,2026-04-07,105</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="st">2400,김찬호,2026-04-07,98</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="st">88848,손인욱,2026-04-07,105</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(io.StringIO(csv_text))</span>
@@ -845,8 +904,8 @@ window.Quarto = {
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"평균 공복혈당:"</span>, <span class="bu">round</span>(df[<span class="st">"공복혈당"</span>].mean(), <span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <pre><code>   환자번호   이름         방문일  공복혈당
 0  1557  박종우  2026-04-06   126
-1  1002  김철수  2026-04-07    98
-2  1003  이영희  2026-04-07   105
+1  2400  김찬호  2026-04-07    98
+2  88848  손인욱  2026-04-07   105
 평균 공복혈당: 109.7</code></pre>
 <p>“공복혈당”이라는 열 이름만 알려 주면 컴퓨터는 그 열의 값이 어디에 있는지 정확히 압니다. 틀이 정해져 있다는 것은 바로 이런 뜻입니다.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
@@ -890,7 +949,7 @@ window.Quarto = {
 <span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">DoctorNote</span>&gt;</span>
 <span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">PatientRecord</span>&gt;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>XML은 데이터 내부의 구조를 알려 주는 도구로 <strong>태그</strong>(tag)를 씁니다. <code>&lt; &gt;</code> 안에 들어 있는 것들이 태그이고, 각 태그는 부분 데이터의 이름표 역할을 합니다. XML 문법을 몰라도 태그 이름만 보면 이것이 환자의 진료 기록(<code>PatientRecord</code>)이고, 그 안에 환자 번호(<code>PatientID</code>), 이름(<code>Name</code>) 같은 정보가 들어 있다는 것을 짐작할 수 있습니다.</p>
-<p>컴퓨터도 마찬가지입니다. 행과 열의 좌표 대신 태그 이름으로 원하는 값을 찾아갑니다.</p>
+<p>컴퓨터도 이를 마찬가지로 짐작하여 구분여 행과 열의 좌표가 아니더라도, 태그같이 구조를 파악할 수 있는 이름표가 있다면 원하는 값을 찾아갑니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> xml.etree.ElementTree <span class="im">as</span> ET</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># xml_text에는 위의 XML 문서 전체가 문자열로 들어 있습니다.</span></span>
@@ -920,7 +979,7 @@ BloodPressure = 130/85 mmHg</code></pre>
 <p>준정형 데이터는 조금 애매한 친구입니다. 반정형 데이터처럼 친절한 이름표는 없지만, 그렇다고 아무런 구조가 없다고 하기도 어렵습니다. 대표적인 예가 프로그램이 남기는 <strong>로그</strong>(log) 메시지입니다.</p>
 <pre><code>2026-04-20 00:24:00 [ERROR] User(ID:1557) login failed - Invalid Password / IP: 203.0.113.7</code></pre>
 <p>컴퓨터에서 이런 줄이 빼곡히 적힌 로그 파일을 보신 적이 있을 겁니다. 이런 메시지는 소설처럼 아무 형식 없이 쓰인 글은 아닙니다. 날짜, 시간, 사용자 번호, IP 주소를 적는다는 기본 틀이 보이니까요. 하지만 엑셀처럼 칸이 나뉘어 있지도 않고, XML처럼 태그가 붙어 있지도 않습니다. 그저 개발자가 “이런 상황에서는 이런 메시지를 남겨라”라고 정해 둔 규칙대로 찍혀 나온 결과물일 뿐입니다.</p>
-<p>문제는 이 틀 자체가 개발자 마음대로라는 점입니다. 어떤 게임은 위와 같은 형식으로 로그를 남기더라도, 다른 게임은 전혀 다른 형식을 쓸 수 있습니다. 같은 프로그램 안에서도 모듈마다 형식이 다른 경우도 흔합니다. 그래서 준정형 데이터를 읽으려면, 사람이 직접 형식을 파악해서 컴퓨터에게 패턴을 알려 줘야 합니다. 파이썬에서는 보통 정규 표현식(regular expression)을 씁니다.</p>
+<p>문제는 이 틀 자체가 개발자 마음대로라는 점입니다. 어떤 게임은 위와 같은 형식으로 로그를 남기더라도, 다른 게임은 전혀 다른 형식을 쓸 수 있습니다. 같은 프로그램 안에서도 모듈마다 형식이 다른 경우도 흔합니다. 그래서 준정형 데이터를 읽으려면, 사람이 직접 형식을 파악해서 컴퓨터에게 패턴을 알려 줘야 합니다. 파이썬에서는 보통 정규 표현식(regular expression)을 씁니다.(정규 표현식은 지금은 그냥 이런 준정형적 구문을 작성하기 위한 규칙 정도로 생각하시면 충분합니다.)</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>logs <span class="op">=</span> [</span>
@@ -974,7 +1033,7 @@ BloodPressure = 130/85 mmHg</code></pre>
 <h3 class="anchored" data-anchor-id="연결되는-개념">연결되는 개념</h3>
 <ul>
 <li><span class="math inline">\(\leftarrow\)</span> <strong>이전 개념:</strong> <a href="../../../ds-ai/ds-intro/01-foundations/index.html">1 데이터 사이언스의 기초</a></li>
-<li><span class="math inline">\(\rightarrow\)</span> <strong>다음 개념:</strong> <a href="../../../ds-ai/ds-intro/01-foundations/02-applications.html">1.2 데이터 사이언스의 응용 분야와 기본 소양</a></li>
+<li><span class="math inline">\(\rightarrow\)</span> <strong>다음 개념:</strong> <a href="../../../ds-ai/ds-intro/01-foundations/02-applications.html">1.2 데이터 사이언스의 응용 분야</a></li>
 </ul>
 
 

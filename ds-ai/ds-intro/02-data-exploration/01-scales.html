@@ -1,0 +1,1631 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2026-11-03">
+<meta name="description" content="데이터를 요약하기 전에 그 데이터가 어떤 종류의 숫자인지부터 따져 봅니다. 명목, 순서, 등간, 비율의 네 가지 스케일을 소개하고, 스케일마다 어떤 비교와 계산이 의미 있는지 정리합니다.">
+
+<title>2.1 데이터의 스케일 – Study Archive</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../ds-ai/ds-intro/02-data-exploration/02-summary-statistics.html" rel="next">
+<link href="../../../ds-ai/ds-intro/02-data-exploration/index.html" rel="prev">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-2ba7ce865e58c97185caa3962285c575.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="2.1 데이터의 스케일 – Study Archive">
+<meta property="og:description" content="데이터를 요약하기 전에 그 데이터가 어떤 종류의 숫자인지부터 따져 봅니다. 명목, 순서, 등간, 비율의 네 가지 스케일을 소개하고, 스케일마다 어떤 비교와 계산이 의미 있는지 정리합니다.">
+<meta property="og:site_name" content="Study Archive">
+<meta name="twitter:title" content="2.1 데이터의 스케일 – Study Archive">
+<meta name="twitter:description" content="데이터를 요약하기 전에 그 데이터가 어떤 종류의 숫자인지부터 따져 봅니다. 명목, 순서, 등간, 비율의 네 가지 스케일을 소개하고, 스케일마다 어떤 비교와 계산이 의미 있는지 정리합니다.">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Study Archive</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../articles/index.html"> 
+<span class="menu-text">일반 아티클</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">수학</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-">    
+        <li>
+    <a class="dropdown-item" href="../../../math/index.html">
+ <span class="dropdown-text">📋 수학 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../math/analysis/index.html">
+ <span class="dropdown-text">해석학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/linear-algebra/index.html">
+ <span class="dropdown-text">선형대수학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/discrete-math/index.html">
+ <span class="dropdown-text">이산수학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/math-programming/index.html">
+ <span class="dropdown-text">수학적 프로그래밍 (Python)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/latex/index.html">
+ <span class="dropdown-text">LaTeX</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 수학 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../math/complex-analysis/index.html">
+ <span class="dropdown-text">복소해석학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/ode/index.html">
+ <span class="dropdown-text">상미분방정식</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/dynamical-systems/index.html">
+ <span class="dropdown-text">동적 시스템</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/measure-theory/index.html">
+ <span class="dropdown-text">측도론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/pde-intro/index.html">
+ <span class="dropdown-text">기초 편미분방정식</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/general-topology/index.html">
+ <span class="dropdown-text">일반위상수학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/algebra/index.html">
+ <span class="dropdown-text">대수학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/number-theory/index.html">
+ <span class="dropdown-text">정수론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/geometry/index.html">
+ <span class="dropdown-text">기하학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/mathematical-logic/index.html">
+ <span class="dropdown-text">수리논리학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/set-theory/index.html">
+ <span class="dropdown-text">공리적 집합론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/numerical-methods/index.html">
+ <span class="dropdown-text">수치적 방법론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/optimization/index.html">
+ <span class="dropdown-text">수학적 최적화</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../math/functional-analysis/index.html">
+ <span class="dropdown-text">함수해석학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/pde-advanced/index.html">
+ <span class="dropdown-text">편미분방정식</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/manifold-analysis/index.html">
+ <span class="dropdown-text">다양체 해석학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/rkhs/index.html">
+ <span class="dropdown-text">RKHS 이론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/differential-geometry/index.html">
+ <span class="dropdown-text">미분기하학</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--1" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">확률과 통계</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--1">    
+        <li>
+    <a class="dropdown-item" href="../../../stats/index.html">
+ <span class="dropdown-text">📋 확률과 통계 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../stats/prob-theory/index.html">
+ <span class="dropdown-text">기초 확률론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/basic-stats/index.html">
+ <span class="dropdown-text">기초 통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/linear-models/index.html">
+ <span class="dropdown-text">기초 선형 모델</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/stat-programming/index.html">
+ <span class="dropdown-text">통계적 프로그래밍</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../stats/measure-prob/index.html">
+ <span class="dropdown-text">측도론적 확률론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/stochastic-processes/index.html">
+ <span class="dropdown-text">확률과정론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/math-stats/index.html">
+ <span class="dropdown-text">수리통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/stochastic-simulation/index.html">
+ <span class="dropdown-text">확률적 시뮬레이션</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/actuarial-math/index.html">
+ <span class="dropdown-text">보험수학</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../stats/stochastic-calculus/index.html">
+ <span class="dropdown-text">확률해석학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/markov-processes/index.html">
+ <span class="dropdown-text">마르코프 프로세스</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/diffusion-models/index.html">
+ <span class="dropdown-text">디퓨전 모델</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/gaussian-processes/index.html">
+ <span class="dropdown-text">가우시안 프로세스</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/non-euclidean-stats/index.html">
+ <span class="dropdown-text">비유클리드 통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/stats-for-stoch-proc/index.html">
+ <span class="dropdown-text">확률과정의 통계추론</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--2" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">컴퓨터 공학</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--2">    
+        <li>
+    <a class="dropdown-item" href="../../../cs/index.html">
+ <span class="dropdown-text">📋 컴퓨터 공학 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../cs/cs-intro/index.html">
+ <span class="dropdown-text">컴퓨터 과학 원론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cs/c-programming/index.html">
+ <span class="dropdown-text">C언어</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../cs/algorithms-data-structures/index.html">
+ <span class="dropdown-text">알고리즘과 자료구조</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cs/theoretical-cs/index.html">
+ <span class="dropdown-text">이론 컴퓨터과학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cs/database-systems/index.html">
+ <span class="dropdown-text">데이터베이스 시스템</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cs/formal-systems/index.html">
+ <span class="dropdown-text">형식 시스템</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../cs/advanced/index.html">
+ <span class="dropdown-text">심화 과정 (준비 중)</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ai" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">데이터 사이언스·AI</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-ai">    
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/index.html">
+ <span class="dropdown-text">📋 데이터 사이언스·AI 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/ds-intro/index.html">
+ <span class="dropdown-text">데이터 사이언스 개론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/ds-society/index.html">
+ <span class="dropdown-text">데이터 사이언스와 사회</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/ai-math-intro/index.html">
+ <span class="dropdown-text">고등학교 인공지능 수학</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/numerical-optimization/index.html">
+ <span class="dropdown-text">수치적 방법론과 최적화</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/machine-learning/index.html">
+ <span class="dropdown-text">머신러닝</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/deep-learning-cv/index.html">
+ <span class="dropdown-text">딥러닝과 컴퓨터 비전</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/ai-intro/index.html">
+ <span class="dropdown-text">인공지능 원론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/data-analysis-inference/index.html">
+ <span class="dropdown-text">수리적 데이터 분석과 통계적 추론</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/statistical-foundations/index.html">
+ <span class="dropdown-text">데이터 사이언스의 통계적 기초</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/mathematical-foundations/index.html">
+ <span class="dropdown-text">머신러닝의 수리적 기초</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/advanced-linear-algebra/index.html">
+ <span class="dropdown-text">데이터 사이언스를 위한 선형대수학</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--3" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">경영/경제</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--3">    
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/index.html">
+ <span class="dropdown-text">📋 경영/경제 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/biz-intro/index.html">
+ <span class="dropdown-text">경영학 원론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/econ-intro/index.html">
+ <span class="dropdown-text">경제학 원론</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/accounting/index.html">
+ <span class="dropdown-text">회계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/production-logistics/index.html">
+ <span class="dropdown-text">생산물류관리</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/decision-theory/index.html">
+ <span class="dropdown-text">의사결정론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/microeconomics/index.html">
+ <span class="dropdown-text">미시경제학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/macroeconomics/index.html">
+ <span class="dropdown-text">거시경제학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/finance-investment/index.html">
+ <span class="dropdown-text">재무와 투자론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/monetary-economics/index.html">
+ <span class="dropdown-text">화폐금융론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/labor-economics/index.html">
+ <span class="dropdown-text">노동경제학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/game-theory/index.html">
+ <span class="dropdown-text">게임이론 개론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/supply-chain/index.html">
+ <span class="dropdown-text">공급망 관리 (SCM)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/market-research/index.html">
+ <span class="dropdown-text">시장조사론의 기초</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/time-series/index.html">
+ <span class="dropdown-text">시계열 분석</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/econometrics/index.html">
+ <span class="dropdown-text">계량경제학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/insurance-economics/index.html">
+ <span class="dropdown-text">보험경제학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/quantitative-risk/index.html">
+ <span class="dropdown-text">계량 리스크 관리</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/corporate-finance/index.html">
+ <span class="dropdown-text">기업재무론</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--4" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">의학통계·바이오메트리</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--4">    
+        <li>
+    <a class="dropdown-item" href="../../../biostat/index.html">
+ <span class="dropdown-text">📋 의학통계·바이오메트리 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biostat/biostat-intro/index.html">
+ <span class="dropdown-text">의학통계학 개론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biostat/epidemiology/index.html">
+ <span class="dropdown-text">역학 연구방법론</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biostat/clinical-trials/index.html">
+ <span class="dropdown-text">임상시험 통계방법론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biostat/survival-analysis/index.html">
+ <span class="dropdown-text">생존분석</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biostat/bioinformatics/index.html">
+ <span class="dropdown-text">생물정보통계학</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biostat/causal-inference/index.html">
+ <span class="dropdown-text">인과추론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biostat/longitudinal-data/index.html">
+ <span class="dropdown-text">종단적 데이터 분석</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-language" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">🌐 Language</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-language">    
+        <li>
+    <a class="dropdown-item" href="../../../index.html">
+ <span class="dropdown-text">한국어 (KO)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../lang/en-coming-soon.html">
+ <span class="dropdown-text">English (EN)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../lang/de-coming-soon.html">
+ <span class="dropdown-text">Deutsch (DE)</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xkwhd1557/xkwhd1557.github.io"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+            <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" aria-label="Toolbar">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../ds-ai/ds-intro/index.html">데이터 사이언스 개론(Introduction to Data Science)</a></li><li class="breadcrumb-item"><a href="../../../ds-ai/ds-intro/02-data-exploration/index.html">2 데이터 탐색: 기술 통계와 시각화</a></li><li class="breadcrumb-item"><a href="../../../ds-ai/ds-intro/02-data-exploration/01-scales.html">2.1 데이터의 스케일</a></li></ol></nav>
+        <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto" aria-label="Section">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../ds-ai/ds-intro/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">데이터 사이언스 개론(Introduction to Data Science)</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true" aria-label="Toggle section: 데이터 사이언스 개론(Introduction to Data Science)">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../ds-ai/ds-intro/01-foundations/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-1-label">1 데이터 사이언스의 기초</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section: 1 데이터 사이언스의 기초">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/ds-intro/01-foundations/01-big-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.1 빅데이터의 3V와 데이터의 구조</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/ds-intro/01-foundations/02-applications.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.2 데이터 사이언스의 응용 분야</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/ds-intro/01-foundations/03-analysis-process.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.3 데이터 분석의 과정</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/ds-intro/01-foundations/04-sampling-bias.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.4 데이터의 출처와 편향</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../ds-ai/ds-intro/02-data-exploration/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-2-label">2 데이터 탐색: 기술 통계와 시각화</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section: 2 데이터 탐색: 기술 통계와 시각화">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-2" aria-labelledby="quarto-sidebar-section-2-label" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/ds-intro/02-data-exploration/01-scales.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">2.1 데이터의 스케일</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/ds-intro/02-data-exploration/02-summary-statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.2 요약 통계량</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/ds-intro/02-data-exploration/03-correlation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.3 다변량 데이터와 상관관계</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/ds-intro/02-data-exploration/04-numpy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.4 NumPy로 데이터 다루기</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/ds-intro/02-data-exploration/05-matplotlib.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.5 Matplotlib으로 그리기</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/ds-intro/02-data-exploration/06-pandas-seaborn.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.6 Pandas와 Seaborn</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#들어가며" id="toc-들어가며" class="nav-link active" data-scroll-target="#들어가며">들어가며</a></li>
+  <li><a href="#평균을-냈더니-이상한-답이-나왔습니다" id="toc-평균을-냈더니-이상한-답이-나왔습니다" class="nav-link" data-scroll-target="#평균을-냈더니-이상한-답이-나왔습니다">평균을 냈더니 이상한 답이 나왔습니다</a></li>
+  <li><a href="#네-가지-스케일" id="toc-네-가지-스케일" class="nav-link" data-scroll-target="#네-가지-스케일">네 가지 스케일</a>
+  <ul class="collapse">
+  <li><a href="#명목-스케일" id="toc-명목-스케일" class="nav-link" data-scroll-target="#명목-스케일">명목 스케일</a></li>
+  <li><a href="#순서-스케일" id="toc-순서-스케일" class="nav-link" data-scroll-target="#순서-스케일">순서 스케일</a></li>
+  <li><a href="#등간-스케일" id="toc-등간-스케일" class="nav-link" data-scroll-target="#등간-스케일">등간 스케일</a></li>
+  <li><a href="#비율-스케일" id="toc-비율-스케일" class="nav-link" data-scroll-target="#비율-스케일">비율 스케일</a></li>
+  </ul></li>
+  <li><a href="#한눈에-정리하기" id="toc-한눈에-정리하기" class="nav-link" data-scroll-target="#한눈에-정리하기">한눈에 정리하기</a></li>
+  <li><a href="#이-구분이-왜-중요할까요" id="toc-이-구분이-왜-중요할까요" class="nav-link" data-scroll-target="#이-구분이-왜-중요할까요">이 구분이 왜 중요할까요?</a></li>
+  <li><a href="#정리" id="toc-정리" class="nav-link" data-scroll-target="#정리">정리</a>
+  <ul class="collapse">
+  <li><a href="#연결되는-개념" id="toc-연결되는-개념" class="nav-link" data-scroll-target="#연결되는-개념">연결되는 개념</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../ds-ai/ds-intro/index.html">데이터 사이언스 개론(Introduction to Data Science)</a></li><li class="breadcrumb-item"><a href="../../../ds-ai/ds-intro/02-data-exploration/index.html">2 데이터 탐색: 기술 통계와 시각화</a></li><li class="breadcrumb-item"><a href="../../../ds-ai/ds-intro/02-data-exploration/01-scales.html">2.1 데이터의 스케일</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">2.1 데이터의 스케일</h1>
+<p class="subtitle lead">2장 데이터 탐색: 기술 통계와 시각화 · 같은 숫자라도 할 수 있는 계산은 다릅니다</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">데이터 사이언스·AI</div>
+    <div class="quarto-category">데이터 사이언스 개론</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    데이터를 요약하기 전에 그 데이터가 어떤 종류의 숫자인지부터 따져 봅니다. 명목, 순서, 등간, 비율의 네 가지 스케일을 소개하고, 스케일마다 어떤 비교와 계산이 의미 있는지 정리합니다.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 3, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="들어가며" class="level2">
+<h2 class="anchored" data-anchor-id="들어가며">들어가며</h2>
+<p><a href="../../../ds-ai/ds-intro/02-data-exploration/index.html">지난 글</a>에서 기술 통계는 데이터를 숫자로 요약하는 일이라고 했습니다. 그런데 데이터를 요약하려면, 먼저 그 데이터가 <strong>어떤 종류의 숫자</strong>인지부터 알아야 합니다. 숫자라고 해서 다 같은 숫자가 아니기 때문입니다.</p>
+<p>여기서 말하는 데이터는 <a href="../../../ds-ai/ds-intro/01-foundations/01-big-data.html">1.1</a>에서 다룬 넓은 의미의 데이터가 아니라, 표의 한 열처럼 숫자로 기록된 <strong>통계적 데이터</strong>로 좁혀서 생각하시면 됩니다. 이 숫자들이 수치로서 어떤 성질을 갖는지를 <strong>스케일</strong>(scale), 또는 <strong>척도</strong>라고 부릅니다.</p>
+</section>
+<section id="평균을-냈더니-이상한-답이-나왔습니다" class="level2">
+<h2 class="anchored" data-anchor-id="평균을-냈더니-이상한-답이-나왔습니다">평균을 냈더니 이상한 답이 나왔습니다</h2>
+<p>간단한 예부터 보겠습니다. 어느 모임 사람들의 혈액형을 컴퓨터에 입력하려고, A형은 1, B형은 2, AB형은 3, O형은 4라는 숫자로 적었다고 해 보겠습니다. 모임에는 A형 세 명과 AB형 세 명이 있습니다. 이 데이터의 평균을 내 보면 어떻게 될까요?</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># A형 = 1, B형 = 2, AB형 = 3, O형 = 4</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>blood <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>])   <span class="co"># A형 3명, AB형 3명</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"평균:"</span>, blood.mean())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre><code>평균: 2.0</code></pre>
+<p>평균은 2, 즉 “B형”이 나옵니다. 이 모임에는 B형이 한 명도 없는데 말이지요. 컴퓨터는 아무 불평 없이 계산을 해 주었지만, 이 숫자는 아무런 의미가 없습니다. 여기서 1, 2, 3, 4는 혈액형을 <strong>구분</strong>하려고 붙인 이름표일 뿐이고, 크기나 간격 같은 수치적인 의미가 전혀 없기 때문입니다. B형이 A형의 두 배인 것도 아니고, A형과 AB형의 “중간”이 B형인 것도 아니지요.</p>
+<p>반면 키나 몸무게를 숫자로 적은 데이터라면 평균을 내는 것이 아주 자연스럽습니다. 같은 숫자라도 그 숫자가 무엇을 나타내느냐에 따라 의미 있는 계산이 달라지는 것입니다. 그래서 데이터를 요약하기 전에, 그 데이터가 어떤 스케일인지를 먼저 따져 봐야 합니다. 통계학에서는 보통 데이터의 스케일을 다음 네 가지로 나눕니다.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+</section>
+<section id="네-가지-스케일" class="level2">
+<h2 class="anchored" data-anchor-id="네-가지-스케일">네 가지 스케일</h2>
+<section id="명목-스케일" class="level3">
+<h3 class="anchored" data-anchor-id="명목-스케일">명목 스케일</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>정의 2.1.1 (명목 스케일)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>대상을 <strong>구분</strong>하기 위해서만 숫자를 붙인 데이터의 스케일을 <strong>명목 스케일</strong>(nominal scale)이라고 하고, 이런 데이터를 <strong>범주형 데이터</strong>(categorical data)라고도 합니다. 명목 스케일의 데이터끼리는 같은지(<span class="math inline">\(=\)</span>), 다른지(<span class="math inline">\(\neq\)</span>)만 비교할 수 있습니다.</p>
+</div>
+</div>
+<p>위의 혈액형이 대표적인 예입니다. 성별을 남성 1, 여성 2로 적거나, 지역을 서울 1, 부산 2, …로 적는 것도 마찬가지입니다. 이 숫자들은 컴퓨터가 범주를 알아보게 하려고 붙인 이름표라서, 크기를 비교하는 것(<span class="math inline">\(1 &lt; 2\)</span>)도, 사칙연산을 하는 것도 의미가 없습니다. 남성 두 명의 데이터를 <span class="math inline">\(1 + 1 = 2\)</span>로 더한다고 여성이 되는 것은 아니니까요.</p>
+</section>
+<section id="순서-스케일" class="level3">
+<h3 class="anchored" data-anchor-id="순서-스케일">순서 스케일</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>정의 2.1.2 (순서 스케일)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>명목 스케일처럼 대상을 구분할 뿐 아니라 값들 사이에 <strong>순서</strong>가 있는 데이터의 스케일을 <strong>순서 스케일</strong>(ordinal scale)이라고 합니다. 순서 스케일의 데이터끼리는 같고 다름에 더해 크고 작음(<span class="math inline">\(&lt;\)</span>, <span class="math inline">\(&gt;\)</span>)도 비교할 수 있습니다. 하지만 값 사이의 <strong>간격</strong>에는 의미가 없습니다.</p>
+</div>
+</div>
+<p>예를 들어 설문조사에서 만족도를 “매우 불만 = 1, 불만 = 2, 보통 = 3, 만족 = 4, 매우 만족 = 5”로 적었다면, 숫자가 클수록 더 만족했다는 순서가 있습니다. 군대 계급을 “이병 = 1, 일병 = 2, 상병 = 3, 병장 = 4”로 적는 것도 순서 스케일입니다.</p>
+<p>그런데 여기서 주의할 점은 <strong>간격</strong>입니다. 만족도 1과 2 사이의 간격과 3과 4 사이의 간격은 숫자로는 똑같이 1이지만, 응답한 사람들이 실제로 느끼는 마음의 차이도 똑같을까요? 그렇지 않을 가능성이 높습니다. 응답을 크게 보면 부정(1, 2), 중립(3), 긍정(4, 5)으로 나뉘는데, 이 세 덩어리 사이의 차이는 클지 몰라도 “불만”과 “매우 불만” 사이의 차이는 생각보다 작을 수 있습니다. 숫자는 1씩 일정하게 붙였어도 실제 간격은 일정하지 않은 것입니다.</p>
+</section>
+<section id="등간-스케일" class="level3">
+<h3 class="anchored" data-anchor-id="등간-스케일">등간 스케일</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>정의 2.1.3 (등간 스케일)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>순서가 있을 뿐 아니라 값 사이의 <strong>간격이 일정한</strong> 의미를 갖는 데이터의 스케일을 <strong>등간 스케일</strong>(interval scale)이라고 합니다. 등간 스케일에서는 <strong>차이</strong>(<span class="math inline">\(-\)</span>)를 계산하는 것이 의미가 있습니다. 하지만 “아무것도 없음”을 뜻하는 진짜 0이 없기 때문에, <strong>비율</strong>(<span class="math inline">\(\times\)</span>, <span class="math inline">\(\div\)</span>)은 의미가 없습니다.</p>
+</div>
+</div>
+<p>대표적인 예가 섭씨온도입니다. 섭씨 10도에서 11도로 오르는 것과 20도에서 21도로 오르는 것은 똑같이 1도만큼의 변화입니다. 간격이 일정하니 “오늘은 어제보다 <span class="math inline">\(20 - 10 = 10\)</span>도 더 따뜻하다”처럼 <strong>차이</strong>를 이야기하는 것은 자연스럽습니다. 연도도 마찬가지입니다. 2026년에서 2027년까지와 3026년에서 3027년까지는 똑같이 1년입니다.</p>
+<p>그렇다면 곱셈과 나눗셈은 어떨까요? 어제가 10도, 오늘이 20도라고 해서 “오늘이 어제보다 <strong>두 배</strong> 덥다”고 할 수 있을까요? 일상에서는 그렇게 말하기도 하지만, 엄밀히 말하면 이 말은 성립하지 않습니다.</p>
+<p>“몇 배”라는 말을 하려면, <strong>아무것도 없는 상태</strong>를 나타내는 기준점 0이 있어야 합니다. 물통 2개의 두 배가 4개라고 말할 수 있는 것은 “물통이 하나도 없는 상태”라는 분명한 0이 있기 때문입니다. 자동차 속력도 마찬가지로, 시속 0은 완전히 멈춘 상태이므로 시속 120인 차가 시속 60인 차보다 두 배 빠르다고 말할 수 있습니다.</p>
+<p>그런데 섭씨 0도는 열이 하나도 없는 상태가 아닙니다. 물이 어는 온도에 사람이 편의상 0이라는 숫자를 붙였을 뿐입니다. 열이 정말로 하나도 없는 상태는 절대영도(섭씨 약 <span class="math inline">\(-273.15\)</span>도)입니다. 그래서 절대영도를 0으로 삼는 켈빈(K) 온도로 바꿔 보면, 10도는 약 283.15K, 20도는 약 293.15K이고, 그 비는 2가 아니라 약 1.035입니다. 섭씨로는 “두 배”처럼 보였던 것이 실제로는 3.5% 정도 더 높은 온도였던 셈입니다.</p>
+<p>이처럼 순서와 일정한 간격은 있지만 진짜 0이 없어서 “몇 배”를 말할 수 없는 스케일이 등간 스케일입니다. 한 가지 덧붙이면, 등간 스케일에서는 덧셈 자체도 조심해야 합니다. “10도 + 20도 = 30도”처럼 온도 두 개를 더하는 것은 아무 의미가 없습니다. 의미가 있는 것은 두 값의 <strong>차이</strong>이고, 차이끼리는 더하거나 비교할 수 있습니다(“어제는 5도, 오늘은 10도 올랐다”).</p>
+<p>여기서 꼭 기억해 둘 점이 하나 있습니다. 온도가 <strong>온도라서</strong> 등간 스케일인 것은 아닙니다. 섭씨나 화씨처럼 임의로 정한 0을 쓰는 온도는 등간 스케일이지만, 진짜 0을 쓰는 켈빈 온도는 바로 다음에 볼 비율 스케일입니다. 스케일은 측정 대상이 아니라 <strong>측정하는 방식</strong>에 따라 정해집니다.</p>
+</section>
+<section id="비율-스케일" class="level3">
+<h3 class="anchored" data-anchor-id="비율-스케일">비율 스케일</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>정의 2.1.4 (비율 스케일)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>등간 스케일의 성질에 더해 <strong>진짜 0</strong>, 즉 “아무것도 없음”을 뜻하는 기준점이 있는 데이터의 스케일을 <strong>비율 스케일</strong>(ratio scale)이라고 합니다. 비율 스케일에서는 차이뿐 아니라 비율도 의미가 있습니다.</p>
+</div>
+</div>
+<p>키, 몸무게, 매출액, 나이, 켈빈 온도 등이 대표적인 예입니다. 키 0cm, 몸무게 0kg, 매출 0원은 모두 “아무것도 없는” 상태이므로, 키가 225cm인 사람은 150cm인 사람보다 1.5배 크다고 말할 수 있습니다. 우리가 일상적으로 다루는 수치 데이터의 상당수가 이 비율 스케일에 속하고, 가장 친숙하고 자연스러운 스케일이기도 합니다.</p>
+</section>
+</section>
+<section id="한눈에-정리하기" class="level2">
+<h2 class="anchored" data-anchor-id="한눈에-정리하기">한눈에 정리하기</h2>
+<p>네 가지 스케일은 아래로 갈수록 조건이 하나씩 더해지는 구조입니다. 아래쪽 스케일은 위쪽 스케일이 할 수 있는 비교와 계산을 모두 할 수 있습니다.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">스케일</th>
+<th style="text-align: center;">순서가 있는가</th>
+<th style="text-align: center;">간격이 일정한가</th>
+<th style="text-align: center;">진짜 0이 있는가</th>
+<th style="text-align: left;">의미 있는 비교·계산</th>
+<th style="text-align: left;">예</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">명목</td>
+<td style="text-align: center;">✕</td>
+<td style="text-align: center;">✕</td>
+<td style="text-align: center;">✕</td>
+<td style="text-align: left;"><span class="math inline">\(=\)</span>, <span class="math inline">\(\neq\)</span></td>
+<td style="text-align: left;">혈액형, 성별, 지역</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">순서</td>
+<td style="text-align: center;">○</td>
+<td style="text-align: center;">✕</td>
+<td style="text-align: center;">✕</td>
+<td style="text-align: left;">위 + <span class="math inline">\(&lt;\)</span>, <span class="math inline">\(&gt;\)</span></td>
+<td style="text-align: left;">만족도, 계급, 순위</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">등간</td>
+<td style="text-align: center;">○</td>
+<td style="text-align: center;">○</td>
+<td style="text-align: center;">✕</td>
+<td style="text-align: left;">위 + 차이(<span class="math inline">\(-\)</span>)</td>
+<td style="text-align: left;">섭씨온도, 연도</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">비율</td>
+<td style="text-align: center;">○</td>
+<td style="text-align: center;">○</td>
+<td style="text-align: center;">○</td>
+<td style="text-align: left;">위 + 비율(<span class="math inline">\(\times\)</span>, <span class="math inline">\(\div\)</span>)</td>
+<td style="text-align: left;">키, 몸무게, 매출액, 나이</td>
+</tr>
+</tbody>
+</table>
+<p>명목 스케일과 순서 스케일은 숫자가 이름표나 순번 역할만 해서 <strong>질적 데이터</strong>(qualitative data)라고도 하고, 등간 스케일과 비율 스케일은 숫자 자체가 양을 나타내서 <strong>양적 데이터</strong>(quantitative data)라고도 합니다. (IQ 점수처럼 어느 스케일로 볼지 의견이 갈리는 경우도 있습니다. IQ는 흔히 등간 스케일처럼 다루지만, 점수 사이의 간격이 정말 일정한지에 대해서는 논쟁이 있습니다.)</p>
+</section>
+<section id="이-구분이-왜-중요할까요" class="level2">
+<h2 class="anchored" data-anchor-id="이-구분이-왜-중요할까요">이 구분이 왜 중요할까요?</h2>
+<p>처음의 혈액형 예로 돌아가 보겠습니다. 명목 스케일인 혈액형 데이터에서 평균은 의미가 없었습니다. 그렇다면 이 데이터는 어떻게 요약해야 할까요? 명목 스케일에서 의미 있는 것은 “같은지, 다른지”뿐이므로, 각 혈액형이 <strong>몇 번 나왔는지</strong> 세어 보는 것이 가장 자연스러운 요약입니다.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>values, counts <span class="op">=</span> np.unique(blood, return_counts<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"값:"</span>, values)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"개수:"</span>, counts)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre><code>값: [1 3]
+개수: [3 3]</code></pre>
+<p>1(A형)이 3번, 3(AB형)이 3번입니다. 이렇게 세어 보면 “이 모임은 A형과 AB형 반반으로 이루어져 있다”는, 평균 2보다 훨씬 정확한 요약을 얻습니다.</p>
+<p>이처럼 데이터의 스케일은 <strong>어떤 요약 방법을 쓸 수 있는지</strong>를 결정합니다. 컴퓨터는 숫자로 적힌 데이터라면 스케일과 상관없이 평균이든 분산이든 계산해 줍니다. 계산 결과가 의미가 있는지를 판단하는 것은 데이터 분석가의 몫입니다. 실제 데이터에서는 혈액형이나 만족도 같은 열이 숫자로 저장되어 있는 경우가 많아서, 이 구분을 놓치면 위와 같은 엉뚱한 평균이 보고서에 버젓이 실리는 일이 생각보다 자주 일어납니다.</p>
+</section>
+<section id="정리" class="level2">
+<h2 class="anchored" data-anchor-id="정리">정리</h2>
+<ul>
+<li>데이터의 <strong>스케일</strong>은 그 숫자가 수치로서 어떤 성질을 갖는지를 나타냅니다.</li>
+<li><strong>명목</strong> 스케일은 구분만, <strong>순서</strong> 스케일은 순서까지, <strong>등간</strong> 스케일은 차이까지, <strong>비율</strong> 스케일은 비율까지 의미가 있습니다.</li>
+<li>“몇 배”를 말하려면 아무것도 없는 상태를 뜻하는 <strong>진짜 0</strong>이 있어야 합니다. 그래서 섭씨온도는 등간 스케일이고 켈빈 온도는 비율 스케일입니다.</li>
+<li>스케일에 따라 의미 있는 요약 방법이 달라지므로, 데이터를 요약하기 전에 스케일부터 확인해야 합니다.</li>
+</ul>
+<p>그렇다면 각 스케일의 데이터는 구체적으로 어떤 수치로 요약할 수 있을까요? 다음 글에서는 평균, 중앙값, 분산 같은 요약 통계량을 스케일별로 정리해 보겠습니다.</p>
+<hr>
+<section id="연결되는-개념" class="level3">
+<h3 class="anchored" data-anchor-id="연결되는-개념">연결되는 개념</h3>
+<ul>
+<li><span class="math inline">\(\leftarrow\)</span> <strong>이전 개념:</strong> <a href="../../../ds-ai/ds-intro/02-data-exploration/index.html">2 데이터 탐색: 기술 통계와 시각화</a></li>
+<li><span class="math inline">\(\rightarrow\)</span> <strong>다음 개념:</strong> <a href="../../../ds-ai/ds-intro/02-data-exploration/02-summary-statistics.html">2.2 요약 통계량</a></li>
+</ul>
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>이 네 가지 구분은 심리학자 스티븐스(S. S. Stevens)가 정리한 것으로, 지금도 가장 널리 쓰입니다. S. S. Stevens, “On the Theory of Scales of Measurement”, <em>Science</em> 103(2684), 1946, pp.&nbsp;677–680.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const categoryLinks = {
+    "수학": "/math/index.html",
+    "확률과 통계": "/stats/index.html",
+    "컴퓨터 공학": "/cs/index.html",
+    "데이터 사이언스·AI": "/ds-ai/index.html",
+    "경영/경제": "/biz-econ/index.html",
+    "의학통계·바이오메트리": "/biostat/index.html"
+  };
+  document.querySelectorAll('.navbar-nav .nav-item.dropdown > a.nav-link').forEach(function(el) {
+    const label = el.textContent.trim();
+    if (categoryLinks[label]) {
+      el.setAttribute('href', categoryLinks[label]);
+      el.addEventListener('click', function(e) {
+        if (window.innerWidth >= 992) {
+          window.location.href = categoryLinks[label];
+        }
+      });
+    }
+  });
+
+  /* ---------------------------------------------------------------
+     메가 메뉴: 드롭다운을 그룹(헤더 단위)별 가로 열로 재배치
+     - 첫 헤더 이전 항목(예: "전체 과목 보기")은 상단 한 줄로
+     - 한 그룹의 과목이 MAX_ROWS 개를 넘으면 그 그룹 안에서 열을 나눔
+     --------------------------------------------------------------- */
+  const MAX_ROWS = 7;      // 한 열에 들어갈 최대 과목 수
+  const EDGE = 16;         // 화면 가장자리 여백(px)
+
+  document.querySelectorAll('.navbar .nav-item.dropdown > .dropdown-menu').forEach(function(menu) {
+    const items = Array.from(menu.children);
+    if (items.filter(function(li) { return li.classList.contains('dropdown-header'); }).length < 2) return;
+
+    const top = document.createElement('li');
+    top.className = 'mega-top';
+    const groupsWrap = document.createElement('li');
+    groupsWrap.className = 'mega-groups';
+
+    let current = null;
+    items.forEach(function(li) {
+      if (li.querySelector('.dropdown-divider')) { li.remove(); return; }
+      if (li.classList.contains('dropdown-header')) {
+        const group = document.createElement('div');
+        group.className = 'mega-group';
+        const header = document.createElement('div');
+        header.className = 'dropdown-header';
+        header.textContent = li.textContent.trim();
+        const list = document.createElement('ul');
+        list.className = 'mega-items';
+        group.appendChild(header);
+        group.appendChild(list);
+        groupsWrap.appendChild(group);
+        current = list;
+        li.remove();
+        return;
+      }
+      if (current) {
+        current.appendChild(li);
+      } else {
+        top.appendChild(li.querySelector('a') || li);
+        li.remove();
+      }
+    });
+
+    groupsWrap.querySelectorAll('.mega-items').forEach(function(list) {
+      const n = list.children.length;
+      const cols = Math.max(1, Math.ceil(n / MAX_ROWS));
+      list.style.setProperty('--mega-rows', Math.ceil(n / cols));
+    });
+
+    menu.innerHTML = '';
+    if (top.children.length) menu.appendChild(top);
+    menu.appendChild(groupsWrap);
+    menu.classList.add('mega-menu');
+  });
+
+  /* 펼친 메뉴가 화면 오른쪽 밖으로 나가지 않도록 위치 보정 */
+  function fitToViewport(menu) {
+    if (window.innerWidth < 992) { menu.style.left = ''; return; }
+    menu.style.left = '0px';
+    const rect = menu.getBoundingClientRect();
+    if (rect.width === 0) return;
+    let shift = 0;
+    const overflow = rect.right - (window.innerWidth - EDGE);
+    if (overflow > 0) shift = -overflow;
+    if (rect.left + shift < EDGE) shift = EDGE - rect.left;
+    menu.style.left = shift + 'px';
+  }
+
+  document.querySelectorAll('.navbar .nav-item.dropdown').forEach(function(item) {
+    const menu = item.querySelector(':scope > .dropdown-menu.mega-menu');
+    if (!menu) return;
+    const fit = function() { requestAnimationFrame(function() { fitToViewport(menu); }); };
+    item.addEventListener('mouseenter', fit);
+    item.addEventListener('focusin', fit);
+    item.addEventListener('shown.bs.dropdown', fit);
+  });
+});
+</script>
+<script>
+/* 좌측 사이드바 맨 위 과목명: "한국어(English)" → 한국어 / English 두 줄로 나눠 표시 */
+document.addEventListener("DOMContentLoaded", function () {
+  var el = document.querySelector("#quarto-sidebar .sidebar-menu-container > ul > li > .sidebar-item-container .menu-text, #quarto-sidebar .sidebar-menu-container > ul > li > .sidebar-item-text .menu-text");
+  if (!el) return;
+  var m = el.textContent.trim().match(/^(.+?)\s*\((.+)\)$/);
+  if (!m) return;
+  el.textContent = m[1];
+  var en = document.createElement("span");
+  en.className = "menu-subtitle";
+  en.textContent = m[2];
+  el.appendChild(en);
+});
+</script>
+<script data-goatcounter="https://xkwhd1557.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/xkwhd1557\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+<nav class="page-navigation" aria-label="Page">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../ds-ai/ds-intro/02-data-exploration/index.html" class="pagination-link" aria-label="2 데이터 탐색: 기술 통계와 시각화">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">2 데이터 탐색: 기술 통계와 시각화</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../ds-ai/ds-intro/02-data-exploration/02-summary-statistics.html" class="pagination-link" aria-label="2.2 요약 통계량">
+        <span class="nav-page-text">2.2 요약 통계량</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2026 xkwhd1557 · 글은 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.ko">CC BY-NC-ND 4.0</a>에 따라 이용할 수 있습니다.<br> <a href="../../../privacy.html">개인정보 처리방침</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
