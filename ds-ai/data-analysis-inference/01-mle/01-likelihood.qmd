@@ -388,4 +388,4 @@ sigma2_hat의 평균  = 28.718
 
 ### 연결되는 개념
 * $\leftarrow$ **이전 개념:** [1 최대우도 추정](index.qmd)
-* $\rightarrow$ **다음 개념:** 추후 작성 예정
+* $\rightarrow$ **다음 개념:** [1.2 점수 방정식이 통하지 않을 때](02-score-failures.qmd)

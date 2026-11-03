@@ -106,7 +106,7 @@ categories: ["데이터 사이언스·AI", "데이터 사이언스 개론"]
 
 ### 연결되는 개념
 * $\leftarrow$ **이전 개념:** [1.1 빅데이터의 3V와 데이터의 구조](01-big-data.qmd)
-* $\rightarrow$ **다음 개념:** 추후 작성 예정
+* $\rightarrow$ **다음 개념:** [1.3 데이터 분석의 과정](03-analysis-process.qmd)
 
 [^obama]: M. Scherer, "Inside the Secret World of the Data Crunchers Who Helped Obama Win", *TIME*, 2012년 11월 7일.
 
