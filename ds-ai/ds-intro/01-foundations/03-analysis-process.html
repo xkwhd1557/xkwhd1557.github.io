@@ -1057,7 +1057,7 @@ dtype: int64</code></pre>
 <p>세 가지를 간단한 직선 모델로 모두 해 보겠습니다. 정답이 절편 1, 기울기 2인 직선 위에 작은 잡음을 섞은 토이 데이터를 만들고, 최소제곱법으로 직선을 맞춰 봅니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">2026</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1557</span>)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) 토이 데이터: 정답(절편 1, 기울기 2)을 알고 있는 데이터</span></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.random.rand(<span class="dv">200</span>)</span>
@@ -1076,10 +1076,10 @@ dtype: int64</code></pre>
 <span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>y_broken <span class="op">=</span> np.random.permutation(y)</span>
 <span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>slope, intercept <span class="op">=</span> np.polyfit(x, y_broken, <span class="dv">1</span>)</span>
 <span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"망가진 데이터: 절편 = </span><span class="sc">{</span>intercept<span class="sc">:.3f}</span><span class="ss">, 기울기 = </span><span class="sc">{</span>slope<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre><code>토이 데이터  : 절편 = 1.013, 기울기 = 1.985
-테스트 오차  : 0.0101
-망가진 데이터: 절편 = 1.991, 기울기 = 0.075</code></pre>
-<p>첫 줄에서 모델은 정답인 절편 1, 기울기 2에 아주 가까운 값을 찾아냈습니다. 둘째 줄의 테스트 오차(예측값과 실제값 차이의 제곱 평균)는 약 <span class="math inline">\(0.01\)</span>인데, 이것은 우리가 일부러 섞은 잡음의 크기(<span class="math inline">\(0.1^2 = 0.01\)</span>)와 거의 같습니다. 학습에 쓰지 않은 데이터에서도 모델이 잡음 말고는 놓친 것이 없다는 뜻입니다. 마지막 줄에서는 <span class="math inline">\(y\)</span>를 무작위로 섞어 <span class="math inline">\(x\)</span>와의 관계를 끊어 버렸더니, 기울기가 거의 0으로 떨어졌습니다. 관계가 없는 데이터에서 관계를 찾지 못하는 것이 정상입니다. 만약 여기서도 기울기가 여전히 2 근처로 나왔다면, 어딘가에서 정답이 새어 들어가고 있다는 신호로 보고 코드를 의심해야 합니다.</p>
+<pre><code>토이 데이터  : 절편 = 1.019, 기울기 = 1.995
+테스트 오차  : 0.0139
+망가진 데이터: 절편 = 2.006, 기울기 = 0.027</code></pre>
+<p>첫 줄에서 모델은 정답인 절편 1, 기울기 2에 아주 가까운 값을 찾아냈습니다. 둘째 줄의 테스트 오차(예측값과 실제값 차이의 제곱 평균)는 약 <span class="math inline">\(0.014\)</span>인데, 이것은 우리가 일부러 섞은 잡음의 크기(<span class="math inline">\(0.1^2 = 0.01\)</span>)와 비슷한 수준입니다. 학습에 쓰지 않은 데이터에서도 모델이 잡음 말고는 놓친 것이 없다는 뜻입니다. 마지막 줄에서는 <span class="math inline">\(y\)</span>를 무작위로 섞어 <span class="math inline">\(x\)</span>와의 관계를 끊어 버렸더니, 기울기가 거의 0으로 떨어졌습니다. 관계가 없는 데이터에서 관계를 찾지 못하는 것이 정상입니다. 만약 여기서도 기울기가 여전히 2 근처로 나왔다면, 어딘가에서 정답이 새어 들어가고 있다는 신호로 보고 코드를 의심해야 합니다.</p>
 <p>이런 확인을 거쳐 결과가 나오면, 이제 그 결과를 해석할 차례입니다.</p>
 </section>
 </section>

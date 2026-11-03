@@ -149,8 +149,8 @@ window.Quarto = {
 <meta property="og:image" content="https://xkwhd1557.github.io/ds-ai/ds-intro/02-data-exploration/figures/scatter-quadrants.png">
 <meta property="og:site_name" content="Study Archive">
 <meta property="og:image:alt" content="가로축이 8월 평균기온, 세로축이 아이스크림 판매액인 산점도. 기온의 평균과 판매액의 평균에 회색 점선이 그어져 그림을 네 칸으로 나눈다. 대부분의 점이 오른쪽 위 칸과 왼쪽 아래 칸에 있고 파란색으로 칠해져 있다. 왼쪽 위 칸과 오른쪽 아래 칸에 있는 몇 개의 점은 주황색이다.">
-<meta property="og:image:height" content="750">
-<meta property="og:image:width" content="1050">
+<meta property="og:image:height" content="729">
+<meta property="og:image:width" content="929">
 <meta name="twitter:title" content="2.3 다변량 데이터와 상관관계 – Study Archive">
 <meta name="twitter:description" content="변수가 둘 이상인 다변량 데이터를 소개하고, 두 변수의 관계를 요약하는 공분산과 상관계수를 정의합니다. 상관계수가 직선 관계만 잡아낸다는 점과, 상관관계가 인과관계가 아닌 이유를 예제로 살펴봅니다.">
 <meta name="twitter:image" content="https://xkwhd1557.github.io/ds-ai/ds-intro/02-data-exploration/figures/scatter-quadrants.png">
@@ -846,12 +846,12 @@ window.Quarto = {
 <p>가상의 데이터로 생각해 보겠습니다. 30년 동안의 8월 평균기온과 아이스크림 판매액을 만들었습니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">2026</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1557</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>temp <span class="op">=</span> np.random.uniform(<span class="dv">24</span>, <span class="dv">34</span>, <span class="dv">30</span>)              <span class="co"># 30년 동안의 8월 평균기온 (°C)</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>sales <span class="op">=</span> <span class="dv">20</span> <span class="op">+</span> <span class="dv">3</span> <span class="op">*</span> temp <span class="op">+</span> <span class="dv">6</span> <span class="op">*</span> np.random.randn(<span class="dv">30</span>)   <span class="co"># 같은 해 8월 아이스크림 판매액 (억 원)</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"평균기온의 평균: </span><span class="sc">{</span>temp<span class="sc">.</span>mean()<span class="sc">:.1f}</span><span class="ss">°C, 판매액의 평균: </span><span class="sc">{</span>sales<span class="sc">.</span>mean()<span class="sc">:.1f}</span><span class="ss">억 원"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre><code>평균기온의 평균: 28.7°C, 판매액의 평균: 106.6억 원</code></pre>
+<pre><code>평균기온의 평균: 28.5°C, 판매액의 평균: 106.4억 원</code></pre>
 <p>이 데이터를 점으로 찍어 보면 다음과 같습니다. 가로축이 기온, 세로축이 판매액이고, 점 하나가 한 해입니다. 이런 그림을 <strong>산점도</strong>(scatter plot)라고 합니다. 회색 점선은 각각 기온의 평균과 판매액의 평균입니다.</p>
 <p><img src="figures/scatter-quadrants.png" class="img-fluid" style="width:70.0%" alt="가로축이 8월 평균기온, 세로축이 아이스크림 판매액인 산점도. 기온의 평균과 판매액의 평균에 회색 점선이 그어져 그림을 네 칸으로 나눈다. 대부분의 점이 오른쪽 위 칸과 왼쪽 아래 칸에 있고 파란색으로 칠해져 있다. 왼쪽 위 칸과 오른쪽 아래 칸에 있는 몇 개의 점은 주황색이다."></p>
 <p>두 평균선이 그림을 네 칸으로 나눕니다. 오른쪽 위 칸은 “평균보다 덥고, 평균보다 많이 팔린 해”, 왼쪽 아래 칸은 “평균보다 시원하고, 평균보다 적게 팔린 해”입니다. 대부분의 점이 이 두 칸에 있다는 것은, 기온과 판매액이 <strong>같은 방향으로 움직이는</strong> 경향이 있다는 뜻입니다.</p>
@@ -878,8 +878,8 @@ window.Quarto = {
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>cov_won <span class="op">=</span> np.cov(temp, sales <span class="op">*</span> <span class="fl">1e8</span>)[<span class="dv">0</span>, <span class="dv">1</span>]    <span class="co"># 판매액 단위: 원</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"공분산 (억 원): </span><span class="sc">{</span>cov_eok<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"공분산 (원)   : </span><span class="sc">{</span>cov_won<span class="sc">:.3e}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre><code>공분산 (억 원): 23.48
-공분산 (원)   : 2.348e+09</code></pre>
+<pre><code>공분산 (억 원): 27.53
+공분산 (원)   : 2.753e+09</code></pre>
 <p>데이터는 똑같은데 단위만 바꿨더니 공분산이 1억 배가 되었습니다. 이래서는 공분산이 크다고 관계가 강하다고 말할 수 없고, 서로 다른 데이터끼리 비교할 수도 없습니다. 기온과 판매액처럼 단위도 크기도 전혀 다른 두 변수를 곱하니, 값이 큰 쪽의 단위가 공분산의 크기를 좌우해 버리는 것이지요.</p>
 <p>이 문제를 해결하는 방법은 간단합니다. 각 변수가 원래 얼마나 퍼져 있는지, 즉 표준편차로 나눠서 단위를 없애면 됩니다.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
@@ -898,8 +898,8 @@ window.Quarto = {
 <p>분자와 분모의 단위가 서로 지워지기 때문에, 상관계수는 단위와 상관없는 순수한 숫자가 됩니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"상관계수 (억 원): </span><span class="sc">{</span>np<span class="sc">.</span>corrcoef(temp, sales)[<span class="dv">0</span>, <span class="dv">1</span>]<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"상관계수 (원)   : </span><span class="sc">{</span>np<span class="sc">.</span>corrcoef(temp, sales <span class="op">*</span> <span class="fl">1e8</span>)[<span class="dv">0</span>, <span class="dv">1</span>]<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre><code>상관계수 (억 원): 0.7669
-상관계수 (원)   : 0.7669</code></pre>
+<pre><code>상관계수 (억 원): 0.8604
+상관계수 (원)   : 0.8604</code></pre>
 <p>게다가 상관계수는 항상 <span class="math inline">\(-1\)</span>과 <span class="math inline">\(1\)</span> 사이의 값을 가집니다.</p>
 <div class="callout callout-style-default callout-important no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -930,12 +930,12 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>증명에서 보듯, 상관계수는 두 벡터 사이의 각도의 코사인과 같습니다. 두 변수가 완전히 같은 방향으로 움직이면 각도가 0이라 1, 완전히 반대로 움직이면 각도가 180도라 <span class="math inline">\(-1\)</span>, 아무 관련이 없으면 직각에 가까워 0 근처가 되는 셈입니다. 위의 기온과 판매액 데이터는 상관계수가 약 0.77이니, 꽤 강한 양의 상관관계가 있다고 할 수 있습니다.</p>
+<p>증명에서 보듯, 상관계수는 두 벡터 사이의 각도의 코사인과 같습니다. 두 변수가 완전히 같은 방향으로 움직이면 각도가 0이라 1, 완전히 반대로 움직이면 각도가 180도라 <span class="math inline">\(-1\)</span>, 아무 관련이 없으면 직각에 가까워 0 근처가 되는 셈입니다. 위의 기온과 판매액 데이터는 상관계수가 약 0.86이니, 꽤 강한 양의 상관관계가 있다고 할 수 있습니다.</p>
 </section>
 <section id="상관계수는-직선-관계만-봅니다" class="level2">
 <h2 class="anchored" data-anchor-id="상관계수는-직선-관계만-봅니다">상관계수는 직선 관계만 봅니다</h2>
 <p>상관계수의 값에 따라 데이터가 어떤 모양인지 그려 보면 다음과 같습니다. 각 그림 위의 숫자는 그 데이터로 실제로 계산한 상관계수입니다.</p>
-<p><img src="figures/correlation-examples.png" class="img-fluid" style="width:85.0%" alt="2행 3열로 배치된 여섯 개의 산점도. 첫 줄의 세 그림은 상관계수가 -0.89, -0.46, 0.01인 데이터로, -0.89는 점들이 오른쪽 아래로 내려가는 좁은 띠, -0.46은 같은 방향의 넓은 띠, 0.01은 둥글게 퍼진 구름 모양이다. 둘째 줄의 첫 두 그림은 상관계수가 0.41, 0.92인 데이터로 오른쪽 위로 올라가는 띠 모양이며 0.92 쪽이 훨씬 좁다. 마지막 그림은 점들이 U자 모양의 포물선 위에 정확히 놓여 있는데도 상관계수가 0이다."></p>
+<p><img src="figures/correlation-examples.png" class="img-fluid" style="width:85.0%" alt="2행 3열로 배치된 여섯 개의 산점도. 첫 줄의 세 그림은 상관계수가 -0.88, -0.42, 0.04인 데이터로, -0.88은 점들이 오른쪽 아래로 내려가는 좁은 띠, -0.42는 같은 방향의 넓은 띠, 0.04는 둥글게 퍼진 구름 모양이다. 둘째 줄의 첫 두 그림은 상관계수가 0.49, 0.92인 데이터로 오른쪽 위로 올라가는 띠 모양이며 0.92 쪽이 훨씬 좁다. 마지막 그림은 점들이 U자 모양의 포물선 위에 정확히 놓여 있는데도 상관계수가 0이다."></p>
 <p>부호는 방향을, 절댓값은 점들이 <strong>직선에</strong> 얼마나 가깝게 모여 있는지를 나타냅니다. 절댓값이 1에 가까울수록 점들이 좁은 띠처럼 직선 주위에 모이고, 0에 가까울수록 둥글게 퍼집니다.</p>
 <p>그런데 마지막 그림을 보시기 바랍니다. 점들이 <span class="math inline">\(y = x^2\)</span>라는 포물선 위에 <strong>정확히</strong> 놓여 있어서, <span class="math inline">\(x\)</span>를 알면 <span class="math inline">\(y\)</span>를 완벽하게 알 수 있습니다. 그런데도 상관계수는 0입니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">61</span>)</span>
@@ -955,8 +955,8 @@ window.Quarto = {
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"기온 - 사고 건수     : </span><span class="sc">{</span>np<span class="sc">.</span>corrcoef(temp, accidents)[<span class="dv">0</span>, <span class="dv">1</span>]<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"판매액 - 사고 건수   : </span><span class="sc">{</span>np<span class="sc">.</span>corrcoef(sales, accidents)[<span class="dv">0</span>, <span class="dv">1</span>]<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre><code>기온 - 사고 건수     : 0.91
-판매액 - 사고 건수   : 0.63</code></pre>
+<pre><code>기온 - 사고 건수     : 0.92
+판매액 - 사고 건수   : 0.76</code></pre>
 <p>아이스크림 판매액과 사고 건수 사이에 뚜렷한 양의 상관관계가 나타났습니다. 하지만 이것을 “아이스크림이 많이 팔려서 사고가 늘었다”거나 “사고가 많아서 아이스크림이 팔렸다”고 해석할 수는 없습니다. 둘 다 <strong>기온</strong>이라는 공통의 원인 때문에 함께 움직였을 뿐입니다. 이처럼 두 변수에 동시에 영향을 주어 둘 사이에 가짜 상관관계를 만들어 내는 변수를 <strong>교란 변수</strong>(confounding variable)라고 합니다.</p>
 <p>현실의 데이터에서는 교란 변수가 이렇게 분명하게 드러나지 않는 경우가 대부분입니다. 그런데 뉴스나 인터넷에서 접하는 통계 자료는 대개 상관관계만 보여 줍니다. 그런 자료를 인과관계처럼 읽고 “통계가 그렇다”며 자기 주장의 근거로 삼는 경우를 생각보다 자주 볼 수 있고요. 데이터 사이언스를 공부하는 우리는 이 차이를 늘 의식하고 있어야 합니다.</p>
 <section id="그렇다면-인과관계는-어떻게-알아낼까요" class="level3">

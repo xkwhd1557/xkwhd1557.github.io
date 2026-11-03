@@ -927,16 +927,16 @@ window.Quarto = {
 <section id="시드-다시-만들-수-있는-난수" class="level2">
 <h2 class="anchored" data-anchor-id="시드-다시-만들-수-있는-난수">시드: 다시 만들 수 있는 난수</h2>
 <p>혼자서 넘파이를 연습할 때는 랜덤하게 생성된 숫자, 즉 난수로 배열을 만들어 이것저것 해 보는 것이 편리합니다. 그런데 사실 컴퓨터가 만드는 난수는 진짜 무작위가 아니라 정해진 계산 규칙으로 만들어지는 <strong>유사 난수</strong>(pseudo-random number)입니다. 전부 그냥 정해져있는 수학 공식에 따라서 컴퓨터가 계산해서 뱉는, 그저 우리 눈에 보이기에 랜덤한 숫자라는거죠. 그리고 컴퓨터는 이 공식으로 랜덤한 숫자를 생성하기 위해서 계산의 출발점이 되는 값인 <strong>시드</strong>(seed)가 필요합니다. 같은 시드에서 출발하면 언제 어디서 실행하든 똑같은 난수가 나옵니다. 결국 그 시드를 시작으로, 랜덤한 숫자를 정해진 공식에 따라서 순차적으로 생성해서 뱉어내니까요.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">2026</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1557</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.random.random(<span class="dv">3</span>))</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">2026</span>)         <span class="co"># 시드를 다시 초기화</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1557</span>)         <span class="co"># 시드를 다시 초기화</span></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.random.random(<span class="dv">3</span>))   <span class="co"># 같은 시드에서 다시 시작</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre><code>[0.21934563 0.41301174 0.97663548]
-[0.21934563 0.41301174 0.97663548]</code></pre>
-<p>위의 코드는 시드를 설정하고, 그걸 통해서 랜덤한 숫자를 생성하는 과정입니다. 설명한대로 컴퓨터가 만드는 난수는 진짜 랜덤하게 뽑은 숫자가 아니라, 수학 공식에 시드값(위 코드에서는 2026)을 대입하여 순차적으로 계산한 값이기 떄문에, 보시다시피 공식의 시드값을 새로 입력하는 순간, 다시 처음으로 돌아가서 같은 숫자를 생성해냄을 알 수 있습니다. 만약 위 코드의 3번째 행(시드를 초기화하는 부분)을 지우고 실행하신다면, 당연히 시드가 초기화되지 않았으므로 그 이후에 생성되는 3개의 값들은 모두 위의 3개의 값들과 다른 형태가 됩니다.</p>
+<pre><code>[0.56431542 0.89729768 0.43135233]
+[0.56431542 0.89729768 0.43135233]</code></pre>
+<p>위의 코드는 시드를 설정하고, 그걸 통해서 랜덤한 숫자를 생성하는 과정입니다. 설명한대로 컴퓨터가 만드는 난수는 진짜 랜덤하게 뽑은 숫자가 아니라, 수학 공식에 시드값(위 코드에서는 1557)을 대입하여 순차적으로 계산한 값이기 떄문에, 보시다시피 공식의 시드값을 새로 입력하는 순간, 다시 처음으로 돌아가서 같은 숫자를 생성해냄을 알 수 있습니다. 만약 위 코드의 3번째 행(시드를 초기화하는 부분)을 지우고 실행하신다면, 당연히 시드가 초기화되지 않았으므로 그 이후에 생성되는 3개의 값들은 모두 위의 3개의 값들과 다른 형태가 됩니다.</p>
 <p>이게 단점처럼 보일 수 있습니다. 진짜 랜덤한 숫자를 생성하지 못하는거니까요. 하지만 데이터 사이언스에서 이건 오히려 장점이 됩니다. 이 성질 덕분에 다른 사람도 내 분석을 그대로 다시 해 볼 수 있거든요. 난수는 이론적으로 랜덤한 값이기 떄문에, 만약 진짜 랜덤으로 생성되는 구조였다면, 그 랜덤으로 생성된 값으로 이런 저런 시도를 한 결과가 다른 사람들이 시도했을 때 똑같이 보장되지 않을 수 있습니다. 진짜 난수라면 내가 지금 생성한 난수들이랑, 다른 사람이 나중에 생성한 난수들이 거의 모든 경우 매우 다를테니까요. 하지만 컴퓨터가 생성하는 유사 난수는 오히려 진짜 난수가 아니기 떄문에, 다른 사람들도 시드만 알고 있다면 내가 지금 생성한 값들 추후에 똑같이 재현해낼 수 있습니다.</p>
 <p>남들도 내가 했던거랑 똑같은 결과를 얻을 수 있다, 이건 데이터 사이언스에서 생각보다 많이 중요합니다. 그래서 이를 <strong>재현 가능성</strong>(Reproducibility)라고 이름까지 붙여서 중요하게 다루며, 재현 가능성은 후속되는 글에서 더 자세하게 다뤄집니다. 지금 단계에서는 이렇게 컴퓨터가 만드는 난수는 진짜 난수가 아니며, 시드에 의해 계산되는 결정론적인(정해진 수학적 알고리즘으로 계산되는) 유사난수이므로, 난수가 들어가는 코드를 논문이나 보고서에 실을 때는 시드를 함께 적는 것이 일반적이고, 혼자 연습할 때도 시드를 정해 두면 나중에 다시 확인하기 좋다 정도로 넘어가시면 됩니다.</p>
-<p>참고로 이 사이트의 글들도 모두 재현 가능성을 위해 <code>np.random.seed(2026)</code>으로 시드를 고정하고 있습니다.</p>
+<p>참고로 이 사이트의 글들도 모두 재현 가능성을 위해 시드를 기본적으로 <code>1557</code>로 고정하고 있습니다.</p>
 <p>그래서 컴퓨터가 정확하게 난수를 어떻게 생성해내는가?에 대한 이야기는 <a href="../../../stats/stochastic-simulation/index.html">확률적 시뮬레이션</a>에서 다뤄집니다. 물론 저 과목은 어느 정도 확률론적인 배경을 요구하기 떄문에 배경 지식이 없으시면 지금 보러 가셔도 이해가 안되실 가능성이 높습니다.</p>
 </section>
 <section id="데이터-검사" class="level2">

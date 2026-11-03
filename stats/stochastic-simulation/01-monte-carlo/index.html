@@ -149,8 +149,8 @@ window.Quarto = {
 <meta property="og:image" content="https://xkwhd1557.github.io/stats/stochastic-simulation/01-monte-carlo/figures/pi-points.png">
 <meta property="og:site_name" content="Study Archive">
 <meta property="og:image:alt" content="단위 정사각형 안에 찍힌 무작위 점 1000개. 사분원 안쪽의 점은 파란색, 바깥쪽의 점은 주황색으로 표시되어 있다.">
-<meta property="og:image:height" content="840">
-<meta property="og:image:width" content="750">
+<meta property="og:image:height" content="764">
+<meta property="og:image:width" content="703">
 <meta name="twitter:title" content="1 몬테카를로 시뮬레이션 – Study Archive">
 <meta name="twitter:description" content="무작위로 점을 찍어 원주율 π를 구하고, 같은 아이디어로 손으로 풀 수 없는 정적분을 계산해 봅니다. 균등분포, 독립, 지시확률변수, 큰 수의 법칙이 어떻게 맞물려 시뮬레이션을 정당화하는지 살펴봅니다.">
 <meta name="twitter:image" content="https://xkwhd1557.github.io/stats/stochastic-simulation/01-monte-carlo/figures/pi-points.png">
@@ -897,22 +897,22 @@ window.Quarto = {
 <p>실제로 돌려 보겠습니다. <a href="../../../stats/stochastic-simulation/index.html">과목 소개 글</a>에서 이야기한 대로, 결과를 재현할 수 있도록 시드를 고정했습니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">2026</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1557</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">10_000</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>coords <span class="op">=</span> np.random.rand(<span class="dv">2</span>, N)          <span class="co"># 첫 행: X_1, ..., X_N / 둘째 행: Y_1, ..., Y_N</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.<span class="bu">sum</span>(coords<span class="op">**</span><span class="dv">2</span>, axis<span class="op">=</span><span class="dv">0</span>) <span class="op">&lt;=</span> <span class="dv">1</span>     <span class="co"># B_i = 1{X_i^2 + Y_i^2 &lt;= 1}</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>pihat <span class="op">=</span> <span class="dv">4</span> <span class="op">*</span> np.mean(B)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pihat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre><code>3.134</code></pre>
+<pre><code>3.1432</code></pre>
 <p>아래 그림은 찍은 점들 중 처음 1,000개를 보여 줍니다. 파란 점은 사분원 안에 떨어진 점(<span class="math inline">\(B_i = 1\)</span>), 주황 점은 바깥에 떨어진 점(<span class="math inline">\(B_i = 0\)</span>)입니다.</p>
 <p><img src="figures/pi-points.png" class="img-fluid" style="width:70.0%" alt="단위 정사각형 안에 찍힌 무작위 점 1000개. 사분원 안쪽의 점은 파란색, 바깥쪽의 점은 주황색으로 표시되어 있다."></p>
 <p>점을 하나씩 늘려 가면서 추정값 <span class="math inline">\(\hat{\pi}_n = 4(B_1 + \cdots + B_n)/n\)</span>이 어떻게 변하는지도 살펴볼 수 있습니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>estimates <span class="op">=</span> <span class="dv">4</span> <span class="op">*</span> np.cumsum(B) <span class="op">/</span> np.arange(<span class="dv">1</span>, N <span class="op">+</span> <span class="dv">1</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(estimates[[<span class="dv">9</span>, <span class="dv">99</span>, <span class="dv">999</span>, <span class="dv">9999</span>]])   <span class="co"># n = 10, 100, 1000, 10000</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre><code>[2.8   3.04  3.084 3.134]</code></pre>
-<p><img src="figures/pi-convergence.png" class="img-fluid" alt="점의 개수 n을 10에서 10000까지 로그 눈금으로 늘려 갈 때 π 추정값의 변화. 처음에는 2.6과 3.0 사이를 크게 오르내리다가 점이 많아질수록 참값 π를 나타내는 점선 근처로 모인다."></p>
+<pre><code>[3.6    3.16   3.08   3.1432]</code></pre>
+<p><img src="figures/pi-convergence.png" class="img-fluid" alt="점의 개수 n을 10에서 10000까지 로그 눈금으로 늘려 갈 때 π 추정값의 변화. 처음에는 3.6에서 3.8 사이의 높은 값에서 크게 오르내리다가, 점이 많아질수록 아래로 내려와 참값 π를 나타내는 점선 근처로 모인다."></p>
 <p>점이 적을 때는 추정값이 크게 흔들리지만, 점이 많아질수록 참값 <span class="math inline">\(\pi\)</span> 근처로 모여드는 것을 볼 수 있습니다. 큰 수의 법칙이 눈앞에서 일어나고 있는 셈입니다.</p>
-<p>다만 점을 만 개나 찍었는데도 정확한 자릿수는 고작 두 자리 정도입니다. 이 수렴이 <strong>얼마나 빠른지</strong>는 큰 수의 법칙만으로는 알 수 없고, 이는 다음 글들에서 다룰 중요한 질문입니다.</p>
+<p>다만 점 만 개로 기대할 수 있는 정확도는 생각보다 높지 않습니다. 위 결과는 참값과 <span class="math inline">\(0.002\)</span> 정도밖에 차이 나지 않지만 이는 운이 좋았던 편이고, 점 만 개짜리 추정값은 보통 참값에서 <span class="math inline">\(\pm 0.016\)</span> 정도 벗어나기 때문에 믿을 수 있는 자릿수는 두 자리 정도입니다. 이 수렴이 <strong>얼마나 빠른지</strong>는 큰 수의 법칙만으로는 알 수 없고, 이는 다음 글들에서 다룰 중요한 질문입니다.</p>
 </section>
 </section>
 <section id="문제-2-정적분-구하기" class="level2">
@@ -992,14 +992,14 @@ window.Quarto = {
 <li><strong>큰 수의 법칙 (정리 1.4):</strong> <span class="math inline">\(X_1, X_2, \ldots\)</span>가 i.i.d.이므로 <span class="math inline">\(H(X_1), H(X_2), \ldots\)</span>도 i.i.d.입니다. 따라서 <span class="math display">\[\hat{\ell} = \frac{1}{N} \sum_{i=1}^{N} H(X_i) \xrightarrow[N \to \infty]{} \mathbb{E}[H(X_1)] = \ell \quad \text{거의 확실하게}\]</span> 입니다.</li>
 </ul>
 <p><span class="math inline">\(H(x) = e^{-x^2}\)</span>으로 실제 계산해 보겠습니다. 비교를 위해 하나를 더 계산합니다. <span class="math inline">\(H(x) = \sqrt{1 - x^2}\)</span>은 바로 사분원의 경계선이므로 <span class="math inline">\(\int_0^1 \sqrt{1-x^2}\,dx = \pi/4\)</span>이고, 여기에 <span class="math inline">\(4\)</span>를 곱하면 다시 <span class="math inline">\(\pi\)</span>를 얻습니다.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">2026</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1557</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> N <span class="kw">in</span> [<span class="dv">100</span>, <span class="dv">10_000</span>, <span class="dv">1_000_000</span>]:</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    U <span class="op">=</span> np.random.rand(N)</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"N = </span><span class="sc">{</span>N<span class="sc">:&gt;9,}</span><span class="ss">:  e^(-x^2) 적분 ≈ </span><span class="sc">{</span>np<span class="sc">.</span>mean(np.exp(<span class="op">-</span>U<span class="op">**</span><span class="dv">2</span>))<span class="sc">:.5f}</span><span class="ss">,  "</span></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>          <span class="ss">f"4·√(1-x²) 적분 ≈ </span><span class="sc">{</span><span class="dv">4</span><span class="op">*</span>np<span class="sc">.</span>mean(np.sqrt(<span class="dv">1</span><span class="op">-</span>U<span class="op">**</span><span class="dv">2</span>))<span class="sc">:.5f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre><code>N =       100:  e^(-x^2) 적분 ≈ 0.74611,  4·√(1-x²) 적분 ≈ 3.09585
-N =    10,000:  e^(-x^2) 적분 ≈ 0.74596,  4·√(1-x²) 적분 ≈ 3.13935
-N = 1,000,000:  e^(-x^2) 적분 ≈ 0.74672,  4·√(1-x²) 적분 ≈ 3.14129</code></pre>
+<pre><code>N =       100:  e^(-x^2) 적분 ≈ 0.74504,  4·√(1-x²) 적분 ≈ 3.13230
+N =    10,000:  e^(-x^2) 적분 ≈ 0.74736,  4·√(1-x²) 적분 ≈ 3.14559
+N = 1,000,000:  e^(-x^2) 적분 ≈ 0.74688,  4·√(1-x²) 적분 ≈ 3.14143</code></pre>
 <p><span class="math inline">\(\int_0^1 e^{-x^2}\,dx\)</span>의 참값은 오차함수 <span class="math inline">\(\mathrm{erf}\)</span>를 이용해 <span class="math inline">\(\frac{\sqrt{\pi}}{2}\,\mathrm{erf}(1) \approx 0.74682\)</span>로 나타낼 수 있습니다.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> 부정적분을 구하지 않고도, 균등난수 몇 줄만으로 참값에 가까운 답을 얻었습니다.</p>
 </section>
 </section>

@@ -148,13 +148,13 @@ window.Quarto = {
 <meta property="og:description" content="점수 방정식으로 최대우도 추정값을 찾을 수 없는 세 가지 전형적인 상황을 베르누이 분포와 두 가지 균등분포 모형으로 살펴봅니다. 모수공간의 확장, 순서통계량, 추정값을 고르는 문제를 다룹니다.">
 <meta property="og:image" content="https://xkwhd1557.github.io/ds-ai/data-analysis-inference/01-mle/figures/uniform-likelihoods.png">
 <meta property="og:site_name" content="Study Archive">
-<meta property="og:image:alt" content="두 개의 그래프. 왼쪽 (a)는 U[0,θ] 모형에서 θ=10인 분포로부터 뽑은 표본 10개의 상대 우도로, θ가 약 9.88보다 작으면 0이고 그 점에서 1로 뛰어오른 뒤 θ가 커질수록 완만하게 감소한다. 오른쪽 (b)는 U[θ-1/2, θ+1/2] 모형의 우도로, θ가 약 2.99에서 3.09 사이일 때만 1이고 나머지에서는 0인 직사각형 모양이다.">
-<meta property="og:image:height" content="570">
-<meta property="og:image:width" content="1500">
+<meta property="og:image:alt" content="두 개의 그래프. 왼쪽 (a)는 U[0,θ] 모형에서 θ=10인 분포로부터 뽑은 표본 10개의 상대 우도로, θ가 약 9.61보다 작으면 0이고 그 점에서 1로 뛰어오른 뒤 θ가 커질수록 완만하게 감소한다. 오른쪽 (b)는 U[θ-1/2, θ+1/2] 모형의 우도로, θ가 약 2.96에서 3.13 사이일 때만 1이고 나머지에서는 0인 직사각형 모양이다.">
+<meta property="og:image:height" content="554">
+<meta property="og:image:width" content="1485">
 <meta name="twitter:title" content="1.2 점수 방정식이 통하지 않을 때 – Study Archive">
 <meta name="twitter:description" content="점수 방정식으로 최대우도 추정값을 찾을 수 없는 세 가지 전형적인 상황을 베르누이 분포와 두 가지 균등분포 모형으로 살펴봅니다. 모수공간의 확장, 순서통계량, 추정값을 고르는 문제를 다룹니다.">
 <meta name="twitter:image" content="https://xkwhd1557.github.io/ds-ai/data-analysis-inference/01-mle/figures/uniform-likelihoods.png">
-<meta name="twitter:image:alt" content="두 개의 그래프. 왼쪽 (a)는 U[0,θ] 모형에서 θ=10인 분포로부터 뽑은 표본 10개의 상대 우도로, θ가 약 9.88보다 작으면 0이고 그 점에서 1로 뛰어오른 뒤 θ가 커질수록 완만하게 감소한다. 오른쪽 (b)는 U[θ-1/2, θ+1/2] 모형의 우도로, θ가 약 2.99에서 3.09 사이일 때만 1이고 나머지에서는 0인 직사각형 모양이다.">
+<meta name="twitter:image:alt" content="두 개의 그래프. 왼쪽 (a)는 U[0,θ] 모형에서 θ=10인 분포로부터 뽑은 표본 10개의 상대 우도로, θ가 약 9.61보다 작으면 0이고 그 점에서 1로 뛰어오른 뒤 θ가 커질수록 완만하게 감소한다. 오른쪽 (b)는 U[θ-1/2, θ+1/2] 모형의 우도로, θ가 약 2.96에서 3.13 사이일 때만 1이고 나머지에서는 0인 직사각형 모양이다.">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -698,8 +698,26 @@ window.Quarto = {
  <span class="menu-text">1.3 점수 함수와 피셔 정보</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/data-analysis-inference/01-mle/04-newton-raphson.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.4 뉴턴-랩슨 방법과 피셔 스코어링</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/data-analysis-inference/01-mle/05-asymptotics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.5 일치성과 점근 정규성</span></a>
+  </div>
+</li>
       </ul>
   </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/data-analysis-inference/02-dependence/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2 변수 사이의 의존성 측정</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -804,7 +822,7 @@ window.Quarto = {
 <p>이고, <span class="math inline">\(p \in (0, 1)\)</span>이 고정되어 있으면 <span class="math inline">\(n \to \infty\)</span>일 때 <span class="math inline">\(0\)</span>으로 갑니다. 하지만 <span class="math inline">\(n\)</span>이 고정된 상황에서 <span class="math inline">\(p\)</span>가 <span class="math inline">\(0\)</span>이나 <span class="math inline">\(1\)</span>에 가까우면 이야기가 다릅니다. <span class="math inline">\(n = 20\)</span>으로 두고 확인해 보겠습니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">2026</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1557</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>n, reps <span class="op">=</span> <span class="dv">20</span>, <span class="dv">100_000</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> p <span class="kw">in</span> [<span class="fl">0.5</span>, <span class="fl">0.2</span>, <span class="fl">0.05</span>]:</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> np.random.binomial(<span class="dv">1</span>, p, size<span class="op">=</span>(reps, n))</span>
@@ -812,8 +830,8 @@ window.Quarto = {
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    no_mle <span class="op">=</span> np.mean((xbar <span class="op">==</span> <span class="dv">0</span>) <span class="op">|</span> (xbar <span class="op">==</span> <span class="dv">1</span>))   <span class="co"># (0,1) 안에 추정값이 없는 비율</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"p = </span><span class="sc">{</span>p<span class="sc">:.2f}</span><span class="ss">: 시뮬레이션 </span><span class="sc">{</span>no_mle<span class="sc">:.4f}</span><span class="ss">,  이론값 </span><span class="sc">{</span>(<span class="dv">1</span><span class="op">-</span>p)<span class="op">**</span>n <span class="op">+</span> p<span class="op">**</span>n<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <pre><code>p = 0.50: 시뮬레이션 0.0000,  이론값 0.0000
-p = 0.20: 시뮬레이션 0.0115,  이론값 0.0115
-p = 0.05: 시뮬레이션 0.3583,  이론값 0.3585</code></pre>
+p = 0.20: 시뮬레이션 0.0110,  이론값 0.0115
+p = 0.05: 시뮬레이션 0.3624,  이론값 0.3585</code></pre>
 <p>앞면 확률이 <span class="math inline">\(5\%\)</span>인 동전이라면 20번 던져도 세 번에 한 번꼴로 앞면이 한 번도 나오지 않고, 그때마다 원래의 모수공간에서는 추정값이 없습니다. 드문 사건을 다룰 때 이 문제가 결코 이론 속의 이야기만은 아니라는 뜻입니다.</p>
 <p>이 현상은 4장에서 다른 모습으로 다시 등장합니다. 로지스틱 회귀에서 데이터가 두 집단으로 완벽하게 갈리면 우도가 계속 커지기만 하고 최댓값에 도달하지 않아서, 최대우도 추정값이 존재하지 않습니다. 이를 <strong>분리</strong>(separation) 현상이라고 하는데, 절편만 있는 로지스틱 회귀에서 모든 관측값이 <span class="math inline">\(0\)</span>인 경우가 바로 지금 본 <span class="math inline">\(\bar{x} = 0\)</span>인 베르누이 표본입니다.</p>
 </section>
@@ -849,17 +867,17 @@ p = 0.05: 시뮬레이션 0.3583,  이론값 0.3585</code></pre>
 <p>이 함수의 모양을 보면 답이 바로 나옵니다. <span class="math inline">\(\theta &lt; x_{(n)}\)</span>이면 우도는 <span class="math inline">\(0\)</span>입니다. 배차 간격이 실제로 기다린 시간보다 짧을 수는 없으니 당연합니다. <span class="math inline">\(\theta \ge x_{(n)}\)</span>이면 우도는 <span class="math inline">\(\theta^{-n}\)</span>으로 순감소합니다. 따라서 우도는 <span class="math inline">\(\theta = x_{(n)}\)</span>에서 최대가 되고, 최대우도 추정값은</p>
 <p><span class="math display">\[\hat{\theta} = x_{(n)}\]</span></p>
 <p>입니다. <span class="math inline">\(x_{(n)} = 0\)</span>인 경우는 확률 <span class="math inline">\(0\)</span>으로만 일어나므로 무시해도 됩니다.</p>
-<p><img src="figures/uniform-likelihoods.png" class="img-fluid" alt="두 개의 그래프. 왼쪽 (a)는 U[0,θ] 모형에서 θ=10인 분포로부터 뽑은 표본 10개의 상대 우도로, θ가 약 9.88보다 작으면 0이고 그 점에서 1로 뛰어오른 뒤 θ가 커질수록 완만하게 감소한다. 오른쪽 (b)는 U[θ-1/2, θ+1/2] 모형의 우도로, θ가 약 2.99에서 3.09 사이일 때만 1이고 나머지에서는 0인 직사각형 모양이다."></p>
+<p><img src="figures/uniform-likelihoods.png" class="img-fluid" alt="두 개의 그래프. 왼쪽 (a)는 U[0,θ] 모형에서 θ=10인 분포로부터 뽑은 표본 10개의 상대 우도로, θ가 약 9.61보다 작으면 0이고 그 점에서 1로 뛰어오른 뒤 θ가 커질수록 완만하게 감소한다. 오른쪽 (b)는 U[θ-1/2, θ+1/2] 모형의 우도로, θ가 약 2.96에서 3.13 사이일 때만 1이고 나머지에서는 0인 직사각형 모양이다."></p>
 <p>위 그림 (a)는 <span class="math inline">\(\theta = 10\)</span>인 분포에서 뽑은 표본 10개로 그린 우도입니다. 우도가 <span class="math inline">\(x_{(n)}\)</span>에서 <span class="math inline">\(0\)</span>에서 최댓값으로 뛰어오르므로, 최댓값에서 <strong>미분가능하지 않습니다</strong>. 그렇다면 점수 방정식은 어떨까요? <span class="math inline">\(\theta &gt; x_{(n)}\)</span>에서 로그우도 <span class="math inline">\(\ell(\theta) = -n\log\theta\)</span>의 도함수는 <span class="math inline">\(-n/\theta\)</span>인데, 이는 결코 <span class="math inline">\(0\)</span>이 되지 않습니다. 즉 점수 방정식을 기계적으로 풀었다면 해가 없다는 결론만 얻고 끝났을 것입니다. 우도함수의 모양 전체를 직접 들여다봐야 하는 이유입니다.</p>
 <p>이 추정값에는 눈에 띄는 성질이 하나 있습니다. 관측값은 모두 <span class="math inline">\(\theta\)</span> 이하이므로 <span class="math inline">\(X_{(n)} \le \theta\)</span>이고, 연속분포이므로 등호는 확률 <span class="math inline">\(0\)</span>으로만 성립합니다. 즉 최대우도 추정량은 <strong>언제나 참값보다 작게</strong> 나옵니다. 1.1절에서 정규분포의 분산 추정량이 평균적으로 작게 나왔던 것보다 훨씬 강한 치우침입니다. 계산해 보면 <span class="math inline">\(\mathbb{E}_\theta[X_{(n)}] = \frac{n}{n+1}\theta\)</span>입니다. 시뮬레이션으로 확인해 보겠습니다.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">2026</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1557</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>theta, n, reps <span class="op">=</span> <span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">100_000</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.random.uniform(<span class="dv">0</span>, theta, size<span class="op">=</span>(reps, n))</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>theta_hat <span class="op">=</span> x.<span class="bu">max</span>(axis<span class="op">=</span><span class="dv">1</span>)                    <span class="co"># 표본마다 계산한 x_(n)</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"theta_hat의 평균 = </span><span class="sc">{</span>theta_hat<span class="sc">.</span>mean()<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"n/(n+1) * theta  = </span><span class="sc">{</span>n <span class="op">/</span> (n <span class="op">+</span> <span class="dv">1</span>) <span class="op">*</span> theta<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"theta_hat &lt; theta인 비율 = </span><span class="sc">{</span>np<span class="sc">.</span>mean(theta_hat <span class="op">&lt;</span> theta)<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre><code>theta_hat의 평균 = 9.090
+<pre><code>theta_hat의 평균 = 9.092
 n/(n+1) * theta  = 9.091
 theta_hat &lt; theta인 비율 = 1.0</code></pre>
 <p>10만 개의 표본 모두에서 추정값이 참값보다 작게 나왔습니다.</p>
@@ -892,12 +910,12 @@ theta_hat &lt; theta인 비율 = 1.0</code></pre>
 <p>입니다. 모든 관측값이 구간 <span class="math inline">\([\theta - \frac{1}{2}, \theta + \frac{1}{2}]\)</span> 안에 들어와야 하고, 이는 가장 작은 값과 가장 큰 값이 그 안에 들어오는 것과 같기 때문입니다. 모든 관측값은 길이 <span class="math inline">\(1\)</span>인 구간 안에 있으므로 <span class="math inline">\(x_{(n)} - x_{(1)} \le 1\)</span>이고, 따라서 이 구간은 비어 있지 않습니다.</p>
 <p>위 그림 (b)에서 보듯이 우도는 구간 <span class="math inline">\([x_{(n)} - \frac{1}{2},\, x_{(1)} + \frac{1}{2}]\)</span> 위에서 <span class="math inline">\(1\)</span>이고 나머지에서는 <span class="math inline">\(0\)</span>입니다. 꼭대기가 뾰족한 점이 아니라 <strong>평평한 구간</strong>이므로, 이 구간의 모든 점이 최대우도 추정값입니다. 즉 참고 1.1.5의 집합 <span class="math inline">\(M(\mathbf{x})\)</span>가 구간 전체이고, <strong>최대우도 추정값이 유일하지 않습니다.</strong> 점수 방정식으로 보면 구간 안에서는 <span class="math inline">\(\ell\)</span>이 상수라서 도함수가 모든 점에서 <span class="math inline">\(0\)</span>이고, 점수 방정식은 최댓값이 어디 있는지 전혀 가려내지 못합니다.</p>
 <p><span class="math inline">\(\theta = 3\)</span>, <span class="math inline">\(n = 10\)</span>으로 직접 계산해 보면 다음과 같습니다.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">2026</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1557</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>theta, n <span class="op">=</span> <span class="dv">3</span>, <span class="dv">10</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> theta <span class="op">+</span> np.random.uniform(<span class="op">-</span><span class="fl">0.5</span>, <span class="fl">0.5</span>, size<span class="op">=</span>n)</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>lo, hi <span class="op">=</span> x.<span class="bu">max</span>() <span class="op">-</span> <span class="fl">0.5</span>, x.<span class="bu">min</span>() <span class="op">+</span> <span class="fl">0.5</span></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"최대우도 추정값의 집합: [</span><span class="sc">{</span>lo<span class="sc">:.4f}</span><span class="ss">, </span><span class="sc">{</span>hi<span class="sc">:.4f}</span><span class="ss">]"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre><code>최대우도 추정값의 집합: [2.9876, 3.0889]</code></pre>
+<pre><code>최대우도 추정값의 집합: [2.9608, 3.1288]</code></pre>
 <p>이 경우 최대우도 추정량을 만들려면, 참고 1.1.5에서 말한 대로 각 표본마다 이 구간에서 값 <strong>하나를 고르는 규칙</strong> <span class="math inline">\(T\)</span>를 정해야 합니다. 예를 들어 다음 두 규칙은 모두 연속함수이므로 가측이고, 언제나 구간 안의 값을 고르므로 둘 다 최대우도 추정량입니다.</p>
 <p><span class="math display">\[T_1(\mathbf{X}) := \frac{X_{(1)} + X_{(n)}}{2} \quad (\text{구간의 가운데}), \qquad T_2(\mathbf{X}) := X_{(n)} - \frac{1}{2} \quad (\text{구간의 왼쪽 끝})\]</span></p>
 <p>둘 다 최대우도 추정량이지만, 추정량으로서의 성능은 같지 않습니다. 표본을 10만 번 새로 뽑아 각 추정량의 평균과 <strong>평균제곱오차</strong>(mean squared error), 즉 <span class="math inline">\(\mathbb{E}[(T - \theta)^2]\)</span>를 비교해 보겠습니다. 비교를 위해 표본평균도 함께 계산합니다.</p>
@@ -910,10 +928,10 @@ theta_hat &lt; theta인 비율 = 1.0</code></pre>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">: 평균 </span><span class="sc">{</span>t<span class="sc">.</span>mean()<span class="sc">:.4f}</span><span class="ss">, 평균제곱오차 </span><span class="sc">{</span>np<span class="sc">.</span>mean((t <span class="op">-</span> theta)<span class="op">**</span><span class="dv">2</span>)<span class="sc">:.5f}</span><span class="ss">"</span>)</span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>inside <span class="op">=</span> (avg <span class="op">&gt;=</span> x.<span class="bu">max</span>(axis<span class="op">=</span><span class="dv">1</span>) <span class="op">-</span> <span class="fl">0.5</span>) <span class="op">&amp;</span> (avg <span class="op">&lt;=</span> x.<span class="bu">min</span>(axis<span class="op">=</span><span class="dv">1</span>) <span class="op">+</span> <span class="fl">0.5</span>)</span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"표본평균이 최대우도 추정값인 비율: </span><span class="sc">{</span>inside<span class="sc">.</span>mean()<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre><code>T1 (가운데)  : 평균 2.9999, 평균제곱오차 0.00382
-T2 (왼쪽 끝) : 평균 2.9090, 평균제곱오차 0.01520
-표본평균     : 평균 3.0001, 평균제곱오차 0.00837
-표본평균이 최대우도 추정값인 비율: 0.6939</code></pre>
+<pre><code>T1 (가운데)  : 평균 2.9999, 평균제곱오차 0.00379
+T2 (왼쪽 끝) : 평균 2.9092, 평균제곱오차 0.01509
+표본평균     : 평균 2.9999, 평균제곱오차 0.00835
+표본평균이 최대우도 추정값인 비율: 0.6940</code></pre>
 <p>구간의 가운데를 고른 <span class="math inline">\(T_1\)</span>은 평균적으로 참값 <span class="math inline">\(3\)</span>을 맞히고 오차도 가장 작습니다. 반면 구간의 왼쪽 끝을 고른 <span class="math inline">\(T_2\)</span>는 평균적으로 작게 나오고 오차도 네 배 가까이 큽니다. 같은 최대우도 원리에서 나왔는데도 <strong>어떤 값을 고르느냐에 따라</strong> 추정량의 성능이 크게 달라지는 것입니다. 최대우도 원리만으로는 둘 중 무엇을 골라야 할지 정해지지 않으므로, 대칭성 같은 다른 기준을 끌어와야 합니다.</p>
 <p>덧붙여 표본평균은 이 모형에서 평균적으로 참값을 맞히지만, 평균제곱오차가 <span class="math inline">\(T_1\)</span>의 두 배가 넘습니다. 게다가 표본의 약 <span class="math inline">\(30\%\)</span>에서는 우도가 <span class="math inline">\(0\)</span>인 값, 즉 데이터와 모순되는 값을 내놓습니다. 그런 <span class="math inline">\(\theta\)</span>라면 관측된 측정값 중 일부가 나올 수 없었을 것이라는 뜻입니다. 1.1절의 두 예에서는 표본평균이 곧 최대우도 추정값이었지만, 모형이 바뀌면 “평균을 내면 된다”는 직관이 더 이상 최선이 아닐 수 있다는 좋은 예입니다.</p>
 </section>

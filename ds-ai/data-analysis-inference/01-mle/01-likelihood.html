@@ -148,13 +148,13 @@ window.Quarto = {
 <meta property="og:description" content="관측한 데이터를 가장 그럴듯하게 만드는 모수를 고르는 최대우도 추정을 정의합니다. 통계량, 모수적 모형, 식별가능성, 우도함수를 정의하고, 포아송 분포와 정규분포에서 점수 방정식으로 추정값을 구합니다.">
 <meta property="og:image" content="https://xkwhd1557.github.io/ds-ai/data-analysis-inference/01-mle/figures/poisson-loglik.png">
 <meta property="og:site_name" content="Study Archive">
-<meta property="og:image:alt" content="가로축이 λ, 세로축이 로그우도인 그래프. 곡선은 λ가 1일 때 약 -142에서 시작해 빠르게 올라가 λ가 약 4.13일 때 최댓값 약 -60에 도달한 뒤 완만하게 내려간다. 최댓값 위치에 회색 점선이 그어져 있다.">
-<meta property="og:image:height" content="630">
-<meta property="og:image:width" content="1050">
+<meta property="og:image:alt" content="가로축이 λ, 세로축이 로그우도인 그래프. 곡선은 λ가 1일 때 약 -147에서 시작해 빠르게 올라가 λ가 4.2일 때 최댓값 약 -62에 도달한 뒤 완만하게 내려간다. 최댓값 위치에 회색 점선이 그어져 있다.">
+<meta property="og:image:height" content="583">
+<meta property="og:image:width" content="929">
 <meta name="twitter:title" content="1.1 우도와 최대우도 추정 – Study Archive">
 <meta name="twitter:description" content="관측한 데이터를 가장 그럴듯하게 만드는 모수를 고르는 최대우도 추정을 정의합니다. 통계량, 모수적 모형, 식별가능성, 우도함수를 정의하고, 포아송 분포와 정규분포에서 점수 방정식으로 추정값을 구합니다.">
 <meta name="twitter:image" content="https://xkwhd1557.github.io/ds-ai/data-analysis-inference/01-mle/figures/poisson-loglik.png">
-<meta name="twitter:image:alt" content="가로축이 λ, 세로축이 로그우도인 그래프. 곡선은 λ가 1일 때 약 -142에서 시작해 빠르게 올라가 λ가 약 4.13일 때 최댓값 약 -60에 도달한 뒤 완만하게 내려간다. 최댓값 위치에 회색 점선이 그어져 있다.">
+<meta name="twitter:image:alt" content="가로축이 λ, 세로축이 로그우도인 그래프. 곡선은 λ가 1일 때 약 -147에서 시작해 빠르게 올라가 λ가 4.2일 때 최댓값 약 -62에 도달한 뒤 완만하게 내려간다. 최댓값 위치에 회색 점선이 그어져 있다.">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -698,8 +698,26 @@ window.Quarto = {
  <span class="menu-text">1.3 점수 함수와 피셔 정보</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/data-analysis-inference/01-mle/04-newton-raphson.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.4 뉴턴-랩슨 방법과 피셔 스코어링</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/data-analysis-inference/01-mle/05-asymptotics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.5 일치성과 점근 정규성</span></a>
+  </div>
+</li>
       </ul>
   </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/data-analysis-inference/02-dependence/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2 변수 사이의 의존성 측정</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -849,7 +867,7 @@ window.Quarto = {
 <section id="필요한-개념들" class="level3">
 <h3 class="anchored" data-anchor-id="필요한-개념들">필요한 개념들</h3>
 <p>먼저 우리는 “데이터”를 수학과 확률의 언어로 정확하게 표현할 필요가 있습니다. 본격적인 정의에 앞서, 통계학에서 “표본”이라는 말이 서로 다른 두 수준에서 쓰인다는 점을 먼저 짚고 넘어가겠습니다. 이 구분을 놓치면 뒤에서 나오는 많은 이야기가 헷갈리기 쉽습니다.</p>
-<p><strong>표본 레벨의 분석</strong>은 이미 손에 쥔 데이터를 다룹니다. 문제 1의 사고 건수 <span class="math inline">\(3, 6, 3, 5, \ldots\)</span>처럼, 관측이 끝난 데이터는 그저 고정된 숫자들입니다. 이 숫자들로 무엇을 계산하든 결과도 하나의 숫자이고, 예를 들어 표본평균은 <span class="math inline">\(\bar{x} = 4.133\ldots\)</span>입니다. 숫자에는 더 이상 우연이 끼어들 여지가 없으므로, “<span class="math inline">\(\bar{x}\)</span>의 기대값”이나 “<span class="math inline">\(\bar{x}\)</span>의 분산” 같은 말은 의미가 없습니다. 우리가 손에 쥔 표본은 더이상 확률에 의해 결정되는 대상이 아니며, 이미 결정된 상태로 주어진 결과물이니까요.</p>
+<p><strong>표본 레벨의 분석</strong>은 이미 손에 쥔 데이터를 다룹니다. 문제 1의 사고 건수 <span class="math inline">\(4, 6, 5, 4, \ldots\)</span>처럼, 관측이 끝난 데이터는 그저 고정된 숫자들입니다. 이 숫자들로 무엇을 계산하든 결과도 하나의 숫자이고, 예를 들어 표본평균은 <span class="math inline">\(\bar{x} = 4.2\)</span>입니다. 숫자에는 더 이상 우연이 끼어들 여지가 없으므로, “<span class="math inline">\(\bar{x}\)</span>의 기대값”이나 “<span class="math inline">\(\bar{x}\)</span>의 분산” 같은 말은 의미가 없습니다. 우리가 손에 쥔 표본은 더이상 확률에 의해 결정되는 대상이 아니며, 이미 결정된 상태로 주어진 결과물이니까요.</p>
 <p><strong>모집단 레벨의 분석</strong>은 관측하기 <strong>전</strong>의 데이터를 다룹니다. 30일 동안의 사고 건수를 아직 기록하기 전이라면, 각 날의 사고 건수는 모집단 분포 <span class="math inline">\(\mathrm{Poi}(\lambda)\)</span>를 따라 앞으로 정해질 확률변수 <span class="math inline">\(X_1, \ldots, X_{30}\)</span>입니다. 이 확률변수들로 만든 표본평균 <span class="math inline">\(\bar{X} = \frac{1}{30}\sum_{i=1}^{30} X_i\)</span> 역시 확률변수이므로, 그 분포와 기대값, 분산을 이야기할 수 있습니다. 실제로 <span class="math inline">\(\mathbb{E}[\bar{X}] = \lambda\)</span>이고 <span class="math inline">\(\mathrm{Var}(\bar{X}) = \lambda/30\)</span>입니다.</p>
 <p>두 레벨은 <strong>실현</strong>(realization)이라는 개념으로 이어집니다. 확률변수는 확률공간 <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P})\)</span> 위의 함수이고, 우리가 실제로 관측한 데이터는 세상이 어떤 결과 <span class="math inline">\(\omega \in \Omega\)</span>를 내놓았을 때 이 함수들이 취한 값, 즉 <span class="math inline">\(x_i = X_i(\omega)\)</span>입니다. 주사위에 비유하면, 던지기 전의 눈은 <span class="math inline">\(1\)</span>부터 <span class="math inline">\(6\)</span>까지가 각각 확률 <span class="math inline">\(1/6\)</span>로 나오는 확률변수이고, 던진 뒤 바닥에 놓인 <span class="math inline">\(4\)</span>는 그 실현값입니다. 이 구분을 표기로도 드러내기 위해, 앞으로 확률변수는 대문자(<span class="math inline">\(X_i\)</span>, <span class="math inline">\(\bar{X}\)</span>)로, 관측값은 소문자(<span class="math inline">\(x_i\)</span>, <span class="math inline">\(\bar{x}\)</span>)로 씁니다.</p>
 <table class="caption-top table">
@@ -883,7 +901,7 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
-<p>그렇다면 왜 굳이 두 레벨을 구분해야 할까요? 실제 계산은 언제나 표본 레벨에서 일어납니다. 우리에게 있는 것은 단 하나의 데이터뿐이기 때문입니다. 하지만 그 계산 결과를 <strong>얼마나 믿을 수 있는지</strong>는 표본 레벨에서는 답할 수 없습니다. <span class="math inline">\(\bar{x} = 4.133\ldots\)</span>이라는 숫자 하나만 들여다봐서는 이것이 참값에 가까운지 알 길이 없습니다. 대신 모집단 레벨로 올라가면, “이 계산 절차를 데이터가 새로 나올 때마다 반복하면 결과가 어떻게 흩어지는가”를 물을 수 있습니다. <a href="../../../ds-ai/data-analysis-inference/index.html">과목 소개 글</a>에서 표본을 다섯 번 새로 뽑아 기울기가 흔들리는 것을 본 것이 바로 이 관점이었습니다. 정리하면, <strong>계산은 표본 레벨에서 하고, 그 계산 방법이 좋은지 나쁜지는 모집단 레벨에서 따집니다.</strong></p>
+<p>그렇다면 왜 굳이 두 레벨을 구분해야 할까요? 실제 계산은 언제나 표본 레벨에서 일어납니다. 우리에게 있는 것은 단 하나의 데이터뿐이기 때문입니다. 하지만 그 계산 결과를 <strong>얼마나 믿을 수 있는지</strong>는 표본 레벨에서는 답할 수 없습니다. <span class="math inline">\(\bar{x} = 4.2\)</span>라는 숫자 하나만 들여다봐서는 이것이 참값에 가까운지 알 길이 없습니다. 대신 모집단 레벨로 올라가면, “이 계산 절차를 데이터가 새로 나올 때마다 반복하면 결과가 어떻게 흩어지는가”를 물을 수 있습니다. <a href="../../../ds-ai/data-analysis-inference/index.html">과목 소개 글</a>에서 표본을 다섯 번 새로 뽑아 기울기가 흔들리는 것을 본 것이 바로 이 관점이었습니다. 정리하면, <strong>계산은 표본 레벨에서 하고, 그 계산 방법이 좋은지 나쁜지는 모집단 레벨에서 따집니다.</strong></p>
 <p>통계에서는 이 모집단 레벨의 분석과 표본 레벨의 분석이 자주 왔다갔다합니다. 근데 이걸 그 때 그 때 이건 모집단 레벨 분석이고, 저건 표본 레벨 분석이라고 명시하고 넘어가는 게 사실상 너무나 번거롭다보니, 이게 막 엄청 엄격하게 구분되지 않고 다뤄지는 경우도 많습니다. 하지만 지금 하는 게 어떤 레벨의 분석인지를 잘 고민하면서 공부하시면 보다 확실히 지금 이야기가 어떤 맥락인지를 파악하기 용이할겁니다.</p>
 <p>마찬가지로 이 구분은 이 과목에서도 내내 등장합니다. 구체적으로 예를 들어 아래에서 정의할 우도함수는 관측된 데이터로 만드는 표본 레벨의 함수이지만, 1.3절에서는 같은 식에 확률변수 <span class="math inline">\(\mathbf{X}\)</span>를 넣어, 표본에 따라 모양이 달라지는 무작위 함수로 다루게 됩니다. 이제 이 두 레벨을 정확한 언어로 옮겨 보겠습니다.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
@@ -1091,14 +1109,14 @@ window.Quarto = {
 <p>이제 앞의 데이터로 계산해 보겠습니다. 이 데이터는 사실 <span class="math inline">\(\lambda = 4\)</span>인 포아송 분포에서 직접 생성한 것입니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">2026</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1557</span>)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.random.poisson(lam<span class="op">=</span><span class="dv">4</span>, size<span class="op">=</span><span class="dv">30</span>)   <span class="co"># 30일 동안의 하루 사고 건수</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x.mean())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre><code>[3 6 3 5 2 3 6 4 2 2 4 1 2 7 5 4 2 7 3 4 8 7 3 5 4 4 6 3 3 6]
-4.133333333333334</code></pre>
-<p>아래 그림은 이 데이터의 로그우도 <span class="math inline">\(\ell(\lambda)\)</span>를 그린 것입니다. 곡선이 <span class="math inline">\(\hat{\lambda} = \bar{x} \approx 4.13\)</span>에서 가장 높아지는 것을 볼 수 있습니다.</p>
-<p><img src="figures/poisson-loglik.png" class="img-fluid" style="width:70.0%" alt="가로축이 λ, 세로축이 로그우도인 그래프. 곡선은 λ가 1일 때 약 -142에서 시작해 빠르게 올라가 λ가 약 4.13일 때 최댓값 약 -60에 도달한 뒤 완만하게 내려간다. 최댓값 위치에 회색 점선이 그어져 있다."></p>
+<pre><code>[4 6 5 4 4 2 7 6 3 3 3 3 6 2 6 3 5 6 5 0 7 3 2 7 2 7 5 4 5 1]
+4.2</code></pre>
+<p>아래 그림은 이 데이터의 로그우도 <span class="math inline">\(\ell(\lambda)\)</span>를 그린 것입니다. 곡선이 <span class="math inline">\(\hat{\lambda} = \bar{x} = 4.2\)</span>에서 가장 높아지는 것을 볼 수 있습니다.</p>
+<p><img src="figures/poisson-loglik.png" class="img-fluid" style="width:70.0%" alt="가로축이 λ, 세로축이 로그우도인 그래프. 곡선은 λ가 1일 때 약 -147에서 시작해 빠르게 올라가 λ가 4.2일 때 최댓값 약 -62에 도달한 뒤 완만하게 내려간다. 최댓값 위치에 회색 점선이 그어져 있다."></p>
 <p>참값 <span class="math inline">\(4\)</span>와 정확히 같지는 않지만, 30일치 데이터만으로 꽤 가까운 값을 얻었습니다. 이 오차가 얼마나 될지, 그리고 데이터가 늘어나면 정말 참값으로 다가가는지는 1.5절의 주제입니다.</p>
 </section>
 </section>
@@ -1121,16 +1139,16 @@ window.Quarto = {
 <li><strong>최댓값 확인:</strong> 두 단계로 확인합니다. 먼저 항등식 <span class="math display">\[\sum_{i=1}^n (x_i - \mu)^2 = \sum_{i=1}^n (x_i - \bar{x})^2 + n(\bar{x} - \mu)^2 \;\ge\; n\hat{\sigma}^2\]</span> 때문에, <span class="math inline">\(\sigma^2\)</span>를 어떤 값으로 고정하든 <span class="math inline">\(\ell(\mu, \sigma^2) \le \ell(\bar{x}, \sigma^2)\)</span>입니다. 다음으로 <span class="math inline">\(g(s) := \ell(\bar{x}, s) = -\frac{n}{2}\log(2\pi s) - \frac{n\hat{\sigma}^2}{2s}\)</span>를 미분하면 <span class="math display">\[g'(s) = \frac{n}{2s^2}\left(\hat{\sigma}^2 - s\right)\]</span> 이므로 <span class="math inline">\(g\)</span>는 <span class="math inline">\(s = \hat{\sigma}^2\)</span>까지 증가하다가 그 뒤로 감소합니다. 두 사실을 합치면 모든 <span class="math inline">\((\mu, \sigma^2) \in \Theta\)</span>에 대해 <span class="math inline">\(\ell(\mu, \sigma^2) \le \ell(\bar{x}, \sigma^2) \le \ell(\bar{x}, \hat{\sigma}^2)\)</span>이고, 따라서 <span class="math inline">\((\hat{\mu}, \hat{\sigma}^2)\)</span>가 최대우도 추정값입니다.</li>
 </ul>
 <p>평균의 추정값은 이번에도 표본평균입니다. 그런데 분산의 추정값은 조금 낯설 수 있습니다. 기초 통계학에서는 보통 표본분산을 <span class="math inline">\(n\)</span>이 아니라 <span class="math inline">\(n-1\)</span>로 나눈 <span class="math display">\[s^2 := \frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2\]</span> 으로 배우기 때문입니다. 최대우도 추정값 <span class="math inline">\(\hat{\sigma}^2\)</span>는 <span class="math inline">\(n\)</span>으로 나눕니다. 실제 데이터로 비교해 보겠습니다. 이번 데이터는 <span class="math inline">\(\mu = 170\)</span>, <span class="math inline">\(\sigma = 6\)</span>, 즉 <span class="math inline">\(\sigma^2 = 36\)</span>인 정규분포에서 생성했습니다.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">2026</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1557</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.random.normal(loc<span class="op">=</span><span class="dv">170</span>, scale<span class="op">=</span><span class="dv">6</span>, size<span class="op">=</span><span class="dv">20</span>)   <span class="co"># 키 20개 (단위: cm)</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>mu_hat <span class="op">=</span> y.mean()</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>sigma2_hat <span class="op">=</span> np.mean((y <span class="op">-</span> mu_hat) <span class="op">**</span> <span class="dv">2</span>)           <span class="co"># 1/n로 나눈 값</span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"mu_hat     = </span><span class="sc">{</span>mu_hat<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"sigma2_hat = </span><span class="sc">{</span>sigma2_hat<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"s^2        = </span><span class="sc">{</span>y<span class="sc">.</span>var(ddof<span class="op">=</span><span class="dv">1</span>)<span class="sc">:.3f}</span><span class="ss">"</span>)        <span class="co"># 1/(n-1)로 나눈 값</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre><code>mu_hat     = 169.427
-sigma2_hat = 34.919
-s^2        = 36.757</code></pre>
+<pre><code>mu_hat     = 168.624
+sigma2_hat = 25.775
+s^2        = 27.131</code></pre>
 <p>왜 두 가지 버전이 있을까요? 둘 중 어느 것이 더 좋을까요? 이 질문에 답하려면 숫자 하나가 아니라 <strong>추정량</strong>, 즉 표본을 바꿀 때마다 달라지는 확률변수로서의 <span class="math inline">\(\hat{\sigma}^2\)</span>를 봐야 합니다. 표본 <span class="math inline">\(\mathbf{X}\)</span>에 대해 항등식 <span class="math inline">\(\sum_i (X_i - \bar{X})^2 = \sum_i (X_i - \mu)^2 - n(\bar{X} - \mu)^2\)</span>의 양변에 기대값을 취하면, <span class="math inline">\(\mathbb{E}[(X_i - \mu)^2] = \sigma^2\)</span>이고 <span class="math inline">\(\mathbb{E}[(\bar{X} - \mu)^2] = \sigma^2/n\)</span>이므로</p>
 <p><span class="math display">\[\mathbb{E}\left[\sum_{i=1}^n (X_i - \bar{X})^2\right] = n\sigma^2 - n \cdot \frac{\sigma^2}{n} = (n-1)\sigma^2, \qquad \text{즉} \qquad \mathbb{E}[\hat{\sigma}^2] = \frac{n-1}{n}\sigma^2\]</span></p>
 <p>입니다. 최대우도 추정량 <span class="math inline">\(\hat{\sigma}^2\)</span>는 평균적으로 참값보다 조금 <strong>작게</strong> 나오고, <span class="math inline">\(n-1\)</span>로 나눈 <span class="math inline">\(s^2\)</span>는 이 치우침을 바로잡은 것입니다. 표본 크기를 <span class="math inline">\(n = 5\)</span>로 작게 잡고 표본을 10만 번 새로 뽑아 확인해 보겠습니다.</p>
@@ -1139,7 +1157,7 @@ s^2        = 36.757</code></pre>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>sigma2_ml <span class="op">=</span> samples.var(axis<span class="op">=</span><span class="dv">1</span>)                   <span class="co"># 표본마다 1/n로 나눈 값</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"sigma2_hat의 평균  = </span><span class="sc">{</span>sigma2_ml<span class="sc">.</span>mean()<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"(n-1)/n * sigma^2 = </span><span class="sc">{</span>(n <span class="op">-</span> <span class="dv">1</span>) <span class="op">/</span> n <span class="op">*</span> <span class="dv">36</span><span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre><code>sigma2_hat의 평균  = 28.718
+<pre><code>sigma2_hat의 평균  = 28.760
 (n-1)/n * sigma^2 = 28.800</code></pre>
 <p>참값 <span class="math inline">\(36\)</span>이 아니라 이론값 <span class="math inline">\(28.8\)</span> 근처에 모이는 것을 볼 수 있습니다. 최대우도 추정량이라고 해서 언제나 “평균적으로 맞는 답”을 주는 것은 아닙니다. 다만 치우침의 비율 <span class="math inline">\((n-1)/n\)</span>은 <span class="math inline">\(n\)</span>이 커질수록 <span class="math inline">\(1\)</span>에 가까워지므로, 데이터가 많아지면 이 차이는 사라집니다.</p>
 </section>
@@ -1186,7 +1204,7 @@ s^2        = 36.757</code></pre>
 <ul>
 <li><strong>최대우도 추정값은 항상 존재하고 유일한가?</strong> 문제 1에서 30일 내내 사고가 한 건도 없었다면 <span class="math inline">\(\bar{x} = 0\)</span>이 되어, 점수 방정식의 해가 모수공간 <span class="math inline">\((0, \infty)\)</span> 안에 없습니다. 이럴 때는 어떻게 해야 할까요? 또 점수 방정식으로는 찾을 수 없는 최댓값이나, 최댓값을 주는 점이 무수히 많은 경우도 있습니다.</li>
 <li><strong>점수 방정식을 손으로 풀 수 없다면?</strong> 두 예제는 운 좋게도 점수 방정식이 깔끔하게 풀렸습니다. 하지만 4장의 로지스틱 회귀처럼 대부분의 모형에서는 해를 식으로 쓸 수 없어서 수치적으로 찾아야 합니다.</li>
-<li><strong>추정값을 얼마나 믿을 수 있는가?</strong> 문제 1의 <span class="math inline">\(4.13\)</span>은 참값 <span class="math inline">\(4\)</span>에서 얼마나 벗어날 수 있을까요? 문제 2에서는 최대우도 추정량이 치우칠 수 있다는 것도 보았습니다. 데이터가 늘어나면 최대우도 추정량은 정말 참값으로 다가갈까요? 다가간다면 그 오차는 어떤 분포를 따를까요?</li>
+<li><strong>추정값을 얼마나 믿을 수 있는가?</strong> 문제 1의 <span class="math inline">\(4.2\)</span>는 참값 <span class="math inline">\(4\)</span>에서 얼마나 벗어날 수 있을까요? 문제 2에서는 최대우도 추정량이 치우칠 수 있다는 것도 보았습니다. 데이터가 늘어나면 최대우도 추정량은 정말 참값으로 다가갈까요? 다가간다면 그 오차는 어떤 분포를 따를까요?</li>
 </ul>
 <p>이 질문들은 <a href="../../../ds-ai/data-analysis-inference/01-mle/index.html">1장 소개 글</a>에서 예고한 대로 이어지는 절들에서 차례로 다룹니다. 존재와 유일성은 1.2절, 점수 방정식의 수치적 풀이는 1.3절과 1.4절, 추정량의 성질은 1.5절의 주제입니다.</p>
 <hr>
