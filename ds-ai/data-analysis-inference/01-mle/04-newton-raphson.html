@@ -856,7 +856,8 @@ n = 50, xbar = 1.9200</code></pre>
 </ol>
 </div>
 </div>
-<p>2단계에서 역행렬을 직접 구하지 않고 연립일차방정식을 푸는 것은, 그쪽이 계산량도 적고 수치적으로도 안정적이기 때문입니다. 물론 이 과정이 성립하려면 매 단계에서 <span class="math inline">\(j(\theta^{(i)}; \mathbf{x})\)</span>가 가역이어야 합니다.</p>
+<p>이미 수치해석학을 공부하신 적이 있다면 대충 느낌이 오실겁니다. 우리가 하는건 결국, 최대우도 추정치의 지점을 찾기 위해서 점수 함수의 영점을 뉴턴 방법으로 수치적으로 계산하는거에요.</p>
+<p>근데 보면 원래 계산식에서는 역행렬을 구하는 부분이 있는데요, 위 알고리즘에서는 역행렬을 직접 구하지 않고, 저 부분을 <span class="math inline">\(\delta\)</span>라 잡은 뒤, 이 델타를 구하는 선형방정식을 푸는 방식이 소개됩니다. 이는 역행렬을 구하지 않고 저렇게 접근하는 게 계산량도 적고 수치적으로도 안정적이기 때문입니다. 물론 이 과정이 성립하려면 매 단계에서 <span class="math inline">\(j(\theta^{(i)}; \mathbf{x})\)</span>가 가역이어야 합니다.</p>
 <p>뉴턴-랩슨 방법이 사랑받는 이유는 해에 충분히 가까이 가면 놀랄 만큼 빠르게 수렴하기 때문입니다.</p>
 <div class="callout callout-style-default callout-important no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">

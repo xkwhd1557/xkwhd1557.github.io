@@ -825,12 +825,13 @@ window.Quarto = {
 <p><span class="math inline">\(Y_1, Y_2, \ldots\)</span>와 <span class="math inline">\(Y\)</span>를 <span class="math inline">\(\mathbb{R}^d\)</span>에 값을 가지는 확률벡터라고 합시다.</p>
 <ol type="1">
 <li>모든 <span class="math inline">\(\varepsilon &gt; 0\)</span>에 대해 <span class="math display">\[\mathbb{P}\big(\lVert Y_n - Y \rVert &gt; \varepsilon\big) \xrightarrow[n \to \infty]{} 0\]</span> 이면 <span class="math inline">\(Y_n\)</span>이 <span class="math inline">\(Y\)</span>로 <strong>확률수렴</strong>(convergence in probability)한다고 하고, <span class="math inline">\(Y_n \xrightarrow{\ P\ } Y\)</span>로 씁니다.</li>
-<li>모든 유계 연속함수 <span class="math inline">\(g : \mathbb{R}^d \to \mathbb{R}\)</span>에 대해 <span class="math display">\[\mathbb{E}[g(Y_n)] \xrightarrow[n \to \infty]{} \mathbb{E}[g(Y)]\]</span> 이면 <span class="math inline">\(Y_n\)</span>이 <span class="math inline">\(Y\)</span>로 <strong>분포수렴</strong>(convergence in distribution)한다고 하고, <span class="math inline">\(Y_n \xrightarrow{\ D\ } Y\)</span>로 씁니다.</li>
+<li>모든 유계 연속함수 <span class="math inline">\(g : \mathbb{R}^d \to \mathbb{R}\)</span>에 대해 <span class="math display">\[\mathbb{E}[g(Y_n)] \xrightarrow[n \to \infty]{} \mathbb{E}[g(Y)]\]</span> 이면 <span class="math inline">\(Y_n\)</span>이 <span class="math inline">\(Y\)</span>로 <strong>분포 수렴</strong>(convergence in distribution)한다고 하고, <span class="math inline">\(Y_n \xrightarrow{\ D\ } Y\)</span>로 씁니다. 참고로 이는 약한 수렴(weak convergence)이라는 개념과 동치이기도 합니다. 이는 측도론적 확률론에서 더 다뤄집니다.</li>
 </ol>
 </div>
 </div>
 <p>확률수렴은 “<span class="math inline">\(Y_n\)</span>이 <span class="math inline">\(Y\)</span>에서 조금이라도 벗어날 확률이 점점 <span class="math inline">\(0\)</span>이 된다”는 뜻이고, 분포수렴은 “<span class="math inline">\(Y_n\)</span>의 분포 모양이 <span class="math inline">\(Y\)</span>의 분포 모양에 가까워진다”는 뜻입니다. 분포수렴은 <span class="math inline">\(Y_n\)</span>과 <span class="math inline">\(Y\)</span>의 값이 가까워진다는 말이 아니라 <strong>분포</strong>만 가까워진다는 말이라서 더 약한 개념입니다. 중심극한정리가 바로 분포수렴에 대한 정리입니다.</p>
-<p>추정량에 대해 우리가 바라는 가장 기본적인 성질은, 데이터가 많아지면 참값으로 다가가는 것입니다.</p>
+<p>원래는 보통 분포 수렴을 누적 분포 함수를 이용해서 <span class="math inline">\(F_n \to F\)</span>가 성립함으로 표현하나, 이는 일반적으로 1차원 확률변수에 대한 정의입니다. 우리는 더 일반적인 확률벡터를 다루고 있으므로, 저렇게 분포 수렴과 동치인 약한 수렴을 빌려 분포 수렴을 표현합니다. 물론 이 약한 수렴 정의를 사용하는 부분은 없으므로(걍 언급만 됩니다.), 직관적으로는 <span class="math inline">\(F_n \to F\)</span>의 느낌으로 생각하셔도 무방합니다.</p>
+<p>추정량에 대해 우리가 바라는 가장 기본적인 성질은, 데이터가 많아지면 참값으로 다가가는 것입니다. 그래야지 그 참값을 잘 “추정”하는 추정량일테니까요. 이를 위해 다음의 성질을 정의합니다.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -856,7 +857,7 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><span class="math inline">\(X_1, \ldots, X_n \overset{\text{i.i.d.}}{\sim} P_{\theta_0}\)</span>이고 모형이 식별가능하다고 합시다. 우도함수의 연속성, 모수공간의 콤팩트성(또는 로그우도의 오목성), 그리고 로그밀도가 적분가능한 함수로 고르게 눌린다는 조건 등의 적절한 정칙 조건 아래에서, 최대우도 추정량 <span class="math inline">\(\hat{\theta}_n\)</span>은 <span class="math inline">\(\theta_0\)</span>의 일치추정량입니다.</p>
+<p><span class="math inline">\(X_1, \ldots, X_n \overset{\text{i.i.d.}}{\sim} P_{\theta_0}\)</span>이고 모형이 식별가능하다고 합시다. 우도함수의 연속성, 모수공간의 콤팩트성(또는 로그우도의 오목성), 그리고 로그밀도가 적분가능한 함수이고, <span class="math inline">\(L^1\)</span> 지배 함수라는 조건 등의 적절한 정칙 조건 아래에서, 최대우도 추정량 <span class="math inline">\(\hat{\theta}_n\)</span>은 <span class="math inline">\(\theta_0\)</span>의 일치추정량입니다.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
@@ -875,7 +876,8 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>핵심 아이디어는 다음과 같습니다. 로그우도를 <span class="math inline">\(n\)</span>으로 나누면 독립인 항들의 평균이므로, 큰 수의 법칙에 의해 각 <span class="math inline">\(\theta\)</span>에서 <span class="math display">\[\frac{1}{n}\ell(\theta; \mathbf{X}) = \frac{1}{n}\sum_{i=1}^n \log f(X_i, \theta) \xrightarrow{\ P\ } \mathbb{E}_{\theta_0}[\log f(X_1, \theta)] =: M(\theta)\]</span> 입니다. 그런데 이 극한 <span class="math inline">\(M\)</span>은 정확히 참값 <span class="math inline">\(\theta_0\)</span>에서 가장 큽니다. 실제로 <span class="math inline">\(\log\)</span>가 오목하므로 옌센 부등식에 의해 <span class="math display">\[M(\theta) - M(\theta_0) = \mathbb{E}_{\theta_0}\!\left[\log \frac{f(X_1, \theta)}{f(X_1, \theta_0)}\right] \le \log \mathbb{E}_{\theta_0}\!\left[\frac{f(X_1, \theta)}{f(X_1, \theta_0)}\right] \le \log 1 = 0\]</span> 이고, 식별가능성 덕분에 <span class="math inline">\(\theta \neq \theta_0\)</span>이면 등호가 성립하지 않습니다.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> 즉 <strong>데이터가 무한히 많다면 로그우도의 꼭대기는 정확히 참값에 놓입니다.</strong> 최대우도 추정값은 유한한 데이터로 만든 로그우도의 꼭대기이므로, 데이터가 많아질수록 참값 근처로 모입니다. 증명에서 까다로운 부분은 “각 <span class="math inline">\(\theta\)</span>에서의 수렴”을 “꼭대기 위치의 수렴”으로 바꾸는 단계이고, 정리의 정칙 조건들이 바로 이 단계를 위한 것입니다.</p>
+<p>정칙 조건이라는 이름 하에 여러 수학적 조건이 붙지만, 실전에서 만나는 대부분의 정규 분포, 지수족 분포 등 우리에게 익숙한 맛의 모델들은 모두 이 조건을 만족합니다. 그래서 수학적 디테일이 필요 없다면 걍 대충 이런 이런 조건들이 있다, 그리고 그게 필요한 이유는 수학적으로 ’모든 개별 <span class="math inline">\(\theta\)</span>에서 점별로 성립하는 수렴’을 ’그래프 전체의 꼭대기(최대점)가 참값으로 수렴한다’는 고른 수렴(Uniform Convergence)으로 빈틈없이 연결해 주는 안전장치가 된다 정도로 이해하고 넘어가셔도 충분합니다.</p>
+<p>이걸 조금만 맛보기로 설명하자면, 핵심 아이디어는 다음과 같습니다. 로그우도를 <span class="math inline">\(n\)</span>으로 나누면 독립인 항들의 평균이므로, 큰 수의 법칙에 의해 각 <span class="math inline">\(\theta\)</span>에서 <span class="math display">\[\frac{1}{n}\ell(\theta; \mathbf{X}) = \frac{1}{n}\sum_{i=1}^n \log f(X_i, \theta) \xrightarrow{\ P\ } \mathbb{E}_{\theta_0}[\log f(X_1, \theta)] =: M(\theta)\]</span> 입니다. 그런데 이 극한 <span class="math inline">\(M\)</span>은 정확히 참값 <span class="math inline">\(\theta_0\)</span>에서 가장 큽니다. 실제로 <span class="math inline">\(\log\)</span>가 오목하므로 옌센 부등식에 의해 <span class="math display">\[M(\theta) - M(\theta_0) = \mathbb{E}_{\theta_0}\!\left[\log \frac{f(X_1, \theta)}{f(X_1, \theta_0)}\right] \le \log \mathbb{E}_{\theta_0}\!\left[\frac{f(X_1, \theta)}{f(X_1, \theta_0)}\right] \le \log 1 = 0\]</span> 이고, 식별가능성 덕분에 <span class="math inline">\(\theta \neq \theta_0\)</span>이면 등호가 성립하지 않습니다.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> 즉 <strong>데이터가 무한히 많다면 로그우도의 꼭대기는 정확히 참값에 놓입니다.</strong> 최대우도 추정값은 유한한 데이터로 만든 로그우도의 꼭대기이므로, 데이터가 많아질수록 참값 근처로 모입니다. 증명에서 까다로운 부분은 “각 <span class="math inline">\(\theta\)</span>에서의 수렴”을 “꼭대기 위치의 수렴”으로 바꾸는 단계이고, 정리의 정칙 조건들이 바로 이 단계를 위한 것입니다.</p>
 <p>일치성은 추정량이 참값으로 <strong>간다</strong>는 것만 말해 줍니다. 얼마나 빨리, 어떤 모양으로 흩어지면서 가는지를 알려면 분포수렴이 필요합니다. 그 증명에서는 확률론의 다음 정리를 씁니다.</p>
 <div class="callout callout-style-default callout-important no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">

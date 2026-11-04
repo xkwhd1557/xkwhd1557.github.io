@@ -2,466 +2,510 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://xkwhd1557.github.io/biostat/longitudinal-data/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.594Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.235Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/biostat/survival-analysis/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.594Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.235Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/biostat/epidemiology/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.594Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.235Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/biostat/causal-inference/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.594Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.235Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.606Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.247Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/cs/formal-systems/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.595Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.236Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/cs/algorithms-data-structures/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.595Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.236Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/cs/database-systems/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.595Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.236Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/cs/theoretical-cs/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.595Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.236Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/stats/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.609Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.249Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/stats/stochastic-simulation/01-monte-carlo/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.611Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.251Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/stats/math-stats/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.609Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.249Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/stats/stochastic-calculus/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.609Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.249Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/stats/basic-stats/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.609Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.249Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/stats/stats-for-stoch-proc/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.609Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.249Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/stats/actuarial-math/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.609Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.249Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/stats/gaussian-processes/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.609Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.249Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/stats/measure-prob/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.609Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.249Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/ds-ai/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.606Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.246Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/ds-ai/advanced-linear-algebra/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.596Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.236Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/ds-ai/ds-intro/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.605Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.246Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/ds-ai/ds-intro/02-data-exploration/03-correlation.html</loc>
-    <lastmod>2026-11-03T23:47:15.600Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.240Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/ds-ai/ds-intro/02-data-exploration/04-numpy.html</loc>
-    <lastmod>2026-11-03T23:47:15.600Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.240Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/ds-ai/ds-intro/02-data-exploration/06-pandas-seaborn.html</loc>
-    <lastmod>2026-11-03T23:47:15.600Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.240Z</lastmod>
   </url>
   <url>
-    <loc>https://xkwhd1557.github.io/ds-ai/ds-intro/01-foundations/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.599Z</lastmod>
+    <loc>https://xkwhd1557.github.io/ds-ai/ds-intro/03-reproducible-workflow/05-good-code.html</loc>
+    <lastmod>2026-11-04T23:45:16.245Z</lastmod>
   </url>
   <url>
-    <loc>https://xkwhd1557.github.io/ds-ai/ds-intro/01-foundations/03-analysis-process.html</loc>
-    <lastmod>2026-11-03T23:47:15.599Z</lastmod>
+    <loc>https://xkwhd1557.github.io/ds-ai/ds-intro/03-reproducible-workflow/04-bash-eda.html</loc>
+    <lastmod>2026-11-04T23:45:16.245Z</lastmod>
   </url>
   <url>
-    <loc>https://xkwhd1557.github.io/ds-ai/ds-intro/01-foundations/02-applications.html</loc>
-    <lastmod>2026-11-03T23:47:15.599Z</lastmod>
+    <loc>https://xkwhd1557.github.io/ds-ai/ds-intro/03-reproducible-workflow/09-environments.html</loc>
+    <lastmod>2026-11-04T23:45:16.245Z</lastmod>
   </url>
   <url>
-    <loc>https://xkwhd1557.github.io/ds-ai/mathematical-foundations/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.606Z</lastmod>
+    <loc>https://xkwhd1557.github.io/ds-ai/ds-intro/03-reproducible-workflow/03-bash-scripting.html</loc>
+    <lastmod>2026-11-04T23:45:16.245Z</lastmod>
   </url>
   <url>
-    <loc>https://xkwhd1557.github.io/ds-ai/data-analysis-inference/01-mle/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.598Z</lastmod>
+    <loc>https://xkwhd1557.github.io/ds-ai/ds-intro/03-reproducible-workflow/08-git-branching.html</loc>
+    <lastmod>2026-11-04T23:45:16.245Z</lastmod>
   </url>
   <url>
-    <loc>https://xkwhd1557.github.io/ds-ai/data-analysis-inference/01-mle/01-likelihood.html</loc>
-    <lastmod>2026-11-03T23:47:15.596Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/ds-ai/data-analysis-inference/01-mle/03-score-fisher.html</loc>
-    <lastmod>2026-11-03T23:47:15.596Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/ds-ai/data-analysis-inference/02-dependence/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.598Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/ds-ai/statistical-foundations/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.606Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/lang/en-coming-soon.html</loc>
-    <lastmod>2026-11-03T23:47:15.607Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/articles/about-this-site.html</loc>
-    <lastmod>2026-11-03T23:47:15.593Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/articles/study-roadmap.html</loc>
-    <lastmod>2026-11-03T23:47:15.593Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/math/measure-theory/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.607Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/math/math-programming/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.607Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/math/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.607Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/math/pde-intro/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.607Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/math/rkhs/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.607Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/math/general-topology/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.607Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/math/optimization/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.607Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/math/functional-analysis/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.607Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/math/manifold-analysis/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.607Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/math/dynamical-systems/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.607Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/math/complex-analysis/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.607Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/math/ode/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.607Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/biz-econ/insurance-economics/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.594Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/biz-econ/decision-theory/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.594Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/biz-econ/monetary-economics/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.594Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/biz-econ/game-theory/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.594Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/biz-econ/econometrics/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.594Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/biz-econ/time-series/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.594Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/biz-econ/macroeconomics/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.594Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/biz-econ/accounting/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.594Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/biz-econ/quantitative-risk/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.594Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/biz-econ/finance-investment/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.594Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/privacy.html</loc>
-    <lastmod>2026-11-03T23:47:15.608Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/biz-econ/production-logistics/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.594Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/biz-econ/econ-intro/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.594Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/biz-econ/labor-economics/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.594Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/biz-econ/biz-intro/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.594Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/biz-econ/microeconomics/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.594Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/biz-econ/corporate-finance/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.594Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/biz-econ/supply-chain/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.594Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/biz-econ/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.594Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/biz-econ/market-research/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.594Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/math/set-theory/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.608Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/math/number-theory/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.607Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/math/geometry/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.607Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/math/numerical-methods/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.607Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/math/pde-advanced/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.607Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/math/latex/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.607Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/math/discrete-math/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.607Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/math/differential-geometry/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.607Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/math/mathematical-logic/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.607Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/math/linear-algebra/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.607Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/math/algebra/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.607Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/math/analysis/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.607Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/articles/math-and-modeling.html</loc>
-    <lastmod>2026-11-03T23:47:15.593Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/articles/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.593Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/lang/de-coming-soon.html</loc>
-    <lastmod>2026-11-03T23:47:15.606Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/ds-ai/numerical-optimization/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.606Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/ds-ai/machine-learning/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.606Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/ds-ai/data-analysis-inference/01-mle/04-newton-raphson.html</loc>
-    <lastmod>2026-11-03T23:47:15.596Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/ds-ai/data-analysis-inference/01-mle/05-asymptotics.html</loc>
-    <lastmod>2026-11-03T23:47:15.596Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/ds-ai/data-analysis-inference/01-mle/02-score-failures.html</loc>
-    <lastmod>2026-11-03T23:47:15.596Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/ds-ai/data-analysis-inference/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.598Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/ds-ai/ai-math-intro/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.596Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xkwhd1557.github.io/ds-ai/ds-intro/01-foundations/04-sampling-bias.html</loc>
-    <lastmod>2026-11-03T23:47:15.599Z</lastmod>
+    <loc>https://xkwhd1557.github.io/ds-ai/ds-intro/03-reproducible-workflow/02-bash-basics.html</loc>
+    <lastmod>2026-11-04T23:45:16.245Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/ds-ai/ds-intro/01-foundations/01-big-data.html</loc>
-    <lastmod>2026-11-03T23:47:15.599Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.239Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/ds-ai/ds-intro/01-foundations/04-sampling-bias.html</loc>
+    <lastmod>2026-11-04T23:45:16.239Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/ds-ai/ai-math-intro/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.236Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/ds-ai/data-analysis-inference/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.238Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/ds-ai/data-analysis-inference/01-mle/02-score-failures.html</loc>
+    <lastmod>2026-11-04T23:45:16.237Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/ds-ai/data-analysis-inference/01-mle/05-asymptotics.html</loc>
+    <lastmod>2026-11-04T23:45:16.237Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/ds-ai/data-analysis-inference/01-mle/04-newton-raphson.html</loc>
+    <lastmod>2026-11-04T23:45:16.237Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/ds-ai/machine-learning/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.246Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/ds-ai/numerical-optimization/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.247Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/lang/de-coming-soon.html</loc>
+    <lastmod>2026-11-04T23:45:16.247Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/articles/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.234Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/articles/math-and-modeling.html</loc>
+    <lastmod>2026-11-04T23:45:16.234Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/math/analysis/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.248Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/math/algebra/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.248Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/math/linear-algebra/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.248Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/math/mathematical-logic/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.248Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/math/differential-geometry/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.248Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/math/discrete-math/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.248Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/math/latex/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.248Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/math/pde-advanced/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.248Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/math/numerical-methods/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.248Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/math/geometry/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.248Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/math/number-theory/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.248Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/math/set-theory/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.248Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/biz-econ/market-research/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.235Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/biz-econ/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.235Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/biz-econ/supply-chain/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.235Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/biz-econ/corporate-finance/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.235Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/biz-econ/microeconomics/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.235Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/biz-econ/biz-intro/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.235Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/biz-econ/labor-economics/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.235Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/biz-econ/econ-intro/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.235Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/biz-econ/production-logistics/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.235Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/privacy.html</loc>
+    <lastmod>2026-11-04T23:45:16.248Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/biz-econ/finance-investment/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.235Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/biz-econ/quantitative-risk/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.235Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/biz-econ/accounting/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.235Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/biz-econ/macroeconomics/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.235Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/biz-econ/time-series/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.235Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/biz-econ/econometrics/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.235Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/biz-econ/game-theory/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.235Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/biz-econ/monetary-economics/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.235Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/biz-econ/decision-theory/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.235Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/biz-econ/insurance-economics/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.235Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/math/ode/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.248Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/math/complex-analysis/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.248Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/math/dynamical-systems/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.248Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/math/manifold-analysis/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.248Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/math/functional-analysis/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.248Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/math/optimization/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.248Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/math/general-topology/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.248Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/math/rkhs/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.248Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/math/pde-intro/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.248Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/math/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.248Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/math/math-programming/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.248Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/math/measure-theory/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.248Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/articles/study-roadmap.html</loc>
+    <lastmod>2026-11-04T23:45:16.234Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/articles/about-this-site.html</loc>
+    <lastmod>2026-11-04T23:45:16.234Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/lang/en-coming-soon.html</loc>
+    <lastmod>2026-11-04T23:45:16.248Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/ds-ai/statistical-foundations/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.247Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/ds-ai/data-analysis-inference/02-dependence/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.238Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/ds-ai/data-analysis-inference/01-mle/03-score-fisher.html</loc>
+    <lastmod>2026-11-04T23:45:16.237Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/ds-ai/data-analysis-inference/01-mle/01-likelihood.html</loc>
+    <lastmod>2026-11-04T23:45:16.236Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/ds-ai/data-analysis-inference/01-mle/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.238Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/ds-ai/mathematical-foundations/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.247Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/ds-ai/ds-intro/01-foundations/02-applications.html</loc>
+    <lastmod>2026-11-04T23:45:16.239Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/ds-ai/ds-intro/01-foundations/03-analysis-process.html</loc>
+    <lastmod>2026-11-04T23:45:16.239Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/ds-ai/ds-intro/01-foundations/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.239Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/ds-ai/ds-intro/03-reproducible-workflow/01-shell-intro.html</loc>
+    <lastmod>2026-11-04T23:45:16.244Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/ds-ai/ds-intro/03-reproducible-workflow/06-code-style.html</loc>
+    <lastmod>2026-11-04T23:45:16.245Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/ds-ai/ds-intro/03-reproducible-workflow/10-unit-tests.html</loc>
+    <lastmod>2026-11-04T23:45:16.246Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/ds-ai/ds-intro/03-reproducible-workflow/07-git-basics.html</loc>
+    <lastmod>2026-11-04T23:45:16.245Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xkwhd1557.github.io/ds-ai/ds-intro/03-reproducible-workflow/index.html</loc>
+    <lastmod>2026-11-04T23:45:16.246Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/ds-ai/ds-intro/02-data-exploration/05-matplotlib.html</loc>
-    <lastmod>2026-11-03T23:47:15.600Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.240Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/ds-ai/ds-intro/02-data-exploration/02-summary-statistics.html</loc>
-    <lastmod>2026-11-03T23:47:15.600Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.240Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/ds-ai/ds-intro/02-data-exploration/01-scales.html</loc>
-    <lastmod>2026-11-03T23:47:15.599Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.239Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/ds-ai/ds-intro/02-data-exploration/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.605Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.244Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/ds-ai/ds-society/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.605Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.246Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/ds-ai/deep-learning-cv/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.598Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.238Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/ds-ai/ai-intro/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.596Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.236Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/stats/non-euclidean-stats/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.609Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.249Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/stats/stochastic-processes/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.609Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.249Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/stats/diffusion-models/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.609Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.249Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/stats/linear-models/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.609Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.249Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/stats/markov-processes/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.609Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.249Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/stats/stat-programming/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.609Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.249Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/stats/stochastic-simulation/01-monte-carlo/01-lcg.html</loc>
-    <lastmod>2026-11-03T23:47:15.610Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.250Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/stats/stochastic-simulation/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.611Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.251Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/stats/prob-theory/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.609Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.249Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/cs/c-programming/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.595Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.236Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/cs/advanced/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.595Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.236Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/cs/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.595Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.236Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/cs/cs-intro/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.595Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.236Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/biostat/biostat-intro/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.594Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.235Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/biostat/bioinformatics/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.594Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.235Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/biostat/clinical-trials/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.594Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.235Z</lastmod>
   </url>
   <url>
     <loc>https://xkwhd1557.github.io/biostat/index.html</loc>
-    <lastmod>2026-11-03T23:47:15.594Z</lastmod>
+    <lastmod>2026-11-04T23:45:16.235Z</lastmod>
   </url>
 </urlset>
