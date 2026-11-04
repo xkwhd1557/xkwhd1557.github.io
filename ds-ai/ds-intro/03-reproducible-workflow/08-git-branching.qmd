@@ -1,0 +1,735 @@
+---
+title: "3.8 브랜치, 병합, 그리고 깃허브"
+subtitle: "3장 재현 가능한 작업 환경 · 과거로 돌아가고, 가지를 치고, 합치기"
+description: "깃에서 HEAD가 무엇인지, 과거의 커밋으로 돌아가는 switch와 reset의 차이, 브랜치와 태그라는 두 가지 참조, fast-forward 병합과 병합 커밋, 충돌 해결을 실제 저장소로 살펴보고, 원격 저장소와 깃허브로 협업하는 흐름과 데이터 버전 관리를 정리합니다."
+date: "2026-11-04"
+categories: ["데이터 사이언스·AI", "데이터 사이언스 개론"]
+---
+
+## 들어가며
+
+[지난 글](07-git-basics.qmd)에서는 저장소를 만들고, 파일을 스테이지하고, 커밋해서 이력을 기록하는 법을 살펴보았습니다. 이번 글에서는 깃의 진짜 힘이라고 할 수 있는 기능들을 다룹니다. 기록해 둔 **과거로 돌아가는 법**, 기존 코드를 해치지 않고 **가지를 쳐서 실험하는 법**, 그 가지를 다시 **합치는 법**, 그리고 다른 사람과 저장소를 **공유하는 법**입니다. 마지막으로 데이터 사이언스에서 특히 중요한 **데이터의 버전 관리**도 짧게 이야기하겠습니다.
+
+지난 글처럼 실제 저장소를 만들어 가며 진행하겠습니다. 통계량을 계산하는 함수들을 모아 둔 `stats.py`와 `README.md`가 있는 저장소에, 커밋이 세 개 쌓여 있다고 해 보겠습니다.
+
+```bash
+cd ~/stats-project
+git log --oneline
+```
+
+```
+5a5570d (HEAD -> main) Add README
+76a73cc Add variance function
+c0d5252 Add mean function
+```
+
+## HEAD: 지금 어디에 있나요?
+
+깃으로 스냅샷 사이를 오가는 것은 타임머신을 타고 과거로 가는 것과 비슷합니다. 그러면 지금 내가 **어느 시점에 머물고 있는지**를 알아야 하는데, 그것을 가리키는 것이 **HEAD**입니다. 위의 `git log` 출력에서 맨 위 커밋 옆에 `(HEAD -> main)`이라고 적혀 있는 것이 보입니다. "HEAD는 지금 `main`을 가리키고 있고, `main`은 이 커밋을 가리키고 있다"는 뜻입니다. 지난 글에서 한 스테이지, 커밋 같은 작업은 모두 이 HEAD를 기준으로 이루어집니다. 새 커밋은 HEAD가 가리키는 커밋의 다음 커밋이 됩니다.
+
+### 커밋의 부모와 자식
+
+조금 더 정확히 말하면, 깃에서는 커밋 하나하나가 **자기 바로 앞의 커밋**을 기억하고 있습니다. 어떤 커밋 A가 커밋 B 다음에 만들어졌다면, B를 A의 **부모**(parent), A를 B의 **자식**이라고 합니다. 각 커밋은 부모 커밋을 가리키는 포인터를 가지고 있어서, `git log`는 HEAD가 가리키는 커밋에서 출발해 부모, 그 부모의 부모를 차례로 따라가다가, 부모가 없는 첫 커밋을 만나면 멈춥니다. 깃의 이력은 이런 부모 자식 관계를 모두 담은 가족관계증명서 같은 것입니다.
+
+그래서 해시를 일일이 적지 않고도 "HEAD에서 몇 세대 위"라는 식으로 커밋을 가리킬 수 있습니다. `HEAD~1`은 HEAD의 부모, `HEAD~2`는 부모의 부모입니다.
+
+## 과거로 돌아가기
+
+### 잠깐 둘러보기: `git switch --detach`
+
+두 번째 커밋 시점으로 돌아가서 그때의 `stats.py`를 보고 싶다고 해 보겠습니다. 예전부터 쓰던 명령어는 `git checkout`입니다.
+
+```bash
+git checkout HEAD~2
+```
+
+```
+Note: switching to 'HEAD~2'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at c0d5252 Add mean function
+```
+
+깃이 긴 메시지를 보여 주는데, 핵심은 첫 문단입니다. 지금 **분리된 HEAD**(detached HEAD) 상태라는 것입니다. 평소에 HEAD는 `main` 같은 브랜치를 가리키고, 브랜치가 커밋을 가리키는데, 지금은 HEAD가 브랜치를 거치지 않고 **과거의 커밋을 직접** 가리키고 있다는 뜻입니다. 작업 디렉터리의 파일들도 그 시점의 스냅샷으로 바뀌었습니다.
+
+```bash
+ls
+cat stats.py
+git log --oneline
+```
+
+```
+stats.py
+def mean(values):
+    return sum(values) / len(values)
+c0d5252 (HEAD) Add mean function
+```
+
+`README.md`가 사라졌고, `stats.py`에는 `mean` 함수만 남아 있습니다. 첫 번째 커밋 시점의 모습입니다. `git log`도 지금 HEAD가 있는 곳부터 거꾸로 보여 주기 때문에 커밋이 하나만 보입니다. 그렇다고 나머지 두 커밋이 사라진 것은 아닙니다. `main`은 여전히 가장 최근 커밋을 가리키고 있으니, 다시 `main`으로 돌아오면 됩니다.
+
+```bash
+git switch main
+git log --oneline
+```
+
+```
+Previous HEAD position was c0d5252 Add mean function
+Switched to branch 'main'
+5a5570d (HEAD -> main) Add README
+76a73cc Add variance function
+c0d5252 Add mean function
+```
+
+`git checkout`은 브랜치를 옮기는 일과 파일을 되돌리는 일을 모두 하는, 기능이 너무 많은 명령어였습니다. 그래서 2019년의 깃 2.23부터 이 두 역할을 나눠, 브랜치와 HEAD를 옮기는 일은 `git switch`가, 파일을 되돌리는 일은 지난 글에서 본 `git restore`가 맡게 되었습니다. 그래서 요즘에는 과거의 커밋으로 잠깐 돌아갈 때 `git switch --detach HEAD~2`처럼 쓰는 것을 권합니다. 하는 일은 위의 `git checkout HEAD~2`와 같습니다.
+
+분리된 HEAD 상태에서도 파일을 고치고 커밋할 수 있습니다. 그런데 이렇게 만든 커밋은 **어느 브랜치에도 속하지 않습니다.** 기존 이력은 그대로 둔 채, 과거 시점에서 갈라져 나온 커밋이 하나 생기는 것입니다. 그 상태로 다른 곳으로 이동하면 이 커밋을 가리키는 이름표가 없어서 찾기 어려워집니다. 그래서 과거 시점에서 무언가를 새로 만들고 싶다면, 아래에서 다룰 **브랜치**를 만들어서 작업하는 것이 안전합니다. 위의 긴 메시지에서 `git switch -c <new-branch-name>`을 하라고 알려 준 것도 그 때문입니다.
+
+### 진짜로 되돌리기: `git reset --hard`
+
+과거로 가는 또 다른 방법은 `git reset --hard`입니다. 이것은 둘러보는 것이 아니라 **진짜로 되돌리는** 명령어입니다.
+
+```bash
+git reset --hard HEAD~1
+git log --oneline
+ls
+```
+
+```
+HEAD is now at 76a73cc Add variance function
+76a73cc (HEAD -> main) Add variance function
+c0d5252 Add mean function
+stats.py
+```
+
+`git switch --detach`가 HEAD만 과거의 커밋으로 옮겼다면, `git reset --hard`는 HEAD가 가리키는 **브랜치 자체**를 과거의 커밋으로 옮깁니다. 그래서 `main`이 두 번째 커밋을 가리키게 되었고, `main`의 이력에서 세 번째 커밋이 사라졌습니다. 작업 디렉터리의 파일도 그 시점으로 되돌아가서 `README.md`가 없어졌고, 커밋하지 않은 수정 사항이 있었다면 그것도 모두 버려집니다. (추적하지 않는 파일은 그대로 남습니다.)
+
+두 방법의 차이를 그림으로 보면 다음과 같습니다. C1, C2, C3 순서로 커밋이 있고, C3에서 C2로 돌아간 뒤 새 커밋 C4를 만든 경우입니다.
+
+```{mermaid}
+%%| fig-cap: "왼쪽: switch --detach로 C2에 간 뒤 커밋하면 C3은 그대로 남고 C4가 곁가지로 생긴다. 오른쪽: reset --hard로 main을 C2로 옮긴 뒤 커밋하면 main의 이력에서 C3이 사라진다."
+flowchart LR
+    subgraph A["switch --detach"]
+        direction LR
+        a1((C1)) --> a2((C2)) --> a3((C3))
+        a2 --> a4((C4))
+        am[main] -.-> a3
+        ah[HEAD] -.-> a4
+    end
+    subgraph B["reset --hard"]
+        direction LR
+        b1((C1)) --> b2((C2)) --> b4((C4))
+        b2 -.-> b3((C3))
+        bm[main] -.-> b4
+        bh[HEAD] -.-> bm
+    end
+    style b3 stroke-dasharray: 5 5,color:#999
+```
+
+이제 `git reset --hard`를 조심해서 써야 하는 이유가 보입니다. 브랜치에서 커밋을 떼어 내 버리기 때문입니다. 그렇다고 떼어 낸 커밋이 곧바로 지워지는 것은 아닙니다. 깃은 HEAD가 지나온 길을 `git reflog`에 한동안 기록해 두기 때문에, 실수했다면 여기서 해시를 찾아 되돌릴 수 있습니다.
+
+```bash
+git reflog
+```
+
+```
+76a73cc (HEAD -> main) HEAD@{0}: reset: moving to HEAD~1
+5a5570d HEAD@{1}: checkout: moving from c0d5252af055b8642f16ecbf4c174145ab769289 to main
+c0d5252 HEAD@{2}: checkout: moving from main to HEAD~2
+5a5570d HEAD@{3}: commit: Add README
+76a73cc (HEAD -> main) HEAD@{4}: commit: Add variance function
+c0d5252 HEAD@{5}: commit (initial): Add mean function
+```
+
+맨 위가 가장 최근의 이동입니다. `HEAD@{1}`은 "HEAD가 한 번 전에 있던 곳", 즉 reset하기 직전의 세 번째 커밋입니다. 그곳으로 다시 reset하면 원래대로 돌아옵니다.
+
+```bash
+git reset --hard HEAD@{1}
+git log --oneline
+```
+
+```
+HEAD is now at 5a5570d Add README
+5a5570d (HEAD -> main) Add README
+76a73cc Add variance function
+c0d5252 Add mean function
+```
+
+다만 reflog는 내 컴퓨터에만 있고 일정 기간이 지나면 정리되며, 커밋하지 않은 수정 사항은 애초에 기록된 적이 없어서 되살릴 수 없습니다. 그래서 과거를 둘러보거나 과거에서 새로 시작하고 싶을 때는 `git switch`와 브랜치를 쓰고, `git reset --hard`는 정말로 최근 커밋들을 버리고 싶을 때만 쓰는 것이 좋습니다.
+
+## 참조: 브랜치와 태그
+
+커밋을 가리키는 해시는 사람이 다루기에 너무 길고 외우기도 어렵습니다. 그래서 깃은 커밋에 **이름표**를 붙여 둘 수 있게 하는데, 이것을 **참조**(reference)라고 합니다. 참조에는 **태그**(tag)와 **브랜치**(branch) 두 종류가 있습니다.
+
+**태그**는 특정 커밋에 붙이는 **고정된** 이름표입니다. 한 번 붙이면 프로젝트가 어떻게 바뀌든 계속 그 커밋을 가리킵니다. 그래서 지난 글에서 말한 `v1.0.0` 같은 버전 번호를 붙이기에 딱 맞습니다. 예를 들어 지금 커밋을 첫 공개 버전으로 정해 보겠습니다.
+
+```bash
+git tag v1.0.0
+git log --oneline
+```
+
+```
+5a5570d (HEAD -> main, tag: v1.0.0) Add README
+76a73cc Add variance function
+c0d5252 Add mean function
+```
+
+**브랜치**도 커밋을 가리키는 이름표인데, 태그와 달리 **움직입니다.** 브랜치가 가리키는 커밋에서 새로 커밋하면, 브랜치는 원래 커밋을 잊고 새 커밋으로 옮겨 갑니다. 지금까지 본 `main`이 바로 브랜치입니다. 커밋할 때마다 `main`이 가장 최근 커밋으로 따라 움직였지요. 새로 커밋해서 확인해 보겠습니다.
+
+```bash
+printf '\nUsage: import stats\n' >> README.md
+git commit -am "Add usage to README"
+git log --oneline
+```
+
+```
+[main d81a255] Add usage to README
+ 1 file changed, 2 insertions(+)
+d81a255 (HEAD -> main) Add usage to README
+5a5570d (tag: v1.0.0) Add README
+76a73cc Add variance function
+c0d5252 Add mean function
+```
+
+`git commit -am`의 `-a`는 이미 추적 중인 파일 가운데 수정된 것들을 자동으로 스테이지하라는 옵션입니다. 새 커밋이 생기자 `main`과 HEAD는 새 커밋으로 옮겨 갔지만, 태그 `v1.0.0`은 원래 커밋에 그대로 남아 있습니다. (`main`은 깃이 처음에 만들어 주는 기본 브랜치일 뿐이고, 브랜치라고 해서 모두 가장 최신 커밋을 가리키는 것은 아닙니다. 예전에는 기본 브랜치를 `master`라고 불렀는데, 지금은 `main`으로 부르는 곳이 많습니다. 지난 글에서 `init.defaultBranch`를 `main`으로 설정한 것이 이 때문입니다.)
+
+### 브랜치는 곧 작업 공간입니다
+
+[지난 글](07-git-basics.qmd)에서는 브랜치를 "독립된 작업 공간"이라고 소개했는데, 여기서는 "움직이는 이름표"라고 했습니다. 둘은 같은 이야기입니다. 브랜치가 어떤 커밋을 가리키고 있을 때 그 브랜치로 옮겨 가서 커밋하면, 브랜치는 새 커밋을 따라 움직입니다. 그러면 이 브랜치에서 쌓은 커밋들은 `main`의 이력과는 별개로, 그 브랜치의 이름표가 가리키는 **독립된 타임라인**이 됩니다. 깃 입장에서는 커밋에 이름표 하나를 붙인 것뿐이지만, 개발자 입장에서는 기존 코드를 해치지 않고 마음껏 실험할 수 있는 작업 공간이 생기는 것입니다.
+
+새 브랜치는 `git branch`로 만듭니다.
+
+```bash
+git branch testing
+git branch
+```
+
+```
+* main
+  testing
+```
+
+`git branch`에 이름 없이 입력하면 브랜치 목록을 보여 주고, `*`가 붙은 것이 지금 HEAD가 가리키는 브랜치입니다. 브랜치를 만들었다고 그 브랜치로 옮겨 가는 것은 아니라서, 아직 `main`에 있습니다. `git switch`로 옮겨 가서 커밋해 보겠습니다.
+
+```bash
+git switch testing
+printf '\n\ndef std(values):\n    return variance(values) ** 0.5\n' >> stats.py
+git commit -am "Add standard deviation"
+git switch main
+git log --oneline --graph --all
+```
+
+```
+Switched to branch 'testing'
+[testing 8393cfd] Add standard deviation
+ 1 file changed, 4 insertions(+)
+Switched to branch 'main'
+* 8393cfd (testing) Add standard deviation
+* d81a255 (HEAD -> main) Add usage to README
+* 5a5570d (tag: v1.0.0) Add README
+* 76a73cc Add variance function
+* c0d5252 Add mean function
+```
+
+`--graph --all`은 모든 브랜치의 이력을 그림으로 보여 달라는 옵션입니다. 지금은 `testing`이 `main`보다 커밋 하나 앞서 있고, HEAD는 다시 `main`으로 돌아와 있습니다. `main`에서 `cat stats.py`를 해 보면 `std` 함수가 없습니다. `testing`에서 한 작업은 `testing`에만 있기 때문입니다.
+
+과거의 특정 커밋에서 브랜치를 만들고 바로 옮겨 가는 일은 한 줄로 할 수도 있습니다. `git switch -c 브랜치이름 커밋`은 그 커밋에 새 브랜치를 만들고(`-c`, create) 곧바로 그 브랜치로 옮겨 갑니다. 커밋을 생략하면 지금 HEAD가 있는 곳에 만듭니다. 위의 분리된 HEAD 메시지가 권한 것이 바로 이 명령어입니다.
+
+```bash
+git switch -c old-idea v1.0.0
+```
+
+## 병합
+
+과거로 돌아가는 법과 가지를 쳐서 안전하게 실험하는 법을 보았습니다. 그런데 가지에서 만든 코드가 쓸 만하다면, 그것을 다시 메인 흐름에 넣어야 합니다. 이렇게 브랜치의 커밋들을 다른 브랜치에 합치는 것을 **병합**(merge)이라고 합니다. 깃 공식 문서의 예제와 같은 상황을 직접 만들어 보겠습니다.[^progit]
+
+### 이슈 처리 중에 급한 버그가 생겼다
+
+`main`에서 새 기능을 만들기 위해 `iss53`이라는 브랜치를 만들어 작업을 시작했다고 해 보겠습니다. 이슈 53번을 처리한다는 뜻의 이름입니다. 여기서는 중앙값을 구하는 `median` 함수를 추가합니다.
+
+```bash
+git switch -c iss53
+printf '\n\ndef median(values):\n    s = sorted(values)\n    n = len(s)\n    return (s[(n - 1) // 2] + s[n // 2]) / 2\n' >> stats.py
+git commit -am "Add median function"
+```
+
+```
+Switched to a new branch 'iss53'
+[iss53 96e163c] Add median function
+ 1 file changed, 6 insertions(+)
+```
+
+그런데 이때 `main`의 `mean` 함수에 문제가 있다는 연락을 받았습니다. 빈 리스트를 넣으면 `ZeroDivisionError`가 나는데, [3.5](05-good-code.qmd)의 견고함을 생각하면 무엇이 잘못되었는지 알려 주는 오류를 내는 편이 낫습니다. `iss53` 작업은 아직 끝나지 않았으니, `main`으로 돌아가서 급한 수정을 위한 `hotfix` 브랜치를 새로 만듭니다.
+
+```bash
+git switch main
+git switch -c hotfix
+```
+
+```
+Switched to branch 'main'
+Switched to a new branch 'hotfix'
+```
+
+`stats.py`의 `mean` 함수를 다음과 같이 고쳤습니다.
+
+```bash
+git diff
+```
+
+```
+diff --git a/stats.py b/stats.py
+index 8b0cef0..bc3e77a 100644
+--- a/stats.py
++++ b/stats.py
+@@ -1,4 +1,6 @@
+ def mean(values):
++    if len(values) == 0:
++        raise ValueError("values is empty")
+     return sum(values) / len(values)
+ 
+ 
+```
+
+```bash
+git commit -am "Raise ValueError for empty input in mean"
+git log --oneline --graph --all
+```
+
+```
+[hotfix 1488755] Raise ValueError for empty input in mean
+ 1 file changed, 2 insertions(+)
+* 1488755 (HEAD -> hotfix) Raise ValueError for empty input in mean
+| * 96e163c (iss53) Add median function
+|/  
+| * 8393cfd (testing) Add standard deviation
+|/  
+* d81a255 (main) Add usage to README
+* 5a5570d (tag: v1.0.0) Add README
+* 76a73cc Add variance function
+* c0d5252 Add mean function
+```
+
+이제 `main`에서 두 갈래로 가지가 나뉘었습니다. 한쪽은 `iss53`, 다른 쪽은 `hotfix`입니다. 이렇게 급한 수정을 `main`에 바로 커밋하지 않고 따로 브랜치에서 하는 이유는, 작업하는 동안 `main`을 언제든 돌아갈 수 있는 깨끗한 상태로 남겨 두기 위해서입니다. 이 예제처럼 간단한 경우에는 별 차이가 없어 보이지만, 여러 사람이 함께 일하는 복잡한 프로젝트일수록 이 차이가 커집니다.
+
+### fast-forward 병합
+
+수정이 끝났으니 `hotfix`를 `main`에 합칩니다. 병합은 **합쳐 넣을 쪽의 브랜치로 옮겨 간 다음**, 가져올 브랜치의 이름을 `git merge`에 줍니다.
+
+```bash
+git switch main
+git merge hotfix
+```
+
+```
+Switched to branch 'main'
+Updating d81a255..1488755
+Fast-forward
+ stats.py | 2 ++
+ 1 file changed, 2 insertions(+)
+```
+
+출력에 `Fast-forward`라고 나왔습니다. `hotfix`의 커밋은 `main`이 가리키던 커밋의 **바로 다음 자식**이었습니다. `main`에서 갈라진 뒤 `main` 쪽에는 새 커밋이 없었으니, 합칠 것도 없이 `main`의 이름표를 `hotfix`의 커밋으로 **앞으로 옮기기만** 하면 됩니다. 이렇게 이름표만 앞으로 감는 병합을 **fast-forward**(빨리 감기) 병합이라고 합니다. 할 일을 마친 `hotfix` 브랜치는 이제 필요 없으니 지웁니다.
+
+```bash
+git branch -d hotfix
+git log --oneline --graph --all
+```
+
+```
+Deleted branch hotfix (was 1488755).
+* 96e163c (iss53) Add median function
+| * 1488755 (HEAD -> main) Raise ValueError for empty input in mean
+|/  
+| * 8393cfd (testing) Add standard deviation
+|/  
+* d81a255 Add usage to README
+* 5a5570d (tag: v1.0.0) Add README
+* 76a73cc Add variance function
+* c0d5252 Add mean function
+```
+
+### 병합 커밋
+
+급한 불을 껐으니 `iss53`으로 돌아가 하던 일을 마무리합니다. `median` 함수에 독스트링을 달았습니다.
+
+```bash
+git switch iss53
+```
+
+```
+Switched to branch 'iss53'
+```
+
+```bash
+git diff
+git commit -am "Add docstring to median"
+```
+
+```
+diff --git a/stats.py b/stats.py
+index b0349c2..20f45cb 100644
+--- a/stats.py
++++ b/stats.py
+@@ -8,6 +8,7 @@ def variance(values):
+ 
+ 
+ def median(values):
++    """중앙값을 계산합니다. 개수가 짝수이면 가운데 두 값의 평균입니다."""
+     s = sorted(values)
+     n = len(s)
+     return (s[(n - 1) // 2] + s[n // 2]) / 2
+[iss53 1dbfe7c] Add docstring to median
+ 1 file changed, 1 insertion(+)
+```
+
+이제 `iss53`을 `main`에 합칩니다. 그런데 이번에는 상황이 다릅니다. `iss53`이 갈라져 나온 뒤 `main`에도 `hotfix`라는 새 커밋이 생겼기 때문입니다. `main`의 커밋과 `iss53`의 커밋은 서로의 조상이 아니라, 같은 조상에서 갈라진 **형제**입니다. 그래서 이름표를 앞으로 옮기는 것만으로는 합칠 수 없고, 두 갈래의 변경 사항을 모두 담은 **새 커밋**을 만들어야 합니다.
+
+```bash
+git switch main
+git merge iss53
+```
+
+```
+Switched to branch 'main'
+Auto-merging stats.py
+Merge made by the 'ort' strategy.
+ stats.py | 7 +++++++
+ 1 file changed, 7 insertions(+)
+```
+
+(실제로 이 명령어를 입력하면 병합 커밋의 메시지를 적으라고 편집기가 열릴 수 있습니다. 기본 메시지가 이미 적혀 있으니 그대로 저장하고 닫으면 됩니다. 편집기가 vim이라면 `:wq`를 입력하고 엔터를 누릅니다.)
+
+```bash
+git log --oneline --graph --all
+```
+
+```
+*   c26a9f9 (HEAD -> main) Merge branch 'iss53'
+|\  
+| * 1dbfe7c (iss53) Add docstring to median
+| * 96e163c Add median function
+* | 1488755 Raise ValueError for empty input in mean
+|/  
+| * 8393cfd (testing) Add standard deviation
+|/  
+* d81a255 Add usage to README
+* 5a5570d (tag: v1.0.0) Add README
+* 76a73cc Add variance function
+* c0d5252 Add mean function
+```
+
+맨 위에 `Merge branch 'iss53'`이라는 커밋이 생겼습니다. 이 커밋은 개발자가 코드를 새로 쓴 것이 아니라 두 브랜치를 합치면서 생긴 커밋이라서 **병합 커밋**(merge commit)이라고 부릅니다. 그림에서 보이듯이 병합 커밋은 특별하게 **부모가 둘**입니다. 한쪽 부모는 `main`의 `hotfix` 커밋이고, 다른 쪽 부모는 `iss53`의 마지막 커밋입니다. 합쳐진 `stats.py`를 보면, `hotfix`에서 고친 `mean`과 `iss53`에서 추가한 `median`이 모두 들어 있습니다.
+
+```bash
+cat stats.py
+```
+
+```
+def mean(values):
+    if len(values) == 0:
+        raise ValueError("values is empty")
+    return sum(values) / len(values)
+
+
+def variance(values):
+    m = mean(values)
+    return sum((x - m) ** 2 for x in values) / (len(values) - 1)
+
+
+def median(values):
+    """중앙값을 계산합니다. 개수가 짝수이면 가운데 두 값의 평균입니다."""
+    s = sorted(values)
+    n = len(s)
+    return (s[(n - 1) // 2] + s[n // 2]) / 2
+```
+
+`iss53`에서 작업하는 동안 `hotfix`의 수정 사항을 따로 챙겨 넣지 않았는데도, 깃이 두 갈래가 갈라진 공통 조상과 양쪽의 마지막 커밋을 비교해서 **각자 바꾼 부분을 알아서 합쳐** 주었습니다. 우리는 무엇을 합칠지만 알려 주고, 자세히 어떻게 합칠지는 깃이 대신 정하는 것입니다. 출력에 나온 `ort`는 깃이 이때 쓰는 병합 방법의 이름입니다.
+
+### 충돌이 났을 때
+
+대부분의 경우 이 자동 병합은 잘 동작하지만, 실패할 때도 있습니다. 가장 흔한 원인은 두 브랜치가 **같은 파일의 같은 부분을 서로 다르게** 고친 경우입니다. 이때 깃은 어느 쪽을 따라야 할지 기계적으로 판단할 수 없으니, 병합을 멈추고 사람에게 결정을 맡깁니다. 이것을 **충돌**(conflict)이라고 합니다. `README.md`의 첫 줄을 두 브랜치에서 서로 다르게 고쳐서 일부러 충돌을 일으켜 보겠습니다.
+
+```bash
+git switch -c rename
+sed -i '1s/.*/# stats-toolkit/' README.md
+git commit -qam "Rename project to stats-toolkit"
+git switch main
+sed -i '1s/.*/# simple-stats/' README.md
+git commit -qam "Rename project to simple-stats"
+git merge rename
+```
+
+```
+Switched to a new branch 'rename'
+Switched to branch 'main'
+Auto-merging README.md
+CONFLICT (content): Merge conflict in README.md
+Automatic merge failed; fix conflicts and then commit the result.
+```
+
+(`sed -i`는 [3.2](02-bash-basics.qmd)의 `sed`로 파일 자체를 고치라는 옵션이고, `1s/.*/…/`는 첫 줄 전체를 바꾸라는 뜻입니다. 맥의 `sed`에서는 `sed -i ''`처럼 써야 합니다. 편집기로 첫 줄을 직접 고쳐도 됩니다.)
+
+`CONFLICT`라는 메시지와 함께 자동 병합에 실패했고(`Automatic merge failed`), 병합 커밋도 만들어지지 않았습니다. 어디서 충돌이 났는지는 `git status`로 확인할 수 있습니다.
+
+```bash
+git status
+```
+
+```
+On branch main
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+	both modified:   README.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+`both modified`, 즉 양쪽에서 모두 고친 `README.md`가 충돌했다고 나옵니다. 파일을 열어 보면 깃이 충돌한 부분을 표시해 두었습니다.
+
+```bash
+cat README.md
+```
+
+```
+<<<<<<< HEAD
+# simple-stats
+=======
+# stats-toolkit
+>>>>>>> rename
+
+Simple statistics functions.
+
+Usage: import stats
+```
+
+`<<<<<<< HEAD`부터 `=======`까지는 지금 브랜치(`main`)의 내용이고, `=======`부터 `>>>>>>> rename`까지는 합치려는 브랜치(`rename`)의 내용입니다. 이 표시들을 지우고 원하는 내용만 남기면 됩니다. 여기서는 `stats-toolkit`을 쓰기로 했다고 해 보겠습니다.
+
+```bash
+cat README.md
+```
+
+```
+# stats-toolkit
+
+Simple statistics functions.
+
+Usage: import stats
+```
+
+이렇게 고친 파일은 다시 `git merge`를 하는 것이 아니라, `git add`로 스테이지한 뒤 `git commit`으로 커밋합니다.
+
+```bash
+git add README.md
+git commit -m "Merge branch 'rename'"
+git log --oneline --graph --all
+```
+
+```
+[main 87e4de3] Merge branch 'rename'
+*   87e4de3 (HEAD -> main) Merge branch 'rename'
+|\  
+| * 3c85205 (rename) Rename project to stats-toolkit
+* | b13450d Rename project to simple-stats
+|/  
+*   c26a9f9 Merge branch 'iss53'
+|\  
+| * 1dbfe7c (iss53) Add docstring to median
+| * 96e163c Add median function
+* | 1488755 Raise ValueError for empty input in mean
+|/  
+| * 8393cfd (testing) Add standard deviation
+|/  
+* d81a255 Add usage to README
+* 5a5570d (tag: v1.0.0) Add README
+* 76a73cc Add variance function
+* c0d5252 Add mean function
+```
+
+왜 이렇게 할까요? 병합은 결국 병합 커밋을 만드는 일, 즉 두 브랜치의 내용을 합쳐서 **스테이징 영역에 올리고 커밋하는 일**입니다. 병합이 충돌로 멈췄을 때 깃은 문제없이 합쳐진 파일들은 이미 스테이징 영역에 올려 두고, 충돌한 파일만 사람에게 맡깁니다. 그러니 우리는 충돌한 파일을 고쳐서 스테이징 영역에 올리기만 하면 되고, 모든 파일이 올라갔다면 남은 일은 병합 커밋을 직접 만드는 것, 즉 `git commit`뿐입니다. 병합을 그만두고 병합하기 전으로 돌아가고 싶다면 `git merge --abort`를 쓰면 됩니다.
+
+## 원격 저장소와 깃허브
+
+지금까지는 내 컴퓨터 안의 저장소에서만 작업했습니다. 이제 이 저장소를 다른 곳에 올려 두고 다른 사람과 공유해 보겠습니다. 내 컴퓨터가 아닌 곳(보통은 서버)에 있는 저장소를 **원격 저장소**(remote repository)라고 하고, 그 대표가 깃허브입니다.
+
+### 원격 저장소 연결하고 올리기
+
+원격 저장소를 다루는 명령어는 상대가 깃허브든 학교 서버든 똑같습니다. 여기서는 깃허브 대신 내 컴퓨터의 다른 폴더에 원격 저장소 역할을 할 빈 저장소를 만들어서 연습해 보겠습니다. `--bare`는 작업 디렉터리 없이 `.git`의 내용만 있는, 서버용 저장소를 만들라는 옵션입니다. 깃허브에서 새 저장소를 만들면 깃허브 서버에 이런 저장소가 생긴다고 생각하면 됩니다.
+
+```bash
+git init --bare -q ~/remote/stats-project.git
+git remote add origin ~/remote/stats-project.git
+git remote -v
+```
+
+```
+origin	/home/user/remote/stats-project.git (fetch)
+origin	/home/user/remote/stats-project.git (push)
+```
+
+`git remote add origin 주소`는 이 주소의 원격 저장소를 `origin`이라는 이름으로 등록하라는 뜻입니다. `origin`은 관례적으로 쓰는 이름입니다. 깃허브라면 주소 자리에 `https://github.com/사용자이름/저장소이름.git` 같은 주소가 들어갑니다. 이제 내 커밋들을 원격 저장소로 올립니다. 이것을 **푸시**(push)라고 합니다.
+
+```bash
+git push -u origin main
+```
+
+```
+To /home/user/remote/stats-project.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+```
+
+`-u`는 앞으로 `main`에서 그냥 `git push`라고만 해도 `origin`의 `main`으로 올리라고 기억해 두는 옵션입니다. 태그는 따로 올려야 해서, `git push origin v1.0.0`처럼 씁니다.
+
+### 다른 사람이 받아서 고치고 올리기
+
+이번에는 함께 일하는 동료가 이 저장소를 자기 컴퓨터로 받아 온다고 해 보겠습니다. 원격 저장소를 통째로 복제해 오는 것이 지난 글에서 말한 **클론**(clone)입니다.
+
+```bash
+git clone ~/remote/stats-project.git ~/teammate
+cd ~/teammate
+git log --oneline -3
+```
+
+```
+Cloning into '/home/user/teammate'...
+done.
+87e4de3 (HEAD -> main, origin/main, origin/HEAD) Merge branch 'rename'
+b13450d Rename project to simple-stats
+3c85205 Rename project to stats-toolkit
+```
+
+동료의 컴퓨터에 전체 이력이 그대로 복제되었습니다. 분산형 버전 관리 시스템이라는 것이 바로 이런 뜻입니다. `origin/main`은 "원격 저장소 `origin`의 `main`이 마지막으로 확인했을 때 여기를 가리키고 있었다"는 표시입니다. 동료가 파일을 고쳐서 커밋하고 푸시합니다.
+
+```bash
+printf '\n\ndef value_range(values):\n    return max(values) - min(values)\n' >> stats.py
+git commit -qam "Add range function"
+git push
+```
+
+```
+To /home/user/remote/stats-project.git
+   87e4de3..efb0b25  main -> main
+```
+
+### 원격의 변경 사항 받아 오기
+
+다시 원래 내 저장소로 돌아오겠습니다. 원격 저장소에는 동료의 커밋이 올라갔지만, 내 저장소는 아직 모릅니다. 원격의 새 커밋을 받아서 내 브랜치에 합치는 것을 **풀**(pull)이라고 합니다.
+
+```bash
+cd ~/stats-project
+git pull
+git log --oneline -3
+```
+
+```
+From /home/user/remote/stats-project
+   87e4de3..efb0b25  main       -> origin/main
+Updating 87e4de3..efb0b25
+Fast-forward
+ stats.py | 4 ++++
+ 1 file changed, 4 insertions(+)
+efb0b25 (HEAD -> main, origin/main) Add range function
+87e4de3 Merge branch 'rename'
+b13450d Rename project to simple-stats
+```
+
+동료의 커밋이 내 저장소에도 들어왔습니다. `git pull`은 사실 원격의 새 커밋을 받아 오는 `git fetch`와, 받아 온 것을 내 브랜치에 합치는 `git merge`를 한 번에 하는 명령어입니다. 그래서 내 쪽에도 새 커밋이 있었다면 앞에서 본 병합 커밋이 생기고, 같은 부분을 고쳤다면 충돌이 날 수도 있습니다. 함께 작업할 때는 작업을 시작하기 전에 먼저 `git pull`로 최신 상태를 받아 두는 습관이 좋습니다.
+
+### 깃허브에서 협업하기
+
+깃허브는 깃을 바탕으로 하는 온라인 코드 공유 플랫폼입니다. 위에서 연습한 원격 저장소 역할을 하면서, 그 위에 여러 사람이 함께 일하기 위한 도구들(코드 리뷰, 이슈 관리, 자동 테스트 등)을 얹어 둔 서비스입니다. 깃은 완전히 무료인 오픈 소스이고, 깃허브는 회사가 운영하는 서비스라 기업과 팀을 위한 기능 일부는 유료지만, 개인 사용자는 공개 저장소와 비공개 저장소를 무료로 만들 수 있습니다. 학생이라면 깃허브의 학생 프로그램(GitHub Education)에 신청해서 유료 기능 일부를 무료로 쓸 수도 있습니다. 혼자 쓰더라도 깃허브를 코드 백업용 클라우드처럼 쓸 수 있고, 이 사이트도 깃허브 저장소에 글을 푸시하면 자동으로 웹사이트가 만들어지도록 되어 있습니다.
+
+깃허브에서 남의 프로젝트에 기여하는 정석적인 흐름은 다음과 같습니다.
+
+1. 기여하고 싶은 프로젝트 A의 깃허브 페이지에서 **포크**(fork)를 누릅니다. 포크는 프로젝트 A의 저장소를 **내 깃허브 계정**으로 통째로 복사하는 것입니다.
+2. 포크한 저장소(원본이 아니라 내 계정의 복사본)를 `git clone`으로 내 컴퓨터에 받아 옵니다.
+3. 내 컴퓨터에서 브랜치를 만들어 작업하고 커밋합니다.
+4. 작업한 브랜치를 내 깃허브 계정의 저장소로 `git push`합니다.
+5. 깃허브에서 원래 프로젝트 A에 **풀 리퀘스트**(pull request)를 보냅니다. "제가 고친 이 브랜치를 프로젝트에 병합해 주세요"라는 요청입니다.
+6. 프로젝트 A의 관리자들이 요청을 검토하고 의견을 남깁니다.
+7. 쓸 만하다고 판단되면 관리자가 병합합니다.
+
+포크가 필요한 이유는 권한 때문입니다. 깃허브의 저장소는 보통 주인과 주인이 허락한 사람만 직접 고칠 수 있습니다. 대신 누구나 포크해서 자기 복사본을 마음대로 고칠 수 있게 하고, 그 결과를 원본에 넣고 싶을 때는 풀 리퀘스트로 요청하게 하는 것입니다. 깃허브가 연습용으로 만들어 둔 저장소로 해 볼 수 있습니다.[^spoon]
+
+```bash
+git clone https://github.com/사용자이름/Spoon-Knife.git
+```
+
+깃허브의 저장소 페이지에서 초록색 **Code** 버튼을 누르면 이 주소를 복사할 수 있습니다. 깃허브에 푸시할 때는 로그인이 필요한데, 윈도우용 깃은 처음 푸시할 때 브라우저로 깃허브에 로그인하는 창을 띄워 줍니다. 맥, 리눅스, Termux에서는 깃허브의 명령어 도구인 `gh`를 설치한 뒤 `gh auth login`으로 로그인해 두는 방법이 간편합니다.
+
+## 데이터의 버전 관리
+
+[지난 글](07-git-basics.qmd)의 처음에 말했듯이, 데이터 사이언스에서는 코드뿐 아니라 **데이터**도 버전 관리를 해야 합니다. 그렇다고 대단히 복잡한 이야기는 아닙니다. 데이터의 버전 관리도 결국 깃의 철학을 그대로 따릅니다. 깃의 원리도 겉으로는 복잡해 보이지만, 생각해 보면 버전을 기록하려면 당연히 해야 하는 일들이었습니다. 데이터의 버전 관리도 그 당연한 일을 데이터에 대해서도 하자는 것입니다.
+
+그런데 데이터의 버전 관리에서는 무엇을 기록해야 할까요? 언제 데이터셋 A가 들어왔고 그다음에 데이터셋 B가 들어왔다는, 데이터의 입출고만 기록하면 될까요? 그렇지 않습니다. 우리가 관리해야 하는 것은 **데이터 파이프라인**(data pipeline)의 버전입니다.
+
+데이터 파이프라인은 공장의 컨베이어 벨트와 비슷합니다. 음료수 공장에서는 빈 병이 컨베이어 벨트에 올라오면, 다음 구역에서 라벨을 붙이고, 그다음 구역에서 음료를 채우고, 마지막으로 뚜껑을 닫습니다. 이렇게 한 단계가 끝나면 다음 단계로 넘어가는 연속된 과정을 파이프라인이라고 합니다. 데이터 분석이나 머신러닝의 파이프라인은 보통 다음과 같습니다.
+
+1. **데이터 수집**: 원시 데이터를 가져옵니다.
+2. **전처리**: 결측치를 처리하고, 단위를 맞추는 등 원시 데이터를 1차로 가공합니다.
+3. **변수 만들기**(feature engineering): 모델에 쓰기 좋게 2차로 가공합니다.
+4. **학습**: 알고리즘을 적용해 모델을 훈련합니다.
+5. **평가**: 모델을 테스트하고 결과를 분석합니다.
+
+데이터 파이프라인의 버전을 관리한다는 것은, 마지막 결과물만이 아니라 **이 과정 전체**를 하나의 버전으로 묶어 스냅샷으로 남긴다는 뜻입니다. 어떤 모델이 어떤 데이터로, 어떤 전처리를 거쳐 학습되었는지를 확실히 알아야 같은 결과를 다시 만들 수 있으니까요. 복잡해 보이지만, 실제로 버전마다 기록하는 것은 세 가지입니다.
+
+1. **코드의 버전**: 분석에 쓴 소스 코드입니다. 지금까지 본 깃으로 관리합니다.
+2. **데이터의 버전**: 원시 데이터와 가공된 데이터입니다.
+3. **설정값과 메타데이터**: 학습률 같은 파라미터, 실험 환경, 모델의 성능 같은 정보입니다.
+
+문제는 2번입니다. 깃은 큰 파일을 다루는 데 약하고, 수십 GB짜리 데이터를 깃허브에 올릴 수도 없습니다. 그래서 데이터 사이언스에서는 **DVC**(Data Version Control) 같은 도구를 깃과 함께 씁니다.[^dvc] DVC는 무거운 데이터 파일 자체는 클라우드 저장소 같은 곳에 따로 두고, 깃 저장소에는 그 데이터의 **메타데이터**(데이터의 해시, 크기, 어디에 저장되어 있는지 같은 정보)를 담은 작은 파일만 커밋합니다. 데이터 파일의 내용이 바뀌면 해시가 바뀌니, 이 작은 파일만 봐도 어느 커밋에서 어떤 버전의 데이터를 썼는지 알 수 있습니다. 실제 데이터는 필요할 때만 가져옵니다.
+
+```bash
+dvc init                         # 저장소에서 DVC를 쓰기 시작합니다.
+dvc add data/raw.csv             # 데이터를 DVC로 추적합니다. data/raw.csv.dvc라는 작은 파일이 생깁니다.
+git add data/raw.csv.dvc data/.gitignore
+git commit -m "Track raw data with DVC"
+dvc push                         # 데이터 파일 자체는 미리 설정해 둔 원격 저장 공간에 올립니다.
+```
+
+이렇게 하면 코드를 고치고 파이프라인을 실행할 때마다 코드와 데이터의 상태가 하나의 커밋으로 함께 묶여 기록됩니다. 그러면 언제든 그 커밋으로 돌아가서 당시의 코드와 데이터로 만든 결과를 그대로 다시 얻을 수 있고, 프로젝트가 진행되며 바뀐 파라미터도 쉽게 확인할 수 있습니다. DVC의 자세한 사용법은 여기서 다루지 않지만, 이런 도구가 있다는 것과 그 원리가 깃과 같다는 것을 알아 두면 충분합니다.
+
+## 정리
+
+이번 글과 지난 글의 키워드는 재현 가능성이었습니다. 설명이 길었지만 한마디로 하면 **백업을 잘하자**는 이야기이고, 그 백업을 아주 손쉽고 편리하게 해 주는 도구가 깃입니다.
+
+- **HEAD**는 지금 내가 있는 곳을 가리킵니다. 각 커밋은 부모 커밋을 기억하고, `HEAD~1`, `HEAD~2`처럼 거슬러 올라갈 수 있습니다.
+- `git switch --detach`(예전의 `git checkout`)는 HEAD만 과거로 옮겨 둘러보는 것이고, `git reset --hard`는 브랜치 자체를 과거로 옮겨 이후의 커밋을 떼어 내는 것입니다. 실수는 `git reflog`로 되돌릴 수 있습니다.
+- **태그**는 고정된 이름표, **브랜치**는 커밋을 따라 움직이는 이름표이자 독립된 작업 공간입니다.
+- 갈라진 적이 없으면 **fast-forward** 병합, 양쪽에 새 커밋이 있으면 부모가 둘인 **병합 커밋**이 생깁니다. 같은 부분을 다르게 고쳤다면 **충돌**을 직접 해결하고 `git add`, `git commit`합니다.
+- `git remote`, `git push`, `git clone`, `git pull`로 원격 저장소와 주고받고, 깃허브에서는 **포크**와 **풀 리퀘스트**로 협업합니다.
+- 데이터 사이언스에서는 코드, 데이터, 설정값을 묶어 **데이터 파이프라인** 전체의 버전을 관리하고, 큰 데이터는 DVC 같은 도구로 관리합니다.
+
+보통 깃의 아이디어 자체(걍 백업이 다임 ㅋㅋ)는 이해가 되지만, 이런 저런 설명이 한 번에 잘 들어오지 않으실 가능성이 58000%입니다. 근데 이게 정상이에요. 절대 당황하지 마세요. 깃은 살짝 느낌이, 그냥 원리 이해한 후 명령어를 숙달, 그리고 그걸 사용해서 수행하는 느낌보다는, 그냥 일단 싸질러보고(?) 어 뭔가 이상한데? 오 되네? 이거 뭐지? 이러면서 배워가는 느낌이 있습니다. 그러니까 일단 로컬 레포지토리를 생성하는거부터 시작해서, 깃허브로 푸쉬하고, 다시 풀해와서 작업하다가 푸쉬하고, 이런 과정을 직접 친구들이나 모르는 사람들(실제로 깃허브에서는 모르는 사람들의 공개 레포에서도 이런 저런 교류가 많이 일어납니다.)과 상호작용하며 경험하시며 숙달하시는 게 백배는 빠릅니다.
+
+그런데 코드와 데이터를 모두 기록해 두어도, 그 코드를 **실행하는 환경**이 다르면 결과가 달라질 수 있습니다.  다음 글에서는 실행 환경을 고정하고 공유하는 법을 다룹니다.
+
+---
+
+### 연결되는 개념
+* $\leftarrow$ **이전 개념:** [3.7 깃으로 시작하는 버전 관리](07-git-basics.qmd)
+* $\rightarrow$ **다음 개념:** [3.9 가상 환경과 컨테이너](09-environments.qmd)
+
+[^progit]: S. Chacon, B. Straub, *Pro Git*, 2nd ed., Apress, 2014, 3.2절 "Basic Branching and Merging". <https://git-scm.com/book/en/v2>
+
+[^spoon]: GitHub, "octocat/Spoon-Knife". 깃허브 문서의 포크 연습용 저장소입니다. <https://github.com/octocat/Spoon-Knife>
+
+[^dvc]: Iterative, "DVC: Data Version Control". <https://dvc.org/>

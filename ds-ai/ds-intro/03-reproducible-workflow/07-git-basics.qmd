@@ -1,0 +1,575 @@
+---
+title: "3.7 깃으로 시작하는 버전 관리"
+subtitle: "3장 재현 가능한 작업 환경 · 스냅샷, 스테이징, 커밋"
+description: "버전 관리와 버전 번호의 관례, 중앙 집중형과 분산형 버전 관리 시스템의 차이를 살펴보고, 깃이 스냅샷과 해시로 이력을 기록하는 원리와 파일의 네 가지 상태, 세 가지 영역을 정리한 뒤, 운영체제별로 깃을 설치해 저장소를 만들고 커밋해 봅니다."
+date: "2026-11-04"
+categories: ["데이터 사이언스·AI", "데이터 사이언스 개론"]
+---
+
+## 들어가며
+
+[3.5](05-good-code.qmd)와 [3.6](06-code-style.qmd)에서는 다른 사람이, 그리고 미래의 내가 이해할 수 있는 코드를 쓰는 법을 이야기했습니다. 그리고 [3장 소개 글](index.qmd)에서 보았듯이 이해 가능성과 재현 가능성은 거의 한 몸입니다. 이번 글과 다음 글에서는 재현 가능성을 지키는 가장 기본적인 도구인 **버전 관리**(version control)를 다룹니다.
+
+코드를 고쳐 가며 버전을 나눠 관리하면, 다른 사람도 우리가 **어떤 과정을 거쳐** 이 결과에 이르렀는지를 시간 순서대로 따라올 수 있습니다. 그래서 버전 관리는 재현 가능성을 지키는 가장 좋은 방법입니다. 다만 데이터 사이언스에서 말하는 버전 관리는 코드와 실행 환경뿐 아니라 **데이터**의 버전까지 포함합니다. 코드를 그대로 두어도 데이터가 바뀌면 결과가 바뀌기 때문입니다. 그래도 데이터의 버전 관리는 결국 코드의 버전 관리 철학을 그대로 따르기 때문에, 먼저 전통적인 의미의 코드 버전 관리부터 시작하겠습니다. 데이터의 버전 관리는 [다음 글](08-git-branching.qmd)의 끝에서 다룹니다.
+
+깃의 명령어가 꽤 많이 나오지만 모두 외울 필요는 없습니다. 명령어는 필요할 때 찾아보거나 AI에게 물어보면 됩니다. 중요한 것은 **깃이 어떤 원리로 동작하는지**를 이해하는 것입니다.
+
+## 버전 관리
+
+버전 관리라는 개념 자체는 익숙하실 것입니다. 게임이나 앱은 계속 업데이트되고, 설정 화면에 가 보면 지금 쓰는 프로그램의 버전이 적혀 있습니다. 이 버전 번호는 프로그램이 발전해 온 과정을 체계적으로 관리하기 위한 구분 번호입니다. 그런데 번호를 매기는 것 자체보다 중요한 것은, 이 번호를 이름표 삼아 **그 시점의 프로그램 상태를 그대로 기록해 둔다**는 점입니다. 그래야 언제든 그 상태로 돌아가거나, 두 시점을 비교할 수 있습니다.
+
+버전 번호 이야기가 나온 김에 그 관례를 짧게 짚고 넘어가겠습니다. 버전 번호는 보통 `1.10.2`처럼 `x.y.z` 모양이고, 세 숫자를 차례로 **메이저**(major), **마이너**(minor), **패치**(patch)라고 부릅니다. 이렇게 번호를 붙이는 관례를 **유의적 버전**(semantic versioning)이라고 합니다.[^semver]
+
+- **메이저**는 기존 코드와 호환되지 않을 정도로 큰 변화가 있을 때 올립니다. 예를 들어 함수의 이름이나 사용법이 바뀌어서, 예전 버전에 맞춰 짠 코드가 더 이상 돌아가지 않는 경우입니다.
+- **마이너**는 호환성은 유지하면서 새로운 기능을 추가할 때 올립니다.
+- **패치**는 새 기능 없이 버그 수정, 보안 패치, 성능 개선 같은 것을 했을 때 올립니다.
+
+윈도우 업데이트나 게임에서 "마이너 업데이트", "패치" 같은 말을 보셨을 텐데, 바로 이 뜻입니다. 물론 프로그램마다 버전 번호를 제멋대로 붙이는 경우도 많습니다. 예를 들어 수식을 아름답게 조판해 주는 TeX은 버전이 올라갈 때마다 원주율 $\pi$의 자릿수를 하나씩 늘려서, 지금은 `3.141592653` 버전입니다.
+
+## 깃
+
+컴퓨터 공학이나 데이터 사이언스에 관심이 있다면 **깃**(Git)이나 **깃허브**(GitHub)라는 이름을 한 번쯤 들어 보셨을 것입니다. 깃은 리눅스를 만든 **리누스 토어발스**(Linus Torvalds)가 2005년에 리눅스 커널 개발을 위해 만든 버전 관리 도구입니다. 영국 영어의 속어로 git은 "바보, 멍청이"라는 뜻인데, 실제로 깃의 첫 설명 문서는 깃을 스스로 "멍청한 내용 추적기"(the stupid content tracker)라고 소개하고 있습니다.[^gitreadme] 바보 같을 만큼 단순한 도구이지만, 그 덕분에 우리가 바보 같은 실수를 해도 안전하게 되돌릴 수 있게 해 주는 도구라는 정도로 이해하면 되겠습니다.
+
+### 중앙 집중형과 분산형
+
+깃은 **분산 버전 관리 시스템**(distributed version control system)입니다. 버전 관리 시스템은 버전 관리를 위한 체계를 말하는데, 크게 깃 같은 **분산형**과 **중앙 집중형**으로 나뉩니다.
+
+**중앙 집중형** 버전 관리 시스템은 하나의 중앙 서버에 프로젝트의 모든 이력을 모아 두고, 개발자들이 그 서버에서 코드를 받아 고친 다음 다시 서버에 반영하는 방식입니다. 구조가 직관적이고 단순하며, 중앙 서버에서 권한을 세밀하게 관리할 수 있어서 보안이 중요한 프로젝트에서 많이 씁니다. 또 큰 파일을 다루기에 편리해서, 용량이 큰 그래픽이나 사운드 파일을 관리하는 게임 회사에서도 많이 씁니다. 하지만 하나의 서버에 의존하다 보니 서버가 다운되면 작업을 할 수 없고, 네트워크 연결이 꼭 필요하며, 서버가 고장 나면 프로젝트의 이력 전체가 날아갈 수도 있습니다.
+
+반면 **분산형** 버전 관리 시스템에서는 각 개발자의 컴퓨터에 프로젝트의 **모든 변경 이력**이 담긴 **저장소**(repository)가 통째로 복제되어 있습니다. 그래서 각자의 컴퓨터에서도 버전 관리를 할 수 있습니다. 비유하자면 중앙 집중형은 모든 개발자가 하나의 연구소에 모여 연구하는 것이고, 분산형은 개발자 각자가 독립된 연구소가 되어 따로 일한 다음, 그 결과를 중앙 연구소에 합치는 방식입니다.
+
+분산형에도 깃허브 같은 중앙 서버가 있지만, 그 역할이 다릅니다. 중앙 집중형에서는 서버 자체가 작업 공간이지만, 분산형에서 중앙 서버는 각자의 진행 상황을 **공유하는 저장 공간**에 가깝습니다. 함께 쓰는 클라우드 드라이브 정도로 생각하면 됩니다.
+
+이렇게 저장소가 내 컴퓨터에 있으니, 중앙 서버를 거치지 않고도 오프라인에서 작업할 수 있고 속도도 빠릅니다. 그리고 개발자들은 지금 버전에서 가지를 하나 쳐서 자기만의 작업 공간을 만드는데, 이것을 **브랜치**(branch)라고 합니다. 각자 브랜치에서 메인 코드는 건드리지 않은 채 자기 코드를 추가하고, 자기 코드를 메인 코드에 넣어 달라고 요청(**풀 리퀘스트**, pull request)합니다. 그러면 여러 사람이 요청한 브랜치 가운데 일부를 **병합**(merge)해서 새로운 버전을 만들고, 다시 가지를 치고 병합하기를 반복하며 프로젝트를 발전시킵니다. 또 모든 개발자의 컴퓨터에 전체 이력의 복사본이 있으니, 중앙 서버에 문제가 생겨도 프로젝트를 잃지 않고 복구할 수 있습니다.
+
+물론 공짜 점심은 없어서, 분산형은 중앙 집중형의 장점이었던 세밀한 권한 관리나 큰 파일 관리에는 약합니다. 그래서 분산형은 주로 오픈 소스 프로젝트나, 빠른 실험과 협업이 필요한 개발에 많이 쓰입니다.
+
+큰 파일 관리에 약하다면, 거대한 데이터를 다루는 데이터 사이언스와는 거리가 먼 것 아닐까요? 그렇지 않습니다. 데이터 사이언스의 작업은 파라미터를 바꾸고, 모델의 구조를 바꾸고, 다른 방식으로 변수를 만들어 보는 **실험**의 연속입니다. 그래서 브랜치로 메인 코드를 망치지 않고 마음껏 실험할 수 있다는 장점이 아주 큽니다. 여러 사람이 협업하거나 서로의 코드를 리뷰하며 로직을 비교하기에도 좋습니다. 큰 파일 문제는 데이터 버전 관리 도구로 보완하는데, 이것은 [다음 글](08-git-branching.qmd)에서 살펴보겠습니다. 깃 말고도 Mercurial, Bazaar 같은 분산형 시스템이 있지만, 지금은 깃이 사실상 표준이라 깃만 잘 써도 충분합니다.
+
+### 깃과 깃허브는 다릅니다
+
+깃은 [3.1](01-shell-intro.qmd)의 셸처럼 **명령어 기반**의 도구입니다. 터미널에 글자로 명령어를 입력해서 씁니다. (지금은 그래픽 화면으로 깃을 쓰는 프로그램도 많지만, 기본은 명령어입니다.) 그리고 깃은 완전히 무료인 오픈 소스라서, 학생부터 직장인, 교수까지 쓰는 사람이 아주 다양합니다.
+
+깃보다 깃허브를 먼저 접한 분들이 많아서 둘을 같은 것으로 생각하는 경우가 많은데, 둘은 다릅니다. **깃**은 내 컴퓨터에서 동작하는 버전 관리 **도구**이고, 인터넷 연결 없이도 잘 동작합니다. **깃허브**는 깃으로 만든 저장소를 올려 두고 다른 사람과 공유하는 **온라인 서비스**로, 위에서 말한 중앙 서버 역할을 합니다. 깃허브 말고도 GitLab, Bitbucket 같은 비슷한 서비스가 있습니다.
+
+깃으로 할 수 있는 일을 정리하면 다음과 같습니다.
+
+1. 특정 시점의 프로젝트 상태를 그대로 기록한 **스냅샷**(snapshot)을 저장할 수 있습니다.
+2. 언제든 과거의 스냅샷으로 **돌아갈** 수 있습니다. 코드를 망쳐도 걱정할 필요가 없습니다.
+3. 기존 코드에 영향을 주지 않는 **독립된 공간**(브랜치)에서 작업할 수 있습니다.
+4. 여러 브랜치를 하나로 **병합**할 수 있습니다.
+
+이 기능들을 잘 쓰면, 대학원생들의 유머를 그리는 만화 사이트 PhD Comics의 「파일 이름으로 쓴 이야기」(A Story Told in File Names)에 나오는 일을 겪지 않아도 됩니다.[^phd] 이 만화에는 데이터 파일과 분석 파일의 이름이 `test`, `re-test`, `re-re-test`를 거쳐 `huh??`, `WTF`로 변해 가는 과정이 그려져 있습니다. 파일 이름에 날짜와 `final`, `final2`, `진짜최종` 같은 말을 붙여 가며 버전을 관리해 본 적이 있다면 남 일 같지 않을 것입니다. 이런 바보 같은 버전 관리를 하지 않게 해 주는 것이 깃입니다.
+
+## 깃의 원리
+
+### 스냅샷과 해시
+
+깃은 추적하는 파일들의 **스냅샷**을 기록합니다. 바뀐 부분만 적어 두는 것이 아니라, 특정 시점의 파일 상태 **전체**를 사진 찍듯 저장합니다.
+
+예를 들어 첫 번째 버전이 파일 A, B, C로 이루어져 있었는데, 두 번째 버전에서 A와 C만 고쳤다고 해 보겠습니다. 그러면 깃은 고친 A와 C는 새로 저장하고, 바뀌지 않은 B는 다시 저장하는 대신 **첫 번째 버전의 B를 가리키는 참조**만 기록합니다. 이렇게 해서 매번 전체를 찍으면서도 저장 공간을 아낍니다.
+
+그리고 깃은 저장하는 모든 내용에 대해 **SHA-1**이라는 방식으로 **해시**(hash)를 계산합니다. 해시는 내용을 넣으면 고정된 길이의 숫자(16진수 40자리)를 돌려주는 함수인데, 내용이 글자 하나만 달라져도 완전히 다른 값이 나옵니다. 그래서 해시는 내용의 **지문**처럼 쓰입니다. 파일이 전송 중에 깨지거나 누군가 몰래 고쳤다면 지문이 달라지기 때문에 바로 알아챌 수 있습니다. 깃의 스냅샷들은 파일 이름이나 1, 2, 3 같은 번호가 아니라 이 지문으로 관리됩니다.
+
+깃이 설치되어 있다면 이 지문을 직접 계산해 볼 수 있습니다. `git hash-object`는 입력된 내용의 깃 해시를 계산해 주는 명령어입니다.
+
+```bash
+echo "Hello World" | git hash-object --stdin
+echo "Hello World" | git hash-object --stdin
+echo "Hello world" | git hash-object --stdin
+```
+
+```
+557db03de997c86a4a028e1ebd3a1ceb225be238
+557db03de997c86a4a028e1ebd3a1ceb225be238
+802992c4220de19a90767f3000a79a31b98d0df7
+```
+
+같은 내용은 언제 어디서 계산해도 같은 지문이 나오고, `W`를 소문자 `w`로 한 글자만 바꿔도 완전히 다른 지문이 나옵니다. (여러분의 컴퓨터에서 해 봐도 똑같은 값이 나옵니다.)
+
+### 파일의 네 가지 상태
+
+위에서 깃은 "추적하는 파일"의 스냅샷을 기록한다고 했습니다. 깃의 입장에서 파일은 크게 두 종류로 나뉩니다.
+
+- **추적하지 않는**(untracked) 파일: 깃이 무시하는 파일입니다. 스냅샷에 들어가지 않고, 아무리 고쳐도 깃이 신경 쓰지 않습니다. 사용자가 직접 추적하라고 하기 전까지는 계속 이 상태로 남습니다.
+- **추적하는**(tracked) 파일: 깃이 지켜보는 파일입니다. 이 파일들은 다시 세 가지 상태로 나뉩니다.
+    - **수정되지 않음**(unmodified): 마지막으로 기록한 스냅샷과 내용이 같은 파일입니다.
+    - **수정됨**(modified): 마지막 스냅샷 이후에 내용이 바뀌었지만, 아직 다음 스냅샷에 넣겠다고 표시하지 않은 파일입니다.
+    - **스테이지됨**(staged): 다음 스냅샷에 넣겠다고 **찜해 둔** 파일입니다. 아직 저장된 것은 아니라서, 최종적으로 기록하기 전에 다시 뺄 수도 있습니다.
+
+마지막으로 스냅샷을 기록하는 것을 **커밋**(commit)이라고 합니다. 커밋된 파일은 깃의 데이터베이스에 안전하게 저장되고, 다시 "수정되지 않음" 상태가 됩니다. 정리하면, 깃에서 파일은 다음과 같은 일생을 보냅니다.
+
+```{mermaid}
+%%| fig-cap: "깃에서 파일의 상태가 바뀌는 과정"
+stateDiagram-v2
+    direction LR
+    Untracked: 추적 안 함 (untracked)
+    Unmodified: 수정되지 않음 (unmodified)
+    Modified: 수정됨 (modified)
+    Staged: 스테이지됨 (staged)
+    Untracked --> Staged: git add
+    Unmodified --> Modified: 파일 수정
+    Modified --> Staged: git add
+    Staged --> Unmodified: git commit
+    Unmodified --> Untracked: git rm --cached
+```
+
+1. 새로 만든 파일은 **추적 안 함** 상태입니다.
+2. 이 파일을 다음 스냅샷에 넣겠다고 하면(`git add`) **스테이지됨** 상태가 됩니다.
+3. 커밋하면(`git commit`) 스냅샷에 기록되고 **수정되지 않음** 상태가 됩니다.
+4. 이 파일을 고치면 **수정됨** 상태가 되고, 다시 `git add`로 스테이지한 뒤 커밋하면 새 스냅샷에 기록됩니다.
+5. 이 과정이 계속 반복됩니다.
+
+### 세 가지 영역
+
+이 상태들은 깃 안에서 세 개의 **영역**으로 나뉘어 관리됩니다.
+
+- **작업 디렉터리**(working directory): 우리가 실제로 파일을 열고 고치는 폴더입니다. [3.1](01-shell-intro.qmd)에서 말한 그 작업 디렉터리입니다.
+- **스테이징 영역**(staging area): 스테이지된 파일들, 즉 다음 커밋에 들어갈 내용이 모여 있는 곳입니다. 인덱스(index)라고도 부릅니다.
+- **저장소**(repository): 지금까지의 모든 스냅샷이 저장된 곳입니다. 프로젝트 폴더 안의 숨겨진 `.git` 폴더가 바로 저장소입니다.
+
+```{mermaid}
+%%| fig-cap: "깃의 세 영역과 파일이 오가는 방향"
+sequenceDiagram
+    participant W as 작업 디렉터리
+    participant S as 스테이징 영역
+    participant R as 저장소 (.git)
+    R->>W: 과거의 스냅샷 꺼내기 (checkout / switch)
+    W->>S: 다음 커밋에 넣을 파일 고르기 (git add)
+    S->>R: 스냅샷으로 기록하기 (git commit)
+```
+
+깃에서의 작업은 대부분 아래쪽 두 화살표의 반복입니다. 작업 디렉터리에서 파일을 새로 만들거나 고친 다음, 그 가운데 다음 버전에 넣을 것을 골라 스테이징 영역으로 보내고(`git add`), 최종 확인 후 스테이징 영역의 내용을 새 스냅샷으로 저장소에 기록합니다(`git commit`). 맨 위의 화살표, 즉 저장소에서 과거의 스냅샷을 작업 디렉터리로 꺼내 오는 일은 처음 저장소를 받아 오거나 과거로 돌아갈 때 일어납니다. 이것은 [다음 글](08-git-branching.qmd)에서 다룹니다.
+
+## 깃 설치하고 설정하기
+
+이제 직접 깃을 써 보겠습니다. 먼저 운영체제에 맞게 깃을 설치합니다.
+
+::: {.panel-tabset group="os"}
+
+### Windows
+
+[3.1](01-shell-intro.qmd)에서 깃 배쉬를 설치했다면 깃도 이미 설치되어 있습니다. 깃 배쉬를 열고 다음을 입력해서 버전이 나오는지 확인합니다. 아직 설치하지 않았다면 3.1의 Windows 탭을 따라 [git-scm.com](https://git-scm.com/install/windows)에서 설치하면 됩니다.
+
+```bash
+git --version
+```
+
+WSL의 우분투에서 쓰려면 Linux 탭의 방법으로 우분투 안에 따로 설치합니다.
+
+### macOS
+
+터미널에서 다음을 입력합니다.
+
+```bash
+git --version
+```
+
+깃이 없다면 "명령어 라인 개발자 도구를 설치하겠습니까?"라는 창이 뜹니다. **설치**를 누르면 애플이 제공하는 개발 도구(Xcode Command Line Tools)와 함께 깃이 설치됩니다. Homebrew를 쓴다면 `brew install git`으로 최신 버전을 설치할 수도 있습니다.
+
+### Linux
+
+우분투라면 다음과 같이 설치합니다.
+
+```bash
+sudo apt update
+sudo apt install git
+git --version
+```
+
+### Android (Termux)
+
+```bash
+pkg install git
+git --version
+```
+
+:::
+
+설치가 끝났다면, 처음 한 번은 **내가 누구인지**를 깃에 알려 줘야 합니다. 깃은 커밋할 때마다 누가 기록했는지를 함께 남기기 때문입니다. 아래의 이름과 이메일을 자기 것으로 바꿔 입력하세요. 나중에 깃허브를 쓸 계획이라면 깃허브 계정의 이메일과 같은 것을 쓰는 것이 좋습니다. 마지막 줄은 새 저장소를 만들 때 기본 브랜치의 이름을 `main`으로 하라는 설정인데, 브랜치는 [다음 글](08-git-branching.qmd)에서 다룹니다.
+
+```bash
+git config --global user.name "ParkJongWoo"
+git config --global user.email "parkjongwoo@t1.com"
+git config --global init.defaultBranch main
+git config --global --list
+```
+
+```
+user.name=ParkJongWoo
+user.email=parkjongwoo@t1.com
+init.defaultbranch=main
+```
+
+`--global`은 이 컴퓨터의 내 계정 전체에 적용하라는 뜻입니다. 이 설정은 한 번만 하면 됩니다. (윈도우용 깃은 설치할 때 줄바꿈 문자를 자동으로 변환하는 `core.autocrlf` 같은 설정을 함께 해 두기 때문에, 목록에 몇 줄이 더 보일 수 있습니다.)
+
+## 저장소 만들기
+
+버전 관리를 하려면 먼저 **저장소**가 있어야 합니다. 저장소를 만드는 방법은 두 가지입니다. 새로 하나 만드는 것과, 이미 있는 저장소를 복제(**clone**)해 오는 것입니다. 프로젝트를 시작하는 사람이라면 첫 번째를, 이미 있는 프로젝트에 참여하는 사람이라면 두 번째를 쓰게 됩니다. 복제는 다음 글에서 다루고, 여기서는 새로 만들어 보겠습니다. `project`라는 폴더에 분석 코드 `analysis.py`와 라이선스 파일 `LICENSE`가 있다고 해 보겠습니다.
+
+```bash
+cd project
+ls
+git init
+```
+
+```
+LICENSE  analysis.py
+Initialized empty Git repository in /home/user/project/.git/
+```
+
+`git init`은 지금 폴더를 깃이 관리하는 저장소로 만듭니다. 이때 폴더 안에 숨겨진 `.git` 폴더가 생기는데, 앞에서 말한 스냅샷들이 모두 여기에 저장됩니다. 위의 세 영역 그림에서 저장소를 `.git`이라고 쓴 것도 이 때문입니다. 숨겨진 폴더이니 [3.4](04-bash-eda.qmd)의 `ls -a`로 봐야 보입니다.
+
+```bash
+ls -a
+```
+
+```
+.  ..  .git  LICENSE  analysis.py
+```
+
+이제 지금 저장소의 상태를 확인해 보겠습니다. `git status`는 작업 디렉터리에서 무엇이 새로 생기고 무엇이 바뀌었는지를 보여 주는, 깃에서 가장 자주 쓰는 명령어입니다.
+
+```bash
+git status
+```
+
+```
+On branch main
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	LICENSE
+	analysis.py
+
+nothing added to commit but untracked files present (use "git add" to track)
+```
+
+아직 아무것도 커밋하지 않았고(`No commits yet`), 두 파일 모두 **추적 안 함**(`Untracked files`) 상태입니다. 깃은 친절하게도 다음에 무엇을 하면 되는지도 알려 줍니다. 두 파일을 스테이지해 보겠습니다. `*.py`는 [3.4](04-bash-eda.qmd)의 와일드카드로, 확장자가 `.py`인 모든 파일을 뜻합니다.
+
+```bash
+git add *.py
+git add LICENSE
+git status
+```
+
+```
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+	new file:   LICENSE
+	new file:   analysis.py
+```
+
+두 파일이 `Changes to be committed`, 즉 **스테이지됨** 상태가 되었습니다. `LICENSE`는 다른 사람이 이 프로젝트를 어떤 조건으로 쓰거나 고칠 수 있는지 적어 두는 파일입니다. 깃허브 같은 곳에 코드를 공개한다면 MIT, Apache 2.0, GPL 같은 오픈 소스 라이선스를 하나 골라 함께 올려 두는 것이 좋습니다. 이제 커밋합니다.
+
+```bash
+git commit -m "Add analysis script and license"
+```
+
+```
+[main (root-commit) 4eeb2c8] Add analysis script and license
+ 2 files changed, 7 insertions(+)
+ create mode 100644 LICENSE
+ create mode 100644 analysis.py
+```
+
+`-m` 뒤에는 **커밋 메시지**를 적습니다. 커밋 메시지에는 이 커밋에서 **무엇을 왜 바꿨는지**를 짧게 적는 것이 관례입니다. 나중에 이력을 볼 때 이 메시지가 유일한 단서가 되니, `수정`이나 `asdf`처럼 성의 없이 쓰지 말고 몇 달 뒤의 내가 읽어도 알 수 있게 쓰는 것이 좋습니다. 출력 첫 줄의 대괄호 안에서 `main`은 브랜치 이름, `root-commit`은 이것이 첫 커밋이라는 뜻이고, 뒤의 7자리는 이 커밋의 해시 앞부분입니다. (해시에는 커밋한 시각과 작성자 정보가 들어가기 때문에, 여러분의 해시는 이 글과 다르게 나옵니다.) `1.0.0` 같은 버전 번호는 커밋 메시지 대신 다음 글에서 다룰 **태그**로 붙입니다.
+
+## 고치고, 확인하고, 다시 커밋하기
+
+커밋을 했으니 `git status`는 깨끗한 상태를 보여 줍니다.
+
+```bash
+git status
+```
+
+```
+On branch main
+nothing to commit, working tree clean
+```
+
+이제 새 파일을 만들고 기존 파일도 고쳐 보겠습니다. `touch`는 빈 파일을 만드는 명령어입니다.
+
+```bash
+touch solution.py
+echo 'print("analysis done")' >> analysis.py
+git status
+```
+
+```
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   analysis.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	solution.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+새로 만든 `solution.py`는 **추적 안 함**으로, 내용이 바뀐 `analysis.py`는 **수정됨**(`modified`)으로 나옵니다. 정확히 무엇이 바뀌었는지는 `git diff`로 볼 수 있습니다.
+
+```bash
+git diff
+```
+
+```
+diff --git a/analysis.py b/analysis.py
+index 7f40746..d524f55 100644
+--- a/analysis.py
++++ b/analysis.py
+@@ -2,3 +2,4 @@ import numpy as np
+ 
+ data = np.loadtxt("data.csv", delimiter=",")
+ print(data.mean())
++print("analysis done")
+```
+
+`+`로 시작하는 줄이 새로 추가된 줄입니다. (지운 줄은 `-`로 표시됩니다.) 두 파일을 모두 스테이지하고 커밋합니다.
+
+```bash
+git add solution.py analysis.py
+git commit -m "Print a message after analysis and add solution file"
+```
+
+```
+[main 418e508] Print a message after analysis and add solution file
+ 2 files changed, 1 insertion(+)
+ create mode 100644 solution.py
+```
+
+그런데 `touch`를 **이미 있는 파일**에 쓰면 어떻게 될까요? 이때 `touch`는 파일 내용은 그대로 두고, 파일의 **수정 시각**만 지금으로 바꿉니다.
+
+```bash
+touch analysis.py
+git status
+```
+
+```
+On branch main
+nothing to commit, working tree clean
+```
+
+수정 시각이 바뀌었는데도 깃은 아무것도 바뀌지 않았다고 합니다. 깃은 수정 시각이 아니라 **내용**을 기준으로 변화를 추적하기 때문입니다. 앞에서 본 해시가 내용으로 계산되었던 것을 떠올리면 자연스럽습니다. 내용이 같으면 지문도 같으니까요.
+
+## 파일 지우기: `rm`, `git rm`, `git rm --cached`
+
+이미 커밋한 파일을 지우고 싶을 때도 있습니다. 비슷해 보이는 세 가지 방법이 있는데, 깃이 받아들이는 방식이 서로 다릅니다.
+
+먼저 [3.4](04-bash-eda.qmd)의 `rm`으로 그냥 지워 보겠습니다.
+
+```bash
+rm solution.py
+git status
+```
+
+```
+On branch main
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	deleted:    solution.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+`rm`은 깃의 명령어가 아니라 배쉬의 명령어라서, 작업 디렉터리에서 파일을 지우기만 합니다. 깃은 이것을 "파일이 사라졌다"는 **변화**(`deleted`)로만 감지할 뿐, 아직 스테이지되지 않은(`Changes not staged for commit`) 상태로 둡니다. 다음 버전에서 이 파일을 정말 빼겠다는 뜻으로 받아들이지는 않는 것입니다. 실수로 지운 것이라면, 출력에 나온 대로 `git restore`로 마지막 커밋의 상태로 되살릴 수 있습니다.
+
+```bash
+git restore solution.py
+ls
+```
+
+```
+LICENSE  analysis.py  solution.py
+```
+
+파일을 지우면서 **다음 버전에서도 빼겠다**는 것까지 한 번에 하려면 `git rm`을 씁니다.
+
+```bash
+git rm solution.py
+git status
+```
+
+```
+rm 'solution.py'
+On branch main
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	deleted:    solution.py
+```
+
+이번에는 파일이 지워지는 동시에 그 삭제가 **스테이지**되었습니다(`Changes to be committed`). 이대로 커밋하면 다음 스냅샷에서 이 파일이 빠집니다. 여기서는 마음을 바꿔서, 스테이지를 취소하고 파일도 되살려 보겠습니다. `git restore --staged`는 스테이지를 취소하는 명령어입니다.
+
+```bash
+git restore --staged solution.py
+git restore solution.py
+git status
+```
+
+```
+On branch main
+nothing to commit, working tree clean
+```
+
+마지막으로, 파일은 내 컴퓨터에 그대로 두고 **깃의 추적에서만** 빼고 싶을 때는 `git rm --cached`를 씁니다.
+
+```bash
+git rm --cached solution.py
+git status
+```
+
+```
+rm 'solution.py'
+On branch main
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	deleted:    solution.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	solution.py
+```
+
+`solution.py`가 다음 커밋에서 삭제될 것으로 스테이지되었고, 동시에 **추적 안 함** 파일 목록에도 나타났습니다. 파일은 폴더에 그대로 남아 있지만, 이대로 커밋하면 이 파일은 더 이상 추적되지 않습니다. 비밀번호가 들어 있는 설정 파일이나 큰 데이터 파일을 실수로 커밋했을 때 이렇게 추적에서 뺍니다. 이것도 다시 원래대로 되돌려 두겠습니다.
+
+```bash
+git restore --staged solution.py
+git status
+```
+
+```
+On branch main
+nothing to commit, working tree clean
+```
+
+정리하면 다음과 같습니다.
+
+| 명령어 | 작업 디렉터리의 파일 | 깃이 받아들이는 방식 |
+|:--|:--|:--|
+| `rm 파일` | 지워짐 | 삭제를 감지만 함 (스테이지되지 않음) |
+| `git rm 파일` | 지워짐 | 삭제가 스테이지됨 → 커밋하면 다음 버전에서 빠짐 |
+| `git rm --cached 파일` | 남아 있음 | 추적에서 빠지는 것이 스테이지됨 → 커밋 후 추적 안 함 |
+| `git restore 파일` | 마지막 커밋의 내용으로 되돌아감 | 수정 사항을 버림 |
+| `git restore --staged 파일` | 그대로 | 스테이지만 취소함 |
+
+`git restore`로 되돌린 수정 사항은 깃에 기록된 적이 없어서 **다시 되살릴 수 없으니** 주의하세요. `git rm --cached`는 파일을 추적 안 함 상태로 아예 돌려놓는 반면, `git restore --staged`는 스테이지하기 **바로 전의 상태**로 돌려놓는다는 점도 다릅니다.
+
+## 추적하지 않을 파일 정하기: `.gitignore`
+
+데이터 사이언스 프로젝트에는 깃으로 추적하고 싶지 않은 파일이 많습니다. 수십 GB짜리 원본 데이터, [3.9](09-environments.qmd)에서 만들 가상 환경 폴더, 파이썬이 자동으로 만드는 `__pycache__` 폴더, 비밀번호가 든 설정 파일 같은 것들입니다. 이런 것들을 매번 `git status`에서 보는 것도 번거롭고, 실수로 `git add`하는 것도 위험합니다. 그래서 저장소 맨 위에 `.gitignore`라는 파일을 만들고, 무시할 파일의 이름이나 패턴을 한 줄에 하나씩 적어 둡니다.
+
+```{.text filename=".gitignore"}
+# 원본 데이터와 큰 결과물
+data/
+*.csv
+# 가상 환경과 파이썬 캐시
+venv/
+__pycache__/
+```
+
+```bash
+mkdir -p data && touch data/raw.csv results.csv
+git status
+```
+
+```
+On branch main
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	.gitignore
+
+nothing added to commit but untracked files present (use "git add" to track)
+```
+
+`data` 폴더와 `results.csv`는 목록에 나오지 않고, 새로 만든 `.gitignore`만 보입니다. `.gitignore` 자체는 다른 사람과 같은 규칙을 공유하기 위해 커밋해 두는 것이 보통입니다.
+
+```bash
+git add .gitignore
+git commit -m "Ignore data files and virtual environments"
+```
+
+```
+[main 5b23cda] Ignore data files and virtual environments
+ 1 file changed, 6 insertions(+)
+ create mode 100644 .gitignore
+```
+
+## 이력 보기: `git log`
+
+지금까지의 커밋 이력은 `git log`로 볼 수 있습니다.
+
+```bash
+git log
+```
+
+```
+commit 5b23cda841688c996d0179a474925669cc17bc0c (HEAD -> main)
+Author: ParkJongWoo <parkjongwoo@t1.com>
+Date:   Tue Nov 3 23:43:13 2026 +0000
+
+    Ignore data files and virtual environments
+
+commit 418e50898f393c35c2169212f921d598da093abd
+Author: ParkJongWoo <parkjongwoo@t1.com>
+Date:   Tue Nov 3 23:43:13 2026 +0000
+
+    Print a message after analysis and add solution file
+
+commit 4eeb2c8f3acdfb45ab9db60e44a78f42e963a878
+Author: ParkJongWoo <parkjongwoo@t1.com>
+Date:   Tue Nov 3 23:43:13 2026 +0000
+
+    Add analysis script and license
+```
+
+(이력이 길면 화면 아래에 `:`가 표시되며 멈추는데, 방향키나 스페이스바로 넘겨 보고 `q`를 누르면 빠져나옵니다.) `git log`는 이력을 **가장 최근 것부터** 거꾸로 보여 줍니다. 가장 최근의 변화를 먼저 확인하도록 되어 있는 것입니다. 각 커밋에는 다음 정보가 들어 있습니다.
+
+- `commit` 뒤의 40자리 16진수: 이 커밋의 **해시**입니다. 앞에서 말한 지문으로, 이 커밋을 가리키는 고유한 이름입니다. 맨 위 커밋 옆의 `(HEAD -> main)`은 다음 글에서 다룹니다.
+- `Author`: 누가 커밋했는지입니다. 여러 사람이 함께 일하는 것을 전제로 하기 때문에 이것도 함께 기록합니다. 앞에서 `git config`로 설정한 이름과 이메일이 여기에 들어갑니다.
+- `Date`: 언제 커밋했는지입니다.
+- 마지막 줄: `git commit -m`으로 적은 커밋 메시지입니다.
+
+이력이 길어지면 한 커밋을 한 줄로 줄여 보여 주는 `--oneline` 옵션이 편리합니다. 이때 해시는 앞의 7자리만 보여 줍니다. 해시 전체가 아니라 앞부분만 써도, 저장소 안에서 겹치지 않는 한 그 커밋을 가리킬 수 있습니다.
+
+```bash
+git log --oneline
+```
+
+```
+5b23cda (HEAD -> main) Ignore data files and virtual environments
+418e508 Print a message after analysis and add solution file
+4eeb2c8 Add analysis script and license
+```
+
+## 정리
+
+- **버전 관리**는 특정 시점의 상태를 그대로 기록해 두고 언제든 돌아가거나 비교할 수 있게 하는 것입니다. 버전 번호는 보통 메이저.마이너.패치 모양입니다.
+- **깃**은 분산 버전 관리 시스템으로, 각자의 컴퓨터에 전체 이력이 담긴 저장소를 둡니다. **깃허브**는 그 저장소를 공유하는 온라인 서비스입니다.
+- 깃은 파일 상태 전체의 **스냅샷**을 기록하고, 모든 내용을 **해시**라는 지문으로 관리합니다.
+- 파일은 **추적 안 함, 수정되지 않음, 수정됨, 스테이지됨** 상태를 오가고, **작업 디렉터리, 스테이징 영역, 저장소** 세 영역에서 관리됩니다.
+- `git init`으로 저장소를 만들고, `git status`로 상태를 확인하고, `git add`로 스테이지하고, `git commit`으로 기록합니다. `git diff`로 바뀐 내용을, `git log`로 이력을 봅니다.
+- `rm`, `git rm`, `git rm --cached`, `git restore`, `git restore --staged`는 비슷해 보이지만 깃이 받아들이는 방식이 다릅니다. 추적하지 않을 파일은 `.gitignore`에 적습니다.
+
+이력을 기록하는 법을 알았으니, 다음 글에서는 깃의 진짜 힘인 **과거로 돌아가기**, **브랜치**와 **병합**, 그리고 깃허브로 **협업**하는 법을 살펴보겠습니다.
+
+---
+
+### 연결되는 개념
+* $\leftarrow$ **이전 개념:** [3.6 파이썬 코드 스타일과 AI 시대의 코드 검토](06-code-style.qmd)
+* $\rightarrow$ **다음 개념:** [3.8 브랜치, 병합, 그리고 깃허브](08-git-branching.qmd)
+
+[^semver]: T. Preston-Werner, "Semantic Versioning 2.0.0". <https://semver.org/>
+
+[^gitreadme]: 깃 저장소의 첫 커밋(2005년 4월)에 들어 있는 `README` 파일의 첫 줄입니다. 같은 문서에는 이 이름을 "멍청한", "경멸스러운", "단순한" 등 기분에 따라 여러 뜻으로 읽을 수 있다는 농담도 적혀 있습니다.
+
+[^phd]: J. Cham, "A Story Told in File Names", *PhD Comics*, 2010. <https://phdcomics.com/comics/archive.php?comicid=1323>
