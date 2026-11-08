@@ -61,4 +61,4 @@ categories: ["데이터 사이언스·AI", "수리적 데이터 분석과 통계
 
 ### 연결되는 개념
 * $\leftarrow$ **이전 개념:** [1.5 일치성과 점근 정규성](../01-mle/05-asymptotics.qmd)
-* $\rightarrow$ **다음 개념:** 추후 작성 예정
+* $\rightarrow$ **다음 개념:** [2.1 공분산과 피어슨 상관계수](01-pearson.qmd)
