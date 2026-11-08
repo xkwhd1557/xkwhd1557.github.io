@@ -18,7 +18,7 @@ categories: ["데이터 사이언스·AI", "수리적 데이터 분석과 통계
 
 학생 50명에 대해 두 설명변수 $x_1$(예를 들어 공부 시간)과 $x_2$(예를 들어 수면 시간)를 기록하고, 반응변수 $y$를 측정했다고 합시다. 모형은
 
-$$Y_i = \beta_1 + \beta_2 x_{i1} + \beta_3 x_{i2} + \varepsilon_i, \qquad i = 1, \ldots, 50$$
+$$Y_i = \beta_0 + \beta_1 x_{i,1} + \beta_2 x_{i,2} + \varepsilon_i, \qquad i = 1, \ldots, 50$$
 
 입니다. 설명변수가 하나뿐이면 손으로도 최소제곱 직선을 구할 수 있지만, 설명변수가 여러 개면 식이 금방 복잡해집니다. 일반적인 공식이 있을까요?
 
@@ -30,9 +30,27 @@ $n$개의 식을 하나하나 쓰는 대신 **행렬**로 한꺼번에 쓰면 �
 
 ::: {.callout-note icon=false .callout-definition}
 ### 정의 3.2.1 (선형 모형의 행렬 표현)
-고정 설계의 선형 회귀 모형을
-$$Y = X\beta + \varepsilon, \qquad Y = \begin{pmatrix} Y_1 \\ \vdots \\ Y_n \end{pmatrix},\quad X = \begin{pmatrix} x_1^\top \\ \vdots \\ x_n^\top \end{pmatrix} \in \mathbb{R}^{n \times d},\quad \varepsilon = \begin{pmatrix} \varepsilon_1 \\ \vdots \\ \varepsilon_n \end{pmatrix}$$
-로 씁니다. $X$를 **계획행렬**(design matrix)이라고 하며, 절편이 있으면 첫 열은 모든 성분이 $1$인 벡터 $\mathbf{1}_n$입니다. 이 장에서는 별다른 말이 없으면 다음을 가정합니다.
+설명변수가 $d - 1$개인 고정 설계의 선형 회귀 모형에서, $i$번째 관측값은
+$$Y_i = \beta_0 + \beta_1 x_{i,1} + \beta_2 x_{i,2} + \cdots + \beta_{d-1} x_{i,d-1} + \varepsilon_i, \qquad i = 1, \ldots, n$$
+을 만족합니다. 여기서 $x_{i,j}$는 $i$번째 관측값의 $j$번째 설명변수 값입니다. 설명변수 값들을 관측값 순서대로 한 행씩, 맨 앞에 $1$을 붙여 쌓은 행렬
+$$X := \begin{pmatrix}
+1 & x_{1,1} & x_{1,2} & \cdots & x_{1,d-1} \\
+1 & x_{2,1} & x_{2,2} & \cdots & x_{2,d-1} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+1 & x_{n,1} & x_{n,2} & \cdots & x_{n,d-1}
+\end{pmatrix} \in \mathbb{R}^{n \times d}$$
+를 **계획행렬**(design matrix)이라고 합니다. $i$번째 행은 $i$번째 관측값 하나에 대한 정보이고, 첫 열은 절편 $\beta_0$에 곱해지는, 모든 성분이 $1$인 벡터 $\mathbf{1}_n$이며, $(j+1)$번째 열은 $j$번째 설명변수를 $n$번 관측한 값들입니다. 그러면 $n$개의 식을 한꺼번에
+$$\underbrace{\begin{pmatrix} Y_1 \\ Y_2 \\ \vdots \\ Y_n \end{pmatrix}}_{Y}
+= \underbrace{\begin{pmatrix}
+1 & x_{1,1} & \cdots & x_{1,d-1} \\
+1 & x_{2,1} & \cdots & x_{2,d-1} \\
+\vdots & \vdots & \ddots & \vdots \\
+1 & x_{n,1} & \cdots & x_{n,d-1}
+\end{pmatrix}}_{X}
+\underbrace{\begin{pmatrix} \beta_0 \\ \beta_1 \\ \vdots \\ \beta_{d-1} \end{pmatrix}}_{\beta}
++ \underbrace{\begin{pmatrix} \varepsilon_1 \\ \varepsilon_2 \\ \vdots \\ \varepsilon_n \end{pmatrix}}_{\varepsilon},
+\qquad \text{즉} \qquad Y = X\beta + \varepsilon$$
+로 쓸 수 있습니다. 행렬곱 $X\beta$의 $i$번째 성분이 정확히 $\beta_0 + \beta_1 x_{i,1} + \cdots + \beta_{d-1} x_{i,d-1}$이기 때문입니다. 이 장에서는 별다른 말이 없으면 다음을 가정합니다.
 $$\mathbb{E}[\varepsilon] = 0_n, \qquad \mathrm{Cov}(\varepsilon) = \sigma^2 I_n, \qquad \mathrm{rank}(X) = d \le n$$
 :::
 
@@ -78,7 +96,7 @@ $\mathrm{rank}(X) < d$이면 서로 다른 $\beta$와 $\beta + v$가 데이터�
 
 ::: {.callout-important icon=false .callout-satz}
 ### 따름정리 3.2.4 (단순 선형 회귀)
-모형 $Y_i = \beta_0 + \beta_1 x_i + \varepsilon_i$에서 $x_i$들이 모두 같지는 않으면, 최소제곱 추정량은
+$d = 2$인 모형 $Y_i = \beta_0 + \beta_1 x_i + \varepsilon_i$에서 $x_i$들이 모두 같지는 않으면, 최소제곱 추정량은
 $$\hat{\beta}_1 = \frac{\sum_{i=1}^n (x_i - \bar{x})(Y_i - \bar{Y})}{\sum_{i=1}^n (x_i - \bar{x})^2} = r\,\frac{s_Y}{s_x}, \qquad \hat{\beta}_0 = \bar{Y} - \hat{\beta}_1\bar{x}$$
 입니다. 여기서 $r$은 표본 상관계수, $s_x$와 $s_Y$는 표본 표준편차입니다.
 :::
@@ -94,7 +112,7 @@ $$\sum_i (x_i - \bar{x})\big((Y_i - \bar{Y}) - \beta_1(x_i - \bar{x})\big) = 0$$
 
 ### 해결
 
-참된 회귀계수가 $\beta = (1, 2, -0.5)$이고 오차의 표준편차가 $3$인 모형에서 데이터를 만들어 정규방정식을 풀어 보겠습니다. 비교를 위해 NumPy의 최소제곱 함수 `lstsq`의 결과도 함께 출력하고, 계획행렬의 계수도 확인합니다.
+참된 회귀계수가 $(\beta_0, \beta_1, \beta_2) = (1, 2, -0.5)$이고 오차의 표준편차가 $3$인 모형에서 데이터를 만들어 정규방정식을 풀어 보겠습니다. 비교를 위해 NumPy의 최소제곱 함수 `lstsq`의 결과도 함께 출력하고, 계획행렬의 계수도 확인합니다.
 
 ```python
 import numpy as np
@@ -123,7 +141,7 @@ lstsq의 해:      [ 1.437   2.0039 -0.4457]
 열을 하나 더한 rank = 3 (열의 개수 4)
 ```
 
-두 방법의 결과가 같고, 기울기 추정값 $2.004$와 $-0.446$은 참값 $2$와 $-0.5$에 가깝습니다. 절편 $1.437$은 참값 $1$에서 조금 더 벗어나 있는데, 그 이유는 문제 2에서 보겠습니다. 마지막 줄은 $x_1 + x_2$를 넷째 열로 더하면 열이 4개인데 계수는 3이 되어, 정리 3.2.3에 의해 회귀계수를 식별할 수 없다는 것을 보여 줍니다. 실제로 데이터를 분석할 때는 이렇게 계획행렬의 계수를 먼저 확인하는 것이 좋습니다.
+두 방법의 결과가 같고, 기울기 추정값 $2.004$와 $-0.446$은 참값 $2$와 $-0.5$에 가깝습니다. 절편 $1.437$은 참값 $1$에서 조금 더 벗어나 있는데, 그 이유는 문제 2에서 보겠습니다. 마지막 줄은 $x_1 + x_2$를 넷째 열로 더하면 열이 4개인데 계수(rank)는 3이 되어, 정리 3.2.3에 의해 회귀계수를 식별할 수 없다는 것을 보여 줍니다. 실제로 데이터를 분석할 때는 이렇게 계획행렬의 계수를 먼저 확인하는 것이 좋습니다.
 
 ## 문제 2: 최소제곱 추정량은 얼마나 정확한가
 
@@ -196,7 +214,7 @@ beta_hat의 표준편차:  [1.4182 0.1513 0.2086]
 2. 대칭행렬 $M_1$, $M_2$에 대해 $M_2 - M_1$이 양의 준정부호이면 $M_1 \le M_2$로 씁니다. 이를 **뢰브너 순서**(Löwner order)라고 합니다.
 :::
 
-$M_1 \le M_2$는 모든 벡터 $c$에 대해 $c^\top M_1 c \le c^\top M_2 c$라는 뜻입니다. 공분산 행렬에 적용하면, $\mathrm{Cov}(\hat{\beta}) \le \mathrm{Cov}(\tilde{\beta})$는 **회귀계수의 어떤 일차결합 $c^\top\beta$를 추정하든** $c^\top\hat{\beta}$의 분산이 $c^\top\tilde{\beta}$의 분산보다 작거나 같다는 뜻입니다. 각 계수 하나하나는 물론이고, 예측값 $x^\top\beta$에 대해서도 마찬가지입니다.
+$M_1 \le M_2$는 모든 벡터 $c$에 대해 $c^\top M_1 c \le c^\top M_2 c$라는 뜻입니다. 공분산 행렬에 적용하면, $\mathrm{Cov}(\hat{\beta}) \le \mathrm{Cov}(\tilde{\beta})$는 **회귀계수의 어떤 일차결합 $c^\top\beta$를 추정하든** $c^\top\hat{\beta}$의 분산이 $c^\top\tilde{\beta}$의 분산보다 작거나 같다는 뜻입니다. 각 계수 하나하나는 물론이고, 새로운 설명변수 값 $x = (x_1, \ldots, x_{d-1})$에서의 예측값 $\beta_0 + \beta_1 x_1 + \cdots + \beta_{d-1} x_{d-1}$에 대해서도 마찬가지입니다.
 
 ::: {.callout-important icon=false .callout-satz}
 ### 정리 3.2.7 (가우스-마르코프 정리)
@@ -265,7 +283,7 @@ $$\hat{\beta}_{\mathrm{ML}} = (X^\top X)^{-1}X^\top Y, \qquad \hat{\sigma}^2_{\m
 
 ::: {.callout-tip collapse="false" icon=false .callout-beweis}
 ### 증명
-$Y_i$들은 독립이고 $Y_i \sim N(x_i^\top\beta, \sigma^2)$이므로, 로그우도는
+$Y_i$들은 독립이고 $Y_i \sim N\big((X\beta)_i, \sigma^2\big)$이므로, 로그우도는
 $$\ell(\beta, \sigma^2) = -\frac{n}{2}\log(2\pi\sigma^2) - \frac{1}{2\sigma^2}\lVert Y - X\beta \rVert^2$$
 입니다. $\sigma^2$를 어떤 값으로 고정하든, $\ell$을 $\beta$에 대해 최대화하는 것은 $\lVert Y - X\beta \rVert^2$를 최소화하는 것과 같으므로 정리 3.2.2에 의해 $\hat{\beta}_{\mathrm{ML}} = \hat{\beta}$입니다. 이를 넣은 $\ell(\hat{\beta}, \sigma^2)$를 $\sigma^2$에 대해 최대화하는 것은 [1.1절](../01-mle/01-likelihood.qmd)의 정규분포 예제와 같은 계산이고, $\hat{\sigma}^2_{\mathrm{ML}} = \lVert Y - X\hat{\beta} \rVert^2/n$을 얻습니다. $\square$
 :::

@@ -1,0 +1,8 @@
+---
+title: "통계적 모델링(Statistical Modelling)"
+subtitle: "이 과목은 무엇을 다루는가"
+date: "2026-11-08"
+categories: ["확률과 통계", "통계적 모델링"]
+---
+
+이 과목의 소개 글은 준비 중입니다.

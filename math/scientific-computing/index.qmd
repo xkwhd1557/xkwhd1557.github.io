@@ -1,0 +1,8 @@
+---
+title: "과학계산(Scientific Computing)"
+subtitle: "이 과목은 무엇을 다루는가"
+date: "2026-11-08"
+categories: ["수학", "과학계산"]
+---
+
+이 과목의 소개 글은 준비 중입니다.

@@ -161,10 +161,14 @@ featured: true
 
 [수학 심화]{.rm-mini}
 [함수해석학](../math/functional-analysis/index.qmd){.rm-chip .c-math}
+[위상벡터공간론](../math/topological-vector-spaces/index.qmd){.rm-chip .c-math}
 [편미분방정식](../math/pde-advanced/index.qmd){.rm-chip .c-math}
 [다양체 해석학](../math/manifold-analysis/index.qmd){.rm-chip .c-math}
 [RKHS 이론](../math/rkhs/index.qmd){.rm-chip .c-math}
 [미분기하학](../math/differential-geometry/index.qmd){.rm-chip .c-math}
+[수치적 상미분방정식](../math/numerical-ode/index.qmd){.rm-chip .c-math}
+[과학계산](../math/scientific-computing/index.qmd){.rm-chip .c-math}
+[역문제](../math/inverse-problems/index.qmd){.rm-chip .c-math}
 :::
 
 ::: {.rm-branch}
@@ -184,6 +188,13 @@ featured: true
 [가우시안 프로세스](../stats/gaussian-processes/index.qmd){.rm-chip .c-stats}
 [디퓨전 모델](../stats/diffusion-models/index.qmd){.rm-chip .c-stats}
 [비유클리드 통계학](../stats/non-euclidean-stats/index.qmd){.rm-chip .c-stats}
+[비모수 통계학](../stats/nonparametric-stats/index.qmd){.rm-chip .c-stats}
+[위상수학적 데이터 분석](../stats/topological-data-analysis/index.qmd){.rm-chip .c-stats}
+[통계적 학습 이론](../stats/statistical-learning-theory/index.qmd){.rm-chip .c-stats}
+[통계적 역문제](../stats/statistical-inverse-problems/index.qmd){.rm-chip .c-stats}
+[통계적 모델링](../stats/statistical-modelling/index.qmd){.rm-chip .c-stats}
+[점근 통계학](../stats/asymptotic-statistics/index.qmd){.rm-chip .c-stats}
+[시계열 분석의 통계적 기초](../stats/time-series-foundations/index.qmd){.rm-chip .c-stats}
 
 [직관이 필요할 때 곁들이기]{.rm-mini} [선택]{.rm-lv .opt}
 [기초 통계학](../stats/basic-stats/index.qmd){.rm-chip .c-stats}
@@ -281,6 +292,13 @@ featured: true
 [가우시안 프로세스](../stats/gaussian-processes/index.qmd){.rm-chip .c-stats}
 [디퓨전 모델](../stats/diffusion-models/index.qmd){.rm-chip .c-stats}
 [비유클리드 통계학](../stats/non-euclidean-stats/index.qmd){.rm-chip .c-stats}
+[비모수 통계학](../stats/nonparametric-stats/index.qmd){.rm-chip .c-stats}
+[위상수학적 데이터 분석](../stats/topological-data-analysis/index.qmd){.rm-chip .c-stats}
+[통계적 학습 이론](../stats/statistical-learning-theory/index.qmd){.rm-chip .c-stats}
+[통계적 역문제](../stats/statistical-inverse-problems/index.qmd){.rm-chip .c-stats}
+[통계적 모델링](../stats/statistical-modelling/index.qmd){.rm-chip .c-stats}
+[점근 통계학](../stats/asymptotic-statistics/index.qmd){.rm-chip .c-stats}
+[시계열 분석의 통계적 기초](../stats/time-series-foundations/index.qmd){.rm-chip .c-stats}
 [데이터 사이언스의 통계적 기초](../ds-ai/statistical-foundations/index.qmd){.rm-chip .c-ds}
 
 [이 분야의 심화된 이야기는 채워지기까지 시간이 꽤 걸릴 예정입니다.]{.rm-note}

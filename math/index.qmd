@@ -102,6 +102,10 @@ sidebar: false
 [![함수해석학](../images/placeholder.svg)](functional-analysis/index.qmd)
 :::
 ::: {.subject-card}
+### [위상벡터공간론](topological-vector-spaces/index.qmd)
+[![위상벡터공간론](../images/placeholder.svg)](topological-vector-spaces/index.qmd)
+:::
+::: {.subject-card}
 ### [편미분방정식](pde-advanced/index.qmd)
 [![편미분방정식](../images/placeholder.svg)](pde-advanced/index.qmd)
 :::
@@ -116,5 +120,17 @@ sidebar: false
 ::: {.subject-card}
 ### [미분기하학](differential-geometry/index.qmd)
 [![미분기하학](../images/placeholder.svg)](differential-geometry/index.qmd)
+:::
+::: {.subject-card}
+### [수치적 상미분방정식](numerical-ode/index.qmd)
+[![수치적 상미분방정식](../images/placeholder.svg)](numerical-ode/index.qmd)
+:::
+::: {.subject-card}
+### [과학계산](scientific-computing/index.qmd)
+[![과학계산](../images/placeholder.svg)](scientific-computing/index.qmd)
+:::
+::: {.subject-card}
+### [역문제](inverse-problems/index.qmd)
+[![역문제](../images/placeholder.svg)](inverse-problems/index.qmd)
 :::
 :::

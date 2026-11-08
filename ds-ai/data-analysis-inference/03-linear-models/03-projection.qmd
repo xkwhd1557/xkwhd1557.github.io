@@ -20,11 +20,11 @@ categories: ["데이터 사이언스·AI", "수리적 데이터 분석과 통계
 
 ### 접근 아이디어
 
-계획행렬 $X$의 열들을 $X_{\cdot 1}, \ldots, X_{\cdot d}$라 하면, 어떤 $\beta$에 대해서든 $X\beta = \beta_1 X_{\cdot 1} + \cdots + \beta_d X_{\cdot d}$는 열들의 일차결합입니다. 따라서 $\beta$를 바꿔 가며 만들 수 있는 모든 "평균 벡터"의 모임은 $X$의 **열공간**
+계획행렬 $X$의 열들을 $X_{\cdot 0} = \mathbf{1}_n, X_{\cdot 1}, \ldots, X_{\cdot (d-1)}$라 하면, 어떤 $\beta$에 대해서든 $X\beta = \beta_0 \mathbf{1}_n + \beta_1 X_{\cdot 1} + \cdots + \beta_{d-1} X_{\cdot (d-1)}$는 열들의 일차결합입니다. 따라서 $\beta$를 바꿔 가며 만들 수 있는 모든 "평균 벡터"의 모임은 $X$의 **열공간**
 
 $$\mathrm{col}(X) := \{X\beta : \beta \in \mathbb{R}^d\} \subset \mathbb{R}^n$$
 
-이고, $\mathrm{rank}(X) = d$이면 이는 $d$차원 부분공간입니다. 최소제곱법은 $\lVert Y - X\beta \rVert$를 최소화하므로, **열공간 위의 점들 가운데 $Y$에 가장 가까운 점**을 찾는 것입니다. 3차원 공간의 점에서 바닥 평면까지 가장 가까운 점은 점에서 바닥으로 수직으로 내린 발이듯이, 그 점은 $Y$를 열공간에 **직교사영**한 점일 것입니다.
+이고, $\mathrm{rank}(X) = d$이면 이는 $d$차원 부분공간입니다. 절편 열 덕분에 이 부분공간에는 언제나 상수 벡터 $c\,\mathbf{1}_n$들이 들어 있습니다. 최소제곱법은 $\lVert Y - X\beta \rVert$를 최소화하므로, **열공간 위의 점들 가운데 $Y$에 가장 가까운 점**을 찾는 것입니다. 3차원 공간의 점에서 바닥 평면까지 가장 가까운 점은 점에서 바닥으로 수직으로 내린 발이듯이, 그 점은 $Y$를 열공간에 **직교사영**한 점일 것입니다. [3.1절](01-regression-function.qmd)에서 확률변수의 공간 $L^2$에서 본 사영의 그림이, 이번에는 데이터 벡터의 공간 $\mathbb{R}^n$에서 나타나는 것입니다.
 
 ![](figures/projection.png){fig-alt="최소제곱법의 기하학을 나타낸 그림. 비스듬한 평면이 col(X)를 나타내고, 평면 위쪽의 점 Y에서 평면으로 수직선이 내려와 평면 위의 점 Ŷ = Xβ̂에 닿는다. Ŷ에서 Y로 향하는 수직선은 잔차 ε̂ = (I - H)Y이고, 원점에서 Ŷ까지의 화살표는 평면 안에 있다. 잔차와 평면이 만나는 곳에 직각 표시가 있다." width=70%}
 
@@ -95,7 +95,7 @@ H가 대칭인가: True  H^2 = H인가: True  tr(H) = 3.0
 |잔차의 합| = 2.3e-13,  X^T(잔차)의 성분 중 절댓값의 최대 = 9.2e-13
 ```
 
-잔차의 합과 $X^\top\hat{\varepsilon}$은 컴퓨터의 반올림 오차 수준에서 $0$입니다. 잔차의 합이 $0$인 것은 절편 열 $\mathbf{1}_n$이 $X$에 들어 있어서 $\mathbf{1}_n^\top\hat{\varepsilon} = 0$이기 때문입니다.
+잔차의 합과 $X^\top\hat{\varepsilon}$은 컴퓨터의 반올림 오차 수준에서 $0$입니다. 잔차의 합이 $0$인 것은 절편 열 $\mathbf{1}_n$이 $X$의 첫 열이어서 $\mathbf{1}_n^\top\hat{\varepsilon} = 0$이기 때문입니다.
 
 ## 문제 2: 오차의 분산은 어떻게 추정하는가
 
@@ -115,7 +115,7 @@ H가 대칭인가: True  H^2 = H인가: True  tr(H) = 3.0
 2. $\mathrm{Cov}(\hat{\varepsilon}) = \sigma^2(I_n - H)$입니다.
 3. $\mathrm{RSS} = Y^\top(I_n - H)Y = \varepsilon^\top(I_n - H)\varepsilon$입니다.
 4. $\mathbb{E}[\mathrm{RSS}] = \sigma^2(n - d)$입니다.
-5. $X$에 절편 열이 있으면 $\sum_{i=1}^n \hat{\varepsilon}_i = 0$이고, 따라서 적합값의 평균은 $\bar{Y}$와 같습니다.
+5. $\sum_{i=1}^n \hat{\varepsilon}_i = 0$이고, 따라서 적합값의 평균은 $\bar{Y}$와 같습니다.
 :::
 
 ::: {.callout-tip collapse="false" icon=false .callout-beweis}
@@ -126,14 +126,14 @@ H가 대칭인가: True  H^2 = H인가: True  tr(H) = 3.0
 4. 실수는 자기 자신의 대각합이므로
 $$\mathbb{E}[\varepsilon^\top(I_n - H)\varepsilon] = \mathbb{E}\big[\mathrm{tr}\big((I_n - H)\varepsilon\varepsilon^\top\big)\big] = \mathrm{tr}\big((I_n - H)\,\sigma^2 I_n\big) = \sigma^2(n - d)$$
 입니다. 마지막 등호에는 정리 3.3.2의 $\mathrm{tr}(H) = d$를 썼습니다.
-5. 절편 열이 있으면 $\mathbf{1}_n \in \mathrm{col}(X)$이고, 정리 3.3.2의 4에 의해 $\mathbf{1}_n^\top\hat{\varepsilon} = 0$입니다. 그러면 $\sum_i \hat{Y}_i = \sum_i Y_i - \sum_i \hat{\varepsilon}_i = \sum_i Y_i$입니다. $\square$
+5. 절편 열이 $X$의 첫 열이므로 $\mathbf{1}_n \in \mathrm{col}(X)$이고, 정리 3.3.2의 4에 의해 $\mathbf{1}_n^\top\hat{\varepsilon} = 0$입니다. 그러면 $\sum_i \hat{Y}_i = \sum_i Y_i - \sum_i \hat{\varepsilon}_i = \sum_i Y_i$입니다. $\square$
 :::
 
 성질 4로부터 오차 분산의 불편추정량을 바로 얻습니다.
 
 $$\hat{\sigma}^2 := \frac{\mathrm{RSS}}{n - d}, \qquad \mathbb{E}[\hat{\sigma}^2] = \sigma^2$$
 
-왜 $n$이 아니라 $n - d$일까요? 기하학적으로 보면 답이 분명합니다. 오차 $\varepsilon$은 $\mathbb{R}^n$의 $n$개 방향으로 모두 흩어질 수 있지만, 잔차 $\hat{\varepsilon} = (I_n - H)\varepsilon$은 열공간의 직교여공간, 즉 $(n - d)$차원 부분공간에 **갇혀** 있습니다. 오차 가운데 열공간 방향의 $d$개 성분은 적합값 $\hat{Y}$가 "흡수"해 버려서 잔차에 남지 않습니다. 그래서 잔차의 제곱합은 오차의 제곱합보다 평균적으로 작고, 남은 방향의 개수 $n - d$로 나눠야 공정한 평균이 됩니다. 이 $n - d$를 잔차의 **자유도**(degrees of freedom)라고 합니다. [1.1절](../01-mle/01-likelihood.qmd)에서 표본분산을 $n - 1$로 나누던 것은 절편 하나뿐인 모형($d = 1$)의 특수한 경우입니다.
+왜 $n$이 아니라 $n - d$일까요? 기하학적으로 보면 답이 분명합니다. 오차 $\varepsilon$은 $\mathbb{R}^n$의 $n$개 방향으로 모두 흩어질 수 있지만, 잔차 $\hat{\varepsilon} = (I_n - H)\varepsilon$은 열공간의 직교여공간, 즉 $(n - d)$차원 부분공간에 **갇혀** 있습니다. 오차 가운데 열공간 방향의 $d$개 성분은 적합값 $\hat{Y}$가 "흡수"해 버려서 잔차에 남지 않습니다. 그래서 잔차의 제곱합은 오차의 제곱합보다 평균적으로 작고, 남은 방향의 개수 $n - d$로 나눠야 공정한 평균이 됩니다. 이 $n - d$를 잔차의 **자유도**(degrees of freedom)라고 합니다. [1.1절](../01-mle/01-likelihood.qmd)에서 표본분산을 $n - 1$로 나누던 것은 설명변수 없이 절편 하나뿐인 모형($d = 1$)의 특수한 경우입니다.
 
 ### 해결
 

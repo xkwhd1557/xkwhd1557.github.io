@@ -69,6 +69,8 @@ website:
           - text: "심화 (Advanced)"
           - text: "함수해석학"
             href: math/functional-analysis/index.qmd
+          - text: "위상벡터공간론"
+            href: math/topological-vector-spaces/index.qmd
           - text: "편미분방정식"
             href: math/pde-advanced/index.qmd
           - text: "다양체 해석학"
@@ -77,6 +79,12 @@ website:
             href: math/rkhs/index.qmd
           - text: "미분기하학"
             href: math/differential-geometry/index.qmd
+          - text: "수치적 상미분방정식"
+            href: math/numerical-ode/index.qmd
+          - text: "과학계산"
+            href: math/scientific-computing/index.qmd
+          - text: "역문제"
+            href: math/inverse-problems/index.qmd
       - text: "확률과 통계"
         menu:
           - text: "📋 확률과 통계 전체 과목 보기"
@@ -117,6 +125,20 @@ website:
             href: stats/non-euclidean-stats/index.qmd
           - text: "확률과정의 통계추론"
             href: stats/stats-for-stoch-proc/index.qmd
+          - text: "비모수 통계학"
+            href: stats/nonparametric-stats/index.qmd
+          - text: "위상수학적 데이터 분석"
+            href: stats/topological-data-analysis/index.qmd
+          - text: "통계적 학습 이론"
+            href: stats/statistical-learning-theory/index.qmd
+          - text: "통계적 역문제"
+            href: stats/statistical-inverse-problems/index.qmd
+          - text: "통계적 모델링"
+            href: stats/statistical-modelling/index.qmd
+          - text: "점근 통계학"
+            href: stats/asymptotic-statistics/index.qmd
+          - text: "시계열 분석의 통계적 기초"
+            href: stats/time-series-foundations/index.qmd
       - text: "컴퓨터 공학"
         menu:
           - text: "📋 컴퓨터 공학 전체 과목 보기"
@@ -408,6 +430,14 @@ website:
       contents:
         - href: math/functional-analysis/index.qmd
           contents: "math/functional-analysis/**"
+    - id: "math-topological-vector-spaces"
+      title: "위상벡터공간론"
+      style: "docked"
+      collapse-level: 4
+      search: true
+      contents:
+        - href: math/topological-vector-spaces/index.qmd
+          contents: "math/topological-vector-spaces/**"
     - id: "math-pde-advanced"
       title: "편미분방정식"
       style: "docked"
@@ -440,6 +470,30 @@ website:
       contents:
         - href: math/differential-geometry/index.qmd
           contents: "math/differential-geometry/**"
+    - id: "math-numerical-ode"
+      title: "수치적 상미분방정식"
+      style: "docked"
+      collapse-level: 4
+      search: true
+      contents:
+        - href: math/numerical-ode/index.qmd
+          contents: "math/numerical-ode/**"
+    - id: "math-scientific-computing"
+      title: "과학계산"
+      style: "docked"
+      collapse-level: 4
+      search: true
+      contents:
+        - href: math/scientific-computing/index.qmd
+          contents: "math/scientific-computing/**"
+    - id: "math-inverse-problems"
+      title: "역문제"
+      style: "docked"
+      collapse-level: 4
+      search: true
+      contents:
+        - href: math/inverse-problems/index.qmd
+          contents: "math/inverse-problems/**"
     - id: "stats-prob-theory"
       title: "기초 확률론"
       style: "docked"
@@ -560,6 +614,62 @@ website:
       contents:
         - href: stats/stats-for-stoch-proc/index.qmd
           contents: "stats/stats-for-stoch-proc/**"
+    - id: "stats-nonparametric-stats"
+      title: "비모수 통계학"
+      style: "docked"
+      collapse-level: 4
+      search: true
+      contents:
+        - href: stats/nonparametric-stats/index.qmd
+          contents: "stats/nonparametric-stats/**"
+    - id: "stats-topological-data-analysis"
+      title: "위상수학적 데이터 분석"
+      style: "docked"
+      collapse-level: 4
+      search: true
+      contents:
+        - href: stats/topological-data-analysis/index.qmd
+          contents: "stats/topological-data-analysis/**"
+    - id: "stats-statistical-learning-theory"
+      title: "통계적 학습 이론"
+      style: "docked"
+      collapse-level: 4
+      search: true
+      contents:
+        - href: stats/statistical-learning-theory/index.qmd
+          contents: "stats/statistical-learning-theory/**"
+    - id: "stats-statistical-inverse-problems"
+      title: "통계적 역문제"
+      style: "docked"
+      collapse-level: 4
+      search: true
+      contents:
+        - href: stats/statistical-inverse-problems/index.qmd
+          contents: "stats/statistical-inverse-problems/**"
+    - id: "stats-statistical-modelling"
+      title: "통계적 모델링"
+      style: "docked"
+      collapse-level: 4
+      search: true
+      contents:
+        - href: stats/statistical-modelling/index.qmd
+          contents: "stats/statistical-modelling/**"
+    - id: "stats-asymptotic-statistics"
+      title: "점근 통계학"
+      style: "docked"
+      collapse-level: 4
+      search: true
+      contents:
+        - href: stats/asymptotic-statistics/index.qmd
+          contents: "stats/asymptotic-statistics/**"
+    - id: "stats-time-series-foundations"
+      title: "시계열 분석의 통계적 기초"
+      style: "docked"
+      collapse-level: 4
+      search: true
+      contents:
+        - href: stats/time-series-foundations/index.qmd
+          contents: "stats/time-series-foundations/**"
     - id: "cs-cs-intro"
       title: "컴퓨터 과학 원론"
       style: "docked"

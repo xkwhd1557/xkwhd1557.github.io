@@ -85,4 +85,32 @@ sidebar: false
 ### [확률과정의 통계추론](stats-for-stoch-proc/index.qmd)
 [![확률과정의 통계추론](../images/placeholder.svg)](stats-for-stoch-proc/index.qmd)
 :::
+::: {.subject-card}
+### [비모수 통계학](nonparametric-stats/index.qmd)
+[![비모수 통계학](../images/placeholder.svg)](nonparametric-stats/index.qmd)
+:::
+::: {.subject-card}
+### [위상수학적 데이터 분석](topological-data-analysis/index.qmd)
+[![위상수학적 데이터 분석](../images/placeholder.svg)](topological-data-analysis/index.qmd)
+:::
+::: {.subject-card}
+### [통계적 학습 이론](statistical-learning-theory/index.qmd)
+[![통계적 학습 이론](../images/placeholder.svg)](statistical-learning-theory/index.qmd)
+:::
+::: {.subject-card}
+### [통계적 역문제](statistical-inverse-problems/index.qmd)
+[![통계적 역문제](../images/placeholder.svg)](statistical-inverse-problems/index.qmd)
+:::
+::: {.subject-card}
+### [통계적 모델링](statistical-modelling/index.qmd)
+[![통계적 모델링](../images/placeholder.svg)](statistical-modelling/index.qmd)
+:::
+::: {.subject-card}
+### [점근 통계학](asymptotic-statistics/index.qmd)
+[![점근 통계학](../images/placeholder.svg)](asymptotic-statistics/index.qmd)
+:::
+::: {.subject-card}
+### [시계열 분석의 통계적 기초](time-series-foundations/index.qmd)
+[![시계열 분석의 통계적 기초](../images/placeholder.svg)](time-series-foundations/index.qmd)
+:::
 :::
