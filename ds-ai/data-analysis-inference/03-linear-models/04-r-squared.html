@@ -1,0 +1,1766 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2026-11-05">
+<meta name="description" content="전체 변동을 회귀가 설명한 부분과 잔차로 남은 부분으로 나누는 제곱합의 분해를 증명하고, 결정계수와 수정 결정계수를 정의합니다. 설명변수를 늘릴 때 결정계수가 줄지 않는 이유, 새 데이터에서의 예측력과의 차이, 결정계수가 재지 못하는 것을 살펴봅니다.">
+
+<title>3.4 결정계수와 모형의 설명력 – Study Archive</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../ds-ai/data-analysis-inference/03-linear-models/05-anova.html" rel="next">
+<link href="../../../ds-ai/data-analysis-inference/03-linear-models/03-projection.html" rel="prev">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-2ba7ce865e58c97185caa3962285c575.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="3.4 결정계수와 모형의 설명력 – Study Archive">
+<meta property="og:description" content="전체 변동을 회귀가 설명한 부분과 잔차로 남은 부분으로 나누는 제곱합의 분해를 증명하고, 결정계수와 수정 결정계수를 정의합니다. 설명변수를 늘릴 때 결정계수가 줄지 않는 이유, 새 데이터에서의 예측력과의 차이, 결정계수가 재지 못하는 것을 살펴봅니다.">
+<meta property="og:image" content="https://xkwhd1557.github.io/ds-ai/data-analysis-inference/03-linear-models/figures/r2-overfit.png">
+<meta property="og:site_name" content="Study Archive">
+<meta property="og:image:alt" content="가로축은 추가한 쓸모없는 설명변수의 개수(0에서 30), 세로축은 결정계수인 그래프. 파란 선 R²는 0.30에서 시작해 거의 꾸준히 올라가 30개일 때 0.86에 이른다. 주황 선 수정 R²는 0.28 근처에서 시작해 0.10에서 0.37 사이를 오르내린다. 청록 선 새 데이터의 R²는 0.04에서 시작해 점점 떨어지다가 14개를 넘으면서 급격히 떨어져 19개부터는 -1.2 아래로 벗어나며, 30개일 때는 -4.53이다.">
+<meta property="og:image:height" content="660">
+<meta property="og:image:width" content="1050">
+<meta name="twitter:title" content="3.4 결정계수와 모형의 설명력 – Study Archive">
+<meta name="twitter:description" content="전체 변동을 회귀가 설명한 부분과 잔차로 남은 부분으로 나누는 제곱합의 분해를 증명하고, 결정계수와 수정 결정계수를 정의합니다. 설명변수를 늘릴 때 결정계수가 줄지 않는 이유, 새 데이터에서의 예측력과의 차이, 결정계수가 재지 못하는 것을 살펴봅니다.">
+<meta name="twitter:image" content="https://xkwhd1557.github.io/ds-ai/data-analysis-inference/03-linear-models/figures/r2-overfit.png">
+<meta name="twitter:image:alt" content="가로축은 추가한 쓸모없는 설명변수의 개수(0에서 30), 세로축은 결정계수인 그래프. 파란 선 R²는 0.30에서 시작해 거의 꾸준히 올라가 30개일 때 0.86에 이른다. 주황 선 수정 R²는 0.28 근처에서 시작해 0.10에서 0.37 사이를 오르내린다. 청록 선 새 데이터의 R²는 0.04에서 시작해 점점 떨어지다가 14개를 넘으면서 급격히 떨어져 19개부터는 -1.2 아래로 벗어나며, 30개일 때는 -4.53이다.">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Study Archive</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../articles/index.html"> 
+<span class="menu-text">일반 아티클</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">수학</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-">    
+        <li>
+    <a class="dropdown-item" href="../../../math/index.html">
+ <span class="dropdown-text">📋 수학 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../math/analysis/index.html">
+ <span class="dropdown-text">해석학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/linear-algebra/index.html">
+ <span class="dropdown-text">선형대수학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/discrete-math/index.html">
+ <span class="dropdown-text">이산수학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/math-programming/index.html">
+ <span class="dropdown-text">수학적 프로그래밍 (Python)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/latex/index.html">
+ <span class="dropdown-text">LaTeX</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 수학 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../math/complex-analysis/index.html">
+ <span class="dropdown-text">복소해석학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/ode/index.html">
+ <span class="dropdown-text">상미분방정식</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/dynamical-systems/index.html">
+ <span class="dropdown-text">동적 시스템</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/measure-theory/index.html">
+ <span class="dropdown-text">측도론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/pde-intro/index.html">
+ <span class="dropdown-text">기초 편미분방정식</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/general-topology/index.html">
+ <span class="dropdown-text">일반위상수학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/algebra/index.html">
+ <span class="dropdown-text">대수학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/number-theory/index.html">
+ <span class="dropdown-text">정수론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/geometry/index.html">
+ <span class="dropdown-text">기하학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/mathematical-logic/index.html">
+ <span class="dropdown-text">수리논리학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/set-theory/index.html">
+ <span class="dropdown-text">공리적 집합론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/numerical-methods/index.html">
+ <span class="dropdown-text">수치적 방법론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/optimization/index.html">
+ <span class="dropdown-text">수학적 최적화</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../math/functional-analysis/index.html">
+ <span class="dropdown-text">함수해석학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/pde-advanced/index.html">
+ <span class="dropdown-text">편미분방정식</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/manifold-analysis/index.html">
+ <span class="dropdown-text">다양체 해석학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/rkhs/index.html">
+ <span class="dropdown-text">RKHS 이론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/differential-geometry/index.html">
+ <span class="dropdown-text">미분기하학</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--1" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">확률과 통계</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--1">    
+        <li>
+    <a class="dropdown-item" href="../../../stats/index.html">
+ <span class="dropdown-text">📋 확률과 통계 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../stats/prob-theory/index.html">
+ <span class="dropdown-text">기초 확률론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/basic-stats/index.html">
+ <span class="dropdown-text">기초 통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/linear-models/index.html">
+ <span class="dropdown-text">기초 선형 모델</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/stat-programming/index.html">
+ <span class="dropdown-text">통계적 프로그래밍</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../stats/measure-prob/index.html">
+ <span class="dropdown-text">측도론적 확률론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/stochastic-processes/index.html">
+ <span class="dropdown-text">확률과정론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/math-stats/index.html">
+ <span class="dropdown-text">수리통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/stochastic-simulation/index.html">
+ <span class="dropdown-text">확률적 시뮬레이션</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/actuarial-math/index.html">
+ <span class="dropdown-text">보험수학</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../stats/stochastic-calculus/index.html">
+ <span class="dropdown-text">확률해석학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/markov-processes/index.html">
+ <span class="dropdown-text">마르코프 프로세스</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/diffusion-models/index.html">
+ <span class="dropdown-text">디퓨전 모델</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/gaussian-processes/index.html">
+ <span class="dropdown-text">가우시안 프로세스</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/non-euclidean-stats/index.html">
+ <span class="dropdown-text">비유클리드 통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/stats-for-stoch-proc/index.html">
+ <span class="dropdown-text">확률과정의 통계추론</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--2" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">컴퓨터 공학</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--2">    
+        <li>
+    <a class="dropdown-item" href="../../../cs/index.html">
+ <span class="dropdown-text">📋 컴퓨터 공학 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../cs/cs-intro/index.html">
+ <span class="dropdown-text">컴퓨터 과학 원론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cs/c-programming/index.html">
+ <span class="dropdown-text">C언어</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../cs/algorithms-data-structures/index.html">
+ <span class="dropdown-text">알고리즘과 자료구조</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cs/theoretical-cs/index.html">
+ <span class="dropdown-text">이론 컴퓨터과학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cs/database-systems/index.html">
+ <span class="dropdown-text">데이터베이스 시스템</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cs/formal-systems/index.html">
+ <span class="dropdown-text">형식 시스템</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../cs/advanced/index.html">
+ <span class="dropdown-text">심화 과정 (준비 중)</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ai" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">데이터 사이언스·AI</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-ai">    
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/index.html">
+ <span class="dropdown-text">📋 데이터 사이언스·AI 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/ds-intro/index.html">
+ <span class="dropdown-text">데이터 사이언스 개론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/ds-society/index.html">
+ <span class="dropdown-text">데이터 사이언스와 사회</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/ai-math-intro/index.html">
+ <span class="dropdown-text">고등학교 인공지능 수학</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/numerical-optimization/index.html">
+ <span class="dropdown-text">수치적 방법론과 최적화</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/machine-learning/index.html">
+ <span class="dropdown-text">머신러닝</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/deep-learning-cv/index.html">
+ <span class="dropdown-text">딥러닝과 컴퓨터 비전</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/ai-intro/index.html">
+ <span class="dropdown-text">인공지능 원론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/data-analysis-inference/index.html">
+ <span class="dropdown-text">수리적 데이터 분석과 통계적 추론</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/statistical-foundations/index.html">
+ <span class="dropdown-text">데이터 사이언스의 통계적 기초</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/mathematical-foundations/index.html">
+ <span class="dropdown-text">머신러닝의 수리적 기초</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/advanced-linear-algebra/index.html">
+ <span class="dropdown-text">데이터 사이언스를 위한 선형대수학</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--3" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">경영/경제</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--3">    
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/index.html">
+ <span class="dropdown-text">📋 경영/경제 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/biz-intro/index.html">
+ <span class="dropdown-text">경영학 원론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/econ-intro/index.html">
+ <span class="dropdown-text">경제학 원론</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/accounting/index.html">
+ <span class="dropdown-text">회계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/production-logistics/index.html">
+ <span class="dropdown-text">생산물류관리</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/decision-theory/index.html">
+ <span class="dropdown-text">의사결정론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/microeconomics/index.html">
+ <span class="dropdown-text">미시경제학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/macroeconomics/index.html">
+ <span class="dropdown-text">거시경제학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/finance-investment/index.html">
+ <span class="dropdown-text">재무와 투자론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/monetary-economics/index.html">
+ <span class="dropdown-text">화폐금융론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/labor-economics/index.html">
+ <span class="dropdown-text">노동경제학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/game-theory/index.html">
+ <span class="dropdown-text">게임이론 개론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/supply-chain/index.html">
+ <span class="dropdown-text">공급망 관리 (SCM)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/market-research/index.html">
+ <span class="dropdown-text">시장조사론의 기초</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/time-series/index.html">
+ <span class="dropdown-text">시계열 분석</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/econometrics/index.html">
+ <span class="dropdown-text">계량경제학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/insurance-economics/index.html">
+ <span class="dropdown-text">보험경제학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/quantitative-risk/index.html">
+ <span class="dropdown-text">계량 리스크 관리</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/corporate-finance/index.html">
+ <span class="dropdown-text">기업재무론</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--4" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">의학통계·바이오메트리</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--4">    
+        <li>
+    <a class="dropdown-item" href="../../../biostat/index.html">
+ <span class="dropdown-text">📋 의학통계·바이오메트리 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biostat/biostat-intro/index.html">
+ <span class="dropdown-text">의학통계학 개론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biostat/epidemiology/index.html">
+ <span class="dropdown-text">역학 연구방법론</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biostat/clinical-trials/index.html">
+ <span class="dropdown-text">임상시험 통계방법론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biostat/survival-analysis/index.html">
+ <span class="dropdown-text">생존분석</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biostat/bioinformatics/index.html">
+ <span class="dropdown-text">생물정보통계학</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biostat/causal-inference/index.html">
+ <span class="dropdown-text">인과추론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biostat/longitudinal-data/index.html">
+ <span class="dropdown-text">종단적 데이터 분석</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-language" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">🌐 Language</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-language">    
+        <li>
+    <a class="dropdown-item" href="../../../index.html">
+ <span class="dropdown-text">한국어 (KO)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../lang/en-coming-soon.html">
+ <span class="dropdown-text">English (EN)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../lang/de-coming-soon.html">
+ <span class="dropdown-text">Deutsch (DE)</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xkwhd1557/xkwhd1557.github.io"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+            <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" aria-label="Toolbar">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../ds-ai/data-analysis-inference/index.html">수리적 데이터 분석과 통계적 추론(Mathematical Data Analysis and Statistical Inference)</a></li><li class="breadcrumb-item"><a href="../../../ds-ai/data-analysis-inference/03-linear-models/index.html">3 선형 회귀와 분산분석</a></li><li class="breadcrumb-item"><a href="../../../ds-ai/data-analysis-inference/03-linear-models/04-r-squared.html">3.4 결정계수와 모형의 설명력</a></li></ol></nav>
+        <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto" aria-label="Section">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../ds-ai/data-analysis-inference/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">수리적 데이터 분석과 통계적 추론(Mathematical Data Analysis and Statistical Inference)</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true" aria-label="Toggle section: 수리적 데이터 분석과 통계적 추론(Mathematical Data Analysis and Statistical Inference)">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../ds-ai/data-analysis-inference/01-mle/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-1-label">1 최대우도 추정</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section: 1 최대우도 추정">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/data-analysis-inference/01-mle/01-likelihood.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.1 우도와 최대우도 추정</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/data-analysis-inference/01-mle/02-score-failures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.2 점수 방정식이 통하지 않을 때</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/data-analysis-inference/01-mle/03-score-fisher.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.3 점수 함수와 피셔 정보</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/data-analysis-inference/01-mle/04-newton-raphson.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.4 뉴턴-랩슨 방법과 피셔 스코어링</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/data-analysis-inference/01-mle/05-asymptotics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.5 일치성과 점근 정규성</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../ds-ai/data-analysis-inference/02-dependence/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-2-label">2 변수 사이의 의존성 측정</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section: 2 변수 사이의 의존성 측정">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-2" aria-labelledby="quarto-sidebar-section-2-label" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/data-analysis-inference/02-dependence/01-pearson.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.1 공분산과 피어슨 상관계수</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/data-analysis-inference/02-dependence/02-rank.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.2 순위 상관계수: 스피어만과 켄달</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/data-analysis-inference/02-dependence/03-categorical.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.3 범주형 변수의 의존성: 카이제곱 통계량과 크라메르 V</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/data-analysis-inference/02-dependence/04-mixed.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.4 범주와 수치가 섞일 때: 집단 평균과 η²</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../ds-ai/data-analysis-inference/03-linear-models/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-3-label">3 선형 회귀와 분산분석</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-controls="quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section: 3 선형 회귀와 분산분석">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-3" aria-labelledby="quarto-sidebar-section-3-label" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/data-analysis-inference/03-linear-models/01-regression-function.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.1 회귀함수와 선형 모형</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/data-analysis-inference/03-linear-models/02-least-squares.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.2 최소제곱 추정량과 가우스-마르코프 정리</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/data-analysis-inference/03-linear-models/03-projection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.3 사영으로 보는 회귀: 햇 행렬과 잔차</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/data-analysis-inference/03-linear-models/04-r-squared.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">3.4 결정계수와 모형의 설명력</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../ds-ai/data-analysis-inference/03-linear-models/05-anova.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.5 범주형 설명변수와 분산분석</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#들어가며" id="toc-들어가며" class="nav-link active" data-scroll-target="#들어가며">들어가며</a></li>
+  <li><a href="#문제-1-모형은-데이터의-변동을-얼마나-설명하는가" id="toc-문제-1-모형은-데이터의-변동을-얼마나-설명하는가" class="nav-link" data-scroll-target="#문제-1-모형은-데이터의-변동을-얼마나-설명하는가">문제 1: 모형은 데이터의 변동을 얼마나 설명하는가</a>
+  <ul class="collapse">
+  <li><a href="#문제-상황" id="toc-문제-상황" class="nav-link" data-scroll-target="#문제-상황">문제 상황</a></li>
+  <li><a href="#접근-아이디어" id="toc-접근-아이디어" class="nav-link" data-scroll-target="#접근-아이디어">접근 아이디어</a></li>
+  <li><a href="#필요한-개념들" id="toc-필요한-개념들" class="nav-link" data-scroll-target="#필요한-개념들">필요한 개념들</a></li>
+  <li><a href="#해결" id="toc-해결" class="nav-link" data-scroll-target="#해결">해결</a></li>
+  </ul></li>
+  <li><a href="#문제-2-설명변수를-늘리면-모형이-좋아지는가" id="toc-문제-2-설명변수를-늘리면-모형이-좋아지는가" class="nav-link" data-scroll-target="#문제-2-설명변수를-늘리면-모형이-좋아지는가">문제 2: 설명변수를 늘리면 모형이 좋아지는가</a>
+  <ul class="collapse">
+  <li><a href="#문제-상황-1" id="toc-문제-상황-1" class="nav-link" data-scroll-target="#문제-상황-1">문제 상황</a></li>
+  <li><a href="#필요한-개념들-1" id="toc-필요한-개념들-1" class="nav-link" data-scroll-target="#필요한-개념들-1">필요한 개념들</a></li>
+  <li><a href="#해결-1" id="toc-해결-1" class="nav-link" data-scroll-target="#해결-1">해결</a></li>
+  </ul></li>
+  <li><a href="#문제-3-r2가-작으면-모형이-틀린-것인가" id="toc-문제-3-r2가-작으면-모형이-틀린-것인가" class="nav-link" data-scroll-target="#문제-3-r2가-작으면-모형이-틀린-것인가">문제 3: <span class="math inline">\(R^2\)</span>가 작으면 모형이 틀린 것인가</a>
+  <ul class="collapse">
+  <li><a href="#문제-상황-2" id="toc-문제-상황-2" class="nav-link" data-scroll-target="#문제-상황-2">문제 상황</a></li>
+  <li><a href="#해결-2" id="toc-해결-2" class="nav-link" data-scroll-target="#해결-2">해결</a></li>
+  </ul></li>
+  <li><a href="#정리-결정계수를-읽는-법" id="toc-정리-결정계수를-읽는-법" class="nav-link" data-scroll-target="#정리-결정계수를-읽는-법">정리: 결정계수를 읽는 법</a>
+  <ul class="collapse">
+  <li><a href="#연결되는-개념" id="toc-연결되는-개념" class="nav-link" data-scroll-target="#연결되는-개념">연결되는 개념</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../ds-ai/data-analysis-inference/index.html">수리적 데이터 분석과 통계적 추론(Mathematical Data Analysis and Statistical Inference)</a></li><li class="breadcrumb-item"><a href="../../../ds-ai/data-analysis-inference/03-linear-models/index.html">3 선형 회귀와 분산분석</a></li><li class="breadcrumb-item"><a href="../../../ds-ai/data-analysis-inference/03-linear-models/04-r-squared.html">3.4 결정계수와 모형의 설명력</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">3.4 결정계수와 모형의 설명력</h1>
+<p class="subtitle lead">3장 선형 회귀와 분산분석 · 설명된 변동과 남은 변동</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">데이터 사이언스·AI</div>
+    <div class="quarto-category">수리적 데이터 분석과 통계적 추론</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    전체 변동을 회귀가 설명한 부분과 잔차로 남은 부분으로 나누는 제곱합의 분해를 증명하고, 결정계수와 수정 결정계수를 정의합니다. 설명변수를 늘릴 때 결정계수가 줄지 않는 이유, 새 데이터에서의 예측력과의 차이, 결정계수가 재지 못하는 것을 살펴봅니다.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 5, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="들어가며" class="level2">
+<h2 class="anchored" data-anchor-id="들어가며">들어가며</h2>
+<p><a href="../../../ds-ai/data-analysis-inference/03-linear-models/03-projection.html">3.3절</a>에서 최소제곱 적합은 관측값 <span class="math inline">\(Y\)</span>를 계획행렬의 열공간에 직교사영한 것이었습니다. 이번 글에서는 이 그림에 숨어 있던 또 하나의 피타고라스 정리를 꺼내, 회귀 모형이 데이터의 변동을 <strong>얼마나 설명하는지</strong>를 재는 결정계수 <span class="math inline">\(R^2\)</span>를 정의합니다.</p>
+<p><span class="math inline">\(R^2\)</span>는 회귀 분석 결과에서 가장 먼저 눈에 띄는 숫자이지만, 동시에 가장 많이 오해되는 숫자이기도 합니다. 그래서 정의만큼이나 <strong><span class="math inline">\(R^2\)</span>가 무엇을 재지 않는지</strong>를 분명히 하는 데 이 글의 절반을 씁니다.</p>
+</section>
+<section id="문제-1-모형은-데이터의-변동을-얼마나-설명하는가" class="level2">
+<h2 class="anchored" data-anchor-id="문제-1-모형은-데이터의-변동을-얼마나-설명하는가">문제 1: 모형은 데이터의 변동을 얼마나 설명하는가</h2>
+<section id="문제-상황" class="level3">
+<h3 class="anchored" data-anchor-id="문제-상황">문제 상황</h3>
+<p><a href="../../../ds-ai/data-analysis-inference/03-linear-models/02-least-squares.html">3.2절</a>의 학생 50명 데이터에서 두 설명변수로 반응변수를 회귀했습니다. 반응변수의 값은 학생마다 다른데, 그 차이 가운데 얼마만큼이 두 설명변수로 설명되고 얼마만큼이 설명되지 않고 남았을까요?</p>
+</section>
+<section id="접근-아이디어" class="level3">
+<h3 class="anchored" data-anchor-id="접근-아이디어">접근 아이디어</h3>
+<p>비교의 기준이 필요합니다. 가장 단순한 예측은 설명변수를 전혀 쓰지 않고 모든 학생의 <span class="math inline">\(y\)</span>를 평균 <span class="math inline">\(\bar{y}\)</span> 하나로 예측하는 것입니다. 이 예측이 틀린 정도, 즉 <span class="math inline">\(\sum_i (y_i - \bar{y})^2\)</span>가 “설명해야 할 전체 변동”입니다. 회귀 모형을 쓰면 틀린 정도가 잔차제곱합 <span class="math inline">\(\sum_i (y_i - \hat{y}_i)^2\)</span>로 줄어듭니다. 그렇다면 줄어든 만큼이 회귀 모형이 “설명한 변동”일 것입니다.</p>
+<p><a href="../../../ds-ai/data-analysis-inference/02-dependence/04-mixed.html">2.4절</a>에서 <span class="math inline">\(\eta^2\)</span>를 정의할 때 썼던 것과 같은 발상입니다. 그때는 전체 흩어짐을 “집단 평균의 차이”와 “집단 안의 개인차”로 나눴는데, 이번에는 “회귀로 설명된 부분”과 “잔차”로 나눕니다.</p>
+</section>
+<section id="필요한-개념들" class="level3">
+<h3 class="anchored" data-anchor-id="필요한-개념들">필요한 개념들</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>정의 3.4.1 (세 가지 제곱합)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>적합값을 <span class="math inline">\(\hat{Y}_i\)</span>, 잔차를 <span class="math inline">\(\hat{\varepsilon}_i = Y_i - \hat{Y}_i\)</span>라 할 때 <span class="math display">\[\mathrm{SST} := \sum_{i=1}^n (Y_i - \bar{Y})^2, \qquad \mathrm{RSS} := \sum_{i=1}^n \hat{\varepsilon}_i^2, \qquad \mathrm{ESS} := \sum_{i=1}^n (\hat{Y}_i - \bar{Y})^2\]</span> 를 각각 <strong>총제곱합</strong>(total sum of squares), <strong>잔차제곱합</strong>(residual sum of squares), <strong>설명제곱합</strong>(explained sum of squares)이라고 합니다.</p>
+</div>
+</div>
+<p>이 세 이름은 교재마다 약어가 달라서 주의가 필요합니다. 어떤 책은 설명제곱합을 SSR(regression)이나 SSE(explained)로 쓰고, 다른 책은 잔차제곱합을 SSE(error)로 쓰기도 합니다. 그래서 같은 SSE가 책에 따라 정반대의 뜻이 되기도 합니다. 이 글에서는 혼동을 피하기 위해 RSS와 ESS로 씁니다.</p>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>정리 3.4.2 (제곱합의 분해)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>계획행렬 <span class="math inline">\(X\)</span>에 절편 열 <span class="math inline">\(\mathbf{1}_n\)</span>이 있으면 <span class="math display">\[\mathrm{SST} = \mathrm{RSS} + \mathrm{ESS}\]</span> 가 성립합니다.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>증명
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(Y - \bar{Y}\mathbf{1}_n = \hat{\varepsilon} + (\hat{Y} - \bar{Y}\mathbf{1}_n)\)</span>으로 나눕니다. 3.3절의 정리 3.3.2에 의해 잔차 <span class="math inline">\(\hat{\varepsilon}\)</span>은 열공간 <span class="math inline">\(\mathrm{col}(X)\)</span>에 수직입니다. 그런데 <span class="math inline">\(\hat{Y} \in \mathrm{col}(X)\)</span>이고, 절편 열이 있으므로 <span class="math inline">\(\bar{Y}\mathbf{1}_n \in \mathrm{col}(X)\)</span>이어서 <span class="math inline">\(\hat{Y} - \bar{Y}\mathbf{1}_n \in \mathrm{col}(X)\)</span>입니다. 따라서 두 항은 직교하고, 피타고라스 정리에 의해 <span class="math display">\[\lVert Y - \bar{Y}\mathbf{1}_n \rVert^2 = \lVert \hat{\varepsilon} \rVert^2 + \lVert \hat{Y} - \bar{Y}\mathbf{1}_n \rVert^2\]</span> 입니다. 이것이 <span class="math inline">\(\mathrm{SST} = \mathrm{RSS} + \mathrm{ESS}\)</span>입니다. <span class="math inline">\(\square\)</span></p>
+</div>
+</div>
+</div>
+<p>절편이 없는 모형에서는 <span class="math inline">\(\bar{Y}\mathbf{1}_n\)</span>이 열공간에 있다는 보장이 없어서 이 분해가 성립하지 않습니다. 이 글에서는 언제나 절편이 있는 모형을 다룹니다.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>정의 3.4.3 (결정계수와 수정 결정계수)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>절편이 있는 선형 모형에서 <span class="math display">\[R^2 := \frac{\mathrm{ESS}}{\mathrm{SST}} = 1 - \frac{\mathrm{RSS}}{\mathrm{SST}}, \qquad R_a^2 := 1 - \frac{\mathrm{RSS}/(n - d)}{\mathrm{SST}/(n - 1)} = 1 - \frac{n - 1}{n - d}(1 - R^2)\]</span> 를 각각 <strong>결정계수</strong>(coefficient of determination)와 <strong>수정 결정계수</strong>(adjusted coefficient of determination)라고 합니다.</p>
+</div>
+</div>
+<p>정리 3.4.2에 의해 <span class="math inline">\(0 \le R^2 \le 1\)</span>입니다. <span class="math inline">\(R^2 = 0.7\)</span>은 “이 표본에서, 평균 하나로 예측할 때의 변동 가운데 70%가 회귀 모형으로 설명된다”는 뜻입니다. 다른 말로 하면, <span class="math inline">\(R^2\)</span>는 평균 하나로 예측하는 가장 단순한 모형에 비해 <strong>잔차제곱합을 몇 퍼센트나 줄였는가</strong>입니다.</p>
+<p>결정계수는 2장의 상관계수와도 깔끔하게 연결됩니다.</p>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>정리 3.4.4 (결정계수와 상관계수)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>절편이 있는 선형 모형에서 <span class="math inline">\(R^2\)</span>는 관측값 <span class="math inline">\(Y\)</span>와 적합값 <span class="math inline">\(\hat{Y}\)</span> 사이의 표본 상관계수의 제곱과 같습니다. 특히 설명변수가 하나인 단순 선형 회귀에서는 <span class="math inline">\(R^2 = r(x, Y)^2\)</span>입니다.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>증명
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>정리 3.3.3에 의해 <span class="math inline">\(\hat{Y}\)</span>의 평균은 <span class="math inline">\(\bar{Y}\)</span>이므로, 중심화한 벡터 <span class="math inline">\(a := \hat{Y} - \bar{Y}\mathbf{1}_n\)</span>과 <span class="math inline">\(b := Y - \bar{Y}\mathbf{1}_n = \hat{\varepsilon} + a\)</span>로 상관계수를 계산할 수 있습니다. 정리 3.4.2의 증명에서 <span class="math inline">\(\hat{\varepsilon} \perp a\)</span>이므로 <span class="math inline">\(a^\top b = \lVert a \rVert^2 = \mathrm{ESS}\)</span>이고, 따라서 <span class="math display">\[r(Y, \hat{Y})^2 = \frac{(a^\top b)^2}{\lVert a \rVert^2 \lVert b \rVert^2} = \frac{\mathrm{ESS}^2}{\mathrm{ESS}\cdot\mathrm{SST}} = R^2\]</span> 입니다. 단순 선형 회귀에서는 <span class="math inline">\(\hat{Y}_i = \hat{\beta}_0 + \hat{\beta}_1 x_i\)</span>가 <span class="math inline">\(x_i\)</span>의 일차식이므로, <span class="math inline">\(\hat{\beta}_1 \neq 0\)</span>이면 <a href="../../../ds-ai/data-analysis-inference/02-dependence/01-pearson.html">2.1절</a>에서 본 대로 <span class="math inline">\(|r(Y, \hat{Y})| = |r(Y, x)|\)</span>이고, <span class="math inline">\(\hat{\beta}_1 = 0\)</span>이면 두 값이 모두 <span class="math inline">\(0\)</span>입니다. <span class="math inline">\(\square\)</span></p>
+</div>
+</div>
+</div>
+<p><a href="../../../ds-ai/data-analysis-inference/02-dependence/04-mixed.html">2.4절</a>의 정리 2.4.5에서 미리 본 <span class="math inline">\(R^2 = r^2\)</span>가 바로 이 정리의 특수한 경우입니다. 설명변수가 여러 개일 때는 “관측값과 적합값의 상관계수”로 일반화됩니다.</p>
+</section>
+<section id="해결" class="level3">
+<h3 class="anchored" data-anchor-id="해결">해결</h3>
+<p>3.2절의 데이터로 분해와 결정계수를 계산해 보겠습니다.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1557</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> np.random.uniform(<span class="dv">0</span>, <span class="dv">10</span>, size<span class="op">=</span>n)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>x2 <span class="op">=</span> np.random.normal(<span class="dv">5</span>, <span class="dv">2</span>, size<span class="op">=</span>n)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.column_stack([np.ones(n), x1, x2])            <span class="co"># 3.2절과 같은 데이터</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> X <span class="op">@</span> np.array([<span class="fl">1.0</span>, <span class="fl">2.0</span>, <span class="op">-</span><span class="fl">0.5</span>]) <span class="op">+</span> <span class="dv">3</span> <span class="op">*</span> np.random.normal(size<span class="op">=</span>n)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>y_hat <span class="op">=</span> X <span class="op">@</span> np.linalg.solve(X.T <span class="op">@</span> X, X.T <span class="op">@</span> y)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>sst <span class="op">=</span> np.<span class="bu">sum</span>((y <span class="op">-</span> y.mean())<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>rss <span class="op">=</span> np.<span class="bu">sum</span>((y <span class="op">-</span> y_hat)<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>ess <span class="op">=</span> np.<span class="bu">sum</span>((y_hat <span class="op">-</span> y.mean())<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> X.shape[<span class="dv">1</span>]</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"SST = </span><span class="sc">{</span>sst<span class="sc">:.2f}</span><span class="ss">,  RSS + ESS = </span><span class="sc">{</span>rss<span class="sc">:.2f}</span><span class="ss"> + </span><span class="sc">{</span>ess<span class="sc">:.2f}</span><span class="ss"> = </span><span class="sc">{</span>rss <span class="op">+</span> ess<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"R^2 = </span><span class="sc">{</span><span class="dv">1</span> <span class="op">-</span> rss <span class="op">/</span> sst<span class="sc">:.4f}</span><span class="ss">,  수정 R^2 = </span><span class="sc">{</span><span class="dv">1</span> <span class="op">-</span> (n <span class="op">-</span> <span class="dv">1</span>) <span class="op">/</span> (n <span class="op">-</span> d) <span class="op">*</span> rss <span class="op">/</span> sst<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre><code>SST = 2382.00,  RSS + ESS = 628.93 + 1753.07 = 2382.00
+R^2 = 0.7360,  수정 R^2 = 0.7247</code></pre>
+<p>분해가 정확히 성립하고, 반응변수의 변동 가운데 약 74%가 두 설명변수로 설명됩니다.</p>
+</section>
+</section>
+<section id="문제-2-설명변수를-늘리면-모형이-좋아지는가" class="level2">
+<h2 class="anchored" data-anchor-id="문제-2-설명변수를-늘리면-모형이-좋아지는가">문제 2: 설명변수를 늘리면 모형이 좋아지는가</h2>
+<section id="문제-상황-1" class="level3">
+<h3 class="anchored" data-anchor-id="문제-상황-1">문제 상황</h3>
+<p><span class="math inline">\(R^2\)</span>가 높을수록 좋은 모형이라면, 설명변수를 하나라도 더 넣는 것이 언제나 이득일까요? 극단적인 실험을 해 보겠습니다. 반응변수와 아무 관계가 없는 <strong>순수한 잡음</strong>을 설명변수로 하나씩 추가하면 <span class="math inline">\(R^2\)</span>는 어떻게 될까요?</p>
+</section>
+<section id="필요한-개념들-1" class="level3">
+<h3 class="anchored" data-anchor-id="필요한-개념들-1">필요한 개념들</h3>
+<p>답은 놀랍게도 “언제나 커지거나 그대로”입니다.</p>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>정리 3.4.5 (결정계수의 단조성)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>계획행렬 <span class="math inline">\(X\)</span>에 열을 추가해 <span class="math inline">\(\tilde{X} = [X \;\; Z]\)</span>로 만들면, 추가한 열이 무엇이든 <span class="math inline">\(\mathrm{RSS}(\tilde{X}) \le \mathrm{RSS}(X)\)</span>이고 따라서 <span class="math inline">\(R^2(\tilde{X}) \ge R^2(X)\)</span>입니다.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>증명
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(\mathrm{col}(X) \subset \mathrm{col}(\tilde{X})\)</span>입니다. 잔차제곱합은 <span class="math inline">\(Y\)</span>에서 열공간까지의 거리의 제곱, 즉 <span class="math inline">\(\min_{v \in \mathrm{col}(X)} \lVert Y - v \rVert^2\)</span>인데, 더 큰 집합에서 최솟값을 찾으면 최솟값은 작아지거나 그대로입니다. 총제곱합 <span class="math inline">\(\mathrm{SST}\)</span>는 설명변수와 무관하므로 <span class="math inline">\(R^2 = 1 - \mathrm{RSS}/\mathrm{SST}\)</span>는 커지거나 그대로입니다. <span class="math inline">\(\square\)</span></p>
+</div>
+</div>
+</div>
+<p>그림자의 비유로 말하면, 바닥을 넓힐수록 물체에서 바닥까지의 거리는 짧아질 수밖에 없습니다. 추가한 열이 순수한 잡음이어도, 그 잡음이 우연히 <span class="math inline">\(Y\)</span>의 잔차와 조금이라도 비슷한 방향을 가리키면 잔차가 줄어듭니다. 그래서 <span class="math inline">\(R^2\)</span>로는 <strong>설명변수의 개수가 다른 모형을 공정하게 비교할 수 없습니다.</strong></p>
+<p>수정 결정계수 <span class="math inline">\(R_a^2\)</span>는 이 문제를 일부 보정합니다. 정의 3.4.3에서 보듯이 <span class="math inline">\(R_a^2\)</span>는 <span class="math inline">\(\mathrm{RSS}\)</span>와 <span class="math inline">\(\mathrm{SST}\)</span>를 각각의 자유도로 나눈 값, 즉 3.3절에서 본 오차 분산의 불편추정량과 전체 분산의 불편추정량의 비를 씁니다. 설명변수를 하나 추가하면 <span class="math inline">\(\mathrm{RSS}\)</span>는 줄지만 자유도 <span class="math inline">\(n - d\)</span>도 하나 줄어들기 때문에, 잔차가 충분히 줄지 않으면 <span class="math inline">\(R_a^2\)</span>는 오히려 작아집니다. <span class="math inline">\(R_a^2\)</span>는 음수가 될 수도 있습니다.</p>
+<p>하지만 모형을 평가하는 가장 정직한 방법은 따로 있습니다. <strong>적합에 쓰지 않은 새 데이터</strong>에서 예측이 얼마나 맞는지를 보는 것입니다. 새 데이터 <span class="math inline">\((x_j^{\text{new}}, y_j^{\text{new}})\)</span>에서 같은 식을 계산한</p>
+<p><span class="math display">\[R^2_{\text{pred}} := 1 - \frac{\sum_j \big(y_j^{\text{new}} - x_j^{\text{new}\top}\hat{\beta}\big)^2}{\sum_j \big(y_j^{\text{new}} - \bar{y}^{\text{new}}\big)^2}\]</span></p>
+<p>를 <strong>예측 결정계수</strong>라고 하겠습니다. 정리 3.4.2의 분해는 적합에 쓴 데이터에서만 성립하므로, <span class="math inline">\(R^2_{\text{pred}}\)</span>는 <span class="math inline">\(0\)</span>보다 작아질 수 있습니다. 음수라는 것은 모형으로 예측하는 것이 <strong>평균 하나로 예측하는 것보다 못하다</strong>는 뜻입니다.</p>
+</section>
+<section id="해결-1" class="level3">
+<h3 class="anchored" data-anchor-id="해결-1">해결</h3>
+<p>참된 모형이 <span class="math inline">\(Y = 1 + 0.5x + \varepsilon\)</span>(<span class="math inline">\(\sigma = 3\)</span>)인 데이터 40개에, 순수한 잡음인 설명변수를 0개부터 30개까지 늘려 가며 추가해 보겠습니다. 같은 모형에서 뽑은 새 데이터 1만 개로 예측 결정계수도 함께 계산합니다.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> r2_scores(X, y, X_test, y_test):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    n, d <span class="op">=</span> X.shape</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> np.linalg.lstsq(X, y, rcond<span class="op">=</span><span class="va">None</span>)[<span class="dv">0</span>]</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    rss <span class="op">=</span> np.<span class="bu">sum</span>((y <span class="op">-</span> X <span class="op">@</span> b)<span class="op">**</span><span class="dv">2</span>)<span class="op">;</span> sst <span class="op">=</span> np.<span class="bu">sum</span>((y <span class="op">-</span> y.mean())<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    r2 <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> rss <span class="op">/</span> sst</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    r2_adj <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> (n <span class="op">-</span> <span class="dv">1</span>) <span class="op">/</span> (n <span class="op">-</span> d) <span class="op">*</span> rss <span class="op">/</span> sst</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    r2_pred <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> np.<span class="bu">sum</span>((y_test <span class="op">-</span> X_test <span class="op">@</span> b)<span class="op">**</span><span class="dv">2</span>) <span class="op">/</span> np.<span class="bu">sum</span>((y_test <span class="op">-</span> y_test.mean())<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> r2, r2_adj, r2_pred</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1557</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>n, n_test, k_max <span class="op">=</span> <span class="dv">40</span>, <span class="dv">10_000</span>, <span class="dv">30</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.random.uniform(<span class="dv">0</span>, <span class="dv">10</span>, size<span class="op">=</span>n)<span class="op">;</span> x_t <span class="op">=</span> np.random.uniform(<span class="dv">0</span>, <span class="dv">10</span>, size<span class="op">=</span>n_test)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="fl">0.5</span> <span class="op">*</span> x <span class="op">+</span> <span class="dv">3</span> <span class="op">*</span> np.random.normal(size<span class="op">=</span>n)                 <span class="co"># 참된 모형: 설명변수는 x 하나</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>y_t <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="fl">0.5</span> <span class="op">*</span> x_t <span class="op">+</span> <span class="dv">3</span> <span class="op">*</span> np.random.normal(size<span class="op">=</span>n_test)        <span class="co"># 같은 모형에서 뽑은 새 데이터</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> np.random.normal(size<span class="op">=</span>(n, k_max))<span class="op">;</span> Z_t <span class="op">=</span> np.random.normal(size<span class="op">=</span>(n_test, k_max))   <span class="co"># 쓸모없는 설명변수</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> [<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>]:</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> np.column_stack([np.ones(n), x, Z[:, :k]])</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    X_t <span class="op">=</span> np.column_stack([np.ones(n_test), x_t, Z_t[:, :k]])</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    r2, r2_adj, r2_pred <span class="op">=</span> r2_scores(X, y, X_t, y_t)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"쓸모없는 변수 </span><span class="sc">{</span>k<span class="sc">:&gt;2}</span><span class="ss">개: R^2 = </span><span class="sc">{</span>r2<span class="sc">:.3f}</span><span class="ss">, 수정 R^2 = </span><span class="sc">{</span>r2_adj<span class="sc">:.3f}</span><span class="ss">, 새 데이터의 R^2 = </span><span class="sc">{</span>r2_pred<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre><code>쓸모없는 변수  0개: R^2 = 0.301, 수정 R^2 = 0.283, 새 데이터의 R^2 = 0.041
+쓸모없는 변수  5개: R^2 = 0.386, 수정 R^2 = 0.274, 새 데이터의 R^2 = -0.008
+쓸모없는 변수 10개: R^2 = 0.445, 수정 R^2 = 0.227, 새 데이터의 R^2 = -0.142
+쓸모없는 변수 20개: R^2 = 0.691, 수정 R^2 = 0.331, 새 데이터의 R^2 = -1.615
+쓸모없는 변수 30개: R^2 = 0.863, 수정 R^2 = 0.331, 새 데이터의 R^2 = -4.535</code></pre>
+<p><img src="figures/r2-overfit.png" class="img-fluid" style="width:70.0%" alt="가로축은 추가한 쓸모없는 설명변수의 개수(0에서 30), 세로축은 결정계수인 그래프. 파란 선 R²는 0.30에서 시작해 거의 꾸준히 올라가 30개일 때 0.86에 이른다. 주황 선 수정 R²는 0.28 근처에서 시작해 0.10에서 0.37 사이를 오르내린다. 청록 선 새 데이터의 R²는 0.04에서 시작해 점점 떨어지다가 14개를 넘으면서 급격히 떨어져 19개부터는 -1.2 아래로 벗어나며, 30개일 때는 -4.53이다."></p>
+<p>결과는 세 가지를 보여 줍니다.</p>
+<ul>
+<li><strong><span class="math inline">\(R^2\)</span>는 잡음만 넣어도 계속 올라갑니다.</strong> 아무 의미 없는 변수 30개를 넣자 <span class="math inline">\(R^2\)</span>가 <span class="math inline">\(0.30\)</span>에서 <span class="math inline">\(0.86\)</span>이 되었습니다. 설명변수가 32개, 데이터가 40개이니 모형이 데이터의 우연한 흔들림까지 외워 버린 것입니다. 이를 <strong>과적합</strong>(overfitting)이라고 합니다.</li>
+<li><strong>수정 결정계수는 부풀림을 상당 부분 막지만 완벽하지는 않습니다.</strong> <span class="math inline">\(R_a^2\)</span>는 <span class="math inline">\(0.1\)</span>에서 <span class="math inline">\(0.37\)</span> 사이를 오르내릴 뿐 <span class="math inline">\(R^2\)</span>처럼 치솟지는 않습니다. 하지만 잡음 변수가 많을 때 오히려 처음보다 커지기도 해서, 쓸모없는 변수를 확실히 걸러 주지는 못합니다.</li>
+<li><strong>새 데이터에서는 진실이 드러납니다.</strong> 예측 결정계수는 잡음 변수를 넣을수록 떨어져서 결국 <span class="math inline">\(-4.5\)</span>가 됩니다. 적합에 쓴 데이터에서는 86%를 설명하던 모형이, 새 데이터에서는 평균 하나로 예측하는 것보다 훨씬 못한 셈입니다.</li>
+</ul>
+<p>이것이 데이터 사이언스에서 데이터를 <strong>학습용과 평가용으로 나누는</strong> 이유입니다. 모형을 고르는 일은 적합에 쓴 데이터의 <span class="math inline">\(R^2\)</span>가 아니라, 새 데이터에서의 성능으로 판단해야 합니다. 설명변수를 고르는 체계적인 방법은 5장의 <span class="math inline">\(F\)</span>-검정에서 다시 다룹니다.</p>
+</section>
+</section>
+<section id="문제-3-r2가-작으면-모형이-틀린-것인가" class="level2">
+<h2 class="anchored" data-anchor-id="문제-3-r2가-작으면-모형이-틀린-것인가">문제 3: <span class="math inline">\(R^2\)</span>가 작으면 모형이 틀린 것인가</h2>
+<section id="문제-상황-2" class="level3">
+<h3 class="anchored" data-anchor-id="문제-상황-2">문제 상황</h3>
+<p>거꾸로, <span class="math inline">\(R^2\)</span>가 낮게 나오면 모형이 잘못되었다는 뜻일까요? 그리고 <span class="math inline">\(R^2\)</span>가 높으면 모형이 맞다는 뜻일까요?</p>
+</section>
+<section id="해결-2" class="level3">
+<h3 class="anchored" data-anchor-id="해결-2">해결</h3>
+<p>두 질문의 답은 모두 “아니요”입니다.</p>
+<p><strong><span class="math inline">\(R^2\)</span>가 작아도 모형은 맞을 수 있습니다.</strong> 문제 2에서 잡음 변수를 하나도 넣지 않은 경우를 다시 보겠습니다. 이때 적합한 모형은 참된 모형과 정확히 같은 꼴인데도 <span class="math inline">\(R^2 = 0.30\)</span>에 불과했습니다. 사실 이 모형의 모집단 결정계수는 <span class="math inline">\(X \sim \mathrm{Unif}[0, 10]\)</span>에서 <span class="math inline">\(\mathrm{Var}(0.5X) = 0.25 \times 100/12 \approx 2.08\)</span>이고 오차의 분산이 <span class="math inline">\(9\)</span>이므로</p>
+<p><span class="math display">\[\frac{\mathrm{Var}(0.5X)}{\mathrm{Var}(0.5X) + \sigma^2} \approx \frac{2.08}{2.08 + 9} \approx 0.19\]</span></p>
+<p>밖에 되지 않습니다. 오차가 크면 아무리 올바른 모형이라도 <span class="math inline">\(R^2\)</span>는 작습니다. <span class="math inline">\(R^2\)</span>가 작다는 것은 “이 설명변수들만으로는 <span class="math inline">\(Y\)</span>를 정확히 예측할 수 없다”는 뜻일 뿐, “모형이 틀렸다”는 뜻이 아닙니다. 기울기 <span class="math inline">\(0.5\)</span> 자체는 여전히 의미 있는 정보일 수 있습니다.</p>
+<p><strong><span class="math inline">\(R^2\)</span>가 커도 모형은 틀릴 수 있습니다.</strong> <a href="../../../ds-ai/data-analysis-inference/03-linear-models/03-projection.html">3.3절</a>의 잔차 그림 (b)를 떠올리시기 바랍니다. 곡선 관계에 직선을 적합해도 <span class="math inline">\(R^2\)</span>는 꽤 높게 나올 수 있지만, 잔차에는 뚜렷한 U자 패턴이 남습니다. <span class="math inline">\(R^2\)</span>는 모형의 <strong>모양</strong>이 맞는지를 재지 않습니다. 그것을 확인하는 것은 잔차 그림의 몫입니다.</p>
+</section>
+</section>
+<section id="정리-결정계수를-읽는-법" class="level2">
+<h2 class="anchored" data-anchor-id="정리-결정계수를-읽는-법">정리: 결정계수를 읽는 법</h2>
+<p>이번 글의 내용을 정리하면 다음과 같습니다.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">뜻</th>
+<th style="text-align: left;">주의할 점</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(R^2\)</span></td>
+<td style="text-align: left;">평균 하나로 예측할 때에 비해 줄어든 잔차제곱합의 비율</td>
+<td style="text-align: left;">설명변수를 늘리면 절대 줄지 않음. 개수가 다른 모형을 비교하는 데 쓰면 안 됨</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(R_a^2\)</span></td>
+<td style="text-align: left;">자유도로 보정한 <span class="math inline">\(R^2\)</span></td>
+<td style="text-align: left;">쓸모없는 변수에 대한 벌점이 있지만 완벽하지 않음, 음수 가능</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(R^2_{\text{pred}}\)</span></td>
+<td style="text-align: left;">새 데이터에서의 같은 비율</td>
+<td style="text-align: left;">과적합을 드러냄, 음수 가능</td>
+</tr>
+</tbody>
+</table>
+<p>그리고 세 숫자 모두 <strong>모형이 맞는지</strong>는 재지 않습니다. <span class="math inline">\(R^2\)</span>는 “얼마나 예측할 수 있는가”를 재는 숫자이고, “모형이 옳은가”는 잔차 그림으로, “계수가 정말 <span class="math inline">\(0\)</span>이 아닌가”는 5장의 검정으로 따로 확인해야 합니다.</p>
+<p>지금까지는 설명변수가 모두 수치형이었습니다. 3.5절에서는 범주형 설명변수를 계획행렬에 넣는 방법을 다루고, 그것이 2.4절의 <span class="math inline">\(\eta^2\)</span>와 분산분석으로 이어진다는 것을 봅니다.</p>
+<hr>
+<section id="연결되는-개념" class="level3">
+<h3 class="anchored" data-anchor-id="연결되는-개념">연결되는 개념</h3>
+<ul>
+<li><span class="math inline">\(\leftarrow\)</span> <strong>이전 개념:</strong> <a href="../../../ds-ai/data-analysis-inference/03-linear-models/03-projection.html">3.3 사영으로 보는 회귀: 햇 행렬과 잔차</a></li>
+<li><span class="math inline">\(\rightarrow\)</span> <strong>다음 개념:</strong> <a href="../../../ds-ai/data-analysis-inference/03-linear-models/05-anova.html">3.5 범주형 설명변수와 분산분석</a></li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const categoryLinks = {
+    "수학": "/math/index.html",
+    "확률과 통계": "/stats/index.html",
+    "컴퓨터 공학": "/cs/index.html",
+    "데이터 사이언스·AI": "/ds-ai/index.html",
+    "경영/경제": "/biz-econ/index.html",
+    "의학통계·바이오메트리": "/biostat/index.html"
+  };
+  document.querySelectorAll('.navbar-nav .nav-item.dropdown > a.nav-link').forEach(function(el) {
+    const label = el.textContent.trim();
+    if (categoryLinks[label]) {
+      el.setAttribute('href', categoryLinks[label]);
+      el.addEventListener('click', function(e) {
+        if (window.innerWidth >= 992) {
+          window.location.href = categoryLinks[label];
+        }
+      });
+    }
+  });
+
+  /* ---------------------------------------------------------------
+     메가 메뉴: 드롭다운을 그룹(헤더 단위)별 가로 열로 재배치
+     - 첫 헤더 이전 항목(예: "전체 과목 보기")은 상단 한 줄로
+     - 한 그룹의 과목이 MAX_ROWS 개를 넘으면 그 그룹 안에서 열을 나눔
+     --------------------------------------------------------------- */
+  const MAX_ROWS = 7;      // 한 열에 들어갈 최대 과목 수
+  const EDGE = 16;         // 화면 가장자리 여백(px)
+
+  document.querySelectorAll('.navbar .nav-item.dropdown > .dropdown-menu').forEach(function(menu) {
+    const items = Array.from(menu.children);
+    if (items.filter(function(li) { return li.classList.contains('dropdown-header'); }).length < 2) return;
+
+    const top = document.createElement('li');
+    top.className = 'mega-top';
+    const groupsWrap = document.createElement('li');
+    groupsWrap.className = 'mega-groups';
+
+    let current = null;
+    items.forEach(function(li) {
+      if (li.querySelector('.dropdown-divider')) { li.remove(); return; }
+      if (li.classList.contains('dropdown-header')) {
+        const group = document.createElement('div');
+        group.className = 'mega-group';
+        const header = document.createElement('div');
+        header.className = 'dropdown-header';
+        header.textContent = li.textContent.trim();
+        const list = document.createElement('ul');
+        list.className = 'mega-items';
+        group.appendChild(header);
+        group.appendChild(list);
+        groupsWrap.appendChild(group);
+        current = list;
+        li.remove();
+        return;
+      }
+      if (current) {
+        current.appendChild(li);
+      } else {
+        top.appendChild(li.querySelector('a') || li);
+        li.remove();
+      }
+    });
+
+    groupsWrap.querySelectorAll('.mega-items').forEach(function(list) {
+      const n = list.children.length;
+      const cols = Math.max(1, Math.ceil(n / MAX_ROWS));
+      list.style.setProperty('--mega-rows', Math.ceil(n / cols));
+    });
+
+    menu.innerHTML = '';
+    if (top.children.length) menu.appendChild(top);
+    menu.appendChild(groupsWrap);
+    menu.classList.add('mega-menu');
+  });
+
+  /* 펼친 메뉴가 화면 오른쪽 밖으로 나가지 않도록 위치 보정 */
+  function fitToViewport(menu) {
+    if (window.innerWidth < 992) { menu.style.left = ''; return; }
+    menu.style.left = '0px';
+    const rect = menu.getBoundingClientRect();
+    if (rect.width === 0) return;
+    let shift = 0;
+    const overflow = rect.right - (window.innerWidth - EDGE);
+    if (overflow > 0) shift = -overflow;
+    if (rect.left + shift < EDGE) shift = EDGE - rect.left;
+    menu.style.left = shift + 'px';
+  }
+
+  document.querySelectorAll('.navbar .nav-item.dropdown').forEach(function(item) {
+    const menu = item.querySelector(':scope > .dropdown-menu.mega-menu');
+    if (!menu) return;
+    const fit = function() { requestAnimationFrame(function() { fitToViewport(menu); }); };
+    item.addEventListener('mouseenter', fit);
+    item.addEventListener('focusin', fit);
+    item.addEventListener('shown.bs.dropdown', fit);
+  });
+});
+</script>
+<script>
+/* 좌측 사이드바 맨 위 과목명: "한국어(English)" → 한국어 / English 두 줄로 나눠 표시 */
+document.addEventListener("DOMContentLoaded", function () {
+  var el = document.querySelector("#quarto-sidebar .sidebar-menu-container > ul > li > .sidebar-item-container .menu-text, #quarto-sidebar .sidebar-menu-container > ul > li > .sidebar-item-text .menu-text");
+  if (!el) return;
+  var m = el.textContent.trim().match(/^(.+?)\s*\((.+)\)$/);
+  if (!m) return;
+  el.textContent = m[1];
+  var en = document.createElement("span");
+  en.className = "menu-subtitle";
+  en.textContent = m[2];
+  el.appendChild(en);
+});
+</script>
+<script data-goatcounter="https://xkwhd1557.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/xkwhd1557\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+<nav class="page-navigation" aria-label="Page">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../ds-ai/data-analysis-inference/03-linear-models/03-projection.html" class="pagination-link" aria-label="3.3 사영으로 보는 회귀: 햇 행렬과 잔차">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">3.3 사영으로 보는 회귀: 햇 행렬과 잔차</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../ds-ai/data-analysis-inference/03-linear-models/05-anova.html" class="pagination-link" aria-label="3.5 범주형 설명변수와 분산분석">
+        <span class="nav-page-text">3.5 범주형 설명변수와 분산분석</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2026 xkwhd1557 · 글은 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.ko">CC BY-NC-ND 4.0</a>에 따라 이용할 수 있습니다.<br> <a href="../../../privacy.html">개인정보 처리방침</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
