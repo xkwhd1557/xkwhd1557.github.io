@@ -270,6 +270,10 @@ window.Quarto = {
  <span class="dropdown-text">함수해석학</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../../../math/topological-vector-spaces/index.html">
+ <span class="dropdown-text">위상벡터공간론</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../../../math/pde-advanced/index.html">
  <span class="dropdown-text">편미분방정식</span></a>
   </li>  
@@ -284,6 +288,18 @@ window.Quarto = {
         <li>
     <a class="dropdown-item" href="../../../math/differential-geometry/index.html">
  <span class="dropdown-text">미분기하학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/numerical-ode/index.html">
+ <span class="dropdown-text">수치적 상미분방정식</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/scientific-computing/index.html">
+ <span class="dropdown-text">과학계산</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/inverse-problems/index.html">
+ <span class="dropdown-text">역문제</span></a>
   </li>  
     </ul>
   </li>
@@ -361,6 +377,34 @@ window.Quarto = {
         <li>
     <a class="dropdown-item" href="../../../stats/stats-for-stoch-proc/index.html">
  <span class="dropdown-text">확률과정의 통계추론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/nonparametric-stats/index.html">
+ <span class="dropdown-text">비모수 통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/topological-data-analysis/index.html">
+ <span class="dropdown-text">위상수학적 데이터 분석</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/statistical-learning-theory/index.html">
+ <span class="dropdown-text">통계적 학습 이론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/statistical-inverse-problems/index.html">
+ <span class="dropdown-text">통계적 역문제</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/statistical-modelling/index.html">
+ <span class="dropdown-text">통계적 모델링</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/asymptotic-statistics/index.html">
+ <span class="dropdown-text">점근 통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/time-series-foundations/index.html">
+ <span class="dropdown-text">시계열 분석의 통계적 기초</span></a>
   </li>  
     </ul>
   </li>
@@ -878,9 +922,9 @@ window.Quarto = {
 </section>
 <section id="접근-아이디어" class="level3">
 <h3 class="anchored" data-anchor-id="접근-아이디어">접근 아이디어</h3>
-<p>계획행렬 <span class="math inline">\(X\)</span>의 열들을 <span class="math inline">\(X_{\cdot 1}, \ldots, X_{\cdot d}\)</span>라 하면, 어떤 <span class="math inline">\(\beta\)</span>에 대해서든 <span class="math inline">\(X\beta = \beta_1 X_{\cdot 1} + \cdots + \beta_d X_{\cdot d}\)</span>는 열들의 일차결합입니다. 따라서 <span class="math inline">\(\beta\)</span>를 바꿔 가며 만들 수 있는 모든 “평균 벡터”의 모임은 <span class="math inline">\(X\)</span>의 <strong>열공간</strong></p>
+<p>계획행렬 <span class="math inline">\(X\)</span>의 열들을 <span class="math inline">\(X_{\cdot 0} = \mathbf{1}_n, X_{\cdot 1}, \ldots, X_{\cdot (d-1)}\)</span>라 하면, 어떤 <span class="math inline">\(\beta\)</span>에 대해서든 <span class="math inline">\(X\beta = \beta_0 \mathbf{1}_n + \beta_1 X_{\cdot 1} + \cdots + \beta_{d-1} X_{\cdot (d-1)}\)</span>는 열들의 일차결합입니다. 따라서 <span class="math inline">\(\beta\)</span>를 바꿔 가며 만들 수 있는 모든 “평균 벡터”의 모임은 <span class="math inline">\(X\)</span>의 <strong>열공간</strong></p>
 <p><span class="math display">\[\mathrm{col}(X) := \{X\beta : \beta \in \mathbb{R}^d\} \subset \mathbb{R}^n\]</span></p>
-<p>이고, <span class="math inline">\(\mathrm{rank}(X) = d\)</span>이면 이는 <span class="math inline">\(d\)</span>차원 부분공간입니다. 최소제곱법은 <span class="math inline">\(\lVert Y - X\beta \rVert\)</span>를 최소화하므로, <strong>열공간 위의 점들 가운데 <span class="math inline">\(Y\)</span>에 가장 가까운 점</strong>을 찾는 것입니다. 3차원 공간의 점에서 바닥 평면까지 가장 가까운 점은 점에서 바닥으로 수직으로 내린 발이듯이, 그 점은 <span class="math inline">\(Y\)</span>를 열공간에 <strong>직교사영</strong>한 점일 것입니다.</p>
+<p>이고, <span class="math inline">\(\mathrm{rank}(X) = d\)</span>이면 이는 <span class="math inline">\(d\)</span>차원 부분공간입니다. 절편 열 덕분에 이 부분공간에는 언제나 상수 벡터 <span class="math inline">\(c\,\mathbf{1}_n\)</span>들이 들어 있습니다. 최소제곱법은 <span class="math inline">\(\lVert Y - X\beta \rVert\)</span>를 최소화하므로, <strong>열공간 위의 점들 가운데 <span class="math inline">\(Y\)</span>에 가장 가까운 점</strong>을 찾는 것입니다. 3차원 공간의 점에서 바닥 평면까지 가장 가까운 점은 점에서 바닥으로 수직으로 내린 발이듯이, 그 점은 <span class="math inline">\(Y\)</span>를 열공간에 <strong>직교사영</strong>한 점일 것입니다. <a href="../../../ds-ai/data-analysis-inference/03-linear-models/01-regression-function.html">3.1절</a>에서 확률변수의 공간 <span class="math inline">\(L^2\)</span>에서 본 사영의 그림이, 이번에는 데이터 벡터의 공간 <span class="math inline">\(\mathbb{R}^n\)</span>에서 나타나는 것입니다.</p>
 <p><img src="figures/projection.png" class="img-fluid" style="width:70.0%" alt="최소제곱법의 기하학을 나타낸 그림. 비스듬한 평면이 col(X)를 나타내고, 평면 위쪽의 점 Y에서 평면으로 수직선이 내려와 평면 위의 점 Ŷ = Xβ̂에 닿는다. Ŷ에서 Y로 향하는 수직선은 잔차 ε̂ = (I - H)Y이고, 원점에서 Ŷ까지의 화살표는 평면 안에 있다. 잔차와 평면이 만나는 곳에 직각 표시가 있다."></p>
 </section>
 <section id="필요한-개념들" class="level3">
@@ -964,7 +1008,7 @@ window.Quarto = {
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"|잔차의 합| = </span><span class="sc">{</span><span class="bu">abs</span>(res.<span class="bu">sum</span>())<span class="sc">:.1e}</span><span class="ss">,  X^T(잔차)의 성분 중 절댓값의 최대 = </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">max</span>(np.<span class="bu">abs</span>(X.T <span class="op">@</span> res))<span class="sc">:.1e}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <pre><code>H가 대칭인가: True  H^2 = H인가: True  tr(H) = 3.0
 |잔차의 합| = 2.3e-13,  X^T(잔차)의 성분 중 절댓값의 최대 = 9.2e-13</code></pre>
-<p>잔차의 합과 <span class="math inline">\(X^\top\hat{\varepsilon}\)</span>은 컴퓨터의 반올림 오차 수준에서 <span class="math inline">\(0\)</span>입니다. 잔차의 합이 <span class="math inline">\(0\)</span>인 것은 절편 열 <span class="math inline">\(\mathbf{1}_n\)</span>이 <span class="math inline">\(X\)</span>에 들어 있어서 <span class="math inline">\(\mathbf{1}_n^\top\hat{\varepsilon} = 0\)</span>이기 때문입니다.</p>
+<p>잔차의 합과 <span class="math inline">\(X^\top\hat{\varepsilon}\)</span>은 컴퓨터의 반올림 오차 수준에서 <span class="math inline">\(0\)</span>입니다. 잔차의 합이 <span class="math inline">\(0\)</span>인 것은 절편 열 <span class="math inline">\(\mathbf{1}_n\)</span>이 <span class="math inline">\(X\)</span>의 첫 열이어서 <span class="math inline">\(\mathbf{1}_n^\top\hat{\varepsilon} = 0\)</span>이기 때문입니다.</p>
 </section>
 </section>
 <section id="문제-2-오차의-분산은-어떻게-추정하는가" class="level2">
@@ -992,7 +1036,7 @@ window.Quarto = {
 <li><span class="math inline">\(\mathrm{Cov}(\hat{\varepsilon}) = \sigma^2(I_n - H)\)</span>입니다.</li>
 <li><span class="math inline">\(\mathrm{RSS} = Y^\top(I_n - H)Y = \varepsilon^\top(I_n - H)\varepsilon\)</span>입니다.</li>
 <li><span class="math inline">\(\mathbb{E}[\mathrm{RSS}] = \sigma^2(n - d)\)</span>입니다.</li>
-<li><span class="math inline">\(X\)</span>에 절편 열이 있으면 <span class="math inline">\(\sum_{i=1}^n \hat{\varepsilon}_i = 0\)</span>이고, 따라서 적합값의 평균은 <span class="math inline">\(\bar{Y}\)</span>와 같습니다.</li>
+<li><span class="math inline">\(\sum_{i=1}^n \hat{\varepsilon}_i = 0\)</span>이고, 따라서 적합값의 평균은 <span class="math inline">\(\bar{Y}\)</span>와 같습니다.</li>
 </ol>
 </div>
 </div>
@@ -1013,14 +1057,14 @@ window.Quarto = {
 <li><span class="math inline">\(\mathrm{Cov}(\hat{\varepsilon}) = (I_n - H)\,\sigma^2 I_n\,(I_n - H)^\top = \sigma^2(I_n - H)\)</span>입니다. <span class="math inline">\(I_n - H\)</span>가 대칭이고 멱등이기 때문입니다.</li>
 <li><span class="math inline">\(\lVert (I_n - H)Y \rVert^2 = Y^\top(I_n - H)^\top(I_n - H)Y = Y^\top(I_n - H)Y\)</span>이고, 1에 의해 <span class="math inline">\(Y\)</span> 자리에 <span class="math inline">\(\varepsilon\)</span>을 넣어도 같습니다.</li>
 <li>실수는 자기 자신의 대각합이므로 <span class="math display">\[\mathbb{E}[\varepsilon^\top(I_n - H)\varepsilon] = \mathbb{E}\big[\mathrm{tr}\big((I_n - H)\varepsilon\varepsilon^\top\big)\big] = \mathrm{tr}\big((I_n - H)\,\sigma^2 I_n\big) = \sigma^2(n - d)\]</span> 입니다. 마지막 등호에는 정리 3.3.2의 <span class="math inline">\(\mathrm{tr}(H) = d\)</span>를 썼습니다.</li>
-<li>절편 열이 있으면 <span class="math inline">\(\mathbf{1}_n \in \mathrm{col}(X)\)</span>이고, 정리 3.3.2의 4에 의해 <span class="math inline">\(\mathbf{1}_n^\top\hat{\varepsilon} = 0\)</span>입니다. 그러면 <span class="math inline">\(\sum_i \hat{Y}_i = \sum_i Y_i - \sum_i \hat{\varepsilon}_i = \sum_i Y_i\)</span>입니다. <span class="math inline">\(\square\)</span></li>
+<li>절편 열이 <span class="math inline">\(X\)</span>의 첫 열이므로 <span class="math inline">\(\mathbf{1}_n \in \mathrm{col}(X)\)</span>이고, 정리 3.3.2의 4에 의해 <span class="math inline">\(\mathbf{1}_n^\top\hat{\varepsilon} = 0\)</span>입니다. 그러면 <span class="math inline">\(\sum_i \hat{Y}_i = \sum_i Y_i - \sum_i \hat{\varepsilon}_i = \sum_i Y_i\)</span>입니다. <span class="math inline">\(\square\)</span></li>
 </ol>
 </div>
 </div>
 </div>
 <p>성질 4로부터 오차 분산의 불편추정량을 바로 얻습니다.</p>
 <p><span class="math display">\[\hat{\sigma}^2 := \frac{\mathrm{RSS}}{n - d}, \qquad \mathbb{E}[\hat{\sigma}^2] = \sigma^2\]</span></p>
-<p>왜 <span class="math inline">\(n\)</span>이 아니라 <span class="math inline">\(n - d\)</span>일까요? 기하학적으로 보면 답이 분명합니다. 오차 <span class="math inline">\(\varepsilon\)</span>은 <span class="math inline">\(\mathbb{R}^n\)</span>의 <span class="math inline">\(n\)</span>개 방향으로 모두 흩어질 수 있지만, 잔차 <span class="math inline">\(\hat{\varepsilon} = (I_n - H)\varepsilon\)</span>은 열공간의 직교여공간, 즉 <span class="math inline">\((n - d)\)</span>차원 부분공간에 <strong>갇혀</strong> 있습니다. 오차 가운데 열공간 방향의 <span class="math inline">\(d\)</span>개 성분은 적합값 <span class="math inline">\(\hat{Y}\)</span>가 “흡수”해 버려서 잔차에 남지 않습니다. 그래서 잔차의 제곱합은 오차의 제곱합보다 평균적으로 작고, 남은 방향의 개수 <span class="math inline">\(n - d\)</span>로 나눠야 공정한 평균이 됩니다. 이 <span class="math inline">\(n - d\)</span>를 잔차의 <strong>자유도</strong>(degrees of freedom)라고 합니다. <a href="../../../ds-ai/data-analysis-inference/01-mle/01-likelihood.html">1.1절</a>에서 표본분산을 <span class="math inline">\(n - 1\)</span>로 나누던 것은 절편 하나뿐인 모형(<span class="math inline">\(d = 1\)</span>)의 특수한 경우입니다.</p>
+<p>왜 <span class="math inline">\(n\)</span>이 아니라 <span class="math inline">\(n - d\)</span>일까요? 기하학적으로 보면 답이 분명합니다. 오차 <span class="math inline">\(\varepsilon\)</span>은 <span class="math inline">\(\mathbb{R}^n\)</span>의 <span class="math inline">\(n\)</span>개 방향으로 모두 흩어질 수 있지만, 잔차 <span class="math inline">\(\hat{\varepsilon} = (I_n - H)\varepsilon\)</span>은 열공간의 직교여공간, 즉 <span class="math inline">\((n - d)\)</span>차원 부분공간에 <strong>갇혀</strong> 있습니다. 오차 가운데 열공간 방향의 <span class="math inline">\(d\)</span>개 성분은 적합값 <span class="math inline">\(\hat{Y}\)</span>가 “흡수”해 버려서 잔차에 남지 않습니다. 그래서 잔차의 제곱합은 오차의 제곱합보다 평균적으로 작고, 남은 방향의 개수 <span class="math inline">\(n - d\)</span>로 나눠야 공정한 평균이 됩니다. 이 <span class="math inline">\(n - d\)</span>를 잔차의 <strong>자유도</strong>(degrees of freedom)라고 합니다. <a href="../../../ds-ai/data-analysis-inference/01-mle/01-likelihood.html">1.1절</a>에서 표본분산을 <span class="math inline">\(n - 1\)</span>로 나누던 것은 설명변수 없이 절편 하나뿐인 모형(<span class="math inline">\(d = 1\)</span>)의 특수한 경우입니다.</p>
 </section>
 <section id="해결-1" class="level3">
 <h3 class="anchored" data-anchor-id="해결-1">해결</h3>

@@ -269,6 +269,10 @@ window.Quarto = {
  <span class="dropdown-text">함수해석학</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../../../math/topological-vector-spaces/index.html">
+ <span class="dropdown-text">위상벡터공간론</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../../../math/pde-advanced/index.html">
  <span class="dropdown-text">편미분방정식</span></a>
   </li>  
@@ -283,6 +287,18 @@ window.Quarto = {
         <li>
     <a class="dropdown-item" href="../../../math/differential-geometry/index.html">
  <span class="dropdown-text">미분기하학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/numerical-ode/index.html">
+ <span class="dropdown-text">수치적 상미분방정식</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/scientific-computing/index.html">
+ <span class="dropdown-text">과학계산</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/inverse-problems/index.html">
+ <span class="dropdown-text">역문제</span></a>
   </li>  
     </ul>
   </li>
@@ -360,6 +376,34 @@ window.Quarto = {
         <li>
     <a class="dropdown-item" href="../../../stats/stats-for-stoch-proc/index.html">
  <span class="dropdown-text">확률과정의 통계추론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/nonparametric-stats/index.html">
+ <span class="dropdown-text">비모수 통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/topological-data-analysis/index.html">
+ <span class="dropdown-text">위상수학적 데이터 분석</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/statistical-learning-theory/index.html">
+ <span class="dropdown-text">통계적 학습 이론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/statistical-inverse-problems/index.html">
+ <span class="dropdown-text">통계적 역문제</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/statistical-modelling/index.html">
+ <span class="dropdown-text">통계적 모델링</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/asymptotic-statistics/index.html">
+ <span class="dropdown-text">점근 통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/time-series-foundations/index.html">
+ <span class="dropdown-text">시계열 분석의 통계적 기초</span></a>
   </li>  
     </ul>
   </li>
@@ -962,8 +1006,8 @@ window.Quarto = {
 <div class="callout-body-container callout-body">
 <p>수준 <span class="math inline">\(i\)</span>의 지시변수를 <span class="math inline">\(D_i := \mathbf{1}\{\text{수준} = i\}\)</span>라 합시다.</p>
 <ol type="1">
-<li><strong>셀 평균 코딩</strong>(cell-means coding): 절편 없이 <span class="math inline">\(D_1, \ldots, D_g\)</span>를 열로 씁니다. 계수는 수준 평균 <span class="math inline">\(\mu_1, \ldots, \mu_g\)</span>입니다.</li>
-<li><strong>더미 코딩</strong>(dummy coding): 한 수준을 <strong>기준 수준</strong>(reference level)으로 정하고, 절편과 나머지 수준의 지시변수를 씁니다. 수준 1이 기준이면 <span class="math display">\[Y = \beta_0 + \beta_2 D_2 + \cdots + \beta_g D_g + \varepsilon\]</span> 이고, <span class="math inline">\(\beta_0 = \mu_1\)</span>은 기준 수준의 평균, <span class="math inline">\(\beta_k = \mu_k - \mu_1\)</span>은 기준 수준과의 차이입니다.</li>
+<li><strong>셀 평균 코딩</strong>(cell-means coding): 절편 열을 따로 두지 않고 <span class="math inline">\(D_1, \ldots, D_g\)</span>를 열로 씁니다. 계수는 수준 평균 <span class="math inline">\(\mu_1, \ldots, \mu_g\)</span>입니다. 겉보기에는 절편이 없지만 <span class="math inline">\(D_1 + \cdots + D_g = \mathbf{1}_n\)</span>이므로 열공간에는 절편이 들어 있습니다.</li>
+<li><strong>더미 코딩</strong>(dummy coding): 한 수준을 <strong>기준 수준</strong>(reference level)으로 정하고, 절편과 나머지 수준의 지시변수를 씁니다. 수준 1이 기준이면 <span class="math display">\[Y = \beta_0 + \beta_1 D_2 + \cdots + \beta_{g-1} D_g + \varepsilon\]</span> 이고, 절편 <span class="math inline">\(\beta_0 = \mu_1\)</span>은 기준 수준의 평균, <span class="math inline">\(\beta_k = \mu_{k+1} - \mu_1\)</span> (<span class="math inline">\(k = 1, \ldots, g - 1\)</span>)은 기준 수준과의 차이입니다.</li>
 <li><strong>효과 코딩</strong>(effect coding): 절편과 <span class="math inline">\(D_i - D_g\)</span> (<span class="math inline">\(i = 1, \ldots, g - 1\)</span>)를 열로 씁니다. 그러면 계수는 정리 3.5.2의 <span class="math inline">\(\mu\)</span>와 <span class="math inline">\(\alpha_1, \ldots, \alpha_{g-1}\)</span>이고, <span class="math inline">\(\alpha_g = -\sum_{i&lt;g}\alpha_i\)</span>입니다.</li>
 </ol>
 </div>
@@ -999,7 +1043,7 @@ window.Quarto = {
 </div>
 </div>
 <p><a href="../../../ds-ai/data-analysis-inference/03-linear-models/03-projection.html">3.3절</a>의 그림으로 말하면, 코딩은 같은 평면 위에 그은 서로 다른 좌표축입니다. 그림자는 평면이 정하지, 좌표축이 정하지 않습니다.</p>
-<p>여기서 흔히 저지르는 실수가 하나 있습니다. 절편과 지시변수 <span class="math inline">\(g\)</span>개를 <strong>모두</strong> 넣으면 <span class="math inline">\(D_1 + \cdots + D_g = \mathbf{1}_n\)</span> 때문에 열들이 일차종속이 되어 <span class="math inline">\(\mathrm{rank}(X) &lt; d\)</span>가 됩니다. 이를 <strong>더미 변수 함정</strong>(dummy variable trap)이라고 합니다. 3.2절의 정리 3.2.3에 의해 회귀계수를 식별할 수 없고 최소제곱 해도 유일하지 않습니다. 이는 정리 3.5.2의 식별 불가능성이 계획행렬에서 드러난 모습입니다. 더미 코딩은 수준 하나를 빼서, 효과 코딩은 제약을 걸어서 이 문제를 해결합니다.</p>
+<p>여기서 흔히 저지르는 실수가 하나 있습니다. 절편과 지시변수 <span class="math inline">\(g\)</span>개를 <strong>모두</strong> 넣으면 <span class="math inline">\(D_1 + \cdots + D_g = \mathbf{1}_n\)</span> 때문에 열들이 일차종속이 되어 열이 <span class="math inline">\(g + 1\)</span>개인데 <span class="math inline">\(\mathrm{rank}(X) = g\)</span>가 됩니다. 이를 <strong>더미 변수 함정</strong>(dummy variable trap)이라고 합니다. 3.2절의 정리 3.2.3에 의해 회귀계수를 식별할 수 없고 최소제곱 해도 유일하지 않습니다. 이는 정리 3.5.2의 식별 불가능성이 계획행렬에서 드러난 모습입니다. 더미 코딩은 수준 하나를 빼서, 효과 코딩은 제약을 걸어서 이 문제를 해결합니다.</p>
 <p>마지막으로, 분산분석의 결정계수는 2.4절의 <span class="math inline">\(\eta^2\)</span>와 같습니다.</p>
 <div class="callout callout-style-default callout-important no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1223,7 +1267,7 @@ R^2 = 0.1772  (2.4절의 eta^2 = 0.1772)
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">회귀함수 <span class="math inline">\(f_0(x) = \mathbb{E}[Y \mid X = x]\)</span></td>
-<td style="text-align: left;">제곱 위험의 최소화 함수. 최소제곱법은 그 플러그인 버전</td>
+<td style="text-align: left;">제곱 위험의 최소화 함수이자 <span class="math inline">\(L^2(\sigma(X))\)</span>로의 사영. 최소제곱법은 그 플러그인 버전</td>
 <td style="text-align: left;">3.1</td>
 </tr>
 <tr class="even">

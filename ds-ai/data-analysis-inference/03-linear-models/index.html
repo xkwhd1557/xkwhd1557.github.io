@@ -229,6 +229,10 @@ window.Quarto = {
  <span class="dropdown-text">함수해석학</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../../../math/topological-vector-spaces/index.html">
+ <span class="dropdown-text">위상벡터공간론</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../../../math/pde-advanced/index.html">
  <span class="dropdown-text">편미분방정식</span></a>
   </li>  
@@ -243,6 +247,18 @@ window.Quarto = {
         <li>
     <a class="dropdown-item" href="../../../math/differential-geometry/index.html">
  <span class="dropdown-text">미분기하학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/numerical-ode/index.html">
+ <span class="dropdown-text">수치적 상미분방정식</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/scientific-computing/index.html">
+ <span class="dropdown-text">과학계산</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/inverse-problems/index.html">
+ <span class="dropdown-text">역문제</span></a>
   </li>  
     </ul>
   </li>
@@ -320,6 +336,34 @@ window.Quarto = {
         <li>
     <a class="dropdown-item" href="../../../stats/stats-for-stoch-proc/index.html">
  <span class="dropdown-text">확률과정의 통계추론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/nonparametric-stats/index.html">
+ <span class="dropdown-text">비모수 통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/topological-data-analysis/index.html">
+ <span class="dropdown-text">위상수학적 데이터 분석</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/statistical-learning-theory/index.html">
+ <span class="dropdown-text">통계적 학습 이론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/statistical-inverse-problems/index.html">
+ <span class="dropdown-text">통계적 역문제</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/statistical-modelling/index.html">
+ <span class="dropdown-text">통계적 모델링</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/asymptotic-statistics/index.html">
+ <span class="dropdown-text">점근 통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/time-series-foundations/index.html">
+ <span class="dropdown-text">시계열 분석의 통계적 기초</span></a>
   </li>  
     </ul>
   </li>
@@ -811,7 +855,7 @@ window.Quarto = {
 <section id="숫자-하나에서-함수로" class="level2">
 <h2 class="anchored" data-anchor-id="숫자-하나에서-함수로">숫자 하나에서 함수로</h2>
 <p>2장에서는 두 변수가 <strong>얼마나 강하게</strong> 관련되어 있는지를 숫자 하나로 요약했습니다. 상관계수가 <span class="math inline">\(0.7\)</span>이라거나, 분반이 점수 분산의 18%를 설명한다는 식이었습니다. 하지만 실제로 알고 싶은 것은 대개 그 이상입니다. 공부 시간이 한 시간 늘면 점수가 몇 점 오르는지, 집의 면적과 위치를 알 때 가격을 얼마로 예측하면 좋은지처럼, <strong>한 변수가 다른 변수들의 값에 따라 어떻게 달라지는지를 함수로</strong> 알고 싶은 것입니다.</p>
-<p>이것이 <strong>회귀 분석</strong>(regression analysis)이 하는 일입니다. 관심 있는 변수 <span class="math inline">\(Y\)</span>를 <strong>반응변수</strong>(response variable), <span class="math inline">\(Y\)</span>를 설명하는 데 쓰는 변수들 <span class="math inline">\(X = (X_1, \ldots, X_d)\)</span>를 <strong>설명변수</strong>(covariate)라고 할 때, 회귀 분석은 <span class="math inline">\(Y\)</span>가 <span class="math inline">\(X\)</span>에 어떻게 의존하는지를 함수로 표현합니다. 함수로 표현하면 2장의 측도들로는 할 수 없던 두 가지가 가능해집니다.</p>
+<p>이것이 <strong>회귀 분석</strong>(regression analysis)이 하는 일입니다. 관심 있는 변수 <span class="math inline">\(Y\)</span>를 <strong>반응변수</strong>(response variable), <span class="math inline">\(Y\)</span>를 설명하는 데 쓰는 변수들 <span class="math inline">\(X = (X_1, \ldots, X_{d-1})\)</span>를 <strong>설명변수</strong>(covariate)라고 할 때, 회귀 분석은 <span class="math inline">\(Y\)</span>가 <span class="math inline">\(X\)</span>에 어떻게 의존하는지를 함수로 표현합니다. 함수로 표현하면 2장의 측도들로는 할 수 없던 두 가지가 가능해집니다.</p>
 <ul>
 <li><strong>다른 변수를 고정한 효과를 말할 수 있습니다.</strong> 예를 들어 “면적이 같은 집끼리 비교하면, 역에서 1km 멀어질 때 가격이 얼마나 떨어지는가”를 물을 수 있습니다. 두 변수만 보는 상관계수로는 이런 질문에 답할 수 없습니다.</li>
 <li><strong>새로운 관측값을 예측할 수 있습니다.</strong> 아직 팔리지 않은 집의 면적과 위치를 알면, 함수에 넣어 가격을 예측할 수 있습니다.</li>
@@ -831,7 +875,7 @@ window.Quarto = {
 <section id="기하학이라는-열쇠" class="level2">
 <h2 class="anchored" data-anchor-id="기하학이라는-열쇠">기하학이라는 열쇠</h2>
 <p>이번 장의 수학을 관통하는 아이디어가 하나 있습니다. 관측값 <span class="math inline">\(n\)</span>개를 모은 <span class="math inline">\(Y = (Y_1, \ldots, Y_n)\)</span>을 <span class="math inline">\(\mathbb{R}^n\)</span>의 벡터로 보면, 최소제곱법은 이 벡터를 설명변수들이 만드는 부분공간에 <strong>수직으로 내리는 것</strong>, 즉 <strong>사영</strong>(projection)입니다. 그림자를 떠올리면 됩니다. 벽에 비친 그림자는 물체에서 벽까지 가장 가까운 점들의 모임이고, 물체와 그림자를 잇는 선은 벽에 수직입니다.</p>
-<p>이 관점에서 보면 이번 장의 결과들이 대부분 <a href="../../../math/linear-algebra/index.html">선형대수학</a>의 익숙한 사실로 바뀝니다. 최소제곱 추정량의 식은 사영의 식이고, 결정계수의 분해는 피타고라스 정리이며, 잔차의 분산을 <span class="math inline">\(n\)</span>이 아니라 <span class="math inline">\(n - d\)</span>로 나누는 이유는 잔차가 <span class="math inline">\((n - d)\)</span>차원 공간에 갇혀 있기 때문입니다. 수식이 복잡해 보일 때마다 그림자를 떠올리면 무엇을 하고 있는지 놓치지 않을 수 있습니다.</p>
+<p>이 관점에서 보면 이번 장의 결과들이 대부분 <a href="../../../math/linear-algebra/index.html">선형대수학</a>의 익숙한 사실로 바뀝니다. 최소제곱 추정량의 식은 사영의 식이고, 결정계수의 분해는 피타고라스 정리이며, 잔차의 제곱합을 <span class="math inline">\(n\)</span>이 아니라 <span class="math inline">\(n - d\)</span>로 나누는 이유는 잔차가 <span class="math inline">\((n - d)\)</span>차원 공간에 갇혀 있기 때문입니다. 수식이 복잡해 보일 때마다 그림자를 떠올리면 무엇을 하고 있는지 놓치지 않을 수 있습니다.</p>
 </section>
 <section id="이-장의-위치" class="level2">
 <h2 class="anchored" data-anchor-id="이-장의-위치">이 장의 위치</h2>

@@ -270,6 +270,10 @@ window.Quarto = {
  <span class="dropdown-text">함수해석학</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../../../math/topological-vector-spaces/index.html">
+ <span class="dropdown-text">위상벡터공간론</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../../../math/pde-advanced/index.html">
  <span class="dropdown-text">편미분방정식</span></a>
   </li>  
@@ -284,6 +288,18 @@ window.Quarto = {
         <li>
     <a class="dropdown-item" href="../../../math/differential-geometry/index.html">
  <span class="dropdown-text">미분기하학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/numerical-ode/index.html">
+ <span class="dropdown-text">수치적 상미분방정식</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/scientific-computing/index.html">
+ <span class="dropdown-text">과학계산</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/inverse-problems/index.html">
+ <span class="dropdown-text">역문제</span></a>
   </li>  
     </ul>
   </li>
@@ -361,6 +377,34 @@ window.Quarto = {
         <li>
     <a class="dropdown-item" href="../../../stats/stats-for-stoch-proc/index.html">
  <span class="dropdown-text">확률과정의 통계추론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/nonparametric-stats/index.html">
+ <span class="dropdown-text">비모수 통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/topological-data-analysis/index.html">
+ <span class="dropdown-text">위상수학적 데이터 분석</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/statistical-learning-theory/index.html">
+ <span class="dropdown-text">통계적 학습 이론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/statistical-inverse-problems/index.html">
+ <span class="dropdown-text">통계적 역문제</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/statistical-modelling/index.html">
+ <span class="dropdown-text">통계적 모델링</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/asymptotic-statistics/index.html">
+ <span class="dropdown-text">점근 통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/time-series-foundations/index.html">
+ <span class="dropdown-text">시계열 분석의 통계적 기초</span></a>
   </li>  
     </ul>
   </li>
@@ -879,7 +923,7 @@ window.Quarto = {
 <section id="문제-상황" class="level3">
 <h3 class="anchored" data-anchor-id="문제-상황">문제 상황</h3>
 <p>학생 50명에 대해 두 설명변수 <span class="math inline">\(x_1\)</span>(예를 들어 공부 시간)과 <span class="math inline">\(x_2\)</span>(예를 들어 수면 시간)를 기록하고, 반응변수 <span class="math inline">\(y\)</span>를 측정했다고 합시다. 모형은</p>
-<p><span class="math display">\[Y_i = \beta_1 + \beta_2 x_{i1} + \beta_3 x_{i2} + \varepsilon_i, \qquad i = 1, \ldots, 50\]</span></p>
+<p><span class="math display">\[Y_i = \beta_0 + \beta_1 x_{i,1} + \beta_2 x_{i,2} + \varepsilon_i, \qquad i = 1, \ldots, 50\]</span></p>
 <p>입니다. 설명변수가 하나뿐이면 손으로도 최소제곱 직선을 구할 수 있지만, 설명변수가 여러 개면 식이 금방 복잡해집니다. 일반적인 공식이 있을까요?</p>
 </section>
 <section id="접근-아이디어" class="level3">
@@ -898,7 +942,21 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>고정 설계의 선형 회귀 모형을 <span class="math display">\[Y = X\beta + \varepsilon, \qquad Y = \begin{pmatrix} Y_1 \\ \vdots \\ Y_n \end{pmatrix},\quad X = \begin{pmatrix} x_1^\top \\ \vdots \\ x_n^\top \end{pmatrix} \in \mathbb{R}^{n \times d},\quad \varepsilon = \begin{pmatrix} \varepsilon_1 \\ \vdots \\ \varepsilon_n \end{pmatrix}\]</span> 로 씁니다. <span class="math inline">\(X\)</span>를 <strong>계획행렬</strong>(design matrix)이라고 하며, 절편이 있으면 첫 열은 모든 성분이 <span class="math inline">\(1\)</span>인 벡터 <span class="math inline">\(\mathbf{1}_n\)</span>입니다. 이 장에서는 별다른 말이 없으면 다음을 가정합니다. <span class="math display">\[\mathbb{E}[\varepsilon] = 0_n, \qquad \mathrm{Cov}(\varepsilon) = \sigma^2 I_n, \qquad \mathrm{rank}(X) = d \le n\]</span></p>
+<p>설명변수가 <span class="math inline">\(d - 1\)</span>개인 고정 설계의 선형 회귀 모형에서, <span class="math inline">\(i\)</span>번째 관측값은 <span class="math display">\[Y_i = \beta_0 + \beta_1 x_{i,1} + \beta_2 x_{i,2} + \cdots + \beta_{d-1} x_{i,d-1} + \varepsilon_i, \qquad i = 1, \ldots, n\]</span> 을 만족합니다. 여기서 <span class="math inline">\(x_{i,j}\)</span>는 <span class="math inline">\(i\)</span>번째 관측값의 <span class="math inline">\(j\)</span>번째 설명변수 값입니다. 설명변수 값들을 관측값 순서대로 한 행씩, 맨 앞에 <span class="math inline">\(1\)</span>을 붙여 쌓은 행렬 <span class="math display">\[X := \begin{pmatrix}
+1 &amp; x_{1,1} &amp; x_{1,2} &amp; \cdots &amp; x_{1,d-1} \\
+1 &amp; x_{2,1} &amp; x_{2,2} &amp; \cdots &amp; x_{2,d-1} \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+1 &amp; x_{n,1} &amp; x_{n,2} &amp; \cdots &amp; x_{n,d-1}
+\end{pmatrix} \in \mathbb{R}^{n \times d}\]</span> 를 <strong>계획행렬</strong>(design matrix)이라고 합니다. <span class="math inline">\(i\)</span>번째 행은 <span class="math inline">\(i\)</span>번째 관측값 하나에 대한 정보이고, 첫 열은 절편 <span class="math inline">\(\beta_0\)</span>에 곱해지는, 모든 성분이 <span class="math inline">\(1\)</span>인 벡터 <span class="math inline">\(\mathbf{1}_n\)</span>이며, <span class="math inline">\((j+1)\)</span>번째 열은 <span class="math inline">\(j\)</span>번째 설명변수를 <span class="math inline">\(n\)</span>번 관측한 값들입니다. 그러면 <span class="math inline">\(n\)</span>개의 식을 한꺼번에 <span class="math display">\[\underbrace{\begin{pmatrix} Y_1 \\ Y_2 \\ \vdots \\ Y_n \end{pmatrix}}_{Y}
+= \underbrace{\begin{pmatrix}
+1 &amp; x_{1,1} &amp; \cdots &amp; x_{1,d-1} \\
+1 &amp; x_{2,1} &amp; \cdots &amp; x_{2,d-1} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+1 &amp; x_{n,1} &amp; \cdots &amp; x_{n,d-1}
+\end{pmatrix}}_{X}
+\underbrace{\begin{pmatrix} \beta_0 \\ \beta_1 \\ \vdots \\ \beta_{d-1} \end{pmatrix}}_{\beta}
++ \underbrace{\begin{pmatrix} \varepsilon_1 \\ \varepsilon_2 \\ \vdots \\ \varepsilon_n \end{pmatrix}}_{\varepsilon},
+\qquad \text{즉} \qquad Y = X\beta + \varepsilon\]</span> 로 쓸 수 있습니다. 행렬곱 <span class="math inline">\(X\beta\)</span>의 <span class="math inline">\(i\)</span>번째 성분이 정확히 <span class="math inline">\(\beta_0 + \beta_1 x_{i,1} + \cdots + \beta_{d-1} x_{i,d-1}\)</span>이기 때문입니다. 이 장에서는 별다른 말이 없으면 다음을 가정합니다. <span class="math display">\[\mathbb{E}[\varepsilon] = 0_n, \qquad \mathrm{Cov}(\varepsilon) = \sigma^2 I_n, \qquad \mathrm{rank}(X) = d \le n\]</span></p>
 </div>
 </div>
 <p>공분산에 대한 가정은 세 가지를 한꺼번에 말합니다. 모든 오차의 분산이 <span class="math inline">\(\sigma^2\)</span>로 <strong>같고</strong>, 서로 다른 오차끼리는 <strong>상관이 없다</strong>는 것입니다. 정규분포는 가정하지 않았다는 점에 주의하시기 바랍니다.</p>
@@ -980,7 +1038,7 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>모형 <span class="math inline">\(Y_i = \beta_0 + \beta_1 x_i + \varepsilon_i\)</span>에서 <span class="math inline">\(x_i\)</span>들이 모두 같지는 않으면, 최소제곱 추정량은 <span class="math display">\[\hat{\beta}_1 = \frac{\sum_{i=1}^n (x_i - \bar{x})(Y_i - \bar{Y})}{\sum_{i=1}^n (x_i - \bar{x})^2} = r\,\frac{s_Y}{s_x}, \qquad \hat{\beta}_0 = \bar{Y} - \hat{\beta}_1\bar{x}\]</span> 입니다. 여기서 <span class="math inline">\(r\)</span>은 표본 상관계수, <span class="math inline">\(s_x\)</span>와 <span class="math inline">\(s_Y\)</span>는 표본 표준편차입니다.</p>
+<p><span class="math inline">\(d = 2\)</span>인 모형 <span class="math inline">\(Y_i = \beta_0 + \beta_1 x_i + \varepsilon_i\)</span>에서 <span class="math inline">\(x_i\)</span>들이 모두 같지는 않으면, 최소제곱 추정량은 <span class="math display">\[\hat{\beta}_1 = \frac{\sum_{i=1}^n (x_i - \bar{x})(Y_i - \bar{Y})}{\sum_{i=1}^n (x_i - \bar{x})^2} = r\,\frac{s_Y}{s_x}, \qquad \hat{\beta}_0 = \bar{Y} - \hat{\beta}_1\bar{x}\]</span> 입니다. 여기서 <span class="math inline">\(r\)</span>은 표본 상관계수, <span class="math inline">\(s_x\)</span>와 <span class="math inline">\(s_Y\)</span>는 표본 표준편차입니다.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
@@ -1003,7 +1061,7 @@ window.Quarto = {
 </section>
 <section id="해결" class="level3">
 <h3 class="anchored" data-anchor-id="해결">해결</h3>
-<p>참된 회귀계수가 <span class="math inline">\(\beta = (1, 2, -0.5)\)</span>이고 오차의 표준편차가 <span class="math inline">\(3\)</span>인 모형에서 데이터를 만들어 정규방정식을 풀어 보겠습니다. 비교를 위해 NumPy의 최소제곱 함수 <code>lstsq</code>의 결과도 함께 출력하고, 계획행렬의 계수도 확인합니다.</p>
+<p>참된 회귀계수가 <span class="math inline">\((\beta_0, \beta_1, \beta_2) = (1, 2, -0.5)\)</span>이고 오차의 표준편차가 <span class="math inline">\(3\)</span>인 모형에서 데이터를 만들어 정규방정식을 풀어 보겠습니다. 비교를 위해 NumPy의 최소제곱 함수 <code>lstsq</code>의 결과도 함께 출력하고, 계획행렬의 계수도 확인합니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1557</span>)</span>
@@ -1025,7 +1083,7 @@ window.Quarto = {
 정규방정식의 해: [ 1.437   2.0039 -0.4457]
 lstsq의 해:      [ 1.437   2.0039 -0.4457]
 열을 하나 더한 rank = 3 (열의 개수 4)</code></pre>
-<p>두 방법의 결과가 같고, 기울기 추정값 <span class="math inline">\(2.004\)</span>와 <span class="math inline">\(-0.446\)</span>은 참값 <span class="math inline">\(2\)</span>와 <span class="math inline">\(-0.5\)</span>에 가깝습니다. 절편 <span class="math inline">\(1.437\)</span>은 참값 <span class="math inline">\(1\)</span>에서 조금 더 벗어나 있는데, 그 이유는 문제 2에서 보겠습니다. 마지막 줄은 <span class="math inline">\(x_1 + x_2\)</span>를 넷째 열로 더하면 열이 4개인데 계수는 3이 되어, 정리 3.2.3에 의해 회귀계수를 식별할 수 없다는 것을 보여 줍니다. 실제로 데이터를 분석할 때는 이렇게 계획행렬의 계수를 먼저 확인하는 것이 좋습니다.</p>
+<p>두 방법의 결과가 같고, 기울기 추정값 <span class="math inline">\(2.004\)</span>와 <span class="math inline">\(-0.446\)</span>은 참값 <span class="math inline">\(2\)</span>와 <span class="math inline">\(-0.5\)</span>에 가깝습니다. 절편 <span class="math inline">\(1.437\)</span>은 참값 <span class="math inline">\(1\)</span>에서 조금 더 벗어나 있는데, 그 이유는 문제 2에서 보겠습니다. 마지막 줄은 <span class="math inline">\(x_1 + x_2\)</span>를 넷째 열로 더하면 열이 4개인데 계수(rank)는 3이 되어, 정리 3.2.3에 의해 회귀계수를 식별할 수 없다는 것을 보여 줍니다. 실제로 데이터를 분석할 때는 이렇게 계획행렬의 계수를 먼저 확인하는 것이 좋습니다.</p>
 </section>
 </section>
 <section id="문제-2-최소제곱-추정량은-얼마나-정확한가" class="level2">
@@ -1112,7 +1170,7 @@ beta_hat의 표준편차:  [1.4182 0.1513 0.2086]
 </ol>
 </div>
 </div>
-<p><span class="math inline">\(M_1 \le M_2\)</span>는 모든 벡터 <span class="math inline">\(c\)</span>에 대해 <span class="math inline">\(c^\top M_1 c \le c^\top M_2 c\)</span>라는 뜻입니다. 공분산 행렬에 적용하면, <span class="math inline">\(\mathrm{Cov}(\hat{\beta}) \le \mathrm{Cov}(\tilde{\beta})\)</span>는 <strong>회귀계수의 어떤 일차결합 <span class="math inline">\(c^\top\beta\)</span>를 추정하든</strong> <span class="math inline">\(c^\top\hat{\beta}\)</span>의 분산이 <span class="math inline">\(c^\top\tilde{\beta}\)</span>의 분산보다 작거나 같다는 뜻입니다. 각 계수 하나하나는 물론이고, 예측값 <span class="math inline">\(x^\top\beta\)</span>에 대해서도 마찬가지입니다.</p>
+<p><span class="math inline">\(M_1 \le M_2\)</span>는 모든 벡터 <span class="math inline">\(c\)</span>에 대해 <span class="math inline">\(c^\top M_1 c \le c^\top M_2 c\)</span>라는 뜻입니다. 공분산 행렬에 적용하면, <span class="math inline">\(\mathrm{Cov}(\hat{\beta}) \le \mathrm{Cov}(\tilde{\beta})\)</span>는 <strong>회귀계수의 어떤 일차결합 <span class="math inline">\(c^\top\beta\)</span>를 추정하든</strong> <span class="math inline">\(c^\top\hat{\beta}\)</span>의 분산이 <span class="math inline">\(c^\top\tilde{\beta}\)</span>의 분산보다 작거나 같다는 뜻입니다. 각 계수 하나하나는 물론이고, 새로운 설명변수 값 <span class="math inline">\(x = (x_1, \ldots, x_{d-1})\)</span>에서의 예측값 <span class="math inline">\(\beta_0 + \beta_1 x_1 + \cdots + \beta_{d-1} x_{d-1}\)</span>에 대해서도 마찬가지입니다.</p>
 <div class="callout callout-style-default callout-important no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1205,7 +1263,7 @@ beta_hat의 표준편차:  [1.4182 0.1513 0.2086]
 </div>
 <div id="callout-14" class="callout-14-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<p><span class="math inline">\(Y_i\)</span>들은 독립이고 <span class="math inline">\(Y_i \sim N(x_i^\top\beta, \sigma^2)\)</span>이므로, 로그우도는 <span class="math display">\[\ell(\beta, \sigma^2) = -\frac{n}{2}\log(2\pi\sigma^2) - \frac{1}{2\sigma^2}\lVert Y - X\beta \rVert^2\]</span> 입니다. <span class="math inline">\(\sigma^2\)</span>를 어떤 값으로 고정하든, <span class="math inline">\(\ell\)</span>을 <span class="math inline">\(\beta\)</span>에 대해 최대화하는 것은 <span class="math inline">\(\lVert Y - X\beta \rVert^2\)</span>를 최소화하는 것과 같으므로 정리 3.2.2에 의해 <span class="math inline">\(\hat{\beta}_{\mathrm{ML}} = \hat{\beta}\)</span>입니다. 이를 넣은 <span class="math inline">\(\ell(\hat{\beta}, \sigma^2)\)</span>를 <span class="math inline">\(\sigma^2\)</span>에 대해 최대화하는 것은 <a href="../../../ds-ai/data-analysis-inference/01-mle/01-likelihood.html">1.1절</a>의 정규분포 예제와 같은 계산이고, <span class="math inline">\(\hat{\sigma}^2_{\mathrm{ML}} = \lVert Y - X\hat{\beta} \rVert^2/n\)</span>을 얻습니다. <span class="math inline">\(\square\)</span></p>
+<p><span class="math inline">\(Y_i\)</span>들은 독립이고 <span class="math inline">\(Y_i \sim N\big((X\beta)_i, \sigma^2\big)\)</span>이므로, 로그우도는 <span class="math display">\[\ell(\beta, \sigma^2) = -\frac{n}{2}\log(2\pi\sigma^2) - \frac{1}{2\sigma^2}\lVert Y - X\beta \rVert^2\]</span> 입니다. <span class="math inline">\(\sigma^2\)</span>를 어떤 값으로 고정하든, <span class="math inline">\(\ell\)</span>을 <span class="math inline">\(\beta\)</span>에 대해 최대화하는 것은 <span class="math inline">\(\lVert Y - X\beta \rVert^2\)</span>를 최소화하는 것과 같으므로 정리 3.2.2에 의해 <span class="math inline">\(\hat{\beta}_{\mathrm{ML}} = \hat{\beta}\)</span>입니다. 이를 넣은 <span class="math inline">\(\ell(\hat{\beta}, \sigma^2)\)</span>를 <span class="math inline">\(\sigma^2\)</span>에 대해 최대화하는 것은 <a href="../../../ds-ai/data-analysis-inference/01-mle/01-likelihood.html">1.1절</a>의 정규분포 예제와 같은 계산이고, <span class="math inline">\(\hat{\sigma}^2_{\mathrm{ML}} = \lVert Y - X\hat{\beta} \rVert^2/n\)</span>을 얻습니다. <span class="math inline">\(\square\)</span></p>
 </div>
 </div>
 </div>
