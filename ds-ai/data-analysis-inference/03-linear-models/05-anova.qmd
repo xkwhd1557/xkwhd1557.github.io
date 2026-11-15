@@ -291,4 +291,4 @@ for name, sizes in [("균형 설계 (모든 셀 10명)", {(0, 0): 10, (0, 1): 10
 
 ### 연결되는 개념
 * $\leftarrow$ **이전 개념:** [3.4 결정계수와 모형의 설명력](04-r-squared.qmd)
-* $\rightarrow$ **다음 개념:** 추후 작성 예정
+* $\rightarrow$ **다음 개념:** [4 로지스틱 회귀](../04-logistic/index.qmd)
