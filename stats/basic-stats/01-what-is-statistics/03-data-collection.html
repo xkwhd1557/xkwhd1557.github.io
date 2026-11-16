@@ -1,0 +1,1661 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2026-11-16">
+<meta name="description" content="240만 명에게 묻고도 틀린 1936년 여론조사로 표본 추출과 편향을 살펴보고, 관찰 연구와 실험의 차이, 교란 변수, 무작위 배정이 하는 일을 비타민 시뮬레이션으로 확인합니다.">
+
+<title>1.3 데이터는 어떻게 모이는가 – Study Archive</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../stats/basic-stats/01-what-is-statistics/04-descriptive-and-inferential.html" rel="next">
+<link href="../../../stats/basic-stats/01-what-is-statistics/02-population-sample-model.html" rel="prev">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-dfdca6a8c3d4871044b6ea52565246df.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="1.3 데이터는 어떻게 모이는가 – Study Archive">
+<meta property="og:description" content="240만 명에게 묻고도 틀린 1936년 여론조사로 표본 추출과 편향을 살펴보고, 관찰 연구와 실험의 차이, 교란 변수, 무작위 배정이 하는 일을 비타민 시뮬레이션으로 확인합니다.">
+<meta property="og:image" content="https://xkwhd1557.github.io/stats/basic-stats/01-what-is-statistics/figures/confounding-simulation.png">
+<meta property="og:site_name" content="Study Archive">
+<meta property="og:image:alt" content="같은 연구를 1000번 반복했을 때 추정된 비타민 효과의 분포를 그린 히스토그램. 무작위 실험(파랑)의 추정값은 참 효과 0을 나타내는 회색 점선을 중심으로 대략 -3에서 3 사이에 퍼져 있고, 관찰 연구(주황)의 추정값은 0에서 멀리 떨어진 5 근처를 중심으로 대략 3에서 8 사이에 퍼져 있다. 두 분포는 거의 겹치지 않는다.">
+<meta property="og:image:height" content="600">
+<meta property="og:image:width" content="1200">
+<meta name="twitter:title" content="1.3 데이터는 어떻게 모이는가 – Study Archive">
+<meta name="twitter:description" content="240만 명에게 묻고도 틀린 1936년 여론조사로 표본 추출과 편향을 살펴보고, 관찰 연구와 실험의 차이, 교란 변수, 무작위 배정이 하는 일을 비타민 시뮬레이션으로 확인합니다.">
+<meta name="twitter:image" content="https://xkwhd1557.github.io/stats/basic-stats/01-what-is-statistics/figures/confounding-simulation.png">
+<meta name="twitter:image:alt" content="같은 연구를 1000번 반복했을 때 추정된 비타민 효과의 분포를 그린 히스토그램. 무작위 실험(파랑)의 추정값은 참 효과 0을 나타내는 회색 점선을 중심으로 대략 -3에서 3 사이에 퍼져 있고, 관찰 연구(주황)의 추정값은 0에서 멀리 떨어진 5 근처를 중심으로 대략 3에서 8 사이에 퍼져 있다. 두 분포는 거의 겹치지 않는다.">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Study Archive</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../articles/index.html"> 
+<span class="menu-text">일반 아티클</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">수학</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-">    
+        <li>
+    <a class="dropdown-item" href="../../../math/index.html">
+ <span class="dropdown-text">📋 수학 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../math/analysis/index.html">
+ <span class="dropdown-text">해석학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/linear-algebra/index.html">
+ <span class="dropdown-text">선형대수학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/discrete-math/index.html">
+ <span class="dropdown-text">이산수학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/math-programming/index.html">
+ <span class="dropdown-text">수학적 프로그래밍 (Python)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/latex/index.html">
+ <span class="dropdown-text">LaTeX</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 수학 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../math/complex-analysis/index.html">
+ <span class="dropdown-text">복소해석학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/ode/index.html">
+ <span class="dropdown-text">상미분방정식</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/dynamical-systems/index.html">
+ <span class="dropdown-text">동적 시스템</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/measure-theory/index.html">
+ <span class="dropdown-text">측도론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/pde-intro/index.html">
+ <span class="dropdown-text">기초 편미분방정식</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/general-topology/index.html">
+ <span class="dropdown-text">일반위상수학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/algebra/index.html">
+ <span class="dropdown-text">대수학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/number-theory/index.html">
+ <span class="dropdown-text">정수론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/geometry/index.html">
+ <span class="dropdown-text">기하학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/mathematical-logic/index.html">
+ <span class="dropdown-text">수리논리학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/set-theory/index.html">
+ <span class="dropdown-text">공리적 집합론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/numerical-methods/index.html">
+ <span class="dropdown-text">수치적 방법론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/optimization/index.html">
+ <span class="dropdown-text">수학적 최적화</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../math/functional-analysis/index.html">
+ <span class="dropdown-text">함수해석학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/topological-vector-spaces/index.html">
+ <span class="dropdown-text">위상벡터공간론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/pde-advanced/index.html">
+ <span class="dropdown-text">편미분방정식</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/manifold-analysis/index.html">
+ <span class="dropdown-text">다양체 해석학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/rkhs/index.html">
+ <span class="dropdown-text">RKHS 이론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/differential-geometry/index.html">
+ <span class="dropdown-text">미분기하학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/numerical-ode/index.html">
+ <span class="dropdown-text">수치적 상미분방정식</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/scientific-computing/index.html">
+ <span class="dropdown-text">과학계산</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/inverse-problems/index.html">
+ <span class="dropdown-text">역문제</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--1" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">확률과 통계</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--1">    
+        <li>
+    <a class="dropdown-item" href="../../../stats/index.html">
+ <span class="dropdown-text">📋 확률과 통계 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../stats/prob-theory/index.html">
+ <span class="dropdown-text">기초 확률론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/basic-stats/index.html">
+ <span class="dropdown-text">기초 통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/linear-models/index.html">
+ <span class="dropdown-text">기초 선형 모델</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/stat-programming/index.html">
+ <span class="dropdown-text">통계적 프로그래밍</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../stats/measure-prob/index.html">
+ <span class="dropdown-text">측도론적 확률론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/stochastic-processes/index.html">
+ <span class="dropdown-text">확률과정론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/math-stats/index.html">
+ <span class="dropdown-text">수리통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/stochastic-simulation/index.html">
+ <span class="dropdown-text">확률적 시뮬레이션</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/actuarial-math/index.html">
+ <span class="dropdown-text">보험수학</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../stats/stochastic-calculus/index.html">
+ <span class="dropdown-text">확률해석학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/markov-processes/index.html">
+ <span class="dropdown-text">마르코프 프로세스</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/diffusion-models/index.html">
+ <span class="dropdown-text">디퓨전 모델</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/gaussian-processes/index.html">
+ <span class="dropdown-text">가우시안 프로세스</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/non-euclidean-stats/index.html">
+ <span class="dropdown-text">비유클리드 통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/stats-for-stoch-proc/index.html">
+ <span class="dropdown-text">확률과정의 통계추론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/nonparametric-stats/index.html">
+ <span class="dropdown-text">비모수 통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/topological-data-analysis/index.html">
+ <span class="dropdown-text">위상수학적 데이터 분석</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/statistical-learning-theory/index.html">
+ <span class="dropdown-text">통계적 학습 이론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/statistical-inverse-problems/index.html">
+ <span class="dropdown-text">통계적 역문제</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/statistical-modelling/index.html">
+ <span class="dropdown-text">통계적 모델링</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/asymptotic-statistics/index.html">
+ <span class="dropdown-text">점근 통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/time-series-foundations/index.html">
+ <span class="dropdown-text">시계열 분석의 통계적 기초</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--2" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">컴퓨터 공학</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--2">    
+        <li>
+    <a class="dropdown-item" href="../../../cs/index.html">
+ <span class="dropdown-text">📋 컴퓨터 공학 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../cs/cs-intro/index.html">
+ <span class="dropdown-text">컴퓨터 과학 원론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cs/c-programming/index.html">
+ <span class="dropdown-text">C언어</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../cs/algorithms-data-structures/index.html">
+ <span class="dropdown-text">알고리즘과 자료구조</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cs/theoretical-cs/index.html">
+ <span class="dropdown-text">이론 컴퓨터과학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cs/database-systems/index.html">
+ <span class="dropdown-text">데이터베이스 시스템</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cs/formal-systems/index.html">
+ <span class="dropdown-text">형식 시스템</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../cs/advanced/index.html">
+ <span class="dropdown-text">심화 과정 (준비 중)</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ai" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">데이터 사이언스·AI</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-ai">    
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/index.html">
+ <span class="dropdown-text">📋 데이터 사이언스·AI 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/ds-intro/index.html">
+ <span class="dropdown-text">데이터 사이언스 개론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/ds-society/index.html">
+ <span class="dropdown-text">데이터 사이언스와 사회</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/ai-math-intro/index.html">
+ <span class="dropdown-text">고등학교 인공지능 수학</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/numerical-optimization/index.html">
+ <span class="dropdown-text">수치적 방법론과 최적화</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/machine-learning/index.html">
+ <span class="dropdown-text">머신러닝</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/deep-learning-cv/index.html">
+ <span class="dropdown-text">딥러닝과 컴퓨터 비전</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/ai-intro/index.html">
+ <span class="dropdown-text">인공지능 원론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/data-analysis-inference/index.html">
+ <span class="dropdown-text">수리적 데이터 분석과 통계적 추론</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/statistical-foundations/index.html">
+ <span class="dropdown-text">데이터 사이언스의 통계적 기초</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/mathematical-foundations/index.html">
+ <span class="dropdown-text">머신러닝의 수리적 기초</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/advanced-linear-algebra/index.html">
+ <span class="dropdown-text">데이터 사이언스를 위한 선형대수학</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--3" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">경영/경제</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--3">    
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/index.html">
+ <span class="dropdown-text">📋 경영/경제 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/biz-intro/index.html">
+ <span class="dropdown-text">경영학 원론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/econ-intro/index.html">
+ <span class="dropdown-text">경제학 원론</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/accounting/index.html">
+ <span class="dropdown-text">회계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/production-logistics/index.html">
+ <span class="dropdown-text">생산물류관리</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/decision-theory/index.html">
+ <span class="dropdown-text">의사결정론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/microeconomics/index.html">
+ <span class="dropdown-text">미시경제학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/macroeconomics/index.html">
+ <span class="dropdown-text">거시경제학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/finance-investment/index.html">
+ <span class="dropdown-text">재무와 투자론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/monetary-economics/index.html">
+ <span class="dropdown-text">화폐금융론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/labor-economics/index.html">
+ <span class="dropdown-text">노동경제학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/game-theory/index.html">
+ <span class="dropdown-text">게임이론 개론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/supply-chain/index.html">
+ <span class="dropdown-text">공급망 관리 (SCM)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/market-research/index.html">
+ <span class="dropdown-text">시장조사론의 기초</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/time-series/index.html">
+ <span class="dropdown-text">시계열 분석</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/econometrics/index.html">
+ <span class="dropdown-text">계량경제학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/insurance-economics/index.html">
+ <span class="dropdown-text">보험경제학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/quantitative-risk/index.html">
+ <span class="dropdown-text">계량 리스크 관리</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/corporate-finance/index.html">
+ <span class="dropdown-text">기업재무론</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--4" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">의학통계·바이오메트리</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--4">    
+        <li>
+    <a class="dropdown-item" href="../../../biostat/index.html">
+ <span class="dropdown-text">📋 의학통계·바이오메트리 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biostat/biostat-intro/index.html">
+ <span class="dropdown-text">의학통계학 개론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biostat/epidemiology/index.html">
+ <span class="dropdown-text">역학 연구방법론</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biostat/clinical-trials/index.html">
+ <span class="dropdown-text">임상시험 통계방법론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biostat/survival-analysis/index.html">
+ <span class="dropdown-text">생존분석</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biostat/bioinformatics/index.html">
+ <span class="dropdown-text">생물정보통계학</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biostat/causal-inference/index.html">
+ <span class="dropdown-text">인과추론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biostat/longitudinal-data/index.html">
+ <span class="dropdown-text">종단적 데이터 분석</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-language" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">🌐 Language</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-language">    
+        <li>
+    <a class="dropdown-item" href="../../../index.html">
+ <span class="dropdown-text">한국어 (KO)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../lang/en-coming-soon.html">
+ <span class="dropdown-text">English (EN)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../lang/de-coming-soon.html">
+ <span class="dropdown-text">Deutsch (DE)</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xkwhd1557/xkwhd1557.github.io"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+            <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" aria-label="Toolbar">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../stats/basic-stats/index.html">기초 통계학(Introductory Statistics)</a></li><li class="breadcrumb-item"><a href="../../../stats/basic-stats/01-what-is-statistics/index.html">1 통계란 무엇인가</a></li><li class="breadcrumb-item"><a href="../../../stats/basic-stats/01-what-is-statistics/03-data-collection.html">1.3 데이터는 어떻게 모이는가</a></li></ol></nav>
+        <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto" aria-label="Section">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../stats/basic-stats/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">기초 통계학(Introductory Statistics)</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true" aria-label="Toggle section: 기초 통계학(Introductory Statistics)">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../stats/basic-stats/01-what-is-statistics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-1-label">1 통계란 무엇인가</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section: 1 통계란 무엇인가">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../stats/basic-stats/01-what-is-statistics/01-randomness-and-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.1 우연과 데이터</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../stats/basic-stats/01-what-is-statistics/02-population-sample-model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.2 모집단, 표본, 확률 모형</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../stats/basic-stats/01-what-is-statistics/03-data-collection.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">1.3 데이터는 어떻게 모이는가</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../stats/basic-stats/01-what-is-statistics/04-descriptive-and-inferential.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.4 기술 통계와 추론 통계</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../stats/basic-stats/02-data-and-distributions/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-2-label">2 데이터의 종류와 분포 보기</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section: 2 데이터의 종류와 분포 보기">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-2" aria-labelledby="quarto-sidebar-section-2-label" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../stats/basic-stats/02-data-and-distributions/01-variables-and-scales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.1 변수와 척도</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../stats/basic-stats/02-data-and-distributions/02-frequency-tables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.2 도수분포표와 막대그래프</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../stats/basic-stats/02-data-and-distributions/03-histograms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.3 히스토그램과 분포의 모양</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../stats/basic-stats/02-data-and-distributions/04-ecdf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.4 경험적 분포함수</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../stats/basic-stats/02-data-and-distributions/05-quantiles-boxplots.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.5 분위수와 상자그림</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#들어가며" id="toc-들어가며" class="nav-link active" data-scroll-target="#들어가며">들어가며</a></li>
+  <li><a href="#만-명에게-물어본-여론조사" id="toc-만-명에게-물어본-여론조사" class="nav-link" data-scroll-target="#만-명에게-물어본-여론조사">240만 명에게 물어본 여론조사</a></li>
+  <li><a href="#무작위-추출" id="toc-무작위-추출" class="nav-link" data-scroll-target="#무작위-추출">무작위 추출</a></li>
+  <li><a href="#편향의-여러-얼굴" id="toc-편향의-여러-얼굴" class="nav-link" data-scroll-target="#편향의-여러-얼굴">편향의 여러 얼굴</a></li>
+  <li><a href="#관찰-연구와-실험" id="toc-관찰-연구와-실험" class="nav-link" data-scroll-target="#관찰-연구와-실험">관찰 연구와 실험</a></li>
+  <li><a href="#교란-변수-함께-움직이는-숨은-원인" id="toc-교란-변수-함께-움직이는-숨은-원인" class="nav-link" data-scroll-target="#교란-변수-함께-움직이는-숨은-원인">교란 변수: 함께 움직이는 숨은 원인</a></li>
+  <li><a href="#무작위-배정이-하는-일" id="toc-무작위-배정이-하는-일" class="nav-link" data-scroll-target="#무작위-배정이-하는-일">무작위 배정이 하는 일</a></li>
+  <li><a href="#실험을-할-수-없을-때" id="toc-실험을-할-수-없을-때" class="nav-link" data-scroll-target="#실험을-할-수-없을-때">실험을 할 수 없을 때</a></li>
+  <li><a href="#정리" id="toc-정리" class="nav-link" data-scroll-target="#정리">정리</a>
+  <ul class="collapse">
+  <li><a href="#연결되는-개념" id="toc-연결되는-개념" class="nav-link" data-scroll-target="#연결되는-개념">연결되는 개념</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../stats/basic-stats/index.html">기초 통계학(Introductory Statistics)</a></li><li class="breadcrumb-item"><a href="../../../stats/basic-stats/01-what-is-statistics/index.html">1 통계란 무엇인가</a></li><li class="breadcrumb-item"><a href="../../../stats/basic-stats/01-what-is-statistics/03-data-collection.html">1.3 데이터는 어떻게 모이는가</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">1.3 데이터는 어떻게 모이는가</h1>
+<p class="subtitle lead">1장 통계란 무엇인가 · 표본 추출, 편향, 그리고 실험</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">확률과 통계</div>
+    <div class="quarto-category">기초 통계학</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    240만 명에게 묻고도 틀린 1936년 여론조사로 표본 추출과 편향을 살펴보고, 관찰 연구와 실험의 차이, 교란 변수, 무작위 배정이 하는 일을 비타민 시뮬레이션으로 확인합니다.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 16, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="들어가며" class="level2">
+<h2 class="anchored" data-anchor-id="들어가며">들어가며</h2>
+<p><a href="../../../stats/basic-stats/01-what-is-statistics/02-population-sample-model.html">지난 글</a>에서는 표본 <span class="math inline">\(X_1, \dots, X_n\)</span>이 모집단에서 무작위로 뽑힌 i.i.d. 표본이라고 가정하고, 모집단을 하나의 확률분포로 보았습니다. 이 가정 덕분에 표본으로 모집단을 이야기할 수 있게 되었습니다.</p>
+<p>그런데 이 가정은 공짜가 아닙니다. 데이터가 <strong>실제로 그렇게 모였을 때에만</strong> 성립합니다. 이번 글에서는 데이터가 모이는 과정을 살펴보겠습니다. 먼저 역사상 가장 유명한 여론조사 실패 사례로 표본을 뽑는 방법과 편향을 살펴보고, 그다음 데이터를 “지켜봐서” 얻는 경우와 “개입해서” 얻는 경우가 어떻게 다른지, 그 차이가 왜 중요한지를 시뮬레이션으로 확인하겠습니다.</p>
+</section>
+<section id="만-명에게-물어본-여론조사" class="level2">
+<h2 class="anchored" data-anchor-id="만-명에게-물어본-여론조사">240만 명에게 물어본 여론조사</h2>
+<p>1936년 미국 대통령 선거를 앞두고, 당시 인기 있던 잡지 『리터러리 다이제스트』(The Literary Digest)는 엄청난 규모의 여론조사를 벌였습니다. 전화번호부, 자동차 등록 명부, 잡지 구독자 명단 등에서 모은 약 1000만 명에게 모의 투표 엽서를 보냈고, 그중 약 240만 장이 돌아왔습니다.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> 지금 기준으로도 어마어마한 표본 크기입니다.</p>
+<p>엽서를 집계한 결과는 공화당 후보 앨프 랜던(Alf Landon)이 약 55%, 현직 대통령 프랭클린 루스벨트(Franklin D. Roosevelt)가 약 41%였습니다. 잡지는 랜던의 승리를 예측했습니다.</p>
+<p>실제 선거 결과는 정반대였습니다. 루스벨트가 약 61%를 얻어 압승했고, 랜던은 48개 주 가운데 단 두 개 주에서만 이겼습니다. 240만 명에게 물어보고도 승자조차 맞히지 못한 것입니다.</p>
+<p>무엇이 잘못되었을까요? 이후의 분석들은 크게 두 가지를 지적합니다.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<ul>
+<li><strong>누구에게 물었는가.</strong> 1936년은 대공황 한복판이었습니다. 전화와 자동차를 가진 사람, 잡지를 구독하는 사람은 평균보다 형편이 나은 사람들이었고, 이들은 상대적으로 랜던을 더 지지했을 가능성이 높습니다. 즉 처음부터 엽서를 받을 사람의 명단이 전체 유권자를 대표하지 못했습니다.</li>
+<li><strong>누가 대답했는가.</strong> 1000만 명 중 대답한 사람은 4분의 1이 안 됩니다. 일부러 엽서를 써서 돌려보낸 사람들은 그렇지 않은 사람들과 성향이 달랐을 수 있고, 특히 현 정부에 불만이 큰 사람들이 더 적극적으로 응답했을 가능성이 지적됩니다.</li>
+</ul>
+<p>이 사례가 주는 교훈은 분명합니다. <strong>표본이 크다고 좋은 표본이 되는 것은 아닙니다.</strong> 엉뚱한 곳에서 뽑은 240만 명은 잘 뽑은 수천 명보다 못할 수 있습니다. 데이터를 아무리 많이 모아도, 모으는 방식이 한쪽으로 치우쳐 있으면 결과는 그 치우친 쪽으로 더 확실하게 굳어질 뿐입니다.</p>
+</section>
+<section id="무작위-추출" class="level2">
+<h2 class="anchored" data-anchor-id="무작위-추출">무작위 추출</h2>
+<p>그렇다면 “잘 뽑는다”는 것은 무엇일까요? 지난 글에서 본 것처럼, 핵심은 모집단의 모든 구성원이 <strong>똑같은 기회</strong>로 뽑히게 만드는 것입니다.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>정의 1.3.1 (단순 무작위 추출)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>크기 <span class="math inline">\(N\)</span>인 모집단에서 <span class="math inline">\(n\)</span>명을 뽑을 때, 가능한 모든 <span class="math inline">\(n\)</span>명의 조합이 뽑힐 확률이 같도록 뽑는 방법을 <strong>단순 무작위 추출</strong>(simple random sampling)이라고 합니다. 이때 뽑을 대상을 고르는 명단을 <strong>표본 추출 틀</strong>(sampling frame)이라고 합니다.</p>
+</div>
+</div>
+<p>단순 무작위 추출에서는 누가 뽑힐지를 조사하는 사람이 정하지도, 응답자가 스스로 정하지도 않고 오직 우연이 정합니다. 이렇게 하면 표본이 우연히 한쪽으로 쏠릴 수는 있어도, <strong>체계적으로</strong> 한쪽으로 쏠리지는 않습니다. 그리고 우연히 쏠리는 정도가 얼마나 되는지는 확률로 계산할 수 있습니다. 바로 이것이 추론 통계가 작동하는 바탕입니다. 지난 글에서 본 것처럼, 모집단이 표본보다 충분히 크면 단순 무작위 추출로 얻은 표본은 i.i.d. 표본으로 볼 수 있습니다.</p>
+<p>다이제스트의 문제를 이 정의로 다시 보면, 표본 추출 틀 자체가 모집단과 달랐고(전화·자동차 소유자 명단), 그 틀 안에서도 실제로 표본에 들어간 사람은 우연이 아니라 응답자 스스로가 정했습니다.</p>
+<p>실제 조사에서는 단순 무작위 추출을 조금 변형해서 쓰기도 합니다. 예를 들어 모집단을 지역이나 연령대별로 먼저 나눈 뒤, 각 집단에서 그 비율만큼 무작위로 뽑는 <strong>층화 추출</strong>(stratified sampling)이 대표적입니다. 이런 방법들을 체계적으로 다루는 분야를 <strong>표본 추출 이론</strong>(sampling theory)이라고 합니다. 이 과목에서는 깊이 들어가지 않고, 표본이 무작위로 잘 뽑혔다고 가정하고 진행하겠습니다.</p>
+</section>
+<section id="편향의-여러-얼굴" class="level2">
+<h2 class="anchored" data-anchor-id="편향의-여러-얼굴">편향의 여러 얼굴</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>정의 1.3.2 (편향된 표본)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>데이터를 모으는 과정 때문에 표본이 모집단을 체계적으로 잘못 대표할 때, 그 표본이 <strong>편향되었다</strong>(biased)고 합니다.</p>
+</div>
+</div>
+<p>“우연히” 잘못 대표하는 것과 “체계적으로” 잘못 대표하는 것의 차이가 중요합니다. 무작위로 뽑은 표본도 운이 나쁘면 모집단과 조금 다를 수 있지만, 같은 방법으로 다시 뽑으면 다른 방향으로 어긋나고, 평균적으로는 모집단에 맞춰집니다. 편향된 표본은 몇 번을 다시 뽑아도 <strong>같은 방향으로</strong> 어긋납니다.</p>
+<p>편향은 여러 모습으로 나타납니다. 자주 만나는 것들을 정리해 보겠습니다.</p>
+<ul>
+<li><strong>선택 편향</strong>(selection bias): 표본 추출 틀이나 뽑는 방식 때문에 특정 집단이 더 많이 혹은 더 적게 뽑히는 경우입니다. 다이제스트의 전화·자동차 명단이 대표적입니다.</li>
+<li><strong>무응답 편향</strong>(nonresponse bias): 뽑힌 사람 중 응답하는 사람과 응답하지 않는 사람의 성향이 다른 경우입니다. 다이제스트에서 엽서를 돌려보낸 4분의 1이 여기에 해당합니다.</li>
+<li><strong>자발적 응답 편향</strong>(voluntary response bias): 응답자가 스스로 참여를 결정하는 경우입니다. 인터넷 투표나 상품 후기에는 강한 의견을 가진 사람이 훨씬 더 많이 참여합니다.</li>
+<li><strong>생존자 편향</strong>(survivorship bias): 어떤 과정을 “살아남은” 대상만 관찰하게 되는 경우입니다. 제2차 세계대전 당시 통계학자 에이브러햄 왈드(Abraham Wald)가 돌아온 폭격기의 피탄 자료를 분석할 때, 정말 위험한 부위는 돌아온 비행기에서 총알 자국이 <strong>없는</strong> 부위일 수 있다는 점, 그 부위에 맞은 비행기는 돌아오지 못했을 것이라는 점을 고려한 일화가 유명합니다.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></li>
+</ul>
+<p>이 편향들의 공통점은 <strong>데이터만 들여다봐서는 잘 보이지 않는다</strong>는 것입니다. 데이터는 자신이 어떻게 모였는지 말해 주지 않습니다. 그래서 통계 분석은 항상 “이 데이터가 어디서, 어떻게 왔는가”를 묻는 데서 시작해야 합니다.</p>
+</section>
+<section id="관찰-연구와-실험" class="level2">
+<h2 class="anchored" data-anchor-id="관찰-연구와-실험">관찰 연구와 실험</h2>
+<p>지금까지는 “모집단의 지지율이 얼마인가”처럼 모집단의 상태를 알고 싶은 경우를 이야기했습니다. 그런데 통계가 답하려는 질문 중에는 “이 약이 효과가 있는가?”, “비타민을 먹으면 더 건강해지는가?”처럼 <strong>원인과 결과</strong>를 묻는 질문도 많습니다. 이런 질문에서는 데이터를 모으는 방식이 훨씬 더 중요해집니다.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>정의 1.3.3 (관찰 연구와 실험)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>연구자가 대상에 아무것도 개입하지 않고 있는 그대로를 기록해서 데이터를 얻는 연구를 <strong>관찰 연구</strong>(observational study)라고 합니다. 반면 연구자가 대상에게 어떤 처치(treatment)를 줄지를 직접 정하고 그 결과를 기록하는 연구를 <strong>실험</strong>(experiment)이라고 합니다.</p>
+</div>
+</div>
+<p>비타민 예로 생각해 보겠습니다. 사람들에게 평소 비타민을 먹는지 묻고 건강 상태를 조사하는 것은 관찰 연구입니다. 반면 연구자가 참가자를 두 집단으로 나누어 한쪽에는 비타민을, 다른 쪽에는 겉보기에 똑같은 가짜 약을 주고 일정 기간 뒤 건강 상태를 비교하는 것은 실험입니다.</p>
+<p>관찰 연구가 훨씬 쉽고 값싸게 데이터를 얻을 수 있습니다. 그런데 원인과 결과를 알고 싶을 때는 관찰 연구에 함정이 있습니다.</p>
+</section>
+<section id="교란-변수-함께-움직이는-숨은-원인" class="level2">
+<h2 class="anchored" data-anchor-id="교란-변수-함께-움직이는-숨은-원인">교란 변수: 함께 움직이는 숨은 원인</h2>
+<p>관찰 연구에서 비타민을 먹는 사람들이 먹지 않는 사람들보다 더 건강하게 나왔다고 해 보겠습니다. 비타민이 효과가 있다는 뜻일까요?</p>
+<p>꼭 그렇지는 않습니다. 비타민을 스스로 챙겨 먹는 사람들은 애초에 건강에 관심이 많은 사람들일 가능성이 높습니다. 그런 사람들은 운동도 더 하고, 식단도 더 신경 쓰고, 담배도 덜 피울 것입니다. 그렇다면 두 집단의 건강 차이는 비타민 때문이 아니라 <strong>건강에 대한 관심</strong> 때문일 수 있습니다. 건강에 대한 관심이 비타민 복용과 건강 상태 <strong>둘 다</strong>에 영향을 주고 있는 것이지요.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>정의 1.3.4 (교란 변수)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>우리가 원인이라고 생각하는 변수와 결과 변수 모두에 영향을 주어서, 둘 사이의 관계를 실제와 다르게 보이게 만드는 제3의 변수를 <strong>교란 변수</strong>(confounding variable)라고 합니다.</p>
+</div>
+</div>
+<p>교란 변수가 얼마나 결과를 왜곡할 수 있는지 시뮬레이션으로 확인해 보겠습니다. 가상의 세계에서 사람마다 “건강에 대한 관심”이 있고, 이 관심이 클수록 건강 점수가 높다고 하겠습니다. 그리고 <strong>비타민은 건강 점수에 아무 효과가 없다</strong>고 정해 두겠습니다. 즉 참 효과는 정확히 0입니다.</p>
+<p>이 세계에서 200명을 대상으로 두 가지 방식의 연구를 해 보겠습니다.</p>
+<ul>
+<li><strong>관찰 연구:</strong> 사람들이 스스로 비타민 복용 여부를 정합니다. 건강에 관심이 많을수록 비타민을 먹을 가능성이 높습니다.</li>
+<li><strong>무작위 실험:</strong> 연구자가 동전을 던져 비타민을 줄 사람을 정합니다.</li>
+</ul>
+<p>두 경우 모두 “비타민을 먹은 집단의 평균 건강 점수 − 먹지 않은 집단의 평균 건강 점수”를 비타민의 효과로 추정합니다.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">1557</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> one_study(n, randomized):</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    h <span class="op">=</span> rng.normal(<span class="dv">0</span>, <span class="dv">1</span>, size<span class="op">=</span>n)                  <span class="co"># 건강에 대한 관심 (관찰되지 않음)</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> randomized:</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        v <span class="op">=</span> rng.random(n) <span class="op">&lt;</span> <span class="fl">0.5</span>                   <span class="co"># 동전을 던져 복용 여부 배정</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        v <span class="op">=</span> rng.random(n) <span class="op">&lt;</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> np.exp(<span class="op">-</span><span class="fl">1.5</span> <span class="op">*</span> h))  <span class="co"># 관심이 클수록 스스로 복용</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> <span class="dv">70</span> <span class="op">+</span> <span class="dv">5</span> <span class="op">*</span> h <span class="op">+</span> rng.normal(<span class="dv">0</span>, <span class="dv">5</span>, size<span class="op">=</span>n)     <span class="co"># 건강 점수: 비타민 효과는 0</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> y[v].mean() <span class="op">-</span> y[<span class="op">~</span>v].mean()</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"관찰 연구 1회 : </span><span class="sc">{</span>one_study(<span class="dv">200</span>, randomized<span class="op">=</span><span class="va">False</span>)<span class="sc">:+.2f}</span><span class="ss">"</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"무작위 실험 1회: </span><span class="sc">{</span>one_study(<span class="dv">200</span>, randomized<span class="op">=</span><span class="va">True</span>)<span class="sc">:+.2f}</span><span class="ss">"</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>obs <span class="op">=</span> np.array([one_study(<span class="dv">200</span>, <span class="va">False</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)])</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>rct <span class="op">=</span> np.array([one_study(<span class="dv">200</span>, <span class="va">True</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)])</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"관찰 연구 1000회 평균 : </span><span class="sc">{</span>obs<span class="sc">.</span>mean()<span class="sc">:+.2f}</span><span class="ss">"</span>)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"무작위 실험 1000회 평균: </span><span class="sc">{</span>rct<span class="sc">.</span>mean()<span class="sc">:+.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre><code>관찰 연구 1회 : +3.56
+무작위 실험 1회: +0.81
+관찰 연구 1000회 평균 : +5.33
+무작위 실험 1000회 평균: -0.01</code></pre>
+<p>코드에서 건강 점수 <code>y</code>를 만드는 줄에는 비타민 복용 여부 <code>v</code>가 전혀 들어 있지 않습니다. 그런데도 관찰 연구 한 번은 비타민이 건강 점수를 3.56점 올린다는 결과를 내놓았습니다. 무작위 실험 한 번은 0.81점으로, 0은 아니지만 훨씬 가깝습니다.</p>
+<p>한 번의 결과만으로는 우연일 수도 있으니, 같은 연구를 1000번씩 반복해 보았습니다. 그 결과를 히스토그램으로 그리면 다음과 같습니다.</p>
+<p><img src="figures/confounding-simulation.png" class="img-fluid" style="width:80.0%" alt="같은 연구를 1000번 반복했을 때 추정된 비타민 효과의 분포를 그린 히스토그램. 무작위 실험(파랑)의 추정값은 참 효과 0을 나타내는 회색 점선을 중심으로 대략 -3에서 3 사이에 퍼져 있고, 관찰 연구(주황)의 추정값은 0에서 멀리 떨어진 5 근처를 중심으로 대략 3에서 8 사이에 퍼져 있다. 두 분포는 거의 겹치지 않는다."></p>
+<p>차이가 분명합니다. 무작위 실험의 추정값은 연구마다 들쭉날쭉하지만 <strong>참값 0을 중심으로</strong> 퍼져 있고, 1000번의 평균은 <span class="math inline">\(-0.01\)</span>입니다. 반면 관찰 연구의 추정값은 연구마다 들쭉날쭉할 뿐 아니라 <strong>전체가 통째로 5 근처로 밀려나</strong> 있습니다. 1000번을 반복해도, 표본을 늘려도 이 어긋남은 사라지지 않습니다. 앞에서 본 편향과 같은 모습입니다.</p>
+<p>여기서 두 종류의 오차를 구분해 볼 수 있습니다. 무작위 실험의 추정값이 0 주변에서 흔들리는 것은 <strong>우연에 의한 오차</strong>이고, 이것은 표본을 늘리면 줄어들며 얼마나 흔들리는지를 확률로 계산할 수도 있습니다. 관찰 연구의 추정값이 5 근처로 밀려난 것은 <strong>체계적인 오차</strong>, 즉 편향이고, 이것은 데이터를 아무리 많이 모아도 줄어들지 않습니다. 앞으로 이 과목에서 다룰 추론 통계의 도구들은 대부분 첫 번째 오차를 다루는 도구입니다. 두 번째 오차는 데이터를 모으는 단계에서 막아야 합니다.</p>
+</section>
+<section id="무작위-배정이-하는-일" class="level2">
+<h2 class="anchored" data-anchor-id="무작위-배정이-하는-일">무작위 배정이 하는 일</h2>
+<p>무작위 실험은 왜 교란 변수의 영향을 받지 않았을까요? 동전을 던져 복용 여부를 정했기 때문에, 건강에 관심이 많은 사람과 적은 사람이 <strong>두 집단에 고르게 섞였기</strong> 때문입니다. 두 집단은 비타민을 먹었느냐 아니냐만 다르고, 나머지 모든 면에서 평균적으로 비슷해집니다. 그러니 두 집단의 차이가 있다면 그것은 비타민 때문이거나 우연 때문이고, 우연의 크기는 확률로 따져 볼 수 있습니다.</p>
+<p>무작위 배정의 진짜 힘은 <strong>우리가 모르는 교란 변수까지</strong> 고르게 섞어 준다는 데 있습니다. 위 시뮬레이션에서는 우리가 “건강에 대한 관심”이라는 교란 변수를 알고 있었지만, 현실에서는 어떤 교란 변수가 숨어 있는지 다 알 수 없습니다. 무작위 배정은 그런 것까지 한꺼번에 처리해 줍니다.</p>
+<p>실험을 설계할 때 무작위화가 왜 필요한지를 체계적으로 정리한 사람이 1장 소개 글에서 이름이 나왔던 로널드 피셔입니다. 그는 1935년 『실험 계획법』(The Design of Experiments)에서, 홍차에 우유를 먼저 넣었는지 나중에 넣었는지 맛으로 구별할 수 있다고 주장한 한 여성의 이야기를 예로 들어 실험을 어떻게 설계하고 결과를 어떻게 판단해야 하는지를 설명했습니다.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> 이 “홍차 맛보기” 이야기는 8장 가설 검정에서 다시 만나게 됩니다.</p>
+</section>
+<section id="실험을-할-수-없을-때" class="level2">
+<h2 class="anchored" data-anchor-id="실험을-할-수-없을-때">실험을 할 수 없을 때</h2>
+<p>그렇다면 원인을 알고 싶을 때는 늘 무작위 실험을 하면 될까요? 안타깝게도 그럴 수 없는 경우가 많습니다. 흡연이 폐암을 일으키는지 알고 싶다고 해서, 사람들을 무작위로 나누어 한쪽에 수십 년간 담배를 피우게 할 수는 없습니다. 실험이 윤리적으로 불가능하거나, 너무 비싸거나, 현실적으로 할 수 없는 경우에는 관찰 연구에 기댈 수밖에 없습니다.</p>
+<p>실제로 흡연과 폐암의 관계는 1950년대 영국의 리처드 돌(Richard Doll)과 브래드퍼드 힐(Austin Bradford Hill) 등이 수행한 관찰 연구들로부터 밝혀지기 시작했습니다.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> 이런 연구들은 교란 변수의 가능성을 하나씩 따져 보고, 여러 연구에서 같은 결과가 반복되는지 확인하는 등의 방식으로 관찰 연구의 약점을 보완했습니다.</p>
+<p>관찰 데이터로부터 원인과 결과를 이끌어 내는 방법을 체계적으로 연구하는 분야를 <strong>인과 추론</strong>(causal inference)이라고 합니다. 이 과목에서는 깊이 들어가지 않지만, 4장에서 상관관계와 인과관계의 차이, 그리고 교란 변수가 만드는 대표적인 착시인 심슨의 역설을 다시 살펴보겠습니다.</p>
+</section>
+<section id="정리" class="level2">
+<h2 class="anchored" data-anchor-id="정리">정리</h2>
+<p>이번 글에서는 데이터가 모이는 과정을 살펴보았습니다.</p>
+<ul>
+<li>표본이 크다고 좋은 표본은 아닙니다. 240만 명의 응답도 모으는 방식이 치우치면 틀린 결론을 냅니다.</li>
+<li><strong>단순 무작위 추출</strong>은 우연이 표본을 정하게 해서 체계적인 쏠림을 막습니다. 이것이 i.i.d. 가정의 바탕입니다.</li>
+<li>데이터를 모으는 과정 때문에 표본이 체계적으로 어긋나는 것을 <strong>편향</strong>이라고 하며, 선택 편향, 무응답 편향, 자발적 응답 편향, 생존자 편향 등이 있습니다.</li>
+<li>원인과 결과를 알고 싶을 때, <strong>관찰 연구</strong>는 <strong>교란 변수</strong> 때문에 잘못된 결론을 낼 수 있습니다. <strong>무작위 배정</strong>을 하는 실험은 알려지지 않은 교란 변수까지 고르게 섞어 줍니다.</li>
+<li>우연에 의한 오차는 데이터를 늘리면 줄어들고 확률로 다룰 수 있지만, 편향은 데이터를 늘려도 사라지지 않습니다.</li>
+</ul>
+<p>이제 데이터를 어떻게 바라보고, 데이터가 어디서 오는지까지 정리했습니다. 남은 질문은 “그 데이터로 무엇을 할 것인가”입니다. 다음 글에서는 통계학이 데이터를 가지고 하는 일을 기술 통계와 추론 통계로 나누어 정리하고, 이 과목 전체의 지도를 그려 보겠습니다.</p>
+<hr>
+<section id="연결되는-개념" class="level3">
+<h3 class="anchored" data-anchor-id="연결되는-개념">연결되는 개념</h3>
+<ul>
+<li><span class="math inline">\(\leftarrow\)</span> <strong>이전 개념:</strong> <a href="../../../stats/basic-stats/01-what-is-statistics/02-population-sample-model.html">1.2 모집단, 표본, 확률 모형</a></li>
+<li><span class="math inline">\(\rightarrow\)</span> <strong>다음 개념:</strong> <a href="../../../stats/basic-stats/01-what-is-statistics/04-descriptive-and-inferential.html">1.4 기술 통계와 추론 통계</a></li>
+</ul>
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>S. L. Lohr &amp; J. M. Brick, “Roosevelt Predicted to Win: Revisiting the 1936 Literary Digest Poll”, <em>Statistics, Politics and Policy</em> 8(1), 2017, pp.&nbsp;65–84.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>P. Squire, “Why the 1936 Literary Digest Poll Failed”, <em>Public Opinion Quarterly</em> 52(1), 1988, pp.&nbsp;125–133. 표본 추출 틀과 무응답 중 무엇이 더 큰 원인이었는지에 대해서는 이후에도 논의가 이어졌습니다. D. Lusinchi, “‘President’ Landon and the 1936 Literary Digest Poll: Were Automobile and Telephone Owners to Blame?”, <em>Social Science History</em> 36(1), 2012.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>왈드의 실제 분석 내용과 이 일화의 관계에 대해서는 다음을 참고할 수 있습니다. M. Mangel &amp; F. J. Samaniego, “Abraham Wald’s Work on Aircraft Survivability”, <em>Journal of the American Statistical Association</em> 79(386), 1984, pp.&nbsp;259–267.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>R. A. Fisher, <em>The Design of Experiments</em>, Oliver and Boyd, 1935, 2장.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>R. Doll &amp; A. B. Hill, “Smoking and Carcinoma of the Lung: Preliminary Report”, <em>British Medical Journal</em> 2(4682), 1950, pp.&nbsp;739–748.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const categoryLinks = {
+    "수학": "/math/index.html",
+    "확률과 통계": "/stats/index.html",
+    "컴퓨터 공학": "/cs/index.html",
+    "데이터 사이언스·AI": "/ds-ai/index.html",
+    "경영/경제": "/biz-econ/index.html",
+    "의학통계·바이오메트리": "/biostat/index.html"
+  };
+  document.querySelectorAll('.navbar-nav .nav-item.dropdown > a.nav-link').forEach(function(el) {
+    const label = el.textContent.trim();
+    if (categoryLinks[label]) {
+      el.setAttribute('href', categoryLinks[label]);
+      el.addEventListener('click', function(e) {
+        if (window.innerWidth >= 992) {
+          window.location.href = categoryLinks[label];
+        }
+      });
+    }
+  });
+
+  /* ---------------------------------------------------------------
+     메가 메뉴: 드롭다운을 그룹(헤더 단위)별 가로 열로 재배치
+     - 첫 헤더 이전 항목(예: "전체 과목 보기")은 상단 한 줄로
+     - 한 그룹의 과목이 MAX_ROWS 개를 넘으면 그 그룹 안에서 열을 나눔
+     --------------------------------------------------------------- */
+  const MAX_ROWS = 7;      // 한 열에 들어갈 최대 과목 수
+  const EDGE = 16;         // 화면 가장자리 여백(px)
+
+  document.querySelectorAll('.navbar .nav-item.dropdown > .dropdown-menu').forEach(function(menu) {
+    const items = Array.from(menu.children);
+    if (items.filter(function(li) { return li.classList.contains('dropdown-header'); }).length < 2) return;
+
+    const top = document.createElement('li');
+    top.className = 'mega-top';
+    const groupsWrap = document.createElement('li');
+    groupsWrap.className = 'mega-groups';
+
+    let current = null;
+    items.forEach(function(li) {
+      if (li.querySelector('.dropdown-divider')) { li.remove(); return; }
+      if (li.classList.contains('dropdown-header')) {
+        const group = document.createElement('div');
+        group.className = 'mega-group';
+        const header = document.createElement('div');
+        header.className = 'dropdown-header';
+        header.textContent = li.textContent.trim();
+        const list = document.createElement('ul');
+        list.className = 'mega-items';
+        group.appendChild(header);
+        group.appendChild(list);
+        groupsWrap.appendChild(group);
+        current = list;
+        li.remove();
+        return;
+      }
+      if (current) {
+        current.appendChild(li);
+      } else {
+        top.appendChild(li.querySelector('a') || li);
+        li.remove();
+      }
+    });
+
+    groupsWrap.querySelectorAll('.mega-items').forEach(function(list) {
+      const n = list.children.length;
+      const cols = Math.max(1, Math.ceil(n / MAX_ROWS));
+      list.style.setProperty('--mega-rows', Math.ceil(n / cols));
+    });
+
+    menu.innerHTML = '';
+    if (top.children.length) menu.appendChild(top);
+    menu.appendChild(groupsWrap);
+    menu.classList.add('mega-menu');
+  });
+
+  /* 펼친 메뉴가 화면 오른쪽 밖으로 나가지 않도록 위치 보정 */
+  function fitToViewport(menu) {
+    if (window.innerWidth < 992) { menu.style.left = ''; return; }
+    menu.style.left = '0px';
+    const rect = menu.getBoundingClientRect();
+    if (rect.width === 0) return;
+    let shift = 0;
+    const overflow = rect.right - (window.innerWidth - EDGE);
+    if (overflow > 0) shift = -overflow;
+    if (rect.left + shift < EDGE) shift = EDGE - rect.left;
+    menu.style.left = shift + 'px';
+  }
+
+  document.querySelectorAll('.navbar .nav-item.dropdown').forEach(function(item) {
+    const menu = item.querySelector(':scope > .dropdown-menu.mega-menu');
+    if (!menu) return;
+    const fit = function() { requestAnimationFrame(function() { fitToViewport(menu); }); };
+    item.addEventListener('mouseenter', fit);
+    item.addEventListener('focusin', fit);
+    item.addEventListener('shown.bs.dropdown', fit);
+  });
+});
+</script>
+<script>
+/* 좌측 사이드바 맨 위 과목명: "한국어(English)" → 한국어 / English 두 줄로 나눠 표시 */
+document.addEventListener("DOMContentLoaded", function () {
+  var el = document.querySelector("#quarto-sidebar .sidebar-menu-container > ul > li > .sidebar-item-container .menu-text, #quarto-sidebar .sidebar-menu-container > ul > li > .sidebar-item-text .menu-text");
+  if (!el) return;
+  var m = el.textContent.trim().match(/^(.+?)\s*\((.+)\)$/);
+  if (!m) return;
+  el.textContent = m[1];
+  var en = document.createElement("span");
+  en.className = "menu-subtitle";
+  en.textContent = m[2];
+  el.appendChild(en);
+});
+</script>
+<script data-goatcounter="https://xkwhd1557.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/xkwhd1557\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+<nav class="page-navigation" aria-label="Page">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../stats/basic-stats/01-what-is-statistics/02-population-sample-model.html" class="pagination-link" aria-label="1.2 모집단, 표본, 확률 모형">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">1.2 모집단, 표본, 확률 모형</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../stats/basic-stats/01-what-is-statistics/04-descriptive-and-inferential.html" class="pagination-link" aria-label="1.4 기술 통계와 추론 통계">
+        <span class="nav-page-text">1.4 기술 통계와 추론 통계</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2026 xkwhd1557 · 글은 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.ko">CC BY-NC-ND 4.0</a>에 따라 이용할 수 있습니다.<br> <a href="../../../privacy.html">개인정보 처리방침</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

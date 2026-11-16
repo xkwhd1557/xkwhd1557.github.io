@@ -101,7 +101,7 @@ ul.task-list li input[type="checkbox"] {
   
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-recent-articles .list');
+    const listingTargetEl = window.document.querySelector('#listing-tab-latest .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
       return; 
@@ -114,7 +114,95 @@ ul.task-list li input[type="checkbox"] {
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-recent-articles'] = new List('listing-recent-articles', options);
+    window['quarto-listings']['listing-tab-latest'] = new List('listing-tab-latest', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-tab-start .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-subtitle',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author","listing-subtitle","listing-image","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-tab-start'] = new List('listing-tab-start', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-tab-issues .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-subtitle',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author","listing-subtitle","listing-image","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-tab-issues'] = new List('listing-tab-issues', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-tab-germany .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-subtitle',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: [],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-tab-germany'] = new List('listing-tab-germany', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-tab-notes .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-subtitle',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: [],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-tab-notes'] = new List('listing-tab-notes', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -716,8 +804,8 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="추천-아티클">추천 아티클</h2>
 <div id="listing-featured-carousel" class="quarto-listing quarto-listing-container-grid">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="JUVDJTlEJUJDJUVCJUIwJTk4JTIwJUVBJUIyJThDJUVDJThCJTlDJUVBJUI4JTgw" data-listing-date-sort="1793664000000" data-listing-file-modified-sort="1794802302251" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17" data-listing-word-count-sort="3251">
-<a href="../articles/study-roadmap.html" class="quarto-grid-link no-external-icon">
+<div class="g-col-1" data-index="0" data-categories="JUVDJThCJTlDJUVDJTlFJTkxJUVEJTk1JTk4JUVBJUI4JUIw" data-listing-date-sort="1793664000000" data-listing-file-modified-sort="1794824596793" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17" data-listing-word-count-sort="3251">
+<a href="../articles/start/study-roadmap.html" class="quarto-grid-link no-external-icon">
 <div class="quarto-grid-item card h-100 card-left">
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -729,8 +817,8 @@ window.Quarto = {
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="JUVDJTlEJUJDJUVCJUIwJTk4JTIwJUVBJUIyJThDJUVDJThCJTlDJUVBJUI4JTgw" data-listing-date-sort="1793404800000" data-listing-file-modified-sort="1794802302251" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1503">
-<a href="../articles/about-this-site.html" class="quarto-grid-link no-external-icon">
+<div class="g-col-1" data-index="1" data-categories="JUVDJThCJTlDJUVDJTlFJTkxJUVEJTk1JTk4JUVBJUI4JUIw" data-listing-date-sort="1793404800000" data-listing-file-modified-sort="1794824596793" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1503">
+<a href="../articles/start/about-this-site.html" class="quarto-grid-link no-external-icon">
 <div class="quarto-grid-item card h-100 card-left">
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -742,8 +830,8 @@ Study Archive는 어떤 곳이고, 어떻게 읽으면 좋을까요
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="JUVDJTlEJUJDJUVCJUIwJTk4JTIwJUVBJUIyJThDJUVDJThCJTlDJUVBJUI4JTgw" data-listing-date-sort="1792540800000" data-listing-file-modified-sort="1794802302251" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-word-count-sort="3072">
-<a href="../articles/math-and-modeling.html" class="quarto-grid-link no-external-icon">
+<div class="g-col-1" data-index="2" data-categories="JUVDJThCJTlDJUVDJTlFJTkxJUVEJTk1JTk4JUVBJUI4JUIw" data-listing-date-sort="1792540800000" data-listing-file-modified-sort="1794824596793" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-word-count-sort="3072">
+<a href="../articles/start/math-and-modeling.html" class="quarto-grid-link no-external-icon">
 <div class="quarto-grid-item card h-100 card-left">
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -756,59 +844,66 @@ Study Archive는 어떤 곳이고, 어떻게 읽으면 좋을까요
 </div></a>
 </div>
 </div>
-<div class="listing-no-matching d-none">No matching items</div>
+<div class="listing-no-matching d-none">아직 이 분류에 올라온 글이 없습니다. 곧 채워 나가겠습니다.</div>
 </div>
-</section>
-<section id="최신-아티클" class="level2">
-<h2 class="anchored" data-anchor-id="최신-아티클">최신 아티클</h2>
-<div id="listing-recent-articles" class="quarto-listing quarto-listing-container-default">
+<div class="all-top">
+<p><a href="../articles/all.html">전체 글 보기 →</a></p>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset article-tabs">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">최신 아티클</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">시작하기</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">숫자로 읽는 이슈</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false" href="">독일 이야기</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false" href="">토막 노트</a></li></ul>
+<div class="tab-content article-tabs">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="article-category-desc">
+<p>모든 분류의 글을 최신순으로 모았습니다.</p>
+</div>
+<div id="listing-tab-latest" class="quarto-listing quarto-listing-container-default">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="JUVDJTlEJUJDJUVCJUIwJTk4JTIwJUVBJUIyJThDJUVDJThCJTlDJUVBJUI4JTgw" data-listing-date-sort="1794787200000" data-listing-file-modified-sort="1794802302251" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2858">
+<div class="quarto-post image-right" data-index="0" data-categories="JUVDJTg4JUFCJUVDJTlFJTkwJUVCJUExJTlDJTIwJUVDJTlEJUJEJUVCJThBJTk0JTIwJUVDJTlEJUI0JUVDJThBJTg4" data-listing-date-sort="1794787200000" data-listing-file-modified-sort="1794824596793" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2858">
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../articles/cheating-hypothesis-test.html" class="no-external-icon">통계적 사고방식으로 접근한 AI 부정행위 논란</a>
+<a href="../articles/issues/cheating-hypothesis-test.html" class="no-external-icon">통계적 사고방식으로 접근한 AI 부정행위 논란</a>
 </h3>
 <div class="listing-subtitle">
-<a href="../articles/cheating-hypothesis-test.html" class="no-external-icon">시험 부정 의혹을 가설검정과 베이즈 정리로 읽는 법</a>
+<a href="../articles/issues/cheating-hypothesis-test.html" class="no-external-icon">시험 부정 의혹을 가설검정과 베이즈 정리로 읽는 법</a>
 </div>
 </div>
 <div class="metadata">
 
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="JUVDJTlEJUJDJUVCJUIwJTk4JTIwJUVBJUIyJThDJUVDJThCJTlDJUVBJUI4JTgw" data-listing-date-sort="1793664000000" data-listing-file-modified-sort="1794802302251" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17" data-listing-word-count-sort="3251">
+<div class="quarto-post image-right" data-index="1" data-categories="JUVDJThCJTlDJUVDJTlFJTkxJUVEJTk1JTk4JUVBJUI4JUIw" data-listing-date-sort="1793664000000" data-listing-file-modified-sort="1794824596793" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17" data-listing-word-count-sort="3251">
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../articles/study-roadmap.html" class="no-external-icon">어떤 순서로 공부하면 좋을까요</a>
+<a href="../articles/start/study-roadmap.html" class="no-external-icon">어떤 순서로 공부하면 좋을까요</a>
 </h3>
 <div class="listing-subtitle">
-<a href="../articles/study-roadmap.html" class="no-external-icon">전공과 목적에 따라 고르는 Study Archive 학습 로드맵</a>
+<a href="../articles/start/study-roadmap.html" class="no-external-icon">전공과 목적에 따라 고르는 Study Archive 학습 로드맵</a>
 </div>
 </div>
 <div class="metadata">
 
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="JUVDJTlEJUJDJUVCJUIwJTk4JTIwJUVBJUIyJThDJUVDJThCJTlDJUVBJUI4JTgw" data-listing-date-sort="1793404800000" data-listing-file-modified-sort="1794802302251" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1503">
+<div class="quarto-post image-right" data-index="2" data-categories="JUVDJThCJTlDJUVDJTlFJTkxJUVEJTk1JTk4JUVBJUI4JUIw" data-listing-date-sort="1793404800000" data-listing-file-modified-sort="1794824596793" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1503">
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../articles/about-this-site.html" class="no-external-icon">이 사이트를 소개합니다</a>
+<a href="../articles/start/about-this-site.html" class="no-external-icon">이 사이트를 소개합니다</a>
 </h3>
 <div class="listing-subtitle">
-<a href="../articles/about-this-site.html" class="no-external-icon">Study Archive는 어떤 곳이고, 어떻게 읽으면 좋을까요</a>
+<a href="../articles/start/about-this-site.html" class="no-external-icon">Study Archive는 어떤 곳이고, 어떻게 읽으면 좋을까요</a>
 </div>
 </div>
 <div class="metadata">
 
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="JUVDJTlEJUJDJUVCJUIwJTk4JTIwJUVBJUIyJThDJUVDJThCJTlDJUVBJUI4JTgw" data-listing-date-sort="1792540800000" data-listing-file-modified-sort="1794802302251" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-word-count-sort="3072">
+<div class="quarto-post image-right" data-index="3" data-categories="JUVDJThCJTlDJUVDJTlFJTkxJUVEJTk1JTk4JUVBJUI4JUIw" data-listing-date-sort="1792540800000" data-listing-file-modified-sort="1794824596793" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-word-count-sort="3072">
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../articles/math-and-modeling.html" class="no-external-icon">수학을 왜 공부해야하나요?</a>
+<a href="../articles/start/math-and-modeling.html" class="no-external-icon">수학을 왜 공부해야하나요?</a>
 </h3>
 <div class="listing-subtitle">
-<a href="../articles/math-and-modeling.html" class="no-external-icon">모델링의 관점에서 살펴본 수학의 역할</a>
+<a href="../articles/start/math-and-modeling.html" class="no-external-icon">모델링의 관점에서 살펴본 수학의 역할</a>
 </div>
 </div>
 <div class="metadata">
@@ -816,7 +911,104 @@ Study Archive는 어떤 곳이고, 어떻게 읽으면 좋을까요
 </div>
 </div>
 </div>
-<div class="listing-no-matching d-none">No matching items</div>
+<div class="listing-no-matching d-none">아직 이 분류에 올라온 글이 없습니다. 곧 채워 나가겠습니다.</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="article-category-desc">
+<p>Study Archive가 어떤 곳인지, 어떤 내용을 어떤 순서로 읽으면 좋은지 안내하는 글을 모았습니다. 처음 오셨다면 여기서부터 읽어 보시기 바랍니다.</p>
+</div>
+<div id="listing-tab-start" class="quarto-listing quarto-listing-container-default">
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-categories="JUVDJThCJTlDJUVDJTlFJTkxJUVEJTk1JTk4JUVBJUI4JUIw" data-listing-date-sort="1793664000000" data-listing-file-modified-sort="1794824596793" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17" data-listing-word-count-sort="3251">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../articles/start/study-roadmap.html" class="no-external-icon">어떤 순서로 공부하면 좋을까요</a>
+</h3>
+<div class="listing-subtitle">
+<a href="../articles/start/study-roadmap.html" class="no-external-icon">전공과 목적에 따라 고르는 Study Archive 학습 로드맵</a>
+</div>
+</div>
+<div class="metadata">
+
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="JUVDJThCJTlDJUVDJTlFJTkxJUVEJTk1JTk4JUVBJUI4JUIw" data-listing-date-sort="1793404800000" data-listing-file-modified-sort="1794824596793" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1503">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../articles/start/about-this-site.html" class="no-external-icon">이 사이트를 소개합니다</a>
+</h3>
+<div class="listing-subtitle">
+<a href="../articles/start/about-this-site.html" class="no-external-icon">Study Archive는 어떤 곳이고, 어떻게 읽으면 좋을까요</a>
+</div>
+</div>
+<div class="metadata">
+
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2" data-categories="JUVDJThCJTlDJUVDJTlFJTkxJUVEJTk1JTk4JUVBJUI4JUIw" data-listing-date-sort="1792540800000" data-listing-file-modified-sort="1794824596793" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-word-count-sort="3072">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../articles/start/math-and-modeling.html" class="no-external-icon">수학을 왜 공부해야하나요?</a>
+</h3>
+<div class="listing-subtitle">
+<a href="../articles/start/math-and-modeling.html" class="no-external-icon">모델링의 관점에서 살펴본 수학의 역할</a>
+</div>
+</div>
+<div class="metadata">
+
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">아직 이 분류에 올라온 글이 없습니다. 곧 채워 나가겠습니다.</div>
+</div>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<div class="article-category-desc">
+<p>화제가 된 사건이나 뉴스 속에는 수학과 통계의 개념이 숨어 있는 경우가 많습니다. 이 분류에서는 그런 이슈를 예시로 삼아 그 안에 담긴 수학적·통계적 논리를 설명합니다. 사건 자체에 대한 판단이나 사견보다는, 개념을 이해하는 데 필요한 만큼만 이슈를 다룹니다.</p>
+</div>
+<div id="listing-tab-issues" class="quarto-listing quarto-listing-container-default">
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-categories="JUVDJTg4JUFCJUVDJTlFJTkwJUVCJUExJTlDJTIwJUVDJTlEJUJEJUVCJThBJTk0JTIwJUVDJTlEJUI0JUVDJThBJTg4" data-listing-date-sort="1794787200000" data-listing-file-modified-sort="1794824596793" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2858">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../articles/issues/cheating-hypothesis-test.html" class="no-external-icon">통계적 사고방식으로 접근한 AI 부정행위 논란</a>
+</h3>
+<div class="listing-subtitle">
+<a href="../articles/issues/cheating-hypothesis-test.html" class="no-external-icon">시험 부정 의혹을 가설검정과 베이즈 정리로 읽는 법</a>
+</div>
+</div>
+<div class="metadata">
+
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">아직 이 분류에 올라온 글이 없습니다. 곧 채워 나가겠습니다.</div>
+</div>
+</div>
+<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
+<div class="article-category-desc">
+<p>독일에서 공부하고 생활하며 알게 된 것들과 느낀 점을 적습니다.</p>
+</div>
+<div id="listing-tab-germany" class="quarto-listing quarto-listing-container-default">
+<div class="list quarto-listing-default">
+
+</div>
+<div class="listing-no-matching d-none">아직 이 분류에 올라온 글이 없습니다. 곧 채워 나가겠습니다.</div>
+</div>
+</div>
+<div id="tabset-1-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-5-tab">
+<div class="article-category-desc">
+<p>과목 본편에서 따로 다루기에는 작지만 한 번쯤 짚고 넘어갈 만한 주제를 짧게 정리합니다. 표본분산은 왜 <em>n</em>−1로 나누는지, 1 + 1 = 2는 어떻게 증명하는지 같은 질문부터 자연수의 폰 노이만 구성, 감마 함수 같은 주제까지 가볍게 다룹니다.</p>
+</div>
+<div id="listing-tab-notes" class="quarto-listing quarto-listing-container-default">
+<div class="list quarto-listing-default">
+
+</div>
+<div class="listing-no-matching d-none">아직 이 분류에 올라온 글이 없습니다. 곧 채워 나가겠습니다.</div>
+</div>
+</div>
+</div>
 </div>
 <style>
 /* 추천 아티클: 가로 슬라이드 (한 화면에 3개) */
@@ -870,23 +1062,64 @@ Study Archive는 어떤 곳이고, 어떻게 읽으면 좋을까요
 }
 
 /* 최신 아티클: 제목 + 부제만 (날짜/썸네일/설명 칸 제거) */
-#listing-recent-articles .quarto-post {
+.article-tabs .quarto-listing .quarto-post {
   display: block; padding: 0.9rem 0.25rem; margin-bottom: 0;
   border-bottom: 1px solid #e9ecef;
 }
-#listing-recent-articles .quarto-post .body { padding: 0; }
-#listing-recent-articles .quarto-post .body .listing-title {
+.article-tabs .quarto-listing .quarto-post .body { padding: 0; }
+.article-tabs .quarto-listing .quarto-post .body .listing-title {
   font-size: 1.2rem; font-weight: 600; margin: 0 0 0.25rem;
 }
-#listing-recent-articles .listing-title a {
+.article-tabs .quarto-listing .listing-title a {
   font-weight: 600; color: #17252a; text-decoration: none;
 }
-#listing-recent-articles .listing-title a:hover { color: #2b7a78; }
-#listing-recent-articles .listing-subtitle,
-#listing-recent-articles .listing-subtitle a {
+.article-tabs .quarto-listing .listing-title a:hover { color: #2b7a78; }
+.article-tabs .quarto-listing .listing-subtitle,
+.article-tabs .quarto-listing .listing-subtitle a {
   font-size: 0.95rem; color: #555; text-decoration: none;
 }
-#listing-recent-articles .listing-description { display: none; }
+.article-tabs .quarto-listing .listing-description { display: none; }
+
+/* 분류 탭 목록: 제목 + 부제만 */
+.article-tabs .quarto-post .metadata,
+.article-tabs .quarto-post .thumbnail { display: none; }
+
+/* 분류 탭 */
+.article-tabs { margin-top: 0.5rem; }
+.article-tabs .nav-tabs { border-bottom: 1px solid #e2e8f0; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+.article-tabs .nav-tabs::-webkit-scrollbar { display: none; }
+.article-tabs .nav-tabs .nav-link {
+  white-space: nowrap; color: #555; font-weight: 600; font-size: 1.05rem;
+  border: 0; border-bottom: 3px solid transparent; padding: 0.6rem 0.9rem; background: none;
+}
+.article-tabs .nav-tabs .nav-link:hover { color: #2b7a78; }
+.article-tabs .nav-tabs .nav-link.active { color: #17252a; border-bottom-color: #2b7a78; }
+.article-tabs .tab-content { border: 0; padding: 1rem 0 0; }
+.article-category-desc { color: #666; font-size: 0.95rem; line-height: 1.65; margin: 0 0 0.25rem; }
+
+/* 전체 글 보기 링크: 탭 줄 오른쪽 끝 */
+.all-top { text-align: right; font-size: 0.95rem; margin: 2.1rem 0 -2.95rem; position: relative; z-index: 2; pointer-events: none; }
+.all-top a { pointer-events: auto; text-decoration: none; color: #2b7a78; font-weight: 600; background: #fff; padding-left: 0.75rem; }
+.all-top a:hover { text-decoration: underline; }
+@media (max-width: 767.98px) { .all-top { margin: 1.5rem 0 0.25rem; } }
+
+/* 페이지 넘김: 화살표 */
+.article-tabs .listing-pagination { display: none; }
+.article-pager { display: flex; justify-content: center; align-items: center; gap: 0.9rem; margin: 1rem 0 0.5rem; }
+.article-pager button {
+  width: 2.25rem; height: 2.25rem; border-radius: 50%; border: 1px solid #e2e8f0; background: #fff;
+  color: #17252a; font-size: 1.1rem; line-height: 1; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+.article-pager button:hover:not(:disabled) { color: #2b7a78; border-color: #2b7a78; }
+.article-pager button:disabled { color: #c3c9d0; cursor: default; box-shadow: none; }
+.article-pager .pager-count { font-size: 0.92rem; color: #555; min-width: 3.5rem; text-align: center; }
+
+/* 글이 없는 탭 */
+.article-tabs .quarto-listing:not(:has(.quarto-post)) .listing-no-matching { display: block !important; }
+.article-tabs .listing-no-matching {
+  color: #8a8a8a; font-size: 0.93rem; padding: 1rem 1.25rem; margin-top: 0.75rem;
+  border: 1px dashed #d5dbe3; border-radius: 10px;
+}
 </style>
 
 <script>
@@ -943,6 +1176,42 @@ document.addEventListener("DOMContentLoaded", function() {
   window.addEventListener("resize", update);
   if (window.MutationObserver) new MutationObserver(update).observe(track, { childList: true, subtree: true, attributes: true });
   update();
+});
+</script>
+
+<script>
+/* 분류 탭: 5개씩 보여 주고 화살표로 넘기기 */
+window.addEventListener("load", function() {
+  const lists = window["quarto-listings"] || {};
+  document.querySelectorAll(".article-tabs .quarto-listing").forEach(function(box) {
+    const list = lists[box.id];
+    if (!list) return;
+    const per = list.page;
+    const total = list.matchingItems.length;
+    const pages = Math.ceil(total / per);
+    if (pages <= 1) return;
+    let cur = 1;
+    const pager = document.createElement("div");
+    pager.className = "article-pager";
+    const prev = document.createElement("button");
+    prev.type = "button"; prev.textContent = "‹"; prev.setAttribute("aria-label", "이전 글 목록");
+    const next = document.createElement("button");
+    next.type = "button"; next.textContent = "›"; next.setAttribute("aria-label", "다음 글 목록");
+    const count = document.createElement("span");
+    count.className = "pager-count";
+    pager.append(prev, count, next);
+    box.appendChild(pager);
+    function go(p) {
+      cur = Math.min(Math.max(p, 1), pages);
+      list.show((cur - 1) * per + 1, per);
+      count.textContent = cur + " / " + pages;
+      prev.disabled = cur === 1;
+      next.disabled = cur === pages;
+    }
+    prev.addEventListener("click", function() { go(cur - 1); });
+    next.addEventListener("click", function() { go(cur + 1); });
+    go(1);
+  });
 });
 </script>
 

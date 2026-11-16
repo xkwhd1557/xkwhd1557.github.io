@@ -2,18 +2,27 @@
   {
     "listing": "/index.html",
     "items": [
-      "/articles/study-roadmap.html",
-      "/articles/about-this-site.html",
-      "/articles/math-and-modeling.html"
+      "/articles/start/study-roadmap.html",
+      "/articles/start/about-this-site.html",
+      "/articles/start/math-and-modeling.html"
     ]
   },
   {
     "listing": "/articles/index.html",
     "items": [
-      "/articles/study-roadmap.html",
-      "/articles/about-this-site.html",
-      "/articles/math-and-modeling.html",
-      "/articles/cheating-hypothesis-test.html"
+      "/articles/start/study-roadmap.html",
+      "/articles/start/about-this-site.html",
+      "/articles/start/math-and-modeling.html",
+      "/articles/issues/cheating-hypothesis-test.html"
+    ]
+  },
+  {
+    "listing": "/articles/all.html",
+    "items": [
+      "/articles/issues/cheating-hypothesis-test.html",
+      "/articles/start/study-roadmap.html",
+      "/articles/start/about-this-site.html",
+      "/articles/start/math-and-modeling.html"
     ]
   }
 ]
