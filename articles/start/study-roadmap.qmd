@@ -3,8 +3,10 @@ title: "어떤 순서로 공부하면 좋을까요"
 subtitle: "전공과 목적에 따라 고르는 Study Archive 학습 로드맵"
 description: "수학, 확률·통계, 컴퓨터 공학, 데이터 사이언스, 그 밖의 전공까지, 독자의 배경과 목적에 따라 이 사이트의 과목을 어떤 순서로 읽으면 좋은지 한눈에 볼 수 있도록 정리한 학습 안내서입니다."
 date: "2026-11-03"
-categories: ["일반 게시글"]
+categories: ["시작하기"]
 featured: true
+aliases:
+  - ../study-roadmap.html
 ---
 
 ## 들어가며
@@ -123,17 +125,17 @@ featured: true
 ::: {.rm-stage}
 [1단계 · 공통 기초]{.rm-title} [필수]{.rm-lv .must}
 
-[해석학](../math/analysis/index.qmd){.rm-chip .c-math}
-[선형대수학](../math/linear-algebra/index.qmd){.rm-chip .c-math}
-[컴퓨터 과학 원론](../cs/cs-intro/index.qmd){.rm-chip .c-cs}
-[C언어](../cs/c-programming/index.qmd){.rm-chip .c-cs}
-[기초 확률론](../stats/prob-theory/index.qmd){.rm-chip .c-stats}
+[해석학](../../math/analysis/index.qmd){.rm-chip .c-math}
+[선형대수학](../../math/linear-algebra/index.qmd){.rm-chip .c-math}
+[컴퓨터 과학 원론](../../cs/cs-intro/index.qmd){.rm-chip .c-cs}
+[C언어](../../cs/c-programming/index.qmd){.rm-chip .c-cs}
+[기초 확률론](../../stats/prob-theory/index.qmd){.rm-chip .c-stats}
 
 [함께 보면 좋은 기초]{.rm-sub} [추천]{.rm-lv .rec}
 
-[이산수학](../math/discrete-math/index.qmd){.rm-chip .c-math}
-[수학적 프로그래밍 (Python)](../math/math-programming/index.qmd){.rm-chip .c-math}
-[LaTeX](../math/latex/index.qmd){.rm-chip .c-math}
+[이산수학](../../math/discrete-math/index.qmd){.rm-chip .c-math}
+[수학적 프로그래밍 (Python)](../../math/math-programming/index.qmd){.rm-chip .c-math}
+[LaTeX](../../math/latex/index.qmd){.rm-chip .c-math}
 :::
 
 ::: {.rm-stage}
@@ -145,61 +147,61 @@ featured: true
 [수학적 깊이를 더하고 싶다면]{.rm-sub}
 
 [수학 핵심]{.rm-mini}
-[복소해석학](../math/complex-analysis/index.qmd){.rm-chip .c-math}
-[상미분방정식](../math/ode/index.qmd){.rm-chip .c-math}
-[측도론](../math/measure-theory/index.qmd){.rm-chip .c-math}
-[대수학](../math/algebra/index.qmd){.rm-chip .c-math}
-[정수론](../math/number-theory/index.qmd){.rm-chip .c-math}
-[기하학](../math/geometry/index.qmd){.rm-chip .c-math}
-[일반위상수학](../math/general-topology/index.qmd){.rm-chip .c-math}
-[수치적 방법론](../math/numerical-methods/index.qmd){.rm-chip .c-math}
-[수학적 최적화](../math/optimization/index.qmd){.rm-chip .c-math}
-[동적 시스템](../math/dynamical-systems/index.qmd){.rm-chip .c-math}
-[기초 편미분방정식](../math/pde-intro/index.qmd){.rm-chip .c-math}
-[수리논리학](../math/mathematical-logic/index.qmd){.rm-chip .c-math}
-[공리적 집합론](../math/set-theory/index.qmd){.rm-chip .c-math}
+[복소해석학](../../math/complex-analysis/index.qmd){.rm-chip .c-math}
+[상미분방정식](../../math/ode/index.qmd){.rm-chip .c-math}
+[측도론](../../math/measure-theory/index.qmd){.rm-chip .c-math}
+[대수학](../../math/algebra/index.qmd){.rm-chip .c-math}
+[정수론](../../math/number-theory/index.qmd){.rm-chip .c-math}
+[기하학](../../math/geometry/index.qmd){.rm-chip .c-math}
+[일반위상수학](../../math/general-topology/index.qmd){.rm-chip .c-math}
+[수치적 방법론](../../math/numerical-methods/index.qmd){.rm-chip .c-math}
+[수학적 최적화](../../math/optimization/index.qmd){.rm-chip .c-math}
+[동적 시스템](../../math/dynamical-systems/index.qmd){.rm-chip .c-math}
+[기초 편미분방정식](../../math/pde-intro/index.qmd){.rm-chip .c-math}
+[수리논리학](../../math/mathematical-logic/index.qmd){.rm-chip .c-math}
+[공리적 집합론](../../math/set-theory/index.qmd){.rm-chip .c-math}
 
 [수학 심화]{.rm-mini}
-[함수해석학](../math/functional-analysis/index.qmd){.rm-chip .c-math}
-[위상벡터공간론](../math/topological-vector-spaces/index.qmd){.rm-chip .c-math}
-[편미분방정식](../math/pde-advanced/index.qmd){.rm-chip .c-math}
-[다양체 해석학](../math/manifold-analysis/index.qmd){.rm-chip .c-math}
-[RKHS 이론](../math/rkhs/index.qmd){.rm-chip .c-math}
-[미분기하학](../math/differential-geometry/index.qmd){.rm-chip .c-math}
-[수치적 상미분방정식](../math/numerical-ode/index.qmd){.rm-chip .c-math}
-[과학계산](../math/scientific-computing/index.qmd){.rm-chip .c-math}
-[역문제](../math/inverse-problems/index.qmd){.rm-chip .c-math}
+[함수해석학](../../math/functional-analysis/index.qmd){.rm-chip .c-math}
+[위상벡터공간론](../../math/topological-vector-spaces/index.qmd){.rm-chip .c-math}
+[편미분방정식](../../math/pde-advanced/index.qmd){.rm-chip .c-math}
+[다양체 해석학](../../math/manifold-analysis/index.qmd){.rm-chip .c-math}
+[RKHS 이론](../../math/rkhs/index.qmd){.rm-chip .c-math}
+[미분기하학](../../math/differential-geometry/index.qmd){.rm-chip .c-math}
+[수치적 상미분방정식](../../math/numerical-ode/index.qmd){.rm-chip .c-math}
+[과학계산](../../math/scientific-computing/index.qmd){.rm-chip .c-math}
+[역문제](../../math/inverse-problems/index.qmd){.rm-chip .c-math}
 :::
 
 ::: {.rm-branch}
 [확률론·수리통계가 궁금하다면]{.rm-sub}
 
 [확률과 통계 핵심]{.rm-mini}
-[측도론적 확률론](../stats/measure-prob/index.qmd){.rm-chip .c-stats .rm-start}
-[확률과정론](../stats/stochastic-processes/index.qmd){.rm-chip .c-stats}
-[수리통계학](../stats/math-stats/index.qmd){.rm-chip .c-stats}
-[확률적 시뮬레이션](../stats/stochastic-simulation/index.qmd){.rm-chip .c-stats}
-[보험수학](../stats/actuarial-math/index.qmd){.rm-chip .c-stats}
+[측도론적 확률론](../../stats/measure-prob/index.qmd){.rm-chip .c-stats .rm-start}
+[확률과정론](../../stats/stochastic-processes/index.qmd){.rm-chip .c-stats}
+[수리통계학](../../stats/math-stats/index.qmd){.rm-chip .c-stats}
+[확률적 시뮬레이션](../../stats/stochastic-simulation/index.qmd){.rm-chip .c-stats}
+[보험수학](../../stats/actuarial-math/index.qmd){.rm-chip .c-stats}
 
 [확률과 통계 심화]{.rm-mini}
-[확률해석학](../stats/stochastic-calculus/index.qmd){.rm-chip .c-stats}
-[마르코프 프로세스](../stats/markov-processes/index.qmd){.rm-chip .c-stats}
-[확률과정의 통계추론](../stats/stats-for-stoch-proc/index.qmd){.rm-chip .c-stats}
-[가우시안 프로세스](../stats/gaussian-processes/index.qmd){.rm-chip .c-stats}
-[디퓨전 모델](../stats/diffusion-models/index.qmd){.rm-chip .c-stats}
-[비유클리드 통계학](../stats/non-euclidean-stats/index.qmd){.rm-chip .c-stats}
-[비모수 통계학](../stats/nonparametric-stats/index.qmd){.rm-chip .c-stats}
-[위상수학적 데이터 분석](../stats/topological-data-analysis/index.qmd){.rm-chip .c-stats}
-[통계적 학습 이론](../stats/statistical-learning-theory/index.qmd){.rm-chip .c-stats}
-[통계적 역문제](../stats/statistical-inverse-problems/index.qmd){.rm-chip .c-stats}
-[통계적 모델링](../stats/statistical-modelling/index.qmd){.rm-chip .c-stats}
-[점근 통계학](../stats/asymptotic-statistics/index.qmd){.rm-chip .c-stats}
-[시계열 분석의 통계적 기초](../stats/time-series-foundations/index.qmd){.rm-chip .c-stats}
+[확률해석학](../../stats/stochastic-calculus/index.qmd){.rm-chip .c-stats}
+[마르코프 프로세스](../../stats/markov-processes/index.qmd){.rm-chip .c-stats}
+[확률과정의 통계추론](../../stats/stats-for-stoch-proc/index.qmd){.rm-chip .c-stats}
+[가우시안 프로세스](../../stats/gaussian-processes/index.qmd){.rm-chip .c-stats}
+[디퓨전 모델](../../stats/diffusion-models/index.qmd){.rm-chip .c-stats}
+[비유클리드 통계학](../../stats/non-euclidean-stats/index.qmd){.rm-chip .c-stats}
+[비모수 통계학](../../stats/nonparametric-stats/index.qmd){.rm-chip .c-stats}
+[위상수학적 데이터 분석](../../stats/topological-data-analysis/index.qmd){.rm-chip .c-stats}
+[통계적 학습 이론](../../stats/statistical-learning-theory/index.qmd){.rm-chip .c-stats}
+[통계적 역문제](../../stats/statistical-inverse-problems/index.qmd){.rm-chip .c-stats}
+[통계적 모델링](../../stats/statistical-modelling/index.qmd){.rm-chip .c-stats}
+[점근 통계학](../../stats/asymptotic-statistics/index.qmd){.rm-chip .c-stats}
+[시계열 분석의 통계적 기초](../../stats/time-series-foundations/index.qmd){.rm-chip .c-stats}
 
 [직관이 필요할 때 곁들이기]{.rm-mini} [선택]{.rm-lv .opt}
-[기초 통계학](../stats/basic-stats/index.qmd){.rm-chip .c-stats}
-[기초 선형 모델](../stats/linear-models/index.qmd){.rm-chip .c-stats}
-[통계적 프로그래밍](../stats/stat-programming/index.qmd){.rm-chip .c-stats}
+[기초 통계학](../../stats/basic-stats/index.qmd){.rm-chip .c-stats}
+[기초 선형 모델](../../stats/linear-models/index.qmd){.rm-chip .c-stats}
+[통계적 프로그래밍](../../stats/stat-programming/index.qmd){.rm-chip .c-stats}
 :::
 
 :::
@@ -240,13 +242,13 @@ featured: true
 ::: {.rm-stage}
 [지금 활용하기 좋은 방법 ① · 기초에 대한 직관 얻기]{.rm-title} [추천]{.rm-lv .rec}
 
-[측도론적 확률론](../stats/measure-prob/index.qmd){.rm-chip .c-stats}
-[확률과정론](../stats/stochastic-processes/index.qmd){.rm-chip .c-stats}
-[수리통계학](../stats/math-stats/index.qmd){.rm-chip .c-stats}
-[확률적 시뮬레이션](../stats/stochastic-simulation/index.qmd){.rm-chip .c-stats}
-[보험수학](../stats/actuarial-math/index.qmd){.rm-chip .c-stats}
-[기초 통계학](../stats/basic-stats/index.qmd){.rm-chip .c-stats}
-[기초 선형 모델](../stats/linear-models/index.qmd){.rm-chip .c-stats}
+[측도론적 확률론](../../stats/measure-prob/index.qmd){.rm-chip .c-stats}
+[확률과정론](../../stats/stochastic-processes/index.qmd){.rm-chip .c-stats}
+[수리통계학](../../stats/math-stats/index.qmd){.rm-chip .c-stats}
+[확률적 시뮬레이션](../../stats/stochastic-simulation/index.qmd){.rm-chip .c-stats}
+[보험수학](../../stats/actuarial-math/index.qmd){.rm-chip .c-stats}
+[기초 통계학](../../stats/basic-stats/index.qmd){.rm-chip .c-stats}
+[기초 선형 모델](../../stats/linear-models/index.qmd){.rm-chip .c-stats}
 
 [이미 배운 내용이라도, 정의와 정리 뒤에 숨은 동기와 직관을 다시 정리하는 용도로 읽어 보세요.]{.rm-note}
 :::
@@ -259,23 +261,23 @@ featured: true
 ::: {.rm-branch}
 [경영/경제]{.rm-sub}
 
-[분야 전체 보기](../biz-econ/index.qmd){.rm-chip .c-biz .rm-all}
-[재무와 투자론](../biz-econ/finance-investment/index.qmd){.rm-chip .c-biz}
-[계량경제학](../biz-econ/econometrics/index.qmd){.rm-chip .c-biz}
-[시계열 분석](../biz-econ/time-series/index.qmd){.rm-chip .c-biz}
-[보험경제학](../biz-econ/insurance-economics/index.qmd){.rm-chip .c-biz}
-[계량 리스크 관리](../biz-econ/quantitative-risk/index.qmd){.rm-chip .c-biz}
+[분야 전체 보기](../../biz-econ/index.qmd){.rm-chip .c-biz .rm-all}
+[재무와 투자론](../../biz-econ/finance-investment/index.qmd){.rm-chip .c-biz}
+[계량경제학](../../biz-econ/econometrics/index.qmd){.rm-chip .c-biz}
+[시계열 분석](../../biz-econ/time-series/index.qmd){.rm-chip .c-biz}
+[보험경제학](../../biz-econ/insurance-economics/index.qmd){.rm-chip .c-biz}
+[계량 리스크 관리](../../biz-econ/quantitative-risk/index.qmd){.rm-chip .c-biz}
 :::
 
 ::: {.rm-branch}
 [의학통계·바이오메트리]{.rm-sub}
 
-[분야 전체 보기](../biostat/index.qmd){.rm-chip .c-bio .rm-all}
-[역학 연구방법론](../biostat/epidemiology/index.qmd){.rm-chip .c-bio}
-[임상시험 통계방법론](../biostat/clinical-trials/index.qmd){.rm-chip .c-bio}
-[생존분석](../biostat/survival-analysis/index.qmd){.rm-chip .c-bio}
-[인과추론](../biostat/causal-inference/index.qmd){.rm-chip .c-bio}
-[종단적 데이터 분석](../biostat/longitudinal-data/index.qmd){.rm-chip .c-bio}
+[분야 전체 보기](../../biostat/index.qmd){.rm-chip .c-bio .rm-all}
+[역학 연구방법론](../../biostat/epidemiology/index.qmd){.rm-chip .c-bio}
+[임상시험 통계방법론](../../biostat/clinical-trials/index.qmd){.rm-chip .c-bio}
+[생존분석](../../biostat/survival-analysis/index.qmd){.rm-chip .c-bio}
+[인과추론](../../biostat/causal-inference/index.qmd){.rm-chip .c-bio}
+[종단적 데이터 분석](../../biostat/longitudinal-data/index.qmd){.rm-chip .c-bio}
 :::
 
 :::
@@ -286,20 +288,20 @@ featured: true
 ::: {.rm-stage .rm-later}
 [앞으로 · 더 깊은 이야기]{.rm-title} [준비 중]{.rm-lv .opt}
 
-[확률해석학](../stats/stochastic-calculus/index.qmd){.rm-chip .c-stats}
-[마르코프 프로세스](../stats/markov-processes/index.qmd){.rm-chip .c-stats}
-[확률과정의 통계추론](../stats/stats-for-stoch-proc/index.qmd){.rm-chip .c-stats}
-[가우시안 프로세스](../stats/gaussian-processes/index.qmd){.rm-chip .c-stats}
-[디퓨전 모델](../stats/diffusion-models/index.qmd){.rm-chip .c-stats}
-[비유클리드 통계학](../stats/non-euclidean-stats/index.qmd){.rm-chip .c-stats}
-[비모수 통계학](../stats/nonparametric-stats/index.qmd){.rm-chip .c-stats}
-[위상수학적 데이터 분석](../stats/topological-data-analysis/index.qmd){.rm-chip .c-stats}
-[통계적 학습 이론](../stats/statistical-learning-theory/index.qmd){.rm-chip .c-stats}
-[통계적 역문제](../stats/statistical-inverse-problems/index.qmd){.rm-chip .c-stats}
-[통계적 모델링](../stats/statistical-modelling/index.qmd){.rm-chip .c-stats}
-[점근 통계학](../stats/asymptotic-statistics/index.qmd){.rm-chip .c-stats}
-[시계열 분석의 통계적 기초](../stats/time-series-foundations/index.qmd){.rm-chip .c-stats}
-[데이터 사이언스의 통계적 기초](../ds-ai/statistical-foundations/index.qmd){.rm-chip .c-ds}
+[확률해석학](../../stats/stochastic-calculus/index.qmd){.rm-chip .c-stats}
+[마르코프 프로세스](../../stats/markov-processes/index.qmd){.rm-chip .c-stats}
+[확률과정의 통계추론](../../stats/stats-for-stoch-proc/index.qmd){.rm-chip .c-stats}
+[가우시안 프로세스](../../stats/gaussian-processes/index.qmd){.rm-chip .c-stats}
+[디퓨전 모델](../../stats/diffusion-models/index.qmd){.rm-chip .c-stats}
+[비유클리드 통계학](../../stats/non-euclidean-stats/index.qmd){.rm-chip .c-stats}
+[비모수 통계학](../../stats/nonparametric-stats/index.qmd){.rm-chip .c-stats}
+[위상수학적 데이터 분석](../../stats/topological-data-analysis/index.qmd){.rm-chip .c-stats}
+[통계적 학습 이론](../../stats/statistical-learning-theory/index.qmd){.rm-chip .c-stats}
+[통계적 역문제](../../stats/statistical-inverse-problems/index.qmd){.rm-chip .c-stats}
+[통계적 모델링](../../stats/statistical-modelling/index.qmd){.rm-chip .c-stats}
+[점근 통계학](../../stats/asymptotic-statistics/index.qmd){.rm-chip .c-stats}
+[시계열 분석의 통계적 기초](../../stats/time-series-foundations/index.qmd){.rm-chip .c-stats}
+[데이터 사이언스의 통계적 기초](../../ds-ai/statistical-foundations/index.qmd){.rm-chip .c-ds}
 
 [이 분야의 심화된 이야기는 채워지기까지 시간이 꽤 걸릴 예정입니다.]{.rm-note}
 :::
@@ -323,25 +325,25 @@ featured: true
 ::: {.rm-stage}
 [1단계 · 수학과 확률·통계의 기초]{.rm-title} [필수]{.rm-lv .must}
 
-[해석학](../math/analysis/index.qmd){.rm-chip .c-math}
-[선형대수학](../math/linear-algebra/index.qmd){.rm-chip .c-math}
-[이산수학](../math/discrete-math/index.qmd){.rm-chip .c-math}
-[수학적 프로그래밍 (Python)](../math/math-programming/index.qmd){.rm-chip .c-math}
-[기초 확률론](../stats/prob-theory/index.qmd){.rm-chip .c-stats}
-[기초 통계학](../stats/basic-stats/index.qmd){.rm-chip .c-stats}
-[기초 선형 모델](../stats/linear-models/index.qmd){.rm-chip .c-stats}
-[통계적 프로그래밍](../stats/stat-programming/index.qmd){.rm-chip .c-stats}
+[해석학](../../math/analysis/index.qmd){.rm-chip .c-math}
+[선형대수학](../../math/linear-algebra/index.qmd){.rm-chip .c-math}
+[이산수학](../../math/discrete-math/index.qmd){.rm-chip .c-math}
+[수학적 프로그래밍 (Python)](../../math/math-programming/index.qmd){.rm-chip .c-math}
+[기초 확률론](../../stats/prob-theory/index.qmd){.rm-chip .c-stats}
+[기초 통계학](../../stats/basic-stats/index.qmd){.rm-chip .c-stats}
+[기초 선형 모델](../../stats/linear-models/index.qmd){.rm-chip .c-stats}
+[통계적 프로그래밍](../../stats/stat-programming/index.qmd){.rm-chip .c-stats}
 :::
 
 ::: {.rm-stage}
 [2단계 · 데이터 사이언스 기초와 핵심]{.rm-title} [추천]{.rm-lv .rec}
 
-[데이터 사이언스 개론](../ds-ai/ds-intro/index.qmd){.rm-chip .c-ds .rm-start}
-[머신러닝](../ds-ai/machine-learning/index.qmd){.rm-chip .c-ds}
-[딥러닝과 컴퓨터 비전](../ds-ai/deep-learning-cv/index.qmd){.rm-chip .c-ds .rm-after}
-[수치적 방법론과 최적화](../ds-ai/numerical-optimization/index.qmd){.rm-chip .c-ds}
-[인공지능 원론](../ds-ai/ai-intro/index.qmd){.rm-chip .c-ds}
-[수리적 데이터 분석과 통계적 추론](../ds-ai/data-analysis-inference/index.qmd){.rm-chip .c-ds}
+[데이터 사이언스 개론](../../ds-ai/ds-intro/index.qmd){.rm-chip .c-ds .rm-start}
+[머신러닝](../../ds-ai/machine-learning/index.qmd){.rm-chip .c-ds}
+[딥러닝과 컴퓨터 비전](../../ds-ai/deep-learning-cv/index.qmd){.rm-chip .c-ds .rm-after}
+[수치적 방법론과 최적화](../../ds-ai/numerical-optimization/index.qmd){.rm-chip .c-ds}
+[인공지능 원론](../../ds-ai/ai-intro/index.qmd){.rm-chip .c-ds}
+[수리적 데이터 분석과 통계적 추론](../../ds-ai/data-analysis-inference/index.qmd){.rm-chip .c-ds}
 
 [데이터 사이언스 개론을 먼저 읽고, 나머지는 관심 가는 순서대로 읽으셔도 됩니다. 다만 딥러닝은 머신러닝 다음에 보시길 권합니다.]{.rm-note}
 :::
@@ -349,9 +351,9 @@ featured: true
 ::: {.rm-stage}
 [3단계 · 데이터 사이언스 심화]{.rm-title} [난이도 주의]{.rm-lv .warn}
 
-[데이터 사이언스의 통계적 기초](../ds-ai/statistical-foundations/index.qmd){.rm-chip .c-ds}
-[머신러닝의 수리적 기초](../ds-ai/mathematical-foundations/index.qmd){.rm-chip .c-ds}
-[데이터 사이언스를 위한 선형대수학](../ds-ai/advanced-linear-algebra/index.qmd){.rm-chip .c-ds}
+[데이터 사이언스의 통계적 기초](../../ds-ai/statistical-foundations/index.qmd){.rm-chip .c-ds}
+[머신러닝의 수리적 기초](../../ds-ai/mathematical-foundations/index.qmd){.rm-chip .c-ds}
+[데이터 사이언스를 위한 선형대수학](../../ds-ai/advanced-linear-algebra/index.qmd){.rm-chip .c-ds}
 
 [다른 분야의 핵심·심화 수학을 전제하는 부분이 있어, 현실적으로 어렵게 느껴질 수 있습니다.]{.rm-note}
 :::
@@ -359,9 +361,9 @@ featured: true
 ::: {.rm-stage .rm-later}
 [참고 · 컴퓨터 공학 분야]{.rm-title} [선택]{.rm-lv .opt}
 
-[분야 전체 보기](../cs/index.qmd){.rm-chip .c-cs .rm-all}
-[이론 컴퓨터과학](../cs/theoretical-cs/index.qmd){.rm-chip .c-cs}
-[알고리즘과 자료구조](../cs/algorithms-data-structures/index.qmd){.rm-chip .c-cs}
+[분야 전체 보기](../../cs/index.qmd){.rm-chip .c-cs .rm-all}
+[이론 컴퓨터과학](../../cs/theoretical-cs/index.qmd){.rm-chip .c-cs}
+[알고리즘과 자료구조](../../cs/algorithms-data-structures/index.qmd){.rm-chip .c-cs}
 :::
 
 :::
@@ -379,29 +381,29 @@ featured: true
 ::: {.rm-stage}
 [1단계 · 기초]{.rm-title} [필수]{.rm-lv .must}
 
-[해석학](../math/analysis/index.qmd){.rm-chip .c-math}
-[선형대수학](../math/linear-algebra/index.qmd){.rm-chip .c-math}
-[컴퓨터 과학 원론](../cs/cs-intro/index.qmd){.rm-chip .c-cs}
-[C언어](../cs/c-programming/index.qmd){.rm-chip .c-cs}
-[기초 확률론](../stats/prob-theory/index.qmd){.rm-chip .c-stats}
-[기초 통계학](../stats/basic-stats/index.qmd){.rm-chip .c-stats}
-[기초 선형 모델](../stats/linear-models/index.qmd){.rm-chip .c-stats}
-[데이터 사이언스 개론](../ds-ai/ds-intro/index.qmd){.rm-chip .c-ds .rm-start}
+[해석학](../../math/analysis/index.qmd){.rm-chip .c-math}
+[선형대수학](../../math/linear-algebra/index.qmd){.rm-chip .c-math}
+[컴퓨터 과학 원론](../../cs/cs-intro/index.qmd){.rm-chip .c-cs}
+[C언어](../../cs/c-programming/index.qmd){.rm-chip .c-cs}
+[기초 확률론](../../stats/prob-theory/index.qmd){.rm-chip .c-stats}
+[기초 통계학](../../stats/basic-stats/index.qmd){.rm-chip .c-stats}
+[기초 선형 모델](../../stats/linear-models/index.qmd){.rm-chip .c-stats}
+[데이터 사이언스 개론](../../ds-ai/ds-intro/index.qmd){.rm-chip .c-ds .rm-start}
 
 [곁들여 읽기]{.rm-sub}
 
-[데이터 사이언스와 사회](../ds-ai/ds-society/index.qmd){.rm-chip .c-ds} [잡지 칼럼처럼 가볍게]{.rm-lv .opt}
-[고등학교 인공지능 수학](../ds-ai/ai-math-intro/index.qmd){.rm-chip .c-ds .rm-skip} [건너뛰어도 됩니다]{.rm-lv .opt}
+[데이터 사이언스와 사회](../../ds-ai/ds-society/index.qmd){.rm-chip .c-ds} [잡지 칼럼처럼 가볍게]{.rm-lv .opt}
+[고등학교 인공지능 수학](../../ds-ai/ai-math-intro/index.qmd){.rm-chip .c-ds .rm-skip} [건너뛰어도 됩니다]{.rm-lv .opt}
 :::
 
 ::: {.rm-stage}
 [2단계 · 핵심 — 관심 가는 대로]{.rm-title} [추천]{.rm-lv .rec}
 
-[머신러닝](../ds-ai/machine-learning/index.qmd){.rm-chip .c-ds}
-[딥러닝과 컴퓨터 비전](../ds-ai/deep-learning-cv/index.qmd){.rm-chip .c-ds .rm-after}
-[수치적 방법론과 최적화](../ds-ai/numerical-optimization/index.qmd){.rm-chip .c-ds}
-[인공지능 원론](../ds-ai/ai-intro/index.qmd){.rm-chip .c-ds}
-[측도론적 확률론](../stats/measure-prob/index.qmd){.rm-chip .c-stats}
+[머신러닝](../../ds-ai/machine-learning/index.qmd){.rm-chip .c-ds}
+[딥러닝과 컴퓨터 비전](../../ds-ai/deep-learning-cv/index.qmd){.rm-chip .c-ds .rm-after}
+[수치적 방법론과 최적화](../../ds-ai/numerical-optimization/index.qmd){.rm-chip .c-ds}
+[인공지능 원론](../../ds-ai/ai-intro/index.qmd){.rm-chip .c-ds}
+[측도론적 확률론](../../stats/measure-prob/index.qmd){.rm-chip .c-stats}
 
 [순서는 자유입니다. 다만 딥러닝은 머신러닝을 먼저 보고 읽으시길 권합니다.]{.rm-note}
 :::
@@ -410,12 +412,12 @@ featured: true
 [3단계 · 심화]{.rm-title} [난이도 주의]{.rm-lv .warn}
 
 [통계적 추론 — 둘 중 하나를 고르세요]{.rm-mini}
-[수리적 데이터 분석과 통계적 추론](../ds-ai/data-analysis-inference/index.qmd){.rm-chip .c-ds}
-[데이터 사이언스의 통계적 기초](../ds-ai/statistical-foundations/index.qmd){.rm-chip .c-ds}
+[수리적 데이터 분석과 통계적 추론](../../ds-ai/data-analysis-inference/index.qmd){.rm-chip .c-ds}
+[데이터 사이언스의 통계적 기초](../../ds-ai/statistical-foundations/index.qmd){.rm-chip .c-ds}
 
 [그 밖의 심화]{.rm-mini}
-[머신러닝의 수리적 기초](../ds-ai/mathematical-foundations/index.qmd){.rm-chip .c-ds}
-[데이터 사이언스를 위한 선형대수학](../ds-ai/advanced-linear-algebra/index.qmd){.rm-chip .c-ds}
+[머신러닝의 수리적 기초](../../ds-ai/mathematical-foundations/index.qmd){.rm-chip .c-ds}
+[데이터 사이언스를 위한 선형대수학](../../ds-ai/advanced-linear-algebra/index.qmd){.rm-chip .c-ds}
 
 [통계적 추론 두 과목은 모두 측도론적 확률론을 전제합니다. 심화 과목 전체는 최소 학사 고학년, 혹은 석사 수준의 실력이 있을 때 권합니다.]{.rm-note}
 :::
@@ -423,8 +425,8 @@ featured: true
 ::: {.rm-stage .rm-later}
 [곁가지 · 도메인 과목]{.rm-title} [선택]{.rm-lv .opt}
 
-[경영/경제 전체 보기](../biz-econ/index.qmd){.rm-chip .c-biz .rm-all}
-[의학통계·바이오메트리 전체 보기](../biostat/index.qmd){.rm-chip .c-bio .rm-all}
+[경영/경제 전체 보기](../../biz-econ/index.qmd){.rm-chip .c-biz .rm-all}
+[의학통계·바이오메트리 전체 보기](../../biostat/index.qmd){.rm-chip .c-bio .rm-all}
 
 [관심 있는 응용 분야가 있다면 기호에 따라 읽어 보세요.]{.rm-note}
 :::
@@ -458,27 +460,27 @@ featured: true
 [수학]{.rm-sub}
 
 [기초]{.rm-mini}
-[해석학](../math/analysis/index.qmd){.rm-chip .c-math}
-[선형대수학](../math/linear-algebra/index.qmd){.rm-chip .c-math}
+[해석학](../../math/analysis/index.qmd){.rm-chip .c-math}
+[선형대수학](../../math/linear-algebra/index.qmd){.rm-chip .c-math}
 
 [핵심]{.rm-mini}
-[수치적 방법론](../math/numerical-methods/index.qmd){.rm-chip .c-math}
-[상미분방정식](../math/ode/index.qmd){.rm-chip .c-math}
-[기초 편미분방정식](../math/pde-intro/index.qmd){.rm-chip .c-math}
-[수학적 최적화](../math/optimization/index.qmd){.rm-chip .c-math}
+[수치적 방법론](../../math/numerical-methods/index.qmd){.rm-chip .c-math}
+[상미분방정식](../../math/ode/index.qmd){.rm-chip .c-math}
+[기초 편미분방정식](../../math/pde-intro/index.qmd){.rm-chip .c-math}
+[수학적 최적화](../../math/optimization/index.qmd){.rm-chip .c-math}
 :::
 
 ::: {.rm-branch}
 [확률과 통계]{.rm-sub}
 
 [기초]{.rm-mini}
-[기초 확률론](../stats/prob-theory/index.qmd){.rm-chip .c-stats}
-[기초 통계학](../stats/basic-stats/index.qmd){.rm-chip .c-stats}
-[기초 선형 모델](../stats/linear-models/index.qmd){.rm-chip .c-stats}
-[통계적 프로그래밍](../stats/stat-programming/index.qmd){.rm-chip .c-stats}
+[기초 확률론](../../stats/prob-theory/index.qmd){.rm-chip .c-stats}
+[기초 통계학](../../stats/basic-stats/index.qmd){.rm-chip .c-stats}
+[기초 선형 모델](../../stats/linear-models/index.qmd){.rm-chip .c-stats}
+[통계적 프로그래밍](../../stats/stat-programming/index.qmd){.rm-chip .c-stats}
 
 [핵심]{.rm-mini}
-[측도론적 확률론](../stats/measure-prob/index.qmd){.rm-chip .c-stats}
+[측도론적 확률론](../../stats/measure-prob/index.qmd){.rm-chip .c-stats}
 :::
 
 :::
@@ -489,8 +491,8 @@ featured: true
 ::: {.rm-stage .rm-later}
 [흥미로 읽기 · 내 전공을 수학자의 눈으로]{.rm-title} [난이도 주의]{.rm-lv .warn}
 
-[경영/경제 전체 보기](../biz-econ/index.qmd){.rm-chip .c-biz .rm-all}
-[의학통계·바이오메트리 전체 보기](../biostat/index.qmd){.rm-chip .c-bio .rm-all}
+[경영/경제 전체 보기](../../biz-econ/index.qmd){.rm-chip .c-biz .rm-all}
+[의학통계·바이오메트리 전체 보기](../../biostat/index.qmd){.rm-chip .c-bio .rm-all}
 
 [원론 수준을 넘어서면, 실제 전공 수업보다 수학적으로 깊은 이야기가 많을 수 있습니다.]{.rm-note}
 :::

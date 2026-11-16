@@ -207,7 +207,7 @@ index_lines = [
     "toc: false",
     "listing:",
     "  - id: featured-articles",
-    "    contents: \"articles/*.qmd\"",
+    "    contents: \"articles/*/*.qmd\"",
     "    include:",
     "      featured: true",
     "    sort: \"date desc\"",

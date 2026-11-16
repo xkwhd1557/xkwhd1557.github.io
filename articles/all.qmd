@@ -1,0 +1,55 @@
+---
+title: "전체 글 보기"
+subtitle: "일반 아티클의 모든 글을 최신순으로 모았습니다"
+page-layout: full
+sidebar: false
+toc: false
+language:
+  listing-page-no-matches: "조건에 맞는 글이 없습니다."
+  listing-page-filter: "제목·내용 검색"
+  listing-page-order-by: "정렬"
+  listing-page-category-all: "전체"
+  listing-page-field-categories: "분류"
+  listing-page-field-date: "날짜"
+  listing-page-field-title: "제목"
+  listing-page-order-by-default: "기본"
+  listing-page-order-by-date-asc: "오래된 순"
+  listing-page-order-by-date-desc: "최신순"
+listing:
+  id: all-articles
+  contents: "*/*.qmd"
+  sort: "date desc"
+  type: default
+  fields: [date, title, subtitle, categories]
+  date-format: "YYYY.MM.DD"
+  categories: true
+  sort-ui: [date, title]
+  filter-ui: true
+  page-size: 20
+---
+
+::: {.all-back}
+[← 일반 아티클로 돌아가기](index.qmd)
+:::
+
+::: {#all-articles}
+:::
+
+```{=html}
+<style>
+.all-back { margin: -0.5rem 0 1.25rem; font-size: 0.95rem; }
+.all-back a { text-decoration: none; color: #2b7a78; font-weight: 600; }
+.all-back a:hover { text-decoration: underline; }
+
+#listing-all-articles .quarto-post {
+  padding: 0.9rem 0.25rem; margin-bottom: 0; border-bottom: 1px solid #e9ecef;
+}
+#listing-all-articles .quarto-post .thumbnail,
+#listing-all-articles .listing-description { display: none; }
+#listing-all-articles .listing-title { font-size: 1.15rem; font-weight: 600; margin: 0 0 0.2rem; }
+#listing-all-articles .listing-title a { color: #17252a; text-decoration: none; }
+#listing-all-articles .listing-title a:hover { color: #2b7a78; }
+#listing-all-articles .listing-subtitle { font-size: 0.95rem; color: #555; }
+#listing-all-articles .listing-date { font-size: 0.85rem; color: #8a8a8a; }
+</style>
+```

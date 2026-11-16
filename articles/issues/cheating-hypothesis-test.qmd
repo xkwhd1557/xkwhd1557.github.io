@@ -3,8 +3,10 @@ title: "통계적 사고방식으로 접근한 AI 부정행위 논란"
 subtitle: "시험 부정 의혹을 가설검정과 베이즈 정리로 읽는 법"
 description: "시험에서 믿기 어려운 고득점이 나왔을 때 부정 의혹은 어떻게 따져야 할까요? 실제 세무사 시험 사건과 가상의 사례로 p값, 최댓값의 분포, 다중검정, 증거의 독립성, 우도비, 1종·2종 오류를 살펴봅니다."
 date: "2026-11-16"
-categories: ["일반 게시글"]
+categories: ["숫자로 읽는 이슈"]
 featured: false
+aliases:
+  - ../cheating-hypothesis-test.html
 ---
 
 ## 들어가며
