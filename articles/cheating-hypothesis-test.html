@@ -1,0 +1,1668 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2026-11-16">
+<meta name="description" content="시험에서 믿기 어려운 고득점이 나왔을 때 부정 의혹은 어떻게 따져야 할까요? 실제 세무사 시험 사건과 가상의 사례로 p값, 최댓값의 분포, 다중검정, 증거의 독립성, 우도비, 1종·2종 오류를 살펴봅니다.">
+
+<title>통계적 사고방식으로 접근한 AI 부정행위 논란 – Study Archive</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-dfdca6a8c3d4871044b6ea52565246df.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="통계적 사고방식으로 접근한 AI 부정행위 논란 – Study Archive">
+<meta property="og:description" content="시험에서 믿기 어려운 고득점이 나왔을 때 부정 의혹은 어떻게 따져야 할까요? 실제 세무사 시험 사건과 가상의 사례로 p값, 최댓값의 분포, 다중검정, 증거의 독립성, 우도비, 1종·2종 오류를 살펴봅니다.">
+<meta property="og:site_name" content="Study Archive">
+<meta name="twitter:title" content="통계적 사고방식으로 접근한 AI 부정행위 논란 – Study Archive">
+<meta name="twitter:description" content="시험에서 믿기 어려운 고득점이 나왔을 때 부정 의혹은 어떻게 따져야 할까요? 실제 세무사 시험 사건과 가상의 사례로 p값, 최댓값의 분포, 다중검정, 증거의 독립성, 우도비, 1종·2종 오류를 살펴봅니다.">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Study Archive</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../articles/index.html"> 
+<span class="menu-text">일반 아티클</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">수학</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-">    
+        <li>
+    <a class="dropdown-item" href="../math/index.html">
+ <span class="dropdown-text">📋 수학 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../math/analysis/index.html">
+ <span class="dropdown-text">해석학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../math/linear-algebra/index.html">
+ <span class="dropdown-text">선형대수학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../math/discrete-math/index.html">
+ <span class="dropdown-text">이산수학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../math/math-programming/index.html">
+ <span class="dropdown-text">수학적 프로그래밍 (Python)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../math/latex/index.html">
+ <span class="dropdown-text">LaTeX</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 수학 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../math/complex-analysis/index.html">
+ <span class="dropdown-text">복소해석학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../math/ode/index.html">
+ <span class="dropdown-text">상미분방정식</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../math/dynamical-systems/index.html">
+ <span class="dropdown-text">동적 시스템</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../math/measure-theory/index.html">
+ <span class="dropdown-text">측도론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../math/pde-intro/index.html">
+ <span class="dropdown-text">기초 편미분방정식</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../math/general-topology/index.html">
+ <span class="dropdown-text">일반위상수학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../math/algebra/index.html">
+ <span class="dropdown-text">대수학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../math/number-theory/index.html">
+ <span class="dropdown-text">정수론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../math/geometry/index.html">
+ <span class="dropdown-text">기하학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../math/mathematical-logic/index.html">
+ <span class="dropdown-text">수리논리학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../math/set-theory/index.html">
+ <span class="dropdown-text">공리적 집합론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../math/numerical-methods/index.html">
+ <span class="dropdown-text">수치적 방법론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../math/optimization/index.html">
+ <span class="dropdown-text">수학적 최적화</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../math/functional-analysis/index.html">
+ <span class="dropdown-text">함수해석학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../math/topological-vector-spaces/index.html">
+ <span class="dropdown-text">위상벡터공간론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../math/pde-advanced/index.html">
+ <span class="dropdown-text">편미분방정식</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../math/manifold-analysis/index.html">
+ <span class="dropdown-text">다양체 해석학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../math/rkhs/index.html">
+ <span class="dropdown-text">RKHS 이론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../math/differential-geometry/index.html">
+ <span class="dropdown-text">미분기하학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../math/numerical-ode/index.html">
+ <span class="dropdown-text">수치적 상미분방정식</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../math/scientific-computing/index.html">
+ <span class="dropdown-text">과학계산</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../math/inverse-problems/index.html">
+ <span class="dropdown-text">역문제</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--1" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">확률과 통계</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--1">    
+        <li>
+    <a class="dropdown-item" href="../stats/index.html">
+ <span class="dropdown-text">📋 확률과 통계 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../stats/prob-theory/index.html">
+ <span class="dropdown-text">기초 확률론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../stats/basic-stats/index.html">
+ <span class="dropdown-text">기초 통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../stats/linear-models/index.html">
+ <span class="dropdown-text">기초 선형 모델</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../stats/stat-programming/index.html">
+ <span class="dropdown-text">통계적 프로그래밍</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../stats/measure-prob/index.html">
+ <span class="dropdown-text">측도론적 확률론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../stats/stochastic-processes/index.html">
+ <span class="dropdown-text">확률과정론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../stats/math-stats/index.html">
+ <span class="dropdown-text">수리통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../stats/stochastic-simulation/index.html">
+ <span class="dropdown-text">확률적 시뮬레이션</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../stats/actuarial-math/index.html">
+ <span class="dropdown-text">보험수학</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../stats/stochastic-calculus/index.html">
+ <span class="dropdown-text">확률해석학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../stats/markov-processes/index.html">
+ <span class="dropdown-text">마르코프 프로세스</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../stats/diffusion-models/index.html">
+ <span class="dropdown-text">디퓨전 모델</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../stats/gaussian-processes/index.html">
+ <span class="dropdown-text">가우시안 프로세스</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../stats/non-euclidean-stats/index.html">
+ <span class="dropdown-text">비유클리드 통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../stats/stats-for-stoch-proc/index.html">
+ <span class="dropdown-text">확률과정의 통계추론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../stats/nonparametric-stats/index.html">
+ <span class="dropdown-text">비모수 통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../stats/topological-data-analysis/index.html">
+ <span class="dropdown-text">위상수학적 데이터 분석</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../stats/statistical-learning-theory/index.html">
+ <span class="dropdown-text">통계적 학습 이론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../stats/statistical-inverse-problems/index.html">
+ <span class="dropdown-text">통계적 역문제</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../stats/statistical-modelling/index.html">
+ <span class="dropdown-text">통계적 모델링</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../stats/asymptotic-statistics/index.html">
+ <span class="dropdown-text">점근 통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../stats/time-series-foundations/index.html">
+ <span class="dropdown-text">시계열 분석의 통계적 기초</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--2" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">컴퓨터 공학</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--2">    
+        <li>
+    <a class="dropdown-item" href="../cs/index.html">
+ <span class="dropdown-text">📋 컴퓨터 공학 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../cs/cs-intro/index.html">
+ <span class="dropdown-text">컴퓨터 과학 원론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../cs/c-programming/index.html">
+ <span class="dropdown-text">C언어</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../cs/algorithms-data-structures/index.html">
+ <span class="dropdown-text">알고리즘과 자료구조</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../cs/theoretical-cs/index.html">
+ <span class="dropdown-text">이론 컴퓨터과학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../cs/database-systems/index.html">
+ <span class="dropdown-text">데이터베이스 시스템</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../cs/formal-systems/index.html">
+ <span class="dropdown-text">형식 시스템</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../cs/advanced/index.html">
+ <span class="dropdown-text">심화 과정 (준비 중)</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ai" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">데이터 사이언스·AI</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-ai">    
+        <li>
+    <a class="dropdown-item" href="../ds-ai/index.html">
+ <span class="dropdown-text">📋 데이터 사이언스·AI 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../ds-ai/ds-intro/index.html">
+ <span class="dropdown-text">데이터 사이언스 개론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../ds-ai/ds-society/index.html">
+ <span class="dropdown-text">데이터 사이언스와 사회</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../ds-ai/ai-math-intro/index.html">
+ <span class="dropdown-text">고등학교 인공지능 수학</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../ds-ai/numerical-optimization/index.html">
+ <span class="dropdown-text">수치적 방법론과 최적화</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../ds-ai/machine-learning/index.html">
+ <span class="dropdown-text">머신러닝</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../ds-ai/deep-learning-cv/index.html">
+ <span class="dropdown-text">딥러닝과 컴퓨터 비전</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../ds-ai/ai-intro/index.html">
+ <span class="dropdown-text">인공지능 원론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../ds-ai/data-analysis-inference/index.html">
+ <span class="dropdown-text">수리적 데이터 분석과 통계적 추론</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../ds-ai/statistical-foundations/index.html">
+ <span class="dropdown-text">데이터 사이언스의 통계적 기초</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../ds-ai/mathematical-foundations/index.html">
+ <span class="dropdown-text">머신러닝의 수리적 기초</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../ds-ai/advanced-linear-algebra/index.html">
+ <span class="dropdown-text">데이터 사이언스를 위한 선형대수학</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--3" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">경영/경제</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--3">    
+        <li>
+    <a class="dropdown-item" href="../biz-econ/index.html">
+ <span class="dropdown-text">📋 경영/경제 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../biz-econ/biz-intro/index.html">
+ <span class="dropdown-text">경영학 원론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../biz-econ/econ-intro/index.html">
+ <span class="dropdown-text">경제학 원론</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../biz-econ/accounting/index.html">
+ <span class="dropdown-text">회계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../biz-econ/production-logistics/index.html">
+ <span class="dropdown-text">생산물류관리</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../biz-econ/decision-theory/index.html">
+ <span class="dropdown-text">의사결정론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../biz-econ/microeconomics/index.html">
+ <span class="dropdown-text">미시경제학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../biz-econ/macroeconomics/index.html">
+ <span class="dropdown-text">거시경제학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../biz-econ/finance-investment/index.html">
+ <span class="dropdown-text">재무와 투자론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../biz-econ/monetary-economics/index.html">
+ <span class="dropdown-text">화폐금융론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../biz-econ/labor-economics/index.html">
+ <span class="dropdown-text">노동경제학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../biz-econ/game-theory/index.html">
+ <span class="dropdown-text">게임이론 개론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../biz-econ/supply-chain/index.html">
+ <span class="dropdown-text">공급망 관리 (SCM)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../biz-econ/market-research/index.html">
+ <span class="dropdown-text">시장조사론의 기초</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../biz-econ/time-series/index.html">
+ <span class="dropdown-text">시계열 분석</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../biz-econ/econometrics/index.html">
+ <span class="dropdown-text">계량경제학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../biz-econ/insurance-economics/index.html">
+ <span class="dropdown-text">보험경제학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../biz-econ/quantitative-risk/index.html">
+ <span class="dropdown-text">계량 리스크 관리</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../biz-econ/corporate-finance/index.html">
+ <span class="dropdown-text">기업재무론</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--4" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">의학통계·바이오메트리</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--4">    
+        <li>
+    <a class="dropdown-item" href="../biostat/index.html">
+ <span class="dropdown-text">📋 의학통계·바이오메트리 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../biostat/biostat-intro/index.html">
+ <span class="dropdown-text">의학통계학 개론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../biostat/epidemiology/index.html">
+ <span class="dropdown-text">역학 연구방법론</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../biostat/clinical-trials/index.html">
+ <span class="dropdown-text">임상시험 통계방법론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../biostat/survival-analysis/index.html">
+ <span class="dropdown-text">생존분석</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../biostat/bioinformatics/index.html">
+ <span class="dropdown-text">생물정보통계학</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../biostat/causal-inference/index.html">
+ <span class="dropdown-text">인과추론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../biostat/longitudinal-data/index.html">
+ <span class="dropdown-text">종단적 데이터 분석</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-language" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">🌐 Language</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-language">    
+        <li>
+    <a class="dropdown-item" href="../index.html">
+ <span class="dropdown-text">한국어 (KO)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../lang/en-coming-soon.html">
+ <span class="dropdown-text">English (EN)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../lang/de-coming-soon.html">
+ <span class="dropdown-text">Deutsch (DE)</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xkwhd1557/xkwhd1557.github.io"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+            <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#들어가며" id="toc-들어가며" class="nav-link active" data-scroll-target="#들어가며">들어가며</a></li>
+  <li><a href="#두-가설과-무죄추정" id="toc-두-가설과-무죄추정" class="nav-link" data-scroll-target="#두-가설과-무죄추정">두 가설과 무죄추정</a></li>
+  <li><a href="#실제-사례-2026년-세무사-시험" id="toc-실제-사례-2026년-세무사-시험" class="nav-link" data-scroll-target="#실제-사례-2026년-세무사-시험">실제 사례: 2026년 세무사 시험</a>
+  <ul class="collapse">
+  <li><a href="#극단값-하나로-기각하기" id="toc-극단값-하나로-기각하기" class="nav-link" data-scroll-target="#극단값-하나로-기각하기">극단값 하나로 기각하기</a></li>
+  <li><a href="#등은-원래-튑니다-최댓값의-분포" id="toc-등은-원래-튑니다-최댓값의-분포" class="nav-link" data-scroll-target="#등은-원래-튑니다-최댓값의-분포">1등은 원래 튑니다: 최댓값의 분포</a></li>
+  <li><a href="#이-사건이-남긴-세-가지" id="toc-이-사건이-남긴-세-가지" class="nav-link" data-scroll-target="#이-사건이-남긴-세-가지">이 사건이 남긴 세 가지</a></li>
+  </ul></li>
+  <li><a href="#가상의-사례-응시자-a" id="toc-가상의-사례-응시자-a" class="nav-link" data-scroll-target="#가상의-사례-응시자-a">가상의 사례: 응시자 A</a></li>
+  <li><a href="#함정-1-데이터를-본-뒤에-세운-가설" id="toc-함정-1-데이터를-본-뒤에-세운-가설" class="nav-link" data-scroll-target="#함정-1-데이터를-본-뒤에-세운-가설">함정 1: 데이터를 본 뒤에 세운 가설</a>
+  <ul class="collapse">
+  <li><a href="#다중검정" id="toc-다중검정" class="nav-link" data-scroll-target="#다중검정">다중검정</a></li>
+  <li><a href="#갈림길의-정원" id="toc-갈림길의-정원" class="nav-link" data-scroll-target="#갈림길의-정원">갈림길의 정원</a></li>
+  <li><a href="#구분-기준-미리-예측할-수-있었는가" id="toc-구분-기준-미리-예측할-수-있었는가" class="nav-link" data-scroll-target="#구분-기준-미리-예측할-수-있었는가">구분 기준: 미리 예측할 수 있었는가</a></li>
+  </ul></li>
+  <li><a href="#함정-2-정황-여러-개는-서로-독립인가" id="toc-함정-2-정황-여러-개는-서로-독립인가" class="nav-link" data-scroll-target="#함정-2-정황-여러-개는-서로-독립인가">함정 2: 정황 여러 개는 서로 독립인가</a>
+  <ul class="collapse">
+  <li><a href="#피셔-방법" id="toc-피셔-방법" class="nav-link" data-scroll-target="#피셔-방법">피셔 방법</a></li>
+  <li><a href="#응시자-a에게-적용하면" id="toc-응시자-a에게-적용하면" class="nav-link" data-scroll-target="#응시자-a에게-적용하면">응시자 A에게 적용하면</a></li>
+  <li><a href="#실제로-있었던-일-7300만분의-1" id="toc-실제로-있었던-일-7300만분의-1" class="nav-link" data-scroll-target="#실제로-있었던-일-7300만분의-1">실제로 있었던 일: 7300만분의 1</a></li>
+  </ul></li>
+  <li><a href="#함정-3-p값은-결백할-확률이-아닙니다" id="toc-함정-3-p값은-결백할-확률이-아닙니다" class="nav-link" data-scroll-target="#함정-3-p값은-결백할-확률이-아닙니다">함정 3: p값은 결백할 확률이 아닙니다</a>
+  <ul class="collapse">
+  <li><a href="#베이즈-정리의-오즈-형태" id="toc-베이즈-정리의-오즈-형태" class="nav-link" data-scroll-target="#베이즈-정리의-오즈-형태">베이즈 정리의 오즈 형태</a></li>
+  <li><a href="#숫자로-보기" id="toc-숫자로-보기" class="nav-link" data-scroll-target="#숫자로-보기">숫자로 보기</a></li>
+  <li><a href="#사전-오즈는-왜-올라가는가" id="toc-사전-오즈는-왜-올라가는가" class="nav-link" data-scroll-target="#사전-오즈는-왜-올라가는가">사전 오즈는 왜 올라가는가</a></li>
+  </ul></li>
+  <li><a href="#종-오류와-2종-오류-유의수준은-누가-정하는가" id="toc-종-오류와-2종-오류-유의수준은-누가-정하는가" class="nav-link" data-scroll-target="#종-오류와-2종-오류-유의수준은-누가-정하는가">1종 오류와 2종 오류: 유의수준은 누가 정하는가</a></li>
+  <li><a href="#깨끗한-증거-미리-설계된-재검증" id="toc-깨끗한-증거-미리-설계된-재검증" class="nav-link" data-scroll-target="#깨끗한-증거-미리-설계된-재검증">깨끗한 증거: 미리 설계된 재검증</a></li>
+  <li><a href="#맺으며" id="toc-맺으며" class="nav-link" data-scroll-target="#맺으며">맺으며</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">통계적 사고방식으로 접근한 AI 부정행위 논란</h1>
+<p class="subtitle lead">시험 부정 의혹을 가설검정과 베이즈 정리로 읽는 법</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">일반 게시글</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    시험에서 믿기 어려운 고득점이 나왔을 때 부정 의혹은 어떻게 따져야 할까요? 실제 세무사 시험 사건과 가상의 사례로 p값, 최댓값의 분포, 다중검정, 증거의 독립성, 우도비, 1종·2종 오류를 살펴봅니다.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 16, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="들어가며" class="level2">
+<h2 class="anchored" data-anchor-id="들어가며">들어가며</h2>
+<p>시험에서 믿기 어려운 점수가 나오면 사람들의 반응은 곧바로 두 갈래로 나뉩니다. “저건 무조건 부정이다”와 “증거도 없이 사람 잡지 마라”. 생성형 인공지능과 초소형 기기로 실제 부정행위가 가능하다는 것이 알려진 요즘에는, 고득점자를 향한 의심이 예전보다 훨씬 빨리 퍼집니다.</p>
+<p>흥미로운 점은 이 논쟁이 통계학에서 매일 하는 일과 구조가 거의 같다는 것입니다. 정황만으로 “부정이다”를 증명할 수는 없습니다. 하지만 “부정은 없었다”는 가정이 지금 보이는 사실들과 얼마나 어긋나는지는 따져볼 수 있습니다. 이것이 바로 가설검정(hypothesis testing)의 사고방식입니다.</p>
+<p>이 글에서는 실제로 있었던 세무사 시험 사건 하나와, 설명을 위해 만든 가상의 응시자 한 명을 가지고 가설검정과 베이즈 정리가 이런 상황에서 무엇을 말해 주고 무엇을 말해 주지 못하는지 살펴보겠습니다.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>이 글을 읽기 전에
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>이 글은 특정인의 부정행위 여부를 판단하려는 글이 아닙니다. 실제 사례로는 당사자가 직접 부정행위를 시인했다고 보도된 세무사 시험 사건만 다루며, 보도된 사실만 인용합니다. 뒤에 나오는 응시자 A와 그에 관한 정황은 모두 설명을 위해 만든 가상의 설정이며, 실존 인물이나 특정 사건과는 관계가 없습니다.(원래 이런 류가 다 비슷한 느낌이라 뭔가 특정인이 떠오르시더라도 그냥 진짜 우연의 일치입니다..)</p>
+</div>
+</div>
+</section>
+<section id="두-가설과-무죄추정" class="level2">
+<h2 class="anchored" data-anchor-id="두-가설과-무죄추정">두 가설과 무죄추정</h2>
+<p>수학에서는 엄밀한 논리를 한 단계씩 이어 가며 명제를 증명합니다. 한 번 증명된 명제는 예외 없이 참입니다. 반면 통계학에서는 주어진 데이터로부터 어떤 명제를 이끌어 냅니다. 데이터에는 언제나 우연이 섞여 있으므로, 통계가 내리는 결론은 “반드시 참이다”가 아니라 “데이터에 비추어 볼 때 이쪽이 훨씬 설득력 있다”에 가깝습니다.</p>
+<p>이런 판단을 체계적으로 하는 방법이 가설검정입니다. 가장 간단한 경우인 단일 검정에서는 서로 반대되는 두 가설을 세웁니다.</p>
+<ul>
+<li><strong>귀무가설(null hypothesis) <span class="math inline">\(H_0\)</span></strong>: 가설검정의 출발점입니다. 일단 귀무가설이 참이라고 가정하고, 그 가정 아래에서 지금의 데이터가 얼마나 자연스럽게 나올 수 있는지 살펴봅니다.</li>
+<li><strong>대립가설(alternative hypothesis) <span class="math inline">\(H_1\)</span></strong>: 귀무가설과 반대되는 주장입니다. 귀무가설에서 출발했는데 그 가정으로는 설명하기 어려운 데이터가 관측되면, 귀무가설을 기각(reject)하고 대립가설을 지지하는 쪽으로 결론을 내립니다.</li>
+</ul>
+<p>한마디로, <strong>우리가 보이고 싶은 것과 반대되는 쪽에서 출발한 뒤, 데이터에 비추어 보면 그 출발점이 별로 설득력이 없다는 것을 보여서 원래 주장의 근거로 삼는 방식</strong>입니다. 이 점에서 가설검정은 수학의 귀류법(proof by contradiction)과 결이 비슷합니다. 귀류법은 “결론이 거짓이라고 가정하면 모순이 생긴다”를 보여 결론을 증명합니다. 가설검정은 “귀무가설이 참이라고 가정하면 지금의 데이터는 매우 일어나기 어려운 일이 된다”를 보여 귀무가설을 기각합니다.</p>
+<p>다만 결정적인 차이가 하나 있습니다. 귀류법이 도달하는 것은 <strong>모순</strong>이지만, 가설검정이 도달하는 것은 <strong>매우 드문 일</strong>일 뿐입니다. 드문 일도 가끔은 일어납니다. 그래서 가설검정의 결론에는 언제나 틀릴 가능성이 따라붙고, 그 가능성을 얼마나 허용할지 미리 정해 두어야 합니다.</p>
+<p>이는 형사재판의 무죄추정과 비슷합니다. 피고인은 유죄가 입증되기 전까지 무죄로 추정되고, 입증 책임은 의심하는 쪽에 있습니다. 즉, 우리는 무죄라는 가정 하에, 그 사람의 행동(데이터가 주는 정보)이 얼마나 무죄라는 가정과 모순되는지 비교해서 하나의 결론을 내리게 됩니다. 그래서 가설검정 과정 중에서는 귀무가설을 무너뜨릴 만한 데이터가 나오기 전까지는 귀무가설을 유지합니다.</p>
+<p>이 틀을 부정행위 의혹에 적용하면 두 가설은 다음과 같습니다.</p>
+<ul>
+<li><span class="math inline">\(H_0\)</span>: 응시자는 기기나 외부 도움 없이 자기 실력으로 시험을 봤다.</li>
+<li><span class="math inline">\(H_1\)</span>: 응시자는 전자기기나 생성형 AI 같은 외부 도움을 받았다.</li>
+</ul>
+<p>이 글에서 다루는 통계적 검정은 결국 귀무가설 <span class="math inline">\(H_0\)</span>(부정행위는 없었다)로 출발하여, 사안을 살펴보며 그 귀무가설을 거절할 수 있는지를 분석하는걸로 정리할 수 있습니다.</p>
+<p>여기서 하나 더 기억해 둘 것이 있습니다. 귀무가설을 기각하지 못했다는 것은 귀무가설이 참이라고 증명되었다는 뜻이 아닙니다. 재판에서 “무죄 판결”이 “결백이 증명되었다”가 아니라 “유죄를 입증할 증거가 충분하지 않았다”는 뜻인 것과 같습니다. 이 비대칭은 뒤에서 여러 번 다시 등장합니다.</p>
+<p>그렇다면 “귀무가설로는 설명하기 어렵다”는 것은 어떻게 잴까요? 이때 쓰는 양이 p값(p-value)입니다. 데이터를 요약하는 수치인 검정통계량(test statistic) <span class="math inline">\(T\)</span>를 정하고, 실제로 관측된 값을 <span class="math inline">\(t_{\text{obs}}\)</span>라 하면</p>
+<p><span class="math display">\[
+p := \mathbb{P}_{H_0}\left(T \ge t_{\text{obs}}\right),
+\]</span></p>
+<p>즉 <strong><span class="math inline">\(H_0\)</span>가 참이라고 가정했을 때, 지금만큼 또는 지금보다 더 극단적인 값이 나올 확률</strong>입니다. p값이 작을수록 귀무가설 아래에서는 보기 드문 데이터라는 뜻입니다. 그래서 p값이 미리 정해 둔 기준인 유의수준(significance level) <span class="math inline">\(\alpha\)</span>보다 작으면 <span class="math inline">\(H_0\)</span>를 기각합니다. 흔히 <span class="math inline">\(\alpha = 0.05\)</span>를 쓰는데, 이는 귀무가설이 참인데도 기각해 버리는 실수를 20번에 1번꼴까지 허용하겠다는 뜻입니다. 문제는 결국 그 “충분히 작다”를 어떻게 판단하느냐입니다.</p>
+</section>
+<section id="실제-사례-2026년-세무사-시험" class="level2">
+<h2 class="anchored" data-anchor-id="실제-사례-2026년-세무사-시험">실제 사례: 2026년 세무사 시험</h2>
+<section id="극단값-하나로-기각하기" class="level3">
+<h3 class="anchored" data-anchor-id="극단값-하나로-기각하기">극단값 하나로 기각하기</h3>
+<p>2026년 제63회 세무사 1차 시험에는 1만6856명이 응시했습니다. 그해 세법학개론의 평균은 30.18점, 과락률은 74.21%였습니다.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> 1차 시험은 네 과목 160문항인데, 이 시험의 수석 합격자는 그중 단 한 문항만 틀렸다고 알려졌습니다.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>검정의 언어로 옮겨 보겠습니다. 검정통계량은 그의 점수이고, 귀무분포(null distribution)는 정직하게 시험을 본 응시자들의 점수 분포입니다. 평균이 30점대인 과목이 포함된 시험에서 160문항 중 159문항을 맞히는 것은 이 분포의 극단 꼬리에 해당합니다. p값이 매우 작다는 뜻입니다.</p>
+</section>
+<section id="등은-원래-튑니다-최댓값의-분포" class="level3">
+<h3 class="anchored" data-anchor-id="등은-원래-튑니다-최댓값의-분포">1등은 원래 튑니다: 최댓값의 분포</h3>
+<p>여기서 한 가지를 짚어야 합니다. 우리가 이 사람을 주목한 이유는 그가 <strong>1등이기 때문</strong>입니다. 그렇다면 비교 대상은 “정직한 응시자 한 명의 점수 분포”가 아니라 “정직한 응시자 1만6856명 중 <strong>최댓값</strong>의 분포”여야 합니다.</p>
+<p>정직한 응시자 한 명이 어떤 점수 <span class="math inline">\(x\)</span> 이상을 받을 확률을 <span class="math inline">\(q\)</span>라 하고, 응시자들의 점수 <span class="math inline">\(X_1, \dots, X_n\)</span>이 서로 독립이라고 해 봅시다. 그러면 <span class="math inline">\(n\)</span>명 중 적어도 한 명이 <span class="math inline">\(x\)</span> 이상을 받을 확률은</p>
+<p><span class="math display">\[
+\mathbb{P}\left(\max_{1 \le i \le n} X_i \ge x\right) = 1 - \mathbb{P}\left(X_1 &lt; x, \dots, X_n &lt; x\right) = 1 - (1 - q)^n
+\]</span></p>
+<p>입니다. <span class="math inline">\(n = 16856\)</span>으로 두고 <span class="math inline">\(q\)</span>를 바꿔 가며 계산해 보겠습니다. 아래의 <span class="math inline">\(q\)</span> 값들은 실제 추정치가 아니라 설명을 위해 고른 값입니다.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">16856</span>  <span class="co"># 제63회 세무사 1차 응시자 수</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> q <span class="kw">in</span> [<span class="fl">1e-4</span>, <span class="fl">1e-5</span>, <span class="fl">1e-6</span>, <span class="fl">1e-7</span>]:</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    p_max <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> (<span class="dv">1</span> <span class="op">-</span> q) <span class="op">**</span> n</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"q = </span><span class="sc">{</span>q<span class="sc">:.0e}</span><span class="ss">  -&gt;  P(최댓값 &gt;= x) = </span><span class="sc">{</span>p_max<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre><code>q = 1e-04  -&gt;  P(최댓값 &gt;= x) = 0.8147
+q = 1e-05  -&gt;  P(최댓값 &gt;= x) = 0.1551
+q = 1e-06  -&gt;  P(최댓값 &gt;= x) = 0.0167
+q = 1e-07  -&gt;  P(최댓값 &gt;= x) = 0.0017</code></pre>
+<p><span class="math inline">\(q\)</span>가 1만분의 1이라면 1만6856명 중 누군가 그 점수를 받는 일은 오히려 자연스럽습니다(약 81%). 매년 누군가는 1등을 하니까요. 반면 <span class="math inline">\(q\)</span>가 100만분의 1이면 그 확률은 2%도 되지 않습니다. 결국 따져야 할 것은 “1등이 높은 점수를 받았다”가 아니라 <strong>“그 점수가 응시자 전체의 최댓값으로 봐도 설명되기 어려울 만큼 높은가”</strong>입니다.</p>
+<p>이 사건에서는 이후 당사자가 초소형 카메라로 시험 문제를 찍어 AI에 보내고 스마트폰으로 답을 확인했다고 직접 시인했습니다.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> 극단값만 보고 품었던 의심이 결과적으로 맞았던 셈입니다.</p>
+</section>
+<section id="이-사건이-남긴-세-가지" class="level3">
+<h3 class="anchored" data-anchor-id="이-사건이-남긴-세-가지">이 사건이 남긴 세 가지</h3>
+<ol type="1">
+<li><strong>기각은 특정한 <span class="math inline">\(H_1\)</span>을 증명하지 않습니다.</strong> 의혹이 퍼지는 동안 온라인에서는 ’AI 안경’이 유력한 수법으로 거론됐지만, 당사자가 밝힌 수법은 달랐습니다.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> 데이터가 알려 준 것은 “뭔가 있다”까지였고, “무엇이냐”는 당사자의 진술과 수사로 밝혀지고 있습니다.</li>
+<li><strong>적발되지 않았다는 것은 부정이 없었다는 증거가 아닙니다.</strong> 그의 좌석은 1차 시험 때 교단 앞 둘째 줄, 2차 시험 때 첫째 줄이었고 시험실에는 감독위원 2명이 있었지만, 현장에서는 적발되지 않았습니다.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> 검정력(power)이 낮은 검사에서 <span class="math inline">\(H_0\)</span>를 기각하지 못한 것을 <span class="math inline">\(H_0\)</span>가 옳다는 증거로 읽으면 안 됩니다.</li>
+<li><strong>사전확률이 바뀌었습니다.</strong> 이 사건 이후 “최상위 득점자 중 기기를 쓴 사람이 있을 수 있다”는 가능성은 더 이상 상상 속의 이야기가 아닙니다. 이 변화가 어디에 어떻게 반영되어야 하는지는 뒤에서 베이즈 정리로 다시 다루겠습니다.</li>
+</ol>
+</section>
+</section>
+<section id="가상의-사례-응시자-a" class="level2">
+<h2 class="anchored" data-anchor-id="가상의-사례-응시자-a">가상의 사례: 응시자 A</h2>
+<p>이번에는 결정적인 극단값 하나 대신, 성격이 서로 다른 정황이 여러 개 있는 경우를 생각해 보겠습니다. 다시 강조하지만 아래의 응시자 A는 가상의 인물입니다.</p>
+<blockquote class="blockquote">
+<p>어느 시험에서 응시자 A가 만점을 받았습니다. 평소 모의고사 성적은 평범했는데 1년 사이에 크게 올랐고, 같은 날 본 다른 과목도 만점이었습니다. 시험이 끝난 뒤에는 A의 시험지에 계산이 필요한 문항에도 풀이 흔적이 없었고, 시험지에 표시해 둔 답과 답안지에 적은 답이 연속된 몇 문항에서 어긋나 있었다(답안지 쪽이 정답이었다)는 이야기가 돌았습니다. 언론 인터뷰에서 A는 규칙적인 생활 습관이 비결이었다고 말했습니다.</p>
+</blockquote>
+<p>각 정황을 하나의 검정통계량처럼 보고 두 가지를 묻겠습니다. 첫째, <span class="math inline">\(H_0\)</span> 아래에서 얼마나 자연스러운가. 둘째, <span class="math inline">\(H_1\)</span>이 그 정황을 <strong>특별히 예측하는가</strong>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>정황</th>
+<th><span class="math inline">\(H_0\)</span> 아래에서</th>
+<th><span class="math inline">\(H_1\)</span>이 특별히 예측하는가</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>만점</td>
+<td>드묾. 다만 응시자 전체의 최댓값이라 누군가는 받을 수 있음</td>
+<td>약하게</td>
+</tr>
+<tr class="even">
+<td>1년 사이 큰 폭의 성적 상승</td>
+<td>드물지만 전례가 없지는 않음</td>
+<td>중간</td>
+</tr>
+<tr class="odd">
+<td>같은 날 다른 과목도 만점</td>
+<td>드묾. 다만 첫 번째 정황과 함께 움직임</td>
+<td>약하게</td>
+</tr>
+<tr class="even">
+<td>계산 문항에도 풀이 흔적 없음</td>
+<td>드묾. 암산이 가능한 문항이라면 흔함</td>
+<td>강하게</td>
+</tr>
+<tr class="odd">
+<td>시험지 표시와 답안지가 연속으로 어긋남</td>
+<td>매우 드묾</td>
+<td>강하게. 다른 곳에서 받은 답을 답안지에 바로 옮길 때 생기기 쉬운 패턴</td>
+</tr>
+<tr class="even">
+<td>생활 습관이 비결이라는 인터뷰</td>
+<td>충분히 자연스러움</td>
+<td>거의 하지 않음</td>
+</tr>
+</tbody>
+</table>
+<p>표의 넷째, 다섯째 정황은 이 가상의 설정에서도 “이야기가 돌았다” 수준이라는 점을 기억해 두시기 바랍니다. 이 차이는 뒤에서 중요해집니다.</p>
+</section>
+<section id="함정-1-데이터를-본-뒤에-세운-가설" class="level2">
+<h2 class="anchored" data-anchor-id="함정-1-데이터를-본-뒤에-세운-가설">함정 1: 데이터를 본 뒤에 세운 가설</h2>
+<p>의혹이 생기면 사람들은 A의 성적 이력, 인터뷰, 시험지, 사생활까지 샅샅이 뒤지기 시작합니다. 그리고 그 과정에서 찾아낸 “이상한 점”을 다시 의혹의 근거로 씁니다. 통계에서는 이런 작업을 데이터 준설(data dredging)이라고 부릅니다.</p>
+<section id="다중검정" class="level3">
+<h3 class="anchored" data-anchor-id="다중검정">다중검정</h3>
+<p>정직한 사람의 특징 <span class="math inline">\(m\)</span>개를 각각 유의수준 <span class="math inline">\(\alpha = 0.05\)</span>로 검사한다고 해 봅시다. 검사들이 서로 독립이라면 적어도 하나가 “유의하게 이상하다”고 나올 확률은 <span class="math inline">\(1 - (1-\alpha)^m\)</span>이고, 이상하다고 나오는 특징 수의 기댓값은 <span class="math inline">\(m\alpha\)</span>입니다.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>alpha <span class="op">=</span> <span class="fl">0.05</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> m <span class="kw">in</span> [<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">20</span>]:</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    at_least_one <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> (<span class="dv">1</span> <span class="op">-</span> alpha) <span class="op">**</span> m</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    expected <span class="op">=</span> m <span class="op">*</span> alpha</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"m = </span><span class="sc">{</span>m<span class="sc">:2d}</span><span class="ss">: P(하나 이상 유의) = </span><span class="sc">{</span>at_least_one<span class="sc">:.4f}</span><span class="ss">, 기댓값 = </span><span class="sc">{</span>expected<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre><code>m =  1: P(하나 이상 유의) = 0.0500, 기댓값 = 0.05
+m =  5: P(하나 이상 유의) = 0.2262, 기댓값 = 0.25
+m = 20: P(하나 이상 유의) = 0.6415, 기댓값 = 1.00</code></pre>
+<p>특징 20개를 살펴보면 아무 일이 없어도 약 64%의 확률로 적어도 하나는 이상하게 나오고, 평균적으로 한 개가 이상하게 나옵니다. “누구의 삶이든 충분히 들여다보면 어색한 구석은 나온다”는 말을 확률로 쓴 것입니다. 이것이 다중검정(multiple testing) 문제입니다.</p>
+</section>
+<section id="갈림길의-정원" class="level3">
+<h3 class="anchored" data-anchor-id="갈림길의-정원">갈림길의 정원</h3>
+<p>더 교묘한 경우도 있습니다. “왜 하필 그 시기에 성적이 올랐나”, “왜 그런 공부법을 말했나” 같은 질문은 데이터를 본 뒤에 만들어졌습니다. 데이터를 보고 만든 가설이 그 데이터와 잘 맞는 것은 당연합니다. 겉보기에는 검정을 한 번만 한 것 같아도, 데이터를 보기 전이었다면 갈 수 있었던 수많은 분석 경로 가운데 하나를 데이터를 보고 고른 것이기 때문입니다. 겔만(A. Gelman)과 로큰(E. Loken)은 이를 갈림길의 정원(garden of forking paths)이라고 불렀습니다.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
+</section>
+<section id="구분-기준-미리-예측할-수-있었는가" class="level3">
+<h3 class="anchored" data-anchor-id="구분-기준-미리-예측할-수-있었는가">구분 기준: 미리 예측할 수 있었는가</h3>
+<p>그렇다고 모든 정황이 무력해지는 것은 아닙니다. 기준은 <strong><span class="math inline">\(H_1\)</span>이 그 정황을 데이터를 보기 전에 예측할 수 있었는가</strong>입니다. “외부에서 답을 받아 옮겨 적었다”는 가설은, 풀이 흔적이 없고 시험지와 답안지가 어긋날 수 있다는 것을 미리 예측합니다. 반면 생활 습관 이야기는 어느 가설도 미리 예측하지 않습니다. 앞의 것은 검정이고, 뒤의 것은 이야기입니다.</p>
+</section>
+</section>
+<section id="함정-2-정황-여러-개는-서로-독립인가" class="level2">
+<h2 class="anchored" data-anchor-id="함정-2-정황-여러-개는-서로-독립인가">함정 2: 정황 여러 개는 서로 독립인가</h2>
+<p>“정황이 차고 넘친다”는 직관은 통계적으로도 일리가 있습니다. 하지만 그 정황들이 서로 독립일 때만 그렇습니다.</p>
+<section id="피셔-방법" class="level3">
+<h3 class="anchored" data-anchor-id="피셔-방법">피셔 방법</h3>
+<p>여러 검정의 p값을 하나로 합치는 대표적인 방법이 피셔 방법(Fisher’s method)입니다.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> <span class="math inline">\(k\)</span>개의 독립인 검정에서 p값 <span class="math inline">\(p_1, \dots, p_k\)</span>를 얻었다면 <span class="math inline">\(H_0\)</span> 아래에서</p>
+<p><span class="math display">\[
+X := -2\sum_{i=1}^{k} \ln p_i \sim \chi^2_{2k}
+\]</span></p>
+<p>가 성립합니다. 연속형 검정통계량이라면 각 <span class="math inline">\(p_i\)</span>는 <span class="math inline">\(H_0\)</span> 아래에서 <span class="math inline">\(\mathrm{Unif}[0,1]\)</span>을 따르고, 이때 <span class="math inline">\(-2\ln p_i\)</span>는 자유도 2인 카이제곱분포를 따르기 때문입니다. 독립인 카이제곱 변수의 합은 자유도를 더한 카이제곱분포를 따릅니다.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fisher(pvals):</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> <span class="op">-</span><span class="dv">2</span> <span class="op">*</span> np.<span class="bu">sum</span>(np.log(pvals))</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> X, stats.chi2.sf(X, df<span class="op">=</span><span class="dv">2</span> <span class="op">*</span> <span class="bu">len</span>(pvals))</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"p값 0.05 하나:       X = </span><span class="sc">%.3f</span><span class="st">, 합친 p = </span><span class="sc">%.4f</span><span class="st">"</span> <span class="op">%</span> fisher([<span class="fl">0.05</span>]))</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"p값 0.05 세 개(독립): X = </span><span class="sc">%.3f</span><span class="st">, 합친 p = </span><span class="sc">%.4f</span><span class="st">"</span> <span class="op">%</span> fisher([<span class="fl">0.05</span>, <span class="fl">0.05</span>, <span class="fl">0.05</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre><code>p값 0.05 하나:       X = 5.991, 합친 p = 0.0500
+p값 0.05 세 개(독립): X = 17.974, 합친 p = 0.0063</code></pre>
+<p>p값이 각각 0.05인 정황 세 개를 독립으로 치면 합친 p값은 약 0.0063으로, 하나일 때보다 8배쯤 작아집니다. 그런데 이 세 정황이 사실은 <strong>같은 것을 세 번 잰 것</strong>이라면, 실제 증거의 힘은 p값 0.05짜리 하나와 다를 바 없습니다. 상관된 증거를 독립으로 세면 확신이 실제보다 훨씬 빨리 부풀어 오릅니다.</p>
+</section>
+<section id="응시자-a에게-적용하면" class="level3">
+<h3 class="anchored" data-anchor-id="응시자-a에게-적용하면">응시자 A에게 적용하면</h3>
+<ul>
+<li><strong>같은 잠재변수의 반복</strong>: 성적 급상승, 그 과목 만점, 다른 과목 만점은 모두 “A의 실력이 실제로 크게 올랐는가”라는 하나의 잠재변수(latent variable)에 달려 있습니다. 실력이 정말 올랐다면 셋은 함께 일어납니다. 그래서 이것들은 증거 세 개가 아니라 한 개에 가깝습니다.</li>
+<li><strong>같은 관찰의 다른 이름</strong>: “풀이 흔적이 없다”와 “그 문제를 암산으로 풀었을 리 없다”는 같은 시험지를 두 번 센 것입니다.</li>
+<li><strong>목소리의 수는 표본 크기가 아닙니다</strong>: 많은 사람이 같은 의문을 제기한다고 해서 독립적인 재현이 일어난 것은 아닙니다. 사람들이 앞사람의 판단을 보고 자기 판단을 맞추면, 처음 몇 사람의 의견이 그대로 복제되어 퍼집니다. 이를 정보 폭포(information cascade)라고 합니다.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></li>
+</ul>
+<p>이렇게 묶으면 응시자 A에 대해 비교적 독립적인 증거 경로는 둘로 줄어듭니다. 하나는 <strong>성적 이력</strong>, 다른 하나는 <strong>시험지에 남은 물리적 흔적</strong>입니다. 증거를 셀 때는 문장의 수가 아니라 이 경로의 수를 세야 합니다.</p>
+</section>
+<section id="실제로-있었던-일-7300만분의-1" class="level3">
+<h3 class="anchored" data-anchor-id="실제로-있었던-일-7300만분의-1">실제로 있었던 일: 7300만분의 1</h3>
+<p>독립 가정이 얼마나 위험할 수 있는지 보여 주는 유명한 사례가 있습니다. 1999년 영국에서 샐리 클라크(Sally Clark)는 두 아들을 살해한 혐의로 유죄 판결을 받았습니다. 재판에서 한 소아과 의사는, 그녀와 같은 조건의 가정에서 영아돌연사가 한 번 일어날 확률을 8543분의 1로 보고 이를 제곱해, 두 번 일어날 확률이 약 7300만분의 1이라고 증언했습니다.</p>
+<p>이 계산은 두 사건이 독립이라고 가정합니다. 하지만 같은 가정의 두 아이는 유전과 환경을 공유하므로, 한 번 일어난 가정에서 두 번째가 일어날 확률은 더 높다고 보는 것이 자연스럽습니다. 영국 왕립통계학회(Royal Statistical Society)는 2001년 이 수치에 통계적 근거가 없다는 성명을 냈고, 그녀의 유죄 판결은 2003년 두 번째 항소에서 파기되었습니다.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a> 이 사례는 다음 함정과도 이어집니다.</p>
+</section>
+</section>
+<section id="함정-3-p값은-결백할-확률이-아닙니다" class="level2">
+<h2 class="anchored" data-anchor-id="함정-3-p값은-결백할-확률이-아닙니다">함정 3: p값은 결백할 확률이 아닙니다</h2>
+<p>p값은 “결백하다면 이런 데이터가 나올 확률”이지, “이런 데이터가 나왔을 때 결백할 확률”이 아닙니다. 기호로 쓰면</p>
+<p><span class="math display">\[
+\mathbb{P}(D \mid H_0) \ne \mathbb{P}(H_0 \mid D)
+\]</span></p>
+<p>입니다. 이 둘을 혼동하는 것을 검사의 오류(prosecutor’s fallacy)라고 부릅니다.<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> 샐리 클라크 사건에서도 “7300만분의 1”이 마치 그녀가 결백할 확률인 것처럼 받아들여졌다는 비판이 있었습니다.<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a> 설령 그 수치가 맞더라도, 두 아이가 다른 이유로 사망할 확률 역시 매우 작으므로 두 가설을 <strong>서로 비교해야</strong> 합니다.</p>
+<section id="베이즈-정리의-오즈-형태" class="level3">
+<h3 class="anchored" data-anchor-id="베이즈-정리의-오즈-형태">베이즈 정리의 오즈 형태</h3>
+<p>두 가설을 비교하는 도구가 베이즈 정리(Bayes’ theorem)입니다. 오즈(odds) 형태로 쓰면 다음과 같습니다.</p>
+<p><span class="math display">\[
+\underbrace{\frac{\mathbb{P}(H_1 \mid D)}{\mathbb{P}(H_0 \mid D)}}_{\text{사후 오즈}} = \underbrace{\frac{\mathbb{P}(D \mid H_1)}{\mathbb{P}(D \mid H_0)}}_{\text{우도비}} \cdot \underbrace{\frac{\mathbb{P}(H_1)}{\mathbb{P}(H_0)}}_{\text{사전 오즈}}
+\]</span></p>
+<p>사후 오즈(posterior odds)는 우도비(likelihood ratio)와 사전 오즈(prior odds)의 곱입니다. 정황 <span class="math inline">\(D_1, \dots, D_k\)</span>가 각 가설 아래에서 조건부 독립이면, 로그를 취해</p>
+<p><span class="math display">\[
+\log(\text{사후 오즈}) = \log(\text{사전 오즈}) + \sum_{i=1}^{k} \log \mathrm{LR}_i, \qquad \mathrm{LR}_i := \frac{\mathbb{P}(D_i \mid H_1)}{\mathbb{P}(D_i \mid H_0)}
+\]</span></p>
+<p>처럼 증거마다 로그 우도비를 더하면 됩니다. 함정 2가 왜 중요한지가 여기서 다시 드러납니다. 같은 증거를 세 번 세면 같은 <span class="math inline">\(\log \mathrm{LR}\)</span>을 세 번 더하게 됩니다.</p>
+</section>
+<section id="숫자로-보기" class="level3">
+<h3 class="anchored" data-anchor-id="숫자로-보기">숫자로 보기</h3>
+<p>설명을 위해 숫자를 정해 보겠습니다. 최상위 득점자 100명 중 1명꼴로 부정이 있다고 가정해 사전 오즈를 <span class="math inline">\(1:99\)</span>로 두겠습니다. 부정일 사전확률이 1%라는 뜻입니다.</p>
+<ul>
+<li>우도비가 20인 강한 증거 하나가 나오면 사후 오즈는 <span class="math inline">\(20/99 \approx 0.20\)</span>이고, 부정일 확률은 약 17%가 됩니다. 강한 증거라도 사전 오즈가 낮으면 확신까지는 아직 멀다는 뜻입니다.</li>
+<li>우도비가 1.05인 약한 정황 10개를 모두 독립이라고 후하게 쳐 줘도 우도비의 곱은 <span class="math inline">\(1.05^{10} \approx 1.63\)</span>이고, 부정일 확률은 1%에서 약 1.6%로 오를 뿐입니다.</li>
+</ul>
+<p>그래서 정황은 <strong>개수가 아니라 무게로 잽니다.</strong> 응시자 A의 경우 생활 습관 이야기처럼 두 가설 아래에서 비슷하게 일어날 정황은 우도비가 1에 가까워서, 아무리 많이 쌓여도 저울을 거의 움직이지 못합니다. 저울을 움직이는 것은 시험지와 답안지의 어긋남처럼 <span class="math inline">\(H_1\)</span> 아래에서는 일어날 만하지만 <span class="math inline">\(H_0\)</span> 아래에서는 드문 정황입니다.</p>
+<p>다만 그런 정황이 소문으로만 전해진다면, 그것이 사실인지부터 확인해야 합니다. <span class="math inline">\(D\)</span>가 실제로 관측되었는지 모르는 상태에서 <span class="math inline">\(\mathbb{P}(D \mid H_1)\)</span>과 <span class="math inline">\(\mathbb{P}(D \mid H_0)\)</span>의 비를 계산하는 것은 의미가 없습니다. 가장 무거워 보이는 정황이 가장 확인이 덜 된 정황이라면, 결론의 가장 약한 고리도 바로 거기에 있습니다.</p>
+</section>
+<section id="사전-오즈는-왜-올라가는가" class="level3">
+<h3 class="anchored" data-anchor-id="사전-오즈는-왜-올라가는가">사전 오즈는 왜 올라가는가</h3>
+<p>앞의 세무사 시험 사건은 이 식의 어디에 들어갈까요? 그 사건은 응시자 A에 대한 증거가 아닙니다. 그 사건이 바꾼 것은 <strong>“최상위 득점자 중 부정행위자의 비율”이라는 기저율(base rate)</strong>, 즉 사전 오즈입니다. 한 사건으로 기저율을 갱신하는 것은 정당하지만, 그것을 특정인에 대한 우도비로 착각해 한 번 더 세면 안 됩니다.</p>
+</section>
+</section>
+<section id="종-오류와-2종-오류-유의수준은-누가-정하는가" class="level2">
+<h2 class="anchored" data-anchor-id="종-오류와-2종-오류-유의수준은-누가-정하는가">1종 오류와 2종 오류: 유의수준은 누가 정하는가</h2>
+<p>같은 증거라도 누가 무엇을 결정하느냐에 따라 다른 기준을 써야 합니다. 오류의 비용이 다르기 때문입니다.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>실제로 결백(<span class="math inline">\(H_0\)</span> 참)</th>
+<th>실제로 부정(<span class="math inline">\(H_1\)</span> 참)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>부정으로 판단</td>
+<td>1종 오류(type I error): 결백한 사람의 성적 무효, 평판 훼손</td>
+<td>올바른 판단</td>
+</tr>
+<tr class="even">
+<td>결백으로 판단</td>
+<td>올바른 판단</td>
+<td>2종 오류(type II error): 부정행위자가 자격을 유지</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>개인의 믿음</strong>: 마음속으로 “아마 부정일 것 같다”고 생각하는 데는 낮은 기준으로도 충분합니다. 틀려도 그 대가를 치르는 사람이 없습니다.</li>
+<li><strong>기관의 처분</strong>: 성적 무효나 자격 취소는 되돌리기 어렵습니다. 1종 오류의 비용이 크므로 유의수준을 매우 낮게 잡아야 하고, 그래서 정황이 아니라 직접 증거를 요구합니다.</li>
+<li><strong>온라인에서의 단정</strong>: 특정인을 지목해 “부정이 확실하다”고 단정하는 것은 당사자에게 사실상 처분에 가까운 결과를 낳습니다. 그런데 그 기준은 개인의 믿음 수준에서 정해집니다. 비용은 기관 처분 수준인데 기준은 개인 믿음 수준이라는 불일치, 이것이 문제의 핵심입니다.</li>
+</ul>
+<p>반대 방향의 오류도 있습니다. “감독관이 못 봤으니 결백하다”는 주장은 검정력이 낮은 검사에서 기각하지 못한 결과를 <span class="math inline">\(H_0\)</span>의 증명으로 읽은 것입니다. “정황이 많으니 확정”과 “못 잡았으니 결백”은 방향만 다를 뿐, 둘 다 검정 결과를 잘못 읽은 것입니다.</p>
+</section>
+<section id="깨끗한-증거-미리-설계된-재검증" class="level2">
+<h2 class="anchored" data-anchor-id="깨끗한-증거-미리-설계된-재검증">깨끗한 증거: 미리 설계된 재검증</h2>
+<p>응시자 A가 의혹을 풀기 위해 “공개된 조건에서 새 시험지를 다시 풀겠다”고 나선다고 해 봅시다. 문제지를 받는 시각, 풀이 시간, 촬영 방식을 미리 밝혀 둔다면, 이것은 데이터를 보기 전에 설계가 공개된 실험, 즉 사전 등록(pre-registration)된 실험입니다. 사후 선택이나 갈림길의 정원 문제가 없다는 점에서 지금까지의 어떤 정황보다 깨끗한 증거가 될 수 있습니다.</p>
+<p>다만 이 실험도 해석에 주의가 필요합니다.</p>
+<ul>
+<li><strong>검정하는 것</strong>: “지금 외부 도움 없이 그 수준의 문제를 풀 실력이 있는가”입니다. 결과가 좋으면 성적 이력이라는 증거 경로는 <span class="math inline">\(H_1\)</span> 없이도 설명할 수 있게 됩니다.</li>
+<li><strong>검정하지 못하는 것</strong>: 실력이 있다는 것과 그날 부정을 하지 않았다는 것은 별개의 명제입니다. 시험지에 남은 물리적 흔적이라는 다른 경로는 이 실험으로 설명되지 않습니다.</li>
+<li><strong>표본이 하나입니다</strong>: <span class="math inline">\(n=1\)</span>이라 분산이 큽니다. 실력자도 압박 속에서는 평소보다 낮은 점수를 받을 수 있습니다. 한 번의 부진은 약한 반증이고, 큰 폭의 부진이어야 강한 반증입니다.</li>
+<li><strong>검정력은 감독에 달렸습니다</strong>: 감독이 허술하면 두 가설을 구분할 힘이 없습니다. 감독위원 바로 앞자리에서도 부정이 적발되지 않았던 세무사 시험 사건은, 누가 어떻게 감독하느냐가 이 실험의 핵심 변수라는 것을 보여 줍니다.</li>
+</ul>
+<p>결국 가장 강한 증거는 추론이 아니라 관찰입니다. 원본 답안지 감정, 기기 구매 기록, 시험 시간대의 통신 기록 같은 증거는 우도비가 사실상 무한대이거나 0에 가깝습니다. 통계적 추론은 이런 조사를 할 이유를 줄 수 있지만, 조사를 대신하지는 못합니다.</p>
+</section>
+<section id="맺으며" class="level2">
+<h2 class="anchored" data-anchor-id="맺으며">맺으며</h2>
+<p>세무사 시험 사건은 극단값 하나로도 <span class="math inline">\(H_0\)</span>를 올바르게 기각할 수 있다는 것을 보여 주었습니다. 동시에 기각이 알려 주는 것은 “뭔가 있다”까지이고, “무엇이냐”는 조사가 알려 준다는 것도 보여 주었습니다.</p>
+<p>가상의 응시자 A를 통해서는 정황이 많아 보여도 실제 증거는 훨씬 적을 수 있다는 것을 보았습니다. 데이터를 본 뒤에 만든 가설은 검정이 아니고, 같은 잠재변수에서 나온 정황은 하나로 세야 하며, 저울을 움직이는 것은 우도비가 큰 증거뿐입니다. 그리고 그 증거가 확인되지 않았다면, 저울에 올리기 전에 확인부터 해야 합니다.</p>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>한국세정신문 (2026. 5. 27.). 세무사 1차시험 합격률 18.09%…작년보다 4.46%p↓. <a href="https://taxtimes.co.kr/news/article.html?no=275294" class="uri">https://taxtimes.co.kr/news/article.html?no=275294</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>아이뉴스24 (2026. 11. 15.). 세무사 수석, AI 이용 부정행위 자수⋯감독관 앞에서도 사용했다. <a href="https://m.inews24.com/v/2026301" class="uri">https://m.inews24.com/v/2026301</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>SBS뉴스 (2026. 11. 15.). 세무사 수석합격자, AI 부정행위 시인…경찰, 서울청 광수단 배당 “신속·엄정 수사”. <a href="https://news.sbs.co.kr/news/endPage.do?news_id=N1008846418" class="uri">https://news.sbs.co.kr/news/endPage.do?news_id=N1008846418</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>SBS뉴스 (2026. 11. 15.). 세무사 수석합격자, AI 부정행위 시인…경찰, 서울청 광수단 배당 “신속·엄정 수사”. <a href="https://news.sbs.co.kr/news/endPage.do?news_id=N1008846418" class="uri">https://news.sbs.co.kr/news/endPage.do?news_id=N1008846418</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>SBS뉴스 (2026. 11. 15.). 세무사 수석합격자, AI 부정행위 시인…경찰, 서울청 광수단 배당 “신속·엄정 수사”. <a href="https://news.sbs.co.kr/news/endPage.do?news_id=N1008846418" class="uri">https://news.sbs.co.kr/news/endPage.do?news_id=N1008846418</a><a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Gelman, A., &amp; Loken, E. (2014). The statistical crisis in science. <em>American Scientist</em>, 102(6), 460–465.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Fisher, R. A. (1932). <em>Statistical Methods for Research Workers</em> (4th ed.). Edinburgh: Oliver and Boyd.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>Bikhchandani, S., Hirshleifer, D., &amp; Welch, I. (1992). A theory of fads, fashion, custom, and cultural change as informational cascades. <em>Journal of Political Economy</em>, 100(5), 992–1026.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>Royal Statistical Society (2001). <em>Royal Statistical Society concerned by issues raised in Sally Clark case</em> (보도자료, 2001년 10월); Hill, R. (2004). Multiple sudden infant deaths – coincidence or beyond coincidence? <em>Paediatric and Perinatal Epidemiology</em>, 18(5), 320–326.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>Thompson, W. C., &amp; Schumann, E. L. (1987). Interpretation of statistical evidence in criminal trials: The prosecutor’s fallacy and the defense attorney’s fallacy. <em>Law and Human Behavior</em>, 11(3), 167–187.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>Royal Statistical Society (2001). <em>Royal Statistical Society concerned by issues raised in Sally Clark case</em> (보도자료, 2001년 10월); Hill, R. (2004). Multiple sudden infant deaths – coincidence or beyond coincidence? <em>Paediatric and Perinatal Epidemiology</em>, 18(5), 320–326.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const categoryLinks = {
+    "수학": "/math/index.html",
+    "확률과 통계": "/stats/index.html",
+    "컴퓨터 공학": "/cs/index.html",
+    "데이터 사이언스·AI": "/ds-ai/index.html",
+    "경영/경제": "/biz-econ/index.html",
+    "의학통계·바이오메트리": "/biostat/index.html"
+  };
+  document.querySelectorAll('.navbar-nav .nav-item.dropdown > a.nav-link').forEach(function(el) {
+    const label = el.textContent.trim();
+    if (categoryLinks[label]) {
+      el.setAttribute('href', categoryLinks[label]);
+      el.addEventListener('click', function(e) {
+        if (window.innerWidth >= 992) {
+          window.location.href = categoryLinks[label];
+        }
+      });
+    }
+  });
+
+  /* ---------------------------------------------------------------
+     메가 메뉴: 드롭다운을 그룹(헤더 단위)별 가로 열로 재배치
+     - 첫 헤더 이전 항목(예: "전체 과목 보기")은 상단 한 줄로
+     - 한 그룹의 과목이 MAX_ROWS 개를 넘으면 그 그룹 안에서 열을 나눔
+     --------------------------------------------------------------- */
+  const MAX_ROWS = 7;      // 한 열에 들어갈 최대 과목 수
+  const EDGE = 16;         // 화면 가장자리 여백(px)
+
+  document.querySelectorAll('.navbar .nav-item.dropdown > .dropdown-menu').forEach(function(menu) {
+    const items = Array.from(menu.children);
+    if (items.filter(function(li) { return li.classList.contains('dropdown-header'); }).length < 2) return;
+
+    const top = document.createElement('li');
+    top.className = 'mega-top';
+    const groupsWrap = document.createElement('li');
+    groupsWrap.className = 'mega-groups';
+
+    let current = null;
+    items.forEach(function(li) {
+      if (li.querySelector('.dropdown-divider')) { li.remove(); return; }
+      if (li.classList.contains('dropdown-header')) {
+        const group = document.createElement('div');
+        group.className = 'mega-group';
+        const header = document.createElement('div');
+        header.className = 'dropdown-header';
+        header.textContent = li.textContent.trim();
+        const list = document.createElement('ul');
+        list.className = 'mega-items';
+        group.appendChild(header);
+        group.appendChild(list);
+        groupsWrap.appendChild(group);
+        current = list;
+        li.remove();
+        return;
+      }
+      if (current) {
+        current.appendChild(li);
+      } else {
+        top.appendChild(li.querySelector('a') || li);
+        li.remove();
+      }
+    });
+
+    groupsWrap.querySelectorAll('.mega-items').forEach(function(list) {
+      const n = list.children.length;
+      const cols = Math.max(1, Math.ceil(n / MAX_ROWS));
+      list.style.setProperty('--mega-rows', Math.ceil(n / cols));
+    });
+
+    menu.innerHTML = '';
+    if (top.children.length) menu.appendChild(top);
+    menu.appendChild(groupsWrap);
+    menu.classList.add('mega-menu');
+  });
+
+  /* 펼친 메뉴가 화면 오른쪽 밖으로 나가지 않도록 위치 보정 */
+  function fitToViewport(menu) {
+    if (window.innerWidth < 992) { menu.style.left = ''; return; }
+    menu.style.left = '0px';
+    const rect = menu.getBoundingClientRect();
+    if (rect.width === 0) return;
+    let shift = 0;
+    const overflow = rect.right - (window.innerWidth - EDGE);
+    if (overflow > 0) shift = -overflow;
+    if (rect.left + shift < EDGE) shift = EDGE - rect.left;
+    menu.style.left = shift + 'px';
+  }
+
+  document.querySelectorAll('.navbar .nav-item.dropdown').forEach(function(item) {
+    const menu = item.querySelector(':scope > .dropdown-menu.mega-menu');
+    if (!menu) return;
+    const fit = function() { requestAnimationFrame(function() { fitToViewport(menu); }); };
+    item.addEventListener('mouseenter', fit);
+    item.addEventListener('focusin', fit);
+    item.addEventListener('shown.bs.dropdown', fit);
+  });
+});
+</script>
+<script>
+/* 좌측 사이드바 맨 위 과목명: "한국어(English)" → 한국어 / English 두 줄로 나눠 표시 */
+document.addEventListener("DOMContentLoaded", function () {
+  var el = document.querySelector("#quarto-sidebar .sidebar-menu-container > ul > li > .sidebar-item-container .menu-text, #quarto-sidebar .sidebar-menu-container > ul > li > .sidebar-item-text .menu-text");
+  if (!el) return;
+  var m = el.textContent.trim().match(/^(.+?)\s*\((.+)\)$/);
+  if (!m) return;
+  el.textContent = m[1];
+  var en = document.createElement("span");
+  en.className = "menu-subtitle";
+  en.textContent = m[2];
+  el.appendChild(en);
+});
+</script>
+<script data-goatcounter="https://xkwhd1557.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/xkwhd1557\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2026 xkwhd1557 · 글은 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.ko">CC BY-NC-ND 4.0</a>에 따라 이용할 수 있습니다.<br> <a href="../privacy.html">개인정보 처리방침</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
