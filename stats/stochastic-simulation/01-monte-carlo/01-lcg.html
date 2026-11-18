@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="dcterms.date" content="2026-10-31">
-<meta name="description" content="컴퓨터가 균등난수를 만드는 가장 고전적인 방법인 선형 합동 생성기(LCG)를 살펴봅니다. 주기가 최대가 되도록 파라미터를 고르는 조건을 증명하고, 주기가 길어도 나쁜 난수일 수 있음을 RANDU의 예로 확인합니다.">
+<meta name="description" content="컴퓨터가 균등난수를 만드는 가장 고전적인 방법인 선형 합동 생성기(LCG)를 살펴봅니다. 주기를 길게 만드는 파라미터 조건을 살펴보고, 주기가 길어도 나쁜 난수일 수 있음을 RANDU의 예로 확인합니다.">
 
 <title>1.1 선형 합동 생성기 – Study Archive</title>
 <style>
@@ -73,6 +73,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
+<link href="../../../stats/stochastic-simulation/01-monte-carlo/02-statistical-tests.html" rel="next">
 <link href="../../../stats/stochastic-simulation/01-monte-carlo/index.html" rel="prev">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -144,14 +145,14 @@ window.Quarto = {
 </script>
 
 <meta property="og:title" content="1.1 선형 합동 생성기 – Study Archive">
-<meta property="og:description" content="컴퓨터가 균등난수를 만드는 가장 고전적인 방법인 선형 합동 생성기(LCG)를 살펴봅니다. 주기가 최대가 되도록 파라미터를 고르는 조건을 증명하고, 주기가 길어도 나쁜 난수일 수 있음을 RANDU의 예로 확인합니다.">
+<meta property="og:description" content="컴퓨터가 균등난수를 만드는 가장 고전적인 방법인 선형 합동 생성기(LCG)를 살펴봅니다. 주기를 길게 만드는 파라미터 조건을 살펴보고, 주기가 길어도 나쁜 난수일 수 있음을 RANDU의 예로 확인합니다.">
 <meta property="og:image" content="https://xkwhd1557.github.io/stats/stochastic-simulation/01-monte-carlo/figures/lcg-clock.png">
 <meta property="og:site_name" content="Study Archive">
 <meta property="og:image:alt" content="세 개의 원형 시계 그림. 왼쪽은 7칸 시계에서 3칸씩 더하며 0, 3, 6, 2, 5, 1, 4를 거쳐 0으로 돌아오며 모든 칸을 방문한다. 가운데는 6칸 시계에서 2칸씩 더하며 0, 2, 4만 방문하고 1, 3, 5는 방문하지 않는다. 오른쪽은 7칸 시계에서 3배씩 곱하며 1, 3, 2, 6, 4, 5를 거쳐 1로 돌아오며 0을 제외한 모든 칸을 방문한다.">
 <meta property="og:image:height" content="585">
 <meta property="og:image:width" content="1575">
 <meta name="twitter:title" content="1.1 선형 합동 생성기 – Study Archive">
-<meta name="twitter:description" content="컴퓨터가 균등난수를 만드는 가장 고전적인 방법인 선형 합동 생성기(LCG)를 살펴봅니다. 주기가 최대가 되도록 파라미터를 고르는 조건을 증명하고, 주기가 길어도 나쁜 난수일 수 있음을 RANDU의 예로 확인합니다.">
+<meta name="twitter:description" content="컴퓨터가 균등난수를 만드는 가장 고전적인 방법인 선형 합동 생성기(LCG)를 살펴봅니다. 주기를 길게 만드는 파라미터 조건을 살펴보고, 주기가 길어도 나쁜 난수일 수 있음을 RANDU의 예로 확인합니다.">
 <meta name="twitter:image" content="https://xkwhd1557.github.io/stats/stochastic-simulation/01-monte-carlo/figures/lcg-clock.png">
 <meta name="twitter:image:alt" content="세 개의 원형 시계 그림. 왼쪽은 7칸 시계에서 3칸씩 더하며 0, 3, 6, 2, 5, 1, 4를 거쳐 0으로 돌아오며 모든 칸을 방문한다. 가운데는 6칸 시계에서 2칸씩 더하며 0, 2, 4만 방문하고 1, 3, 5는 방문하지 않는다. 오른쪽은 7칸 시계에서 3배씩 곱하며 1, 3, 2, 6, 4, 5를 거쳐 1로 돌아오며 0을 제외한 모든 칸을 방문한다.">
 <meta name="twitter:card" content="summary_large_image">
@@ -729,6 +730,12 @@ window.Quarto = {
  <span class="menu-text">1.1 선형 합동 생성기</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../stats/stochastic-simulation/01-monte-carlo/02-statistical-tests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.2 난수 생성기의 통계적 검정</span></a>
+  </div>
+</li>
       </ul>
   </li>
       </ul>
@@ -775,7 +782,7 @@ window.Quarto = {
 
 <div>
   <div class="description">
-    컴퓨터가 균등난수를 만드는 가장 고전적인 방법인 선형 합동 생성기(LCG)를 살펴봅니다. 주기가 최대가 되도록 파라미터를 고르는 조건을 증명하고, 주기가 길어도 나쁜 난수일 수 있음을 RANDU의 예로 확인합니다.
+    컴퓨터가 균등난수를 만드는 가장 고전적인 방법인 선형 합동 생성기(LCG)를 살펴봅니다. 주기를 길게 만드는 파라미터 조건을 살펴보고, 주기가 길어도 나쁜 난수일 수 있음을 RANDU의 예로 확인합니다.
   </div>
 </div>
 
@@ -802,7 +809,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="들어가며">들어가며</h2>
 <p><a href="../../../stats/stochastic-simulation/01-monte-carlo/index.html">지난 글</a>에서는 무작위로 점을 찍어 원주율 <span class="math inline">\(\pi\)</span>를 구하고, 같은 아이디어로 정적분을 계산했습니다. 그런데 두 알고리즘을 다시 보면 첫 줄이 똑같습니다. “<strong><span class="math inline">\([0,1]\)</span> 위의 균등난수를 생성합니다.</strong>” 지난 글은 이 한 줄을 당연하게 넘어갔고, 글의 끝에서 “균등난수는 어디서 오는가?”라는 질문을 남겼습니다.</p>
 <p><a href="../../../stats/stochastic-simulation/index.html">과목 소개 글</a>에서는 이 질문에 대해 비유로만 답했습니다. 컴퓨터의 유사 난수 생성기는 아주 긴 난수표 책을 들고 다니는 대신, 책갈피(상태)를 정해진 규칙에 따라 한 칸씩 옮기며 다음 숫자를 계산해 낸다는 것이었습니다. 이번 글에서는 그 “규칙”의 가장 고전적인 예인 <strong>선형 합동 생성기</strong>(linear congruential generator, LCG)를 실제로 살펴봅니다.</p>
-<p>참고로 이 과목에서 정수론을 직접 다루는 것은 이 글이 유일합니다. 이 글 이후로는 정수론에 관련된 이야기는 (아마) 다시는 등장하지 않으며, 정수론이 등장하는 파트가 어렵다면, 그냥 딱 LCG의 정의를 이해하는 수준의 정수론 내용만 보고 넘어가셔도 무방합니다. 그 이후로는 “<span class="math inline">\([0,1]\)</span> 위의 i.i.d. 균등난수를 얻을 수 있다”는 것을 주어진 사실로 두고, 그것을 이용해 무엇을 할 수 있는지에 집중합니다.</p>
+<p>참고로 LCG의 파라미터를 잘 고르는 문제는 정수론의 영역입니다. 이 글에서는 나머지 연산으로 LCG를 정의하는 데 필요한 만큼만 정수론을 쓰고, 긴 주기를 보장하는 조건은 결과 위주로 소개합니다. 이 글 이후로는 “<span class="math inline">\([0,1]\)</span> 위의 i.i.d. 균등난수를 얻을 수 있다”는 것을 주어진 사실로 두고, 그것을 이용해 무엇을 할 수 있는지에 집중합니다.</p>
 <p>그리고 선형 합동 생성기는 상당히 오래되어, 더이상 사용되지 않는 구시대의 산물입니다. 우리는 그냥 균등난수를 얻을 수 있다는 이론적 근거를 얻기 위한 하나의 예시로서만 선형 합동 생성기를 다룰 뿐임을 유의하셔야합니다.</p>
 </section>
 <section id="문제-상황-결정론적인-규칙으로-균등난수-흉내-내기" class="level2">
@@ -883,7 +890,7 @@ window.Quarto = {
 <p>수열 <span class="math inline">\(z_0, z_1, z_2, \ldots\)</span>에 대해, 어떤 <span class="math inline">\(k_0 \ge 0\)</span>이 있어 모든 <span class="math inline">\(k \ge k_0\)</span>에서 <span class="math inline">\(z_{k+p} = z_k\)</span>가 성립하는 가장 작은 자연수 <span class="math inline">\(p \ge 1\)</span>을 이 수열의 <strong>주기</strong>(period)라고 합니다.</p>
 </div>
 </div>
-<p>앞의 시계 논증에 따르면 LCG의 수열은 항상 주기를 가지며, 그 주기는 <span class="math inline">\(m\)</span>을 넘을 수 없습니다. 또 <span class="math inline">\(a\)</span>가 <span class="math inline">\(m\)</span>과 서로소이면 <span class="math inline">\(z_{k-1} \equiv a^{-1}(z_k - c) \pmod m\)</span>처럼 한 칸 <strong>뒤로</strong> 되돌리는 계산도 가능합니다. 이때는 수열이 처음부터 곧바로 순환하므로, 주기는 “<span class="math inline">\(z_k = z_0\)</span>이 처음으로 다시 성립하는 <span class="math inline">\(k\)</span>”와 같습니다. 이 사실은 아래 명제의 증명에서 사용합니다.</p>
+<p>앞의 시계 논증에 따르면 LCG의 수열은 항상 주기를 가지며, 그 주기는 <span class="math inline">\(m\)</span>을 넘을 수 없습니다.</p>
 <p>주기를 분석할 때는 <span class="math inline">\(z_k\)</span>를 점화식 대신 <span class="math inline">\(z_0\)</span>에 대한 식으로 한 번에 써 두면 편리합니다.</p>
 <div class="callout callout-style-default callout-important no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -899,7 +906,7 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -908,7 +915,7 @@ window.Quarto = {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse show">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><span class="math inline">\(k\)</span>에 대한 귀납법을 씁니다. <span class="math inline">\(k = 0\)</span>일 때는 합이 비어 있으므로 식은 <span class="math inline">\(z_0 \equiv z_0\)</span>이 되어 성립합니다. <span class="math inline">\(k\)</span>에서 성립한다고 가정하면, 합동이 덧셈과 곱셈을 보존하므로 <span class="math display">\[z_{k+1} \equiv a z_k + c \equiv a^{k+1} z_0 + c \sum_{j=1}^{k} a^j + c = a^{k+1} z_0 + c \sum_{j=0}^{k} a^j \pmod m\]</span> 이고, 이는 <span class="math inline">\(k+1\)</span>에서의 식입니다. <span class="math inline">\(\blacksquare\)</span></p>
 </div>
@@ -959,123 +966,26 @@ window.Quarto = {
 </section>
 <section id="주기를-최대로-만드는-조건" class="level3">
 <h3 class="anchored" data-anchor-id="주기를-최대로-만드는-조건">주기를 최대로 만드는 조건</h3>
-<p>파라미터를 신중하게 고르면 훨씬 긴 주기를 얻을 수 있습니다. 그 조건을 말하려면 정수론의 도구가 하나 더 필요합니다. 오른쪽 시계 그림 (다)처럼 곱셈으로 점프할 때, <strong>몇 번 곱해야 처음 자리로 돌아오는가</strong>를 재는 양입니다.</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>정의 1.1.6 (위수와 원시근)
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><span class="math inline">\(m\)</span>이 소수이고 <span class="math inline">\(a \not\equiv 0 \pmod m\)</span>일 때, <span class="math inline">\(a^d \equiv 1 \pmod m\)</span>을 만족하는 가장 작은 자연수 <span class="math inline">\(d \ge 1\)</span>을 법 <span class="math inline">\(m\)</span>에 대한 <span class="math inline">\(a\)</span>의 <strong>위수</strong>(multiplicative order)라고 합니다. 위수가 <span class="math inline">\(m - 1\)</span>인 <span class="math inline">\(a\)</span>를 법 <span class="math inline">\(m\)</span>에 대한 <strong>원시근</strong>(primitive root)이라고 합니다.</p>
-</div>
-</div>
-<p>말로만 보면 추상적이니, 7칸 시계에서 직접 확인해 보겠습니다. 아래 표는 <span class="math inline">\(a = 1, \ldots, 6\)</span> 각각에 대해 <span class="math inline">\(a, a^2, a^3, \ldots\)</span>을 7로 나눈 나머지를 차례로 적고, 처음으로 <span class="math inline">\(1\)</span>이 나오는 곳에서 멈춘 것입니다.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: center;"><span class="math inline">\(a\)</span></th>
-<th style="text-align: left;"><span class="math inline">\(a^1, a^2, a^3, \ldots \pmod 7\)</span></th>
-<th style="text-align: center;">위수</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">1</td>
-<td style="text-align: left;"><span class="math inline">\(1\)</span></td>
-<td style="text-align: center;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">2</td>
-<td style="text-align: left;"><span class="math inline">\(2, 4, 1\)</span></td>
-<td style="text-align: center;">3</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">3</td>
-<td style="text-align: left;"><span class="math inline">\(3, 2, 6, 4, 5, 1\)</span></td>
-<td style="text-align: center;"><strong>6</strong></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">4</td>
-<td style="text-align: left;"><span class="math inline">\(4, 2, 1\)</span></td>
-<td style="text-align: center;">3</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">5</td>
-<td style="text-align: left;"><span class="math inline">\(5, 4, 6, 2, 3, 1\)</span></td>
-<td style="text-align: center;"><strong>6</strong></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">6</td>
-<td style="text-align: left;"><span class="math inline">\(6, 1\)</span></td>
-<td style="text-align: center;">2</td>
-</tr>
-</tbody>
-</table>
-<p>예를 들어 <span class="math inline">\(a = 2\)</span>이면 <span class="math inline">\(2^1 = 2\)</span>, <span class="math inline">\(2^2 = 4\)</span>, <span class="math inline">\(2^3 = 8 \equiv 1\)</span>이므로 세 번 곱하면 <span class="math inline">\(1\)</span>로 돌아오고, 위수는 <span class="math inline">\(3\)</span>입니다. 시계로 말하면 <span class="math inline">\(1\)</span>에서 출발해 <span class="math inline">\(2\)</span>를 계속 곱하는 바늘은 <span class="math inline">\(1 \to 2 \to 4 \to 1\)</span>로 세 칸만 돌고 제자리로 돌아옵니다.</p>
-<p>반면 <span class="math inline">\(a = 3\)</span>과 <span class="math inline">\(a = 5\)</span>는 여섯 번을 곱해야 처음으로 <span class="math inline">\(1\)</span>이 나옵니다. 그 사이에 <span class="math inline">\(1\)</span>부터 <span class="math inline">\(6\)</span>까지의 모든 수가 한 번씩 나타나므로, 이 곱수로 점프하면 <span class="math inline">\(0\)</span>을 뺀 모든 칸을 다 밟고 돌아옵니다. 이렇게 “끝까지 다 돌고 나서야 돌아오는” 곱수가 원시근입니다. 즉 법 <span class="math inline">\(7\)</span>에 대한 원시근은 <span class="math inline">\(3\)</span>과 <span class="math inline">\(5\)</span>이고, 앞의 시계 그림 (다)가 바로 <span class="math inline">\(a = 3\)</span>인 경우입니다.</p>
+<p>예제 1.1.5처럼 주기가 짧으면 같은 숫자가 금방 되풀이되어 난수로 쓸 수 없습니다. 시뮬레이션에서는 수백만, 수억 개의 난수를 쓰는 일이 흔하므로, 주기는 그보다 훨씬 길어야 합니다. 다행히 파라미터를 신중하게 고르면 주기를 최대에 가깝게 만들 수 있습니다. 어떤 파라미터가 긴 주기를 주는지는 정수론으로 판정하는데, 여기서는 그 결과만 소개하겠습니다.</p>
 <div class="callout callout-style-default callout-important no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>정리 1.1.7 (페르마의 소정리와 위수의 성질)
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><span class="math inline">\(m\)</span>이 소수이고 <span class="math inline">\(a \not\equiv 0 \pmod m\)</span>이면 다음이 성립합니다.</p>
-<ol type="1">
-<li>(페르마의 소정리) <span class="math inline">\(a^{m-1} \equiv 1 \pmod m\)</span>.</li>
-<li><span class="math inline">\(a^n \equiv 1 \pmod m\)</span>이면 <span class="math inline">\(a\)</span>의 위수 <span class="math inline">\(d\)</span>는 <span class="math inline">\(n\)</span>을 나눕니다. 특히 <span class="math inline">\(d\)</span>는 <span class="math inline">\(m - 1\)</span>의 약수입니다.</li>
-</ol>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="true" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>증명
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse show">
-<div class="callout-body-container callout-body">
-<p>이 부분은 증명은 생략합니다. 그냥 의미 설명만 보셔도 충분합니다.</p>
-</div>
-</div>
-</div>
-<p>위의 표를 다시 보면 정리 1.1.7이 말하는 내용을 그대로 확인할 수 있습니다.</p>
-<p>1번은 <strong>어떤 <span class="math inline">\(a\)</span>로 시작하든 <span class="math inline">\(m - 1\)</span>번 곱하면 반드시 <span class="math inline">\(1\)</span>로 돌아온다</strong>는 뜻입니다. 7칸 시계라면 <span class="math inline">\(a\)</span>가 무엇이든 <span class="math inline">\(a^6 \equiv 1\)</span>입니다. 표에서 위수가 <span class="math inline">\(3\)</span>인 <span class="math inline">\(a = 2\)</span>도 <span class="math inline">\(2^6 = (2^3)^2 \equiv 1^2 = 1\)</span>이고, 위수가 <span class="math inline">\(2\)</span>인 <span class="math inline">\(a = 6\)</span>도 <span class="math inline">\(6^6 = (6^2)^3 \equiv 1\)</span>입니다. 곱셈 점프는 <span class="math inline">\(0\)</span>을 뺀 <span class="math inline">\(m - 1\)</span>칸 안에서만 움직이므로, 아무리 길어도 <span class="math inline">\(m - 1\)</span>번 안에는 돌아와야 한다는 시계 논증과도 잘 맞습니다.</p>
-<p>2번은 <strong>처음으로 돌아오는 횟수(위수)는 <span class="math inline">\(m - 1\)</span>의 약수일 수밖에 없다</strong>는 뜻입니다. 실제로 표의 위수는 <span class="math inline">\(1, 3, 6, 3, 6, 2\)</span>로, 모두 <span class="math inline">\(6\)</span>의 약수입니다. <span class="math inline">\(4\)</span>나 <span class="math inline">\(5\)</span> 같은 위수는 나올 수 없습니다.</p>
-<p>2번은 1번만 알면 바로 보일 수 있습니다. <span class="math inline">\(a^n \equiv 1\)</span>이라고 하고, <span class="math inline">\(n\)</span>을 위수 <span class="math inline">\(d\)</span>로 나눈 몫과 나머지를 <span class="math inline">\(n = qd + r\)</span> (<span class="math inline">\(0 \le r &lt; d\)</span>)이라고 둡시다. 그러면 <span class="math display">\[1 \equiv a^n = (a^d)^q \cdot a^r \equiv 1^q \cdot a^r = a^r \pmod m\]</span> 이므로 <span class="math inline">\(a^r \equiv 1\)</span>입니다. 그런데 <span class="math inline">\(d\)</span>는 <span class="math inline">\(a^d \equiv 1\)</span>을 만족하는 <strong>가장 작은</strong> 자연수였으므로, <span class="math inline">\(d\)</span>보다 작은 <span class="math inline">\(r\)</span>이 <span class="math inline">\(a^r \equiv 1\)</span>을 만족하려면 <span class="math inline">\(r = 0\)</span>일 수밖에 없습니다. 즉 <span class="math inline">\(d\)</span>는 <span class="math inline">\(n\)</span>을 나눕니다. 여기에 1번의 <span class="math inline">\(n = m - 1\)</span>을 넣으면 <span class="math inline">\(d\)</span>가 <span class="math inline">\(m - 1\)</span>의 약수라는 결론을 얻습니다.</p>
-<p>시계 그림으로 말하면 이렇습니다. 바늘은 <span class="math inline">\(d\)</span>번마다 똑같은 경로를 되풀이하므로, <span class="math inline">\(1\)</span>로 돌아오는 시점은 <span class="math inline">\(d, 2d, 3d, \ldots\)</span>뿐입니다. 그런데 1번에 의해 <span class="math inline">\(m - 1\)</span>번째에도 반드시 <span class="math inline">\(1\)</span>에 있으므로, <span class="math inline">\(m - 1\)</span>은 <span class="math inline">\(d\)</span>의 배수여야 합니다.</p>
-<p>이 사실 덕분에 원시근인지 확인하는 일이 훨씬 쉬워집니다. 위수가 될 수 있는 후보가 <span class="math inline">\(m - 1\)</span>의 약수뿐이므로, <span class="math inline">\(m - 1\)</span>보다 작은 약수에서 일찍 돌아오지 않는지만 확인하면 됩니다. 아래 명제 1.1.8의 조건이 바로 이 확인을 효율적으로 하는 방법입니다.</p>
-<p>곱셈 점프의 관점에서 보면, 정리 1.1.7은 “몇 번을 곱하든 <span class="math inline">\(m-1\)</span>번 곱하면 반드시 <span class="math inline">\(1\)</span>로 돌아오고, 처음으로 돌아오는 횟수는 <span class="math inline">\(m-1\)</span>의 약수일 수밖에 없다”는 뜻입니다. 이제 주기가 최대가 되는 조건을 말할 수 있습니다.</p>
-<div class="callout callout-style-default callout-important no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>명제 1.1.8 (긴 주기를 보장하는 조건)
+<span class="screen-reader-only">Important</span>명제 1.1.6 (긴 주기를 보장하는 조건)
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p><span class="math inline">\(m\)</span>이 홀수인 소수라고 합시다.</p>
 <ol type="1">
 <li><span class="math inline">\(c\)</span>가 <span class="math inline">\(m\)</span>과 서로소이고 <span class="math inline">\(a \equiv 1 \pmod m\)</span>이면, 주기는 <span class="math inline">\(m\)</span>입니다.</li>
-<li><span class="math inline">\(c = 0\)</span>, <span class="math inline">\(a \not\equiv 0\)</span>, <span class="math inline">\(z_0 \not\equiv 0 \pmod m\)</span>이고, <span class="math inline">\(m - 1\)</span>의 <strong>모든 소인수</strong> <span class="math inline">\(r\)</span>에 대해 <span class="math inline">\(a^{(m-1)/r} \not\equiv 1 \pmod m\)</span>이면, 주기는 <span class="math inline">\(m - 1\)</span>입니다.</li>
+<li><span class="math inline">\(c = 0\)</span>, <span class="math inline">\(a \not\equiv 0\)</span>, <span class="math inline">\(z_0 \not\equiv 0 \pmod m\)</span>이고, <span class="math inline">\(m - 1\)</span>의 모든 소인수 <span class="math inline">\(r\)</span>에 대해 <span class="math inline">\(a^{(m-1)/r} \not\equiv 1 \pmod m\)</span>이면, 주기는 <span class="math inline">\(m - 1\)</span>입니다.</li>
 </ol>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1084,67 +994,25 @@ window.Quarto = {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse show">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>두 경우 모두 <span class="math inline">\(a\)</span>가 <span class="math inline">\(m\)</span>과 서로소이므로, 앞에서 말했듯 주기는 <span class="math inline">\(z_k \equiv z_0\)</span>이 처음으로 다시 성립하는 <span class="math inline">\(k\)</span>와 같습니다.</p>
-<p><strong>1번.</strong> <span class="math inline">\(a \equiv 1\)</span>이므로 보조정리 1.1.4에서 <span class="math inline">\(z_k \equiv z_0 + kc \pmod m\)</span>입니다. 따라서 <span class="math inline">\(z_k \equiv z_0\)</span>은 <span class="math inline">\(m \mid kc\)</span>와 같고, <span class="math inline">\(c\)</span>가 <span class="math inline">\(m\)</span>과 서로소이므로 이는 <span class="math inline">\(m \mid k\)</span>와 같습니다. 그러므로 처음으로 <span class="math inline">\(z_0\)</span>에 돌아오는 것은 <span class="math inline">\(k = m\)</span>일 때이고, 주기는 <span class="math inline">\(m\)</span>입니다.</p>
-<p><strong>2번.</strong> <span class="math inline">\(c = 0\)</span>이므로 보조정리 1.1.4에서 <span class="math inline">\(z_k \equiv a^k z_0 \pmod m\)</span>입니다. <span class="math inline">\(m\)</span>이 소수이고 <span class="math inline">\(z_0 \not\equiv 0\)</span>이므로 <span class="math inline">\(z_0\)</span>은 법 <span class="math inline">\(m\)</span>에서 역원을 가지고, 따라서 <span class="math inline">\(z_k \equiv z_0\)</span>은 <span class="math inline">\(a^k \equiv 1\)</span>과 같습니다. 즉 주기는 <span class="math inline">\(a\)</span>의 위수 <span class="math inline">\(d\)</span>와 같습니다.</p>
-<p>정리 1.1.7에 의해 <span class="math inline">\(d\)</span>는 <span class="math inline">\(m - 1\)</span>을 나눕니다. 만약 <span class="math inline">\(d &lt; m - 1\)</span>이라면 <span class="math inline">\((m-1)/d &gt; 1\)</span>이므로 소인수 <span class="math inline">\(r\)</span>을 하나 가지고, 그러면 <span class="math inline">\(d\)</span>는 <span class="math inline">\((m-1)/r\)</span>을 나눕니다. 그런데 <span class="math inline">\(a^d \equiv 1\)</span>이므로 <span class="math inline">\(a^{(m-1)/r} = (a^d)^{(m-1)/(rd)} \equiv 1\)</span>이 되어 가정에 모순입니다. 따라서 <span class="math inline">\(d = m - 1\)</span>이고, 주기는 <span class="math inline">\(m - 1\)</span>입니다. <span class="math inline">\(\blacksquare\)</span></p>
+<p><strong>1번.</strong> <span class="math inline">\(a \equiv 1\)</span>이므로 보조정리 1.1.4에서 <span class="math inline">\(z_k \equiv z_0 + kc \pmod m\)</span>입니다. <span class="math inline">\(c\)</span>가 <span class="math inline">\(m\)</span>과 서로소이므로 <span class="math inline">\(z_k \equiv z_0\)</span>은 <span class="math inline">\(m \mid k\)</span>와 같고, 처음으로 <span class="math inline">\(z_0\)</span>에 돌아오는 것은 <span class="math inline">\(k = m\)</span>일 때입니다.</p>
+<p><strong>2번.</strong> <span class="math inline">\(c = 0\)</span>이므로 보조정리 1.1.4에서 <span class="math inline">\(z_k \equiv a^k z_0 \pmod m\)</span>이고, 주기는 <span class="math inline">\(a^d \equiv 1 \pmod m\)</span>을 만족하는 가장 작은 <span class="math inline">\(d\)</span>, 즉 법 <span class="math inline">\(m\)</span>에 대한 <span class="math inline">\(a\)</span>의 <strong>위수</strong>(order)와 같습니다. 정수론의 기본 사실(페르마의 소정리)에 의해 이 위수는 <span class="math inline">\(m - 1\)</span>의 약수입니다. 만약 위수 <span class="math inline">\(d\)</span>가 <span class="math inline">\(m - 1\)</span>보다 작은 약수라면, <span class="math inline">\((m-1)/d\)</span>의 소인수 <span class="math inline">\(r\)</span> 하나에 대해 <span class="math inline">\(d\)</span>가 <span class="math inline">\((m-1)/r\)</span>을 나누므로 <span class="math inline">\(a^{(m-1)/r} \equiv 1\)</span>이 되어 가정에 모순입니다. 따라서 위수, 즉 주기는 <span class="math inline">\(m - 1\)</span>입니다. 정수론의 자세한 내용은 <a href="../../../math/number-theory/index.html">정수론</a>을 참고하시기 바랍니다. <span class="math inline">\(\blacksquare\)</span></p>
 </div>
 </div>
 </div>
-<p>두 조건을 시계 그림으로 다시 읽어 보겠습니다.</p>
+<p>두 조건은 앞의 시계 그림으로 읽을 수 있습니다.</p>
 <ul>
-<li><strong>1번은 덧셈 점프입니다.</strong> <span class="math inline">\(a = 1\)</span>이면 바늘은 매번 <span class="math inline">\(c\)</span>칸씩 앞으로 갑니다. 그림 (가)처럼 7칸 시계에서 3칸씩 가면 모든 칸을 밟지만, (나)처럼 6칸 시계에서 2칸씩 가면 일부 칸만 맴돕니다. 점프 폭과 시계 크기가 공약수를 가지면 안 된다는 것이 “<span class="math inline">\(c\)</span>와 <span class="math inline">\(m\)</span>이 서로소”라는 조건입니다.</li>
-<li><strong>2번은 곱셈 점프입니다.</strong> 곱셈은 <span class="math inline">\(0\)</span>을 <span class="math inline">\(0\)</span>으로 보내므로 <span class="math inline">\(0\)</span>은 피해야 하고, 나머지 <span class="math inline">\(m - 1\)</span>칸을 모두 돌게 만드는 것이 목표입니다. 그러려면 <span class="math inline">\(a\)</span>가 원시근이어야 합니다. 그런데 위수는 항상 <span class="math inline">\(m - 1\)</span>의 약수이므로, <span class="math inline">\(m - 1\)</span>보다 작은 약수들 중 “가장 큰 후보들”, 즉 <span class="math inline">\((m-1)/r\)</span>에서 일찍 돌아오지 않는지만 확인하면 됩니다. 더 작은 약수에서 돌아온다면 그 약수의 배수인 이 후보들 중 하나에서도 반드시 돌아오기 때문입니다.</li>
+<li><strong>1번은 덧셈 점프입니다.</strong> <span class="math inline">\(a = 1\)</span>이면 바늘은 매번 <span class="math inline">\(c\)</span>칸씩 앞으로 갑니다. 그림 (가)처럼 점프 폭과 시계 크기가 서로소이면 모든 칸을 밟지만, (나)처럼 공약수가 있으면 일부 칸만 맴돕니다.</li>
+<li><strong>2번은 곱셈 점프입니다.</strong> 곱셈은 <span class="math inline">\(0\)</span>을 <span class="math inline">\(0\)</span>으로 보내므로 <span class="math inline">\(0\)</span>은 피하고, 나머지 <span class="math inline">\(m - 1\)</span>칸을 모두 돌게 하는 것이 목표입니다. 그림 (다)의 <span class="math inline">\(m = 7\)</span>, <span class="math inline">\(a = 3\)</span>이 이 조건을 만족하는 예로, <span class="math inline">\(0\)</span>을 뺀 여섯 칸을 모두 밟고 돌아옵니다. 이때 <span class="math inline">\(z_k\)</span>는 결코 <span class="math inline">\(0\)</span>이 되지 않으므로 <span class="math inline">\(u_k\)</span>는 항상 열린 구간 <span class="math inline">\((0, 1)\)</span> 안에 있습니다.</li>
 </ul>
-<p>조건이 “<span class="math inline">\(m - 1\)</span>의 모든 약수”가 아니라 “<strong>모든 소인수</strong> <span class="math inline">\(r\)</span>”인 데에도 이유가 있습니다. <span class="math inline">\(r = 1\)</span>까지 허용하면 <span class="math inline">\(a^{m-1} \not\equiv 1\)</span>을 요구하게 되는데, 이는 페르마의 소정리 때문에 절대 만족될 수 없습니다. 또 2번의 경우 <span class="math inline">\(z_k \equiv a^k z_0\)</span>은 결코 <span class="math inline">\(0\)</span>이 되지 않으므로, <span class="math inline">\(u_k\)</span>는 항상 열린 구간 <span class="math inline">\((0, 1)\)</span> 안에 있습니다.</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>예제 1.1.9 (작은 원시근: <span class="math inline">\(m = 7\)</span>, <span class="math inline">\(a = 3\)</span>)
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><span class="math inline">\(m - 1 = 6\)</span>의 소인수는 <span class="math inline">\(2\)</span>와 <span class="math inline">\(3\)</span>입니다. <span class="math inline">\(3^{6/2} = 27 \equiv 6 \not\equiv 1\)</span>, <span class="math inline">\(3^{6/3} = 9 \equiv 2 \not\equiv 1 \pmod 7\)</span>이므로 명제 1.1.8의 2번 조건이 성립합니다. 실제로 <span class="math inline">\(z_0 = 1\)</span>에서 시작하면 <span class="math display">\[1,\ 3,\ 2,\ 6,\ 4,\ 5,\ 1,\ \ldots\]</span> 이 되어 <span class="math inline">\(0\)</span>을 제외한 여섯 칸을 모두 밟고 돌아옵니다. 주기는 <span class="math inline">\(6 = m - 1\)</span>이고, 앞 그림의 (다)가 바로 이 경우입니다.</p>
-</div>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(lcg(<span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">7</span>, <span class="dv">1</span>, <span class="dv">8</span>))    <span class="co"># 예제 1.1.9: m = 7, a = 3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre><code>[3, 2, 6, 4, 5, 1, 3, 2]</code></pre>
-<p>명제 1.1.8의 조건은 파라미터가 아무리 커도 몇 번의 거듭제곱 계산만으로 확인할 수 있다는 장점이 있습니다. 앞에서 언급한 고전적인 선택을 확인해 보겠습니다.</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>예제 1.1.10 (고전적인 파라미터: <span class="math inline">\(m = 2^{31} - 1\)</span>, <span class="math inline">\(a = 16807\)</span>)
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><span class="math inline">\(m = 2^{31} - 1 = 2147483647\)</span>은 소수(메르센 소수)이고, <span class="math inline">\(a = 16807 = 7^5\)</span>, <span class="math inline">\(c = 0\)</span>입니다. 이 조합은 1988년 파크(S. K. Park, 참고로 한국인 아닙니다.)과 밀러(K. W. Miller)가 “적어도 이 정도는 되어야 하는 생성기”라는 뜻의 <strong>최소 표준</strong>(minimal standard)으로 권장하면서 널리 알려졌습니다.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <span class="math inline">\(m - 1 = 2 \cdot 3^2 \cdot 7 \cdot 11 \cdot 31 \cdot 151 \cdot 331\)</span>의 각 소인수 <span class="math inline">\(r\)</span>에 대해 <span class="math inline">\(a^{(m-1)/r} \bmod m\)</span>을 계산해 보면 어느 것도 <span class="math inline">\(1\)</span>이 아니므로, 명제 1.1.8에 의해 주기는 <span class="math inline">\(m - 1 = 2147483646\)</span>입니다.</p>
-</div>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>m, a <span class="op">=</span> <span class="dv">2</span><span class="op">**</span><span class="dv">31</span> <span class="op">-</span> <span class="dv">1</span>, <span class="dv">16807</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>prime_factors <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">11</span>, <span class="dv">31</span>, <span class="dv">151</span>, <span class="dv">331</span>]   <span class="co"># m - 1 = 2 · 3² · 7 · 11 · 31 · 151 · 331</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([<span class="bu">pow</span>(a, (m <span class="op">-</span> <span class="dv">1</span>) <span class="op">//</span> r, m) <span class="cf">for</span> r <span class="kw">in</span> prime_factors])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre><code>[2147483646, 634005911, 1600955193, 298192073, 16384, 1013763951, 759513457]</code></pre>
-<p>첫 번째 값 <span class="math inline">\(2147483646 = m - 1\)</span>은 <span class="math inline">\(-1 \pmod m\)</span>과 같으므로 역시 <span class="math inline">\(1\)</span>이 아닙니다. 파이썬의 <code>pow(a, e, m)</code>은 <span class="math inline">\(a^e \bmod m\)</span>을 빠르게 계산하는 내장 함수입니다. 실제로 이 생성기로 만든 처음 몇 개의 수는 다음과 같습니다.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>zs <span class="op">=</span> lcg(<span class="dv">16807</span>, <span class="dv">0</span>, <span class="dv">2</span><span class="op">**</span><span class="dv">31</span> <span class="op">-</span> <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">5</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(zs)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([<span class="bu">round</span>(z <span class="op">/</span> (<span class="dv">2</span><span class="op">**</span><span class="dv">31</span> <span class="op">-</span> <span class="dv">1</span>), <span class="dv">6</span>) <span class="cf">for</span> z <span class="kw">in</span> zs])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre><code>[16807, 282475249, 1622650073, 984943658, 1144108930]
-[8e-06, 0.131538, 0.755605, 0.45865, 0.532767]</code></pre>
-<p>시드가 <span class="math inline">\(z_0 = 1\)</span>이라 첫 값은 <span class="math inline">\(7^5\)</span>로 아주 작지만, 그 뒤로는 <span class="math inline">\([0,1]\)</span> 위를 제멋대로 오가는 것처럼 보입니다. 주기가 약 21억이므로, 웬만한 시뮬레이션에서는 반복되는 구간에 닿을 일이 없습니다.</p>
+<p>앞에서 언급한 고전적인 선택 <span class="math inline">\(m = 2^{31} - 1\)</span>, <span class="math inline">\(a = 16807 = 7^5\)</span>, <span class="math inline">\(c = 0\)</span>이 바로 2번 조건을 만족하는 경우입니다. <span class="math inline">\(2^{31} - 1 = 2147483647\)</span>은 소수이고, 이 <span class="math inline">\(a\)</span>는 2번 조건을 만족하므로 주기는 <span class="math inline">\(m - 1 = 2147483646\)</span>, 약 21억입니다. 이 조합은 1988년 파크(S. K. Park, 참고로 한국인 아닙니다.)와 밀러(K. W. Miller)가 “적어도 이 정도는 되어야 하는 생성기”라는 뜻의 <strong>최소 표준</strong>(minimal standard)으로 권장하면서 널리 알려졌습니다.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 </section>
 </section>
 <section id="주기가-길면-좋은-난수일까" class="level2">
 <h2 class="anchored" data-anchor-id="주기가-길면-좋은-난수일까">주기가 길면 좋은 난수일까?</h2>
 <p>여기까지 보면 “주기를 최대로 만들면 문제가 해결된다”고 생각하기 쉽습니다. 하지만 <strong>주기가 긴 것은 좋은 난수의 필요조건일 뿐, 충분조건이 아닙니다.</strong></p>
-<p>가장 극단적인 예는 명제 1.1.8의 1번입니다. <span class="math inline">\(a = 1\)</span>, <span class="math inline">\(c = 1\)</span>로 두면 주기는 최대인 <span class="math inline">\(m\)</span>이지만, 수열은 <span class="math inline">\(z_0, z_0 + 1, z_0 + 2, \ldots\)</span>처럼 한 칸씩 올라갈 뿐입니다. 모든 값을 정확히 한 번씩 고르게 거치니 “균등”하기는 하지만, 다음 값을 완벽하게 예측할 수 있으므로 “독립”과는 거리가 멉니다.</p>
+<p>가장 극단적인 예는 명제 1.1.6의 1번입니다. <span class="math inline">\(a = 1\)</span>, <span class="math inline">\(c = 1\)</span>로 두면 주기는 최대인 <span class="math inline">\(m\)</span>이지만, 수열은 <span class="math inline">\(z_0, z_0 + 1, z_0 + 2, \ldots\)</span>처럼 한 칸씩 올라갈 뿐입니다. 모든 값을 정확히 한 번씩 고르게 거치니 “균등”하기는 하지만, 다음 값을 완벽하게 예측할 수 있으므로 “독립”과는 거리가 멉니다.</p>
 <p>2번 조건을 만족하는 곱셈형 생성기에서도 비슷한 문제가 더 은밀한 형태로 나타납니다. 역사적으로 가장 유명한 사례를 보겠습니다.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1152,7 +1020,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>예제 1.1.11 (RANDU)
+<span class="screen-reader-only">Note</span>예제 1.1.7 (RANDU)
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1160,26 +1028,42 @@ window.Quarto = {
 </div>
 </div>
 <p>먼저 1,200개를 만들어 히스토그램을 그려 보겠습니다.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>nsim <span class="op">=</span> <span class="dv">1200</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>A, M <span class="op">=</span> <span class="dv">2</span><span class="op">**</span><span class="dv">16</span> <span class="op">+</span> <span class="dv">3</span>, <span class="dv">2</span><span class="op">**</span><span class="dv">31</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>S <span class="op">=</span> np.empty(nsim, dtype<span class="op">=</span>np.int64)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>S[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, nsim):</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    S[i] <span class="op">=</span> (S[i <span class="op">-</span> <span class="dv">1</span>] <span class="op">*</span> A) <span class="op">%</span> M</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>U <span class="op">=</span> S <span class="op">/</span> M</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.histogram(U, bins<span class="op">=</span><span class="dv">10</span>, <span class="bu">range</span><span class="op">=</span>(<span class="dv">0</span>, <span class="dv">1</span>))[<span class="dv">0</span>])   <span class="co"># 0.1 간격 10칸에 들어간 개수</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>nsim <span class="op">=</span> <span class="dv">1200</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>A, M <span class="op">=</span> <span class="dv">2</span><span class="op">**</span><span class="dv">16</span> <span class="op">+</span> <span class="dv">3</span>, <span class="dv">2</span><span class="op">**</span><span class="dv">31</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>S <span class="op">=</span> np.empty(nsim, dtype<span class="op">=</span>np.int64)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>S[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, nsim):</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    S[i] <span class="op">=</span> (S[i <span class="op">-</span> <span class="dv">1</span>] <span class="op">*</span> A) <span class="op">%</span> M</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>U <span class="op">=</span> S <span class="op">/</span> M</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.histogram(U, bins<span class="op">=</span><span class="dv">10</span>, <span class="bu">range</span><span class="op">=</span>(<span class="dv">0</span>, <span class="dv">1</span>))[<span class="dv">0</span>])   <span class="co"># 0.1 간격 10칸에 들어간 개수</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <pre><code>[126 108  96 132 129 113 123 142 119 112]</code></pre>
 <p><img src="figures/randu-hist.png" class="img-fluid" style="width:75.0%" alt="RANDU로 만든 1200개 값의 히스토그램. 0.1 간격 10개 막대의 높이가 96에서 142 사이로, 균등분포일 때의 기대 개수 120을 나타내는 점선 주변에 고르게 분포한다."></p>
 <p>각 칸의 개수가 기대값 <span class="math inline">\(120\)</span> 근처에 고르게 흩어져 있어, 히스토그램만 보면 아무 문제가 없어 보입니다. 이제 연속된 세 값을 묶어서 다음 양을 계산해 보겠습니다.</p>
 <p><span class="math display">\[V_k := u_{k+2} - 6u_{k+1} + 9u_k\]</span></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> U[<span class="dv">2</span>:] <span class="op">-</span> <span class="dv">6</span> <span class="op">*</span> U[<span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> <span class="dv">9</span> <span class="op">*</span> U[:<span class="op">-</span><span class="dv">2</span>]</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.unique(V))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> U[<span class="dv">2</span>:] <span class="op">-</span> <span class="dv">6</span> <span class="op">*</span> U[<span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> <span class="dv">9</span> <span class="op">*</span> U[:<span class="op">-</span><span class="dv">2</span>]</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.unique(V))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <pre><code>[-5. -4. -3. -2. -1.  0.  1.  2.  3.  4.  5.  6.  7.  8.  9.]</code></pre>
 <p><img src="figures/randu-planes.png" class="img-fluid" alt="두 개의 산점도. 왼쪽 RANDU의 V_k 값은 -5부터 9까지의 정수 위에만 가로줄 모양으로 찍혀 있다. 오른쪽 NumPy 기본 생성기의 V_k 값은 -6과 10 사이에 연속적으로 흩어져 있다."></p>
 <p>1,198개의 <span class="math inline">\(V_k\)</span>가 <strong><span class="math inline">\(-5\)</span>부터 <span class="math inline">\(9\)</span>까지의 정수, 단 15가지 값</strong>만 가집니다. 진짜 i.i.d. 균등난수라면 <span class="math inline">\(V_k\)</span>는 <span class="math inline">\(-6\)</span>과 <span class="math inline">\(10\)</span> 사이의 실수 값을 연속적으로 가져야 하고, 실제로 오른쪽 그림처럼 NumPy의 기본 생성기로 같은 계산을 하면 값이 고르게 흩어집니다.</p>
-<p>이유는 곱수 <span class="math inline">\(a = 2^{16} + 3\)</span>에 숨어 있습니다. <span class="math inline">\(2^{32}\)</span>은 <span class="math inline">\(2^{31}\)</span>의 배수이므로 <span class="math display">\[a^2 = 2^{32} + 6 \cdot 2^{16} + 9 \equiv 6 \cdot 2^{16} + 9 = 6(2^{16} + 3) - 9 = 6a - 9 \pmod{2^{31}}\]</span> 입니다. 따라서 <span class="math display">\[z_{k+2} \equiv a^2 z_k \equiv (6a - 9) z_k = 6 z_{k+1} - 9 z_k \pmod{2^{31}},\]</span> 즉 <span class="math inline">\(z_{k+2} - 6z_{k+1} + 9z_k\)</span>는 항상 <span class="math inline">\(2^{31}\)</span>의 배수입니다. 양변을 <span class="math inline">\(2^{31}\)</span>로 나누면 <span class="math inline">\(V_k\)</span>는 <strong>정수</strong>이고, <span class="math inline">\(u_k \in [0, 1)\)</span>이므로 <span class="math inline">\(V_k\)</span>는 <span class="math inline">\(-6\)</span>과 <span class="math inline">\(10\)</span> 사이의 정수, 즉 <span class="math inline">\(-5, -4, \ldots, 9\)</span> 중 하나일 수밖에 없습니다. 코드로도 확인할 수 있습니다.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.<span class="bu">all</span>((S[<span class="dv">2</span>:] <span class="op">-</span> <span class="dv">6</span> <span class="op">*</span> S[<span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> <span class="dv">9</span> <span class="op">*</span> S[:<span class="op">-</span><span class="dv">2</span>]) <span class="op">%</span> M <span class="op">==</span> <span class="dv">0</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>이유는 곱수 <span class="math inline">\(a = 2^{16} + 3\)</span>에 숨어 있습니다. 간단히 말하면 <span class="math inline">\(a^2\)</span>을 <span class="math inline">\(2^{31}\)</span>로 나눈 나머지가 <span class="math inline">\(6a - 9\)</span>와 같아서, 연속된 세 값 사이에 <span class="math inline">\(z_{k+2} - 6z_{k+1} + 9z_k \equiv 0 \pmod{2^{31}}\)</span>이라는 관계가 항상 성립하기 때문입니다.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>자세히 보기: 왜 정수만 나올까
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(2^{32}\)</span>은 <span class="math inline">\(2^{31}\)</span>의 배수이므로 <span class="math display">\[a^2 = 2^{32} + 6 \cdot 2^{16} + 9 \equiv 6 \cdot 2^{16} + 9 = 6a - 9 \pmod{2^{31}}\]</span> 입니다. 따라서 <span class="math inline">\(z_{k+2} \equiv a^2 z_k \equiv (6a - 9) z_k = 6 z_{k+1} - 9 z_k \pmod{2^{31}}\)</span>, 즉 <span class="math inline">\(z_{k+2} - 6z_{k+1} + 9z_k\)</span>는 항상 <span class="math inline">\(2^{31}\)</span>의 배수입니다. 이를 <span class="math inline">\(2^{31}\)</span>로 나눈 것이 <span class="math inline">\(V_k\)</span>이므로 <span class="math inline">\(V_k\)</span>는 정수이고, <span class="math inline">\(u_k \in [0, 1)\)</span>이므로 <span class="math inline">\(-6 &lt; V_k &lt; 10\)</span>입니다.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.<span class="bu">all</span>((S[<span class="dv">2</span>:] <span class="op">-</span> <span class="dv">6</span> <span class="op">*</span> S[<span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> <span class="dv">9</span> <span class="op">*</span> S[:<span class="op">-</span><span class="dv">2</span>]) <span class="op">%</span> M <span class="op">==</span> <span class="dv">0</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <pre><code>True</code></pre>
+</div>
+</div>
+</div>
 <p>이 사실을 기하학적으로 보면 더 충격적입니다. 연속된 세 값을 묶은 점 <span class="math inline">\((u_k, u_{k+1}, u_{k+2})\)</span>를 단위 정육면체 안에 찍으면, 진짜 난수라면 정육면체를 고르게 채워야 합니다. 그런데 RANDU의 점들은 모두 <span class="math inline">\(9x - 6y + z = n\)</span> (<span class="math inline">\(n = -5, \ldots, 9\)</span>) 꼴의 <strong>평행한 평면 15장 위에만</strong> 놓입니다. 이 평면들을 한 축에 비춰 본 그림자, 즉 히스토그램은 여전히 고르게 보이기 때문에 히스토그램만으로는 이 결함을 볼 수 없습니다. 1968년 마살리아(G. Marsaglia)는 곱셈형 LCG가 만든 점들이 언제나 이런 평면 구조를 가진다는 것을 보였고, 이 결과는 “난수는 주로 평면 위에 떨어진다”라는 제목으로 유명해졌습니다.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 <p>교훈은 분명합니다. <strong>균등분포를 따르는지(주변분포)만 확인해서는 부족하고, 연속된 값들이 서로 독립처럼 행동하는지(결합분포)까지 확인해야 합니다.</strong></p>
 </section>
@@ -1188,7 +1072,7 @@ window.Quarto = {
 <p>이번 글에서 본 내용을 정리하면 다음과 같습니다.</p>
 <ul>
 <li>선형 합동 생성기는 <span class="math inline">\(z_k = (a z_{k-1} + c) \bmod m\)</span>, <span class="math inline">\(u_k = z_k/m\)</span>이라는 아주 단순한 규칙으로 균등난수를 흉내 냅니다. 시드 <span class="math inline">\(z_0\)</span>이 같으면 같은 수열이 나오며, 이 수열은 완전히 결정론적입니다.</li>
-<li>상태가 <span class="math inline">\(m\)</span>개뿐이므로 주기는 <span class="math inline">\(m\)</span>을 넘을 수 없고, 명제 1.1.8은 주기가 최대(<span class="math inline">\(m\)</span> 또는 <span class="math inline">\(m-1\)</span>)가 되도록 파라미터를 고르는 조건을 줍니다.</li>
+<li>상태가 <span class="math inline">\(m\)</span>개뿐이므로 주기는 <span class="math inline">\(m\)</span>을 넘을 수 없고, 명제 1.1.6은 주기가 최대(<span class="math inline">\(m\)</span> 또는 <span class="math inline">\(m-1\)</span>)가 되도록 파라미터를 고르는 조건을 줍니다.</li>
 <li>그러나 주기가 길다고 좋은 난수는 아닙니다. RANDU는 히스토그램으로는 완벽해 보이지만, 연속된 세 값이 15장의 평면 위에만 놓이는 심각한 결함을 가지고 있었습니다.</li>
 </ul>
 <p>오늘날 파이썬과 R의 기본 생성기는 메르센 트위스터나 PCG처럼 LCG보다 훨씬 정교한 알고리즘을 쓰고, 이런 단순한 결함을 피하도록 설계되어 있습니다. 하지만 “결정론적인 상태를 정해진 규칙으로 갱신한다”는 뼈대는 LCG와 같습니다.</p>
@@ -1198,7 +1082,7 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="연결되는-개념">연결되는 개념</h3>
 <ul>
 <li><span class="math inline">\(\leftarrow\)</span> <strong>이전 개념:</strong> <a href="../../../stats/stochastic-simulation/01-monte-carlo/index.html">1 몬테카를로 시뮬레이션</a></li>
-<li><span class="math inline">\(\rightarrow\)</span> <strong>다음 개념:</strong> 추후 작성 예정</li>
+<li><span class="math inline">\(\rightarrow\)</span> <strong>다음 개념:</strong> <a href="../../../stats/stochastic-simulation/01-monte-carlo/02-statistical-tests.html">1.2 난수 생성기의 통계적 검정</a></li>
 </ul>
 
 
@@ -1811,6 +1695,9 @@ document.addEventListener("DOMContentLoaded", function () {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../../../stats/stochastic-simulation/01-monte-carlo/02-statistical-tests.html" class="pagination-link" aria-label="1.2 난수 생성기의 통계적 검정">
+        <span class="nav-page-text">1.2 난수 생성기의 통계적 검정</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
