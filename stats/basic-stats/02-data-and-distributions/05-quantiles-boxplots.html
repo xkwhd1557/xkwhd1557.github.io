@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="dcterms.date" content="2026-11-16">
-<meta name="description" content="경험적 분위수를 정의하고 분위수가 하나로 정해지지 않는 경우와 소프트웨어마다 값이 다른 이유를 살펴봅니다. 사분위수, 중앙값, 사분위 범위, 다섯 수치 요약을 거쳐 상자그림을 그리고 펭귄 세 종의 몸무게를 비교합니다.">
+<meta name="description" content="경험적 분위수를 정의하고 분위수가 하나로 정해지지 않는 경우와 소프트웨어마다 값이 다른 이유를 살펴봅니다. 사분위수, 중앙값, 사분위 범위, 다섯 수치 요약을 거쳐 박스 플롯을 그리고 펭귄 세 종의 몸무게를 비교합니다.">
 
-<title>2.5 분위수와 상자그림 – Study Archive</title>
+<title>2.5 분위수와 박스 플롯 – Study Archive</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -73,6 +73,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
+<link href="../../../stats/basic-stats/03-summary-statistics/index.html" rel="next">
 <link href="../../../stats/basic-stats/02-data-and-distributions/04-ecdf.html" rel="prev">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -143,17 +144,17 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="2.5 분위수와 상자그림 – Study Archive">
-<meta property="og:description" content="경험적 분위수를 정의하고 분위수가 하나로 정해지지 않는 경우와 소프트웨어마다 값이 다른 이유를 살펴봅니다. 사분위수, 중앙값, 사분위 범위, 다섯 수치 요약을 거쳐 상자그림을 그리고 펭귄 세 종의 몸무게를 비교합니다.">
+<meta property="og:title" content="2.5 분위수와 박스 플롯 – Study Archive">
+<meta property="og:description" content="경험적 분위수를 정의하고 분위수가 하나로 정해지지 않는 경우와 소프트웨어마다 값이 다른 이유를 살펴봅니다. 사분위수, 중앙값, 사분위 범위, 다섯 수치 요약을 거쳐 박스 플롯을 그리고 펭귄 세 종의 몸무게를 비교합니다.">
 <meta property="og:image" content="https://xkwhd1557.github.io/stats/basic-stats/02-data-and-distributions/figures/boxplot-anatomy.png">
 <meta property="og:site_name" content="Study Archive">
-<meta property="og:image:alt" content="턱끈펭귄 68마리의 몸무게로 그린 가로 방향 상자그림. 상자는 Q1인 3475g부터 Q3인 3950g까지이고 그 폭이 IQR로 표시되어 있다. 중앙값 3700g에 세로선이 있다. 수염은 왼쪽으로 2900g, 오른쪽으로 4550g까지 뻗어 있고, 그 바깥의 2700g과 4800g은 빈 동그라미로 그려진 이상치이다.">
+<meta property="og:image:alt" content="턱끈펭귄 68마리의 몸무게로 그린 가로 방향 박스 플롯. 박스는 Q1인 3475g부터 Q3인 3950g까지이고 그 폭이 IQR로 표시되어 있다. 중앙값 3700g에 세로선이 있다. 수염은 왼쪽으로 2900g, 오른쪽으로 4550g까지 뻗어 있고, 그 바깥의 2700g과 4800g은 빈 동그라미로 그려진 이상치이다.">
 <meta property="og:image:height" content="510">
 <meta property="og:image:width" content="1275">
-<meta name="twitter:title" content="2.5 분위수와 상자그림 – Study Archive">
-<meta name="twitter:description" content="경험적 분위수를 정의하고 분위수가 하나로 정해지지 않는 경우와 소프트웨어마다 값이 다른 이유를 살펴봅니다. 사분위수, 중앙값, 사분위 범위, 다섯 수치 요약을 거쳐 상자그림을 그리고 펭귄 세 종의 몸무게를 비교합니다.">
+<meta name="twitter:title" content="2.5 분위수와 박스 플롯 – Study Archive">
+<meta name="twitter:description" content="경험적 분위수를 정의하고 분위수가 하나로 정해지지 않는 경우와 소프트웨어마다 값이 다른 이유를 살펴봅니다. 사분위수, 중앙값, 사분위 범위, 다섯 수치 요약을 거쳐 박스 플롯을 그리고 펭귄 세 종의 몸무게를 비교합니다.">
 <meta name="twitter:image" content="https://xkwhd1557.github.io/stats/basic-stats/02-data-and-distributions/figures/boxplot-anatomy.png">
-<meta name="twitter:image:alt" content="턱끈펭귄 68마리의 몸무게로 그린 가로 방향 상자그림. 상자는 Q1인 3475g부터 Q3인 3950g까지이고 그 폭이 IQR로 표시되어 있다. 중앙값 3700g에 세로선이 있다. 수염은 왼쪽으로 2900g, 오른쪽으로 4550g까지 뻗어 있고, 그 바깥의 2700g과 4800g은 빈 동그라미로 그려진 이상치이다.">
+<meta name="twitter:image:alt" content="턱끈펭귄 68마리의 몸무게로 그린 가로 방향 박스 플롯. 박스는 Q1인 3475g부터 Q3인 3950g까지이고 그 폭이 IQR로 표시되어 있다. 중앙값 3700g에 세로선이 있다. 수염은 왼쪽으로 2900g, 오른쪽으로 4550g까지 뻗어 있고, 그 바깥의 2700g과 4800g은 빈 동그라미로 그려진 이상치이다.">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -685,7 +686,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../stats/basic-stats/index.html">기초 통계학(Introductory Statistics)</a></li><li class="breadcrumb-item"><a href="../../../stats/basic-stats/02-data-and-distributions/index.html">2 데이터의 종류와 분포 보기</a></li><li class="breadcrumb-item"><a href="../../../stats/basic-stats/02-data-and-distributions/05-quantiles-boxplots.html">2.5 분위수와 상자그림</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../stats/basic-stats/index.html">기초 통계학(Introductory Statistics)</a></li><li class="breadcrumb-item"><a href="../../../stats/basic-stats/02-data-and-distributions/index.html">2 데이터의 종류와 분포 보기</a></li><li class="breadcrumb-item"><a href="../../../stats/basic-stats/02-data-and-distributions/05-quantiles-boxplots.html">2.5 분위수와 박스 플롯</a></li></ol></nav>
         <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -785,7 +786,83 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../stats/basic-stats/02-data-and-distributions/05-quantiles-boxplots.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">2.5 분위수와 상자그림</span></a>
+ <span class="menu-text">2.5 분위수와 박스 플롯</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../stats/basic-stats/03-summary-statistics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-3-label">3 데이터를 숫자로 요약하기</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-controls="quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section: 3 데이터를 숫자로 요약하기">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-3" aria-labelledby="quarto-sidebar-section-3-label" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../stats/basic-stats/03-summary-statistics/01-center.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.1 중심의 위치</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../stats/basic-stats/03-summary-statistics/02-spread.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.2 퍼진 정도</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../stats/basic-stats/03-summary-statistics/03-shape-and-standardization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.3 모양과 표준화</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../stats/basic-stats/03-summary-statistics/04-robustness.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.4 이상치에 흔들리지 않는 통계량</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../stats/basic-stats/04-two-variables/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-4-label">4 두 변수 사이의 관계</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-controls="quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section: 4 두 변수 사이의 관계">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-4" aria-labelledby="quarto-sidebar-section-4-label" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../stats/basic-stats/04-two-variables/01-contingency-tables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4.1 분할표와 조건부 상대도수</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../stats/basic-stats/04-two-variables/02-correlation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4.2 산점도와 상관계수</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../stats/basic-stats/04-two-variables/03-rank-correlation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4.3 순위 상관</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../stats/basic-stats/04-two-variables/04-correlation-causation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4.4 상관과 인과, 심슨의 역설</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../stats/basic-stats/04-two-variables/05-least-squares.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4.5 최소제곱 직선</span></a>
   </div>
 </li>
       </ul>
@@ -807,9 +884,9 @@ window.Quarto = {
   <li><a href="#분위수와-분위수-구간" id="toc-분위수와-분위수-구간" class="nav-link" data-scroll-target="#분위수와-분위수-구간">분위수와 분위수 구간</a></li>
   <li><a href="#하나로-정하기-관례와-소프트웨어" id="toc-하나로-정하기-관례와-소프트웨어" class="nav-link" data-scroll-target="#하나로-정하기-관례와-소프트웨어">하나로 정하기: 관례와 소프트웨어</a></li>
   <li><a href="#사분위수와-중앙값" id="toc-사분위수와-중앙값" class="nav-link" data-scroll-target="#사분위수와-중앙값">사분위수와 중앙값</a></li>
-  <li><a href="#다섯-수치-요약과-상자그림" id="toc-다섯-수치-요약과-상자그림" class="nav-link" data-scroll-target="#다섯-수치-요약과-상자그림">다섯 수치 요약과 상자그림</a></li>
-  <li><a href="#상자그림으로-여러-집단-비교하기" id="toc-상자그림으로-여러-집단-비교하기" class="nav-link" data-scroll-target="#상자그림으로-여러-집단-비교하기">상자그림으로 여러 집단 비교하기</a></li>
-  <li><a href="#상자그림이-숨기는-것" id="toc-상자그림이-숨기는-것" class="nav-link" data-scroll-target="#상자그림이-숨기는-것">상자그림이 숨기는 것</a></li>
+  <li><a href="#다섯-수치-요약과-박스-플롯" id="toc-다섯-수치-요약과-박스-플롯" class="nav-link" data-scroll-target="#다섯-수치-요약과-박스-플롯">다섯 수치 요약과 박스 플롯</a></li>
+  <li><a href="#박스-플롯으로-여러-집단-비교하기" id="toc-박스-플롯으로-여러-집단-비교하기" class="nav-link" data-scroll-target="#박스-플롯으로-여러-집단-비교하기">박스 플롯으로 여러 집단 비교하기</a></li>
+  <li><a href="#박스-플롯이-숨기는-것" id="toc-박스-플롯이-숨기는-것" class="nav-link" data-scroll-target="#박스-플롯이-숨기는-것">박스 플롯이 숨기는 것</a></li>
   <li><a href="#정리" id="toc-정리" class="nav-link" data-scroll-target="#정리">정리</a>
   <ul class="collapse">
   <li><a href="#연결되는-개념" id="toc-연결되는-개념" class="nav-link" data-scroll-target="#연결되는-개념">연결되는 개념</a></li>
@@ -820,9 +897,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content" tabindex="-1">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../stats/basic-stats/index.html">기초 통계학(Introductory Statistics)</a></li><li class="breadcrumb-item"><a href="../../../stats/basic-stats/02-data-and-distributions/index.html">2 데이터의 종류와 분포 보기</a></li><li class="breadcrumb-item"><a href="../../../stats/basic-stats/02-data-and-distributions/05-quantiles-boxplots.html">2.5 분위수와 상자그림</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../stats/basic-stats/index.html">기초 통계학(Introductory Statistics)</a></li><li class="breadcrumb-item"><a href="../../../stats/basic-stats/02-data-and-distributions/index.html">2 데이터의 종류와 분포 보기</a></li><li class="breadcrumb-item"><a href="../../../stats/basic-stats/02-data-and-distributions/05-quantiles-boxplots.html">2.5 분위수와 박스 플롯</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">2.5 분위수와 상자그림</h1>
+<h1 class="title">2.5 분위수와 박스 플롯</h1>
 <p class="subtitle lead">2장 데이터의 종류와 분포 보기 · 다섯 개의 숫자로 분포 그리기</p>
   <div class="quarto-categories">
     <div class="quarto-category">확률과 통계</div>
@@ -832,7 +909,7 @@ window.Quarto = {
 
 <div>
   <div class="description">
-    경험적 분위수를 정의하고 분위수가 하나로 정해지지 않는 경우와 소프트웨어마다 값이 다른 이유를 살펴봅니다. 사분위수, 중앙값, 사분위 범위, 다섯 수치 요약을 거쳐 상자그림을 그리고 펭귄 세 종의 몸무게를 비교합니다.
+    경험적 분위수를 정의하고 분위수가 하나로 정해지지 않는 경우와 소프트웨어마다 값이 다른 이유를 살펴봅니다. 사분위수, 중앙값, 사분위 범위, 다섯 수치 요약을 거쳐 박스 플롯을 그리고 펭귄 세 종의 몸무게를 비교합니다.
   </div>
 </div>
 
@@ -858,7 +935,7 @@ window.Quarto = {
 <section id="들어가며" class="level2">
 <h2 class="anchored" data-anchor-id="들어가며">들어가며</h2>
 <p><a href="../../../stats/basic-stats/02-data-and-distributions/04-ecdf.html">지난 글</a>에서는 경험적 분포함수를 거꾸로 읽는 경험적 분위수 함수 <span class="math inline">\(F_n^{-1}(p) = x_{(\lceil np \rceil)}\)</span>를 정의했습니다. 그리고 “데이터의 <span class="math inline">\(100p\%\)</span>가 이 값 이하”라고 말할 수 있는 값이 여러 개일 때가 있다는 것도 보았습니다.</p>
-<p>이번 글에서는 이 문제를 정면으로 다룹니다. 먼저 <strong>분위수</strong>를 정의하고 그것이 하나로 정해지지 않는 경우를 정확히 정리한 뒤, 하나로 정하는 관례와 소프트웨어마다 값이 다른 이유를 살펴봅니다. 그다음 가장 중요한 분위수인 <strong>사분위수</strong>와 <strong>중앙값</strong>으로 분포를 다섯 개의 숫자로 요약하고, 이를 그림으로 나타낸 <strong>상자그림</strong>으로 여러 집단을 비교해 보겠습니다.</p>
+<p>이번 글에서는 이 문제를 정면으로 다룹니다. 먼저 <strong>분위수</strong>를 정의하고 그것이 하나로 정해지지 않는 경우를 정확히 정리한 뒤, 하나로 정하는 관례와 소프트웨어마다 값이 다른 이유를 살펴봅니다. 그다음 가장 중요한 분위수인 <strong>사분위수</strong>와 <strong>중앙값</strong>으로 분포를 다섯 개의 숫자로 요약하고, 이를 그림으로 나타낸 <strong>박스 플롯</strong>으로 여러 집단을 비교해 보겠습니다.</p>
 </section>
 <section id="가운데-값이-둘일-때" class="level2">
 <h2 class="anchored" data-anchor-id="가운데-값이-둘일-때">가운데 값이 둘일 때</h2>
@@ -983,31 +1060,31 @@ window.Quarto = {
 <p>사분위수는 데이터를 대략 네 등분합니다. 제1사분위수 아래에 약 25%, 제1사분위수와 중앙값 사이에 약 25%, 이런 식입니다. 그래서 사분위 범위는 <strong>가운데 50%의 데이터가 차지하는 폭</strong>이고, 데이터가 얼마나 퍼져 있는지를 나타내는 숫자로 쓰입니다. 양 끝의 극단적인 값에 영향을 받지 않는다는 것이 장점인데, 이 점은 3장에서 다른 퍼짐의 척도들과 함께 다시 다룹니다.</p>
 <p><strong>순서 척도의 분위수.</strong> 분위수는 순서만 있으면 정의할 수 있으므로 순서 척도 데이터에도 쓸 수 있습니다. 다만 순서 척도에서는 두 값의 “가운데”를 계산할 수 없습니다. 예를 들어 여섯 사람의 만족도 응답이 “불만, 보통, 보통, 만족, 만족, 매우 만족”이면 중앙값의 분위수 구간은 “보통”부터 “만족”까지인데, 그 가운데라는 값은 없습니다. 이럴 때는 보통 분위수 구간의 <strong>왼쪽 끝</strong>, 즉 가장 작은 분위수를 고릅니다. 이 예에서 중앙값은 “보통”입니다.</p>
 </section>
-<section id="다섯-수치-요약과-상자그림" class="level2">
-<h2 class="anchored" data-anchor-id="다섯-수치-요약과-상자그림">다섯 수치 요약과 상자그림</h2>
+<section id="다섯-수치-요약과-박스-플롯" class="level2">
+<h2 class="anchored" data-anchor-id="다섯-수치-요약과-박스-플롯">다섯 수치 요약과 박스 플롯</h2>
 <p><span class="math inline">\(x_{(1)}\)</span>, <span class="math inline">\(Q_1\)</span>, 중앙값, <span class="math inline">\(Q_3\)</span>, <span class="math inline">\(x_{(n)}\)</span>의 다섯 숫자를 <strong>다섯 수치 요약</strong>(five-number summary)이라고 합니다. 데이터의 위치(중앙값), 가운데 절반의 범위(<span class="math inline">\(Q_1\)</span>부터 <span class="math inline">\(Q_3\)</span>까지), 전체 범위(<span class="math inline">\(x_{(1)}\)</span>부터 <span class="math inline">\(x_{(n)}\)</span>까지)를 한꺼번에 보여 주는 간결한 요약입니다.</p>
-<p>이 요약을 그림으로 나타낸 것이 존 튜키가 고안한 <strong>상자그림</strong>(box plot)입니다.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> 다만 실제 상자그림은 최솟값과 최댓값을 그대로 쓰는 대신, 다른 값들과 동떨어진 값을 따로 표시하는 규칙을 하나 더 씁니다.</p>
+<p>이 요약을 그림으로 나타낸 것이 존 튜키가 고안한 <strong>박스 플롯</strong>(box plot)입니다.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> 다만 실제 박스 플롯은 최솟값과 최댓값을 그대로 쓰는 대신, 다른 값들과 동떨어진 값을 따로 표시하는 규칙을 하나 더 씁니다.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>알고리즘 2.5.4 (상자그림 그리기)
+<span class="screen-reader-only">Note</span>알고리즘 2.5.4 (박스 플롯 그리기)
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>입력:</strong> 수치형 데이터 <span class="math inline">\(x_1, \dots, x_n\)</span><br> <strong>출력:</strong> 상자그림</p>
+<p><strong>입력:</strong> 수치형 데이터 <span class="math inline">\(x_1, \dots, x_n\)</span><br> <strong>출력:</strong> 박스 플롯</p>
 <ol type="1">
 <li>사분위수 <span class="math inline">\(Q_1\)</span>, 중앙값, <span class="math inline">\(Q_3\)</span>과 사분위 범위 <span class="math inline">\(\mathrm{IQR} = Q_3 - Q_1\)</span>을 계산합니다.</li>
-<li><span class="math inline">\(Q_1\)</span>부터 <span class="math inline">\(Q_3\)</span>까지 <strong>상자</strong>를 그리고, 중앙값 위치에 상자를 가로지르는 선을 긋습니다.</li>
+<li><span class="math inline">\(Q_1\)</span>부터 <span class="math inline">\(Q_3\)</span>까지 <strong>박스</strong>를 그리고, 중앙값 위치에 박스를 가로지르는 선을 긋습니다.</li>
 <li><strong>울타리</strong>(fence)를 <span class="math inline">\(Q_1 - 1.5 \cdot \mathrm{IQR}\)</span>과 <span class="math inline">\(Q_3 + 1.5 \cdot \mathrm{IQR}\)</span>로 정합니다.</li>
-<li>상자의 양쪽에서 <strong>울타리 안에 있는 가장 바깥쪽 데이터</strong>까지 선을 그립니다. 이 선을 <strong>수염</strong>(whisker)이라고 합니다.</li>
+<li>박스의 양쪽에서 <strong>울타리 안에 있는 가장 바깥쪽 데이터</strong>까지 선을 그립니다. 이 선을 <strong>수염</strong>(whisker)이라고 합니다.</li>
 <li>울타리 밖에 있는 데이터는 점으로 하나씩 따로 표시하고, <strong>이상치</strong>(outlier)라고 부릅니다.</li>
 </ol>
 </div>
 </div>
-<p>수염이 상자에서 뻗어 나온 모양 때문에 <strong>상자-수염 그림</strong>(box-and-whisker plot)이라고도 부릅니다. 펭귄 데이터의 턱끈펭귄(Chinstrap) 68마리의 몸무게로 직접 계산해 보겠습니다.</p>
+<p>수염이 박스에서 뻗어 나온 모양 때문에 영어로는 box-and-whisker plot이라고도 부릅니다. 펭귄 데이터의 턱끈펭귄(Chinstrap) 68마리의 몸무게로 직접 계산해 보겠습니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1027,15 +1104,15 @@ IQR            : 475.0
 울타리         : 2762.5 4662.5
 수염 끝        : 2900.0 4550.0
 이상치         : [2700. 4800.]</code></pre>
-<p><img src="figures/boxplot-anatomy.png" class="img-fluid" style="width:90.0%" alt="턱끈펭귄 68마리의 몸무게로 그린 가로 방향 상자그림. 상자는 Q1인 3475g부터 Q3인 3950g까지이고 그 폭이 IQR로 표시되어 있다. 중앙값 3700g에 세로선이 있다. 수염은 왼쪽으로 2900g, 오른쪽으로 4550g까지 뻗어 있고, 그 바깥의 2700g과 4800g은 빈 동그라미로 그려진 이상치이다."></p>
-<p>상자는 3475g부터 3950g까지이고, 그 안의 3700g에 중앙값 선이 있습니다. 울타리는 2762.5g과 4662.5g이므로, 그 안에서 가장 가벼운 2900g과 가장 무거운 4550g까지 수염이 뻗고, 바깥에 있는 2700g과 4800g은 이상치로 따로 표시됩니다.</p>
+<p><img src="figures/boxplot-anatomy.png" class="img-fluid" style="width:90.0%" alt="턱끈펭귄 68마리의 몸무게로 그린 가로 방향 박스 플롯. 박스는 Q1인 3475g부터 Q3인 3950g까지이고 그 폭이 IQR로 표시되어 있다. 중앙값 3700g에 세로선이 있다. 수염은 왼쪽으로 2900g, 오른쪽으로 4550g까지 뻗어 있고, 그 바깥의 2700g과 4800g은 빈 동그라미로 그려진 이상치이다."></p>
+<p>박스는 3475g부터 3950g까지이고, 그 안의 3700g에 중앙값 선이 있습니다. 울타리는 2762.5g과 4662.5g이므로, 그 안에서 가장 가벼운 2900g과 가장 무거운 4550g까지 수염이 뻗고, 바깥에 있는 2700g과 4800g은 이상치로 따로 표시됩니다.</p>
 <p><strong>왜 1.5배일까요?</strong> 이 숫자는 튜키가 실용적으로 정한 것이지 어떤 법칙에서 나온 것은 아닙니다. 다만 데이터가 5장에서 다룰 정규분포처럼 좌우 대칭인 종 모양이라면, 울타리 밖으로 나가는 값은 약 0.7%에 불과합니다. 그래서 그런 데이터에서 이상치가 많이 보인다면, 꼬리가 길거나 무언가 특이한 일이 있다는 신호로 읽을 수 있습니다.</p>
-<p><strong>이상치는 오류가 아닙니다.</strong> 상자그림의 이상치는 “다른 값들과 동떨어져 있으니 한번 들여다보라”는 표시일 뿐입니다. 입력 실수일 수도 있지만, 유난히 크거나 작은 진짜 개체일 수도 있습니다. 4800g짜리 턱끈펭귄은 그냥 덩치 큰 턱끈펭귄일 가능성이 높습니다. 이상치를 확인 없이 지워 버리면 데이터가 실제보다 깔끔해 보이는 대신 중요한 정보를 잃을 수 있습니다.</p>
+<p><strong>이상치는 오류가 아닙니다.</strong> 박스 플롯의 이상치는 “다른 값들과 동떨어져 있으니 한번 들여다보라”는 표시일 뿐입니다. 입력 실수일 수도 있지만, 유난히 크거나 작은 진짜 개체일 수도 있습니다. 4800g짜리 턱끈펭귄은 그냥 덩치 큰 턱끈펭귄일 가능성이 높습니다. 이상치를 확인 없이 지워 버리면 데이터가 실제보다 깔끔해 보이는 대신 중요한 정보를 잃을 수 있습니다.</p>
 </section>
-<section id="상자그림으로-여러-집단-비교하기" class="level2">
-<h2 class="anchored" data-anchor-id="상자그림으로-여러-집단-비교하기">상자그림으로 여러 집단 비교하기</h2>
-<p>상자그림이 가장 빛나는 순간은 여러 집단을 나란히 놓고 비교할 때입니다. 펭귄 세 종의 몸무게를 나란히 그려 보겠습니다.</p>
-<p><img src="figures/boxplot-species.png" class="img-fluid" style="width:80.0%" alt="펭귄 세 종의 몸무게를 나란히 그린 상자그림. Adelie(파랑)는 상자가 3350g부터 4000g, 중앙값 3700g이다. Chinstrap(주황)은 상자가 3475g부터 3950g으로 조금 더 좁고 중앙값은 똑같이 3700g이며, 2700g과 4800g에 이상치가 하나씩 있다. Gentoo(초록)는 상자가 4700g부터 5500g, 중앙값 5000g으로 다른 두 종보다 훨씬 위에 있다."></p>
+<section id="박스-플롯으로-여러-집단-비교하기" class="level2">
+<h2 class="anchored" data-anchor-id="박스-플롯으로-여러-집단-비교하기">박스 플롯으로 여러 집단 비교하기</h2>
+<p>박스 플롯이 가장 빛나는 순간은 여러 집단을 나란히 놓고 비교할 때입니다. 펭귄 세 종의 몸무게를 나란히 그려 보겠습니다.</p>
+<p><img src="figures/boxplot-species.png" class="img-fluid" style="width:80.0%" alt="펭귄 세 종의 몸무게를 나란히 그린 박스 플롯. Adelie(파랑)는 박스가 3350g부터 4000g, 중앙값 3700g이다. Chinstrap(주황)은 박스가 3475g부터 3950g으로 조금 더 좁고 중앙값은 똑같이 3700g이며, 2700g과 4800g에 이상치가 하나씩 있다. Gentoo(초록)는 박스가 4700g부터 5500g, 중앙값 5000g으로 다른 두 종보다 훨씬 위에 있다."></p>
 <p>세 종의 다섯 수치 요약(단위 g)은 다음과 같습니다.</p>
 <table class="caption-top table">
 <thead>
@@ -1082,16 +1159,16 @@ IQR            : 475.0
 <p>그림과 표에서 여러 가지를 바로 읽을 수 있습니다.</p>
 <ul>
 <li>젠투펭귄은 다른 두 종보다 확실히 무겁습니다. 젠투펭귄의 <span class="math inline">\(Q_1\)</span>(4700g)이 아델리펭귄의 <span class="math inline">\(Q_3\)</span>(4000g)보다 큽니다. 즉 젠투펭귄의 4분의 3은 아델리펭귄의 4분의 3보다 무겁습니다.</li>
-<li>아델리펭귄과 턱끈펭귄은 중앙값이 3700g으로 같지만, 턱끈펭귄의 상자가 더 좁습니다. 가운데 절반의 몸무게가 더 비슷비슷하다는 뜻입니다.</li>
-<li>젠투펭귄은 상자도 수염도 가장 길어서, 몸무게가 가장 넓게 퍼져 있습니다.</li>
+<li>아델리펭귄과 턱끈펭귄은 중앙값이 3700g으로 같지만, 턱끈펭귄의 박스가 더 좁습니다. 가운데 절반의 몸무게가 더 비슷비슷하다는 뜻입니다.</li>
+<li>젠투펭귄은 박스도 수염도 가장 길어서, 몸무게가 가장 넓게 퍼져 있습니다.</li>
 </ul>
-<p>344개의 숫자가 세 개의 상자로 요약된 덕분에 이런 비교가 한눈에 됩니다.</p>
+<p>344개의 숫자가 세 개의 박스로 요약된 덕분에 이런 비교가 한눈에 됩니다.</p>
 </section>
-<section id="상자그림이-숨기는-것" class="level2">
-<h2 class="anchored" data-anchor-id="상자그림이-숨기는-것">상자그림이 숨기는 것</h2>
-<p>상자그림은 간결한 만큼 많은 것을 숨깁니다. 대표적인 예가 <a href="../../../stats/basic-stats/02-data-and-distributions/03-histograms.html">2.3</a>의 간헐천 대기 시간입니다. 이 데이터의 다섯 수치 요약은 43, 58, 76, 82, 96분입니다. 상자그림으로 그리면 중앙값이 상자 위쪽에 치우친 평범한 상자 하나가 나오고, <strong>봉우리가 둘</strong>이라는 가장 중요한 특징은 전혀 드러나지 않습니다.</p>
-<p>그래서 상자그림은 분포의 모양을 이미 히스토그램 등으로 확인한 뒤 여러 집단을 비교할 때 쓰는 것이 좋습니다. 상자그림을 변형해 이런 약점을 보완한 여러 그림도 제안되어 있습니다.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
-<p>마지막으로 소프트웨어에 관한 주의를 하나 덧붙이겠습니다. 맷플롯립이나 시본의 상자그림 함수는 기본적으로 넘파이 기본값(<code>linear</code>) 방식의 사분위수를 씁니다. 이 글의 그림은 정의 2.5.3에 맞춰 분위수 구간의 가운데로 사분위수를 계산해 그렸습니다. 턱끈펭귄의 <span class="math inline">\(Q_1\)</span>이 넘파이 기본값으로는 3487.5g, 이 글의 정의로는 3475g인 것처럼, 데이터가 적을 때는 같은 데이터로 그린 상자그림의 상자 크기가 도구에 따라 조금 다를 수 있습니다.</p>
+<section id="박스-플롯이-숨기는-것" class="level2">
+<h2 class="anchored" data-anchor-id="박스-플롯이-숨기는-것">박스 플롯이 숨기는 것</h2>
+<p>박스 플롯은 간결한 만큼 많은 것을 숨깁니다. 대표적인 예가 <a href="../../../stats/basic-stats/02-data-and-distributions/03-histograms.html">2.3</a>의 간헐천 대기 시간입니다. 이 데이터의 다섯 수치 요약은 43, 58, 76, 82, 96분입니다. 박스 플롯으로 그리면 중앙값이 박스 위쪽에 치우친 평범한 박스 하나가 나오고, <strong>봉우리가 둘</strong>이라는 가장 중요한 특징은 전혀 드러나지 않습니다.</p>
+<p>그래서 박스 플롯은 분포의 모양을 이미 히스토그램 등으로 확인한 뒤 여러 집단을 비교할 때 쓰는 것이 좋습니다. 박스 플롯을 변형해 이런 약점을 보완한 여러 그림도 제안되어 있습니다.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<p>마지막으로 소프트웨어에 관한 주의를 하나 덧붙이겠습니다. 맷플롯립이나 시본의 박스 플롯 함수는 기본적으로 넘파이 기본값(<code>linear</code>) 방식의 사분위수를 씁니다. 이 글의 그림은 정의 2.5.3에 맞춰 분위수 구간의 가운데로 사분위수를 계산해 그렸습니다. 턱끈펭귄의 <span class="math inline">\(Q_1\)</span>이 넘파이 기본값으로는 3487.5g, 이 글의 정의로는 3475g인 것처럼, 데이터가 적을 때는 같은 데이터로 그린 박스 플롯의 박스 크기가 도구에 따라 조금 다를 수 있습니다.</p>
 </section>
 <section id="정리" class="level2">
 <h2 class="anchored" data-anchor-id="정리">정리</h2>
@@ -1100,7 +1177,7 @@ IQR            : 475.0
 <li>경험적 <strong><span class="math inline">\(p\)</span>-분위수</strong>는 데이터의 적어도 <span class="math inline">\(100p\%\)</span>가 그 값 이하이고 적어도 <span class="math inline">\(100(1-p)\%\)</span>가 그 값 이상인 값입니다.</li>
 <li><span class="math inline">\(np\)</span>가 정수가 아니면 분위수는 <span class="math inline">\(x_{(\lceil np \rceil)}\)</span> 하나이고, 정수이면 <strong>분위수 구간</strong> <span class="math inline">\([x_{(np)}, x_{(np+1)}]\)</span> 전체가 분위수입니다. 구간에서 값을 고르는 관례가 여러 가지라서 소프트웨어마다 분위수 값이 다를 수 있습니다.</li>
 <li><strong>사분위수</strong> <span class="math inline">\(Q_1, Q_2, Q_3\)</span>와 <strong>사분위 범위</strong> <span class="math inline">\(\mathrm{IQR}\)</span>은 분포의 위치와 가운데 절반의 폭을 나타냅니다. 이 과목에서는 분위수 구간의 가운데를 사분위수로 씁니다.</li>
-<li><strong>다섯 수치 요약</strong>을 그림으로 나타낸 <strong>상자그림</strong>은 여러 집단을 비교하기에 좋지만, 봉우리가 여럿인 것 같은 분포의 모양은 숨깁니다. 상자그림의 <strong>이상치</strong>는 오류가 아니라 들여다볼 대상입니다.</li>
+<li><strong>다섯 수치 요약</strong>을 그림으로 나타낸 <strong>박스 플롯</strong>은 여러 집단을 비교하기에 좋지만, 봉우리가 여럿인 것 같은 분포의 모양은 숨깁니다. 박스 플롯의 <strong>이상치</strong>는 오류가 아니라 들여다볼 대상입니다.</li>
 </ul>
 <p>2장에서는 데이터의 종류를 구분하고, 세거나 줄 세우는 방법으로 분포 전체를 표와 그림으로 보았습니다. 이 과정에서 중앙값과 사분위 범위라는 숫자도 이미 만났습니다. 3장에서는 이렇게 분포를 <strong>몇 개의 숫자로 요약하는 방법</strong>을 본격적으로 다룹니다. 평균과 중앙값은 언제 다르고 무엇이 더 나은지, 퍼진 정도와 모양은 어떤 숫자로 나타내는지 살펴보겠습니다.</p>
 <hr>
@@ -1108,7 +1185,7 @@ IQR            : 475.0
 <h3 class="anchored" data-anchor-id="연결되는-개념">연결되는 개념</h3>
 <ul>
 <li><span class="math inline">\(\leftarrow\)</span> <strong>이전 개념:</strong> <a href="../../../stats/basic-stats/02-data-and-distributions/04-ecdf.html">2.4 경험적 분포함수</a></li>
-<li><span class="math inline">\(\rightarrow\)</span> <strong>다음 개념:</strong> 3 데이터를 숫자로 요약하기 (추후 작성 예정)</li>
+<li><span class="math inline">\(\rightarrow\)</span> <strong>다음 개념:</strong> <a href="../../../stats/basic-stats/03-summary-statistics/index.html">3 데이터를 숫자로 요약하기</a></li>
 </ul>
 
 
@@ -1722,6 +1799,9 @@ document.addEventListener("DOMContentLoaded", function () {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../../../stats/basic-stats/03-summary-statistics/index.html" class="pagination-link" aria-label="3 데이터를 숫자로 요약하기">
+        <span class="nav-page-text">3 데이터를 숫자로 요약하기</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

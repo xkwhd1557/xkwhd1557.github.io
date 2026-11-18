@@ -786,7 +786,83 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../stats/basic-stats/02-data-and-distributions/05-quantiles-boxplots.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2.5 분위수와 상자그림</span></a>
+ <span class="menu-text">2.5 분위수와 박스 플롯</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../stats/basic-stats/03-summary-statistics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-3-label">3 데이터를 숫자로 요약하기</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-controls="quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section: 3 데이터를 숫자로 요약하기">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-3" aria-labelledby="quarto-sidebar-section-3-label" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../stats/basic-stats/03-summary-statistics/01-center.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.1 중심의 위치</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../stats/basic-stats/03-summary-statistics/02-spread.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.2 퍼진 정도</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../stats/basic-stats/03-summary-statistics/03-shape-and-standardization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.3 모양과 표준화</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../stats/basic-stats/03-summary-statistics/04-robustness.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.4 이상치에 흔들리지 않는 통계량</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../stats/basic-stats/04-two-variables/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-4-label">4 두 변수 사이의 관계</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-controls="quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section: 4 두 변수 사이의 관계">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-4" aria-labelledby="quarto-sidebar-section-4-label" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../stats/basic-stats/04-two-variables/01-contingency-tables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4.1 분할표와 조건부 상대도수</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../stats/basic-stats/04-two-variables/02-correlation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4.2 산점도와 상관계수</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../stats/basic-stats/04-two-variables/03-rank-correlation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4.3 순위 상관</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../stats/basic-stats/04-two-variables/04-correlation-causation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4.4 상관과 인과, 심슨의 역설</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../stats/basic-stats/04-two-variables/05-least-squares.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4.5 최소제곱 직선</span></a>
   </div>
 </li>
       </ul>
@@ -972,11 +1048,11 @@ window.Quarto = {
 <div class="callout-body-container callout-body">
 <p>수치형 데이터 <span class="math inline">\(x_1, \dots, x_n\)</span>과 양수 <span class="math inline">\(h &gt; 0\)</span>에 대해</p>
 <p><span class="math display">\[\hat{f}_h(t) := \frac{1}{nh} \sum_{i=1}^{n} K\!\left( \frac{t - x_i}{h} \right), \qquad K(u) := \frac{1}{\sqrt{2\pi}} e^{-u^2/2}\]</span></p>
-<p>를 <strong>커널 밀도 추정량</strong>이라고 합니다. 함수 <span class="math inline">\(K\)</span>를 <strong>커널</strong>(kernel), <span class="math inline">\(h\)</span>를 <strong>띠폭</strong>(bandwidth)이라고 합니다.</p>
+<p>를 <strong>커널 밀도 추정량</strong>이라고 합니다. 함수 <span class="math inline">\(K\)</span>를 <strong>커널</strong>(kernel), <span class="math inline">\(h\)</span>를 <strong>대역폭</strong>(bandwidth)이라고 합니다.</p>
 </div>
 </div>
 <p>여기서 커널 <span class="math inline">\(K\)</span>는 0을 중심으로 좌우 대칭인 종 모양 언덕이고, 아래 넓이가 1입니다. (<span class="math inline">\(K\)</span>는 5장에서 다룰 표준정규분포의 밀도함수인데, 지금은 “넓이가 1인 종 모양 언덕”이라고만 생각하면 충분합니다.) <span class="math inline">\(K((t - x_i)/h)/h\)</span>는 이 언덕을 <span class="math inline">\(x_i\)</span> 위치로 옮기고 폭을 <span class="math inline">\(h\)</span>배로 넓힌 것이고, 넓이는 여전히 1입니다. 이것을 <span class="math inline">\(n\)</span>개 모두 더해 <span class="math inline">\(n\)</span>으로 나누었으니, <span class="math inline">\(\hat{f}_h\)</span> 아래의 전체 넓이는 히스토그램과 마찬가지로 1입니다.</p>
-<p>히스토그램에서 계급의 개수가 중요했던 것처럼, 커널 밀도 추정에서는 띠폭 <span class="math inline">\(h\)</span>가 중요합니다. 간헐천 데이터로 세 가지 띠폭을 비교해 보겠습니다. 사이파이(SciPy)의 <code>gaussian_kde</code>는 데이터의 표준편차에 곱할 배율로 띠폭을 정하고, 기본값으로는 스콧 규칙(Scott’s rule)이라는 경험 규칙을 씁니다.</p>
+<p>히스토그램에서 계급의 개수가 중요했던 것처럼, 커널 밀도 추정에서는 대역폭 <span class="math inline">\(h\)</span>가 중요합니다. 간헐천 데이터로 세 가지 대역폭을 비교해 보겠습니다. 사이파이(SciPy)의 <code>gaussian_kde</code>는 데이터의 표준편차에 곱할 배율로 대역폭을 정하고, 기본값으로는 스콧 규칙(Scott’s rule)이라는 경험 규칙을 씁니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> gaussian_kde</span>
@@ -984,13 +1060,13 @@ window.Quarto = {
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>waiting <span class="op">=</span> sns.load_dataset(<span class="st">"geyser"</span>)[<span class="st">"waiting"</span>].to_numpy()</span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> bw <span class="kw">in</span> [<span class="fl">0.05</span>, <span class="st">"scott"</span>, <span class="fl">0.6</span>]:</span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    kde <span class="op">=</span> gaussian_kde(waiting, bw_method<span class="op">=</span>bw)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    h <span class="op">=</span> kde.factor <span class="op">*</span> waiting.std(ddof<span class="op">=</span><span class="dv">1</span>)        <span class="co"># 실제 띠폭 (분)</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"bw_method=</span><span class="sc">{</span>bw<span class="sc">!s:&gt;5}</span><span class="ss">: 띠폭 h = </span><span class="sc">{</span>h<span class="sc">:.2f}</span><span class="ss">분, f(55) = </span><span class="sc">{</span>kde(<span class="dv">55</span>)[<span class="dv">0</span>]<span class="sc">:.4f}</span><span class="ss">, f(80) = </span><span class="sc">{</span>kde(<span class="dv">80</span>)[<span class="dv">0</span>]<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre><code>bw_method= 0.05: 띠폭 h = 0.68분, f(55) = 0.0227, f(80) = 0.0349
-bw_method=scott: 띠폭 h = 4.43분, f(55) = 0.0187, f(80) = 0.0352
-bw_method=  0.6: 띠폭 h = 8.16분, f(55) = 0.0153, f(80) = 0.0261</code></pre>
-<p><img src="figures/geyser-kde.png" class="img-fluid" style="width:85.0%" alt="간헐천 대기 시간의 히스토그램 위에 띠폭이 다른 세 커널 밀도 추정 곡선을 겹쳐 그린 그림. 띠폭이 작은 주황 곡선은 뾰족한 봉우리가 여러 개 있는 울퉁불퉁한 모양이다. 자동으로 정한 파란 곡선은 55분 근처와 80분 근처에 봉우리가 하나씩 있는 매끄러운 모양이다. 띠폭이 큰 초록 곡선은 너무 평평해져서 55분 쪽 봉우리가 거의 사라졌다."></p>
-<p>띠폭이 너무 작으면(주황, 약 0.7분) 언덕 하나하나가 좁고 뾰족해서 곡선이 데이터의 우연한 들쭉날쭉함까지 그대로 따라갑니다. 너무 크면(초록, 약 8분) 언덕이 넓게 퍼져서 두 봉우리가 뭉개지고, 55분 쪽 봉우리는 거의 사라집니다. 스콧 규칙으로 정한 띠폭(파랑, 약 4.4분)에서는 두 봉우리가 매끄럽게 드러납니다. 히스토그램의 계급 수와 똑같은 균형 문제입니다.</p>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    h <span class="op">=</span> kde.factor <span class="op">*</span> waiting.std(ddof<span class="op">=</span><span class="dv">1</span>)        <span class="co"># 실제 대역폭 (분)</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"bw_method=</span><span class="sc">{</span>bw<span class="sc">!s:&gt;5}</span><span class="ss">: 대역폭 h = </span><span class="sc">{</span>h<span class="sc">:.2f}</span><span class="ss">분, f(55) = </span><span class="sc">{</span>kde(<span class="dv">55</span>)[<span class="dv">0</span>]<span class="sc">:.4f}</span><span class="ss">, f(80) = </span><span class="sc">{</span>kde(<span class="dv">80</span>)[<span class="dv">0</span>]<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre><code>bw_method= 0.05: 대역폭 h = 0.68분, f(55) = 0.0227, f(80) = 0.0349
+bw_method=scott: 대역폭 h = 4.43분, f(55) = 0.0187, f(80) = 0.0352
+bw_method=  0.6: 대역폭 h = 8.16분, f(55) = 0.0153, f(80) = 0.0261</code></pre>
+<p><img src="figures/geyser-kde.png" class="img-fluid" style="width:85.0%" alt="간헐천 대기 시간의 히스토그램 위에 대역폭이 다른 세 커널 밀도 추정 곡선을 겹쳐 그린 그림. 대역폭이 작은 주황 곡선은 뾰족한 봉우리가 여러 개 있는 울퉁불퉁한 모양이다. 자동으로 정한 파란 곡선은 55분 근처와 80분 근처에 봉우리가 하나씩 있는 매끄러운 모양이다. 대역폭이 큰 초록 곡선은 너무 평평해져서 55분 쪽 봉우리가 거의 사라졌다."></p>
+<p>대역폭이 너무 작으면(주황, 약 0.7분) 언덕 하나하나가 좁고 뾰족해서 곡선이 데이터의 우연한 들쭉날쭉함까지 그대로 따라갑니다. 너무 크면(초록, 약 8분) 언덕이 넓게 퍼져서 두 봉우리가 뭉개지고, 55분 쪽 봉우리는 거의 사라집니다. 스콧 규칙으로 정한 대역폭(파랑, 약 4.4분)에서는 두 봉우리가 매끄럽게 드러납니다. 히스토그램의 계급 수와 똑같은 균형 문제입니다.</p>
 <p>커널 밀도 추정 곡선은 이름 그대로 무언가의 “추정”입니다. 무엇을 추정하는지는 5장에서 확률밀도함수를 정의하면 분명해집니다. 지금은 히스토그램의 매끄러운 버전으로 이해해 두시면 충분합니다.</p>
 </section>
 <section id="정리" class="level2">
@@ -1001,9 +1077,9 @@ bw_method=  0.6: 띠폭 h = 8.16분, f(55) = 0.0153, f(80) = 0.0261</code></pre>
 <li>히스토그램에서는 <strong>넓이가 상대도수</strong>를 나타내도록 높이를 <span class="math inline">\(f_j / \Delta_j\)</span>, 즉 <strong>밀도</strong>로 정합니다. 계급 폭이 다르면 반드시 밀도로 그려야 합니다.</li>
 <li>계급 수는 제곱근 규칙, 스터지스 규칙, 프리드먼–디아코니스 규칙 등을 출발점으로 정하고, 여러 개로 바꿔 그려 모양이 안정적인지 확인합니다.</li>
 <li>히스토그램에서 <strong>대칭, 오른쪽/왼쪽으로 긴 꼬리, 봉우리의 수</strong> 같은 분포의 모양을 읽을 수 있습니다. 봉우리가 둘이면 성질이 다른 무리가 섞여 있을 가능성을 의심해 봅니다.</li>
-<li><strong>커널 밀도 추정</strong>은 각 데이터 위에 언덕을 쌓아 히스토그램을 매끄럽게 만든 것이며, 띠폭이 계급 수와 같은 역할을 합니다.</li>
+<li><strong>커널 밀도 추정</strong>은 각 데이터 위에 언덕을 쌓아 히스토그램을 매끄럽게 만든 것이며, 대역폭이 계급 수와 같은 역할을 합니다.</li>
 </ul>
-<p>히스토그램과 커널 밀도 추정은 분포의 모양을 보기에 좋지만, 둘 다 계급이나 띠폭을 <strong>우리가 정해야</strong> 하고, 그 선택에 따라 그림이 달라집니다. 데이터를 하나도 버리지 않고, 아무것도 정하지 않고 분포 전체를 그대로 담는 방법은 없을까요? 다음 글에서는 2.2의 누적상대도수를 실수 전체로 넓힌 <strong>경험적 분포함수</strong>를 다루겠습니다.</p>
+<p>히스토그램과 커널 밀도 추정은 분포의 모양을 보기에 좋지만, 둘 다 계급이나 대역폭을 <strong>우리가 정해야</strong> 하고, 그 선택에 따라 그림이 달라집니다. 데이터를 하나도 버리지 않고, 아무것도 정하지 않고 분포 전체를 그대로 담는 방법은 없을까요? 다음 글에서는 2.2의 누적상대도수를 실수 전체로 넓힌 <strong>경험적 분포함수</strong>를 다루겠습니다.</p>
 <hr>
 <section id="연결되는-개념" class="level3">
 <h3 class="anchored" data-anchor-id="연결되는-개념">연결되는 개념</h3>
