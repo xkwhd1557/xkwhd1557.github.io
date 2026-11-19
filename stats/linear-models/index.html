@@ -6,7 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-10-31">
+<meta name="dcterms.date" content="2026-11-18">
+<meta name="description" content="최소제곱 직선을 여러 공변량과 오차항을 가진 선형 모델로 넓혀, 추정과 추론, 범주형 변수와 비선형 효과, 모델 진단과 모델 선택, 랜덤 효과와 일반화 선형 모델까지 다루는 기초 선형 모델 과목의 내용과 성격, 사전 지식을 소개합니다.">
 
 <title>기초 선형 모델(Introduction to Linear Models) – Study Archive</title>
 <style>
@@ -37,6 +38,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../stats/linear-models/01-linear-model/index.html" rel="next">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
@@ -47,7 +49,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-dfdca6a8c3d4871044b6ea52565246df.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-d739a02a1af33765fc6ff0a69ae6860b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -76,12 +78,41 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <meta property="og:title" content="기초 선형 모델(Introduction to Linear Models) – Study Archive">
-<meta property="og:description" content="이 과목은 무엇을 다루는가">
+<meta property="og:description" content="최소제곱 직선을 여러 공변량과 오차항을 가진 선형 모델로 넓혀, 추정과 추론, 범주형 변수와 비선형 효과, 모델 진단과 모델 선택, 랜덤 효과와 일반화 선형 모델까지 다루는 기초 선형 모델 과목의 내용과 성격, 사전 지식을 소개합니다.">
 <meta property="og:site_name" content="Study Archive">
 <meta name="twitter:title" content="기초 선형 모델(Introduction to Linear Models) – Study Archive">
-<meta name="twitter:description" content="이 과목은 무엇을 다루는가">
+<meta name="twitter:description" content="최소제곱 직선을 여러 공변량과 오차항을 가진 선형 모델로 넓혀, 추정과 추론, 범주형 변수와 비선형 효과, 모델 진단과 모델 선택, 랜덤 효과와 일반화 선형 모델까지 다루는 기초 선형 모델 과목의 내용과 성격, 사전 지식을 소개합니다.">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -634,16 +665,78 @@ ul.task-list li input[type="checkbox"] {
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">기초 선형 모델(Introduction to Linear Models)</span></span>
+      <div class="sidebar-item-container"> 
+            <a href="../../stats/linear-models/index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">기초 선형 모델(Introduction to Linear Models)</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true" aria-label="Toggle section: 기초 선형 모델(Introduction to Linear Models)">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../stats/linear-models/01-linear-model/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-1-label">1 선형 모델과 최소제곱 추정</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section: 1 선형 모델과 최소제곱 추정">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../stats/linear-models/01-linear-model/01-from-line-to-model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.1 최소제곱 직선에서 선형 모델로</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../stats/linear-models/01-linear-model/02-interpretation-and-linearity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.2 계수의 해석과 ’선형’의 의미</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../stats/linear-models/01-linear-model/03-matrix-form-and-least-squares.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.3 행렬로 쓰는 선형 모델과 최소제곱 추정량</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../stats/linear-models/01-linear-model/04-properties.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.4 최소제곱 추정량의 성질</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../stats/linear-models/01-linear-model/05-projection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.5 사영으로 보는 최소제곱</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
   </li>
     </ul>
     </div>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#같은-넓이-다른-월세" id="toc-같은-넓이-다른-월세" class="nav-link active" data-scroll-target="#같은-넓이-다른-월세">같은 넓이, 다른 월세</a></li>
+  <li><a href="#선형-모델이-하는-일" id="toc-선형-모델이-하는-일" class="nav-link" data-scroll-target="#선형-모델이-하는-일">선형 모델이 하는 일</a></li>
+  <li><a href="#이-과목에서-다루는-것" id="toc-이-과목에서-다루는-것" class="nav-link" data-scroll-target="#이-과목에서-다루는-것">이 과목에서 다루는 것</a></li>
+  <li><a href="#이-과목의-성격" id="toc-이-과목의-성격" class="nav-link" data-scroll-target="#이-과목의-성격">이 과목의 성격</a></li>
+  <li><a href="#읽기-전에-필요한-사전-지식" id="toc-읽기-전에-필요한-사전-지식" class="nav-link" data-scroll-target="#읽기-전에-필요한-사전-지식">읽기 전에: 필요한 사전 지식</a></li>
+  <li><a href="#이-과목-다음에는" id="toc-이-과목-다음에는" class="nav-link" data-scroll-target="#이-과목-다음에는">이 과목 다음에는</a>
+  <ul class="collapse">
+  <li><a href="#연결되는-개념" id="toc-연결되는-개념" class="nav-link" data-scroll-target="#연결되는-개념">연결되는 개념</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content" tabindex="-1">
@@ -658,6 +751,11 @@ ul.task-list li input[type="checkbox"] {
   </div>
   </div>
 
+<div>
+  <div class="description">
+    최소제곱 직선을 여러 공변량과 오차항을 가진 선형 모델로 넓혀, 추정과 추론, 범주형 변수와 비선형 효과, 모델 진단과 모델 선택, 랜덤 효과와 일반화 선형 모델까지 다루는 기초 선형 모델 과목의 내용과 성격, 사전 지식을 소개합니다.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -666,7 +764,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 31, 2026</p>
+      <p class="date">November 18, 2026</p>
     </div>
   </div>
   
@@ -678,9 +776,80 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>이 과목의 소개 글은 준비 중입니다.</p>
+<section id="같은-넓이-다른-월세" class="level2">
+<h2 class="anchored" data-anchor-id="같은-넓이-다른-월세">같은 넓이, 다른 월세</h2>
+<p>새로 이사할 집을 찾는다고 해 보겠습니다. 부동산 매물 목록을 훑다 보면 금방 눈치채는 사실이 있습니다. 넓은 집일수록 월세가 비쌉니다. 그런데 넓이가 똑같은 두 집의 월세가 꽤 다른 경우도 흔합니다. 한 집은 지은 지 50년이 넘었고 다른 집은 새 건물이거나, 한 집은 조용한 주택가에 있고 다른 집은 시내 한복판에 있을 수 있습니다.</p>
+<p><a href="../../stats/basic-stats/index.html">기초 통계학</a>에서 배운 최소제곱 직선으로는 “넓이가 1㎡ 넓으면 월세가 평균적으로 얼마 더 비싼가”까지는 답할 수 있습니다. 하지만 정말 궁금한 질문은 대개 그다음에 나옵니다.</p>
+<ul>
+<li><strong>넓이가 같다면</strong>, 위치가 좋은 집은 월세가 얼마나 더 비쌀까요?</li>
+<li>넓이에 따라 월세가 늘어나는 정도가 <strong>위치마다 다를까요?</strong></li>
+<li>넓이가 늘어날 때 ㎡당 월세는 일정하게 줄어들까요, 아니면 <strong>어느 넓이부터는 거의 그대로</strong>일까요?</li>
+<li>우리가 계산한 차이는 <strong>진짜 차이</strong>일까요, 아니면 하필 이 집들이 표본으로 뽑혀서 생긴 <strong>우연</strong>일까요?</li>
+<li>애초에 우리가 세운 모형은 <strong>데이터와 맞기는 할까요?</strong></li>
+</ul>
+<p>이런 질문에 답하려면 직선 하나로는 부족합니다. 여러 요인을 한꺼번에 담고, 그 요인들로 설명되지 않는 흩어짐까지 확률로 다루는 틀이 필요합니다. 그 틀이 <strong>선형 모델</strong>(linear model)입니다.</p>
+</section>
+<section id="선형-모델이-하는-일" class="level2">
+<h2 class="anchored" data-anchor-id="선형-모델이-하는-일">선형 모델이 하는 일</h2>
+<p>선형 모델은 관심 있는 변수 <span class="math inline">\(y\)</span>(월세)를 여러 변수 <span class="math inline">\(x_1, \ldots, x_k\)</span>(넓이, 건축 연도, 위치 등)로 설명합니다. 식으로 쓰면 다음과 같습니다.</p>
+<p><span class="math display">\[y = \beta_0 + \beta_1 x_1 + \cdots + \beta_k x_k + \varepsilon\]</span></p>
+<p>앞부분 <span class="math inline">\(\beta_0 + \beta_1 x_1 + \cdots + \beta_k x_k\)</span>는 공변량으로 <strong>설명되는 부분</strong>이고, 마지막의 <span class="math inline">\(\varepsilon\)</span>은 <strong>설명되지 않고 남는 부분</strong>입니다. 선형 모델의 핵심은 이 남는 부분을 그냥 버리지 않고 <strong>확률변수</strong>로 다룬다는 데 있습니다. 그래야 “이 계수가 0이 아니라고 얼마나 확신할 수 있는가” 같은 질문을 확률의 언어로 답할 수 있습니다.</p>
+<p>모양은 단순하지만 선형 모델은 놀라울 만큼 많은 곳에서 쓰입니다. 집의 특성으로 월세를 설명하는 임대료 지표, 교육과 경력으로 임금을 설명하는 노동 경제학, 연식과 주행 거리로 중고차 가격을 설명하는 일, 가정 환경으로 아이들의 영양 상태를 설명하는 보건 연구가 모두 선형 모델에서 출발합니다. 그리고 이름과 달리 선형 모델은 곡선 관계, 범주형 변수, 변수 사이의 상호작용까지 담을 수 있습니다. 무엇에 대해 “선형”인지는 1장에서 자세히 살펴봅니다.</p>
+</section>
+<section id="이-과목에서-다루는-것" class="level2">
+<h2 class="anchored" data-anchor-id="이-과목에서-다루는-것">이 과목에서 다루는 것</h2>
+<p><strong>기초 선형 모델</strong>은 최소제곱 직선에서 출발해, 선형 모델을 세우고 추정하고 추론하는 방법, 모델이 데이터에 맞는지 점검하고 여러 모델 중에서 고르는 방법, 그리고 선형 모델의 대표적인 확장까지를 다룹니다. 전체는 다음 여섯 개의 장으로 이루어집니다.</p>
+<ol type="1">
+<li><strong>선형 모델과 최소제곱 추정</strong>: 최소제곱 직선을 반응변수, 공변량, 회귀계수, 오차항으로 이루어진 선형 모델로 넓히고, 오차항에 대한 가정과 계수의 해석, 행렬 표현, 최소제곱 추정량과 그 성질, 그리고 최소제곱법을 사영으로 보는 기하학적 관점을 다룹니다.</li>
+<li><strong>선형 모델에서의 추론</strong>: 회귀계수의 신뢰구간과 t-검정, 여러 계수를 한꺼번에 검정하는 F-검정과 분산분석표, 다중 검정과 신뢰 타원, 새 관측값에 대한 예측구간을 다룹니다.</li>
+<li><strong>설명변수 다루기</strong>: 범주형 공변량을 모델에 넣는 더미 코딩과 효과 코딩, 교호작용과 이원 분산분석, 그리고 변환, 다항식, 스플라인으로 비선형 효과를 표현하는 방법을 다룹니다.</li>
+<li><strong>모델 진단</strong>: 여러 종류의 잔차와 잔차 그림으로 오차항에 대한 가정을 점검하고, 이분산, 상관된 오차, 정규성 위반, 공선성, 이상치와 영향점을 찾아내고 다루는 방법을 살펴봅니다.</li>
+<li><strong>모델 선택과 정규화</strong>: 공변량을 빠뜨리거나 너무 많이 넣으면 무슨 일이 생기는지 살펴보고, 정보 기준과 교차 검증으로 모델을 고르는 방법, 변수 선택 전략, 그리고 릿지와 라쏘 같은 정규화 방법을 다룹니다.</li>
+<li><strong>선형 모델의 확장</strong>: 같은 사람을 여러 번 관측한 데이터처럼 군집을 이루는 데이터를 위한 랜덤 효과 모델, 그리고 반응변수가 0과 1이거나 개수일 때 쓰는 일반화 선형 모델을 소개합니다.</li>
+</ol>
+</section>
+<section id="이-과목의-성격" class="level2">
+<h2 class="anchored" data-anchor-id="이-과목의-성격">이 과목의 성격</h2>
+<p>기초 선형 모델은 선형 모델을 <strong>처음 만나는 분</strong>을 위한 과목입니다. 그래서 다음과 같은 방향으로 진행합니다.</p>
+<ul>
+<li><strong>직관과 실제 데이터가 먼저입니다.</strong> 정의와 정리는 정확하게 적지만, 그 결과가 왜 자연스러운지를 시뮬레이션과 실제 데이터로 먼저 보여 드립니다. 1999년 뮌헨의 임대료 조사, 골턴의 부모·자녀 키 데이터처럼 공개된 데이터를 쓰고, 모든 계산은 파이썬(NumPy, pandas, statsmodels)으로 직접 실행한 결과를 싣습니다.</li>
+<li><strong>증명은 짧게, 또는 링크로 대신합니다.</strong> 짧고 아이디어가 잘 드러나는 증명은 접힌 상자에 넣어 두고, 길거나 기술적인 증명은 생략합니다. 같은 내용을 수학적으로 더 엄밀하게 다루는 과목으로는 <a href="../../ds-ai/data-analysis-inference/index.html">수리적 데이터 분석과 통계적 추론</a>과 <a href="../../ds-ai/statistical-foundations/index.html">데이터 사이언스의 통계적 기초</a>가 있습니다. 증명이 궁금하신 분은 그쪽으로 안내해 드리겠습니다.</li>
+<li><strong>기초 통계학에서 이어집니다.</strong> 최소제곱 직선, 결정계수, 점 추정, 신뢰구간, 가설 검정, 모델 선택처럼 기초 통계학에서 배운 도구들이 선형 모델 안에서 어떻게 다시 쓰이는지를 계속 짚어 드립니다. 표기도 기초 통계학을 바탕으로 하되, 회귀계수를 <span class="math inline">\(\beta_0, \beta_1, \ldots\)</span>로 쓰는 것처럼 선형 모델에서 널리 쓰이는 표기를 따릅니다.</li>
+</ul>
+</section>
+<section id="읽기-전에-필요한-사전-지식" class="level2">
+<h2 class="anchored" data-anchor-id="읽기-전에-필요한-사전-지식">읽기 전에: 필요한 사전 지식</h2>
+<p><strong>기본으로 전제하는 것</strong></p>
+<ul>
+<li><a href="../../stats/basic-stats/index.html">기초 통계학</a>: 평균과 분산, 상관계수, 최소제곱 직선과 결정계수, 그리고 추정량, 신뢰구간, 가설 검정의 기본 개념을 알고 있다고 가정합니다. 특히 최소제곱 직선을 다룬 <a href="../../stats/basic-stats/04-two-variables/05-least-squares.html">4.5절</a>이 이 과목의 출발점입니다.</li>
+<li><strong>행렬의 기초 연산</strong>: 행렬의 곱, 전치, 역행렬, 그리고 행렬의 계수(rank)가 무엇인지 정도를 알면 됩니다. 1.3절에서 필요한 만큼 짧게 복습합니다. 더 체계적으로 공부하고 싶으신 분은 <a href="../../math/linear-algebra/index.html">선형대수학</a>을 참고하시기 바랍니다.</li>
+</ul>
+<p><strong>있으면 좋은 것</strong></p>
+<ul>
+<li><a href="../../stats/prob-theory/index.html">기초 확률론</a>: 기대값, 분산, 공분산, 정규분포의 성질을 자유롭게 쓸 수 있으면 1장 후반부와 2장이 훨씬 수월합니다.</li>
+<li><a href="../../math/math-programming/index.html">수학적 프로그래밍</a>의 파이썬 기초: 글마다 코드와 실행 결과를 함께 싣습니다. 코드를 직접 돌려 보시면 좋지만, 코드를 건너뛰고 결과 숫자와 그림만 따라가셔도 흐름을 이해하는 데에는 지장이 없습니다.</li>
+</ul>
+</section>
+<section id="이-과목-다음에는" class="level2">
+<h2 class="anchored" data-anchor-id="이-과목-다음에는">이 과목 다음에는</h2>
+<ul>
+<li><a href="../../stats/statistical-modelling/index.html">통계적 모델링</a>: 실제 데이터에 맞는 모형을 세우고 다듬는 과정을 더 넓은 모형들로 확장합니다.</li>
+<li><a href="../../ds-ai/data-analysis-inference/index.html">수리적 데이터 분석과 통계적 추론</a>: 이 과목에서 직관적으로 넘어간 선형 모델의 성질을 조건부 기대값과 사영의 언어로 엄밀하게 다시 세웁니다.</li>
+<li><a href="../../stats/time-series-foundations/index.html">시계열 분석의 통계적 기초</a>: 4장에서 맛보는 “오차가 서로 상관된 경우”가 시계열 데이터에서는 출발점이 됩니다.</li>
+<li><a href="../../ds-ai/machine-learning/index.html">머신러닝</a>: 5장의 교차 검증과 정규화는 머신러닝에서 모델을 고르고 다듬는 기본 도구이기도 합니다.</li>
+</ul>
+<p>근데 여기서 꼽은 과목들도 일부입니다. 선형 모델은 사실상 모든 통계, 데이터 사이언스 과목과 연결된다고 하는게 더 적절해보입니다. 단지 지금 제가 당장 떠올릴 수 있는 목록이 이 정도라고 생각하시면 되겠습니다.</p>
+<hr>
+<section id="연결되는-개념" class="level3">
+<h3 class="anchored" data-anchor-id="연결되는-개념">연결되는 개념</h3>
+<ul>
+<li><span class="math inline">\(\leftarrow\)</span> <strong>이전 개념:</strong> <a href="../../stats/index.html">과목 전체 목차</a></li>
+<li><span class="math inline">\(\rightarrow\)</span> <strong>다음 개념:</strong> <a href="../../stats/linear-models/01-linear-model/index.html">1 선형 모델과 최소제곱 추정</a></li>
+</ul>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script>
@@ -1274,6 +1443,15 @@ document.addEventListener("DOMContentLoaded", function () {
   <script type="application/javascript">
   window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
   </script>
+<nav class="page-navigation" aria-label="Page">
+  <div class="nav-page nav-page-previous">
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../stats/linear-models/01-linear-model/index.html" class="pagination-link" aria-label="1 선형 모델과 최소제곱 추정">
+        <span class="nav-page-text">1 선형 모델과 최소제곱 추정</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
