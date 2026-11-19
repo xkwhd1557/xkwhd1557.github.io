@@ -1,0 +1,409 @@
+---
+title: "1.3 행렬로 쓰는 선형 모델과 최소제곱 추정량"
+subtitle: "1장 선형 모델과 최소제곱 추정 · 공식 하나로 모든 계수를 한꺼번에"
+description: "선형 모델과 오차항에 대한 가정을 벡터와 행렬로 쓰고, 디자인 매트릭스의 완전 계수 조건이 왜 필요한지 살펴봅니다. 벡터 미분으로 최소제곱 추정량을 유도하고, 평균과 단순 회귀 공식이 그 특별한 경우임을 확인한 뒤, 예측값과 잔차, 원점을 지나는 회귀를 다룹니다."
+date: "2026-11-18"
+categories: ["확률과 통계", "기초 선형 모델"]
+---
+
+## 들어가며
+
+[1.2](02-interpretation-and-linearity.qmd)에서는 statsmodels가 계수를 계산해 주었습니다. 공변량이 하나라면 [기초 통계학 4.5절](../../basic-stats/04-two-variables/05-least-squares.qmd)의 공식 $\hat\beta_1 = s_{xy}/s_x^2$로 직접 계산할 수 있었지만, 공변량이 넷, 다섯으로 늘어나면 이런 공식을 하나하나 만들기가 어렵습니다.
+
+다행히 행렬을 쓰면 공변량이 몇 개든 **식 하나**로 모델을 쓰고, **공식 하나**로 모든 계수를 한꺼번에 구할 수 있습니다. 이번 글에서는 먼저 필요한 행렬 연산을 짧게 복습하고, 선형 모델과 그 가정을 행렬로 쓴 뒤, 최소제곱 추정량을 유도하겠습니다.
+
+## 행렬 연산 짧게 복습하기
+
+이 과목에서 쓰는 행렬 연산은 많지 않습니다. 행렬의 곱, 전치, 역행렬, 그리고 계수(rank) 정도입니다. 다음 세 개를 예로 들어 하나씩 확인해 보겠습니다.
+
+$$\mathbf{D} = \begin{pmatrix} 2 & 0 & 1 \\ 1 & 4 & 0 \\ 2 & 1 & 1 \end{pmatrix}, \qquad \mathbf{E} = \begin{pmatrix} 2 & 1 \\ 4 & 1 \\ 1 & 2 \end{pmatrix}, \qquad \mathbf{g} = \begin{pmatrix} 1 \\ 3 \\ 0 \end{pmatrix}$$
+
+이 과목에서는 벡터와 행렬을 굵은 글씨로 쓰고, 벡터는 언제나 **열벡터**로 봅니다.
+
+**곱.** $(m \times n)$ 행렬과 $(n \times l)$ 행렬을 곱하면 $(m \times l)$ 행렬이 되고, 결과의 $(i, j)$ 성분은 앞 행렬의 $i$번째 행과 뒤 행렬의 $j$번째 열의 성분을 차례로 곱해 더한 값입니다. $\mathbf{D}$는 $3 \times 3$, $\mathbf{E}$는 $3 \times 2$이므로 $\mathbf{D}\mathbf{E}$는 $3 \times 2$ 행렬입니다.
+
+$$\mathbf{D}\mathbf{E} = \begin{pmatrix} 2 \cdot 2 + 0 \cdot 4 + 1 \cdot 1 & 2 \cdot 1 + 0 \cdot 1 + 1 \cdot 2 \\ 1 \cdot 2 + 4 \cdot 4 + 0 \cdot 1 & 1 \cdot 1 + 4 \cdot 1 + 0 \cdot 2 \\ 2 \cdot 2 + 1 \cdot 4 + 1 \cdot 1 & 2 \cdot 1 + 1 \cdot 1 + 1 \cdot 2 \end{pmatrix} = \begin{pmatrix} 5 & 4 \\ 18 & 5 \\ 9 & 5 \end{pmatrix}$$
+
+앞 행렬의 열 수와 뒤 행렬의 행 수가 같아야 곱할 수 있으므로, 순서를 바꾼 $\mathbf{E}\mathbf{D}$는 $(3 \times 2)(3 \times 3)$이라 정의되지 않습니다. 순서를 바꾸면 결과가 달라지거나 아예 계산할 수 없을 수도 있다는 것이 숫자의 곱과 다른 점입니다.
+
+**전치.** 행과 열을 바꾼 행렬을 전치행렬이라고 하고, 이 과목에서는 $\mathbf{E}^t$처럼 위첨자 $t$를 붙여 씁니다. 열벡터 $\mathbf{g}$를 전치하면 행벡터 $\mathbf{g}^t = (1, 3, 0)$이 됩니다.
+
+$$\mathbf{E}^t = \begin{pmatrix} 2 & 4 & 1 \\ 1 & 1 & 2 \end{pmatrix}, \qquad \mathbf{E}^t\mathbf{g} = \begin{pmatrix} 2 \cdot 1 + 4 \cdot 3 + 1 \cdot 0 \\ 1 \cdot 1 + 1 \cdot 3 + 2 \cdot 0 \end{pmatrix} = \begin{pmatrix} 14 \\ 4 \end{pmatrix}$$
+
+전치와 곱 사이에는 $(\mathbf{A}\mathbf{B})^t = \mathbf{B}^t\mathbf{A}^t$가 성립합니다. 순서가 뒤집힌다는 점에 주의하시기 바랍니다.
+
+같은 길이의 두 열벡터 $\mathbf{a}, \mathbf{b}$에 대해 $\mathbf{a}^t\mathbf{b} = \sum_i a_i b_i$는 $(1 \times n)(n \times 1)$ 곱이라 숫자 하나가 되고, 이것이 두 벡터의 **내적**입니다. 예를 들어 $\mathbf{g}^t\mathbf{g} = 1^2 + 3^2 + 0^2 = 10$은 $\mathbf{g}$의 성분을 제곱해 더한 값, 즉 길이의 제곱입니다. 이 과목에서는 제곱합을 이렇게 $\mathbf{v}^t\mathbf{v}$ 꼴로 자주 씁니다.
+
+**역행렬.** 정사각행렬 $\mathbf{D}$에 대해 $\mathbf{D}\mathbf{D}^{-1} = \mathbf{D}^{-1}\mathbf{D} = \mathbf{I}$인 행렬 $\mathbf{D}^{-1}$을 역행렬이라고 하며, 행렬식이 0이 아닐 때만 존재합니다. 여기서 $\mathbf{I}$는 대각 성분이 1이고 나머지가 0인 단위행렬입니다. 위의 $\mathbf{D}$는 행렬식이
+
+$$\det(\mathbf{D}) = 2 \cdot (4 \cdot 1 - 0 \cdot 1) - 0 \cdot (1 \cdot 1 - 0 \cdot 2) + 1 \cdot (1 \cdot 1 - 4 \cdot 2) = 8 - 7 = 1$$
+
+이므로 역행렬이 있고, 직접 곱해 보면 $\mathbf{D}\mathbf{D}^{-1} = \mathbf{I}$임을 확인할 수 있습니다.
+
+$$\mathbf{D}^{-1} = \begin{pmatrix} 4 & 1 & -4 \\ -1 & 0 & 1 \\ -7 & -2 & 8 \end{pmatrix}$$
+
+**계수.** 행렬의 열 가운데 서로 일차독립인 것의 최대 개수를 계수(rank)라고 하고, $\mathrm{rank}(\mathbf{A})$로 씁니다. $\mathbf{E}$의 두 열은 한쪽이 다른 쪽의 상수배가 아니므로 $\mathrm{rank}(\mathbf{E}) = 2$이고, $\mathbf{D}$는 역행렬이 있으므로 세 열이 모두 일차독립이어서 $\mathrm{rank}(\mathbf{D}) = 3$입니다. 반면
+
+$$\mathbf{F} = \begin{pmatrix} 1 & 1 & 0 \\ 1 & 0 & 1 \\ 1 & 0 & 1 \end{pmatrix}$$
+
+은 첫째 열이 둘째 열과 셋째 열의 합이므로, 열이 셋이어도 $\mathrm{rank}(\mathbf{F}) = 2$입니다. 이런 일이 선형 모델에서 어떤 문제를 일으키는지는 이 글의 뒤쪽에서 보겠습니다.
+
+더 자세한 내용은 [선형대수학](../../../math/linear-algebra/index.qmd)을 참고하시기 바랍니다.
+
+## 선형 모델의 행렬 표현
+
+$i$번째 관측값의 공변량과 회귀계수를 $p = k + 1$차원 벡터로 모읍니다. 맨 앞의 1은 절편을 위한 자리입니다.
+
+$$\mathbf{x}_i = \begin{pmatrix} 1 \\ x_{i1} \\ \vdots \\ x_{ik} \end{pmatrix}, \qquad \boldsymbol{\beta} = \begin{pmatrix} \beta_0 \\ \beta_1 \\ \vdots \\ \beta_k \end{pmatrix}$$
+
+그러면 선형 예측자는 두 벡터의 내적 $\mathbf{x}_i^t\boldsymbol\beta = \beta_0 + \beta_1 x_{i1} + \cdots + \beta_k x_{ik}$이고, 선형 모델은
+
+$$y_i = \mathbf{x}_i^t\boldsymbol\beta + \varepsilon_i, \qquad i = 1, \ldots, n$$
+
+으로 쓸 수 있습니다. 이제 $n$개의 식을 한꺼번에 모읍니다.
+
+::: {.callout-note icon=false .callout-definition}
+### 정의 1.3.1 (선형 모델의 행렬 표현)
+반응변수와 오차항의 $n$차원 벡터, 그리고 $n \times p$ 행렬을
+
+$$\mathbf{y} = \begin{pmatrix} y_1 \\ \vdots \\ y_n \end{pmatrix}, \qquad \boldsymbol\varepsilon = \begin{pmatrix} \varepsilon_1 \\ \vdots \\ \varepsilon_n \end{pmatrix}, \qquad \mathbf{X} = \begin{pmatrix} \mathbf{x}_1^t \\ \vdots \\ \mathbf{x}_n^t \end{pmatrix} = \begin{pmatrix} 1 & x_{11} & \cdots & x_{1k} \\ \vdots & \vdots & & \vdots \\ 1 & x_{n1} & \cdots & x_{nk} \end{pmatrix}$$
+
+로 두면 선형 모델은
+
+$$\mathbf{y} = \mathbf{X}\boldsymbol\beta + \boldsymbol\varepsilon$$
+
+입니다. 행렬 $\mathbf{X}$를 **디자인 매트릭스**(design matrix)라고 합니다.
+:::
+
+디자인 매트릭스의 각 행은 관측값 하나, 각 열은 공변량 하나(맨 앞 열은 절편)에 해당합니다. 1.2의 위치 더미가 들어간 임대료 모델의 디자인 매트릭스를 직접 만들어 보겠습니다. formula를 디자인 매트릭스로 바꿔 주는 patsy 패키지를 씁니다. statsmodels도 formula를 해석할 때 기본으로 이 패키지를 씁니다.
+
+```python
+import numpy as np
+import pandas as pd
+import pyreadr
+from patsy import dmatrices
+
+rent = pyreadr.read_r("rent99.rda")["rent99"]
+location = rent["location"].astype(int)
+rent["nlocation"] = (location == 1).astype(int)    # 보통 위치이면 1
+rent["glocation"] = (location == 2).astype(int)
+rent["tlocation"] = (location == 3).astype(int)
+
+y, X = dmatrices("rentsqm ~ glocation + tlocation + area + yearc", data=rent)
+print(pd.DataFrame(X, columns=X.design_info.column_names).head(4))
+print("X의 크기:", X.shape, " 계수:", np.linalg.matrix_rank(X))
+
+_, X_bad = dmatrices("rentsqm ~ nlocation + glocation + tlocation + area + yearc", data=rent)
+print("세 위치 더미를 모두 넣은 X의 크기:", X_bad.shape, " 계수:", np.linalg.matrix_rank(X_bad))
+```
+
+```
+   Intercept  glocation  tlocation  area   yearc
+0        1.0        1.0        0.0  26.0  1918.0
+1        1.0        1.0        0.0  28.0  1918.0
+2        1.0        0.0        0.0  30.0  1918.0
+3        1.0        1.0        0.0  30.0  1918.0
+X의 크기: (3082, 5)  계수: 5
+세 위치 더미를 모두 넣은 X의 크기: (3082, 6)  계수: 5
+```
+
+예를 들어 셋째 행은 보통 위치(두 더미가 0), 면적 30㎡, 1918년에 지은 아파트입니다. 마지막 두 줄의 결과는 잠시 뒤에 다시 보겠습니다.
+
+## 가정의 행렬 표현
+
+[1.1](01-from-line-to-model.qmd)의 오차항에 대한 가정도 행렬로 쓸 수 있습니다. 그러려면 확률변수 벡터의 기대값과 공분산을 정의해야 합니다. 벡터 $\mathbf{z} = (z_1, \ldots, z_n)^t$의 **기대값** $\mathbb{E}(\mathbf{z})$는 각 성분의 기대값을 모은 벡터이고, **공분산 행렬** $\mathrm{Cov}(\mathbf{z})$는 $(i, j)$ 성분이 $\mathrm{Cov}(z_i, z_j)$인 $n \times n$ 행렬입니다. 대각 성분은 각 성분의 분산입니다.
+
+::: {.callout-note icon=false .callout-definition}
+### 정의 1.3.2 (오차항에 대한 가정의 행렬 표현)
+1. 기대값: $\mathbb{E}(\boldsymbol\varepsilon) = \mathbf{0}$.
+2. 공분산 행렬: $\mathrm{Cov}(\boldsymbol\varepsilon) = \sigma^2 \mathbf{I}$.
+3. 분포: $\boldsymbol\varepsilon \sim \mathcal{N}(\mathbf{0}, \sigma^2 \mathbf{I})$.
+:::
+
+두 번째 식 하나에 등분산성과 무상관성이 함께 들어 있습니다. $\sigma^2\mathbf{I}$의 대각 성분이 모두 $\sigma^2$이라는 것이 등분산성이고, 대각 밖의 성분이 모두 0이라는 것이 무상관성입니다. 세 번째 식의 $\mathcal{N}(\mathbf{0}, \sigma^2\mathbf{I})$는 다변량 정규분포로, 여기서는 "각 성분이 서로 독립이고 $\mathcal{N}(0, \sigma^2)$를 따른다"는 뜻으로 읽으면 충분합니다.
+
+[정리 1.1.3](01-from-line-to-model.qmd)의 내용도 그대로 옮겨집니다. 공변량이 주어져 있으면
+
+$$\mathbb{E}(\mathbf{y}) = \mathbf{X}\boldsymbol\beta, \qquad \mathrm{Cov}(\mathbf{y}) = \sigma^2\mathbf{I}, \qquad \mathbf{y} \sim \mathcal{N}(\mathbf{X}\boldsymbol\beta, \sigma^2\mathbf{I})$$
+
+입니다.
+
+## 디자인 매트릭스에 대한 가정
+
+오차항 말고 디자인 매트릭스에 대해서도 가정이 하나 필요합니다.
+
+::: {.callout-note icon=false .callout-definition}
+### 정의 1.3.3 (완전 계수 조건)
+디자인 매트릭스 $\mathbf{X}$가 **완전 계수**(full rank)라는 것은
+
+$$\mathrm{rank}(\mathbf{X}) = p = k + 1$$
+
+이라는 뜻입니다.
+:::
+
+$n \times p$ 행렬의 계수는 $n$과 $p$ 중 작은 쪽을 넘을 수 없으므로, 이 조건은 두 가지를 뜻합니다.
+
+- **관측값이 추정할 계수보다 적지 않습니다.** 즉 $n \ge p$입니다. 점 두 개로는 평면을 하나로 정할 수 없는 것처럼, 관측값이 계수보다 적으면 계수가 하나로 정해지지 않습니다.
+- **공변량 사이에 일차종속 관계가 없습니다.** 어떤 열도 다른 열들의 일차결합으로 쓸 수 없다는 뜻입니다.
+
+두 번째 조건이 깨지는 대표적인 예가 위의 코드 마지막 줄입니다. 보통, 좋음, 최상 세 위치에 모두 더미를 만들면, 모든 아파트에서 세 더미 중 정확히 하나만 1이므로
+
+$$\text{nlocation}_i + \text{glocation}_i + \text{tlocation}_i = 1$$
+
+이 성립합니다. 세 더미 열을 더하면 절편 열과 똑같아지는 것입니다. 그래서 열은 6개인데 계수는 5입니다. 이때는 "보통 위치의 효과"와 "절편"을 구분할 방법이 없습니다. 절편을 1만큼 늘리고 세 더미의 계수를 모두 1만큼 줄여도 모든 관측값의 선형 예측자가 똑같기 때문입니다. 1.2에서 범주 하나를 기준 범주로 빼 둔 이유가 이것이고, 이 문제를 흔히 **더미 변수 함정**(dummy variable trap)이라고 부릅니다.
+
+수학적으로는 완전 계수이지만 **거의** 일차종속인 경우도 문제가 됩니다. 1.2에서 건축 연도를 그대로 세제곱하지 않은 이유를 확인해 보겠습니다.
+
+```python
+year = rent["yearc"].to_numpy()
+t = (year - 1950) / 10
+
+X_raw = np.column_stack([np.ones_like(year), year, year**2, year**3])
+X_scaled = np.column_stack([np.ones_like(t), t, t**2, t**3])
+for name, X in [("연도 그대로", X_raw), ("척도 조정", X_scaled)]:
+    print(f"{name}: 수치적 계수 {np.linalg.matrix_rank(X)}, 조건수 {np.linalg.cond(X):.1e}")
+```
+
+```
+연도 그대로: 수치적 계수 3, 조건수 6.1e+15
+척도 조정: 수치적 계수 4, 조건수 5.4e+01
+```
+
+건축 연도는 1918년에서 1997년 사이에 있어서, 그 세제곱들은 서로 거의 비례합니다. 그 결과 **조건수**(condition number, 계산이 반올림 오차에 얼마나 민감한지를 나타내는 수)가 $6 \times 10^{15}$에 이르러, 컴퓨터는 이 행렬의 계수를 4가 아니라 3으로 판단합니다. 수학적으로는 계수가 4인데도 컴퓨터의 소수 계산 정밀도로는 구분이 안 되는 것입니다. 연도를 $(\text{yearc} - 1950)/10$으로 바꾸기만 해도 조건수가 54로 떨어집니다.
+
+## 최소제곱 추정량
+
+이제 계수를 추정하겠습니다. 기준은 기초 통계학과 같은 최소제곱입니다.
+
+$$\mathrm{LS}(\boldsymbol\beta) := \sum_{i=1}^{n} \big( y_i - \mathbf{x}_i^t\boldsymbol\beta \big)^2 = (\mathbf{y} - \mathbf{X}\boldsymbol\beta)^t(\mathbf{y} - \mathbf{X}\boldsymbol\beta)$$
+
+두 번째 등호는 벡터 $\mathbf{v}$에 대해 $\mathbf{v}^t\mathbf{v} = \sum_i v_i^2$이라는 데서 나옵니다. **최소제곱 추정량**(least squares estimator)은 이 값을 가장 작게 만드는 $\boldsymbol\beta$입니다.
+
+$$\hat{\boldsymbol\beta} := \arg\min_{\boldsymbol\beta} \, \mathrm{LS}(\boldsymbol\beta)$$
+
+왜 하필 제곱해서 더한 값을 줄이느냐가 궁금하실 수 있는데, 그 배경은 뒤로 미루고 지금은 그냥 가장 흔히 쓰는 기본 세팅이라고 이해하셔도 괜찮습니다.
+
+그 부분을 넘어간다면 우리의 목표는 이제 $LS(\beta)$를 최소화하는 $\beta$를 구하는게 되는데요, 이를 위해서는 함수의 최솟값을 찾는 고등학교 미적분의 방법과 유사한 방법을 사용합니다. 고등학교에서 도함수를 구하고, 0으로 놓고 풀고, 그 점이 정말 최솟값인지 이계도함수의 부호로 확인하는 방법으로 최소값 지점을 구하는 방법을 해보셨을겁니다.  그 이야기에요.
+
+근데 이제 그 방법을 직접 사용하려하니 여기서는 더이상 1차원의 함수가 아니라, 벡터 형태의 함수가 있다는 부분이 문제가 되는데요, 다행이도 이런 벡터 함수에 대해서도 똑같은 방법을 사용할 수 있습니다. 단지 함수가 벡터니, 이런 벡터를 미분하는 규칙을 아셔야합니다.
+
+::: {.callout-note icon=false .callout-definition}
+### 정의 1.3.4 (벡터에 대한 미분)
+실숫값 함수 $f : \mathbb{R}^p \to \mathbb{R}$, $\boldsymbol\beta \mapsto f(\boldsymbol\beta)$에 대해, 편미분을 모은 벡터와 행렬
+
+$$\frac{\partial f}{\partial \boldsymbol\beta} := \begin{pmatrix} \partial f / \partial \beta_0 \\ \vdots \\ \partial f / \partial \beta_k \end{pmatrix}, \qquad \frac{\partial^2 f}{\partial \boldsymbol\beta \, \partial \boldsymbol\beta^t} := \begin{pmatrix} \dfrac{\partial^2 f}{\partial \beta_0 \partial \beta_0} & \cdots & \dfrac{\partial^2 f}{\partial \beta_0 \partial \beta_k} \\ \vdots & & \vdots \\ \dfrac{\partial^2 f}{\partial \beta_k \partial \beta_0} & \cdots & \dfrac{\partial^2 f}{\partial \beta_k \partial \beta_k} \end{pmatrix}$$
+
+를 각각 $f$의 일계도함수(기울기 벡터)와 이계도함수(헤세 행렬)라고 합니다.
+:::
+
+편미분 개념을 모르시면 기호에 압도되어서 뭔가 많이 복잡하게 느껴질 수 있는데요, 간단합니다. $\frac{\partial f}{\partial \beta_j}$는 함수 $f(\beta_0,...,\beta_k)$를 오로지 $\beta_j$에 대한 함수로 보고, 나머지 변수들은 마치 상수 취급하여 $\beta_k$에 대해서만 미분한 도함수를 의미합니다. 또한 $\frac{\partial f}{\partial \beta_i \partial \beta_j} := \frac{\partial}{\partial \beta_i}\left(\frac{\partial f}{\partial \beta_j}\right)$는 $f$를 $\beta_j$로 편미분한 후, 그 결과물을 다시 $\beta_i$로 편미분한다는 의미를 가집니다.
+
+즉, 일계도함수$\frac{\partial f}{\partial \boldsymbol\beta}$는 결국 $f$가 $\boldsymbol\beta = (\beta_0,...,\beta_k)$의 $k+1$개의 변수에 대한 함수이니, 각각 모든 변수에 대해 골고루 $f$를 편미분하는거고, 이계도함수도 마찬가지로 이제 일계도함수의 각 부분 함수들은 모든 변수에 대해서 차례대로 편미분해주는 형태입니다.
+
+물론 선형 모델에서 필요한 규칙은 두 가지뿐이라, 그리 어렵게 생각하지 않으셔도 됩니다. 우리가 필요한 미분 계산 규칙은 둘 다 변수가 $b$하나인 실수 함수의 규칙 $(ab)' = a$, $(ab^2)' = 2ab$와 꼭 닮았습니다.
+
+::: {.callout-important icon=false .callout-satz}
+### 정리 1.3.5 (일차식과 이차식의 미분)
+1. $p$차원 벡터 $\mathbf{a}$에 대해 $f(\boldsymbol\beta) = \boldsymbol\beta^t\mathbf{a} = \sum_i a_i \beta_i$이면
+
+$$\frac{\partial f}{\partial \boldsymbol\beta} = \mathbf{a}, \qquad \frac{\partial^2 f}{\partial \boldsymbol\beta \, \partial \boldsymbol\beta^t} = \mathbf{0}.$$
+
+2. $p \times p$ 대칭행렬 $\mathbf{A}$에 대해 $f(\boldsymbol\beta) = \boldsymbol\beta^t\mathbf{A}\boldsymbol\beta = \sum_i \sum_j a_{ij}\beta_i\beta_j$이면
+
+$$\frac{\partial f}{\partial \boldsymbol\beta} = 2\mathbf{A}\boldsymbol\beta, \qquad \frac{\partial^2 f}{\partial \boldsymbol\beta \, \partial \boldsymbol\beta^t} = 2\mathbf{A}.$$
+:::
+
+::: {.callout-tip collapse="true" icon=false .callout-beweis}
+### 증명
+1. $\partial f / \partial \beta_l = a_l$이므로 기울기 벡터는 $\mathbf{a}$이고, 이는 상수이므로 이계도함수는 0입니다.
+
+2. $\sum_i\sum_j a_{ij}\beta_i\beta_j$를 $\beta_l$로 미분하면 $i = l$인 항에서 $\sum_j a_{lj}\beta_j$, $j = l$인 항에서 $\sum_i a_{il}\beta_i$가 나옵니다. $\mathbf{A}$가 대칭이므로 $a_{il} = a_{li}$이고, 두 합은 같아서 $\partial f / \partial \beta_l = 2\sum_j a_{lj}\beta_j$, 즉 $2\mathbf{A}\boldsymbol\beta$의 $l$번째 성분입니다. 이를 다시 $\beta_m$으로 미분하면 $2a_{lm}$이므로 이계도함수는 $2\mathbf{A}$입니다. $\square$
+:::
+
+이제 최소제곱 기준을 전개합니다. $\mathbf{y}^t\mathbf{X}\boldsymbol\beta$는 숫자 하나이므로 전치해도 같아서 $\boldsymbol\beta^t\mathbf{X}^t\mathbf{y}$와 같습니다. 따라서
+
+$$\mathrm{LS}(\boldsymbol\beta) = \mathbf{y}^t\mathbf{y} - 2\boldsymbol\beta^t\mathbf{X}^t\mathbf{y} + \boldsymbol\beta^t\mathbf{X}^t\mathbf{X}\boldsymbol\beta$$
+
+이고, $\mathbf{X}^t\mathbf{X}$는 대칭행렬이므로 정리 1.3.5를 쓸 수 있습니다.
+
+$$\frac{\partial}{\partial \boldsymbol\beta}\mathrm{LS}(\boldsymbol\beta) = -2\mathbf{X}^t\mathbf{y} + 2\mathbf{X}^t\mathbf{X}\boldsymbol\beta$$
+
+이것을 0으로 놓으면
+
+$$\mathbf{X}^t\mathbf{X}\boldsymbol\beta = \mathbf{X}^t\mathbf{y}$$
+
+를 얻습니다. 이 연립방정식을 **정규방정식**(normal equations)이라고 합니다.
+
+::: {.callout-important icon=false .callout-satz}
+### 정리 1.3.6 (최소제곱 추정량)
+디자인 매트릭스가 완전 계수, 즉 $\mathrm{rank}(\mathbf{X}) = p$이면 $\mathbf{X}^t\mathbf{X}$는 역행렬을 가지고, 최소제곱 기준을 가장 작게 만드는 $\boldsymbol\beta$는
+
+$$\hat{\boldsymbol\beta} = (\mathbf{X}^t\mathbf{X})^{-1}\mathbf{X}^t\mathbf{y}$$
+
+하나뿐입니다.
+:::
+
+::: {.callout-tip collapse="true" icon=false .callout-beweis}
+### 증명
+이계도함수는 $\partial^2 \mathrm{LS} / \partial\boldsymbol\beta\,\partial\boldsymbol\beta^t = 2\mathbf{X}^t\mathbf{X}$입니다. 0이 아닌 벡터 $\mathbf{v}$에 대해
+
+$$\mathbf{v}^t\mathbf{X}^t\mathbf{X}\mathbf{v} = (\mathbf{X}\mathbf{v})^t(\mathbf{X}\mathbf{v}) = \sum_{i=1}^n (\mathbf{X}\mathbf{v})_i^2 \ge 0$$
+
+이고, 등호는 $\mathbf{X}\mathbf{v} = \mathbf{0}$일 때만 성립합니다. 그런데 $\mathbf{X}\mathbf{v}$는 $\mathbf{X}$의 열들을 $\mathbf{v}$의 성분으로 일차결합한 것이고, 완전 계수 조건에 의해 열들이 일차독립이므로 $\mathbf{v} \ne \mathbf{0}$이면 $\mathbf{X}\mathbf{v} \ne \mathbf{0}$입니다. 따라서 $\mathbf{X}^t\mathbf{X}$는 **양의 정부호**(positive definite)이고, 양의 정부호 행렬은 역행렬을 가집니다. 그러면 정규방정식의 해는 $(\mathbf{X}^t\mathbf{X})^{-1}\mathbf{X}^t\mathbf{y}$ 하나뿐입니다.
+
+이 점이 최솟값이라는 것은 다음과 같이 확인할 수 있습니다. 임의의 $\boldsymbol\beta$에 대해 $\mathbf{d} := \boldsymbol\beta - \hat{\boldsymbol\beta}$라 두고 전개하면, 정규방정식 $\mathbf{X}^t(\mathbf{y} - \mathbf{X}\hat{\boldsymbol\beta}) = \mathbf{0}$ 때문에 교차항이 사라져
+
+$$\mathrm{LS}(\boldsymbol\beta) = \mathrm{LS}(\hat{\boldsymbol\beta}) + \mathbf{d}^t\mathbf{X}^t\mathbf{X}\mathbf{d}$$
+
+입니다. 마지막 항은 $\mathbf{d} \ne \mathbf{0}$이면 양수이므로, $\hat{\boldsymbol\beta}$에서만 최솟값을 가집니다. $\square$
+:::
+
+한 변수 함수에서 이계도함수가 양수이면 아래로 볼록해서 최솟값이 하나인 것처럼, 여기서는 이계도함수 $2\mathbf{X}^t\mathbf{X}$가 양의 정부호라는 것이 같은 역할을 합니다. 그리고 완전 계수 조건이 바로 그것을 보장합니다. 더미 변수 함정처럼 완전 계수가 아니면 최소제곱 기준을 가장 작게 만드는 $\boldsymbol\beta$가 무수히 많아집니다.
+
+임대료 모델에서 직접 계산해 보겠습니다.
+
+```python
+import statsmodels.formula.api as smf
+
+np.set_printoptions(suppress=True)
+formula = "rentsqm ~ glocation + tlocation + area + yearc"
+
+y, X = dmatrices(formula, data=rent)
+y, X = np.asarray(y).ravel(), np.asarray(X)
+
+beta_formula = np.linalg.inv(X.T @ X) @ X.T @ y       # 공식 그대로
+beta_solve = np.linalg.solve(X.T @ X, X.T @ y)       # 정규방정식을 풀기
+beta_sm = smf.ols(formula, data=rent).fit().params.to_numpy()
+
+print("공식       :", beta_formula.round(4))
+print("solve      :", beta_solve.round(4))
+print("statsmodels:", beta_sm.round(4))
+```
+
+```
+공식       : [-66.0144   0.7358   1.7864  -0.0288   0.0382]
+solve      : [-66.0144   0.7358   1.7864  -0.0288   0.0382]
+statsmodels: [-66.0144   0.7358   1.7864  -0.0288   0.0382]
+```
+
+세 방법 모두 1.2에서 본 값과 같습니다. 실제로 계산할 때는 역행렬을 직접 구하는 첫 번째 방법보다, 정규방정식을 연립방정식으로 푸는 두 번째 방법이 수치적으로 더 안정적입니다. statsmodels는 이보다 더 안정적인 방법을 씁니다.
+
+## 익숙한 두 경우
+
+새 공식이 우리가 알던 것과 맞는지 확인해 보겠습니다.
+
+**절편만 있는 모델.** 공변량 없이 $y_i = \mu + \varepsilon_i$인 모델은 디자인 매트릭스가 1로만 이루어진 열벡터 $\mathbf{1} = (1, \ldots, 1)^t$인 경우입니다. $\mathbf{1}^t\mathbf{1} = n$, $\mathbf{1}^t\mathbf{y} = \sum_i y_i$이므로
+
+$$\hat\mu = (\mathbf{1}^t\mathbf{1})^{-1}\mathbf{1}^t\mathbf{y} = \frac{1}{n}\sum_{i=1}^n y_i = \bar{y}$$
+
+입니다. **표본 평균은 절편만 있는 선형 모델의 최소제곱 추정량**입니다. 기초 통계학에서 평균이 "제곱 거리의 합을 가장 작게 만드는 점"이었던 것과 같은 이야기입니다. 그래서 표본 평균에 대해 알던 성질들, 예를 들어 불편성이나 분산이 $\sigma^2/n$이라는 사실은 [1.4](04-properties.qmd)에서 다룰 최소제곱 추정량의 성질의 특별한 경우가 됩니다.
+
+**단순 선형 회귀.** 공변량이 하나이면 디자인 매트릭스의 두 열은 $\mathbf{1}$과 $(x_1, \ldots, x_n)^t$이고, 정리 1.3.6을 풀어 쓰면 기초 통계학의 공식이 그대로 나옵니다.
+
+::: {.callout-important icon=false .callout-satz}
+### 정리 1.3.7 (단순 선형 회귀의 최소제곱 추정량)
+$y_i = \beta_0 + \beta_1 x_i + \varepsilon_i$에서 $x_1, \ldots, x_n$이 모두 같지는 않으면
+
+$$\hat\beta_1 = \frac{\sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^n (x_i - \bar{x})^2}, \qquad \hat\beta_0 = \bar{y} - \hat\beta_1\bar{x}$$
+
+입니다.
+:::
+
+::: {.callout-tip collapse="true" icon=false .callout-beweis}
+### 증명
+$S_{xx} := \sum_i (x_i - \bar{x})^2$, $S_{xy} := \sum_i (x_i - \bar{x})(y_i - \bar{y})$로 두겠습니다. 디자인 매트릭스로부터
+
+$$\mathbf{X}^t\mathbf{X} = \begin{pmatrix} n & \sum x_i \\ \sum x_i & \sum x_i^2 \end{pmatrix}, \qquad \mathbf{X}^t\mathbf{y} = \begin{pmatrix} \sum y_i \\ \sum x_i y_i \end{pmatrix}$$
+
+입니다. 행렬식은 $n\sum x_i^2 - (\sum x_i)^2 = n S_{xx}$이고, $x_i$가 모두 같지 않으면 $S_{xx} > 0$입니다. $2 \times 2$ 역행렬 공식을 쓰면
+
+$$\hat{\boldsymbol\beta} = \frac{1}{n S_{xx}}\begin{pmatrix} \sum x_i^2 & -\sum x_i \\ -\sum x_i & n \end{pmatrix}\begin{pmatrix} \sum y_i \\ \sum x_i y_i \end{pmatrix}$$
+
+이고, 둘째 성분은 $\hat\beta_1 = \big(n\sum x_i y_i - \sum x_i \sum y_i\big)/(n S_{xx}) = S_{xy}/S_{xx}$입니다. 첫째 성분은 정규방정식의 첫 줄 $n\hat\beta_0 + \hat\beta_1\sum x_i = \sum y_i$를 $n$으로 나누면 $\hat\beta_0 = \bar{y} - \hat\beta_1\bar{x}$입니다. $\square$
+:::
+
+$S_{xy}/S_{xx}$의 분자와 분모를 $n-1$로 나누면 $s_{xy}/s_x^2$이므로, 기초 통계학 정리 4.5.2와 같습니다.
+
+## 예측값과 잔차
+
+추정량을 구했으니 각 관측값에서 모델이 예측하는 값과, 실제 값과의 차이를 정의할 수 있습니다.
+
+::: {.callout-note icon=false .callout-definition}
+### 정의 1.3.8 (예측값과 잔차)
+최소제곱 추정량 $\hat{\boldsymbol\beta}$에 대해
+
+$$\hat{\mathbf{y}} := \mathbf{X}\hat{\boldsymbol\beta}, \qquad \hat{\boldsymbol\varepsilon} := \mathbf{y} - \hat{\mathbf{y}} = \mathbf{y} - \mathbf{X}\hat{\boldsymbol\beta}$$
+
+를 각각 **예측값**(fitted value)과 **잔차**(residual)의 벡터라고 합니다.
+:::
+
+잔차 $\hat\varepsilon_i$는 오차 $\varepsilon_i$를 추정한 것이라는 뜻에서 모자를 씌워 씁니다. 하지만 둘은 같지 않습니다. 오차는 참 계수 $\boldsymbol\beta$에서 잰 차이로 관측할 수 없고, 잔차는 추정한 계수 $\hat{\boldsymbol\beta}$에서 잰 차이로 데이터에서 계산할 수 있습니다.
+
+정규방정식 $\mathbf{X}^t\mathbf{X}\hat{\boldsymbol\beta} = \mathbf{X}^t\mathbf{y}$를 옮겨 쓰면 잔차에 대한 중요한 사실이 나옵니다.
+
+$$\mathbf{X}^t(\mathbf{y} - \mathbf{X}\hat{\boldsymbol\beta}) = \mathbf{X}^t\hat{\boldsymbol\varepsilon} = \mathbf{0}$$
+
+$\mathbf{X}^t\hat{\boldsymbol\varepsilon}$의 $j$번째 성분은 $\mathbf{X}$의 $j$번째 열과 잔차 벡터의 내적이므로, 이 식은 **잔차가 디자인 매트릭스의 모든 열과 직교한다**는 뜻입니다. 특히 모델에 절편이 있으면 첫 번째 열이 $\mathbf{1}$이므로
+
+$$\mathbf{1}^t\hat{\boldsymbol\varepsilon} = \sum_{i=1}^n \hat\varepsilon_i = 0,$$
+
+즉 잔차의 합은 0입니다. 기초 통계학에서 최소제곱 직선의 잔차의 합이 0이었던 이유가 여기 있습니다.
+
+그렇다면 절편이 **없는** 모델에서는 어떨까요? 내용상 회귀선이 원점을 지나야 하는 경우가 있습니다. 1.2의 연비 데이터에서 무게가 0인 차는 연료를 쓰지 않을 것이므로, gpm을 무게로 설명하는 모델에 절편을 넣지 않는 것도 생각해 볼 만합니다.
+
+$$\text{gpm}_i = \beta_1 \, \text{weight}_i + \varepsilon_i$$
+
+```python
+import numpy as np
+import pandas as pd
+
+url = "https://raw.githubusercontent.com/vincentarelbundock/Rdatasets/master/csv/datasets/mtcars.csv"
+cars = pd.read_csv(url)
+y = (1 / cars["mpg"]).to_numpy()               # 1마일당 연료 (갤런)
+x = (cars["wt"] * 1000).to_numpy()             # 무게 (파운드)
+n = len(y)
+np.set_printoptions(suppress=True)
+
+# 절편이 있는 모형
+X1 = np.column_stack([np.ones(n), x])
+beta1 = np.linalg.solve(X1.T @ X1, X1.T @ y)
+res1 = y - X1 @ beta1
+
+# 원점을 지나는 모형 (절편 없음)
+X0 = x.reshape(-1, 1)
+beta0 = np.linalg.solve(X0.T @ X0, X0.T @ y)
+res0 = y - X0 @ beta0
+
+print(f"절편 있음: beta_hat = ({beta1[0]:.6f}, {beta1[1]:.3e}), 잔차의 합 = {res1.sum():.1e}")
+print(f"           X^t res = {(X1.T @ res1).round(10) + 0.0}")
+print(f"원점 통과: beta_hat = {beta0[0]:.3e}, 잔차의 합 = {res0.sum():.5f}")
+print(f"           X^t res = {(X0.T @ res0).round(10) + 0.0}")
+```
+
+```
+절편 있음: beta_hat = (0.006169, 1.494e-05), 잔차의 합 = -6.9e-18
+           X^t res = [0. 0.]
+원점 통과: beta_hat = 1.670e-05, 잔차의 합 = 0.01623
+           X^t res = [0.]
+```
+
+원점을 지나는 모델에서도 $\mathbf{X}^t\hat{\boldsymbol\varepsilon} = \mathbf{0}$은 성립합니다. 다만 이번에는 $\mathbf{X}$에 $\mathbf{1}$ 열이 없으므로, 그 식은 "잔차가 무게 열과 직교한다"는 것만 말해 줄 뿐 잔차의 합에 대해서는 아무것도 말해 주지 않습니다. 실제로 잔차의 합은 0.016으로 0이 아닙니다. 원점 통과 모델의 기울기 추정값 $1.670 \times 10^{-5}$는 1파운드당 1마일에 드는 연료(갤런)이고, 절편이 있는 모델의 기울기 $1.494 \times 10^{-5}$보다 조금 큽니다. 절편이 맡던 몫을 기울기가 떠안은 것입니다.
+
+원점 통과 모델이 내용상 그럴듯해 보여도 조심할 점이 있습니다. 무게가 0에 가까운 차는 데이터에 없으므로, "무게 0에서 연료 0"이라는 제약은 데이터 범위 밖의 점에 직선을 억지로 맞추는 일이기도 합니다. 데이터 범위 안에서 관계가 직선이 아니라면, 이 제약이 오히려 범위 안의 적합을 나쁘게 만들 수 있습니다.
+
+## 정리
+
+이번 글에서는 선형 모델을 행렬로 쓰고 최소제곱 추정량을 유도했습니다.
+
+- 선형 모델은 $\mathbf{y} = \mathbf{X}\boldsymbol\beta + \boldsymbol\varepsilon$로 쓸 수 있고, 오차항에 대한 가정은 $\mathbb{E}(\boldsymbol\varepsilon) = \mathbf{0}$, $\mathrm{Cov}(\boldsymbol\varepsilon) = \sigma^2\mathbf{I}$, $\boldsymbol\varepsilon \sim \mathcal{N}(\mathbf{0}, \sigma^2\mathbf{I})$가 됩니다.
+- 디자인 매트릭스는 **완전 계수**여야 합니다. 범주의 더미를 모두 넣는 더미 변수 함정은 이 조건을 깨고, 거의 일차종속인 열은 계산을 수치적으로 불안정하게 만듭니다.
+- 최소제곱 추정량은 정규방정식 $\mathbf{X}^t\mathbf{X}\boldsymbol\beta = \mathbf{X}^t\mathbf{y}$의 해 $\hat{\boldsymbol\beta} = (\mathbf{X}^t\mathbf{X})^{-1}\mathbf{X}^t\mathbf{y}$입니다. 표본 평균과 기초 통계학의 최소제곱 직선은 그 특별한 경우입니다.
+- 잔차는 디자인 매트릭스의 모든 열과 직교합니다. 그래서 절편이 있는 모델에서는 잔차의 합이 0이지만, 원점을 지나는 모델에서는 그렇지 않습니다.
+
+지금까지는 주어진 데이터 하나에서 $\hat{\boldsymbol\beta}$를 계산했습니다. 하지만 데이터는 우연의 결과이므로, 다른 데이터를 얻었다면 $\hat{\boldsymbol\beta}$도 달라졌을 것입니다. 다음 글에서는 $\hat{\boldsymbol\beta}$가 얼마나, 어떻게 흔들리는지 살펴보겠습니다.
+
+---
+
+### 연결되는 개념
+* $\leftarrow$ **이전 개념:** [1.2 계수의 해석과 '선형'의 의미](02-interpretation-and-linearity.qmd)
+* $\rightarrow$ **다음 개념:** [1.4 최소제곱 추정량의 성질](04-properties.qmd)
