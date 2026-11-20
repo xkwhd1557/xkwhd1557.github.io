@@ -103,6 +103,8 @@ website:
           - text: "핵심 (Core)"
           - text: "측도론적 확률론"
             href: stats/measure-prob/index.qmd
+          - text: "확률적 수렴과 오차 분석"
+            href: stats/stochastic-convergence/index.qmd
           - text: "확률과정론"
             href: stats/stochastic-processes/index.qmd
           - text: "수리통계학"
@@ -534,6 +536,14 @@ website:
       contents:
         - href: stats/measure-prob/index.qmd
           contents: "stats/measure-prob/**"
+    - id: "stats-stochastic-convergence"
+      title: "확률적 수렴과 오차 분석"
+      style: "docked"
+      collapse-level: 4
+      search: true
+      contents:
+        - href: stats/stochastic-convergence/index.qmd
+          contents: "stats/stochastic-convergence/**"
     - id: "stats-stochastic-processes"
       title: "확률과정론"
       style: "docked"

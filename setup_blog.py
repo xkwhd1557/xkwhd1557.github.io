@@ -62,6 +62,7 @@ CATEGORIES = [
             ]),
             ("핵심 (Core)", [
                 ("measure-prob", "측도론적 확률론"),
+                ("stochastic-convergence", "확률적 수렴과 오차 분석"),
                 ("stochastic-processes", "확률과정론"),
                 ("math-stats", "수리통계학"),
                 ("stochastic-simulation", "확률적 시뮬레이션"),

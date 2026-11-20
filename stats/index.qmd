@@ -39,6 +39,10 @@ sidebar: false
 [![측도론적 확률론](../images/placeholder.svg)](measure-prob/index.qmd)
 :::
 ::: {.subject-card}
+### [확률적 수렴과 오차 분석](stochastic-convergence/index.qmd)
+[![확률적 수렴과 오차 분석](../images/placeholder.svg)](stochastic-convergence/index.qmd)
+:::
+::: {.subject-card}
 ### [확률과정론](stochastic-processes/index.qmd)
 [![확률과정론](../images/placeholder.svg)](stochastic-processes/index.qmd)
 :::
