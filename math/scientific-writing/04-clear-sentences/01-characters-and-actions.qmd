@@ -1,0 +1,195 @@
+---
+title: "4.1 주어와 동사"
+subtitle: "4장 명료한 영어 문장 쓰기 · 등장인물은 주어로, 행위는 동사로"
+description: "명료한 문장의 두 원리, 주요 등장인물을 주어로 중요한 행위를 동사로 쓰는 법을 다룹니다. 명사화를 진단하고 고치는 다섯 가지 유형, 수학 논문에서 등장인물이 되는 대상, 능동태와 수동태를 고르는 기준, 문체가 책임을 흐리는 문제를 영어 예문으로 살펴봅니다."
+date: "2026-11-24"
+categories: ["수학", "수학 학술 논문 작성법"]
+---
+
+## 들어가며
+
+다음 두 문장을 비교해 보겠습니다.
+
+> **A.** The minimization of the variance of the estimator was achieved through an appropriate choice of the proposal scale.
+>
+> **B.** We minimized the variance of the estimator by choosing the proposal scale appropriately.
+
+두 문장은 같은 내용을 담고 있고, 둘 다 문법적으로 틀린 곳이 없습니다. 그런데 대부분의 독자는 B가 더 읽기 쉽다고 느낍니다. A가 더 "학술적"으로 보인다고 느끼는 사람도 있겠지만, 실제로 읽어 보면 A에서는 누가 무엇을 했는지 한 번 더 생각해야 합니다.
+
+왜 그럴까요? 윌리엄스와 비저프는 이 차이를 하나의 원리로 설명합니다. 독자는 문장의 **주어**에서 이야기의 **등장인물**을, **동사**에서 그 인물의 **행위**를 찾으려 한다는 것입니다.[^williams] B에서는 등장인물(we)이 주어 자리에, 행위(minimized, choosing)가 동사 자리에 있습니다. A에서는 행위가 명사(minimization, choice)로 바뀌어 주어와 전치사구 속에 숨어 있고, 동사 자리에는 아무 의미 없는 "was achieved"가 앉아 있습니다. 이번 글에서는 이 원리를 문장을 진단하고 고치는 도구로 바꾸는 법을 다룹니다.
+
+## 두 가지 원리
+
+윌리엄스와 비저프가 꼽는 명료한 문장의 가장 일반적인 원리는 두 가지입니다.[^williams]
+
+::: {.callout-note icon=false}
+### 명료한 문장의 두 원리
+1. **주요 등장인물**을 문장의 **주어**로 쓴다.
+2. **중요한 행위**를 문장의 **동사**로 쓴다.
+:::
+
+여기서 "등장인물"은 사람만이 아닙니다. 문장이 이야기하는 **주된 대상**이라면 무엇이든 등장인물이 될 수 있습니다. 수학 논문에서는 특히 그렇습니다. 마르코프 체인, 추정량, 알고리즘, 함수 같은 수학적 대상이 이야기의 주인공이 되는 경우가 많습니다.
+
+> The chain **converges** to its stationary distribution.
+>
+> The estimator **underestimates** the variance when the sample is small.
+>
+> The algorithm **rejects** most proposals in high dimensions.
+
+이 문장들은 모두 수학적 대상을 주어로, 그 대상이 "하는 일"을 동사로 두고 있습니다. 그래서 짧고 분명합니다.
+
+## 명사화: 행위가 숨는 곳
+
+행위가 동사 자리를 떠나는 가장 흔한 방법은 **명사화**(nominalization)입니다. 동사나 형용사를 명사로 바꾸는 것입니다. 학술 영어에서 특히 흔한 명사화는 다음과 같습니다.
+
+| 동사·형용사 | 명사화 |
+|---|---|
+| assume | assumption |
+| converge | convergence |
+| estimate | estimation |
+| analyze | analysis |
+| compare | comparison |
+| fail | failure |
+| depend | dependence |
+| implement | implementation |
+| investigate | investigation |
+| accurate | accuracy |
+
+명사화 자체가 나쁜 것은 아닙니다. 하지만 명사화가 문장의 중요한 행위를 담고 있으면, 그 자리를 대신 채울 의미 없는 동사가 필요해지고 문장이 늘어지게 됩니다. 영국의 작가 조지 오웰도 1946년의 에세이 「Politics and the English Language」에서, 간단한 동사 하나 대신 명사에 일반적인 동사를 붙인 구를 쓰고, 능동태 대신 수동태를 쓰는 습관을 허세 섞인 문체의 특징으로 꼽았습니다.[^orwell]
+
+### 진단하기
+
+내 문장에 이런 문제가 있는지 확인하는 방법은 간단합니다.
+
+1. 문장의 **주어 전체**에 밑줄을 긋습니다.
+2. 주어가 **등장인물**인지 봅니다. 아니라면, 등장인물은 문장의 어디에 숨어 있는지 찾습니다.
+3. 문장의 **동사**에 표시합니다.
+4. 동사가 **중요한 행위**를 담고 있는지 봅니다. 아니라면, 행위가 명사로 바뀌어 어디에 숨어 있는지 찾습니다.
+
+예를 들어 다음 문장을 진단해 보겠습니다.
+
+> Our lack of knowledge about the mixing time of the chain prevented a reliable assessment of the accuracy of the estimates.
+
+- 주어는 "Our lack of knowledge about the mixing time of the chain"입니다. 길고, 등장인물이 아닙니다.
+- 등장인물은 "Our"에 숨어 있는 **we**와, "the chain"입니다.
+- 동사는 "prevented"입니다. 중요한 행위가 아닙니다.
+- 중요한 행위는 명사로 숨어 있습니다. lack(→ did not know), assessment(→ assess), accuracy(→ how accurate)입니다.
+
+이제 등장인물을 주어로, 행위를 동사로 옮겨 다시 씁니다.
+
+> Because we did not know how fast the chain mixes, we could not reliably assess how accurate the estimates were.
+
+문장은 조금 길어졌지만 훨씬 빨리 읽힙니다. 독자가 머릿속에서 명사를 다시 동사로 풀어내는 수고를 저자가 대신 해 주었기 때문입니다.
+
+### 다섯 가지 흔한 유형
+
+명사화를 고칠 때 자주 만나는 유형은 다음과 같습니다.
+
+**1. 명사화가 의미 없는 동사의 주어가 된 경우.** 주어에 행위가 숨어 있고, 동사는 그 행위가 "일어났다"는 것만 말합니다.
+
+> ✗ The analysis of the simulation output was performed in Python.
+>
+> ✓ We analyzed the simulation output in Python.
+
+**2. 명사화가 의미 없는 동사의 목적어가 된 경우.** "conduct", "perform", "make", "carry out" 같은 동사 뒤에 진짜 행위가 명사로 붙어 있습니다.
+
+> ✗ We conducted an investigation of the dependence of the acceptance rate on the dimension.
+>
+> ✓ We investigated how the acceptance rate depends on the dimension.
+
+**3. "There is" 뒤의 명사화.** 문장에 주어도 동사도 사실상 없습니다.
+
+> ✗ There was a significant improvement in efficiency after the rescaling of the proposal.
+>
+> ✓ Efficiency improved significantly after we rescaled the proposal.
+
+**4. 두 명사화가 의미 없는 동사로 이어진 경우.** 원인과 결과를 나타내는 두 행위가 모두 명사로 바뀌어 있습니다. 이럴 때는 "because", "if", "when", "as" 같은 접속사로 두 절을 이어 줍니다.
+
+> ✗ An increase in the dimension causes a decrease in the acceptance rate.
+>
+> ✓ As the dimension increases, the acceptance rate decreases.
+
+**5. 명사화가 꼬리를 무는 경우.** "of"로 이어진 명사구가 줄줄이 달려 있습니다.
+
+> ✗ The estimation of the variance of the limit distribution requires the computation of the integral of the squared derivative of the log density.
+>
+> ✓ To estimate the variance of the limit distribution, we must integrate the squared derivative of the log density.
+
+### 그대로 두는 것이 나은 명사화
+
+모든 명사화를 고칠 필요는 없습니다. 다음과 같은 경우에는 명사화가 오히려 낫습니다.
+
+- **앞 문장을 가리킬 때.** "These **arguments** show that …"처럼 앞 문장에서 한 일을 한 단어로 받아 다음 문장으로 넘어가는 경우입니다. 이것은 다음 글에서 볼 응집성에 도움이 됩니다.
+- **이미 하나의 개념이 된 경우.** 수학에서 convergence, distribution, variance, proof 같은 말은 행위라기보다 **용어**입니다. "Convergence in total variation implies weak convergence."라는 문장을 동사로 풀어 쓸 이유는 없습니다.
+- **주어가 지나치게 길어질 때.** "the fact that the chain converges" 같은 구를 주어로 쓰느니, 명사화 하나가 짧고 낫습니다. 다만 "the fact that"은 대부분 "that"으로 줄이거나 문장을 바꿔 없앨 수 있습니다.
+
+## 숨은 등장인물 찾기
+
+행위만 숨는 것이 아닙니다. 등장인물이 문장에서 **아예 사라지는** 경우도 있습니다.
+
+> A decision was made to restrict the analysis to the first component.
+
+누가 결정했을까요? 저자일 수도, 지도교수일 수도, 원래 논문의 저자일 수도 있습니다. 쓴 사람은 알고 있지만, 독자는 모릅니다. 등장인물을 되살려 쓰면 문장은 분명해지고, 대개 더 짧아집니다.
+
+> We restricted the analysis to the first component.
+>
+> Following Roberts, Gelman and Gilks, we restricted the analysis to the first component.
+
+여기서 흔한 오해 하나를 짚고 넘어가겠습니다. **"과학 논문은 'I'나 'we' 없이 수동태로 써야 한다"는 것은 사실이 아닙니다.** [3.2절](../03-structure-and-process/02-math-papers.qmd)에서 보았듯 수학 논문은 "we"를 자연스럽게 쓰고, 다른 분야에서도 1인칭 능동태로 쓴 논문을 쉽게 찾아볼 수 있습니다. [1.2절](../01-papers-in-context/02-who-writes-papers.qmd)에서 본 「Attention Is All You Need」의 초록도 "We propose a new simple network architecture"로 시작합니다. 등장인물을 숨겨서 얻는 객관성은 겉모습일 뿐이고, 독자에게는 "누가 했는가"라는 질문만 남깁니다.
+
+## 능동태와 수동태
+
+그렇다면 수동태는 쓰지 말아야 할까요? 그렇지 않습니다. 윌리엄스와 비저프의 결론은 **어디서나 쓰지도, 어디서나 피하지도 말라**는 것입니다. 그리고 그 사이에서 고를 때 다음 질문들을 던져 보라고 권합니다.[^williams]
+
+**독자가 누가 그 행위를 했는지 알아야 하는가?** 행위자가 중요하지 않거나, 누구나 할 수 있는 일이라면 수동태가 자연스럽습니다.
+
+> The first 1,000 iterations were discarded as burn-in.
+
+여기서 "누가 버렸는가"는 중요하지 않습니다. 중요한 것은 처음 1,000번의 반복이 분석에서 빠졌다는 사실입니다.
+
+**어느 쪽이 앞 문장과 더 매끄럽게 이어지는가?** 다음 글의 주제이므로 예만 하나 보겠습니다.
+
+> Most practitioners tune the random walk Metropolis algorithm to an acceptance rate of about 0.234. **This rule was derived** by Roberts, Gelman and Gilks for targets with independent identical components.
+
+두 번째 문장을 능동태로 바꾸면 "Roberts, Gelman and Gilks derived this rule …"이 되어, 앞 문장에서 막 이야기한 "rule"이 문장 중간으로 밀려납니다. 수동태로 쓰면 앞 문장에서 이어받은 정보(this rule)가 문장 맨 앞에 와서 흐름이 자연스러워집니다.
+
+**어느 쪽이 더 일관된 관점을 주는가?** 한 문단 안에서 이야기의 주인공이 계속 바뀌면 독자는 길을 잃습니다. 문단의 주인공이 "the chain"이라면, 문장들이 계속 "the chain"을 주어로 삼을 수 있도록 능동과 수동을 고릅니다.
+
+### 방법 절과 메타담화
+
+분야에 따라 굳어진 관습도 있습니다.
+
+- **방법 절**에서는 수동태가 흔합니다. "The proposal scale was chosen such that …"처럼, 누가 했는지보다 무엇을 어떻게 했는지가 중요하기 때문입니다. 능동태로 써도 괜찮지만, 그러면 문장마다 "We … We … We …"로 시작하는 단조로움이 생길 수 있으니 섞어 쓰는 것이 좋습니다.
+- **메타담화**, 즉 글의 흐름을 안내하는 문장에서는 능동태가 자연스럽습니다. "Here we show that …", "Next, we prove …", "We conclude that …" 같은 문장입니다. 이것을 "It is shown that …"으로 바꿀 이유는 없습니다. 메타담화에 대해서는 [4.3절](03-concision.qmd)에서 더 다룹니다.
+
+## 문체의 윤리
+
+마지막으로, 주어와 동사를 고르는 문제가 단순히 읽기 쉬움의 문제만은 아니라는 점을 짚어 두겠습니다. 윌리엄스와 비저프는 책의 마지막 장을 **문체의 윤리**에 할애합니다.[^williams] 등장인물을 지우고 행위를 명사로 숨기는 문체는, 때로는 **책임을 흐리는** 도구가 됩니다.
+
+> ✗ Errors were introduced in the preprocessing of the data, and some results may have been affected.
+>
+> ✓ We made errors when we preprocessed the data, and these errors affect the results in Table 2.
+
+첫 문장에서는 누가 오류를 냈는지, 어떤 결과가 얼마나 영향을 받았는지가 모두 흐릿합니다. 두 번째 문장은 불편하지만 정직합니다. 독자가 저자를 신뢰할 수 있는 것은 두 번째 문장 같은 글 덕분입니다.
+
+이것은 [1.1절](../01-papers-in-context/01-theses.qmd)에서 말한 원칙, 즉 논문에 적은 모든 내용은 저자가 이해하고 책임지는 내용이어야 한다는 원칙과 같은 이야기입니다. 그리고 AI의 도움을 받아 쓴 문장이나 증명이 늘어나는 지금, 6장에서 다시 보겠지만 이 원칙은 더 중요해지고 있습니다.
+
+## 정리
+
+- 독자는 문장의 **주어**에서 등장인물을, **동사**에서 행위를 찾습니다. 그래서 명료한 문장은 주요 등장인물을 주어로, 중요한 행위를 동사로 씁니다. 수학 논문에서는 수학적 대상이 등장인물이 되는 경우가 많습니다.
+- 행위가 명사로 바뀐 **명사화**는 문장을 늘어지게 하는 가장 흔한 원인입니다. 주어와 동사에 표시해 진단하고, 숨은 행위를 동사로 되살려 고칩니다. 다만 앞 문장을 받는 명사화나 이미 용어가 된 명사화는 그대로 둡니다.
+- 사라진 등장인물은 되살려 씁니다. 과학 논문에서 "I"나 "we"를 쓰면 안 된다는 것은 오해입니다.
+- 능동태와 수동태는 행위자가 중요한지, 앞 문장과의 흐름, 관점의 일관성을 기준으로 고릅니다. 방법 절에서는 수동태가, 메타담화에서는 능동태가 흔합니다.
+- 등장인물과 행위를 숨기는 문체는 책임을 흐릴 수 있습니다. 명료한 문장은 정직한 문장이기도 합니다.
+
+이번 글에서는 문장 하나 안에서 등장인물과 행위를 제자리에 두는 법을 보았습니다. 다음 글에서는 문장과 문장 사이로 시야를 넓혀, 문장들이 매끄럽게 이어지고 한 문단이 하나의 그림을 이루게 하는 법, 그리고 강조할 내용을 어디에 둘지를 다루겠습니다.
+
+---
+
+### 연결되는 개념
+* $\leftarrow$ **이전 개념:** [4 명료한 영어 문장 쓰기](index.qmd)
+* $\rightarrow$ **다음 개념:** [4.2 흐름과 강조](02-flow-and-emphasis.qmd)
+
+[^williams]: J. M. Williams, J. Bizup, *Style: Lessons in Clarity and Grace*, 12판, Pearson, 2017, 3장(Actions), 4장(Characters), 12장(The Ethics of Style).
+
+[^orwell]: G. Orwell, "Politics and the English Language", *Horizon* 13(76), 1946, pp. 252–265.

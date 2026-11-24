@@ -126,7 +126,7 @@ categories: ["수학", "수학 학술 논문 작성법"]
 
 ### 연결되는 개념
 * $\leftarrow$ **이전 개념:** [1.2 누가, 왜 논문을 쓰는가](02-who-writes-papers.qmd)
-* $\rightarrow$ **다음 개념:** 2 연구 준비 (추후 작성 예정)
+* $\rightarrow$ **다음 개념:** [2 연구 준비](../02-research-preparation/index.qmd)
 
 [^nathanson]: 와일스의 증명은 A. Wiles, "Modular elliptic curves and Fermat's Last Theorem", *Annals of Mathematics* 141(3), 1995, pp. 443–551과 R. Taylor, A. Wiles, "Ring-theoretic properties of certain Hecke algebras", 같은 호, pp. 553–572입니다. 확인에 몇 년이 걸렸다는 점과 클레이 규정의 2년 조건에 대한 논의는 M. B. Nathanson, "Desperately seeking mathematical truth", arXiv:0809.1372, 2008을 참고했습니다.
 
