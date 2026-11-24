@@ -31,6 +31,10 @@ sidebar: false
 ### [LaTeX](latex/index.qmd)
 [![LaTeX](../images/placeholder.svg)](latex/index.qmd)
 :::
+::: {.subject-card}
+### [수학 학술 논문 작성법](scientific-writing/index.qmd)
+[![수학 학술 논문 작성법](../images/placeholder.svg)](scientific-writing/index.qmd)
+:::
 :::
 
 ## 핵심 수학 (Core)

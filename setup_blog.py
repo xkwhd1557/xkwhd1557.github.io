@@ -20,6 +20,7 @@ CATEGORIES = [
                 ("discrete-math", "이산수학"),
                 ("math-programming", "수학적 프로그래밍 (Python)"),
                 ("latex", "LaTeX"),
+                ("scientific-writing", "수학 학술 논문 작성법"),
             ]),
             ("핵심 (Core)", [
                 ("complex-analysis", "복소해석학"),

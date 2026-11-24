@@ -53,6 +53,10 @@ listing:
 #### [LaTeX](math/latex/index.qmd)
 [![LaTeX](images/placeholder.svg)](math/latex/index.qmd)
 :::
+::: {.subject-card}
+#### [수학 학술 논문 작성법](math/scientific-writing/index.qmd)
+[![수학 학술 논문 작성법](images/placeholder.svg)](math/scientific-writing/index.qmd)
+:::
 :::
 
 ::: {.home-more}

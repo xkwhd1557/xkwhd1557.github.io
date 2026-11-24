@@ -37,6 +37,8 @@ website:
             href: math/math-programming/index.qmd
           - text: "LaTeX"
             href: math/latex/index.qmd
+          - text: "수학 학술 논문 작성법"
+            href: math/scientific-writing/index.qmd
           - text: "---"
           - text: "핵심 수학 (Core)"
           - text: "복소해석학"
@@ -320,6 +322,14 @@ website:
       contents:
         - href: math/latex/index.qmd
           contents: "math/latex/**"
+    - id: "math-scientific-writing"
+      title: "수학 학술 논문 작성법"
+      style: "docked"
+      collapse-level: 4
+      search: true
+      contents:
+        - href: math/scientific-writing/index.qmd
+          contents: "math/scientific-writing/**"
     - id: "math-complex-analysis"
       title: "복소해석학"
       style: "docked"
