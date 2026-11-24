@@ -1,0 +1,1824 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2026-11-24">
+<meta name="description" content="Google Scholar, zbMATH Open, MathSciNet, arXiv 같은 수학 문헌 검색 도구와 검색어 다듬기, 참고문헌과 인용을 따라가는 눈덩이 굴리기, 그리고 케샤브의 여러 단계 읽기와 5C 질문으로 논문을 효율적으로 읽는 법을 다룹니다.">
+
+<title>2.2 문헌 찾고 읽기 – Study Archive</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../math/scientific-writing/02-research-preparation/03-citing-and-managing.html" rel="next">
+<link href="../../../math/scientific-writing/02-research-preparation/01-problem-to-proposal.html" rel="prev">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-d739a02a1af33765fc6ff0a69ae6860b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="2.2 문헌 찾고 읽기 – Study Archive">
+<meta property="og:description" content="Google Scholar, zbMATH Open, MathSciNet, arXiv 같은 수학 문헌 검색 도구와 검색어 다듬기, 참고문헌과 인용을 따라가는 눈덩이 굴리기, 그리고 케샤브의 여러 단계 읽기와 5C 질문으로 논문을 효율적으로 읽는 법을 다룹니다.">
+<meta property="og:site_name" content="Study Archive">
+<meta name="twitter:title" content="2.2 문헌 찾고 읽기 – Study Archive">
+<meta name="twitter:description" content="Google Scholar, zbMATH Open, MathSciNet, arXiv 같은 수학 문헌 검색 도구와 검색어 다듬기, 참고문헌과 인용을 따라가는 눈덩이 굴리기, 그리고 케샤브의 여러 단계 읽기와 5C 질문으로 논문을 효율적으로 읽는 법을 다룹니다.">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Study Archive</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../articles/index.html"> 
+<span class="menu-text">일반 아티클</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">수학</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-">    
+        <li>
+    <a class="dropdown-item" href="../../../math/index.html">
+ <span class="dropdown-text">📋 수학 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../math/analysis/index.html">
+ <span class="dropdown-text">해석학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/linear-algebra/index.html">
+ <span class="dropdown-text">선형대수학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/discrete-math/index.html">
+ <span class="dropdown-text">이산수학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/math-programming/index.html">
+ <span class="dropdown-text">수학적 프로그래밍 (Python)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/latex/index.html">
+ <span class="dropdown-text">LaTeX</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/scientific-writing/index.html">
+ <span class="dropdown-text">수학 학술 논문 작성법</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 수학 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../math/complex-analysis/index.html">
+ <span class="dropdown-text">복소해석학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/ode/index.html">
+ <span class="dropdown-text">상미분방정식</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/dynamical-systems/index.html">
+ <span class="dropdown-text">동적 시스템</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/measure-theory/index.html">
+ <span class="dropdown-text">측도론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/pde-intro/index.html">
+ <span class="dropdown-text">기초 편미분방정식</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/general-topology/index.html">
+ <span class="dropdown-text">일반위상수학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/algebra/index.html">
+ <span class="dropdown-text">대수학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/number-theory/index.html">
+ <span class="dropdown-text">정수론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/geometry/index.html">
+ <span class="dropdown-text">기하학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/mathematical-logic/index.html">
+ <span class="dropdown-text">수리논리학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/set-theory/index.html">
+ <span class="dropdown-text">공리적 집합론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/numerical-methods/index.html">
+ <span class="dropdown-text">수치적 방법론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/optimization/index.html">
+ <span class="dropdown-text">수학적 최적화</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../math/functional-analysis/index.html">
+ <span class="dropdown-text">함수해석학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/topological-vector-spaces/index.html">
+ <span class="dropdown-text">위상벡터공간론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/pde-advanced/index.html">
+ <span class="dropdown-text">편미분방정식</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/manifold-analysis/index.html">
+ <span class="dropdown-text">다양체 해석학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/rkhs/index.html">
+ <span class="dropdown-text">RKHS 이론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/differential-geometry/index.html">
+ <span class="dropdown-text">미분기하학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/numerical-ode/index.html">
+ <span class="dropdown-text">수치적 상미분방정식</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/scientific-computing/index.html">
+ <span class="dropdown-text">과학계산</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/inverse-problems/index.html">
+ <span class="dropdown-text">역문제</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--1" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">확률과 통계</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--1">    
+        <li>
+    <a class="dropdown-item" href="../../../stats/index.html">
+ <span class="dropdown-text">📋 확률과 통계 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../stats/prob-theory/index.html">
+ <span class="dropdown-text">기초 확률론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/basic-stats/index.html">
+ <span class="dropdown-text">기초 통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/linear-models/index.html">
+ <span class="dropdown-text">기초 선형 모델</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/stat-programming/index.html">
+ <span class="dropdown-text">통계적 프로그래밍</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../stats/measure-prob/index.html">
+ <span class="dropdown-text">측도론적 확률론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/stochastic-convergence/index.html">
+ <span class="dropdown-text">확률적 수렴과 오차 분석</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/stochastic-processes/index.html">
+ <span class="dropdown-text">확률과정론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/math-stats/index.html">
+ <span class="dropdown-text">수리통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/stochastic-simulation/index.html">
+ <span class="dropdown-text">확률적 시뮬레이션</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/actuarial-math/index.html">
+ <span class="dropdown-text">보험수학</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../stats/stochastic-calculus/index.html">
+ <span class="dropdown-text">확률해석학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/markov-processes/index.html">
+ <span class="dropdown-text">마르코프 프로세스</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/diffusion-models/index.html">
+ <span class="dropdown-text">디퓨전 모델</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/gaussian-processes/index.html">
+ <span class="dropdown-text">가우시안 프로세스</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/non-euclidean-stats/index.html">
+ <span class="dropdown-text">비유클리드 통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/stats-for-stoch-proc/index.html">
+ <span class="dropdown-text">확률과정의 통계추론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/nonparametric-stats/index.html">
+ <span class="dropdown-text">비모수 통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/topological-data-analysis/index.html">
+ <span class="dropdown-text">위상수학적 데이터 분석</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/statistical-learning-theory/index.html">
+ <span class="dropdown-text">통계적 학습 이론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/statistical-inverse-problems/index.html">
+ <span class="dropdown-text">통계적 역문제</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/statistical-modelling/index.html">
+ <span class="dropdown-text">통계적 모델링</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/asymptotic-statistics/index.html">
+ <span class="dropdown-text">점근 통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/time-series-foundations/index.html">
+ <span class="dropdown-text">시계열 분석의 통계적 기초</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--2" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">컴퓨터 공학</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--2">    
+        <li>
+    <a class="dropdown-item" href="../../../cs/index.html">
+ <span class="dropdown-text">📋 컴퓨터 공학 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../cs/cs-intro/index.html">
+ <span class="dropdown-text">컴퓨터 과학 원론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cs/c-programming/index.html">
+ <span class="dropdown-text">C언어</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../cs/algorithms-data-structures/index.html">
+ <span class="dropdown-text">알고리즘과 자료구조</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cs/theoretical-cs/index.html">
+ <span class="dropdown-text">이론 컴퓨터과학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cs/database-systems/index.html">
+ <span class="dropdown-text">데이터베이스 시스템</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cs/formal-systems/index.html">
+ <span class="dropdown-text">형식 시스템</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../cs/advanced/index.html">
+ <span class="dropdown-text">심화 과정 (준비 중)</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ai" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">데이터 사이언스·AI</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-ai">    
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/index.html">
+ <span class="dropdown-text">📋 데이터 사이언스·AI 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/ds-intro/index.html">
+ <span class="dropdown-text">데이터 사이언스 개론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/ds-society/index.html">
+ <span class="dropdown-text">데이터 사이언스와 사회</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/ai-math-intro/index.html">
+ <span class="dropdown-text">고등학교 인공지능 수학</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/numerical-optimization/index.html">
+ <span class="dropdown-text">수치적 방법론과 최적화</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/machine-learning/index.html">
+ <span class="dropdown-text">머신러닝</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/deep-learning-cv/index.html">
+ <span class="dropdown-text">딥러닝과 컴퓨터 비전</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/ai-intro/index.html">
+ <span class="dropdown-text">인공지능 원론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/data-analysis-inference/index.html">
+ <span class="dropdown-text">수리적 데이터 분석과 통계적 추론</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/statistical-foundations/index.html">
+ <span class="dropdown-text">데이터 사이언스의 통계적 기초</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/mathematical-foundations/index.html">
+ <span class="dropdown-text">머신러닝의 수리적 기초</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/advanced-linear-algebra/index.html">
+ <span class="dropdown-text">데이터 사이언스를 위한 선형대수학</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--3" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">경영/경제</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--3">    
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/index.html">
+ <span class="dropdown-text">📋 경영/경제 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/biz-intro/index.html">
+ <span class="dropdown-text">경영학 원론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/econ-intro/index.html">
+ <span class="dropdown-text">경제학 원론</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/accounting/index.html">
+ <span class="dropdown-text">회계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/production-logistics/index.html">
+ <span class="dropdown-text">생산물류관리</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/decision-theory/index.html">
+ <span class="dropdown-text">의사결정론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/microeconomics/index.html">
+ <span class="dropdown-text">미시경제학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/macroeconomics/index.html">
+ <span class="dropdown-text">거시경제학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/finance-investment/index.html">
+ <span class="dropdown-text">재무와 투자론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/monetary-economics/index.html">
+ <span class="dropdown-text">화폐금융론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/labor-economics/index.html">
+ <span class="dropdown-text">노동경제학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/game-theory/index.html">
+ <span class="dropdown-text">게임이론 개론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/supply-chain/index.html">
+ <span class="dropdown-text">공급망 관리 (SCM)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/market-research/index.html">
+ <span class="dropdown-text">시장조사론의 기초</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/time-series/index.html">
+ <span class="dropdown-text">시계열 분석</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/econometrics/index.html">
+ <span class="dropdown-text">계량경제학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/insurance-economics/index.html">
+ <span class="dropdown-text">보험경제학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/quantitative-risk/index.html">
+ <span class="dropdown-text">계량 리스크 관리</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/corporate-finance/index.html">
+ <span class="dropdown-text">기업재무론</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--4" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">의학통계·바이오메트리</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--4">    
+        <li>
+    <a class="dropdown-item" href="../../../biostat/index.html">
+ <span class="dropdown-text">📋 의학통계·바이오메트리 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biostat/biostat-intro/index.html">
+ <span class="dropdown-text">의학통계학 개론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biostat/epidemiology/index.html">
+ <span class="dropdown-text">역학 연구방법론</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biostat/clinical-trials/index.html">
+ <span class="dropdown-text">임상시험 통계방법론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biostat/survival-analysis/index.html">
+ <span class="dropdown-text">생존분석</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biostat/bioinformatics/index.html">
+ <span class="dropdown-text">생물정보통계학</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biostat/causal-inference/index.html">
+ <span class="dropdown-text">인과추론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biostat/longitudinal-data/index.html">
+ <span class="dropdown-text">종단적 데이터 분석</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-language" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">🌐 Language</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-language">    
+        <li>
+    <a class="dropdown-item" href="../../../index.html">
+ <span class="dropdown-text">한국어 (KO)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../lang/en-coming-soon.html">
+ <span class="dropdown-text">English (EN)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../lang/de-coming-soon.html">
+ <span class="dropdown-text">Deutsch (DE)</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xkwhd1557/xkwhd1557.github.io"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+            <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" aria-label="Toolbar">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../math/scientific-writing/index.html">수학 학술 논문 작성법(Scientific Writing for Mathematics)</a></li><li class="breadcrumb-item"><a href="../../../math/scientific-writing/02-research-preparation/index.html">2 연구 준비</a></li><li class="breadcrumb-item"><a href="../../../math/scientific-writing/02-research-preparation/02-finding-and-reading.html">2.2 문헌 찾고 읽기</a></li></ol></nav>
+        <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto" aria-label="Section">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../math/scientific-writing/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">수학 학술 논문 작성법(Scientific Writing for Mathematics)</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true" aria-label="Toggle section: 수학 학술 논문 작성법(Scientific Writing for Mathematics)">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../math/scientific-writing/01-papers-in-context/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-1-label">1 논문이라는 글</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section: 1 논문이라는 글">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../math/scientific-writing/01-papers-in-context/01-theses.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.1 학위 논문</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../math/scientific-writing/01-papers-in-context/02-who-writes-papers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.2 누가, 왜 논문을 쓰는가</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../math/scientific-writing/01-papers-in-context/03-where-papers-go.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.3 논문이 실리는 곳</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../math/scientific-writing/02-research-preparation/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-2-label">2 연구 준비</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section: 2 연구 준비">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-2" aria-labelledby="quarto-sidebar-section-2-label" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../math/scientific-writing/02-research-preparation/01-problem-to-proposal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.1 연구 문제에서 계획서까지</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../math/scientific-writing/02-research-preparation/02-finding-and-reading.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">2.2 문헌 찾고 읽기</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../math/scientific-writing/02-research-preparation/03-citing-and-managing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.3 인용과 문헌 관리</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../math/scientific-writing/03-structure-and-process/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-3-label">3 논문의 구조와 쓰는 과정</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-controls="quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section: 3 논문의 구조와 쓰는 과정">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-3" aria-labelledby="quarto-sidebar-section-3-label" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../math/scientific-writing/03-structure-and-process/01-anatomy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.1 논문의 뼈대</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../math/scientific-writing/03-structure-and-process/02-math-papers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.2 수학 논문의 구조</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../math/scientific-writing/03-structure-and-process/03-writing-is-iterating.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.3 쓰기는 반복이다</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../math/scientific-writing/04-clear-sentences/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-4-label">4 명료한 영어 문장 쓰기</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-controls="quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section: 4 명료한 영어 문장 쓰기">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-4" aria-labelledby="quarto-sidebar-section-4-label" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../math/scientific-writing/04-clear-sentences/01-characters-and-actions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4.1 주어와 동사</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../math/scientific-writing/04-clear-sentences/02-flow-and-emphasis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4.2 흐름과 강조</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../math/scientific-writing/04-clear-sentences/03-concision.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4.3 간결함</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../math/scientific-writing/05-figures/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-5-label">5 그림과 시각화</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-controls="quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section: 5 그림과 시각화">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-5" aria-labelledby="quarto-sidebar-section-5-label" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../math/scientific-writing/05-figures/01-principles.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5.1 좋은 그림의 원리</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../math/scientific-writing/05-figures/02-making-plots.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5.2 그래프 고르고 다듬기</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../math/scientific-writing/06-research-in-the-ai-era/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-6-label">6 AI 시대의 연구</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-controls="quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section: 6 AI 시대의 연구">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-6" aria-labelledby="quarto-sidebar-section-6-label" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../math/scientific-writing/06-research-in-the-ai-era/01-where-ai-stands.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">6.1 AI는 지금 어디까지 왔나</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../math/scientific-writing/06-research-in-the-ai-era/02-using-ai-responsibly.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">6.2 책임 있게 쓰는 법</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#들어가며" id="toc-들어가며" class="nav-link active" data-scroll-target="#들어가며">들어가며</a></li>
+  <li><a href="#어디에서-찾는가" id="toc-어디에서-찾는가" class="nav-link" data-scroll-target="#어디에서-찾는가">어디에서 찾는가</a></li>
+  <li><a href="#검색어-다듬기" id="toc-검색어-다듬기" class="nav-link" data-scroll-target="#검색어-다듬기">검색어 다듬기</a></li>
+  <li><a href="#문헌-넓히기-눈덩이-굴리기" id="toc-문헌-넓히기-눈덩이-굴리기" class="nav-link" data-scroll-target="#문헌-넓히기-눈덩이-굴리기">문헌 넓히기: 눈덩이 굴리기</a></li>
+  <li><a href="#어떻게-읽는가-여러-단계로-걸러-읽기" id="toc-어떻게-읽는가-여러-단계로-걸러-읽기" class="nav-link" data-scroll-target="#어떻게-읽는가-여러-단계로-걸러-읽기">어떻게 읽는가: 여러 단계로 걸러 읽기</a>
+  <ul class="collapse">
+  <li><a href="#단계-첫인상-12분" id="toc-단계-첫인상-12분" class="nav-link" data-scroll-target="#단계-첫인상-12분">0단계: 첫인상 (1~2분)</a></li>
+  <li><a href="#단계-조감하기-510분" id="toc-단계-조감하기-510분" class="nav-link" data-scroll-target="#단계-조감하기-510분">1단계: 조감하기 (5~10분)</a></li>
+  <li><a href="#단계-내용-파악하기-1시간-정도" id="toc-단계-내용-파악하기-1시간-정도" class="nav-link" data-scroll-target="#단계-내용-파악하기-1시간-정도">2단계: 내용 파악하기 (1시간 정도)</a></li>
+  <li><a href="#단계-깊이-읽기-몇-시간" id="toc-단계-깊이-읽기-몇-시간" class="nav-link" data-scroll-target="#단계-깊이-읽기-몇-시간">3단계: 깊이 읽기 (몇 시간)</a></li>
+  </ul></li>
+  <li><a href="#메모-남기기" id="toc-메모-남기기" class="nav-link" data-scroll-target="#메모-남기기">메모 남기기</a></li>
+  <li><a href="#정리" id="toc-정리" class="nav-link" data-scroll-target="#정리">정리</a>
+  <ul class="collapse">
+  <li><a href="#연결되는-개념" id="toc-연결되는-개념" class="nav-link" data-scroll-target="#연결되는-개념">연결되는 개념</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../math/scientific-writing/index.html">수학 학술 논문 작성법(Scientific Writing for Mathematics)</a></li><li class="breadcrumb-item"><a href="../../../math/scientific-writing/02-research-preparation/index.html">2 연구 준비</a></li><li class="breadcrumb-item"><a href="../../../math/scientific-writing/02-research-preparation/02-finding-and-reading.html">2.2 문헌 찾고 읽기</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">2.2 문헌 찾고 읽기</h1>
+<p class="subtitle lead">2장 연구 준비 · 어디에서 찾고, 어떻게 넓히고, 어떻게 읽는가</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">수학</div>
+    <div class="quarto-category">수학 학술 논문 작성법</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Google Scholar, zbMATH Open, MathSciNet, arXiv 같은 수학 문헌 검색 도구와 검색어 다듬기, 참고문헌과 인용을 따라가는 눈덩이 굴리기, 그리고 케샤브의 여러 단계 읽기와 5C 질문으로 논문을 효율적으로 읽는 법을 다룹니다.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 24, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="들어가며" class="level2">
+<h2 class="anchored" data-anchor-id="들어가며">들어가며</h2>
+<p><a href="../../../math/scientific-writing/02-research-preparation/01-problem-to-proposal.html">지난 글</a>에서 박종우 씨는 랜덤 워크 메트로폴리스 알고리즘의 고차원 조율 문제를 학사 논문 주제로 정하고, 12주짜리 계획을 세웠습니다. 계획의 첫 작업은 “WP1a: 문헌 읽기”였습니다. 그런데 막상 검색창에 “Metropolis algorithm”을 쳐 보면 결과가 수만 건 나옵니다. 이 가운데 무엇을 읽어야 할까요? 그리고 골라낸 논문 스무 편을 3주 안에 모두 처음부터 끝까지 읽을 수 있을까요?</p>
+<p>문헌 조사는 두 가지 일로 이루어집니다. <strong>찾기</strong>와 <strong>읽기</strong>입니다. 이번 글에서는 수학 문헌을 어디에서 찾는지, 검색어를 어떻게 다듬고 찾은 논문에서 출발해 어떻게 문헌을 넓혀 가는지, 그리고 찾은 논문을 어떻게 단계적으로 걸러 가며 읽는지 다루겠습니다.</p>
+</section>
+<section id="어디에서-찾는가" class="level2">
+<h2 class="anchored" data-anchor-id="어디에서-찾는가">어디에서 찾는가</h2>
+<p>문헌을 찾는 도구는 크게 다섯 종류로 나눌 수 있습니다.</p>
+<p><strong>범용 학술 검색 엔진.</strong> Google Scholar, Semantic Scholar, OpenAlex 같은 서비스입니다. 무료이고 거의 모든 분야를 아우르며, 각 논문을 누가 인용했는지 보여 주는 기능이 특히 유용합니다. 다만 웹을 자동으로 긁어 모은 자료라서 서지 정보에 오류가 섞여 있는 경우가 종종 있습니다.</p>
+<p><strong>수학 전문 데이터베이스.</strong> 수학에는 오랜 전통을 가진 두 데이터베이스가 있습니다.</p>
+<ul>
+<li><strong>zbMATH Open</strong>: 예전 이름은 Zentralblatt MATH로, 유럽수학회와 FIZ 카를스루에 등이 만드는 수학 문헌 데이터베이스입니다. 400만 건이 넘는 기록을 담고 있고, 2021년 1월부터 누구나 무료로 쓸 수 있는 오픈 액세스 서비스가 되었습니다.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> 수식으로 검색하는 기능도 있습니다.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></li>
+<li><strong>MathSciNet</strong>: 미국수학회가 만드는 데이터베이스로, 수학 논문마다 전문가가 쓴 리뷰가 붙어 있습니다. 구독제라서 대개 대학 도서관을 통해 접속합니다.</li>
+</ul>
+<p>두 데이터베이스의 장점은 문헌이 <strong>수학 주제 분류</strong>(Mathematics Subject Classification, MSC)로 정리되어 있다는 것입니다. 예를 들어 MSC 2020에서 65C05는 몬테카를로 방법, 60J22는 마르코프 체인의 계산 방법, 65C40은 마르코프 체인에 적용된 수치 해석 방법을 가리킵니다. 관심 있는 논문 몇 편의 MSC 코드를 확인해 두면, 그 코드로 같은 주제의 문헌을 빠짐없이 훑어볼 수 있습니다.</p>
+<p><strong>상용 데이터베이스.</strong> 클래리베이트의 Web of Science, 엘스비어의 Scopus 같은 서비스입니다. 서지 정보의 질이 높고 인용 분석 기능이 있지만 구독이 필요합니다. <a href="../../../math/scientific-writing/01-papers-in-context/03-where-papers-go.html">1.3절</a>에서 본 SCI(E)가 바로 Web of Science의 일부입니다.</p>
+<p><strong>프리프린트 저장소.</strong> 수학에서는 <strong>arXiv</strong>가 사실상 최신 연구의 출발점입니다. arXiv의 수학 분야는 math.PR(확률론), math.ST(통계 이론)처럼 세부 분야로 나뉘어 있고, 분야별로 매일 새로 올라온 논문 목록을 볼 수 있습니다. 졸업 논문을 쓰는 동안 자기 분야의 목록을 주기적으로 훑어보는 습관을 들이면 좋습니다.</p>
+<p><strong>AI 검색 도구.</strong> Consensus나 Elicit처럼 질문을 입력하면 관련 논문을 찾아 요약해 주는 도구도 있습니다. 낯선 분야나 여러 분야에 걸친 주제의 큰 그림을 빠르게 잡는 데는 유용합니다. 하지만 요약에 오류가 있을 수 있고, 다루는 범위도 제한적입니다. 무엇보다 범용 대화형 AI에게 “관련 논문을 알려 달라”고 하면 <strong>존재하지 않는 논문</strong>을 그럴듯하게 지어내는 경우가 있습니다. AI가 알려 준 문헌은 반드시 원문을 직접 찾아 확인해야 합니다. 이 문제는 6장에서 다시 다룹니다.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>종류</th>
+<th>예</th>
+<th>장점</th>
+<th>주의할 점</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>범용 학술 검색</td>
+<td>Google Scholar, Semantic Scholar, OpenAlex</td>
+<td>무료, 범위가 넓음, 인용 추적</td>
+<td>서지 정보 오류</td>
+</tr>
+<tr class="even">
+<td>수학 데이터베이스</td>
+<td>zbMATH Open, MathSciNet</td>
+<td>수학 전문, MSC 분류, 리뷰</td>
+<td>MathSciNet은 구독 필요</td>
+</tr>
+<tr class="odd">
+<td>상용 데이터베이스</td>
+<td>Web of Science, Scopus</td>
+<td>정확한 서지 정보, 인용 분석</td>
+<td>구독 필요</td>
+</tr>
+<tr class="even">
+<td>프리프린트</td>
+<td>arXiv</td>
+<td>최신 연구, 전문 무료</td>
+<td>심사 전 원고</td>
+</tr>
+<tr class="odd">
+<td>AI 검색 도구</td>
+<td>Consensus, Elicit</td>
+<td>낯선 분야의 큰 그림</td>
+<td>요약 오류, 지어낸 문헌</td>
+</tr>
+</tbody>
+</table>
+<p>찾은 논문의 전문은 출판사 웹사이트, arXiv, 저자의 개인 홈페이지, 그리고 대학 도서관을 통해 구할 수 있습니다. 출판사 사이트에서 유료로 보이는 논문도 학교 네트워크에서 접속하면 무료로 열리는 경우가 많고, 수학 논문은 대개 같은 내용의 arXiv판이 있습니다.</p>
+</section>
+<section id="검색어-다듬기" class="level2">
+<h2 class="anchored" data-anchor-id="검색어-다듬기">검색어 다듬기</h2>
+<p>검색에서 가장 어려운 일은 의외로 <strong>올바른 검색어를 정하는 것</strong>입니다. 같은 개념도 분야와 시대에 따라 다른 이름으로 불리기 때문입니다. 박종우 씨가 찾는 내용도 “optimal scaling”, “proposal variance tuning”, “step size selection” 같은 여러 이름으로 나타납니다. 검색어를 다듬는 요령은 다음과 같습니다.</p>
+<ul>
+<li><strong>좋은 논문 한두 편에서 출발하세요.</strong> 지도교수가 알려 준 논문이나 교과서의 해당 장에서 그 분야가 실제로 쓰는 용어를 확인합니다.</li>
+<li><strong>용어는 시간에 따라 바뀝니다.</strong> 오래된 논문은 지금과 다른 이름을 쓰는 경우가 많으므로, 인용된 옛 논문의 용어도 함께 확인합니다.</li>
+<li><strong>동의어로 넓히세요.</strong> 찾은 용어의 동의어와 가까운 표현을 함께 검색합니다.</li>
+<li><strong>사람으로 찾으세요.</strong> 그 주제를 연구하는 사람을 몇 명 찾았다면 그들의 논문 목록을 훑어봅니다.</li>
+</ul>
+<p>대부분의 학술 검색 엔진은 몇 가지 검색 연산자를 지원합니다. Google Scholar를 예로 들면 다음과 같습니다.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>연산자</th>
+<th>뜻</th>
+<th>예</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>"..."</code></td>
+<td>정확히 이 구절</td>
+<td><code>"optimal scaling"</code></td>
+</tr>
+<tr class="even">
+<td><code>OR</code></td>
+<td>둘 중 하나라도</td>
+<td><code>"random walk Metropolis" OR "RWM"</code></td>
+</tr>
+<tr class="odd">
+<td><code>-</code></td>
+<td>이 단어 제외</td>
+<td><code>Metropolis -Hastings</code></td>
+</tr>
+<tr class="even">
+<td><code>author:</code></td>
+<td>저자</td>
+<td><code>author:"GO Roberts"</code></td>
+</tr>
+<tr class="odd">
+<td><code>allintitle:</code></td>
+<td>모든 단어가 제목에</td>
+<td><code>allintitle: optimal scaling Metropolis</code></td>
+</tr>
+</tbody>
+</table>
+<p>이렇게 찾은 결과는 출판 연도로 거르거나 인용 수로 정렬해 볼 수 있습니다. 최신 연구를 찾을 때는 최근 몇 년으로 기간을 좁히고, 그 분야의 기초가 된 논문을 찾을 때는 인용 수가 많은 순서로 보는 식입니다.</p>
+</section>
+<section id="문헌-넓히기-눈덩이-굴리기" class="level2">
+<h2 class="anchored" data-anchor-id="문헌-넓히기-눈덩이-굴리기">문헌 넓히기: 눈덩이 굴리기</h2>
+<p>좋은 논문 한 편을 찾았다면, 그 논문은 다른 좋은 논문으로 가는 지도이기도 합니다. 찾은 논문에서 출발해 문헌을 넓혀 가는 방법을 <strong>눈덩이 굴리기</strong>(snowballing)라고 하고, 방향에 따라 두 가지로 나눕니다.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<ul>
+<li><strong>뒤로 굴리기</strong>(backward snowballing): 그 논문의 <strong>참고문헌 목록</strong>을 따라 더 오래된 연구로 거슬러 올라갑니다.</li>
+<li><strong>앞으로 굴리기</strong>(forward snowballing): 검색 엔진의 “Cited by” 기능으로 그 논문을 <strong>인용한 논문</strong>을 따라 더 최근 연구로 나아갑니다.</li>
+</ul>
+<p>박종우 씨의 경우를 보겠습니다. 출발점은 로버츠·겔만·길크스(1997)입니다. 뒤로 굴리면 메트로폴리스 등(1953)과 헤이스팅스(1970)처럼 알고리즘 자체의 원전에 닿습니다. 앞으로 굴리면 이 결과를 다른 알고리즘으로 넓힌 후속 연구들이 나오는데, 그 가운데 로버츠와 로젠탈의 2001년 개관 논문은 여러 메트로폴리스–헤이스팅스 알고리즘의 최적 조율 결과를 한데 모아 정리하고 있어서 출발점으로 삼기에 좋습니다.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<p>눈덩이 굴리기를 할 때 함께 확인하면 좋은 것들이 있습니다.</p>
+<ul>
+<li><strong>저자</strong>: 그 저자가 같은 주제로 쓴 다른 논문이 있는지 봅니다.</li>
+<li><strong>발표처</strong>: 그 논문이 실린 저널이나 학회의 최근 호를 훑어봅니다. <a href="../../../math/scientific-writing/01-papers-in-context/03-where-papers-go.html">1.3절</a>에서 본 것처럼, 처음 보는 발표처라면 부실 학술지가 아닌지도 확인합니다.</li>
+<li><strong>심사 여부</strong>: 프리프린트라면 나중에 저널판이 나왔는지 확인합니다.</li>
+</ul>
+<p>언제 멈춰야 할까요? 네트워크 연구자 스리니바산 케샤브(Srinivasan Keshav)는 문헌 조사의 요령으로, 최근 논문 몇 편의 관련 연구 절을 읽고 <strong>여러 논문이 공통으로 인용하는 논문</strong>과 <strong>반복해서 등장하는 연구자</strong>를 찾으라고 권합니다.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> 새로 검색해도 이미 아는 논문만 나오고, 새로 찾은 논문의 참고문헌이 대부분 이미 읽은 것들이라면 그 주제의 핵심 문헌은 거의 모은 것입니다.</p>
+</section>
+<section id="어떻게-읽는가-여러-단계로-걸러-읽기" class="level2">
+<h2 class="anchored" data-anchor-id="어떻게-읽는가-여러-단계로-걸러-읽기">어떻게 읽는가: 여러 단계로 걸러 읽기</h2>
+<p>문헌을 모았다면 이제 읽을 차례입니다. 여기서 가장 흔한 실수는 찾은 논문을 <strong>모두 처음부터 끝까지 정독하려는 것</strong>입니다. 스무 편을 정독하면 3주가 아니라 3개월이 걸립니다. 게다가 그중 상당수는 결국 내 연구와 관계가 없는 논문입니다.</p>
+<p>케샤브는 「How to Read a Paper」라는 두 쪽짜리 글에서, 논문을 한 번에 다 읽지 말고 <strong>세 번에 나누어</strong>, 단계마다 목표를 달리해 읽으라고 제안합니다.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> 여기에 맨 앞의 짧은 거르기 단계를 하나 더해, 네 단계로 정리해 보겠습니다. 중요한 것은 <strong>각 단계가 거름망</strong>이라는 점입니다. 어느 단계에서든 이 논문이 내 목적과 관계없다고 판단되면 그 자리에서 멈추고, 멈춘 이유를 한 줄 적어 둡니다.</p>
+<section id="단계-첫인상-12분" class="level3">
+<h3 class="anchored" data-anchor-id="단계-첫인상-12분">0단계: 첫인상 (1~2분)</h3>
+<p>제목과 초록만 보고 <strong>이 논문이 조금이라도 관계가 있는지</strong> 판단합니다. 이 논문이 답하려는 연구 질문이 무엇인지 한 문장으로 말할 수 있으면 충분합니다. 관계가 없으면 여기서 멈춥니다. 무엇을 남기고 무엇을 뺄지 기준을 미리 정해 두면 판단이 빨라집니다. 예를 들어 박종우 씨는 “이산 상태 공간만 다루는 논문은 일단 뺀다”는 기준을 세웠습니다.</p>
+</section>
+<section id="단계-조감하기-510분" class="level3">
+<h3 class="anchored" data-anchor-id="단계-조감하기-510분">1단계: 조감하기 (5~10분)</h3>
+<p>케샤브의 첫 번째 단계입니다. 논문 전체의 <strong>뼈대</strong>를 파악하는 것이 목표입니다.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p>
+<ol type="1">
+<li>제목, 초록, 서론을 주의 깊게 읽습니다.</li>
+<li>절과 소절의 제목만 읽고 나머지는 건너뜁니다.</li>
+<li>결론을 읽습니다.</li>
+<li>참고문헌을 훑어보며 이미 읽은 것에 마음속으로 표시합니다.</li>
+</ol>
+<p>이 단계가 끝나면 다음 <strong>다섯 가지 질문</strong>, 이른바 <strong>5C</strong>에 답할 수 있어야 합니다.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>5C 질문
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><strong>범주</strong>(Category): 어떤 종류의 논문인가? 새로운 정리의 증명인가, 새로운 알고리즘인가, 기존 방법의 분석인가, 개관 논문인가?</li>
+<li><strong>맥락</strong>(Context): 어떤 다른 논문들과 관련되어 있는가? 문제를 분석하는 데 어떤 이론적 바탕을 썼는가?</li>
+<li><strong>정확성</strong>(Correctness): 가정들이 타당해 보이는가?</li>
+<li><strong>기여</strong>(Contributions): 이 논문의 주요 기여는 무엇인가?</li>
+<li><strong>명료성</strong>(Clarity): 잘 쓰인 논문인가?</li>
+</ol>
+</div>
+</div>
+<p>5C에 답해 보면 이 논문을 더 읽을지가 대개 판가름 납니다. 또 이 다섯 답은 그대로 나중에 선행 연구 절을 쓸 때의 재료가 됩니다.</p>
+</section>
+<section id="단계-내용-파악하기-1시간-정도" class="level3">
+<h3 class="anchored" data-anchor-id="단계-내용-파악하기-1시간-정도">2단계: 내용 파악하기 (1시간 정도)</h3>
+<p>케샤브의 두 번째 단계입니다. 논문을 처음부터 끝까지, 하지만 <strong>세부 사항은 건너뛰며</strong> 읽습니다. 케샤브가 건너뛸 세부 사항의 대표적인 예로 꼽는 것이 바로 <strong>증명</strong>입니다.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p>
+<ul>
+<li>수학 논문이라면 정의와 정리의 <strong>진술</strong>을 꼼꼼히 읽고, 증명은 첫 문단에서 어떤 아이디어를 쓰는지만 확인합니다. 어떤 보조정리가 어떤 정리에 쓰이는지 화살표로 그려 보면 논문의 논리 구조가 한눈에 들어옵니다.</li>
+<li>실험이나 시뮬레이션이 있는 논문이라면 그림과 표를 주의 깊게 봅니다. 축에 이름이 붙어 있는지, 오차 막대가 있는지, 결과가 결론을 정말 뒷받침하는지 보면 허술한 연구를 걸러 낼 수 있습니다.</li>
+<li>읽으면서 핵심 아이디어, 쓰인 방법, 그리고 <strong>답하지 않은 질문</strong>을 메모합니다. 답하지 않은 질문은 곧 연구 공백의 후보입니다.</li>
+<li>참고문헌 가운데 아직 읽지 않았지만 읽어야 할 것에 표시합니다.</li>
+</ul>
+<p>이 단계가 끝나면 논문의 요지와 그것을 뒷받침하는 근거를 다른 사람에게 요약해 줄 수 있어야 합니다. 대부분의 논문은 여기서 멈춰도 됩니다.</p>
+<p>때로는 이 단계에서도 논문이 이해되지 않습니다. 용어가 낯설거나, 처음 보는 증명 기법을 쓰거나, 논문 자체가 잘 쓰이지 않았기 때문일 수 있습니다. 그럴 때는 세 가지 선택지가 있습니다. 내 목적에 깊이 이해할 필요가 없기를 바라며 <strong>치워 두거나</strong>, 배경 지식을 더 쌓은 뒤 <strong>나중에 다시 보거나</strong>, <strong>끝까지 붙잡고</strong> 다음 단계로 가는 것입니다.</p>
+</section>
+<section id="단계-깊이-읽기-몇-시간" class="level3">
+<h3 class="anchored" data-anchor-id="단계-깊이-읽기-몇-시간">3단계: 깊이 읽기 (몇 시간)</h3>
+<p>케샤브의 세 번째 단계로, 내 연구의 토대가 되는 몇 편의 논문만 이렇게 읽습니다. 케샤브는 이 단계를 <strong>논문을 머릿속으로 다시 구현하는 것</strong>이라고 표현합니다. 저자와 같은 가정에서 출발해 내가 직접 그 결과를 다시 만들어 본다고 생각하고 읽으라는 것입니다. 그는 초보자에게는 이 단계에 네다섯 시간, 경험이 쌓이면 한 시간 정도가 걸린다고 말합니다.<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></p>
+<p>수학 논문을 깊이 읽을 때는 다음과 같은 방법이 도움이 됩니다.</p>
+<ul>
+<li><strong>증명을 읽기 전에 먼저 증명해 보세요.</strong> 정리의 진술만 보고 10분이라도 스스로 증명을 시도해 보면, 저자의 증명에서 어디가 핵심인지 훨씬 잘 보입니다.</li>
+<li><strong>가정이 어디에 쓰이는지 표시하세요.</strong> 정리의 가정 하나하나가 증명의 어느 줄에서 쓰이는지 찾아봅니다. 어디에도 쓰이지 않는 가정이 있다면, 내가 무언가를 놓쳤거나 그 가정이 사실 필요 없는 것입니다. 후자라면 그것이 곧 연구거리가 됩니다.</li>
+<li><strong>작은 경우로 확인하세요.</strong> 1차원이나 2차원, 가장 단순한 분포에서 정리가 무엇을 말하는지 직접 계산해 봅니다.</li>
+<li><strong>“쉽게 확인할 수 있다”를 확인하세요.</strong> 논문이 건너뛴 계산을 실제로 해 봅니다. 학사 논문에서는 이렇게 채운 빈칸이 그대로 기여가 되기도 합니다.</li>
+</ul>
+<p>이 단계가 끝나면 논문 전체의 구조를 기억만으로 다시 짤 수 있고, 강점과 약점, 숨은 가정, 빠진 인용을 짚어 낼 수 있어야 합니다.</p>
+</section>
+</section>
+<section id="메모-남기기" class="level2">
+<h2 class="anchored" data-anchor-id="메모-남기기">메모 남기기</h2>
+<p>읽은 내용은 반드시 기록해 두어야 합니다. 3주 동안 스무 편을 읽고 나면 어느 결과가 어느 논문에 있었는지 기억나지 않기 때문입니다.</p>
+<p><strong>PDF에 색으로 주석 달기.</strong> 주석의 종류마다 색을 정해 두면 나중에 필요한 부분을 빠르게 찾을 수 있습니다. 수학 논문이라면 예를 들어 다음과 같은 체계를 쓸 수 있습니다.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>색</th>
+<th>표시할 내용</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>노랑</td>
+<td>주요 결과와 연구 질문</td>
+</tr>
+<tr class="even">
+<td>파랑</td>
+<td>정의와 표기</td>
+</tr>
+<tr class="odd">
+<td>주황</td>
+<td>가정과 조건</td>
+</tr>
+<tr class="even">
+<td>초록</td>
+<td>증명의 핵심 아이디어</td>
+</tr>
+<tr class="odd">
+<td>보라</td>
+<td>의문점, 내가 확인할 것, 연구 공백 후보</td>
+</tr>
+</tbody>
+</table>
+<p><strong>논문별 읽기 메모.</strong> 논문마다 짧은 메모를 남깁니다. 다음 글에서 다룰 Zotero 같은 문헌 관리 프로그램에는 논문마다 메모를 붙이는 기능이 있습니다. 메모에는 서지 정보, 몇 단계까지 읽었는지, 5C의 답, 그리고 <strong>내 연구와 어떤 관계인지</strong>를 적습니다. 예를 들어 박종우 씨가 로버츠·겔만·길크스(1997)에 대해 남긴 메모는 이런 모습입니다.</p>
+<blockquote class="blockquote">
+<p><strong>Roberts, Gelman, Gilks (1997)</strong>, <em>Ann. Appl. Probab.</em> 7(1). 3단계까지 읽음.</p>
+<ul>
+<li><strong>범주</strong>: 확률론의 극한 정리. 알고리즘의 조율 규칙을 이론으로 뒷받침함.</li>
+<li><strong>맥락</strong>: 랜덤 워크 메트로폴리스 알고리즘의 조율 문제. 확산 과정으로의 약수렴을 이용한 분석.</li>
+<li><strong>정확성</strong>: 목표 분포가 서로 독립인 같은 성분의 곱이라는 강한 가정. 실제 문제에서는 성립하지 않는 경우가 많음.</li>
+<li><strong>기여</strong>: 제안 분포의 분산을 차원에 반비례하게 줄이면, 시간 축을 다시 잰 첫 번째 성분이 랑주뱅 확산으로 수렴함. 이 확산의 속도를 최대로 하는 채택률이 약 0.234.</li>
+<li><strong>명료성</strong>: 증명은 촘촘하지만 핵심 보조정리 몇 개는 “직접 확인할 수 있다”로 넘어감.</li>
+<li><strong>내 연구와의 관계</strong>: 논문의 중심. 넘어간 보조정리를 채우는 것을 WP1b의 첫 과제로.</li>
+</ul>
+</blockquote>
+<p>이런 메모가 스무 편 쌓이면, 그것을 아이디어별로 묶는 것만으로 선행 연구 절의 초안이 됩니다. <a href="../../../math/scientific-writing/01-papers-in-context/01-theses.html">1.1절</a>에서 본 것처럼 선행 연구는 논문별로 나열하지 말고 <strong>아이디어별로</strong> 정리해야 하는데, 5C의 “맥락”과 “기여”가 바로 그 분류의 기준이 되어 줍니다.</p>
+</section>
+<section id="정리" class="level2">
+<h2 class="anchored" data-anchor-id="정리">정리</h2>
+<ul>
+<li>수학 문헌은 범용 학술 검색 엔진(Google Scholar 등), 수학 데이터베이스(zbMATH Open, MathSciNet), 상용 데이터베이스, arXiv에서 찾습니다. AI 검색 도구는 큰 그림을 잡는 데 쓰되, 알려 준 문헌은 반드시 원문으로 확인해야 합니다.</li>
+<li>좋은 논문 한두 편에서 그 분야의 용어를 익히고, 동의어와 검색 연산자, MSC 코드로 검색을 다듬습니다.</li>
+<li>찾은 논문의 참고문헌을 따라 <strong>뒤로</strong>, 인용한 논문을 따라 <strong>앞으로</strong> 눈덩이를 굴려 문헌을 넓히고, 새 검색에서 아는 논문만 나오면 멈춥니다.</li>
+<li>논문은 <strong>여러 단계로 걸러 가며</strong> 읽습니다. 첫인상에서 관계 여부를, 조감에서 <strong>5C</strong>를, 내용 파악에서 요지와 근거를 잡고, 연구의 토대가 되는 몇 편만 머릿속으로 다시 구현하듯 깊이 읽습니다.</li>
+<li>색으로 주석을 달고 논문별 메모를 남기면, 그것이 그대로 선행 연구 절의 재료가 됩니다.</li>
+</ul>
+<p>읽은 논문은 결국 내 논문 안에 인용으로 들어갑니다. 다음 글에서는 무엇을 언제 어떻게 인용해야 하는지, 그리고 늘어나는 참고문헌을 어떻게 관리하는지 다루겠습니다.</p>
+<hr>
+<section id="연결되는-개념" class="level3">
+<h3 class="anchored" data-anchor-id="연결되는-개념">연결되는 개념</h3>
+<ul>
+<li><span class="math inline">\(\leftarrow\)</span> <strong>이전 개념:</strong> <a href="../../../math/scientific-writing/02-research-preparation/01-problem-to-proposal.html">2.1 연구 문제에서 계획서까지</a></li>
+<li><span class="math inline">\(\rightarrow\)</span> <strong>다음 개념:</strong> <a href="../../../math/scientific-writing/02-research-preparation/03-citing-and-managing.html">2.3 인용과 문헌 관리</a></li>
+</ul>
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>“zbMATH Open”, Wikipedia(영어판).<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>K. Hulek, “Short note: zbMATH Open”, <em>EMS Magazine</em> 119, 2021. doi:10.4171/MAG-11<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>J. Stegmüller, A. Greiner-Petter, P. Sojka, O. Teschke, M. Schubotz, “Examination of the state of the art of mathematical formula search for zbMATH Open”, <em>zbMATH Open</em> 기념 논문집, EMS Press.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>C. Wohlin, “Guidelines for snowballing in systematic literature studies and a replication in software engineering”, <em>Proceedings of the 18th International Conference on Evaluation and Assessment in Software Engineering (EASE ’14)</em>, 2014, Article 38.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>G. O. Roberts, J. S. Rosenthal, “Optimal scaling for various Metropolis–Hastings algorithms”, <em>Statistical Science</em> 16(4), 2001, pp.&nbsp;351–367.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>S. Keshav, “How to Read a Paper”, <em>ACM SIGCOMM Computer Communication Review</em> 37(3), 2007, pp.&nbsp;83–84. doi:10.1145/1273445.1273458<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>S. Keshav, “How to Read a Paper”, <em>ACM SIGCOMM Computer Communication Review</em> 37(3), 2007, pp.&nbsp;83–84. doi:10.1145/1273445.1273458<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>S. Keshav, “How to Read a Paper”, <em>ACM SIGCOMM Computer Communication Review</em> 37(3), 2007, pp.&nbsp;83–84. doi:10.1145/1273445.1273458<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>S. Keshav, “How to Read a Paper”, <em>ACM SIGCOMM Computer Communication Review</em> 37(3), 2007, pp.&nbsp;83–84. doi:10.1145/1273445.1273458<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>S. Keshav, “How to Read a Paper”, <em>ACM SIGCOMM Computer Communication Review</em> 37(3), 2007, pp.&nbsp;83–84. doi:10.1145/1273445.1273458<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const categoryLinks = {
+    "수학": "/math/index.html",
+    "확률과 통계": "/stats/index.html",
+    "컴퓨터 공학": "/cs/index.html",
+    "데이터 사이언스·AI": "/ds-ai/index.html",
+    "경영/경제": "/biz-econ/index.html",
+    "의학통계·바이오메트리": "/biostat/index.html"
+  };
+  document.querySelectorAll('.navbar-nav .nav-item.dropdown > a.nav-link').forEach(function(el) {
+    const label = el.textContent.trim();
+    if (categoryLinks[label]) {
+      el.setAttribute('href', categoryLinks[label]);
+      el.addEventListener('click', function(e) {
+        if (window.innerWidth >= 992) {
+          window.location.href = categoryLinks[label];
+        }
+      });
+    }
+  });
+
+  /* ---------------------------------------------------------------
+     메가 메뉴: 드롭다운을 그룹(헤더 단위)별 가로 열로 재배치
+     - 첫 헤더 이전 항목(예: "전체 과목 보기")은 상단 한 줄로
+     - 한 그룹의 과목이 MAX_ROWS 개를 넘으면 그 그룹 안에서 열을 나눔
+     --------------------------------------------------------------- */
+  const MAX_ROWS = 7;      // 한 열에 들어갈 최대 과목 수
+  const EDGE = 16;         // 화면 가장자리 여백(px)
+
+  document.querySelectorAll('.navbar .nav-item.dropdown > .dropdown-menu').forEach(function(menu) {
+    const items = Array.from(menu.children);
+    if (items.filter(function(li) { return li.classList.contains('dropdown-header'); }).length < 2) return;
+
+    const top = document.createElement('li');
+    top.className = 'mega-top';
+    const groupsWrap = document.createElement('li');
+    groupsWrap.className = 'mega-groups';
+
+    let current = null;
+    items.forEach(function(li) {
+      if (li.querySelector('.dropdown-divider')) { li.remove(); return; }
+      if (li.classList.contains('dropdown-header')) {
+        const group = document.createElement('div');
+        group.className = 'mega-group';
+        const header = document.createElement('div');
+        header.className = 'dropdown-header';
+        header.textContent = li.textContent.trim();
+        const list = document.createElement('ul');
+        list.className = 'mega-items';
+        group.appendChild(header);
+        group.appendChild(list);
+        groupsWrap.appendChild(group);
+        current = list;
+        li.remove();
+        return;
+      }
+      if (current) {
+        current.appendChild(li);
+      } else {
+        top.appendChild(li.querySelector('a') || li);
+        li.remove();
+      }
+    });
+
+    groupsWrap.querySelectorAll('.mega-items').forEach(function(list) {
+      const n = list.children.length;
+      const cols = Math.max(1, Math.ceil(n / MAX_ROWS));
+      list.style.setProperty('--mega-rows', Math.ceil(n / cols));
+    });
+
+    menu.innerHTML = '';
+    if (top.children.length) menu.appendChild(top);
+    menu.appendChild(groupsWrap);
+    menu.classList.add('mega-menu');
+  });
+
+  /* 펼친 메뉴가 화면 오른쪽 밖으로 나가지 않도록 위치 보정 */
+  function fitToViewport(menu) {
+    if (window.innerWidth < 992) { menu.style.left = ''; return; }
+    menu.style.left = '0px';
+    const rect = menu.getBoundingClientRect();
+    if (rect.width === 0) return;
+    let shift = 0;
+    const overflow = rect.right - (window.innerWidth - EDGE);
+    if (overflow > 0) shift = -overflow;
+    if (rect.left + shift < EDGE) shift = EDGE - rect.left;
+    menu.style.left = shift + 'px';
+  }
+
+  document.querySelectorAll('.navbar .nav-item.dropdown').forEach(function(item) {
+    const menu = item.querySelector(':scope > .dropdown-menu.mega-menu');
+    if (!menu) return;
+    const fit = function() { requestAnimationFrame(function() { fitToViewport(menu); }); };
+    item.addEventListener('mouseenter', fit);
+    item.addEventListener('focusin', fit);
+    item.addEventListener('shown.bs.dropdown', fit);
+  });
+});
+</script>
+<script>
+/* 좌측 사이드바 맨 위 과목명: "한국어(English)" → 한국어 / English 두 줄로 나눠 표시 */
+document.addEventListener("DOMContentLoaded", function () {
+  var el = document.querySelector("#quarto-sidebar .sidebar-menu-container > ul > li > .sidebar-item-container .menu-text, #quarto-sidebar .sidebar-menu-container > ul > li > .sidebar-item-text .menu-text");
+  if (!el) return;
+  var m = el.textContent.trim().match(/^(.+?)\s*\((.+)\)$/);
+  if (!m) return;
+  el.textContent = m[1];
+  var en = document.createElement("span");
+  en.className = "menu-subtitle";
+  en.textContent = m[2];
+  el.appendChild(en);
+});
+</script>
+<script data-goatcounter="https://xkwhd1557.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/xkwhd1557\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+<nav class="page-navigation" aria-label="Page">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../math/scientific-writing/02-research-preparation/01-problem-to-proposal.html" class="pagination-link" aria-label="2.1 연구 문제에서 계획서까지">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">2.1 연구 문제에서 계획서까지</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../math/scientific-writing/02-research-preparation/03-citing-and-managing.html" class="pagination-link" aria-label="2.3 인용과 문헌 관리">
+        <span class="nav-page-text">2.3 인용과 문헌 관리</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2026 xkwhd1557 · 글은 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.ko">CC BY-NC-ND 4.0</a>에 따라 이용할 수 있습니다.<br> <a href="../../../privacy.html">개인정보 처리방침</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
