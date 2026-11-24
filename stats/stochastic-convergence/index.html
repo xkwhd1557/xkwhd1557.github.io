@@ -38,6 +38,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../stats/stochastic-convergence/01-modes-of-convergence/index.html" rel="next">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
@@ -48,7 +49,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-dfdca6a8c3d4871044b6ea52565246df.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-d739a02a1af33765fc6ff0a69ae6860b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -165,6 +166,10 @@ window.Quarto = {
         <li>
     <a class="dropdown-item" href="../../math/latex/index.html">
  <span class="dropdown-text">LaTeX</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../math/scientific-writing/index.html">
+ <span class="dropdown-text">수학 학술 논문 작성법</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">핵심 수학 (Core)</li>
@@ -668,8 +673,56 @@ window.Quarto = {
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">확률적 수렴과 오차 분석(Stochastic Convergence and Error Analysis)</span></span>
+      <div class="sidebar-item-container"> 
+            <a href="../../stats/stochastic-convergence/index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">확률적 수렴과 오차 분석(Stochastic Convergence and Error Analysis)</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true" aria-label="Toggle section: 확률적 수렴과 오차 분석(Stochastic Convergence and Error Analysis)">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../stats/stochastic-convergence/01-modes-of-convergence/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-1-label">1 확률변수가 가까워진다는 것</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section: 1 확률변수가 가까워진다는 것">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../stats/stochastic-convergence/01-modes-of-convergence/01-almost-sure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.1 거의 확실한 수렴</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../stats/stochastic-convergence/01-modes-of-convergence/02-in-probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.2 확률수렴</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../stats/stochastic-convergence/01-modes-of-convergence/03-in-mean.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.3 r차 평균수렴</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../stats/stochastic-convergence/01-modes-of-convergence/04-in-distribution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.4 분포수렴</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../stats/stochastic-convergence/01-modes-of-convergence/05-relations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.5 수렴들 사이의 관계</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
   </li>
     </ul>
     </div>
@@ -802,7 +855,7 @@ window.Quarto = {
 <ol type="1">
 <li><strong>확률변수가 가까워진다는 것</strong>: 거의 확실한 수렴, 확률수렴, <span class="math inline">\(r\)</span>차 평균수렴(<span class="math inline">\(L^r\)</span> 수렴), 분포수렴을 차례로 살펴보고, 이 넷이 서로 어떤 관계에 있는지를 함의 관계와 반례로 정리합니다. 확률수렴에서 <span class="math inline">\(L^r\)</span> 수렴과 기대값의 수렴을 이끌어 내는 데 필요한 균등 적분가능성(uniform integrability)도 이 장에서 다룹니다. 실수열에서는 하나뿐이던 “가까워진다”는 말이 확률변수에서는 왜 여러 가지 뜻을 갖게 되는지가 이 장의 질문입니다.</li>
 <li><strong>오차의 크기를 재는 도구: 확률 부등식</strong>: 마르코프 부등식과 체비셰프 부등식에서 출발해, 산술평균의 분산이 <span class="math inline">\(V(\bar{X}_n) = V(X_1)/n\)</span>이 되는 이유와 오차를 이야기할 때 하필 표준편차가 등장하는 이유를 살펴봅니다. 이어서 체르노프 부등식(Chernoff bound)과 호에프딩 부등식(Hoeffding’s inequality) 같은 지수형 부등식으로, 유한한 <span class="math inline">\(n\)</span>에서 바로 쓸 수 있는 오차 보장을 얻는 방법을 다룹니다.</li>
-<li><strong>큰 수의 법칙</strong>: 약한 큰 수의 법칙과 콜모고로프의 강한 큰 수의 법칙, 그 사이를 잇는 보렐-칸텔리 보조정리(Borel–Cantelli lemma)를 다룹니다. 기대값이 존재하지 않는 코시분포에서 표본평균이 어떻게 행동하는지 시뮬레이션으로 확인하면서, 큰 수의 법칙의 조건이 왜 필요한지도 살펴봅니다.</li>
+<li><strong>큰 수의 법칙</strong>: 약한 큰 수의 법칙과 콜모고로프의 강한 큰 수의 법칙을 다룹니다. 1장에서 보렐-칸텔리 보조정리(Borel–Cantelli lemma)와 4차 적률로 동전 던지기에 대해 증명한 것을 일반적인 i.i.d. 확률변수로 넓힙니다. 기대값이 존재하지 않는 코시분포에서 표본평균이 어떻게 행동하는지 시뮬레이션으로 확인하면서, 큰 수의 법칙의 조건이 왜 필요한지도 살펴봅니다.</li>
 <li><strong>중심극한정리: 오차의 모양</strong>: 린데베르그-레비 중심극한정리(Lindeberg–Lévy central limit theorem)가 오차의 크기뿐 아니라 그 분포까지 알려 준다는 점을 살펴보고, 정규근사가 유한한 <span class="math inline">\(n\)</span>에서 얼마나 정확한지를 베리-에센 정리(Berry–Esseen theorem)로 따져 봅니다. 모르는 분산을 추정값으로 바꿔 넣어도 되는 이유인 연속 사상 정리(continuous mapping theorem)와 슬러츠키 정리(Slutsky’s theorem), 그리고 “추정값 <span class="math inline">\(\pm\)</span> 1.96 × 표준오차”가 정확히 무엇을 뜻하는지도 다룹니다.</li>
 <li><strong>오차의 언어</strong>: 수렴 속도를 간결하게 적는 <span class="math inline">\(O\)</span>, <span class="math inline">\(o\)</span> 표기와 그 확률 버전인 <span class="math inline">\(O_P\)</span>, <span class="math inline">\(o_P\)</span>를 소개하고, 표본평균의 오차가 <span class="math inline">\(1/\sqrt{n}\)</span>로 줄어든다는 사실이 실제로 무엇을 뜻하는지 정리합니다. 여론조사의 표본을 네 배로 늘려야 오차가 절반이 되는 것도 바로 이 때문입니다.</li>
 </ol>
@@ -848,7 +901,7 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="연결되는-개념">연결되는 개념</h3>
 <ul>
 <li><span class="math inline">\(\leftarrow\)</span> <strong>이전 개념:</strong> <a href="../../stats/index.html">과목 전체 목차</a></li>
-<li><span class="math inline">\(\rightarrow\)</span> <strong>다음 개념:</strong> 추후 작성 예정</li>
+<li><span class="math inline">\(\rightarrow\)</span> <strong>다음 개념:</strong> <a href="../../stats/stochastic-convergence/01-modes-of-convergence/index.html">1 확률변수가 가까워진다는 것</a></li>
 </ul>
 
 
@@ -1447,6 +1500,15 @@ document.addEventListener("DOMContentLoaded", function () {
   <script type="application/javascript">
   window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
   </script>
+<nav class="page-navigation" aria-label="Page">
+  <div class="nav-page nav-page-previous">
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../stats/stochastic-convergence/01-modes-of-convergence/index.html" class="pagination-link" aria-label="1 확률변수가 가까워진다는 것">
+        <span class="nav-page-text">1 확률변수가 가까워진다는 것</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

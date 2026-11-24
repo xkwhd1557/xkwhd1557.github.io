@@ -1,0 +1,1704 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2026-11-20">
+<meta name="description" content="고르게 배치한 준난수 점 전체를 하나의 무작위 벡터로 한꺼번에 밀어, 준몬테카를로의 정확도는 지키면서 몬테카를로처럼 신뢰구간을 붙이는 무작위화 준몬테카를로 방법을 다룹니다. 불편성, 중심극한정리, 이동 후 불일치도와 점 수 배분 문제까지 살펴봅니다.">
+
+<title>1.5 무작위로 밀어서 오차 재기: 무작위화 준몬테카를로 – Study Archive</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../stats/stochastic-simulation/01-monte-carlo/04-quasi-random.html" rel="prev">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-d739a02a1af33765fc6ff0a69ae6860b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="1.5 무작위로 밀어서 오차 재기: 무작위화 준몬테카를로 – Study Archive">
+<meta property="og:description" content="고르게 배치한 준난수 점 전체를 하나의 무작위 벡터로 한꺼번에 밀어, 준몬테카를로의 정확도는 지키면서 몬테카를로처럼 신뢰구간을 붙이는 무작위화 준몬테카를로 방법을 다룹니다. 불편성, 중심극한정리, 이동 후 불일치도와 점 수 배분 문제까지 살펴봅니다.">
+<meta property="og:image" content="https://xkwhd1557.github.io/stats/stochastic-simulation/01-monte-carlo/figures/random-shift.png">
+<meta property="og:site_name" content="Study Archive">
+<meta property="og:image:alt" content="밑이 2와 3인 Halton 점 64개를 u = (0.35, 0.6)만큼 밀기 전과 후. 왼쪽 그림은 원래 점이고 점선으로 네 영역이 나뉘어 있으며, 영역마다 파랑, 주황, 청록, 노랑으로 칠해져 있다. 오른쪽 그림은 민 뒤의 점으로, 각 색의 점 무리가 모양을 유지한 채 자리를 바꾸어 정사각형 전체를 여전히 고르게 채운다.">
+<meta property="og:image:height" content="705">
+<meta property="og:image:width" content="1290">
+<meta name="twitter:title" content="1.5 무작위로 밀어서 오차 재기: 무작위화 준몬테카를로 – Study Archive">
+<meta name="twitter:description" content="고르게 배치한 준난수 점 전체를 하나의 무작위 벡터로 한꺼번에 밀어, 준몬테카를로의 정확도는 지키면서 몬테카를로처럼 신뢰구간을 붙이는 무작위화 준몬테카를로 방법을 다룹니다. 불편성, 중심극한정리, 이동 후 불일치도와 점 수 배분 문제까지 살펴봅니다.">
+<meta name="twitter:image" content="https://xkwhd1557.github.io/stats/stochastic-simulation/01-monte-carlo/figures/random-shift.png">
+<meta name="twitter:image:alt" content="밑이 2와 3인 Halton 점 64개를 u = (0.35, 0.6)만큼 밀기 전과 후. 왼쪽 그림은 원래 점이고 점선으로 네 영역이 나뉘어 있으며, 영역마다 파랑, 주황, 청록, 노랑으로 칠해져 있다. 오른쪽 그림은 민 뒤의 점으로, 각 색의 점 무리가 모양을 유지한 채 자리를 바꾸어 정사각형 전체를 여전히 고르게 채운다.">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Study Archive</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../articles/index.html"> 
+<span class="menu-text">일반 아티클</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">수학</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-">    
+        <li>
+    <a class="dropdown-item" href="../../../math/index.html">
+ <span class="dropdown-text">📋 수학 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../math/analysis/index.html">
+ <span class="dropdown-text">해석학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/linear-algebra/index.html">
+ <span class="dropdown-text">선형대수학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/discrete-math/index.html">
+ <span class="dropdown-text">이산수학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/math-programming/index.html">
+ <span class="dropdown-text">수학적 프로그래밍 (Python)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/latex/index.html">
+ <span class="dropdown-text">LaTeX</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/scientific-writing/index.html">
+ <span class="dropdown-text">수학 학술 논문 작성법</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 수학 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../math/complex-analysis/index.html">
+ <span class="dropdown-text">복소해석학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/ode/index.html">
+ <span class="dropdown-text">상미분방정식</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/dynamical-systems/index.html">
+ <span class="dropdown-text">동적 시스템</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/measure-theory/index.html">
+ <span class="dropdown-text">측도론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/pde-intro/index.html">
+ <span class="dropdown-text">기초 편미분방정식</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/general-topology/index.html">
+ <span class="dropdown-text">일반위상수학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/algebra/index.html">
+ <span class="dropdown-text">대수학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/number-theory/index.html">
+ <span class="dropdown-text">정수론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/geometry/index.html">
+ <span class="dropdown-text">기하학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/mathematical-logic/index.html">
+ <span class="dropdown-text">수리논리학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/set-theory/index.html">
+ <span class="dropdown-text">공리적 집합론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/numerical-methods/index.html">
+ <span class="dropdown-text">수치적 방법론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/optimization/index.html">
+ <span class="dropdown-text">수학적 최적화</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../math/functional-analysis/index.html">
+ <span class="dropdown-text">함수해석학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/topological-vector-spaces/index.html">
+ <span class="dropdown-text">위상벡터공간론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/pde-advanced/index.html">
+ <span class="dropdown-text">편미분방정식</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/manifold-analysis/index.html">
+ <span class="dropdown-text">다양체 해석학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/rkhs/index.html">
+ <span class="dropdown-text">RKHS 이론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/differential-geometry/index.html">
+ <span class="dropdown-text">미분기하학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/numerical-ode/index.html">
+ <span class="dropdown-text">수치적 상미분방정식</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/scientific-computing/index.html">
+ <span class="dropdown-text">과학계산</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/inverse-problems/index.html">
+ <span class="dropdown-text">역문제</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--1" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">확률과 통계</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--1">    
+        <li>
+    <a class="dropdown-item" href="../../../stats/index.html">
+ <span class="dropdown-text">📋 확률과 통계 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../stats/prob-theory/index.html">
+ <span class="dropdown-text">기초 확률론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/basic-stats/index.html">
+ <span class="dropdown-text">기초 통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/linear-models/index.html">
+ <span class="dropdown-text">기초 선형 모델</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/stat-programming/index.html">
+ <span class="dropdown-text">통계적 프로그래밍</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../stats/measure-prob/index.html">
+ <span class="dropdown-text">측도론적 확률론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/stochastic-convergence/index.html">
+ <span class="dropdown-text">확률적 수렴과 오차 분석</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/stochastic-processes/index.html">
+ <span class="dropdown-text">확률과정론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/math-stats/index.html">
+ <span class="dropdown-text">수리통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/stochastic-simulation/index.html">
+ <span class="dropdown-text">확률적 시뮬레이션</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/actuarial-math/index.html">
+ <span class="dropdown-text">보험수학</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../stats/stochastic-calculus/index.html">
+ <span class="dropdown-text">확률해석학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/markov-processes/index.html">
+ <span class="dropdown-text">마르코프 프로세스</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/diffusion-models/index.html">
+ <span class="dropdown-text">디퓨전 모델</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/gaussian-processes/index.html">
+ <span class="dropdown-text">가우시안 프로세스</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/non-euclidean-stats/index.html">
+ <span class="dropdown-text">비유클리드 통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/stats-for-stoch-proc/index.html">
+ <span class="dropdown-text">확률과정의 통계추론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/nonparametric-stats/index.html">
+ <span class="dropdown-text">비모수 통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/topological-data-analysis/index.html">
+ <span class="dropdown-text">위상수학적 데이터 분석</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/statistical-learning-theory/index.html">
+ <span class="dropdown-text">통계적 학습 이론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/statistical-inverse-problems/index.html">
+ <span class="dropdown-text">통계적 역문제</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/statistical-modelling/index.html">
+ <span class="dropdown-text">통계적 모델링</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/asymptotic-statistics/index.html">
+ <span class="dropdown-text">점근 통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/time-series-foundations/index.html">
+ <span class="dropdown-text">시계열 분석의 통계적 기초</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--2" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">컴퓨터 공학</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--2">    
+        <li>
+    <a class="dropdown-item" href="../../../cs/index.html">
+ <span class="dropdown-text">📋 컴퓨터 공학 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../cs/cs-intro/index.html">
+ <span class="dropdown-text">컴퓨터 과학 원론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cs/c-programming/index.html">
+ <span class="dropdown-text">C언어</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../cs/algorithms-data-structures/index.html">
+ <span class="dropdown-text">알고리즘과 자료구조</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cs/theoretical-cs/index.html">
+ <span class="dropdown-text">이론 컴퓨터과학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cs/database-systems/index.html">
+ <span class="dropdown-text">데이터베이스 시스템</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cs/formal-systems/index.html">
+ <span class="dropdown-text">형식 시스템</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../cs/advanced/index.html">
+ <span class="dropdown-text">심화 과정 (준비 중)</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ai" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">데이터 사이언스·AI</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-ai">    
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/index.html">
+ <span class="dropdown-text">📋 데이터 사이언스·AI 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/ds-intro/index.html">
+ <span class="dropdown-text">데이터 사이언스 개론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/ds-society/index.html">
+ <span class="dropdown-text">데이터 사이언스와 사회</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/ai-math-intro/index.html">
+ <span class="dropdown-text">고등학교 인공지능 수학</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/numerical-optimization/index.html">
+ <span class="dropdown-text">수치적 방법론과 최적화</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/machine-learning/index.html">
+ <span class="dropdown-text">머신러닝</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/deep-learning-cv/index.html">
+ <span class="dropdown-text">딥러닝과 컴퓨터 비전</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/ai-intro/index.html">
+ <span class="dropdown-text">인공지능 원론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/data-analysis-inference/index.html">
+ <span class="dropdown-text">수리적 데이터 분석과 통계적 추론</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/statistical-foundations/index.html">
+ <span class="dropdown-text">데이터 사이언스의 통계적 기초</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/mathematical-foundations/index.html">
+ <span class="dropdown-text">머신러닝의 수리적 기초</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/advanced-linear-algebra/index.html">
+ <span class="dropdown-text">데이터 사이언스를 위한 선형대수학</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--3" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">경영/경제</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--3">    
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/index.html">
+ <span class="dropdown-text">📋 경영/경제 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/biz-intro/index.html">
+ <span class="dropdown-text">경영학 원론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/econ-intro/index.html">
+ <span class="dropdown-text">경제학 원론</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/accounting/index.html">
+ <span class="dropdown-text">회계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/production-logistics/index.html">
+ <span class="dropdown-text">생산물류관리</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/decision-theory/index.html">
+ <span class="dropdown-text">의사결정론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/microeconomics/index.html">
+ <span class="dropdown-text">미시경제학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/macroeconomics/index.html">
+ <span class="dropdown-text">거시경제학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/finance-investment/index.html">
+ <span class="dropdown-text">재무와 투자론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/monetary-economics/index.html">
+ <span class="dropdown-text">화폐금융론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/labor-economics/index.html">
+ <span class="dropdown-text">노동경제학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/game-theory/index.html">
+ <span class="dropdown-text">게임이론 개론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/supply-chain/index.html">
+ <span class="dropdown-text">공급망 관리 (SCM)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/market-research/index.html">
+ <span class="dropdown-text">시장조사론의 기초</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/time-series/index.html">
+ <span class="dropdown-text">시계열 분석</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/econometrics/index.html">
+ <span class="dropdown-text">계량경제학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/insurance-economics/index.html">
+ <span class="dropdown-text">보험경제학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/quantitative-risk/index.html">
+ <span class="dropdown-text">계량 리스크 관리</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/corporate-finance/index.html">
+ <span class="dropdown-text">기업재무론</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--4" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">의학통계·바이오메트리</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--4">    
+        <li>
+    <a class="dropdown-item" href="../../../biostat/index.html">
+ <span class="dropdown-text">📋 의학통계·바이오메트리 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biostat/biostat-intro/index.html">
+ <span class="dropdown-text">의학통계학 개론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biostat/epidemiology/index.html">
+ <span class="dropdown-text">역학 연구방법론</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biostat/clinical-trials/index.html">
+ <span class="dropdown-text">임상시험 통계방법론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biostat/survival-analysis/index.html">
+ <span class="dropdown-text">생존분석</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biostat/bioinformatics/index.html">
+ <span class="dropdown-text">생물정보통계학</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biostat/causal-inference/index.html">
+ <span class="dropdown-text">인과추론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biostat/longitudinal-data/index.html">
+ <span class="dropdown-text">종단적 데이터 분석</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-language" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">🌐 Language</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-language">    
+        <li>
+    <a class="dropdown-item" href="../../../index.html">
+ <span class="dropdown-text">한국어 (KO)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../lang/en-coming-soon.html">
+ <span class="dropdown-text">English (EN)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../lang/de-coming-soon.html">
+ <span class="dropdown-text">Deutsch (DE)</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xkwhd1557/xkwhd1557.github.io"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+            <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" aria-label="Toolbar">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../stats/stochastic-simulation/index.html">확률적 시뮬레이션(Stochastic Simulation)</a></li><li class="breadcrumb-item"><a href="../../../stats/stochastic-simulation/01-monte-carlo/index.html">1 몬테카를로 시뮬레이션</a></li><li class="breadcrumb-item"><a href="../../../stats/stochastic-simulation/01-monte-carlo/05-randomized-qmc.html">1.5 무작위로 밀어서 오차 재기: 무작위화 준몬테카를로</a></li></ol></nav>
+        <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto" aria-label="Section">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../stats/stochastic-simulation/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">확률적 시뮬레이션(Stochastic Simulation)</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true" aria-label="Toggle section: 확률적 시뮬레이션(Stochastic Simulation)">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../stats/stochastic-simulation/01-monte-carlo/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-1-label">1 몬테카를로 시뮬레이션</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section: 1 몬테카를로 시뮬레이션">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../stats/stochastic-simulation/01-monte-carlo/01-lcg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.1 선형 합동 생성기</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../stats/stochastic-simulation/01-monte-carlo/02-statistical-tests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.2 난수 생성기의 통계적 검정</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../stats/stochastic-simulation/01-monte-carlo/03-output-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.3 몇 번 돌려야 충분한가: 신뢰구간과 2단계 절차</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../stats/stochastic-simulation/01-monte-carlo/04-quasi-random.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.4 고르게 찍으면 더 빠를까: 준난수와 불일치도</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../stats/stochastic-simulation/01-monte-carlo/05-randomized-qmc.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">1.5 무작위로 밀어서 오차 재기: 무작위화 준몬테카를로</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#들어가며" id="toc-들어가며" class="nav-link active" data-scroll-target="#들어가며">들어가며</a></li>
+  <li><a href="#점-전체를-한꺼번에-밀기" id="toc-점-전체를-한꺼번에-밀기" class="nav-link" data-scroll-target="#점-전체를-한꺼번에-밀기">점 전체를 한꺼번에 밀기</a>
+  <ul class="collapse">
+  <li><a href="#을-넘으면-반대편으로" id="toc-을-넘으면-반대편으로" class="nav-link" data-scroll-target="#을-넘으면-반대편으로">1을 넘으면 반대편으로</a></li>
+  <li><a href="#무작위화-준몬테카를로-추정량" id="toc-무작위화-준몬테카를로-추정량" class="nav-link" data-scroll-target="#무작위화-준몬테카를로-추정량">무작위화 준몬테카를로 추정량</a></li>
+  </ul></li>
+  <li><a href="#간단한-예-등간격-점을-밀기" id="toc-간단한-예-등간격-점을-밀기" class="nav-link" data-scroll-target="#간단한-예-등간격-점을-밀기">간단한 예: 등간격 점을 밀기</a></li>
+  <li><a href="#무작위화-준몬테카를로의-성질" id="toc-무작위화-준몬테카를로의-성질" class="nav-link" data-scroll-target="#무작위화-준몬테카를로의-성질">무작위화 준몬테카를로의 성질</a>
+  <ul class="collapse">
+  <li><a href="#주의할-점" id="toc-주의할-점" class="nav-link" data-scroll-target="#주의할-점">주의할 점</a></li>
+  </ul></li>
+  <li><a href="#밀어도-불일치도는-크게-나빠지지-않는다" id="toc-밀어도-불일치도는-크게-나빠지지-않는다" class="nav-link" data-scroll-target="#밀어도-불일치도는-크게-나빠지지-않는다">밀어도 불일치도는 크게 나빠지지 않는다</a></li>
+  <li><a href="#점의-개수와-이동-횟수를-어떻게-나눌까" id="toc-점의-개수와-이동-횟수를-어떻게-나눌까" class="nav-link" data-scroll-target="#점의-개수와-이동-횟수를-어떻게-나눌까">점의 개수와 이동 횟수를 어떻게 나눌까</a></li>
+  <li><a href="#정리" id="toc-정리" class="nav-link" data-scroll-target="#정리">정리</a>
+  <ul class="collapse">
+  <li><a href="#연결되는-개념" id="toc-연결되는-개념" class="nav-link" data-scroll-target="#연결되는-개념">연결되는 개념</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../stats/stochastic-simulation/index.html">확률적 시뮬레이션(Stochastic Simulation)</a></li><li class="breadcrumb-item"><a href="../../../stats/stochastic-simulation/01-monte-carlo/index.html">1 몬테카를로 시뮬레이션</a></li><li class="breadcrumb-item"><a href="../../../stats/stochastic-simulation/01-monte-carlo/05-randomized-qmc.html">1.5 무작위로 밀어서 오차 재기: 무작위화 준몬테카를로</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">1.5 무작위로 밀어서 오차 재기: 무작위화 준몬테카를로</h1>
+<p class="subtitle lead">1장 몬테카를로 시뮬레이션 · 준몬테카를로에 신뢰구간 붙이기</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">확률과 통계</div>
+    <div class="quarto-category">확률적 시뮬레이션</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    고르게 배치한 준난수 점 전체를 하나의 무작위 벡터로 한꺼번에 밀어, 준몬테카를로의 정확도는 지키면서 몬테카를로처럼 신뢰구간을 붙이는 무작위화 준몬테카를로 방법을 다룹니다. 불편성, 중심극한정리, 이동 후 불일치도와 점 수 배분 문제까지 살펴봅니다.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 20, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="들어가며" class="level2">
+<h2 class="anchored" data-anchor-id="들어가며">들어가며</h2>
+<p><a href="../../../stats/stochastic-simulation/01-monte-carlo/04-quasi-random.html">1.4</a>에서 본 준몬테카를로는 매끄러운 함수의 적분을 몬테카를로보다 훨씬 정확하게 계산했습니다. 2차원 예제에서는 같은 개수의 점으로 오차가 수백 배 작았습니다. 그런데 한 가지 큰 약점이 남았습니다. 점이 결정론적이라 <strong>오차를 스스로 잴 방법이 없다</strong>는 것입니다. <a href="../../../stats/stochastic-simulation/01-monte-carlo/03-output-analysis.html">1.3</a>에서 몬테카를로 추정값에 신뢰구간을 붙일 수 있었던 것은 표본이 독립인 확률변수였기 때문인데, Halton 점에는 그런 무작위성이 전혀 없습니다. 콕스마-흘라브카 부등식의 상한은 계산하기도 어렵고, 계산해도 실제 오차보다 훨씬 큰 경우가 많습니다.</p>
+<blockquote class="blockquote">
+<p>고르게 배치된 점의 정확도는 지키면서, 몬테카를로처럼 신뢰구간도 붙일 수는 없을까요?</p>
+</blockquote>
+<p>이번 글에서 다룰 답은 놀랍도록 간단합니다. 점들을 하나하나 무작위로 흩뜨리는 대신, <strong>점 전체를 하나의 무작위 벡터만큼 한꺼번에 미는 것</strong>입니다. 점들의 상대적인 배치는 그대로이니 고른 성질은 유지되고, 미는 방향이 무작위이니 확률적인 분석이 가능해집니다. 이것을 <strong>무작위화 준몬테카를로</strong>(randomized quasi-Monte Carlo, RQMC)라고 합니다.</p>
+</section>
+<section id="점-전체를-한꺼번에-밀기" class="level2">
+<h2 class="anchored" data-anchor-id="점-전체를-한꺼번에-밀기">점 전체를 한꺼번에 밀기</h2>
+<section id="을-넘으면-반대편으로" class="level3">
+<h3 class="anchored" data-anchor-id="을-넘으면-반대편으로">1을 넘으면 반대편으로</h3>
+<p>점을 밀다 보면 단위 정육면체 밖으로 나가는 점이 생깁니다. 그런 점은 반대편에서 다시 들어오게 합니다. 실수 <span class="math inline">\(x\)</span>의 소수 부분을 <span class="math inline">\(\{x\} := x - \lfloor x \rfloor\)</span>로 쓰고, 벡터에서는 좌표마다 소수 부분을 취하는 것으로 이해합니다. 그러면 점 <span class="math inline">\(x \in [0,1)^d\)</span>를 <span class="math inline">\(u \in [0,1)^d\)</span>만큼 민 점은 <span class="math inline">\(\{x + u\}\)</span>입니다. 1차원에서는 길이가 <span class="math inline">\(1\)</span>인 원 위에서 점을 돌리는 것과 같고, 2차원에서는 화면 오른쪽으로 나간 캐릭터가 왼쪽에서 다시 나타나는 옛날 게임 화면, 즉 원환면(torus) 위에서 미는 것과 같습니다.</p>
+<p><img src="figures/random-shift.png" class="img-fluid" style="width:90.0%" alt="밑이 2와 3인 Halton 점 64개를 u = (0.35, 0.6)만큼 밀기 전과 후. 왼쪽 그림은 원래 점이고 점선으로 네 영역이 나뉘어 있으며, 영역마다 파랑, 주황, 청록, 노랑으로 칠해져 있다. 오른쪽 그림은 민 뒤의 점으로, 각 색의 점 무리가 모양을 유지한 채 자리를 바꾸어 정사각형 전체를 여전히 고르게 채운다."></p>
+<p>왼쪽 그림의 점선은 미는 양 <span class="math inline">\(u = (0.35, 0.6)\)</span>에 따라 어느 점이 경계를 넘어가는지를 나눕니다. 오른쪽 그림을 보면 네 무리의 점이 모양을 그대로 유지한 채 자리만 바꾸었고, 정사각형 전체는 여전히 고르게 채워져 있습니다. 모든 점이 똑같이 움직이므로 원환면 위에서의 상대적인 배치가 보존되기 때문입니다.</p>
+</section>
+<section id="무작위화-준몬테카를로-추정량" class="level3">
+<h3 class="anchored" data-anchor-id="무작위화-준몬테카를로-추정량">무작위화 준몬테카를로 추정량</h3>
+<p>이제 미는 양을 무작위로 고르고, 이것을 독립적으로 여러 번 반복합니다.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>정의 1.5.1 (무작위 이동과 RQMC 추정량)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>점 목록 <span class="math inline">\(P_N = (x_1, \ldots, x_N)\)</span> (<span class="math inline">\(x_i \in [0,1)^d\)</span>)을 고정하고, <span class="math inline">\(U_1, \ldots, U_R\)</span>을 <span class="math inline">\([0,1)^d\)</span> 위의 균등분포를 따르는 i.i.d. 확률벡터라고 합시다. 적분 가능한 <span class="math inline">\(h\)</span>에 대해 <span class="math display">\[Z_r := \frac{1}{N} \sum_{i \le N} h(\{x_i + U_r\}), \qquad \hat I_{N,R} := \frac{1}{R} \sum_{r \le R} Z_r\]</span> 로 정의합니다. <span class="math inline">\(Z_r\)</span>은 같은 점 <span class="math inline">\(N\)</span>개를 <span class="math inline">\(U_r\)</span>만큼 민 점들에서의 평균이고, <span class="math inline">\(\hat I_{N,R}\)</span>을 <strong>무작위화 준몬테카를로 추정량</strong>이라고 합니다. 이렇게 점 전체를 하나의 균등 무작위 벡터로 미는 방법을 <strong>무작위 이동</strong>(random shift)이라고 하며, 크랜리-패터슨 회전(Cranley–Patterson rotation)이라고도 부릅니다.</p>
+</div>
+</div>
+<p>여기서 의존 구조를 정확히 짚어 둘 필요가 있습니다. 하나의 <span class="math inline">\(Z_r\)</span> 안에 들어 있는 점 <span class="math inline">\(N\)</span>개는 모두 같은 <span class="math inline">\(U_r\)</span>로 정해지므로 <strong>서로 강하게 의존</strong>합니다. 사실 그 의존성이 바로 우리가 원하는 것입니다. 점들이 서로를 피해 고르게 퍼져 있어야 하니까요. 반면 서로 다른 이동으로 만든 <span class="math inline">\(Z_1, \ldots, Z_R\)</span>은 <strong>서로 독립</strong>입니다. 신뢰구간은 이 <span class="math inline">\(Z_r\)</span>들을 단위로 만듭니다.</p>
+</section>
+</section>
+<section id="간단한-예-등간격-점을-밀기" class="level2">
+<h2 class="anchored" data-anchor-id="간단한-예-등간격-점을-밀기">간단한 예: 등간격 점을 밀기</h2>
+<p>일반적인 성질을 보기 전에, 왜 무작위 이동이 준몬테카를로의 장점을 유지하는지 간단한 예로 확인해 보겠습니다.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>예제 1.5.2 (등간격 점과 <span class="math inline">\(h(u) = u\)</span>)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>1차원에서 <span class="math inline">\(I(h) = \int_0^1 u\, du = 1/2\)</span>를 계산합니다. 등간격 점 <span class="math inline">\(x_i = (i-1)/N\)</span> (<span class="math inline">\(i = 1, \ldots, N\)</span>)을 쓰고, <span class="math inline">\(U \sim U(0,1)\)</span>로 한 번 밉니다.</p>
+<p><span class="math inline">\(K := \lfloor NU \rfloor\)</span>, <span class="math inline">\(Y := \{NU\}\)</span>로 두면 <span class="math inline">\(U = (K + Y)/N\)</span>이고 <span class="math inline">\(K \in \{0, \ldots, N-1\}\)</span>입니다. 길이 <span class="math inline">\(1/N\)</span>인 <span class="math inline">\(N\)</span>개의 구간 각각이 <span class="math inline">\(u \mapsto \{Nu\}\)</span>에 의해 <span class="math inline">\([0,1)\)</span> 위로 일차함수로 옮겨지므로 <span class="math inline">\(Y\)</span>도 다시 <span class="math inline">\(U(0,1)\)</span>을 따릅니다.</p>
+<p><span class="math inline">\(i - 1 + K\)</span>를 <span class="math inline">\(N\)</span>으로 나눈 나머지를 <span class="math inline">\(j_i\)</span>라 하면 <span class="math display">\[\{x_i + U\} = \Bigl\{\frac{i - 1 + K + Y}{N}\Bigr\} = \frac{j_i + Y}{N}\]</span> 입니다. <span class="math inline">\(i\)</span>가 <span class="math inline">\(1\)</span>부터 <span class="math inline">\(N\)</span>까지 움직일 때 나머지 <span class="math inline">\(j_i\)</span>는 <span class="math inline">\(0, \ldots, N-1\)</span>을 정확히 한 번씩 지나므로, 정수 부분 <span class="math inline">\(K\)</span>는 점들의 순서를 돌려 놓을 뿐이고 민 점들은 순서를 무시하면 <span class="math display">\[\frac{Y}{N},\ \frac{1 + Y}{N},\ \ldots,\ \frac{N - 1 + Y}{N}\]</span> 입니다. 따라서 한 번 민 추정량은 <span class="math display">\[Z = \frac{1}{N} \sum_{j=0}^{N-1} \frac{j + Y}{N} = \frac{N-1}{2N} + \frac{Y}{N} = \frac{1}{2} + \frac{Y - 1/2}{N}\]</span> 이고, <span class="math inline">\(Y \sim U(0,1)\)</span>이므로 <span class="math display">\[E(Z) = \frac{1}{2}, \qquad V(Z) = \frac{1}{12 N^2}\]</span> 입니다.</p>
+</div>
+</div>
+<p>비교하자면, 독립인 균등난수 <span class="math inline">\(N\)</span>개를 쓰는 몬테카를로 추정량의 분산은 <span class="math inline">\(V(U)/N = 1/(12N)\)</span>입니다. 무작위 이동을 한 번 하면 <strong>불편성은 그대로 유지하면서 분산은 <span class="math inline">\(N\)</span>분의 <span class="math inline">\(1\)</span>로</strong> 줄어든 것입니다. 이동을 <span class="math inline">\(R\)</span>번 독립적으로 반복해도 마찬가지여서, 총 <span class="math inline">\(NR\)</span>번의 계산으로 무작위화 준몬테카를로의 분산은 <span class="math inline">\(1/(12N^2R)\)</span>, 몬테카를로의 분산은 <span class="math inline">\(1/(12NR)\)</span>입니다. 실제로 확인해 보겠습니다.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1557</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>N, reps <span class="op">=</span> <span class="dv">100</span>, <span class="dv">10_000</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(N) <span class="op">/</span> N                                  <span class="co"># 등간격 점 0, 1/N, ..., (N-1)/N</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>shift <span class="op">=</span> np.random.rand(reps)                          <span class="co"># 무작위 이동 reps번</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>Z_shift <span class="op">=</span> np.mean((x[<span class="va">None</span>, :] <span class="op">+</span> shift[:, <span class="va">None</span>]) <span class="op">%</span> <span class="dv">1</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>Z_mc <span class="op">=</span> np.mean(np.random.rand(reps, N), axis<span class="op">=</span><span class="dv">1</span>)       <span class="co"># 비교: 몬테카를로</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"무작위 이동:  평균 </span><span class="sc">{</span>Z_shift<span class="sc">.</span>mean()<span class="sc">:.5f}</span><span class="ss">,  분산 </span><span class="sc">{</span>Z_shift<span class="sc">.</span>var(ddof<span class="op">=</span><span class="dv">1</span>)<span class="sc">:.3e}</span><span class="ss">  (이론 </span><span class="sc">{</span><span class="dv">1</span> <span class="op">/</span> (<span class="dv">12</span> <span class="op">*</span> N<span class="op">**</span><span class="dv">2</span>)<span class="sc">:.3e}</span><span class="ss">)"</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"몬테카를로:   평균 </span><span class="sc">{</span>Z_mc<span class="sc">.</span>mean()<span class="sc">:.5f}</span><span class="ss">,  분산 </span><span class="sc">{</span>Z_mc<span class="sc">.</span>var(ddof<span class="op">=</span><span class="dv">1</span>)<span class="sc">:.3e}</span><span class="ss">  (이론 </span><span class="sc">{</span><span class="dv">1</span> <span class="op">/</span> (<span class="dv">12</span> <span class="op">*</span> N)<span class="sc">:.3e}</span><span class="ss">)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre><code>무작위 이동:  평균 0.49999,  분산 8.406e-06  (이론 8.333e-06)
+몬테카를로:   평균 0.49985,  분산 8.385e-04  (이론 8.333e-04)</code></pre>
+<p>두 추정량 모두 평균이 <span class="math inline">\(1/2\)</span>에 맞고, 분산은 이론값대로 정확히 <span class="math inline">\(N = 100\)</span>배 차이 납니다.</p>
+</section>
+<section id="무작위화-준몬테카를로의-성질" class="level2">
+<h2 class="anchored" data-anchor-id="무작위화-준몬테카를로의-성질">무작위화 준몬테카를로의 성질</h2>
+<p>이 예는 특정한 함수와 특정한 점에 대한 계산이었습니다. 일반적으로 어떤 성질이 성립하는지 정리해 보겠습니다. <span class="math inline">\(h\)</span>가 제곱적분 가능하면 <span class="math inline">\(v_N := V(Z_1)\)</span>로 두고, <span class="math inline">\(R \ge 2\)</span>에 대해 <span class="math inline">\(Z_r\)</span>들의 표본분산을 <span class="math display">\[s_R^2 := \frac{1}{R-1} \sum_{r \le R} \bigl(Z_r - \hat I_{N,R}\bigr)^2\]</span> 라 합시다.</p>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>명제 1.5.3 (무작위화 준몬테카를로)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(h\)</span>가 적분 가능하면 <span class="math inline">\(Z_1, \ldots, Z_R\)</span>은 평균이 <span class="math inline">\(I(h)\)</span>인 i.i.d. 확률변수입니다. <span class="math inline">\(h\)</span>가 제곱적분 가능하면 <span class="math inline">\(v_N &lt; \infty\)</span>이고 <span class="math inline">\(V(\hat I_{N,R}) = v_N / R\)</span>입니다. 여기에 <span class="math inline">\(v_N &gt; 0\)</span>이면, <span class="math inline">\(N\)</span>을 고정하고 <span class="math inline">\(R \to \infty\)</span>로 보낼 때 <span class="math display">\[\frac{\sqrt{R}\,\bigl(\hat I_{N,R} - I(h)\bigr)}{s_R} \xrightarrow[R \to \infty]{D} N(0, 1)\]</span> 이 성립합니다.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>증명
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>1단계: 밀어도 균등분포는 균등분포입니다.</strong> <span class="math inline">\(x \in [0,1)^d\)</span>와 보렐 집합 <span class="math inline">\(A \subseteq [0,1)^d\)</span>를 고정합니다. 사상 <span class="math inline">\(T_x(u) := \{x + u\}\)</span>는 원환면 위의 일대일대응이고 역사상은 <span class="math inline">\(T_{-x}\)</span>입니다. 각 좌표가 <span class="math inline">\(1\)</span>을 넘어 되돌아가는지에 따라 정해지는 유한 개의 직사각형 위에서 <span class="math inline">\(T_x\)</span>는 보통의 평행이동이므로 르베그 측도를 보존합니다. 따라서 <span class="math display">\[P(\{x + U_r\} \in A) = \lambda(T_x^{-1} A) = \lambda(A)\]</span> 이고, 고정된 <span class="math inline">\(i\)</span>와 <span class="math inline">\(r\)</span>마다 점 <span class="math inline">\(\{x_i + U_r\}\)</span>은 <span class="math inline">\([0,1)^d\)</span> 위의 균등분포를 따릅니다. 한 번의 이동 안에 있는 <span class="math inline">\(N\)</span>개의 점은 모두 같은 <span class="math inline">\(U_r\)</span>의 함수이므로 일반적으로 서로 의존하지만, 그 사이의 독립성은 사실도 아니고 필요하지도 않습니다.</p>
+<p><strong>2단계: 불편성과 독립성.</strong> <span class="math inline">\(h\)</span>가 적분 가능하므로 기대값의 선형성에 의해 <span class="math display">\[E(Z_r) = \frac{1}{N} \sum_{i \le N} E\bigl(h(\{x_i + U_r\})\bigr) = \frac{1}{N} \sum_{i \le N} \int_{[0,1]^d} h(u)\, du = I(h)\]</span> 입니다. 또 결정론적인 가측함수 <span class="math inline">\(G(u) := \frac{1}{N} \sum_{i \le N} h(\{x_i + u\})\)</span>에 대해 <span class="math inline">\(Z_r = G(U_r)\)</span>이고, <span class="math inline">\(U_1, \ldots, U_R\)</span>이 i.i.d.이므로 <span class="math inline">\(Z_1, \ldots, Z_R\)</span>도 i.i.d.입니다. 앞으로의 분석은 모두 이 <span class="math inline">\(Z_r\)</span> 단위에서 이루어집니다.</p>
+<p><strong>3단계: 분산.</strong> <span class="math inline">\(h\)</span>가 제곱적분 가능하다고 합시다. 볼록함수 <span class="math inline">\(z \mapsto z^2\)</span>에 대한 옌센 부등식에 의해 <span class="math display">\[Z_r^2 = \Bigl(\frac{1}{N} \sum_{i \le N} h(\{x_i + U_r\})\Bigr)^2 \le \frac{1}{N} \sum_{i \le N} h(\{x_i + U_r\})^2\]</span> 이고, 기대값을 취한 뒤 1단계를 쓰면 <span class="math inline">\(E(Z_r^2) \le \int_{[0,1]^d} h(u)^2\, du &lt; \infty\)</span>입니다. 따라서 <span class="math inline">\(v_N &lt; \infty\)</span>이고, <span class="math inline">\(Z_r\)</span>들이 독립이므로 <span class="math inline">\(V(\hat I_{N,R}) = R^{-2} \sum_{r \le R} V(Z_r) = v_N / R\)</span>입니다.</p>
+<p><strong>4단계: 중심극한정리.</strong> <span class="math inline">\(v_N &gt; 0\)</span>이고 <span class="math inline">\(N\)</span>을 고정하면, <span class="math inline">\(Z_1, Z_2, \ldots\)</span>에 린데베르그-레비 중심극한정리를 적용해 <span class="math display">\[\frac{\sqrt{R}\,\bigl(\hat I_{N,R} - I(h)\bigr)}{\sqrt{v_N}} \xrightarrow[R \to \infty]{D} N(0,1)\]</span> 을 얻습니다. 한편 <span class="math inline">\(Z_r\)</span>과 <span class="math inline">\(Z_r^2\)</span>에 강한 큰 수의 법칙을 적용하면 <span class="math inline">\(\frac{1}{R}\sum_{r \le R} Z_r \xrightarrow{\text{a.s.}} I(h)\)</span>, <span class="math inline">\(\frac{1}{R}\sum_{r \le R} Z_r^2 \xrightarrow{\text{a.s.}} E(Z_1^2)\)</span>이므로 <span class="math display">\[s_R^2 = \frac{R}{R-1} \Bigl(\frac{1}{R} \sum_{r \le R} Z_r^2 - \hat I_{N,R}^2\Bigr) \xrightarrow[R \to \infty]{\text{a.s.}} E(Z_1^2) - I(h)^2 = v_N\]</span> 이고, 특히 <span class="math inline">\(s_R / \sqrt{v_N} \xrightarrow{P} 1\)</span>입니다. 위의 통계량에 <span class="math inline">\(\sqrt{v_N}/s_R\)</span>을 곱하고 슬러츠키 정리를 적용하면 결론을 얻습니다. 사용한 확률론의 정리들은 <a href="../../../stats/stochastic-simulation/01-monte-carlo/03-output-analysis.html">1.3</a>과 <a href="../../../stats/measure-prob/index.html">측도론적 확률론</a>을 참고하시기 바랍니다.</p>
+</div>
+</div>
+</div>
+<p>이 명제가 말하는 것은 결국, <strong>무작위 이동으로 만든 <span class="math inline">\(Z_1, \ldots, Z_R\)</span>은 <a href="../../../stats/stochastic-simulation/01-monte-carlo/03-output-analysis.html">1.3</a>의 <span class="math inline">\(Z_1, \ldots, Z_N\)</span>과 똑같이 다룰 수 있다</strong>는 것입니다. 각 <span class="math inline">\(Z_r\)</span>은 참값을 평균으로 하는 i.i.d. 확률변수이므로, 그 평균에 <a href="../../../stats/stochastic-simulation/01-monte-carlo/03-output-analysis.html">1.3</a>의 신뢰구간을 그대로 붙이면 됩니다. 달라진 것은 각 <span class="math inline">\(Z_r\)</span>이 점 하나가 아니라 고르게 배치된 점 <span class="math inline">\(N\)</span>개의 평균이라서, 분산 <span class="math inline">\(v_N\)</span>이 몬테카를로보다 훨씬 작을 수 있다는 점뿐입니다.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>알고리즘 1.5.4 (무작위화 준몬테카를로와 신뢰구간)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>입력:</strong> 점 목록 <span class="math inline">\(P_N = (x_1, \ldots, x_N)\)</span> (예: Halton 점), 이동 횟수 <span class="math inline">\(R\)</span>, 함수 <span class="math inline">\(h\)</span><br> <strong>출력:</strong> <span class="math inline">\(I(h)\)</span>의 추정값과 근사 95% 신뢰구간</p>
+<ol type="1">
+<li><span class="math inline">\([0,1)^d\)</span> 위의 i.i.d. 균등 무작위 벡터 <span class="math inline">\(U_1, \ldots, U_R\)</span>을 생성합니다.</li>
+<li><span class="math inline">\(r = 1, \ldots, R\)</span>에 대해 <span class="math inline">\(Z_r := \frac{1}{N} \sum_{i \le N} h(\{x_i + U_r\})\)</span>를 계산합니다.</li>
+<li><span class="math inline">\(\hat I_{N,R} := \frac{1}{R} \sum_{r \le R} Z_r\)</span>와 표본분산 <span class="math inline">\(s_R^2\)</span>을 계산합니다.</li>
+<li><span class="math inline">\(\hat I_{N,R}\)</span>과 구간 <span class="math inline">\(\hat I_{N,R} \pm 1.96\, s_R / \sqrt{R}\)</span>을 반환합니다.</li>
+</ol>
+</div>
+</div>
+<p><a href="../../../stats/stochastic-simulation/01-monte-carlo/04-quasi-random.html">1.4</a>의 2차원 함수 <span class="math inline">\(h(u) = \prod_{j \le 2} \frac{\pi}{2}\sin(\pi u_j)\)</span> (<span class="math inline">\(I(h) = 1\)</span>)로 실제로 해 보겠습니다. Halton 점 <span class="math inline">\(N = 1{,}024\)</span>개를 <span class="math inline">\(R = 30\)</span>번 밀고, 같은 계산량인 <span class="math inline">\(NR = 30{,}720\)</span>번의 몬테카를로와 비교합니다. <code>halton</code> 함수는 <a href="../../../stats/stochastic-simulation/01-monte-carlo/04-quasi-random.html">1.4</a>에서 만든 것을 그대로 씁니다.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> h(u):                                             <span class="co"># I(h) = 1</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.prod(np.pi <span class="op">/</span> <span class="dv">2</span> <span class="op">*</span> np.sin(np.pi <span class="op">*</span> u), axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> rqmc(P, R):</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""점 목록 P를 R번 무작위 이동해서 Z_1, ..., Z_R을 돌려준다"""</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    shifts <span class="op">=</span> np.random.rand(R, P.shape[<span class="dv">1</span>])</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.array([h((P <span class="op">+</span> s) <span class="op">%</span> <span class="dv">1</span>).mean() <span class="cf">for</span> s <span class="kw">in</span> shifts])</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>N, R <span class="op">=</span> <span class="dv">1024</span>, <span class="dv">30</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>H <span class="op">=</span> halton(N, [<span class="dv">2</span>, <span class="dv">3</span>])</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> rqmc(H, R)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>I_hat, s_R <span class="op">=</span> Z.mean(), Z.std(ddof<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>half <span class="op">=</span> <span class="fl">1.96</span> <span class="op">*</span> s_R <span class="op">/</span> np.sqrt(R)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"RQMC (N=</span><span class="sc">{</span>N<span class="sc">}</span><span class="ss">, R=</span><span class="sc">{</span>R<span class="sc">}</span><span class="ss">):  추정값 </span><span class="sc">{</span>I_hat<span class="sc">:.6f}</span><span class="ss">,  95% 신뢰구간 [</span><span class="sc">{</span>I_hat <span class="op">-</span> half<span class="sc">:.6f}</span><span class="ss">, </span><span class="sc">{</span>I_hat <span class="op">+</span> half<span class="sc">:.6f}</span><span class="ss">],  반폭 </span><span class="sc">{</span>half<span class="sc">:.2e}</span><span class="ss">"</span>)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> h(np.random.rand(N <span class="op">*</span> R, <span class="dv">2</span>))                       <span class="co"># 같은 계산량의 몬테카를로</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>half_mc <span class="op">=</span> <span class="fl">1.96</span> <span class="op">*</span> Y.std(ddof<span class="op">=</span><span class="dv">1</span>) <span class="op">/</span> np.sqrt(N <span class="op">*</span> R)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"MC   (N·R=</span><span class="sc">{</span>N <span class="op">*</span> R<span class="sc">}</span><span class="ss">):     추정값 </span><span class="sc">{</span>Y<span class="sc">.</span>mean()<span class="sc">:.6f}</span><span class="ss">,  95% 신뢰구간 [</span><span class="sc">{</span>Y<span class="sc">.</span>mean() <span class="op">-</span> half_mc<span class="sc">:.6f}</span><span class="ss">, </span><span class="sc">{</span>Y<span class="sc">.</span>mean() <span class="op">+</span> half_mc<span class="sc">:.6f}</span><span class="ss">],  반폭 </span><span class="sc">{</span>half_mc<span class="sc">:.2e}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre><code>RQMC (N=1024, R=30):  추정값 0.999911,  95% 신뢰구간 [0.999686, 1.000137],  반폭 2.25e-04
+MC   (N·R=30720):     추정값 1.003073,  95% 신뢰구간 [0.994966, 1.011181],  반폭 8.11e-03</code></pre>
+<p>두 신뢰구간 모두 참값 <span class="math inline">\(1\)</span>을 포함하지만, 무작위화 준몬테카를로의 신뢰구간이 약 <span class="math inline">\(36\)</span>배 좁습니다. 반폭은 <span class="math inline">\(1/\sqrt{\text{계산량}}\)</span>에 비례하므로, 몬테카를로로 같은 폭을 얻으려면 계산을 <span class="math inline">\(36^2 \approx 1{,}300\)</span>배 더 해야 합니다. 이제 준몬테카를로의 정확도와 몬테카를로의 신뢰구간을 함께 가지게 되었습니다.</p>
+<section id="주의할-점" class="level3">
+<h3 class="anchored" data-anchor-id="주의할-점">주의할 점</h3>
+<p><strong>불편성만으로 분산이 줄어드는 것은 아닙니다.</strong> 명제 1.5.3은 어떤 점 목록에 대해서도 성립하지만, 분산 <span class="math inline">\(v_N\)</span>이 작다는 것은 말해 주지 않습니다. 극단적인 예로 점 <span class="math inline">\(N\)</span>개가 모두 같은 점 <span class="math inline">\(x_1\)</span>이라면 <span class="math inline">\(Z_r = h(\{x_1 + U_r\})\)</span>이고, 이것은 균등난수 <strong>하나</strong>로 만든 몬테카를로 추정값과 같은 분포를 가집니다. 계산은 <span class="math inline">\(N\)</span>번 했는데 분산은 몬테카를로의 <span class="math inline">\(N\)</span>배인 셈입니다. 한 번의 이동 안에 있는 점들 사이의 공분산이 <span class="math inline">\(v_N\)</span>을 결정하므로, 무작위 이동이 효과를 내려면 원래 점이 고르게 퍼져 있어야 합니다. 이것을 정확히 말해 주는 것이 다음 절의 명제입니다.</p>
+<p><strong>점 하나가 시뮬레이션 한 번의 입력 전체여야 합니다.</strong> 정해진 차원 <span class="math inline">\(d\)</span>의 적분에서는 점 하나 <span class="math inline">\(x_i \in [0,1)^d\)</span>가 <span class="math inline">\(h\)</span>를 한 번 계산하는 데 필요한 입력 벡터 전체입니다. 그런데 몇 번 반복할지 미리 정해지지 않은 시뮬레이션, 예를 들어 조건을 만족할 때까지 난수를 계속 뽑는 루프에 준난수의 좌표나 점들을 차례로 넣으면 이 구조가 깨집니다. 이런 경우가 무조건 금지된다는 정리가 있는 것은 아니지만, 따로 정당화가 필요하고 실제로 결과가 크게 틀어지는 예도 알려져 있습니다.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+</section>
+</section>
+<section id="밀어도-불일치도는-크게-나빠지지-않는다" class="level2">
+<h2 class="anchored" data-anchor-id="밀어도-불일치도는-크게-나빠지지-않는다">밀어도 불일치도는 크게 나빠지지 않는다</h2>
+<p>명제 1.5.3은 불편성과 오차 추정을 주었습니다. 여기에 <a href="../../../stats/stochastic-simulation/01-monte-carlo/04-quasi-random.html">1.4</a>의 결정론적인 보장을 연결하려면, 민 점들의 불일치도가 원래 점들의 불일치도와 크게 다르지 않다는 것을 보여야 합니다. 원점에 꼭짓점을 둔 상자를 밀면 경계에서 잘려 여러 조각으로 나뉘는데, 그 조각들은 더 이상 원점에 붙어 있지 않다는 것이 어려운 점입니다.</p>
+<p><span class="math inline">\(P_N^u := (\{x_1 + u\}, \ldots, \{x_N + u\})\)</span>로 쓰고, 점들의 경험적 분포와 르베그 측도 <span class="math inline">\(\lambda\)</span>의 차이인 부호 측도(signed measure) <span class="math display">\[\nu_N := \frac{1}{N} \sum_{i \le N} \delta_{x_i} - \lambda\]</span> 를 생각합니다. 상자 <span class="math inline">\(B\)</span>에 대해 <span class="math inline">\(\nu_N(B)\)</span>는 <span class="math inline">\(B\)</span>에 든 점의 비율에서 <span class="math inline">\(B\)</span>의 부피를 뺀 값입니다.</p>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>명제 1.5.5 (이동 후의 불일치도)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>모든 <span class="math inline">\(u \in [0,1)^d\)</span>에 대해 <span class="math inline">\(D_N^*(P_N^u) \le 4^d\, D_N^*(P_N)\)</span>입니다. 따라서 <span class="math inline">\(h \in C^d([0,1]^d)\)</span>이면 <span class="math display">\[V(Z_1) \le 16^d\, V_{\mathrm{HK}}(h)^2\, D_N^*(P_N)^2, \qquad V(\hat I_{N,R}) \le \frac{16^d\, V_{\mathrm{HK}}(h)^2\, D_N^*(P_N)^2}{R}\]</span> 가 성립합니다.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>증명
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>1단계: 임의의 상자.</strong> 먼저 원점에 붙지 않은 상자 <span class="math inline">\(B = \prod_{j \le d} [a_j, b_j)\)</span> (<span class="math inline">\(0 \le a_j \le b_j \le 1\)</span>)에 대해 <span class="math display">\[\lvert \nu_N(B)\rvert \le 2^d\, D_N^*(P_N)\]</span> 임을 보입니다. <span class="math inline">\(\mathbf{1}_{\{a_j \le x_j &lt; b_j\}} = \mathbf{1}_{\{x_j &lt; b_j\}} - \mathbf{1}_{\{x_j &lt; a_j\}}\)</span>를 <span class="math inline">\(d\)</span>개 곱해 전개하면 <span class="math display">\[\mathbf{1}_B(x) = \sum_{\varepsilon \in \{0,1\}^d} (-1)^{d - \lvert \varepsilon\rvert}\, \mathbf{1}_{[0, c(\varepsilon))}(x)\]</span> 입니다. 여기서 <span class="math inline">\(\lvert \varepsilon\rvert\)</span>는 <span class="math inline">\(\varepsilon\)</span>의 성분 중 <span class="math inline">\(1\)</span>의 개수이고, <span class="math inline">\(c(\varepsilon)\)</span>의 <span class="math inline">\(j\)</span>번째 좌표는 <span class="math inline">\(\varepsilon_j = 1\)</span>이면 <span class="math inline">\(b_j\)</span>, <span class="math inline">\(\varepsilon_j = 0\)</span>이면 <span class="math inline">\(a_j\)</span>입니다. 항은 <span class="math inline">\(2^d\)</span>개이고 각 <span class="math inline">\(\lvert \nu_N([0,c))\rvert\)</span>는 <span class="math inline">\(D_N^*(P_N)\)</span> 이하이므로, 이 식을 <span class="math inline">\(\nu_N\)</span>으로 적분하고 삼각부등식을 쓰면 주장을 얻습니다. 상자가 비어 있는 경우에는 양변이 모두 <span class="math inline">\(0\)</span>이라 자명합니다.</p>
+<p><strong>2단계: 민 상자는 상자 <span class="math inline">\(2^d\)</span>개 이하로 나뉩니다.</strong> <span class="math inline">\(u \in [0,1)^d\)</span>와 <span class="math inline">\(t \in [0,1]^d\)</span>를 고정하고 <span class="math inline">\(A_t := [0, t)\)</span>, <span class="math inline">\(T_u(x) := \{x + u\}\)</span>로 둡니다. 한 좌표만 보면, <span class="math inline">\(\{x_j + u_j\} &lt; t_j\)</span>를 만족하는 <span class="math inline">\(x_j \in [0,1)\)</span>의 집합은 원 위의 구간입니다. 이 구간이 <span class="math inline">\([0,1)\)</span>의 경계를 넘으면 서로소인 반열린구간 두 개로, 아니면 하나로 나뉩니다(<span class="math inline">\(t_j = 0\)</span>이면 공집합, <span class="math inline">\(t_j = 1\)</span>이면 전체). 좌표별 구간들의 곱을 취하면 <span class="math inline">\(T_u^{-1}(A_t)\)</span>는 서로소인 반열린 상자 <span class="math inline">\(B_1, \ldots, B_M\)</span> (<span class="math inline">\(0 \le M \le 2^d\)</span>)의 합집합입니다.</p>
+<p><strong>3단계: 합치기.</strong> 평행이동은 르베그 측도를 보존하므로 <span class="math inline">\(\lambda(T_u^{-1}(A_t)) = \lambda(A_t)\)</span>이고, <span class="math inline">\(A_t\)</span>에 든 민 점의 개수는 <span class="math inline">\(T_u^{-1}(A_t)\)</span>에 든 원래 점의 개수와 같습니다. 따라서 <span class="math display">\[\frac{1}{N} \sum_{i \le N} \mathbf{1}_{A_t}(\{x_i + u\}) - \lambda(A_t) = \nu_N\bigl(T_u^{-1}(A_t)\bigr) = \sum_{r \le M} \nu_N(B_r)\]</span> 이고, 1단계에 의해 절댓값이 <span class="math inline">\(M\, 2^d D_N^*(P_N) \le 4^d D_N^*(P_N)\)</span> 이하입니다. <span class="math inline">\(t\)</span>에 대한 상한을 취하면 <span class="math inline">\(D_N^*(P_N^u) \le 4^d D_N^*(P_N)\)</span>입니다.</p>
+<p><strong>4단계: 분산.</strong> <span class="math inline">\(U_1\)</span>이 실현될 때마다 결정론적인 점 목록 <span class="math inline">\(P_N^{U_1}\)</span>에 <a href="../../../stats/stochastic-simulation/01-monte-carlo/04-quasi-random.html">1.4</a>의 콕스마-흘라브카 부등식을 적용하고 3단계를 쓰면, 거의 확실하게 <span class="math display">\[\lvert Z_1 - I(h)\rvert \le V_{\mathrm{HK}}(h)\, D_N^*(P_N^{U_1}) \le 4^d\, V_{\mathrm{HK}}(h)\, D_N^*(P_N)\]</span> 입니다. 명제 1.5.3에 의해 <span class="math inline">\(E(Z_1) = I(h)\)</span>이므로 <span class="math inline">\(V(Z_1) = E((Z_1 - I(h))^2)\)</span>이고, 위 부등식을 제곱해 기대값을 취하면 첫째 부등식을 얻습니다. <span class="math inline">\(Z_r\)</span>들이 독립이므로 평균의 분산은 <span class="math inline">\(V(Z_1)/R\)</span>이고, 이것이 둘째 부등식입니다.</p>
+</div>
+</div>
+</div>
+<p>이 명제 덕분에 무작위 이동을 해도 결정론적인 점의 장점이 사라지지 않습니다. 예를 들어 1차원에서 van der Corput 점을 쓰면, 같은 논증을 정리 1.4.2와 함께 써서 <span class="math inline">\(\mathrm{TV}(h)\)</span>가 유한한 <span class="math inline">\(h\)</span>에 대해 <span class="math display">\[\mathrm{RMSE}(\hat I_{N,R}) \le c\, \mathrm{TV}(h)\, \frac{\log(N+1)}{N\sqrt{R}}\]</span> 꼴의 상한을 얻습니다(<span class="math inline">\(c\)</span>는 상수이고, <span class="math inline">\(N\)</span>이 밑의 거듭제곱이면 로그 인자가 빠집니다). 몬테카를로의 <span class="math inline">\(1/\sqrt{NR}\)</span>과 비교하면 <span class="math inline">\(N\)</span>에 대한 의존성이 훨씬 좋습니다. 다만 이 결론은 <strong>점의 불일치도가 작다는 것</strong>과 <strong>함수가 매끄럽다는 것</strong>을 모두 써서 얻은 것입니다. 앞에서 본 “모든 점이 같은” 예처럼 아무 점이나 밀어서는 분산이 줄지 않는다는 것과 잘 맞아떨어집니다.</p>
+<p>상수 <span class="math inline">\(4^d\)</span>는 증명을 간단히 하기 위한 것이라 실제로는 훨씬 여유가 있습니다. 1차원에서 van der Corput 점 <span class="math inline">\(1{,}000\)</span>개를 무작위로 <span class="math inline">\(1{,}000\)</span>번 밀어 보겠습니다. <code>van_der_corput</code>와 <code>star_discrepancy_1d</code>는 <a href="../../../stats/stochastic-simulation/01-monte-carlo/04-quasi-random.html">1.4</a>에서 만든 함수입니다.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> van_der_corput(<span class="dv">1_000</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>D0 <span class="op">=</span> star_discrepancy_1d(P)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>D_shift <span class="op">=</span> np.array([star_discrepancy_1d((P <span class="op">+</span> u) <span class="op">%</span> <span class="dv">1</span>) <span class="cf">for</span> u <span class="kw">in</span> np.random.rand(<span class="dv">1_000</span>)])</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"원래 점: </span><span class="sc">{</span>D0<span class="sc">:.6f}</span><span class="ss">,  이동한 점: 최소 </span><span class="sc">{</span>D_shift<span class="sc">.</span><span class="bu">min</span>()<span class="sc">:.6f}</span><span class="ss">, 최대 </span><span class="sc">{</span>D_shift<span class="sc">.</span><span class="bu">max</span>()<span class="sc">:.6f}</span><span class="ss">,  최대 비율 </span><span class="sc">{</span>D_shift<span class="sc">.</span><span class="bu">max</span>() <span class="op">/</span> D0<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre><code>원래 점: 0.002453,  이동한 점: 최소 0.001227, 최대 0.002396,  최대 비율 0.98</code></pre>
+<p>명제가 허락하는 것은 원래 불일치도의 <span class="math inline">\(4\)</span>배까지이지만, 실제로는 <span class="math inline">\(1{,}000\)</span>번 중 한 번도 원래 값을 넘지 않았습니다.</p>
+</section>
+<section id="점의-개수와-이동-횟수를-어떻게-나눌까" class="level2">
+<h2 class="anchored" data-anchor-id="점의-개수와-이동-횟수를-어떻게-나눌까">점의 개수와 이동 횟수를 어떻게 나눌까</h2>
+<p>마지막으로 실용적인 문제가 하나 남습니다. 전체 계산량 <span class="math inline">\(NR\)</span>이 정해져 있을 때, 점을 많이 쓰고 이동을 적게 할까요, 아니면 점을 적게 쓰고 이동을 많이 할까요?</p>
+<p>두 방향은 서로 다른 것을 개선합니다. 명제 1.5.5에 따르면 분산은 <span class="math inline">\(N\)</span>에 대해서는 대략 <span class="math inline">\(1/N^2\)</span> 꼴로, <span class="math inline">\(R\)</span>에 대해서는 <span class="math inline">\(1/R\)</span>로만 줄어들므로 <strong>정확도만 보면 <span class="math inline">\(N\)</span>을 키우는 것이 유리합니다.</strong> 반면 명제 1.5.3의 정규근사는 <span class="math inline">\(N\)</span>을 고정하고 <strong><span class="math inline">\(R\)</span>을 키울 때</strong> 성립하는 것이므로, <span class="math inline">\(R\)</span>이 작으면 신뢰구간을 믿기 어렵습니다. <span class="math inline">\(N\)</span>을 아무리 키워도 이동 횟수에 대한 정규근사가 좋아지지는 않습니다.</p>
+<p>계산량을 <span class="math inline">\(NR = 16{,}384\)</span>로 고정하고 네 가지 배분을 비교해 보겠습니다. 각 배분마다 무작위화 준몬테카를로를 <span class="math inline">\(1{,}000\)</span>번 반복해서, 실제 RMSE와 신뢰구간 <span class="math inline">\(\hat I_{N,R} \pm 1.96\, s_R/\sqrt{R}\)</span>이 참값을 포함한 비율을 셉니다.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>H_all <span class="op">=</span> halton(<span class="dv">4096</span>, [<span class="dv">2</span>, <span class="dv">3</span>])</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>budget, reps <span class="op">=</span> <span class="dv">16_384</span>, <span class="dv">1_000</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> N <span class="kw">in</span> [<span class="dv">4096</span>, <span class="dv">1024</span>, <span class="dv">256</span>, <span class="dv">64</span>]:</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    R <span class="op">=</span> budget <span class="op">//</span> N</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    est, cover <span class="op">=</span> [], <span class="dv">0</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(reps):</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        Z <span class="op">=</span> rqmc(H_all[:N], R)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        half <span class="op">=</span> <span class="fl">1.96</span> <span class="op">*</span> Z.std(ddof<span class="op">=</span><span class="dv">1</span>) <span class="op">/</span> np.sqrt(R)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        est.append(Z.mean())</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        cover <span class="op">+=</span> <span class="bu">abs</span>(Z.mean() <span class="op">-</span> <span class="dv">1</span>) <span class="op">&lt;=</span> half</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    rmse <span class="op">=</span> np.sqrt(np.mean((np.array(est) <span class="op">-</span> <span class="dv">1</span>)<span class="op">**</span><span class="dv">2</span>))</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"N = </span><span class="sc">{</span>N<span class="sc">:&gt;4}</span><span class="ss">, R = </span><span class="sc">{</span>R<span class="sc">:&gt;3}</span><span class="ss">:  실제 RMSE </span><span class="sc">{</span>rmse<span class="sc">:.2e}</span><span class="ss">,  신뢰구간 포함 비율 </span><span class="sc">{</span>cover <span class="op">/</span> reps<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre><code>N = 4096, R =   4:  실제 RMSE 1.12e-04,  신뢰구간 포함 비율 0.858
+N = 1024, R =  16:  실제 RMSE 1.48e-04,  신뢰구간 포함 비율 0.927
+N =  256, R =  64:  실제 RMSE 3.04e-04,  신뢰구간 포함 비율 0.939
+N =   64, R = 256:  실제 RMSE 9.15e-04,  신뢰구간 포함 비율 0.947</code></pre>
+<p>예상대로입니다. 이동을 <span class="math inline">\(4\)</span>번만 하면 RMSE는 가장 작지만 “95%” 신뢰구간이 실제로는 <span class="math inline">\(86\%\)</span>만 참값을 포함합니다.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> 이동을 <span class="math inline">\(256\)</span>번 하면 신뢰구간은 약속을 지키지만 RMSE가 <span class="math inline">\(8\)</span>배 넘게 커집니다. 그 사이의 <span class="math inline">\(R = 16\)</span>이나 <span class="math inline">\(64\)</span> 정도가 무난한 타협입니다. 정리하면, 이동 횟수 <span class="math inline">\(R\)</span>은 신뢰구간을 믿을 수 있을 만큼(수십 번 정도)만 확보하고, 남는 계산량은 점의 개수 <span class="math inline">\(N\)</span>에 주는 것이 좋습니다. 수학적인 오차 보장과 경험적인 신뢰구간은 서로 관련은 있지만 <strong>다른 질문에 대한 답</strong>이라는 점을 기억해 두면 좋겠습니다.</p>
+</section>
+<section id="정리" class="level2">
+<h2 class="anchored" data-anchor-id="정리">정리</h2>
+<p>이번 글에서는 준몬테카를로의 정확도에 몬테카를로의 오차 추정을 더하는 무작위화 준몬테카를로를 살펴보았습니다.</p>
+<ul>
+<li>고르게 배치된 점 전체를 하나의 균등 무작위 벡터만큼 밀면(무작위 이동), 점들의 상대적인 배치는 원환면 위에서 그대로 유지됩니다.</li>
+<li>이렇게 만든 <span class="math inline">\(Z_1, \ldots, Z_R\)</span>은 참값을 평균으로 하는 i.i.d. 확률변수이므로, <a href="../../../stats/stochastic-simulation/01-monte-carlo/03-output-analysis.html">1.3</a>과 똑같이 <span class="math inline">\(\hat I_{N,R} \pm 1.96\, s_R/\sqrt{R}\)</span>로 신뢰구간을 붙일 수 있습니다.</li>
+<li>밀어도 불일치도는 많아야 <span class="math inline">\(4^d\)</span>배까지만 커지므로, 함수가 매끄럽고 점의 불일치도가 작으면 분산이 몬테카를로보다 훨씬 작습니다. 아무 점이나 민다고 분산이 줄지는 않습니다.</li>
+<li>계산량을 나눌 때는 신뢰구간을 위해 이동 횟수 <span class="math inline">\(R\)</span>을 어느 정도 확보하고, 나머지를 점의 개수 <span class="math inline">\(N\)</span>에 줍니다.</li>
+</ul>
+<p>이것으로 1장을 마칩니다. 1장에서는 구하고 싶은 값을 기대값으로 바꿔 표본평균으로 근사한다는 몬테카를로 방법의 기본 틀에서 출발해, 그 재료인 균등난수를 만드는 방법(1.1)과 검사하는 방법(1.2), 결과의 정확도를 재고 필요한 시뮬레이션 횟수를 정하는 방법(1.3), 그리고 무작위 대신 고른 점을 써서 수렴을 빠르게 하는 준몬테카를로(1.4, 1.5)까지 살펴보았습니다.</p>
+<p>그런데 지금까지 우리가 만든 것은 모두 균등분포를 따르는 수뿐이었습니다. 실제 시뮬레이션에서는 정규분포, 지수분포, 푸아송분포처럼 훨씬 다양한 분포가 필요합니다. 균등난수 하나로 이런 분포들을 어떻게 만들어 낼 수 있을까요? 이것이 2장의 주제입니다.</p>
+<hr>
+<section id="연결되는-개념" class="level3">
+<h3 class="anchored" data-anchor-id="연결되는-개념">연결되는 개념</h3>
+<ul>
+<li><span class="math inline">\(\leftarrow\)</span> <strong>이전 개념:</strong> <a href="../../../stats/stochastic-simulation/01-monte-carlo/04-quasi-random.html">1.4 고르게 찍으면 더 빠를까: 준난수와 불일치도</a></li>
+<li><span class="math inline">\(\rightarrow\)</span> <strong>다음 개념:</strong> 추후 작성 예정</li>
+</ul>
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>무작위화 준몬테카를로와 그 주의점은 S. Asmussen, P. W. Glynn, <em>Stochastic Simulation: Algorithms and Analysis</em>, Springer, 2007, IX.3절을 참고했습니다. 준난수를 무작위 보행의 정지 시각 시뮬레이션에 그대로 넣었을 때 결과가 틀어지는 예도 이 절에 있습니다.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><span class="math inline">\(R\)</span>이 이렇게 작을 때는 <span class="math inline">\(1.96\)</span> 대신 자유도가 <span class="math inline">\(R-1\)</span>인 <span class="math inline">\(t\)</span>분포의 분위수(예: <span class="math inline">\(R = 4\)</span>이면 약 <span class="math inline">\(3.18\)</span>)를 쓰는 것이 보통입니다. 다만 이것도 <span class="math inline">\(Z_r\)</span>이 정규분포를 따른다는 가정 아래에서만 정확하므로, <span class="math inline">\(R\)</span>을 충분히 확보하는 것이 근본적인 해결책입니다.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const categoryLinks = {
+    "수학": "/math/index.html",
+    "확률과 통계": "/stats/index.html",
+    "컴퓨터 공학": "/cs/index.html",
+    "데이터 사이언스·AI": "/ds-ai/index.html",
+    "경영/경제": "/biz-econ/index.html",
+    "의학통계·바이오메트리": "/biostat/index.html"
+  };
+  document.querySelectorAll('.navbar-nav .nav-item.dropdown > a.nav-link').forEach(function(el) {
+    const label = el.textContent.trim();
+    if (categoryLinks[label]) {
+      el.setAttribute('href', categoryLinks[label]);
+      el.addEventListener('click', function(e) {
+        if (window.innerWidth >= 992) {
+          window.location.href = categoryLinks[label];
+        }
+      });
+    }
+  });
+
+  /* ---------------------------------------------------------------
+     메가 메뉴: 드롭다운을 그룹(헤더 단위)별 가로 열로 재배치
+     - 첫 헤더 이전 항목(예: "전체 과목 보기")은 상단 한 줄로
+     - 한 그룹의 과목이 MAX_ROWS 개를 넘으면 그 그룹 안에서 열을 나눔
+     --------------------------------------------------------------- */
+  const MAX_ROWS = 7;      // 한 열에 들어갈 최대 과목 수
+  const EDGE = 16;         // 화면 가장자리 여백(px)
+
+  document.querySelectorAll('.navbar .nav-item.dropdown > .dropdown-menu').forEach(function(menu) {
+    const items = Array.from(menu.children);
+    if (items.filter(function(li) { return li.classList.contains('dropdown-header'); }).length < 2) return;
+
+    const top = document.createElement('li');
+    top.className = 'mega-top';
+    const groupsWrap = document.createElement('li');
+    groupsWrap.className = 'mega-groups';
+
+    let current = null;
+    items.forEach(function(li) {
+      if (li.querySelector('.dropdown-divider')) { li.remove(); return; }
+      if (li.classList.contains('dropdown-header')) {
+        const group = document.createElement('div');
+        group.className = 'mega-group';
+        const header = document.createElement('div');
+        header.className = 'dropdown-header';
+        header.textContent = li.textContent.trim();
+        const list = document.createElement('ul');
+        list.className = 'mega-items';
+        group.appendChild(header);
+        group.appendChild(list);
+        groupsWrap.appendChild(group);
+        current = list;
+        li.remove();
+        return;
+      }
+      if (current) {
+        current.appendChild(li);
+      } else {
+        top.appendChild(li.querySelector('a') || li);
+        li.remove();
+      }
+    });
+
+    groupsWrap.querySelectorAll('.mega-items').forEach(function(list) {
+      const n = list.children.length;
+      const cols = Math.max(1, Math.ceil(n / MAX_ROWS));
+      list.style.setProperty('--mega-rows', Math.ceil(n / cols));
+    });
+
+    menu.innerHTML = '';
+    if (top.children.length) menu.appendChild(top);
+    menu.appendChild(groupsWrap);
+    menu.classList.add('mega-menu');
+  });
+
+  /* 펼친 메뉴가 화면 오른쪽 밖으로 나가지 않도록 위치 보정 */
+  function fitToViewport(menu) {
+    if (window.innerWidth < 992) { menu.style.left = ''; return; }
+    menu.style.left = '0px';
+    const rect = menu.getBoundingClientRect();
+    if (rect.width === 0) return;
+    let shift = 0;
+    const overflow = rect.right - (window.innerWidth - EDGE);
+    if (overflow > 0) shift = -overflow;
+    if (rect.left + shift < EDGE) shift = EDGE - rect.left;
+    menu.style.left = shift + 'px';
+  }
+
+  document.querySelectorAll('.navbar .nav-item.dropdown').forEach(function(item) {
+    const menu = item.querySelector(':scope > .dropdown-menu.mega-menu');
+    if (!menu) return;
+    const fit = function() { requestAnimationFrame(function() { fitToViewport(menu); }); };
+    item.addEventListener('mouseenter', fit);
+    item.addEventListener('focusin', fit);
+    item.addEventListener('shown.bs.dropdown', fit);
+  });
+});
+</script>
+<script>
+/* 좌측 사이드바 맨 위 과목명: "한국어(English)" → 한국어 / English 두 줄로 나눠 표시 */
+document.addEventListener("DOMContentLoaded", function () {
+  var el = document.querySelector("#quarto-sidebar .sidebar-menu-container > ul > li > .sidebar-item-container .menu-text, #quarto-sidebar .sidebar-menu-container > ul > li > .sidebar-item-text .menu-text");
+  if (!el) return;
+  var m = el.textContent.trim().match(/^(.+?)\s*\((.+)\)$/);
+  if (!m) return;
+  el.textContent = m[1];
+  var en = document.createElement("span");
+  en.className = "menu-subtitle";
+  en.textContent = m[2];
+  el.appendChild(en);
+});
+</script>
+<script data-goatcounter="https://xkwhd1557.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/xkwhd1557\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+<nav class="page-navigation" aria-label="Page">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../stats/stochastic-simulation/01-monte-carlo/04-quasi-random.html" class="pagination-link" aria-label="1.4 고르게 찍으면 더 빠를까: 준난수와 불일치도">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">1.4 고르게 찍으면 더 빠를까: 준난수와 불일치도</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2026 xkwhd1557 · 글은 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.ko">CC BY-NC-ND 4.0</a>에 따라 이용할 수 있습니다.<br> <a href="../../../privacy.html">개인정보 처리방침</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

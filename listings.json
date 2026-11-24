@@ -1,7 +1,8 @@
 [
   {
-    "listing": "/index.html",
+    "listing": "/articles/all.html",
     "items": [
+      "/articles/issues/cheating-hypothesis-test.html",
       "/articles/start/study-roadmap.html",
       "/articles/start/about-this-site.html",
       "/articles/start/math-and-modeling.html"
@@ -17,9 +18,8 @@
     ]
   },
   {
-    "listing": "/articles/all.html",
+    "listing": "/index.html",
     "items": [
-      "/articles/issues/cheating-hypothesis-test.html",
       "/articles/start/study-roadmap.html",
       "/articles/start/about-this-site.html",
       "/articles/start/math-and-modeling.html"

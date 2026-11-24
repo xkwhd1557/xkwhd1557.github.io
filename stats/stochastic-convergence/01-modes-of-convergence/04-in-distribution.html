@@ -1,0 +1,1742 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2026-11-20">
+<meta name="description" content="동전 앞면 비율의 오차를 √n배 확대하면 그 분포가 정규분포에 가까워지는 모습을 보고, 분포함수의 연속점에서의 수렴으로 분포수렴을 정의합니다. 포르트망토 정리, 확률수렴과의 관계, 연속 사상 정리와 슬러츠키 정리를 정리합니다.">
+
+<title>1.4 분포수렴 – Study Archive</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../stats/stochastic-convergence/01-modes-of-convergence/05-relations.html" rel="next">
+<link href="../../../stats/stochastic-convergence/01-modes-of-convergence/03-in-mean.html" rel="prev">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-d739a02a1af33765fc6ff0a69ae6860b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="1.4 분포수렴 – Study Archive">
+<meta property="og:description" content="동전 앞면 비율의 오차를 √n배 확대하면 그 분포가 정규분포에 가까워지는 모습을 보고, 분포함수의 연속점에서의 수렴으로 분포수렴을 정의합니다. 포르트망토 정리, 확률수렴과의 관계, 연속 사상 정리와 슬러츠키 정리를 정리합니다.">
+<meta property="og:image" content="https://xkwhd1557.github.io/stats/stochastic-convergence/01-modes-of-convergence/figures/clt-coin.png">
+<meta property="og:site_name" content="Study Archive">
+<meta property="og:image:alt" content="n = 10, 100, 1000일 때 표준화된 앞면 수 Z_n의 확률질량을 칸 너비로 나눈 파란 막대와 표준정규분포의 밀도 곡선(회색 점선)을 나란히 그린 세 그림. n = 10에서는 막대가 열한 개뿐이라 곡선과 계단처럼 어긋나지만, n = 100에서는 막대가 곡선을 거의 따라가고, n = 1000에서는 막대의 윗변이 곡선과 구별되지 않을 만큼 겹친다.">
+<meta property="og:image:height" content="544">
+<meta property="og:image:width" content="1480">
+<meta name="twitter:title" content="1.4 분포수렴 – Study Archive">
+<meta name="twitter:description" content="동전 앞면 비율의 오차를 √n배 확대하면 그 분포가 정규분포에 가까워지는 모습을 보고, 분포함수의 연속점에서의 수렴으로 분포수렴을 정의합니다. 포르트망토 정리, 확률수렴과의 관계, 연속 사상 정리와 슬러츠키 정리를 정리합니다.">
+<meta name="twitter:image" content="https://xkwhd1557.github.io/stats/stochastic-convergence/01-modes-of-convergence/figures/clt-coin.png">
+<meta name="twitter:image:alt" content="n = 10, 100, 1000일 때 표준화된 앞면 수 Z_n의 확률질량을 칸 너비로 나눈 파란 막대와 표준정규분포의 밀도 곡선(회색 점선)을 나란히 그린 세 그림. n = 10에서는 막대가 열한 개뿐이라 곡선과 계단처럼 어긋나지만, n = 100에서는 막대가 곡선을 거의 따라가고, n = 1000에서는 막대의 윗변이 곡선과 구별되지 않을 만큼 겹친다.">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Study Archive</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../articles/index.html"> 
+<span class="menu-text">일반 아티클</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">수학</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-">    
+        <li>
+    <a class="dropdown-item" href="../../../math/index.html">
+ <span class="dropdown-text">📋 수학 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../math/analysis/index.html">
+ <span class="dropdown-text">해석학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/linear-algebra/index.html">
+ <span class="dropdown-text">선형대수학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/discrete-math/index.html">
+ <span class="dropdown-text">이산수학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/math-programming/index.html">
+ <span class="dropdown-text">수학적 프로그래밍 (Python)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/latex/index.html">
+ <span class="dropdown-text">LaTeX</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/scientific-writing/index.html">
+ <span class="dropdown-text">수학 학술 논문 작성법</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 수학 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../math/complex-analysis/index.html">
+ <span class="dropdown-text">복소해석학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/ode/index.html">
+ <span class="dropdown-text">상미분방정식</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/dynamical-systems/index.html">
+ <span class="dropdown-text">동적 시스템</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/measure-theory/index.html">
+ <span class="dropdown-text">측도론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/pde-intro/index.html">
+ <span class="dropdown-text">기초 편미분방정식</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/general-topology/index.html">
+ <span class="dropdown-text">일반위상수학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/algebra/index.html">
+ <span class="dropdown-text">대수학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/number-theory/index.html">
+ <span class="dropdown-text">정수론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/geometry/index.html">
+ <span class="dropdown-text">기하학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/mathematical-logic/index.html">
+ <span class="dropdown-text">수리논리학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/set-theory/index.html">
+ <span class="dropdown-text">공리적 집합론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/numerical-methods/index.html">
+ <span class="dropdown-text">수치적 방법론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/optimization/index.html">
+ <span class="dropdown-text">수학적 최적화</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../math/functional-analysis/index.html">
+ <span class="dropdown-text">함수해석학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/topological-vector-spaces/index.html">
+ <span class="dropdown-text">위상벡터공간론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/pde-advanced/index.html">
+ <span class="dropdown-text">편미분방정식</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/manifold-analysis/index.html">
+ <span class="dropdown-text">다양체 해석학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/rkhs/index.html">
+ <span class="dropdown-text">RKHS 이론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/differential-geometry/index.html">
+ <span class="dropdown-text">미분기하학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/numerical-ode/index.html">
+ <span class="dropdown-text">수치적 상미분방정식</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/scientific-computing/index.html">
+ <span class="dropdown-text">과학계산</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../math/inverse-problems/index.html">
+ <span class="dropdown-text">역문제</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--1" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">확률과 통계</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--1">    
+        <li>
+    <a class="dropdown-item" href="../../../stats/index.html">
+ <span class="dropdown-text">📋 확률과 통계 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../stats/prob-theory/index.html">
+ <span class="dropdown-text">기초 확률론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/basic-stats/index.html">
+ <span class="dropdown-text">기초 통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/linear-models/index.html">
+ <span class="dropdown-text">기초 선형 모델</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/stat-programming/index.html">
+ <span class="dropdown-text">통계적 프로그래밍</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../stats/measure-prob/index.html">
+ <span class="dropdown-text">측도론적 확률론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/stochastic-convergence/index.html">
+ <span class="dropdown-text">확률적 수렴과 오차 분석</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/stochastic-processes/index.html">
+ <span class="dropdown-text">확률과정론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/math-stats/index.html">
+ <span class="dropdown-text">수리통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/stochastic-simulation/index.html">
+ <span class="dropdown-text">확률적 시뮬레이션</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/actuarial-math/index.html">
+ <span class="dropdown-text">보험수학</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../stats/stochastic-calculus/index.html">
+ <span class="dropdown-text">확률해석학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/markov-processes/index.html">
+ <span class="dropdown-text">마르코프 프로세스</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/diffusion-models/index.html">
+ <span class="dropdown-text">디퓨전 모델</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/gaussian-processes/index.html">
+ <span class="dropdown-text">가우시안 프로세스</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/non-euclidean-stats/index.html">
+ <span class="dropdown-text">비유클리드 통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/stats-for-stoch-proc/index.html">
+ <span class="dropdown-text">확률과정의 통계추론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/nonparametric-stats/index.html">
+ <span class="dropdown-text">비모수 통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/topological-data-analysis/index.html">
+ <span class="dropdown-text">위상수학적 데이터 분석</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/statistical-learning-theory/index.html">
+ <span class="dropdown-text">통계적 학습 이론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/statistical-inverse-problems/index.html">
+ <span class="dropdown-text">통계적 역문제</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/statistical-modelling/index.html">
+ <span class="dropdown-text">통계적 모델링</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/asymptotic-statistics/index.html">
+ <span class="dropdown-text">점근 통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../stats/time-series-foundations/index.html">
+ <span class="dropdown-text">시계열 분석의 통계적 기초</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--2" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">컴퓨터 공학</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--2">    
+        <li>
+    <a class="dropdown-item" href="../../../cs/index.html">
+ <span class="dropdown-text">📋 컴퓨터 공학 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../cs/cs-intro/index.html">
+ <span class="dropdown-text">컴퓨터 과학 원론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cs/c-programming/index.html">
+ <span class="dropdown-text">C언어</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../cs/algorithms-data-structures/index.html">
+ <span class="dropdown-text">알고리즘과 자료구조</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cs/theoretical-cs/index.html">
+ <span class="dropdown-text">이론 컴퓨터과학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cs/database-systems/index.html">
+ <span class="dropdown-text">데이터베이스 시스템</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cs/formal-systems/index.html">
+ <span class="dropdown-text">형식 시스템</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../cs/advanced/index.html">
+ <span class="dropdown-text">심화 과정 (준비 중)</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ai" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">데이터 사이언스·AI</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-ai">    
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/index.html">
+ <span class="dropdown-text">📋 데이터 사이언스·AI 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/ds-intro/index.html">
+ <span class="dropdown-text">데이터 사이언스 개론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/ds-society/index.html">
+ <span class="dropdown-text">데이터 사이언스와 사회</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/ai-math-intro/index.html">
+ <span class="dropdown-text">고등학교 인공지능 수학</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/numerical-optimization/index.html">
+ <span class="dropdown-text">수치적 방법론과 최적화</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/machine-learning/index.html">
+ <span class="dropdown-text">머신러닝</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/deep-learning-cv/index.html">
+ <span class="dropdown-text">딥러닝과 컴퓨터 비전</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/ai-intro/index.html">
+ <span class="dropdown-text">인공지능 원론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/data-analysis-inference/index.html">
+ <span class="dropdown-text">수리적 데이터 분석과 통계적 추론</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/statistical-foundations/index.html">
+ <span class="dropdown-text">데이터 사이언스의 통계적 기초</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/mathematical-foundations/index.html">
+ <span class="dropdown-text">머신러닝의 수리적 기초</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../ds-ai/advanced-linear-algebra/index.html">
+ <span class="dropdown-text">데이터 사이언스를 위한 선형대수학</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--3" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">경영/경제</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--3">    
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/index.html">
+ <span class="dropdown-text">📋 경영/경제 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/biz-intro/index.html">
+ <span class="dropdown-text">경영학 원론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/econ-intro/index.html">
+ <span class="dropdown-text">경제학 원론</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/accounting/index.html">
+ <span class="dropdown-text">회계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/production-logistics/index.html">
+ <span class="dropdown-text">생산물류관리</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/decision-theory/index.html">
+ <span class="dropdown-text">의사결정론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/microeconomics/index.html">
+ <span class="dropdown-text">미시경제학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/macroeconomics/index.html">
+ <span class="dropdown-text">거시경제학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/finance-investment/index.html">
+ <span class="dropdown-text">재무와 투자론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/monetary-economics/index.html">
+ <span class="dropdown-text">화폐금융론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/labor-economics/index.html">
+ <span class="dropdown-text">노동경제학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/game-theory/index.html">
+ <span class="dropdown-text">게임이론 개론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/supply-chain/index.html">
+ <span class="dropdown-text">공급망 관리 (SCM)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/market-research/index.html">
+ <span class="dropdown-text">시장조사론의 기초</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/time-series/index.html">
+ <span class="dropdown-text">시계열 분석</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/econometrics/index.html">
+ <span class="dropdown-text">계량경제학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/insurance-economics/index.html">
+ <span class="dropdown-text">보험경제학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/quantitative-risk/index.html">
+ <span class="dropdown-text">계량 리스크 관리</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biz-econ/corporate-finance/index.html">
+ <span class="dropdown-text">기업재무론</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--4" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">의학통계·바이오메트리</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--4">    
+        <li>
+    <a class="dropdown-item" href="../../../biostat/index.html">
+ <span class="dropdown-text">📋 의학통계·바이오메트리 전체 과목 보기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">기초 (Foundations)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biostat/biostat-intro/index.html">
+ <span class="dropdown-text">의학통계학 개론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biostat/epidemiology/index.html">
+ <span class="dropdown-text">역학 연구방법론</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">핵심 (Core)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biostat/clinical-trials/index.html">
+ <span class="dropdown-text">임상시험 통계방법론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biostat/survival-analysis/index.html">
+ <span class="dropdown-text">생존분석</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biostat/bioinformatics/index.html">
+ <span class="dropdown-text">생물정보통계학</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">심화 (Advanced)</li>
+        <li>
+    <a class="dropdown-item" href="../../../biostat/causal-inference/index.html">
+ <span class="dropdown-text">인과추론</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../biostat/longitudinal-data/index.html">
+ <span class="dropdown-text">종단적 데이터 분석</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-language" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">🌐 Language</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-language">    
+        <li>
+    <a class="dropdown-item" href="../../../index.html">
+ <span class="dropdown-text">한국어 (KO)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../lang/en-coming-soon.html">
+ <span class="dropdown-text">English (EN)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../lang/de-coming-soon.html">
+ <span class="dropdown-text">Deutsch (DE)</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xkwhd1557/xkwhd1557.github.io"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+            <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" aria-label="Toolbar">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../stats/stochastic-convergence/index.html">확률적 수렴과 오차 분석(Stochastic Convergence and Error Analysis)</a></li><li class="breadcrumb-item"><a href="../../../stats/stochastic-convergence/01-modes-of-convergence/index.html">1 확률변수가 가까워진다는 것</a></li><li class="breadcrumb-item"><a href="../../../stats/stochastic-convergence/01-modes-of-convergence/04-in-distribution.html">1.4 분포수렴</a></li></ol></nav>
+        <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto" aria-label="Section">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../stats/stochastic-convergence/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">확률적 수렴과 오차 분석(Stochastic Convergence and Error Analysis)</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true" aria-label="Toggle section: 확률적 수렴과 오차 분석(Stochastic Convergence and Error Analysis)">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../stats/stochastic-convergence/01-modes-of-convergence/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-1-label">1 확률변수가 가까워진다는 것</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section: 1 확률변수가 가까워진다는 것">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../stats/stochastic-convergence/01-modes-of-convergence/01-almost-sure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.1 거의 확실한 수렴</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../stats/stochastic-convergence/01-modes-of-convergence/02-in-probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.2 확률수렴</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../stats/stochastic-convergence/01-modes-of-convergence/03-in-mean.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.3 r차 평균수렴</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../stats/stochastic-convergence/01-modes-of-convergence/04-in-distribution.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">1.4 분포수렴</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../stats/stochastic-convergence/01-modes-of-convergence/05-relations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.5 수렴들 사이의 관계</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#들어가며" id="toc-들어가며" class="nav-link active" data-scroll-target="#들어가며">들어가며</a></li>
+  <li><a href="#확대한-오차의-모양" id="toc-확대한-오차의-모양" class="nav-link" data-scroll-target="#확대한-오차의-모양">확대한 오차의 모양</a></li>
+  <li><a href="#분포수렴" id="toc-분포수렴" class="nav-link" data-scroll-target="#분포수렴">분포수렴</a></li>
+  <li><a href="#분포수렴을-다르게-보는-방법들" id="toc-분포수렴을-다르게-보는-방법들" class="nav-link" data-scroll-target="#분포수렴을-다르게-보는-방법들">분포수렴을 다르게 보는 방법들</a></li>
+  <li><a href="#확률수렴과의-관계" id="toc-확률수렴과의-관계" class="nav-link" data-scroll-target="#확률수렴과의-관계">확률수렴과의 관계</a></li>
+  <li><a href="#분포수렴을-다루는-두-도구" id="toc-분포수렴을-다루는-두-도구" class="nav-link" data-scroll-target="#분포수렴을-다루는-두-도구">분포수렴을 다루는 두 도구</a></li>
+  <li><a href="#정리" id="toc-정리" class="nav-link" data-scroll-target="#정리">정리</a>
+  <ul class="collapse">
+  <li><a href="#연결되는-개념" id="toc-연결되는-개념" class="nav-link" data-scroll-target="#연결되는-개념">연결되는 개념</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../stats/stochastic-convergence/index.html">확률적 수렴과 오차 분석(Stochastic Convergence and Error Analysis)</a></li><li class="breadcrumb-item"><a href="../../../stats/stochastic-convergence/01-modes-of-convergence/index.html">1 확률변수가 가까워진다는 것</a></li><li class="breadcrumb-item"><a href="../../../stats/stochastic-convergence/01-modes-of-convergence/04-in-distribution.html">1.4 분포수렴</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">1.4 분포수렴</h1>
+<p class="subtitle lead">1장 확률변수가 가까워진다는 것 · 오차는 어떤 모양으로 흩어지는가</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">확률과 통계</div>
+    <div class="quarto-category">확률적 수렴과 오차 분석</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    동전 앞면 비율의 오차를 √n배 확대하면 그 분포가 정규분포에 가까워지는 모습을 보고, 분포함수의 연속점에서의 수렴으로 분포수렴을 정의합니다. 포르트망토 정리, 확률수렴과의 관계, 연속 사상 정리와 슬러츠키 정리를 정리합니다.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 20, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="들어가며" class="level2">
+<h2 class="anchored" data-anchor-id="들어가며">들어가며</h2>
+<p><a href="../../../stats/stochastic-convergence/01-modes-of-convergence/03-in-mean.html">1.3</a>에서 동전의 앞면 비율은 평균적으로 <span class="math inline">\(\frac{1}{2\sqrt{n}}\)</span>만큼 틀린다는 것을 보았습니다. 오차가 <span class="math inline">\(0\)</span>으로 줄어든다는 것은 이제 충분히 확인했으니, 이번에는 질문을 바꿔 보겠습니다. 오차는 <strong>어떤 모양으로</strong> 흩어질까요? 오차가 <span class="math inline">\(0.05\)</span>를 넘을 확률이 정확히 얼마인지, 95%의 확률로 오차가 들어가는 범위가 어디까지인지를 알려면 평균적인 크기만으로는 부족하고, 오차의 <strong>분포</strong>를 알아야 합니다.</p>
+<p>문제는 오차 <span class="math inline">\(\bar{X}_n - \tfrac12\)</span> 자체는 <span class="math inline">\(0\)</span>으로 줄어들기 때문에, 그대로 들여다보면 모양이 한 점으로 찌그러져 버린다는 것입니다. 그래서 현미경의 배율을 높이듯 오차를 확대해서 봅니다. 평균적인 크기가 <span class="math inline">\(\frac{1}{2\sqrt{n}}\)</span>이므로, 그 역수인 <span class="math inline">\(2\sqrt{n}\)</span>배로 확대하면 크기가 <span class="math inline">\(n\)</span>에 상관없이 일정해집니다.</p>
+<p><span class="math display">\[Z_n := 2\sqrt{n}\,\big(\bar{X}_n - \tfrac12\big) = \frac{S_n - \frac{n}{2}}{\sqrt{n/4}} = \frac{S_n - E(S_n)}{\sqrt{V(S_n)}}\]</span></p>
+<p><span class="math inline">\(Z_n\)</span>은 합 <span class="math inline">\(S_n\)</span>을 평균이 <span class="math inline">\(0\)</span>, 분산이 <span class="math inline">\(1\)</span>이 되도록 맞춘 <strong>표준화된 합</strong>입니다. 이번 글에서는 이 <span class="math inline">\(Z_n\)</span>의 모양이 어디로 가는지 살펴보고, 그 과정에서 필요한 <strong>분포수렴</strong>(convergence in distribution)을 정의하겠습니다.</p>
+</section>
+<section id="확대한-오차의-모양" class="level2">
+<h2 class="anchored" data-anchor-id="확대한-오차의-모양">확대한 오차의 모양</h2>
+<p><span class="math inline">\(Z_n\)</span>은 <span class="math inline">\(\frac{k - n/2}{\sqrt{n/4}}\)</span> (<span class="math inline">\(k = 0, 1, \ldots, n\)</span>)라는 값을 이항분포의 확률로 가집니다. 이 확률을 칸 너비로 나누어 밀도처럼 그리고, 표준정규분포 <span class="math inline">\(N(0, 1)\)</span>의 밀도 <span class="math inline">\(\varphi\)</span>와 겹쳐 보겠습니다.</p>
+<p><img src="figures/clt-coin.png" class="img-fluid" style="width:95.0%" alt="n = 10, 100, 1000일 때 표준화된 앞면 수 Z_n의 확률질량을 칸 너비로 나눈 파란 막대와 표준정규분포의 밀도 곡선(회색 점선)을 나란히 그린 세 그림. n = 10에서는 막대가 열한 개뿐이라 곡선과 계단처럼 어긋나지만, n = 100에서는 막대가 곡선을 거의 따라가고, n = 1000에서는 막대의 윗변이 곡선과 구별되지 않을 만큼 겹친다."></p>
+<p><span class="math inline">\(n\)</span>이 커질수록 막대가 종 모양의 곡선에 들러붙습니다. 숫자로도 확인해 보겠습니다. 표준정규분포의 분포함수를 <span class="math inline">\(\Phi\)</span>라 하고, <span class="math inline">\(Z_n\)</span>의 분포함수 <span class="math inline">\(F_n(x) := P(Z_n \le x)\)</span>와 <span class="math inline">\(\Phi\)</span>가 가장 크게 벌어지는 정도 <span class="math inline">\(\sup_x |F_n(x) - \Phi(x)|\)</span>를 이항분포로 정확히 계산합니다. <span class="math inline">\(F_n\)</span>은 계단함수이므로, 이 최댓값은 계단이 뛰는 점에서 뛰기 직전과 직후의 값을 비교하면 얻을 수 있습니다.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> binom, norm</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"     n | P(Z_n ≤ 1.96) | Φ(1.96) | sup_x |F_n(x) - Φ(x)|"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> [<span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">10_000</span>]:</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    k <span class="op">=</span> np.arange(n <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    z <span class="op">=</span> (k <span class="op">-</span> n <span class="op">/</span> <span class="dv">2</span>) <span class="op">/</span> np.sqrt(n <span class="op">/</span> <span class="dv">4</span>)          <span class="co"># Z_n = (S_n - n/2) / sqrt(n/4)가 가질 수 있는 값</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    F <span class="op">=</span> binom.cdf(k, n, <span class="fl">0.5</span>)                  <span class="co"># 점프한 뒤의 값 F_n(z_k)</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    F_left <span class="op">=</span> F <span class="op">-</span> binom.pmf(k, n, <span class="fl">0.5</span>)         <span class="co"># 점프하기 직전의 값 F_n(z_k -)</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    dist <span class="op">=</span> <span class="bu">max</span>(np.<span class="bu">max</span>(np.<span class="bu">abs</span>(F <span class="op">-</span> norm.cdf(z))), np.<span class="bu">max</span>(np.<span class="bu">abs</span>(F_left <span class="op">-</span> norm.cdf(z))))</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    p196 <span class="op">=</span> binom.cdf(np.floor(n <span class="op">/</span> <span class="dv">2</span> <span class="op">+</span> <span class="fl">1.96</span> <span class="op">*</span> np.sqrt(n <span class="op">/</span> <span class="dv">4</span>)), n, <span class="fl">0.5</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>n<span class="sc">:&gt;6}</span><span class="ss"> | </span><span class="sc">{</span>p196<span class="sc">:&gt;13.4f}</span><span class="ss"> | </span><span class="sc">{</span>norm<span class="sc">.</span>cdf(<span class="fl">1.96</span>)<span class="sc">:.4f}</span><span class="ss"> | </span><span class="sc">{</span>dist<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre><code>     n | P(Z_n ≤ 1.96) | Φ(1.96) | sup_x |F_n(x) - Φ(x)|
+    10 |        0.9893 | 0.9750 | 0.1230
+   100 |        0.9716 | 0.9750 | 0.0398
+  1000 |        0.9732 | 0.9750 | 0.0126
+ 10000 |        0.9756 | 0.9750 | 0.0040</code></pre>
+<p>두 분포함수가 가장 크게 벌어지는 정도는 <span class="math inline">\(n\)</span>을 100배 늘릴 때마다 대략 10분의 1이 됩니다. 이 차이가 적어도 <span class="math inline">\(1/\sqrt{n}\)</span>의 속도로 줄어든다는 것은 4장에서 볼 베리-에센 정리가 보장해 줍니다.</p>
+<p>그런데 이렇게 분포가 가까워진다고 해서 <span class="math inline">\(Z_n\)</span> <strong>자체</strong>가 어떤 확률변수에 가까워지는 것은 아닙니다. <span class="math inline">\(Z_n\)</span>과 <span class="math inline">\(Z_{2n}\)</span>을 비교해 보겠습니다. <span class="math inline">\(Z_{2n}\)</span>은 처음 <span class="math inline">\(n\)</span>번과 나중 <span class="math inline">\(n\)</span>번의 결과를 합친 것이므로, 나중 <span class="math inline">\(n\)</span>번만으로 만든 표준화된 합을 <span class="math inline">\(Z_n'\)</span>이라 하면 <span class="math inline">\(Z_{2n} = (Z_n + Z_n')/\sqrt{2}\)</span>이고, <span class="math inline">\(Z_n'\)</span>은 <span class="math inline">\(Z_n\)</span>과 독립이며 같은 분포를 따릅니다. 따라서</p>
+<p><span class="math display">\[E\big((Z_{2n} - Z_n)^2\big) = \Big(\tfrac{1}{\sqrt2} - 1\Big)^2 + \Big(\tfrac{1}{\sqrt2}\Big)^2 = 2 - \sqrt{2} \approx 0.586\]</span></p>
+<p>이 <span class="math inline">\(n\)</span>에 상관없이 일정합니다. 나중 <span class="math inline">\(n\)</span>번의 새로운 동전이 매번 <span class="math inline">\(Z_{2n}\)</span>을 크게 흔들어 놓기 때문입니다. 그러니 <span class="math inline">\(Z_n\)</span>은 평균제곱의 의미에서 어떤 극한에도 가까워지지 않고, <a href="../../../stats/stochastic-convergence/01-modes-of-convergence/05-relations.html">1.5</a>의 도구를 쓰면 확률수렴도 하지 않는다는 것을 보일 수 있습니다. 가까워지는 것은 확률변수의 <strong>값</strong>이 아니라 <strong>분포</strong>뿐입니다. 그래서 분포만을 보는 수렴 개념이 따로 필요합니다.</p>
+</section>
+<section id="분포수렴" class="level2">
+<h2 class="anchored" data-anchor-id="분포수렴">분포수렴</h2>
+<p>분포가 가까워진다는 것을 분포함수가 가까워진다는 것으로 정의하는 것이 자연스러워 보입니다. 다만 한 가지 조심할 점이 있습니다.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>예제 1.4.1 (한 점으로 다가가는 질량)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(X_n \equiv \frac1n\)</span>이라는 상수 확률변수를 생각합시다. 누가 보아도 <span class="math inline">\(X_n\)</span>은 <span class="math inline">\(0\)</span>으로 수렴합니다. 그런데 분포함수는 <span class="math inline">\(F_n = \mathbf{1}_{[\frac1n, \infty)}\)</span>이고, 극한 <span class="math inline">\(X \equiv 0\)</span>의 분포함수는 <span class="math inline">\(F = \mathbf{1}_{[0, \infty)}\)</span>이므로</p>
+<p><span class="math display">\[F_n(0) = 0 \not\to 1 = F(0)\]</span></p>
+<p>입니다. <span class="math inline">\(x \ne 0\)</span>인 점에서는 <span class="math inline">\(F_n(x) \to F(x)\)</span>가 성립합니다.</p>
+</div>
+</div>
+<p>질량 <span class="math inline">\(1\)</span>이 오른쪽에서 <span class="math inline">\(0\)</span>으로 다가오는 동안, 분포함수의 계단은 <span class="math inline">\(0\)</span>의 바로 오른쪽에 있다가 극한에서 <span class="math inline">\(0\)</span> 위로 올라섭니다. 계단이 정확히 어디에서 뛰는지는 극한에서 바뀔 수 있으므로, <strong>극한 분포함수가 뛰는 점에서는 수렴을 요구하지 않는 것</strong>이 맞습니다.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>정의 1.4.2 (약수렴과 분포수렴)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><span class="math inline">\((\mathbb{R}, \mathcal{B}(\mathbb{R}))\)</span> 위의 확률측도 <span class="math inline">\(\mu, \mu_1, \mu_2, \ldots\)</span>의 분포함수를 각각 <span class="math inline">\(F(x) := \mu((-\infty, x])\)</span>, <span class="math inline">\(F_n(x) := \mu_n((-\infty, x])\)</span>라 하고, <span class="math inline">\(F\)</span>의 연속점 전체의 집합을 <span class="math inline">\(C_F\)</span>라고 합시다. 모든 <span class="math inline">\(x \in C_F\)</span>에 대해 <span class="math inline">\(F_n(x) \to F(x)\)</span>이면 <span class="math inline">\(\mu_n\)</span>이 <span class="math inline">\(\mu\)</span>로 <strong>약수렴</strong>한다(converges weakly)고 합니다.</li>
+<li><span class="math inline">\(X_n\)</span>이 확률공간 <span class="math inline">\((\Omega_n, \mathcal{A}_n, P_n)\)</span> 위의, <span class="math inline">\(X\)</span>가 확률공간 <span class="math inline">\((\Omega, \mathcal{A}, P)\)</span> 위의 실수 값 확률변수라고 합시다. 분포 <span class="math inline">\(P_n^{X_n}\)</span>이 <span class="math inline">\(P^X\)</span>로 약수렴하면, 즉</li>
+</ol>
+<p><span class="math display">\[F_{X_n}(x) = P_n(X_n \le x) \xrightarrow[n \to \infty]{} P(X \le x) = F_X(x) \qquad \text{모든 } x \in C_{F_X}\]</span></p>
+<p>이면 <span class="math inline">\(X_n\)</span>이 <span class="math inline">\(X\)</span>로 <strong>분포수렴</strong>한다(converges in distribution)고 하고, <span class="math inline">\(X_n \xrightarrow{D} X\)</span>로 씁니다.</p>
+</div>
+</div>
+<p>정의에는 두 가지 눈여겨볼 점이 있습니다.</p>
+<p>첫째, 분포수렴은 <span class="math inline">\(X_n\)</span>과 <span class="math inline">\(X\)</span>의 <strong>분포만</strong> 봅니다. 그래서 <span class="math inline">\(X_n\)</span>들과 <span class="math inline">\(X\)</span>가 서로 다른 확률공간 위에 있어도 상관없습니다. 거의 확실한 수렴, 확률수렴, 평균수렴은 모두 <span class="math inline">\(|X_n - X|\)</span>를 계산해야 하므로 같은 확률공간이 필요했던 것과 대조적입니다. 같은 이유로 극한을 확률변수 대신 분포로 써서 <span class="math inline">\(X_n \xrightarrow{D} N(0, 1)\)</span>처럼 쓰기도 합니다. “어떤 <span class="math inline">\(X \sim N(0,1)\)</span>에 대해 <span class="math inline">\(X_n \xrightarrow{D} X\)</span>”라는 뜻입니다.</p>
+<p>둘째, <span class="math inline">\(F\)</span>가 연속이 아닌 점은 셀 수 있는 개수밖에 없으므로, <span class="math inline">\(C_F\)</span>는 <span class="math inline">\(\mathbb{R}\)</span>에서 셀 수 있는 개수의 점만 뺀 집합입니다. 극한이 <span class="math inline">\(N(0,1)\)</span>처럼 연속분포이면 <span class="math inline">\(C_F = \mathbb{R}\)</span>이므로 모든 점에서 수렴을 요구하게 됩니다.</p>
+<p>동전의 경우 위의 그림과 표가 보여 준 것은 다음 정리입니다. 증명은 특성함수를 이용하며 4장에서 다룹니다.</p>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>정리 1.4.3 (드무아브르-라플라스 중심극한정리)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(0 &lt; p &lt; 1\)</span>이고 <span class="math inline">\(X_1, X_2, \ldots\)</span>가 <span class="math inline">\(\mathrm{Bin}(1, p)\)</span>를 따르는 i.i.d. 확률변수이면 다음이 성립합니다.</p>
+<p><span class="math display">\[\frac{S_n - np}{\sqrt{np(1-p)}} \xrightarrow{D} N(0, 1)\]</span></p>
+</div>
+</div>
+</section>
+<section id="분포수렴을-다르게-보는-방법들" class="level2">
+<h2 class="anchored" data-anchor-id="분포수렴을-다르게-보는-방법들">분포수렴을 다르게 보는 방법들</h2>
+<p>분포함수로 한 정의는 실수 위에서는 직관적이지만, 쓰기에는 불편할 때가 많습니다. 다음 정리는 같은 개념을 다른 언어로 바꿔 줍니다.</p>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>정리 1.4.4 (포르트망토 정리)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\((\mathbb{R}, \mathcal{B}(\mathbb{R}))\)</span> 위의 확률측도 <span class="math inline">\(\mu, \mu_1, \mu_2, \ldots\)</span>에 대해 다음은 서로 동치입니다.</p>
+<ol type="1">
+<li><span class="math inline">\(\mu_n\)</span>이 <span class="math inline">\(\mu\)</span>로 약수렴합니다.</li>
+<li>연속이고 유계인 모든 함수 <span class="math inline">\(f: \mathbb{R} \to \mathbb{R}\)</span>에 대해 <span class="math inline">\(\int f \, d\mu_n \to \int f \, d\mu\)</span>입니다.</li>
+<li>립시츠 연속이고 유계인 모든 함수 <span class="math inline">\(f\)</span>에 대해 <span class="math inline">\(\int f \, d\mu_n \to \int f \, d\mu\)</span>입니다.</li>
+<li>경계 <span class="math inline">\(\partial A\)</span>가 <span class="math inline">\(\mu(\partial A) = 0\)</span>을 만족하는 모든 <span class="math inline">\(A \in \mathcal{B}(\mathbb{R})\)</span>에 대해 <span class="math inline">\(\mu_n(A) \to \mu(A)\)</span>입니다.</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>증명 (줄기)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>(1 ⇒ 2)는 <span class="math inline">\(f\)</span>를 유계 구간 위에서 계단함수로 근사하고, 그 구간 바깥의 질량이 작다는 것을 이용합니다. (2 ⇒ 3)은 당연하고, (3 ⇒ 4)는 닫힌집합 <span class="math inline">\(C\)</span>의 지시함수를 위에서 누르는 립시츠 함수 <span class="math inline">\(f_k(x) = (1 - k \cdot d(x, C))^+\)</span>로 근사해 <span class="math inline">\(\limsup_n \mu_n(C) \le \mu(C)\)</span>를 얻는 것이 핵심입니다. (4 ⇒ 1)은 <span class="math inline">\(A = (-\infty, x]\)</span>, <span class="math inline">\(x \in C_F\)</span>로 두면 됩니다. 자세한 증명은 <a href="../../../stats/measure-prob/index.html">측도론적 확률론</a>의 약수렴 부분을 참고하시기 바랍니다.</p>
+</div>
+</div>
+</div>
+<p>확률변수로 옮기면, 2는 <span class="math inline">\(X_n \xrightarrow{D} X\)</span>일 필요충분조건이 연속이고 유계인 모든 <span class="math inline">\(f\)</span>에 대해</p>
+<p><span class="math display">\[E\big(f(X_n)\big) \to E\big(f(X)\big)\]</span></p>
+<p>라는 것입니다. 이 형태는 분포함수가 없는 공간, 예컨대 <span class="math inline">\(\mathbb{R}^d\)</span>나 함수들의 공간에서도 그대로 쓸 수 있어서, 분포수렴의 일반적인 정의로 쓰입니다. 4는 실용적으로 가장 많이 쓰는 형태입니다. 극한이 <span class="math inline">\(N(0,1)\)</span>이면 모든 구간의 경계가 확률 <span class="math inline">\(0\)</span>이므로, 큰 <span class="math inline">\(n\)</span>에서</p>
+<p><span class="math display">\[P(a &lt; Z_n \le b) \approx \Phi(b) - \Phi(a)\]</span></p>
+<p>로 근사해도 된다는 근거가 됩니다. 다만 4가 <strong>모든</strong> 집합에서 성립하는 것은 아닙니다. 예제 1.4.1에서 <span class="math inline">\(\mu_n(\{0\}) = 0\)</span>은 <span class="math inline">\(\mu(\{0\}) = 1\)</span>로 가지 않습니다. 이때 집합 <span class="math inline">\(\{0\}\)</span>의 경계는 <span class="math inline">\(\{0\}\)</span> 자신이고 극한 분포에서 확률이 <span class="math inline">\(1\)</span>이므로 4의 조건에 맞지 않습니다.</p>
+</section>
+<section id="확률수렴과의-관계" class="level2">
+<h2 class="anchored" data-anchor-id="확률수렴과의-관계">확률수렴과의 관계</h2>
+<p>분포수렴은 분포만 보므로, 확률변수 자체가 가까워지는 확률수렴보다 약한 개념일 것으로 예상됩니다.</p>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>정리 1.4.5 (확률수렴은 분포수렴을 보장)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(X, X_1, X_2, \ldots\)</span>가 하나의 확률공간 위에 있고 <span class="math inline">\(X_n \xrightarrow{P} X\)</span>이면 <span class="math inline">\(X_n \xrightarrow{D} X\)</span>입니다.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>증명
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>포르트망토 정리의 3을 확인하겠습니다. <span class="math inline">\(f\)</span>가 립시츠 상수 <span class="math inline">\(L\)</span>을 가지고 <span class="math inline">\(|f| \le \|f\|_\infty\)</span>로 유계라고 합시다. <span class="math inline">\(\varepsilon &gt; 0\)</span>에 대해 사건 <span class="math inline">\(\{|X_n - X| &gt; \varepsilon\}\)</span> 위에서는 <span class="math inline">\(|f(X_n) - f(X)| \le 2\|f\|_\infty\)</span>이고, 그 여사건 위에서는 <span class="math inline">\(|f(X_n) - f(X)| \le L\varepsilon\)</span>이므로</p>
+<p><span class="math display">\[\big|E(f(X_n)) - E(f(X))\big| \le E\big(|f(X_n) - f(X)|\big) \le 2\|f\|_\infty \, P(|X_n - X| &gt; \varepsilon) + L\varepsilon\]</span></p>
+<p>입니다. <span class="math inline">\(n \to \infty\)</span>이면 첫째 항이 <span class="math inline">\(0\)</span>으로 가므로 극한은 <span class="math inline">\(L\varepsilon\)</span> 이하이고, <span class="math inline">\(\varepsilon\)</span>은 임의이므로 <span class="math inline">\(E(f(X_n)) \to E(f(X))\)</span>입니다.</p>
+</div>
+</div>
+</div>
+<p>반대는 성립하지 않습니다. 분포가 같다고 값이 같은 것은 아니기 때문입니다.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>예제 1.4.6 (분포는 같지만 값은 정반대)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(X \sim \mathrm{Bin}(1, \tfrac12)\)</span>이라 하고 모든 <span class="math inline">\(n\)</span>에 대해 <span class="math inline">\(X_n := 1 - X\)</span>로 둡시다. <span class="math inline">\(1 - X\)</span>도 <span class="math inline">\(\mathrm{Bin}(1, \tfrac12)\)</span>를 따르므로 <span class="math inline">\(X_n\)</span>과 <span class="math inline">\(X\)</span>의 분포는 같고, 당연히 <span class="math inline">\(X_n \xrightarrow{D} X\)</span>입니다. 그런데 <span class="math inline">\(|X_n - X| = |1 - 2X| = 1\)</span>이므로 <span class="math inline">\(P(|X_n - X| &gt; \tfrac12) = 1\)</span>이 모든 <span class="math inline">\(n\)</span>에서 성립하고, <span class="math inline">\(X_n \xrightarrow{P} X\)</span>가 아닙니다.</p>
+<p>같은 예에서 <span class="math inline">\(Y_n := X\)</span>, <span class="math inline">\(Y := X\)</span>로 두면 <span class="math inline">\(X_n \xrightarrow{D} X\)</span>이고 <span class="math inline">\(Y_n \xrightarrow{D} Y\)</span>이지만, <span class="math inline">\(X_n + Y_n \equiv 1\)</span>은 <span class="math inline">\(X + Y = 2X\)</span>로 분포수렴하지 않습니다. <span class="math inline">\(2X\)</span>는 <span class="math inline">\(0\)</span>과 <span class="math inline">\(2\)</span>를 각각 확률 <span class="math inline">\(\tfrac12\)</span>로 가지기 때문입니다. 분포수렴은 덧셈과 잘 어울리지 않습니다.</p>
+</div>
+</div>
+<p>하지만 극한이 <strong>상수</strong>라면 이야기가 달라집니다. 상수는 분포가 곧 값이기 때문입니다.</p>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>정리 1.4.7 (상수로의 수렴)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(a \in \mathbb{R}\)</span>에 대해 <span class="math inline">\(X_n \xrightarrow{P} a\)</span>일 필요충분조건은 <span class="math inline">\(X_n \xrightarrow{D} a\)</span>입니다. 이때 <span class="math inline">\(X_n\)</span>들은 서로 다른 확률공간 위에 있어도 됩니다.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>증명
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>(<span class="math inline">\(\Rightarrow\)</span>)는 정리 1.4.5입니다. (<span class="math inline">\(\Leftarrow\)</span>) 극한 <span class="math inline">\(a\)</span>의 분포함수는 <span class="math inline">\(\mathbf{1}_{[a, \infty)}\)</span>이고 <span class="math inline">\(a\)</span>를 뺀 모든 점에서 연속입니다. <span class="math inline">\(\varepsilon &gt; 0\)</span>에 대해 <span class="math inline">\(a - \varepsilon\)</span>과 <span class="math inline">\(a + \varepsilon\)</span>은 연속점이므로</p>
+<p><span class="math display">\[P_n(|X_n - a| &gt; \varepsilon) \le P_n(X_n \le a - \varepsilon) + 1 - P_n(X_n \le a + \varepsilon) \xrightarrow[n \to \infty]{} 0 + 1 - 1 = 0\]</span></p>
+<p>입니다.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="분포수렴을-다루는-두-도구" class="level2">
+<h2 class="anchored" data-anchor-id="분포수렴을-다루는-두-도구">분포수렴을 다루는 두 도구</h2>
+<p>분포수렴은 덧셈과 잘 어울리지 않았지만, 연속함수와는 잘 어울립니다.</p>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>정리 1.4.8 (연속 사상 정리)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(X_n \xrightarrow{D} X\)</span>이고 <span class="math inline">\(g: \mathbb{R} \to \mathbb{R}\)</span>가 연속이면 <span class="math inline">\(g(X_n) \xrightarrow{D} g(X)\)</span>입니다.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>증명
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(f\)</span>가 연속이고 유계이면 <span class="math inline">\(f \circ g\)</span>도 연속이고 유계입니다. 포르트망토 정리의 2에 의해 <span class="math inline">\(E(f(g(X_n))) = E((f \circ g)(X_n)) \to E((f \circ g)(X)) = E(f(g(X)))\)</span>이고, 다시 포르트망토 정리의 2에 의해 <span class="math inline">\(g(X_n) \xrightarrow{D} g(X)\)</span>입니다.</p>
+</div>
+</div>
+</div>
+<p>예를 들어 <span class="math inline">\(Z_n \xrightarrow{D} N(0,1)\)</span>이므로 <span class="math inline">\(Z_n^2 \xrightarrow{D} Z^2\)</span> (<span class="math inline">\(Z \sim N(0,1)\)</span>)이고, <span class="math inline">\(Z^2\)</span>의 분포는 자유도 <span class="math inline">\(1\)</span>인 카이제곱분포입니다. 사실 <span class="math inline">\(g\)</span>가 가측이고 극한 분포에서 확률 <span class="math inline">\(0\)</span>인 점들에서만 불연속이어도 같은 결론이 성립합니다.</p>
+<p>덧셈 문제에 대한 해답은, 더하는 쪽 하나가 <strong>상수로</strong> 수렴하면 된다는 것입니다.</p>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>정리 1.4.9 (슬러츠키 정리)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(X_n\)</span>과 <span class="math inline">\(Y_n\)</span>이 각 <span class="math inline">\(n\)</span>마다 같은 확률공간 위에 있고, <span class="math inline">\(a \in \mathbb{R}\)</span>에 대해 <span class="math inline">\(Y_n \xrightarrow{D} a\)</span>, <span class="math inline">\(X_n \xrightarrow{D} X\)</span>이면 다음이 성립합니다.</p>
+<p><span class="math display">\[Y_n + X_n \xrightarrow{D} a + X, \qquad Y_n \cdot X_n \xrightarrow{D} a \cdot X\]</span></p>
+</div>
+</div>
+<p>증명은 <a href="../../../stats/measure-prob/index.html">측도론적 확률론</a>으로 미루겠습니다. 통계학에서 이 정리가 가장 많이 쓰이는 곳은 모르는 분산을 추정값으로 바꿔 넣을 때입니다. 동전의 앞면 확률 <span class="math inline">\(p\)</span>를 모를 때, 정리 1.4.3에 따르면 <span class="math inline">\(\sqrt{n}(\bar{X}_n - p)/\sqrt{p(1-p)} \xrightarrow{D} N(0,1)\)</span>인데, 분모의 <span class="math inline">\(p\)</span>를 모르니 이 식을 그대로 쓸 수는 없습니다. 그런데 <a href="../../../stats/stochastic-convergence/01-modes-of-convergence/02-in-probability.html">1.2의 정리 1.2.8</a>에 의해 <span class="math inline">\(\hat\sigma_n := \sqrt{\bar{X}_n(1-\bar{X}_n)} \xrightarrow{P} \sigma := \sqrt{p(1-p)} &gt; 0\)</span>입니다. 극한이 상수일 때는 <span class="math inline">\(g\)</span>가 그 상수에서만 연속이어도 같은 논리가 통하므로(<span class="math inline">\(|\hat\sigma_n - \sigma|\)</span>가 작으면 <span class="math inline">\(|g(\hat\sigma_n) - g(\sigma)|\)</span>도 작습니다), <span class="math inline">\(g(x) = \sigma/x\)</span>를 쓰면 <span class="math inline">\(\sigma/\hat\sigma_n \xrightarrow{P} 1\)</span>입니다. <span class="math inline">\(\bar{X}_n\)</span>이 <span class="math inline">\(0\)</span>이나 <span class="math inline">\(1\)</span>이 되어 <span class="math inline">\(\hat\sigma_n = 0\)</span>인 경우는 그 확률이 <span class="math inline">\(0\)</span>으로 가므로 무시해도 됩니다. 이제 슬러츠키 정리의 곱셈을 쓰면</p>
+<p><span class="math display">\[\frac{\sqrt{n}\,(\bar{X}_n - p)}{\sqrt{\bar{X}_n(1 - \bar{X}_n)}} \xrightarrow{D} N(0, 1)\]</span></p>
+<p>입니다. 분모에 모르는 값이 없으므로 이 식으로 신뢰구간을 만들 수 있습니다. 여론조사의 “±3.1%포인트”가 이렇게 만들어지며, 4장에서 자세히 다룹니다.</p>
+</section>
+<section id="정리" class="level2">
+<h2 class="anchored" data-anchor-id="정리">정리</h2>
+<ul>
+<li><strong>분포수렴</strong>은 확률변수의 값이 아니라 <strong>분포</strong>가 가까워지는 수렴이며, 분포함수가 극한 분포함수의 연속점에서 수렴하는 것으로 정의합니다. 연속점만 보는 이유는 질량이 한 점으로 다가가는 자연스러운 경우를 포함하기 위해서입니다.</li>
+<li>분포수렴은 분포만 보므로 확률변수들이 서로 다른 확률공간 위에 있어도 됩니다. 동전의 오차를 <span class="math inline">\(2\sqrt{n}\)</span>배 확대한 <span class="math inline">\(Z_n\)</span>은 분포만 <span class="math inline">\(N(0,1)\)</span>로 가까워지고, 값 자체는 어디로도 수렴하지 않습니다.</li>
+<li>포르트망토 정리에 의해 분포수렴은 “연속이고 유계인 모든 <span class="math inline">\(f\)</span>에 대해 <span class="math inline">\(E(f(X_n)) \to E(f(X))\)</span>”와 같고, 경계의 확률이 <span class="math inline">\(0\)</span>인 집합의 확률이 수렴한다는 것과도 같습니다.</li>
+<li>확률수렴하면 분포수렴하지만 반대는 성립하지 않습니다. 다만 극한이 상수이면 둘은 같습니다.</li>
+<li>연속함수는 분포수렴을 보존하고(연속 사상 정리), 상수로 수렴하는 항을 더하거나 곱해도 분포수렴은 유지됩니다(슬러츠키 정리).</li>
+</ul>
+<p>이제 네 가지 수렴이 모두 나왔습니다. 마지막 글에서는 이들 사이의 관계를 한 그림에 모으고, 지금까지 여러 번 미뤄 둔 질문, 즉 <strong>확률수렴에서 언제 기대값의 수렴을 얻을 수 있는가</strong>에 답합니다.</p>
+<hr>
+<section id="연결되는-개념" class="level3">
+<h3 class="anchored" data-anchor-id="연결되는-개념">연결되는 개념</h3>
+<ul>
+<li><span class="math inline">\(\leftarrow\)</span> <strong>이전 개념:</strong> <a href="../../../stats/stochastic-convergence/01-modes-of-convergence/03-in-mean.html">1.3 <span class="math inline">\(r\)</span>차 평균수렴</a></li>
+<li><span class="math inline">\(\rightarrow\)</span> <strong>다음 개념:</strong> <a href="../../../stats/stochastic-convergence/01-modes-of-convergence/05-relations.html">1.5 수렴들 사이의 관계</a></li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const categoryLinks = {
+    "수학": "/math/index.html",
+    "확률과 통계": "/stats/index.html",
+    "컴퓨터 공학": "/cs/index.html",
+    "데이터 사이언스·AI": "/ds-ai/index.html",
+    "경영/경제": "/biz-econ/index.html",
+    "의학통계·바이오메트리": "/biostat/index.html"
+  };
+  document.querySelectorAll('.navbar-nav .nav-item.dropdown > a.nav-link').forEach(function(el) {
+    const label = el.textContent.trim();
+    if (categoryLinks[label]) {
+      el.setAttribute('href', categoryLinks[label]);
+      el.addEventListener('click', function(e) {
+        if (window.innerWidth >= 992) {
+          window.location.href = categoryLinks[label];
+        }
+      });
+    }
+  });
+
+  /* ---------------------------------------------------------------
+     메가 메뉴: 드롭다운을 그룹(헤더 단위)별 가로 열로 재배치
+     - 첫 헤더 이전 항목(예: "전체 과목 보기")은 상단 한 줄로
+     - 한 그룹의 과목이 MAX_ROWS 개를 넘으면 그 그룹 안에서 열을 나눔
+     --------------------------------------------------------------- */
+  const MAX_ROWS = 7;      // 한 열에 들어갈 최대 과목 수
+  const EDGE = 16;         // 화면 가장자리 여백(px)
+
+  document.querySelectorAll('.navbar .nav-item.dropdown > .dropdown-menu').forEach(function(menu) {
+    const items = Array.from(menu.children);
+    if (items.filter(function(li) { return li.classList.contains('dropdown-header'); }).length < 2) return;
+
+    const top = document.createElement('li');
+    top.className = 'mega-top';
+    const groupsWrap = document.createElement('li');
+    groupsWrap.className = 'mega-groups';
+
+    let current = null;
+    items.forEach(function(li) {
+      if (li.querySelector('.dropdown-divider')) { li.remove(); return; }
+      if (li.classList.contains('dropdown-header')) {
+        const group = document.createElement('div');
+        group.className = 'mega-group';
+        const header = document.createElement('div');
+        header.className = 'dropdown-header';
+        header.textContent = li.textContent.trim();
+        const list = document.createElement('ul');
+        list.className = 'mega-items';
+        group.appendChild(header);
+        group.appendChild(list);
+        groupsWrap.appendChild(group);
+        current = list;
+        li.remove();
+        return;
+      }
+      if (current) {
+        current.appendChild(li);
+      } else {
+        top.appendChild(li.querySelector('a') || li);
+        li.remove();
+      }
+    });
+
+    groupsWrap.querySelectorAll('.mega-items').forEach(function(list) {
+      const n = list.children.length;
+      const cols = Math.max(1, Math.ceil(n / MAX_ROWS));
+      list.style.setProperty('--mega-rows', Math.ceil(n / cols));
+    });
+
+    menu.innerHTML = '';
+    if (top.children.length) menu.appendChild(top);
+    menu.appendChild(groupsWrap);
+    menu.classList.add('mega-menu');
+  });
+
+  /* 펼친 메뉴가 화면 오른쪽 밖으로 나가지 않도록 위치 보정 */
+  function fitToViewport(menu) {
+    if (window.innerWidth < 992) { menu.style.left = ''; return; }
+    menu.style.left = '0px';
+    const rect = menu.getBoundingClientRect();
+    if (rect.width === 0) return;
+    let shift = 0;
+    const overflow = rect.right - (window.innerWidth - EDGE);
+    if (overflow > 0) shift = -overflow;
+    if (rect.left + shift < EDGE) shift = EDGE - rect.left;
+    menu.style.left = shift + 'px';
+  }
+
+  document.querySelectorAll('.navbar .nav-item.dropdown').forEach(function(item) {
+    const menu = item.querySelector(':scope > .dropdown-menu.mega-menu');
+    if (!menu) return;
+    const fit = function() { requestAnimationFrame(function() { fitToViewport(menu); }); };
+    item.addEventListener('mouseenter', fit);
+    item.addEventListener('focusin', fit);
+    item.addEventListener('shown.bs.dropdown', fit);
+  });
+});
+</script>
+<script>
+/* 좌측 사이드바 맨 위 과목명: "한국어(English)" → 한국어 / English 두 줄로 나눠 표시 */
+document.addEventListener("DOMContentLoaded", function () {
+  var el = document.querySelector("#quarto-sidebar .sidebar-menu-container > ul > li > .sidebar-item-container .menu-text, #quarto-sidebar .sidebar-menu-container > ul > li > .sidebar-item-text .menu-text");
+  if (!el) return;
+  var m = el.textContent.trim().match(/^(.+?)\s*\((.+)\)$/);
+  if (!m) return;
+  el.textContent = m[1];
+  var en = document.createElement("span");
+  en.className = "menu-subtitle";
+  en.textContent = m[2];
+  el.appendChild(en);
+});
+</script>
+<script data-goatcounter="https://xkwhd1557.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/xkwhd1557\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+<nav class="page-navigation" aria-label="Page">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../stats/stochastic-convergence/01-modes-of-convergence/03-in-mean.html" class="pagination-link" aria-label="1.3 r차 평균수렴">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">1.3 r차 평균수렴</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../stats/stochastic-convergence/01-modes-of-convergence/05-relations.html" class="pagination-link" aria-label="1.5 수렴들 사이의 관계">
+        <span class="nav-page-text">1.5 수렴들 사이의 관계</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2026 xkwhd1557 · 글은 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.ko">CC BY-NC-ND 4.0</a>에 따라 이용할 수 있습니다.<br> <a href="../../../privacy.html">개인정보 처리방침</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
